@@ -13,14 +13,13 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata
 *.xccheckout
 *.moved-aside
 DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-**/.xcode.env.local
+project.xcworkspace
 
 # Android/IntelliJ
 #
@@ -29,16 +28,21 @@ build/
 .gradle
 local.properties
 *.iml
+android/app/release
+android/commonlib/*
+android/mobilertc/*
 *.hprof
-.cxx/
-*.keystore
-!debug.keystore
 
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
 
 # fastlane
 #
@@ -47,28 +51,21 @@ yarn-error.log
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/
 
-**/fastlane/report.xml
-**/fastlane/Preview.html
-**/fastlane/screenshots
-**/fastlane/test_output
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
 
 # Bundle artifact
 *.jsbundle
 
-# Ruby / CocoaPods
-**/Pods/
-/vendor/bundle/
-
-# Temporary files created by Metro to check the health of the file watcher
-.metro-health-check*
-
-# testing
-/coverage
-
-# Yarn
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+# CocoaPods
+ios/Pods/
+ios/Pods/Local Podspecs/
+.eslintcache
+app/**/**/tests
+*.hprof
+android/app/src/main/res/drawable-hdpi
+android/app/src/main/res/drawable-mdpi
+android/app/src/main/res/drawable-xhdpi
+android/app/src/main/res/drawable-xxhdpi
+android/app/src/main/res/drawable-xxxhdpi
