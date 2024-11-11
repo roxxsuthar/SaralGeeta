@@ -1,64 +1,45 @@
-/**
- *
- * {{properCase name }}
- *
- */
+/** * *
+{{properCase name}}
+* */
 
 {{#if memo}}
-import React, { memo } from 'react';
+  import React, { memo } from 'react';
 {{else}}
-import React from 'react';
+  import React from 'react';
 {{/if}}
-// import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// import PropTypes from 'prop-types'; import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
-{{#if wantHeaders}}
-
-{{/if}}
+{{#if wantHeaders}}{{/if}}
 {{#if wantActionsAndReducer}}
-import { createStructuredSelector } from 'reselect';
+  import { createStructuredSelector } from 'reselect';
 {{/if}}
-import { compose } from 'redux';
+import { compose } from 'redux'; import makeSelect{{properCase name}}
+from './selectors'; import styles from './styles'; function
+{{properCase name}}() { return (
+<View style='{styles.container}'>
+  <Text>
+    Hello
+  </Text>
+</View>
+); }
 
-import makeSelect{{properCase name}} from './selectors';
-import styles from './styles';
-
-function {{ properCase name }}() {
-
-  return (
-   <View style={styles.container}>
-      <Text>
-        Hello
-      </Text>
-    </View>
-  );
-}
-
-{{ properCase name }}.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
-};
+{{properCase name}}.propTypes = { // dispatch: PropTypes.func.isRequired, };
 
 {{#if wantActionsAndReducer}}
-const mapStateToProps = createStructuredSelector({
-  {{ camelCase name }}: makeSelect{{properCase name}}(),
-});
+  const mapStateToProps = createStructuredSelector({
+  {{camelCase name}}: makeSelect{{properCase name}}(), });
 {{/if}}
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
+function mapDispatchToProps(dispatch) { return { dispatch, }; }
 
 {{#if wantActionsAndReducer}}
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
+  const withConnect = connect(mapStateToProps, mapDispatchToProps);
 {{else}}
-const withConnect = connect(null, mapDispatchToProps);
+  const withConnect = connect(null, mapDispatchToProps);
 {{/if}}
 
-export default compose(
-  withConnect,
+export default compose( withConnect,
 {{#if memo}}
   memo,
 {{/if}}
-)({{ properCase name }});
+)({{properCase name}});

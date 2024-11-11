@@ -4255,8 +4255,10 @@ __metadata:
     r3f-native-orbitcontrols: ^1.0.12
     react: 18.2.0
     react-native: ^0.74.3
+    react-native-device-info: ^14.0.0
     react-native-gesture-handler: ^2.19.0
     react-native-gl: ^0.0.0
+    react-native-localization: ^2.3.2
     react-native-responsive-screen: ^1.4.2
     react-native-safe-area-context: ^4.10.8
     react-native-screens: ^3.32.0
@@ -9612,6 +9614,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"localized-strings@npm:^0.2.0":
+  version: 0.2.4
+  resolution: "localized-strings@npm:0.2.4"
+  checksum: 678e4c8aa72ca6d2aeb836231a7c3f6c75ff3f12a3241089e237ed86d17e8b987fe563d236de39760f21f31d6b3351655e9f035308f601f748f5f6447698b00b
+  languageName: node
+  linkType: hard
+
 "locate-path@npm:^3.0.0":
   version: 3.0.0
   resolution: "locate-path@npm:3.0.0"
@@ -11611,6 +11620,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-localization@npm:^1.0.17":
+  version: 1.0.19
+  resolution: "react-localization@npm:1.0.19"
+  dependencies:
+    localized-strings: ^0.2.0
+  peerDependencies:
+    react: ^18.0.0 || ^17.0.0 || ^16.0.0 || ^15.6.0
+  checksum: 0a2ee446223d653f2116226e92e1d401d07614b62820678d4d33d2c88b2486246e1c9b0d0b6464d16022ec8e1d6d1cf8f7f1bb55571de136387f9355d2a174a8
+  languageName: node
+  linkType: hard
+
+"react-native-device-info@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "react-native-device-info@npm:14.0.0"
+  peerDependencies:
+    react-native: "*"
+  checksum: d9990fce678c6c179f498866d5042f08dc9c3fec1a139fc12a83341b3289f4ee954e86613b1794047d7646d25f04a902d96927b0a52db9d324e194ffb99e8946
+  languageName: node
+  linkType: hard
+
 "react-native-gesture-handler@npm:^2.19.0":
   version: 2.19.0
   resolution: "react-native-gesture-handler@npm:2.19.0"
@@ -11630,6 +11659,22 @@ __metadata:
   version: 0.0.0
   resolution: "react-native-gl@npm:0.0.0"
   checksum: 6958ad8616114240899374a8044fbe4d61c12a0faad065f29128b1d5024ee12697d8ae9a119c57d08bd4a1ff0058b2ed5638ac2936a4798775cdbb23fe097ab1
+  languageName: node
+  linkType: hard
+
+"react-native-localization@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "react-native-localization@npm:2.3.2"
+  dependencies:
+    react-localization: ^1.0.17
+  peerDependencies:
+    react: ">15.6.0"
+    react-native: ">0.64"
+    react-native-windows: ">0.64"
+  peerDependenciesMeta:
+    react-native-windows:
+      optional: true
+  checksum: ec349d16fb2a97ecba471410f383feaa78b56880337e11750f99fa0ede678d6372e40a809b75ac8dee256ad47e9916687ef259999805e085e286d66af10fb24e
   languageName: node
   linkType: hard
 
