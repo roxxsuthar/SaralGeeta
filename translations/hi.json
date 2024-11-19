@@ -2,35 +2,107 @@
   "App": {
     "header": {
       "id": "container.App.header",
-      "defaultMessage": "यह ऐप कंटेनर है!"
+      "defaultMessage": "This is the App container!"
     },
     "languageUpdated": {
       "id": "container.App.languageUpdated",
-      "defaultMessage": "ऐप की भाषा अपडेट कर दी गई है!"
+      "defaultMessage": "App language has been updated!"
     }
   },
   "Root": {
     "header": {
       "id": "container.Root.header",
-      "defaultMessage": "यह रूट कंटेनर है!"
+      "defaultMessage": "This is the Root container!"
     }
   },
   "Language": {
     "header": {
       "id": "container.Language.header",
-      "defaultMessage": "यह भाषा कंटेनर है!"
+      "defaultMessage": "This is the Language container!"
     }
   },
   "OnboardingOne": {
     "header": {
       "id": "container.OnboardingOne.header",
       "defaultMessage": "This is the Onboarding container!"
+    },
+    "heading": {
+      "id": "container.OnboardingOne.heading",
+      "defaultMessage": "Gita Learn - Simplified"
+    },
+    "description": {
+      "id": "container.OnboardingOne.description",
+      "defaultMessage": "Read the Gita anytime, where ever you wish."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingOne.buttonLabel",
+      "defaultMessage": "Skip"
     }
   },
   "OnboardingSecond": {
     "header": {
       "id": "container.OnboardingSecond.header",
       "defaultMessage": "This is the Onboarding container!"
+    },
+    "heading": {
+      "id": "container.OnboardingSecond.heading",
+      "defaultMessage": "Gita Learn - Simplified"
+    },
+    "description": {
+      "id": "container.OnboardingSecond.description",
+      "defaultMessage": "Read the Gita anytime, where ever you wish."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingSecond.buttonLabel",
+      "defaultMessage": "Skip"
+    }
+  },
+  "language": {
+    "header": {
+      "id": "container.language.header",
+      "defaultMessage": "This is the Language container!"
+    },
+    "buttonLabel": {
+      "id": "container.language.buttonLabel",
+      "defaultMessage": "Continue"
+    }
+  },
+  "login": {
+    "heading": {
+      "id": "container.login.header",
+      "defaultMessage": "Welcome back!"
+    },
+    "subHeading": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "Please enter your credentials to sign in!"
+    },
+    "number": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "Mobile Number"
+    },
+    "typeHere": {
+      "id": "container.login.typeHere",
+      "defaultMessage": "Type here..."
+    },
+    "login": {
+      "id": "container.login.login",
+      "defaultMessage": "Login"
+    },
+    "continue": {
+      "id": "container.login.continue",
+      "defaultMessage": "Or Continue With"
+    },
+    "facebook": {
+      "id": "container.login.facebook",
+      "defaultMessage": "Facebook"
+    },
+    "google": {
+      "id": "container.login.google",
+      "defaultMessage": "Google"
+    },
+    "buttonLabel": {
+      "id": "container.language.buttonLabel",
+      "defaultMessage": "Continue"
     }
   }
 }

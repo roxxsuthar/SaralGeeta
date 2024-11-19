@@ -6,6 +6,7 @@ const FONTS = {
   MEDIUM: 'Inter-Medium',
   REGULAR: 'Inter-Regular',
   SEMIBOLD: 'Inter-SemiBold',
+  HINDI: 'TiroDevanagariHindi-Regular',
 };
 
 export default FONTS;

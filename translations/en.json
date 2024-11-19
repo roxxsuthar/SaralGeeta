@@ -25,12 +25,150 @@
     "header": {
       "id": "container.OnboardingOne.header",
       "defaultMessage": "This is the Onboarding container!"
+    },
+    "heading": {
+      "id": "container.OnboardingOne.heading",
+      "defaultMessage": "Gita Learn - Simplified"
+    },
+    "description": {
+      "id": "container.OnboardingOne.description",
+      "defaultMessage": "Read the Gita anytime, where ever you wish."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingOne.buttonLabel",
+      "defaultMessage": "Skip"
     }
   },
   "OnboardingSecond": {
     "header": {
       "id": "container.OnboardingSecond.header",
       "defaultMessage": "This is the Onboarding container!"
+    },
+    "heading": {
+      "id": "container.OnboardingSecond.heading",
+      "defaultMessage": "Gita Learn - Simplified"
+    },
+    "description": {
+      "id": "container.OnboardingSecond.description",
+      "defaultMessage": "Read the Gita anytime, where ever you wish."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingSecond.buttonLabel",
+      "defaultMessage": "Skip"
+    }
+  },
+  "language": {
+    "header": {
+      "id": "container.language.header",
+      "defaultMessage": "This is the Language container!"
+    },
+    "buttonLabel": {
+      "id": "container.language.buttonLabel",
+      "defaultMessage": "Continue"
+    }
+  },
+  "login": {
+    "heading": {
+      "id": "container.login.header",
+      "defaultMessage": "Welcome back!"
+    },
+    "subHeading": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "Please enter your credentials to sign in!"
+    },
+    "number": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "Mobile Number"
+    },
+    "typeHere": {
+      "id": "container.login.typeHere",
+      "defaultMessage": "Type here..."
+    },
+    "login": {
+      "id": "container.login.login",
+      "defaultMessage": "Login"
+    },
+    "continue": {
+      "id": "container.login.continue",
+      "defaultMessage": "Or Continue With"
+    },
+    "facebook": {
+      "id": "container.login.facebook",
+      "defaultMessage": "Facebook"
+    },
+    "google": {
+      "id": "container.login.google",
+      "defaultMessage": "Google"
+    },
+    "buttonLabel": {
+      "id": "container.login.buttonLabel",
+      "defaultMessage": "Continue"
+    },
+    "dont": {
+      "id": "container.login.dont",
+      "defaultMessage": "Don’t have account? "
+    },
+    "create": {
+      "id": "container.login.dont",
+      "defaultMessage": "Create Now"
+    },
+    "bottomSheetHeading": {
+      "id": "containers.login.bottomSheetHeading",
+      "defaultMessage": "Select your country"
+    },
+    "countryPlaceholder": {
+      "id": "containers.login.warningOtherHalf",
+      "defaultMessage": "Search by country name"
+    },
+    "placeholder": {
+      "id": "containers.login.placeholder",
+      "defaultMessage": "Phone number"
+    }
+  },
+  "otpScreen": {
+    "heading": {
+      "id": "container.otpScreen.header",
+      "defaultMessage": "Welcome back"
+    },
+    "subHeading": {
+      "id": "container.otpScreen.subHeading",
+      "defaultMessage": "Please enter the OTP sent to your registered mobile number."
+    },
+    "submit": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "Submit"
+    },
+    "enterOtp": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "Enter otp here"
+    },
+    "dont": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "Didn’t receive the code? "
+    },
+    "create": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "Resend"
+    },
+    "minute": {
+      "id": "app.containers.otpScreen.minute",
+      "defaultMessage": "minute"
+    },
+    "second": {
+      "id": "app.containers.otpScreen.second",
+      "defaultMessage": "second left"
+    },
+    "minutes": {
+      "id": "app.containers.otpScreen.minutes",
+      "defaultMessage": "minutes"
+    },
+    "seconds": {
+      "id": "app.containers.otpScreen.seconds",
+      "defaultMessage": "seconds left"
+    },
+    "timeElapsed": {
+      "id": "app.containers.otpScreen.timeElapsed",
+      "defaultMessage": "Time Elapsed"
     }
   }
 }

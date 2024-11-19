@@ -1,11 +1,12 @@
-import {hasNotch, isTablet} from 'react-native-device-info';
-import {Platform} from 'react-native';
+import { hasNotch, isTablet } from 'react-native-device-info';
+import { Platform } from 'react-native';
 import isEqual from 'lodash/isEqual';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { hp } from '../utils/responsive';
+import { CONSTANTS } from '../constants';
 
 const isHavingNotch = hasNotch();
 const _isTablet = isTablet();
-const {OS} = Platform;
+const { OS } = Platform;
 
 const marginBottom = (val = 0) => {
   if (isEqual(OS, 'ios') && isHavingNotch) {
@@ -21,4 +22,15 @@ const marginTop = (val = 0) => {
   return 0;
 };
 
-export {isHavingNotch, OS, marginBottom, marginTop, _isTablet};
+const setFontFamily = (selectedLanguage, englishFont, hindiFont) => {
+  if (isEqual(selectedLanguage, CONSTANTS.ENCode)) {
+    return {
+      fontFamily: englishFont,
+    };
+  }
+  return {
+    fontFamily: hindiFont,
+  };
+};
+
+export { isHavingNotch, OS, marginBottom, marginTop, _isTablet, setFontFamily };

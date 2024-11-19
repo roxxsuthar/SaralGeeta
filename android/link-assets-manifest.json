@@ -28,6 +28,10 @@
     {
       "path": "app/assets/fonts/Inter-SemiBold.ttf",
       "sha1": "d48310d2f04c57af1bce0851e053be7b58b25dca"
+    },
+    {
+      "path": "app/assets/fonts/TiroDevanagariHindi-Regular.ttf",
+      "sha1": "ef67b6ecb1d5ef20f309aab707098afbec5babbb"
     }
   ]
 }

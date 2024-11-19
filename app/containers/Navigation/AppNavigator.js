@@ -8,6 +8,8 @@ import { Navigation } from '../../constants/constants';
 import OnboardingOne from '../OnboardingOne';
 import OnboardingSecond from '../OnboardingSecond';
 import Language from '../Language';
+import Login from '../Login';
+import OtpScreen from '../OtpScreen';
 
 const AppStack = createStackNavigator();
 
@@ -26,7 +28,7 @@ const AuthNavigator = ({
     >
       {!isOnboardingVisited && (
         <>
-          <AppStack.Screen
+          {/* <AppStack.Screen
             name={Navigation.OnboardingOne}
             component={OnboardingOne}
             options={{
@@ -42,9 +44,35 @@ const AuthNavigator = ({
             }}
             initialParams={{ currentLanguage }}
           />
+          <AppStack.Screen
+            name={Navigation.Language}
+            component={Language}
+            options={{
+              headerShown: false,
+            }}
+            initialParams={{ currentLanguage }}
+          />
+          <AppStack.Screen
+            name={Navigation.Login}
+            component={Login}
+            options={{
+              headerShown: false,
+            }}
+            initialParams={{ currentLanguage }}
+          />
+           */}
+
+          <AppStack.Screen
+            name={Navigation.OtpScreen}
+            component={OtpScreen}
+            options={{
+              headerShown: false,
+            }}
+            initialParams={{ currentLanguage }}
+          />
         </>
       )}
-      {isOnboardingVisited && !isLanguageSelected && (
+      {/* {isOnboardingVisited && !isLanguageSelected && (
         <AppStack.Screen
           name={Navigation.Language}
           component={Language}
@@ -53,7 +81,7 @@ const AuthNavigator = ({
           }}
           initialParams={{ currentLanguage }}
         />
-      )}
+      )} */}
       {/* <AppStack.Screen
         name="DashboardNavigator"
         component={DashboardNavigator}

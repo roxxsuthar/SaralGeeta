@@ -24,6 +24,7 @@
 		E1CFEC1BDCD14888917BC55C /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7DF5B95F255B4A30B56B08EF /* Inter-Medium.ttf */; };
 		8E3B15B62B984859B15F87AC /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E79DE5EE63A845479559F508 /* Inter-Regular.ttf */; };
 		C0539E2E9F3C45D89F46B266 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E4ED580831140408B80494C /* Inter-SemiBold.ttf */; };
+		5EB557CCEBC64B4989AAF5D1 /* TiroDevanagariHindi-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED05C997FB44FC0AEB17456 /* TiroDevanagariHindi-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		7DF5B95F255B4A30B56B08EF /* Inter-Medium.ttf */ = {isa = PBXFileReference; name = "Inter-Medium.ttf"; path = "../app/assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E79DE5EE63A845479559F508 /* Inter-Regular.ttf */ = {isa = PBXFileReference; name = "Inter-Regular.ttf"; path = "../app/assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		5E4ED580831140408B80494C /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; name = "Inter-SemiBold.ttf"; path = "../app/assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4ED05C997FB44FC0AEB17456 /* TiroDevanagariHindi-Regular.ttf */ = {isa = PBXFileReference; name = "TiroDevanagariHindi-Regular.ttf"; path = "../app/assets/fonts/TiroDevanagariHindi-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				7DF5B95F255B4A30B56B08EF /* Inter-Medium.ttf */,
 				E79DE5EE63A845479559F508 /* Inter-Regular.ttf */,
 				5E4ED580831140408B80494C /* Inter-SemiBold.ttf */,
+				4ED05C997FB44FC0AEB17456 /* TiroDevanagariHindi-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				E1CFEC1BDCD14888917BC55C /* Inter-Medium.ttf in Resources */,
 				8E3B15B62B984859B15F87AC /* Inter-Regular.ttf in Resources */,
 				C0539E2E9F3C45D89F46B266 /* Inter-SemiBold.ttf in Resources */,
+				5EB557CCEBC64B4989AAF5D1 /* TiroDevanagariHindi-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
