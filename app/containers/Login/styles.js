@@ -197,10 +197,10 @@ const styles = StyleSheet.create({
   },
   chakraStyle: {
     position: 'absolute',
-    right: hp(-220),
-    top: hp(-220),
-    height: hp(500),
-    width: hp(500),
+    right: hp(-200),
+    top: hp(-200),
+    height: hp(450),
+    width: hp(470),
   },
 });
 

@@ -16,6 +16,10 @@ export const Navigation = {
   Language: 'Language',
   Login: 'Login',
   OtpScreen: 'OtpScreen',
+  OurIdeals: 'OurIdeals',
+  Home: 'Home',
+  Chapters: 'Chapters',
+  EBooks: 'EBooks',
 };
 
 export default CONSTANTS;

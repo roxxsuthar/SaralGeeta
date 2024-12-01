@@ -10,6 +10,9 @@ import OnboardingSecond from '../OnboardingSecond';
 import Language from '../Language';
 import Login from '../Login';
 import OtpScreen from '../OtpScreen';
+import OurIdeals from '../OurIdeals';
+import Home from '../Home';
+import Chapters from '../Chapters';
 
 const AppStack = createStackNavigator();
 
@@ -60,11 +63,34 @@ const AuthNavigator = ({
             }}
             initialParams={{ currentLanguage }}
           />
-           */}
-
           <AppStack.Screen
             name={Navigation.OtpScreen}
             component={OtpScreen}
+            options={{
+              headerShown: false,
+            }}
+            initialParams={{ currentLanguage }}
+          />
+          <AppStack.Screen
+            name={Navigation.OurIdeals}
+            component={OurIdeals}
+            options={{
+              headerShown: false,
+            }}
+            initialParams={{ currentLanguage }}
+          />
+          <AppStack.Screen
+            name={Navigation.Home}
+            component={Home}
+            options={{
+              headerShown: false,
+            }}
+            initialParams={{ currentLanguage }}
+          />
+           */}
+          <AppStack.Screen
+            name={Navigation.Chapters}
+            component={Chapters}
             options={{
               headerShown: false,
             }}

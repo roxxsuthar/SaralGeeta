@@ -170,5 +170,23 @@
       "id": "app.containers.otpScreen.timeElapsed",
       "defaultMessage": "Time Elapsed"
     }
+  },
+  "OurIdeals": {
+    "buttonLabel": {
+      "id": "app.containers.OurIdeals.buttonLabel",
+      "defaultMessage": "Continue"
+    }
+  },
+  "Home": {
+    "headerText": {
+      "id": "app.containers.Home.headerText",
+      "defaultMessage": "Home"
+    }
+  },
+  "Chapters": {
+    "headerText": {
+      "id": "app.containers.Chapters.headerText",
+      "defaultMessage": "Chapters"
+    }
   }
 }

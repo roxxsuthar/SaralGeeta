@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // All IMAGES constants here.
 
 // import LogoSignEmoha from '../assets/images/LogoSignEmoha.svg';
@@ -9,11 +10,15 @@ import CloseIcon from '../assets/images/CloseIcon.svg';
 import ChevronLeft from '../assets/images/chevron-left.svg';
 import Logo from '../assets/images/logo-saral-geeta.svg';
 import LeftArrow from '../assets/images/ic-right.svg';
+import PlayerIcon from '../assets/images/player-play.svg';
+import Heart from '../assets/images/heart.svg';
 
 // const PlanCard = require('../assets/images/planCard.png');
 const GeetLearn = require('../assets/images/img-geeta-learn.png');
 const KrishnaImage = require('../assets/images/img-krishna.png');
 const Chakra = require('../assets/images/geeta_learn_animation.gif');
+const Frame = require('../assets/images/Frame.png');
+const Rath = require('../assets/images/img-john-fitness.png');
 
 const IMAGES = {
   GeetLearn,
@@ -25,6 +30,11 @@ const IMAGES = {
   CloseIcon,
   Logo,
   Chakra,
+  ChevronLeft,
   LeftArrow,
+  PlayerIcon,
+  Heart,
+  Frame,
+  Rath,
 };
 export default IMAGES;

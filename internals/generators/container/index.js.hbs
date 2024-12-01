@@ -23,7 +23,7 @@ from './selectors'; import styles from './styles'; function
 </View>
 ); }
 
-{{properCase name}}.propTypes = { // dispatch: PropTypes.func.isRequired, };
+{{properCase name}}.propTypes = { dispatch: PropTypes.func.isRequired, };
 
 {{#if wantActionsAndReducer}}
   const mapStateToProps = createStructuredSelector({

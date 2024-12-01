@@ -1,5 +1,6 @@
 import React, { useCallback, useRef, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import {
   View,
   StatusBar,
@@ -7,12 +8,14 @@ import {
   Keyboard,
   TextInput,
 } from 'react-native';
+
 import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import SmsRetriever from 'react-native-sms-retriever';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+
 import makeSelectOtpScreen from './selectors';
 import CustomText from '../../components/CustomText';
 import CustomButton from '../../components/CustomButton';
@@ -226,6 +229,11 @@ function OtpScreen({ language, navigation }) {
     </LinearGradient>
   );
 }
+
+OtpScreen.propTypes = {
+  navigation: PropTypes.object,
+  language: PropTypes.object,
+};
 
 const mapStateToProps = createStructuredSelector({
   otpScreen: makeSelectOtpScreen(),

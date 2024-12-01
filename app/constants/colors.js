@@ -11,5 +11,9 @@ const COLORS = {
   emoRed: 'rgb(220, 57, 65)',
   gallary: (opacity = 1) => `rgba(235, 235, 235, ${opacity})`,
   gray: '#888888',
+  lightGray: '#F8F8F8',
+  cinderella: '#FCE0D3',
+  flamingo: '#F06225',
+  silver: '#B8B8B8',
 };
 export default COLORS;
