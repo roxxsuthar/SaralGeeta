@@ -20,6 +20,8 @@ export const Navigation = {
   Home: 'Home',
   Chapters: 'Chapters',
   EBooks: 'EBooks',
+  Shloks: 'Shloks',
+  LearnGeeta: 'LearnGeeta',
 };
 
 export default CONSTANTS;

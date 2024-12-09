@@ -12,7 +12,7 @@ export const initialState = {};
 // eslint-disable-next-line default-param-last
 const loginReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
-    switch (action.type) {
+    switch (action?.type) {
       case DEFAULT_ACTION:
         break;
     }

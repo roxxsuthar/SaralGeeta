@@ -27,8 +27,9 @@ import { OS, setFontFamily } from '../../utils/device';
 import { COLORS, CONSTANTS, FONTS, IMAGES } from '../../constants';
 import { hp } from '../../utils/responsive';
 import { Navigation } from '../../constants/constants';
+import { sendOtpAction } from '../App/actions';
 
-function Login({ language, navigation }) {
+function Login({ language, navigation, handleSendOtp }) {
   const { currentLanguage } = language;
   const { login: loginMessage } = strings;
 
@@ -80,8 +81,11 @@ function Login({ language, navigation }) {
   }, [focusedBox]);
 
   const navigateToNext = useCallback(() => {
-    navigation.navigate(Navigation.OtpScreen);
-  }, []);
+    const payload = {
+      mobile_number: mobileNumber,
+    };
+    handleSendOtp(payload, navigation.navigate(Navigation.OtpScreen));
+  }, [mobileNumber]);
 
   return (
     <LinearGradient
@@ -156,7 +160,7 @@ function Login({ language, navigation }) {
               value: mobileNumber,
             }}
             textInputStyle={Object.assign(
-              setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.REGULAR),
+              setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
               {
                 paddingBottom: isEqual(currentLanguage, CONSTANTS.HICode)
                   ? hp(0.62)
@@ -168,7 +172,7 @@ function Login({ language, navigation }) {
             containerStyle={inputStyle}
             countryPickerButtonStyle={styles.countryCode}
             codeTextStyle={Object.assign(
-              setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.REGULAR),
+              setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
               styles.codeTextStyle,
             )}
             showCross={mobileNumber > 0}
@@ -183,7 +187,7 @@ function Login({ language, navigation }) {
           {!valid ? (
             <CustomText
               style={Object.assign(
-                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.REGULAR),
+                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
                 styles.errorText,
               )}
             >
@@ -277,7 +281,8 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    handleSendOtp: (payload, callback) =>
+      dispatch(sendOtpAction(payload, callback)),
   };
 }
 

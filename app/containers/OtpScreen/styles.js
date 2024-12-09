@@ -61,12 +61,14 @@ const styles = StyleSheet.create({
     fontSize: hp(15),
     lineHeight: hp(21),
     color: COLORS.codGray,
+    textAlign: 'center',
   },
   create: {
     fontWeight: '700',
     fontSize: hp(15),
     lineHeight: hp(21),
     color: COLORS.codGray,
+    textAlign: 'center',
   },
   footerText: {
     flexDirection: 'row',
@@ -107,6 +109,9 @@ const styles = StyleSheet.create({
     fontSize: hp(16),
     fontWeight: '500',
     lineHeight: hp(24),
+  },
+  resendText: {
+    alignContent: 'center',
   },
 });
 

@@ -10,17 +10,14 @@ import OnboardingSecond from '../OnboardingSecond';
 import Language from '../Language';
 import Login from '../Login';
 import OtpScreen from '../OtpScreen';
-import OurIdeals from '../OurIdeals';
-import Home from '../Home';
-import Chapters from '../Chapters';
 
 const AppStack = createStackNavigator();
 
 const AuthNavigator = ({
   currentLanguage,
   isOnboardingVisited,
-  navigation,
   isLanguageSelected,
+  token,
 }) => (
   <>
     <StatusBar backgroundColor={COLORS.transparent} barStyle="dark-content" />
@@ -31,7 +28,7 @@ const AuthNavigator = ({
     >
       {!isOnboardingVisited && (
         <>
-          {/* <AppStack.Screen
+          <AppStack.Screen
             name={Navigation.OnboardingOne}
             component={OnboardingOne}
             options={{
@@ -47,14 +44,20 @@ const AuthNavigator = ({
             }}
             initialParams={{ currentLanguage }}
           />
-          <AppStack.Screen
-            name={Navigation.Language}
-            component={Language}
-            options={{
-              headerShown: false,
-            }}
-            initialParams={{ currentLanguage }}
-          />
+        </>
+      )}
+      {isOnboardingVisited && !isLanguageSelected && (
+        <AppStack.Screen
+          name={Navigation.Language}
+          component={Language}
+          options={{
+            headerShown: false,
+          }}
+          initialParams={{ currentLanguage }}
+        />
+      )}
+      {!token && (
+        <>
           <AppStack.Screen
             name={Navigation.Login}
             component={Login}
@@ -71,59 +74,16 @@ const AuthNavigator = ({
             }}
             initialParams={{ currentLanguage }}
           />
-          <AppStack.Screen
-            name={Navigation.OurIdeals}
-            component={OurIdeals}
-            options={{
-              headerShown: false,
-            }}
-            initialParams={{ currentLanguage }}
-          />
-          <AppStack.Screen
-            name={Navigation.Home}
-            component={Home}
-            options={{
-              headerShown: false,
-            }}
-            initialParams={{ currentLanguage }}
-          />
-           */}
-          <AppStack.Screen
-            name={Navigation.Chapters}
-            component={Chapters}
-            options={{
-              headerShown: false,
-            }}
-            initialParams={{ currentLanguage }}
-          />
         </>
       )}
-      {/* {isOnboardingVisited && !isLanguageSelected && (
-        <AppStack.Screen
-          name={Navigation.Language}
-          component={Language}
-          options={{
-            headerShown: false,
-          }}
-          initialParams={{ currentLanguage }}
-        />
-      )} */}
-      {/* <AppStack.Screen
+      <AppStack.Screen
         name="DashboardNavigator"
         component={DashboardNavigator}
         options={{
           headerShown: false,
         }}
         initialParams={{ currentLanguage }}
-      /> */}
-      {/* <AppStack.Screen
-        name={Navigation.OnboardingSecond}
-        component={OnboardingSecond}
-        options={{
-          headerShown: false,
-        }}
-        initialParams={{ currentLanguage }}
-      /> */}
+      />
     </AppStack.Navigator>
   </>
 );

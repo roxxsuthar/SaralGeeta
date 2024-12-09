@@ -24,5 +24,21 @@ const makeSelectAppLanguage = () =>
 const makeSelectOnboardingVisited = () =>
   createSelector(selectAppDomain, (substate) => substate.onboarding);
 
+const makeSelectToken = () =>
+  createSelector(selectAppDomain, (substate) => substate.accessToken);
+
+const makeSelectUser = () =>
+  createSelector(selectAppDomain, (substate) => substate.user);
+
+const makeSelectOtpDetails = () =>
+  createSelector(selectAppDomain, (substate) => substate.sentOtpDetail);
+
 export default makeSelectApp;
-export { selectAppDomain, makeSelectAppLanguage, makeSelectOnboardingVisited };
+export {
+  selectAppDomain,
+  makeSelectAppLanguage,
+  makeSelectOnboardingVisited,
+  makeSelectToken,
+  makeSelectUser,
+  makeSelectOtpDetails,
+};

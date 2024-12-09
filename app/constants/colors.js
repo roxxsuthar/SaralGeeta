@@ -15,5 +15,8 @@ const COLORS = {
   cinderella: '#FCE0D3',
   flamingo: '#F06225',
   silver: '#B8B8B8',
+  alto: '#D9D9D9',
+  doveGray: '#666666',
+  loadingTransparent: '#0A030088',
 };
 export default COLORS;

@@ -5,9 +5,8 @@
  */
 
 import React, { useCallback } from 'react';
-// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, Text, Image, StatusBar } from 'react-native';
+import { View, Image, StatusBar } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import strings from '../../../i18n';

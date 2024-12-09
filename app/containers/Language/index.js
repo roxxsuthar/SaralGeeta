@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { View, TouchableOpacity, StatusBar } from 'react-native';
@@ -24,14 +24,19 @@ import { FONTS, IMAGES } from '../../constants';
 import { hp } from '../../utils/responsive';
 import { useCallback } from 'react';
 import { Navigation } from '../../constants/constants';
+import { setLanguage } from '../App/actions';
+import { isEqual } from 'lodash';
 
-function Language({ navigation, language }) {
+function Language({ navigation, language, _handleSetLanguage }) {
   const { currentLanguage } = language;
   const { language: languageMessage } = strings;
+  const [languageType, setLanguageType] = useState();
 
-  const navigateToNext = useCallback(() => {
+  const updateLanguage = useCallback(() => {
+    _handleSetLanguage(languageType);
     navigation.navigate(Navigation.Login);
-  }, []);
+  }, [languageType]);
+
   return (
     <LinearGradient
       colors={['rgb(227,126,93)', 'rgb(242,206,88)']}
@@ -63,8 +68,16 @@ function Language({ navigation, language }) {
                 नमस्ते, स्वागत है
               </CustomText>
             </View>
-            <TouchableOpacity activeOpacity={0.8} style={styles.radioButton}>
-              <IMAGES.Circle height="100%" width="100%" />
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={styles.radioButton}
+              onPress={() => setLanguageType('hi')}
+            >
+              {isEqual(languageType, 'hi') ? (
+                <IMAGES.CircleCheck height="100%" width="100%" />
+              ) : (
+                <IMAGES.Circle height="100%" width="100%" />
+              )}
             </TouchableOpacity>
           </View>
           <View style={{ ...styles.language, marginTop: hp(26) }}>
@@ -74,8 +87,16 @@ function Language({ navigation, language }) {
                 Hi, Welcome
               </CustomText>
             </View>
-            <TouchableOpacity activeOpacity={0.8} style={styles.radioButton}>
-              <IMAGES.CircleCheck height="100%" width="100%" />
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={styles.radioButton}
+              onPress={() => setLanguageType('en')}
+            >
+              {isEqual(languageType, 'en') ? (
+                <IMAGES.CircleCheck height="100%" width="100%" />
+              ) : (
+                <IMAGES.Circle height="100%" width="100%" />
+              )}
             </TouchableOpacity>
           </View>
         </View>
@@ -86,14 +107,14 @@ function Language({ navigation, language }) {
             styles.buttonLabel,
           )}
           style={styles.buttonContainer}
-          onPress={() => navigateToNext()}
+          onPress={() => updateLanguage()}
         />
       </View>
     </LinearGradient>
   );
 }
 Language.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  ...Language,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -103,7 +124,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    _handleSetLanguage: () => dispatch(setLanguage()),
   };
 }
 

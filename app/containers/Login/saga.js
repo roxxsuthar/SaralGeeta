@@ -1,7 +1,29 @@
-// import { take, call, put, select } from 'redux-saga/effects';
-// import request from '../../utils/request';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
-// Individual exports for testing
+import request from '../../utils/request';
+import Helpers from '../../utils/helpers';
+import { APIS } from '../../constants';
+import { sendOtpSuccessAction, sendOtpFailAction } from '../App/actions';
+import { LOGIN_ACTION } from '../App/constants';
+
+function* sendOtpApiHandler({ payload, callback }) {
+  const url = Helpers.getUrl(APIS.REGISTRATION);
+  const options = {
+    method: 'POST',
+    url,
+    data: payload,
+  };
+
+  try {
+    const res = yield call(request, options);
+    console.log('res', res);
+    yield put(sendOtpSuccessAction(res.results));
+    callback?.();
+  } catch (e) {
+    yield put(sendOtpFailAction(e));
+  }
+}
+
 export default function* loginSaga() {
-  // See example in containers/HomePage/saga.js
+  yield takeLatest(LOGIN_ACTION, sendOtpApiHandler);
 }

@@ -1,7 +1,7 @@
-import {compose, createStore, applyMiddleware} from 'redux';
-import {persistStore} from 'redux-persist';
-import {setAutoFreeze} from 'immer';
-import {logger} from 'redux-logger';
+import { compose, createStore, applyMiddleware } from 'redux';
+import { persistStore } from 'redux-persist';
+import { setAutoFreeze } from 'immer';
+import { logger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 
 import reducers from './reducers';
@@ -22,7 +22,7 @@ const configureStore = () => {
   const store = createStore(reducers, compose(...enhancers));
   const persistor = persistStore(store);
   sagaMiddleware.run(sagas);
-  return {store, persistor};
+  return { store, persistor };
 };
 
 export default configureStore;

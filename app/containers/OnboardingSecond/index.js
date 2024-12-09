@@ -5,9 +5,8 @@
  */
 
 import React, { useCallback } from 'react';
-// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, Text, Image, StatusBar } from 'react-native';
+import { View, Image, StatusBar } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import strings from '../../../i18n';
@@ -19,11 +18,14 @@ import CustomButton from '../../components/CustomButton';
 import { Navigation } from '../../constants/constants';
 import { setFontFamily } from '../../utils/device';
 import { makeSelectAppLanguage } from '../App/selectors';
+import { setOnboardingVisited } from '../App/actions';
 
-function OnboardingSecond({ navigation, language }) {
+function OnboardingSecond({ navigation, language, _handleSetOnboarding }) {
   const { OnboardingSecond: OnboardingSecondMessage } = strings;
   const { currentLanguage } = language;
+
   const navigateToLogin = useCallback(() => {
+    _handleSetOnboarding();
     navigation.navigate(Navigation.Language);
   }, []);
 
@@ -83,6 +85,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    _handleSetOnboarding: () => dispatch(setOnboardingVisited()),
   };
 }
 

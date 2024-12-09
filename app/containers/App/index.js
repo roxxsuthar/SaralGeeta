@@ -6,23 +6,28 @@
 
 import React from 'react';
 // import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect';
-import {compose} from 'redux';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
 
-import makeSelectApp from './selectors';
+import makeSelectApp, { makeSelectToken } from './selectors';
 import Root from '../Root';
+import { setAxiosToken } from '../../utils/appWillMount';
 
-function App() {
+function App({ token }) {
+  if (token) {
+    setAxiosToken(token);
+  }
   return <Root />;
 }
 
 App.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  ...App,
 };
 
 const mapStateToProps = createStructuredSelector({
   app: makeSelectApp(),
+  token: makeSelectToken(),
 });
 
 function mapDispatchToProps(dispatch) {

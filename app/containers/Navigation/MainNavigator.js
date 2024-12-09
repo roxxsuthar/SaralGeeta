@@ -6,7 +6,6 @@ import withBack from '../../utils/withBack';
 import withAppState from '../../utils/withAppState';
 
 import AppStateContext from '../../components/AppStateContext';
-
 const MainAppNavigator = createStackNavigator();
 
 const MainNavigator = ({
@@ -15,6 +14,8 @@ const MainNavigator = ({
   currentLanguage,
   navigation,
   isOnboardingVisited,
+  token,
+  user,
 }) => (
   <AppStateContext.Provider value={{ appState }}>
     <MainAppNavigator.Navigator
@@ -30,6 +31,8 @@ const MainNavigator = ({
             currentLanguage={currentLanguage}
             navigation={navigation}
             isOnboardingVisited={isOnboardingVisited}
+            token={token}
+            user={user}
           />
         )}
       </MainAppNavigator.Screen>

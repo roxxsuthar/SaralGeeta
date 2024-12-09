@@ -15,11 +15,13 @@ import MainNavigatorWithBackAndAppState from './MainNavigator';
 import {
   makeSelectAppLanguage,
   makeSelectOnboardingVisited,
+  makeSelectToken,
+  makeSelectUser,
 } from '../App/selectors';
 
 import makeSelectNavigation from './selectors';
 
-export function Navigation({ navigation, language, onboarding }) {
+export function Navigation({ navigation, language, onboarding, token, user }) {
   const { isLanguageSelected, currentLanguage } = language;
   const { isOnboardingVisited } = onboarding;
 
@@ -30,6 +32,8 @@ export function Navigation({ navigation, language, onboarding }) {
         isLanguageSelected={isLanguageSelected}
         navigation={navigation}
         isOnboardingVisited={isOnboardingVisited}
+        token={token}
+        user={user}
       />
     </NavigationContainer>
   );
@@ -43,6 +47,8 @@ const mapStateToProps = createStructuredSelector({
   navigation: makeSelectNavigation(),
   language: makeSelectAppLanguage(),
   onboarding: makeSelectOnboardingVisited(),
+  token: makeSelectToken(),
+  user: makeSelectUser(),
 });
 
 function mapDispatchToProps(dispatch) {

@@ -19,6 +19,9 @@ const KrishnaImage = require('../assets/images/img-krishna.png');
 const Chakra = require('../assets/images/geeta_learn_animation.gif');
 const Frame = require('../assets/images/Frame.png');
 const Rath = require('../assets/images/img-john-fitness.png');
+const Trainer = require('../assets/images/Trainer_Photo.png');
+const Krishna = require('../assets/images/krishna.png');
+const Cloud = require('../assets/images/cloud1.webp');
 
 const IMAGES = {
   GeetLearn,
@@ -36,5 +39,8 @@ const IMAGES = {
   Heart,
   Frame,
   Rath,
+  Trainer,
+  Krishna,
+  Cloud,
 };
 export default IMAGES;

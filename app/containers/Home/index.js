@@ -3,12 +3,12 @@
 Home
 * */
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StatusBar, SectionList, TouchableOpacity } from 'react-native';
+import { View, StatusBar, SectionList } from 'react-native';
 import split from 'lodash/split';
-import isEqual from 'lodash/isEqual';
+// import isEqual from 'lodash/isEqual';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import FastImage from 'react-native-fast-image';
@@ -16,12 +16,14 @@ import makeSelectHome from './selectors';
 import styles from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomText from '../../components/CustomText';
+import LoadingScreen from '../../components/LoadingScreen';
 import { setFontFamily } from '../../utils/device';
-import { FONTS, IMAGES } from '../../constants';
+import { FONTS } from '../../constants';
 import strings from '../../../i18n';
 import { makeSelectAppLanguage } from '../App/selectors';
+import { getChapters } from './actions';
 
-function Home({ language, navigation }) {
+function Home({ language, navigation, handleGetChapters, home }) {
   const { Home: HomeMessage } = strings;
   const { currentLanguage } = language;
 
@@ -40,47 +42,14 @@ function Home({ language, navigation }) {
       ],
     },
     {
-      title: 'Audio',
-      data: [
-        {
-          id: 1,
-          image: 'https://picsum.photos/700',
-          title: 'Sankhya Yog',
-          description:
-            'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-          videoTime: '10:20',
-          timeUsed: '05:10',
-        },
-        {
-          id: 1,
-          image: 'https://picsum.photos/700',
-          title: 'Sankhya Yog',
-          description:
-            'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-          videoTime: '10:20',
-          timeUsed: '05:10',
-        },
-        {
-          id: 1,
-          image: 'https://picsum.photos/700',
-          title: 'Sankhya Yog',
-          description:
-            'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-          videoTime: '10:20',
-          timeUsed: '05:10',
-        },
-        {
-          id: 1,
-          image: 'https://picsum.photos/700',
-          title: 'Sankhya Yog',
-          description:
-            'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-          videoTime: '10:20',
-          timeUsed: '05:10',
-        },
-      ],
+      title: 'Chapters',
+      data: home?.data,
     },
   ];
+
+  useEffect(() => {
+    handleGetChapters();
+  }, []);
 
   const timeStringToSeconds = (timeString) => {
     const timeParts = split(timeString, ':').map(Number);
@@ -144,7 +113,7 @@ function Home({ language, navigation }) {
             </View>
           </View>
         );
-      case 'Audio':
+      case 'Chapters':
         return (
           <View style={styles.AudioContainer}>
             <FastImage
@@ -159,7 +128,7 @@ function Home({ language, navigation }) {
                   ...styles.audioCardTitle,
                 }}
               >
-                {item.title}
+                {item.name}
               </CustomText>
               <CustomText
                 style={{
@@ -170,13 +139,13 @@ function Home({ language, navigation }) {
                 {item.description}
               </CustomText>
               <View style={styles.imageContainer}>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   activeOpacity={0.8}
                   style={styles.iconContainer}
                 >
                   <IMAGES.PlayerIcon height="100%" width="100%" />
-                </TouchableOpacity>
-                <TouchableOpacity
+                </TouchableOpacity> */}
+                {/* <TouchableOpacity
                   activeOpacity={0.8}
                   style={styles.iconContainer}
                 >
@@ -187,7 +156,7 @@ function Home({ language, navigation }) {
                   style={styles.iconContainer}
                 >
                   <CustomText style={styles.oneXText}>1</CustomText>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
             </View>
           </View>
@@ -224,32 +193,37 @@ function Home({ language, navigation }) {
             {HomeMessage.headerText.defaultMessage}
           </CustomText>
         </View>
-        <SectionList
-          sections={sections}
-          keyExtractor={(item) => item.id.toString()}
-          renderSectionHeader={({ section }) => (
-            <View style={styles.sectionHeaderContainer}>
-              <CustomText style={styles.sectionHeader}>
-                {section.title}
-              </CustomText>
-              {!isEqual(section?.title, 'Recent View') && (
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  onPress={() => navigateToAudio()}
-                >
-                  <CustomText style={styles.sectionViewAll}>
-                    View all
-                  </CustomText>
-                </TouchableOpacity>
-              )}
-            </View>
-          )}
-          renderItem={({ item, section }) =>
-            renderItemBasedOnSection(section.title, item)
-          }
-          SectionSeparatorComponent={ItemSeparator}
-          ItemSeparatorComponent={ItemSeparator}
-        />
+        {home?.loading ? (
+          <LoadingScreen />
+        ) : (
+          <SectionList
+            sections={sections}
+            keyExtractor={(item) => item.uuid}
+            renderSectionHeader={({ section }) => (
+              <View style={styles.sectionHeaderContainer}>
+                <CustomText style={styles.sectionHeader}>
+                  {section.title}
+                </CustomText>
+                {/* {!isEqual(section?.title, 'Recent View') && (
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() => navigateToAudio()}
+                  >
+                    <CustomText style={styles.sectionViewAll}>
+                      View all
+                    </CustomText>
+                  </TouchableOpacity>
+                )} */}
+              </View>
+            )}
+            renderItem={({ item, section }) =>
+              renderItemBasedOnSection(section.title, item)
+            }
+            showsVerticalScrollIndicator={false}
+            SectionSeparatorComponent={ItemSeparator}
+            ItemSeparatorComponent={ItemSeparator}
+          />
+        )}
       </View>
     </LinearGradient>
   );
@@ -258,6 +232,7 @@ function Home({ language, navigation }) {
 Home.propTypes = {
   language: PropTypes.object,
   navigation: PropTypes.object,
+  handleGetChapters: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -266,7 +241,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 function mapDispatchToProps(dispatch) {
-  return { dispatch };
+  return { handleGetChapters: () => dispatch(getChapters()) };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

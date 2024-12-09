@@ -188,5 +188,11 @@
       "id": "app.containers.Chapters.headerText",
       "defaultMessage": "Chapters"
     }
+  },
+  "Shloks": {
+    "headerText": {
+      "id": "app.containers.Shloks.headerText",
+      "defaultMessage": "Shloks"
+    }
   }
 }

@@ -21,13 +21,20 @@ import CustomText from '../../components/CustomText';
 import CustomButton from '../../components/CustomButton';
 import { OS, setFontFamily } from '../../utils/device';
 import { startCountdown, stopCountdown } from '../../utils/countdown';
-import { makeSelectAppLanguage } from '../App/selectors';
+import { makeSelectAppLanguage, makeSelectOtpDetails } from '../App/selectors';
 import isEqual from 'lodash/isEqual';
 import styles from './styles';
 import strings from '../../../i18n';
 import { CONSTANTS, FONTS, IMAGES } from '../../constants';
+import { sendOtpAction, verifyOtpAction } from '../App/actions';
 
-function OtpScreen({ language, navigation }) {
+function OtpScreen({
+  language,
+  navigation,
+  otpDetails,
+  handleVerifyOtp,
+  handleSendOtp,
+}) {
   const { currentLanguage } = language;
   const otpScreenMessage = strings?.otpScreen || {}; // Ensure `strings` exists
 
@@ -77,6 +84,16 @@ function OtpScreen({ language, navigation }) {
     }
   };
 
+  useEffect(() => {
+    if (isEqual(oneTimeInput.length, 4)) {
+      const payload = {
+        mobile_number: otpDetails?.mobile_number,
+        code: 1234,
+      };
+      handleVerifyOtp(payload);
+    }
+  }, [oneTimeInput]);
+
   const otpHandler = useCallback(async (message) => {
     try {
       const otp = /(\d{4})/g.exec(message)?.[1];
@@ -93,15 +110,21 @@ function OtpScreen({ language, navigation }) {
 
   const handleResendOTP = useCallback(() => {
     if (expired) {
+      alert();
       setOneTimeInput('');
       setupSmsRetriever();
-      // Optionally: Call API to resend OTP
+      handleSendOtp({ mobile_number: otpDetails?.mobile_number });
     }
-  }, [expired]);
+  }, [expired, otpDetails]);
 
   const navigateToNext = useCallback(() => {
-    navigation.navigate('Login'); // Ensure 'Login' is defined in your navigator
-  }, [navigation]);
+    // Ensure 'Login' is defined in your navigator
+    const payload = {
+      mobile_number: otpDetails?.mobile_number,
+      code: 1234,
+    };
+    handleVerifyOtp(payload);
+  }, [navigation, otpDetails]);
 
   const backHandler = useCallback(() => navigation.goBack(), [navigation]);
 
@@ -214,7 +237,11 @@ function OtpScreen({ language, navigation }) {
           >
             {otpScreenMessage.dont?.defaultMessage || "Didn't receive an OTP?"}
           </CustomText>
-          <TouchableOpacity activeOpacity={0.8} onPress={handleResendOTP}>
+          <TouchableOpacity
+            style={styles.resendText}
+            activeOpacity={0.8}
+            onPress={handleResendOTP}
+          >
             <CustomText
               style={{
                 ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
@@ -233,15 +260,22 @@ function OtpScreen({ language, navigation }) {
 OtpScreen.propTypes = {
   navigation: PropTypes.object,
   language: PropTypes.object,
+  otpDetails: PropTypes.object,
+  handleVerifyOtp: PropTypes.func,
+  handleSendOtp: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
   otpScreen: makeSelectOtpScreen(),
   language: makeSelectAppLanguage(),
+  otpDetails: makeSelectOtpDetails(),
 });
 
 function mapDispatchToProps(dispatch) {
-  return { dispatch };
+  return {
+    handleVerifyOtp: (payload) => dispatch(verifyOtpAction(payload)),
+    handleSendOtp: (payload) => dispatch(sendOtpAction(payload)),
+  };
 }
 
 export default compose(connect(mapStateToProps, mapDispatchToProps))(OtpScreen);

@@ -13,7 +13,6 @@ import {
   FlatList,
 } from 'react-native';
 import split from 'lodash/split';
-import isEqual from 'lodash/isEqual';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import FastImage from 'react-native-fast-image';

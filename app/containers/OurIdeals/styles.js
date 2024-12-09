@@ -36,6 +36,17 @@ const styles = StyleSheet.create({
     borderRadius: hp(12),
     padding: hp(10),
   },
+  boarderCardContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: COLORS.white,
+    borderRadius: hp(12),
+    padding: hp(10),
+    borderWidth: hp(1),
+    borderColor: COLORS.black,
+  },
   cardImage: {
     height: hp(80),
     width: hp(80),
