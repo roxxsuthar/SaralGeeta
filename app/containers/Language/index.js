@@ -61,7 +61,11 @@ function Language({ navigation, language, _handleSetLanguage }) {
         </CustomText>
         <CustomText style={styles.hindiHeadingFont}>अपनी भाषा चुने</CustomText>
         <View style={styles.languageSelectContainer}>
-          <View style={styles.language}>
+          <TouchableOpacity
+            style={styles.language}
+            activeOpacity={0.8}
+            onPress={() => setLanguageType('hi')}
+          >
             <View>
               <CustomText style={styles.hindiButtonFont}>हिंदी</CustomText>
               <CustomText style={styles.hindiButtonFontSmall}>
@@ -79,8 +83,12 @@ function Language({ navigation, language, _handleSetLanguage }) {
                 <IMAGES.Circle height="100%" width="100%" />
               )}
             </TouchableOpacity>
-          </View>
-          <View style={{ ...styles.language, marginTop: hp(26) }}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{ ...styles.language, marginTop: hp(26) }}
+            activeOpacity={0.8}
+            onPress={() => setLanguageType('en')}
+          >
             <View>
               <CustomText style={styles.englishButtonFont}>English</CustomText>
               <CustomText style={styles.englishButtonFontSmall}>
@@ -98,7 +106,7 @@ function Language({ navigation, language, _handleSetLanguage }) {
                 <IMAGES.Circle height="100%" width="100%" />
               )}
             </TouchableOpacity>
-          </View>
+          </TouchableOpacity>
         </View>
         <CustomButton
           title={languageMessage.buttonLabel.defaultMessage}

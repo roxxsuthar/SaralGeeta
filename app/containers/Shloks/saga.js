@@ -3,12 +3,12 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import request from '../../utils/request';
 import Helpers from '../../utils/helpers';
 import { APIS } from '../../constants';
-import { GET_CHAPTERS } from './constants';
-import { getChaptersFail, getChaptersSuccess } from './actions';
+import { GET_SHLOKS } from './constants';
+import { getShloksFail, getShloksSuccess } from './actions';
 
-function* getChaptersHandler() {
-  let url = Helpers.getUrl(APIS.CHAPTERS);
-  url = `${url}?limit=all`;
+function* getShloksHandler({ payload }) {
+  let url = Helpers.getUrl(APIS.SHLOKS);
+  url = `${url}?limit=all&chapter_id=${payload?.chapterId}`;
   const options = {
     method: 'GET',
     url,
@@ -16,12 +16,12 @@ function* getChaptersHandler() {
 
   try {
     const res = yield call(request, options);
-    yield put(getChaptersSuccess(res.results));
+    yield put(getShloksSuccess(res.results));
   } catch (e) {
-    yield put(getChaptersFail(e));
+    yield put(getShloksFail(e));
   }
 }
 
 export default function* shloksSaga() {
-  yield takeLatest(GET_CHAPTERS, getChaptersHandler);
+  yield takeLatest(GET_SHLOKS, getShloksHandler);
 }

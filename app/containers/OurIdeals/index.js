@@ -9,7 +9,7 @@ import { View, StatusBar, FlatList, TouchableOpacity } from 'react-native';
 import isEqual from 'lodash/isEqual';
 
 import { createStructuredSelector } from 'reselect';
-import { makeSelectAppLanguage } from '../App/selectors';
+import { makeSelectAppLanguage, makeSelectUser } from '../App/selectors';
 import { compose } from 'redux';
 import makeSelectOurIdeals from './selectors';
 import styles from './styles';
@@ -22,7 +22,7 @@ import CustomButton from '../../components/CustomButton';
 import strings from '../../../i18n';
 import { Navigation } from '../../constants/constants';
 import { getIdealsData } from './actions';
-import { selectIdeal } from '../App/actions';
+import { selectIdeal, updateUserDetails } from '../App/actions';
 import LoadingScreen from '../../components/LoadingScreen';
 
 function OurIdeals({
@@ -31,6 +31,8 @@ function OurIdeals({
   getOurIdealsHandler,
   selectIdealHandler,
   ourIdeals,
+  handleUpdateUser,
+  user,
 }) {
   const { OurIdeals: OurIdealsMessage } = strings;
   const { currentLanguage } = language;
@@ -90,8 +92,13 @@ function OurIdeals({
 
   const navigateToHome = useCallback(() => {
     selectIdealHandler(selectCard);
+    const payload = {
+      data: { ideal: selectCard?.uuid },
+      userId: user?.uuid,
+    };
+    handleUpdateUser(payload);
     navigation.navigate(Navigation.Home);
-  }, [selectCard]);
+  }, [selectCard, user]);
 
   return (
     <LinearGradient
@@ -147,19 +154,23 @@ OurIdeals.propTypes = {
   language: PropTypes.object,
   navigation: PropTypes.object,
   ourIdeals: PropTypes.object,
+  user: PropTypes.object,
   getOurIdealsHandler: PropTypes.func,
   selectIdealHandler: PropTypes.func,
+  handleUpdateUser: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
   ourIdeals: makeSelectOurIdeals(),
   language: makeSelectAppLanguage(),
+  user: makeSelectUser(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     getOurIdealsHandler: () => dispatch(getIdealsData()),
     selectIdealHandler: (payload) => dispatch(selectIdeal(payload)),
+    handleUpdateUser: (payload) => dispatch(updateUserDetails(payload)),
   };
 }
 

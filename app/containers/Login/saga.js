@@ -5,6 +5,7 @@ import Helpers from '../../utils/helpers';
 import { APIS } from '../../constants';
 import { sendOtpSuccessAction, sendOtpFailAction } from '../App/actions';
 import { LOGIN_ACTION } from '../App/constants';
+import { Navigation } from '../../constants/constants';
 
 function* sendOtpApiHandler({ payload, callback }) {
   const url = Helpers.getUrl(APIS.REGISTRATION);
@@ -18,7 +19,7 @@ function* sendOtpApiHandler({ payload, callback }) {
     const res = yield call(request, options);
     console.log('res', res);
     yield put(sendOtpSuccessAction(res.results));
-    callback?.();
+    callback?.navigate(Navigation.OtpScreen);
   } catch (e) {
     yield put(sendOtpFailAction(e));
   }

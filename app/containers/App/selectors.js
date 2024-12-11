@@ -32,6 +32,10 @@ const makeSelectUser = () =>
 
 const makeSelectOtpDetails = () =>
   createSelector(selectAppDomain, (substate) => substate.sentOtpDetail);
+const makeSelectIdealDetails = () =>
+  createSelector(selectAppDomain, (substate) => substate.selectedIdeal);
+const makeSelectIntroVideo = () =>
+  createSelector(selectAppDomain, (substate) => substate.introVideo);
 
 export default makeSelectApp;
 export {
@@ -41,4 +45,6 @@ export {
   makeSelectToken,
   makeSelectUser,
   makeSelectOtpDetails,
+  makeSelectIdealDetails,
+  makeSelectIntroVideo,
 };

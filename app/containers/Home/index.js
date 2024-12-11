@@ -6,7 +6,7 @@ Home
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StatusBar, SectionList } from 'react-native';
+import { View, StatusBar, SectionList, TouchableOpacity } from 'react-native';
 import split from 'lodash/split';
 // import isEqual from 'lodash/isEqual';
 import { createStructuredSelector } from 'reselect';
@@ -18,10 +18,11 @@ import LinearGradient from 'react-native-linear-gradient';
 import CustomText from '../../components/CustomText';
 import LoadingScreen from '../../components/LoadingScreen';
 import { setFontFamily } from '../../utils/device';
-import { FONTS } from '../../constants';
+import { FONTS, IMAGES } from '../../constants';
 import strings from '../../../i18n';
 import { makeSelectAppLanguage } from '../App/selectors';
 import { getChapters } from './actions';
+import { Navigation } from '../../constants/constants';
 
 function Home({ language, navigation, handleGetChapters, home }) {
   const { Home: HomeMessage } = strings;
@@ -43,12 +44,16 @@ function Home({ language, navigation, handleGetChapters, home }) {
     },
     {
       title: 'Chapters',
-      data: home?.data,
+      data: home?.data || [],
     },
   ];
 
   useEffect(() => {
     handleGetChapters();
+  }, []);
+
+  const navigateToShloks = useCallback((id) => {
+    navigation.navigate(Navigation.Shloks, { chapterId: id });
   }, []);
 
   const timeStringToSeconds = (timeString) => {
@@ -83,6 +88,7 @@ function Home({ language, navigation, handleGetChapters, home }) {
   };
 
   const renderItemBasedOnSection = (title, item) => {
+    // if (!item) return null;
     switch (title) {
       case 'Recent View':
         return (
@@ -115,11 +121,15 @@ function Home({ language, navigation, handleGetChapters, home }) {
         );
       case 'Chapters':
         return (
-          <View style={styles.AudioContainer}>
+          <TouchableOpacity
+            style={styles.AudioContainer}
+            onPress={() => navigateToShloks(item?.uuid)}
+            activeOpacity={0.8}
+          >
             <FastImage
               style={styles.audioCardImage}
               source={{ uri: item.image }}
-              resizeMode={FastImage.resizeMode.contain}
+              resizeMode={FastImage.resizeMode.cover}
             />
             <View style={styles.audioTextContainer}>
               <CustomText
@@ -135,16 +145,18 @@ function Home({ language, navigation, handleGetChapters, home }) {
                   ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
                   ...styles.audioCardDescription,
                 }}
+                numberOfLines={3}
               >
                 {item.description}
               </CustomText>
               <View style={styles.imageContainer}>
-                {/* <TouchableOpacity
+                <TouchableOpacity
                   activeOpacity={0.8}
                   style={styles.iconContainer}
+                  onPress={() => navigateToShloks(item?.uuid)}
                 >
                   <IMAGES.PlayerIcon height="100%" width="100%" />
-                </TouchableOpacity> */}
+                </TouchableOpacity>
                 {/* <TouchableOpacity
                   activeOpacity={0.8}
                   style={styles.iconContainer}
@@ -159,7 +171,7 @@ function Home({ language, navigation, handleGetChapters, home }) {
                 </TouchableOpacity> */}
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         );
       default:
         return null;
@@ -167,10 +179,6 @@ function Home({ language, navigation, handleGetChapters, home }) {
   };
 
   const ItemSeparator = () => <View style={styles.separator} />;
-
-  const navigateToAudio = useCallback(() => {
-    alert();
-  }, []);
 
   return (
     <LinearGradient
@@ -219,7 +227,6 @@ function Home({ language, navigation, handleGetChapters, home }) {
             renderItem={({ item, section }) =>
               renderItemBasedOnSection(section.title, item)
             }
-            showsVerticalScrollIndicator={false}
             SectionSeparatorComponent={ItemSeparator}
             ItemSeparatorComponent={ItemSeparator}
           />

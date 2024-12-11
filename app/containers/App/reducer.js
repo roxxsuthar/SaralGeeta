@@ -6,12 +6,16 @@
 import { produce } from 'immer';
 import {
   DEFAULT_ACTION,
+  INTRO_VIDEO_PLAY,
   LOGIN_ACTION,
   LOGIN_ACTION_FAIL,
   LOGIN_ACTION_SUCCESS,
   SELECT_IDEALS,
   SET_LANGUAGE,
   SET_ONBOARDING_VISITED,
+  UPDATE_USER_DETAILS,
+  UPDATE_USER_DETAILS_FAIL,
+  UPDATE_USER_DETAILS_SUCCESS,
   VERIFY_OTP,
   VERIFY_OTP_FAIL,
   VERIFY_OTP_SUCCESS,
@@ -30,6 +34,7 @@ export const initialState = {
   user: null,
   sentOtpDetail: null,
   selectedIdeal: null,
+  introVideo: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -67,9 +72,21 @@ const appReducer = (state = initialState, action) =>
       case VERIFY_OTP_FAIL:
         draft.loading = false;
         break;
-
+      case UPDATE_USER_DETAILS:
+        draft.loading = true;
+        break;
+      case UPDATE_USER_DETAILS_SUCCESS:
+        draft.user = action.payload;
+        draft.loading = false;
+        break;
+      case UPDATE_USER_DETAILS_FAIL:
+        draft.loading = false;
+        break;
       case SELECT_IDEALS:
         draft.selectedIdeal = action.payload;
+        break;
+      case INTRO_VIDEO_PLAY:
+        draft.introVideo = true;
         break;
     }
   });

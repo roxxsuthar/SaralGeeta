@@ -16,8 +16,9 @@ import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader 
 import com.facebook.react.ReactInstanceManager
-import com.saralgeeta.ReactNativeFlipper
+//import com.saralgeeta.ReactNativeFlipper
 import java.lang.reflect.InvocationTargetException
+import org.devio.rn.splashscreen.SplashScreen
 
 class MainApplication : Application(), ReactApplication {
 
@@ -49,10 +50,10 @@ class MainApplication : Application(), ReactApplication {
         }
         
         // Initialize Flipper
-        ReactNativeFlipper.initializeFlipper(
+    /* ReactNativeFlipper.initializeFlipper(
             this,
             reactNativeHost.reactInstanceManager
-        )
+        )*/
 
         // Handle lifecycle dispatch
         ApplicationLifecycleDispatcher.onApplicationCreate(this)

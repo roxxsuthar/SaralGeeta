@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: wp(16),
     marginTop: hp(100),
+    justifyContent: 'space-between',
   },
   englishHeadingFont: {
     fontWeight: '600',
@@ -89,12 +90,9 @@ const styles = StyleSheet.create({
     color: COLORS.codGray,
   },
   footerText: {
-    position: 'absolute',
-    bottom: hp(40),
-    left: 0,
-    right: 0,
     flexDirection: 'row',
     justifyContent: 'center',
+    marginBottom: hp(40),
   },
   phoneNumberContainer: {
     marginTop: hp(25),

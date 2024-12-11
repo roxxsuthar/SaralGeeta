@@ -18,6 +18,7 @@ import {
   UPDATE_USER_DETAILS_SUCCESS,
   UPDATE_USER_DETAILS_FAIL,
   SELECT_IDEALS,
+  INTRO_VIDEO_PLAY,
 } from './constants';
 
 export function defaultAction() {
@@ -104,5 +105,11 @@ export function selectIdeal(payload) {
   return {
     type: SELECT_IDEALS,
     payload,
+  };
+}
+
+export function introVideoWatched() {
+  return {
+    type: INTRO_VIDEO_PLAY,
   };
 }

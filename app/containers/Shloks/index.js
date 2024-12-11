@@ -2,105 +2,61 @@
 Shloks
 * */
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { View, StatusBar, FlatList, TouchableOpacity } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import moment from 'moment';
+import get from 'lodash/get';
 
 import makeSelectShloks from './selectors';
 import styles from './styles';
 import CustomText from '../../components/CustomText';
+import LoadingScreen from '../../components/LoadingScreen';
 import { setFontFamily } from '../../utils/device';
 import { makeSelectAppLanguage } from '../App/selectors';
 import strings from '../../../i18n';
 import { FONTS, IMAGES } from '../../constants';
+import { getShloks } from './actions';
+import { Navigation } from '../../constants/constants';
 
-function Shloks({ language }) {
+function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
   const { Shloks: ShloksMessage } = strings;
   const { currentLanguage } = language;
 
-  const data = [
-    {
-      id: 1,
-      title: 'Adhyay 1',
-      image: IMAGES.Krishna,
-      time: moment().format('HH:mm:ss'),
-      language: 'Hindi / Sanskrit',
-    },
-    {
-      id: 2,
-      title: 'Adhyay 1',
-      image: IMAGES.Krishna,
-      time: moment().format('HH:mm:ss'),
-      language: 'Hindi / Sanskrit',
-    },
-    {
-      id: 3,
-      title: 'Adhyay 1',
-      image: IMAGES.Krishna,
-      time: moment().format('HH:mm:ss'),
-      language: 'Hindi / Sanskrit',
-    },
-    {
-      id: 4,
-      title: 'Adhyay 1',
-      image: IMAGES.Krishna,
-      time: moment().format('HH:mm:ss'),
-      language: 'Hindi / Sanskrit',
-    },
-    {
-      id: 5,
-      title: 'Adhyay 1',
-      image: IMAGES.Krishna,
-      time: moment().format('HH:mm:ss'),
-      language: 'Hindi / Sanskrit',
-    },
-    {
-      id: 6,
-      title: 'Adhyay 1',
-      image: IMAGES.Krishna,
-      time: moment().format('HH:mm:ss'),
-      language: 'Hindi / Sanskrit',
-    },
-    {
-      id: 7,
-      title: 'Adhyay 1',
-      image: IMAGES.Krishna,
-      time: moment().format('HH:mm:ss'),
-      language: 'Hindi / Sanskrit',
-    },
-    {
-      id: 8,
-      title: 'Adhyay 1',
-      image: IMAGES.Krishna,
-      time: moment().format('HH:mm:ss'),
-      language: 'Hindi / Sanskrit',
-    },
-  ];
+  useEffect(() => {
+    handleGetShloks({ chapterId: get(route, 'params.chapterId') });
+  }, [route]);
+
+  const navigateToLearnGeeta = useCallback((item) => {
+    navigation.navigate(Navigation.LearnGeeta, item);
+  }, []);
 
   const renderItem = useCallback(
     (item) => {
       return (
-        <TouchableOpacity activeOpacity={0.8} style={styles.cardContainer}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={styles.cardContainer}
+          onPress={() => navigateToLearnGeeta(item)}
+        >
           <FastImage
             style={styles.cardImage}
-            source={item?.image}
+            source={IMAGES.Krishna}
             resizeMode={FastImage.resizeMode.contain}
           />
           <View style={styles.textContainer}>
             <CustomText
               style={Object.assign(
-                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                setFontFamily(currentLanguage, FONTS.HINDI, FONTS.HINDI),
                 styles.cardTitle,
               )}
             >
-              {item?.title}
+              {get(item, 'shlokas_text')}
             </CustomText>
-            <CustomText
+            {/* <CustomText
               style={Object.assign(
                 setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
                 styles.languageText,
@@ -115,7 +71,7 @@ function Shloks({ language }) {
               )}
             >
               Time: {item?.time}
-            </CustomText>
+            </CustomText> */}
           </View>
         </TouchableOpacity>
       );
@@ -154,41 +110,46 @@ function Shloks({ language }) {
             {ShloksMessage.headerText.defaultMessage}
           </CustomText>
         </View>
-        <View style={styles.headerComponent}>
-          <FastImage
-            style={styles.chapterImage}
-            source={IMAGES.Trainer}
-            resizeMode={FastImage.resizeMode.contain}
-          />
-          <CustomText
-            style={{
-              ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-              ...styles.headerComponentText,
-            }}
-          >
-            Chapter 1
-          </CustomText>
-        </View>
-        <CustomText
-          style={{
-            ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            ...styles.headerComponentDescription,
-          }}
-        >
-          Be it to welcome the rising sun or to face the challenges of life,
-          kids benefit a lot from the regular recitation of shlokas and
-          mantras....
-        </CustomText>
-        <View style={styles.flatListContainer}>
-          <View style={styles.handle} />
-          <FlatList
-            data={data}
-            renderItem={({ item }) => renderItem(item)}
-            keyExtractor={(item) => item.id}
-            contentContainerStyle={styles.contentContainerStyle}
-            ItemSeparatorComponent={itemSeparatorComponent}
-          />
-        </View>
+        {shloksData?.loading ? (
+          <LoadingScreen />
+        ) : (
+          <>
+            <View style={styles.headerComponent}>
+              <FastImage
+                style={styles.chapterImage}
+                source={IMAGES.Trainer}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+              <CustomText
+                style={{
+                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                  ...styles.headerComponentText,
+                }}
+              >
+                {get(shloksData, 'data[0].chapter_details.name')}
+              </CustomText>
+            </View>
+            <CustomText
+              style={{
+                ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                ...styles.headerComponentDescription,
+              }}
+              numberOfLines={4}
+            >
+              {get(shloksData, 'data[0].chapter_details.description')}
+            </CustomText>
+            <View style={styles.flatListContainer}>
+              <View style={styles.handle} />
+              <FlatList
+                data={shloksData?.data}
+                renderItem={({ item }) => renderItem(item)}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={styles.contentContainerStyle}
+                ItemSeparatorComponent={itemSeparatorComponent}
+              />
+            </View>
+          </>
+        )}
       </View>
     </LinearGradient>
   );
@@ -197,12 +158,12 @@ function Shloks({ language }) {
 Shloks.propTypes = { ...Shloks };
 
 const mapStateToProps = createStructuredSelector({
-  shloks: makeSelectShloks(),
+  shloksData: makeSelectShloks(),
   language: makeSelectAppLanguage(),
 });
 
 function mapDispatchToProps(dispatch) {
-  return { dispatch };
+  return { handleGetShloks: (payload) => dispatch(getShloks(payload)) };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

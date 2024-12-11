@@ -1,5 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { View, StatusBar, Dimensions, AppState } from 'react-native';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 import Video from 'react-native-video';
@@ -8,123 +10,26 @@ import RNFS from 'react-native-fs';
 import Sound from 'react-native-sound';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStructuredSelector } from 'reselect';
+import get from 'lodash/get';
+import isEqual from 'lodash/isEqual';
 import { compose } from 'redux';
 import makeSelectLearnGeeta from './selectors';
-import { VIDEOS } from '../../constants';
+import { IMAGES, VIDEOS } from '../../constants';
 import styles from './styles';
+import { getShloksDetail } from './actions';
+import { makeSelectIntroVideo } from '../App/selectors';
+import { introVideoWatched } from '../App/actions';
+import CustomText from '../../components/CustomText';
 
 Sound.setCategory('Playback'); // Allow audio to play in the background
 
-// function LearnGeeta() {
-//   const videoRef = useRef(null);
-//   const [audio, setAudio] = useState(null);
-//   const [isAudioReady, setIsAudioReady] = useState(false);
-//   const { width, height } = Dimensions.get('window');
-//   const aspectRatio = width / height;
-
-//   useEffect(() => {
-//     // Lock orientation to landscape
-//     Orientation.lockToLandscape();
-
-//     // Configure audio settings for mixing
-//     Sound.setCategory('Playback', true);
-
-//     // Load and play audio
-//     loadAudio();
-
-//     return () => {
-//       Orientation.unlockAllOrientations();
-//       if (audio) {
-//         audio.stop();
-//         audio.release();
-//       }
-//     };
-//   }, []);
-
-//   const loadAudio = async () => {
-//     const localPath = `${RNFS.DocumentDirectoryPath}/sound.mp3`;
-
-//     try {
-//       const fileExists = await RNFS.exists(localPath);
-//       if (!fileExists) {
-//         await RNFS.downloadFile({
-//           fromUrl:
-//             'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-//           toFile: localPath,
-//         }).promise;
-//       }
-
-//       const sound = new Sound(localPath, '', (error) => {
-//         if (error) {
-//           console.error('Error loading audio:', error);
-//           return;
-//         }
-
-//         // Configure audio settings
-//         sound.setVolume(1.0);
-//         sound.setNumberOfLoops(-1); // Loop indefinitely
-//         setAudio(sound);
-//         setIsAudioReady(true);
-//       });
-//     } catch (err) {
-//       console.error('Error downloading or loading audio:', err);
-//     }
-//   };
-
-//   const playAudio = () => {
-//     if (audio) {
-//       audio.play((success) => {
-//         if (!success) {
-//           console.error('Audio playback failed.');
-//         }
-//       });
-//     }
-//   };
-
-//   // Start playing audio as soon as it's ready
-//   useEffect(() => {
-//     if (isAudioReady) {
-//       playAudio();
-//     }
-//   }, [isAudioReady]);
-
-//   return (
-//     <SafeAreaView style={styles.container} edges={['left', 'right']}>
-//       <StatusBar
-//         barStyle="light-content"
-//         translucent
-//         backgroundColor="transparent"
-//       />
-//       <LinearGradient
-//         colors={['#ff8c00', '#ff0080']}
-//         style={styles.gradientBorder}
-//       >
-//         <View style={[styles.videoWrapper, { aspectRatio }]}>
-//           <Video
-//             source={VIDEOS.SecondVideo}
-//             ref={videoRef}
-//             style={styles.backgroundVideo}
-//             resizeMode="contain"
-//             paused={false} // Auto-play video
-//             repeat={true} // Loop video
-//             volume={1.0}
-//             audioFocus={false} // Don't take audio focus
-//             ignoreSilentSwitch="ignore"
-//             mixWithOthers={true} // Allow mixing with other audio
-//             onError={(e) => console.log('Video error:', e)}
-//             setFullScreen
-//             onLoad={() => {
-//               // Ensure video starts playing immediately when loaded
-//               videoRef.current?.seek(0);
-//             }}
-//           />
-//         </View>
-//       </LinearGradient>
-//     </SafeAreaView>
-//   );
-// }
-
-function LearnGeeta() {
+function LearnGeeta({
+  handleGetShloksDetail,
+  route,
+  introVideo,
+  handleIntroVideo,
+  learnGeeta,
+}) {
   const videoRef = useRef(null);
   const [audio, setAudio] = useState(null);
   const [isAudioReady, setIsAudioReady] = useState(false);
@@ -137,20 +42,12 @@ function LearnGeeta() {
       if (nextAppState === 'background') {
         // Stop audio when app goes to background
         if (audio) {
-          audio.pause();
-        }
-        // Pause video
-        if (videoRef.current) {
-          videoRef.current.setNativeProps({ paused: true });
+          audio.stop();
         }
       } else if (nextAppState === 'active') {
         // Resume audio when app comes to foreground
-        if (audio && isAudioReady) {
+        if (audio && isAudioReady && introVideo) {
           audio.play();
-        }
-        // Resume video
-        if (videoRef.current) {
-          videoRef.current.setNativeProps({ paused: false });
         }
       }
     };
@@ -179,17 +76,17 @@ function LearnGeeta() {
       // Remove AppState listener
       appStateSubscription.remove();
     };
-  }, []);
+  }, [AppState.currentState]);
 
   const loadAudio = async () => {
-    const localPath = `${RNFS.DocumentDirectoryPath}/sound.mp3`;
+    const fileName = get(learnGeeta, 'data.shlokas_voice').split('/').pop();
+    const localPath = `${RNFS.DocumentDirectoryPath}/${fileName}`;
 
     try {
       const fileExists = await RNFS.exists(localPath);
       if (!fileExists) {
         await RNFS.downloadFile({
-          fromUrl:
-            'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+          fromUrl: get(learnGeeta, 'data.shlokas_voice'),
           toFile: localPath,
         }).promise;
       }
@@ -202,7 +99,6 @@ function LearnGeeta() {
 
         // Configure audio settings
         sound.setVolume(1.0);
-        sound.setNumberOfLoops(-1); // Loop indefinitely
         setAudio(sound);
         setIsAudioReady(true);
       });
@@ -221,12 +117,20 @@ function LearnGeeta() {
     }
   };
 
-  // Start playing audio as soon as it's ready
+  // Start playing audio as soon as it's ready and introVideo is true
   useEffect(() => {
-    if (isAudioReady && AppState.currentState === 'active') {
+    if (isAudioReady && introVideo && AppState.currentState === 'active') {
       playAudio();
     }
-  }, [isAudioReady]);
+  }, [isAudioReady, introVideo, AppState.currentState]);
+
+  useEffect(() => {
+    handleGetShloksDetail({ shlok_id: get(route, 'params.uuid') });
+  }, [route]);
+
+  const handleIntroPlay = useCallback(() => {
+    handleIntroVideo();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container} edges={['left', 'right']}>
@@ -236,17 +140,20 @@ function LearnGeeta() {
         backgroundColor="transparent"
       />
       <LinearGradient
-        colors={['#ff8c00', '#ff0080']}
+        colors={['#000000', '#000000']}
         style={styles.gradientBorder}
       >
         <View style={[styles.videoWrapper, { aspectRatio }]}>
           <Video
-            source={VIDEOS.SecondVideo}
+            source={
+              isEqual(introVideo, false)
+                ? VIDEOS.IntroVideo
+                : VIDEOS.SecondVideo
+            }
             ref={videoRef}
             style={styles.backgroundVideo}
             resizeMode="contain"
-            paused={false}
-            repeat={true}
+            paused={!isAudioReady} // Pause video if audio is not ready
             volume={1.0}
             audioFocus={false}
             ignoreSilentSwitch="ignore"
@@ -257,19 +164,45 @@ function LearnGeeta() {
             onLoad={() => {
               videoRef.current?.seek(0);
             }}
+            onEnd={() => {
+              isEqual(introVideo, false) && handleIntroPlay();
+            }}
           />
         </View>
+        {introVideo && (
+          <>
+            <View style={styles.shlokBackground}>
+              <IMAGES.ShlokBackground height="100%" width="100%" />
+            </View>
+            <CustomText style={styles.shlokText}>
+              {get(learnGeeta, 'data.shlokas_text')}
+            </CustomText>
+          </>
+        )}
       </LinearGradient>
     </SafeAreaView>
   );
 }
 
+LearnGeeta.propTypes = {
+  navigation: PropTypes.object,
+  handleGetShloksDetail: PropTypes.func,
+  handleIntroVideo: PropTypes.func,
+  route: PropTypes.object,
+  introVideo: PropTypes.bool,
+  learnGeeta: PropTypes.object,
+};
+
 const mapStateToProps = createStructuredSelector({
   learnGeeta: makeSelectLearnGeeta(),
+  introVideo: makeSelectIntroVideo(),
 });
 
 function mapDispatchToProps(dispatch) {
-  return { dispatch };
+  return {
+    handleGetShloksDetail: (payload) => dispatch(getShloksDetail(payload)),
+    handleIntroVideo: () => dispatch(introVideoWatched()),
+  };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

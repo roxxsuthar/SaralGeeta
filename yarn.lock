@@ -5101,6 +5101,7 @@ __metadata:
     r3f-native-orbitcontrols: ^1.0.12
     react: 18.2.0
     react-native: ^0.74.3
+    react-native-audio-recorder-player: ^3.6.12
     react-native-config: ^1.5.3
     react-native-device-info: ^14.0.0
     react-native-fast-image: ^8.6.3
@@ -5118,6 +5119,7 @@ __metadata:
     react-native-sms-retriever: ^1.1.1
     react-native-snackbar: ^2.8.0
     react-native-sound: ^0.11.2
+    react-native-splash-screen: ^3.3.0
     react-native-svg: ^15.4.0
     react-native-svg-transformer: ^1.5.0
     react-native-vector-icons: ^10.2.0
@@ -9317,6 +9319,15 @@ __metadata:
   bin:
     husky: bin.js
   checksum: 604e1d7d76cde9350f3fbbd04830706c9c93ae1e110a71f9f6c157f8c7ea624c3dfe36fc77c343e98b22cc0a6a3cbd00d8f750b819a3015190c2307e59b05dad
+  languageName: node
+  linkType: hard
+
+"hyochan-welcome@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "hyochan-welcome@npm:1.0.1"
+  bin:
+    hyochan-welcome: bin/hello.js
+  checksum: 2ea7093b54eefcde4c65e4a8ffd3f3926a55ff0bce20a3f5142fe1108e76c0dfcb98517b47714c536f9de8302b92ae02bf240891d3114d527ccd497e2ea9478e
   languageName: node
   linkType: hard
 
@@ -13779,6 +13790,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-audio-recorder-player@npm:^3.6.12":
+  version: 3.6.12
+  resolution: "react-native-audio-recorder-player@npm:3.6.12"
+  dependencies:
+    hyochan-welcome: ^1.0.0
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: a0c74694fe54eacd8f705b38d77d8ee35ddb9e964243ac0a727483d001e7ad24178b5ed3edcb0b4ddccf87d65af3233a823d5dd73fc98099ddbe0602134586e7
+  languageName: node
+  linkType: hard
+
 "react-native-config@npm:^1.5.3":
   version: 1.5.3
   resolution: "react-native-config@npm:1.5.3"
@@ -13998,6 +14021,15 @@ __metadata:
   peerDependencies:
     react-native: ">=0.8.0"
   checksum: d019de415c5f7bc8af51bc50adff7b9c307cb990aad3ea193933f89df743bbcdbfaa33c4a12bb1143a223137cea39f8b69baf5e1c29f77cf80476616bccc6f91
+  languageName: node
+  linkType: hard
+
+"react-native-splash-screen@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "react-native-splash-screen@npm:3.3.0"
+  peerDependencies:
+    react-native: ">=0.57.0"
+  checksum: 14c565d5d4214f55586dcf6f7abd12d99d3e0667f67de3bda7aa24988971567b283a4187fbc0c6269c83b3c21d59d1950335c61bb0780ec2d065e20b3b9199d0
   languageName: node
   linkType: hard
 

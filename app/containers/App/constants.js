@@ -24,3 +24,4 @@ export const UPDATE_USER_DETAILS_FAIL =
   'app/containers/App/UPDATE_USER_DETAILS_FAIL';
 
 export const SELECT_IDEALS = 'app/containers/App/SELECT_IDEALS';
+export const INTRO_VIDEO_PLAY = 'app/containers/App/INTRO_VIDEO_PLAY';

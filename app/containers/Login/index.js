@@ -26,7 +26,6 @@ import CustomButton from '../../components/CustomButton';
 import { OS, setFontFamily } from '../../utils/device';
 import { COLORS, CONSTANTS, FONTS, IMAGES } from '../../constants';
 import { hp } from '../../utils/responsive';
-import { Navigation } from '../../constants/constants';
 import { sendOtpAction } from '../App/actions';
 
 function Login({ language, navigation, handleSendOtp }) {
@@ -84,7 +83,7 @@ function Login({ language, navigation, handleSendOtp }) {
     const payload = {
       mobile_number: mobileNumber,
     };
-    handleSendOtp(payload, navigation.navigate(Navigation.OtpScreen));
+    handleSendOtp(payload, navigation);
   }, [mobileNumber]);
 
   return (
@@ -103,167 +102,173 @@ function Login({ language, navigation, handleSendOtp }) {
         resizeMode={FastImage.resizeMode.contain}
       />
       <View style={styles.mainContainer}>
-        <View style={styles.logo}>
-          <IMAGES.Logo height="100%" width="100%" />
-        </View>
-        <CustomText
-          style={Object.assign(
-            setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            styles.englishHeadingFont,
-          )}
-        >
-          {loginMessage.heading.defaultMessage}
-        </CustomText>
-        <CustomText
-          style={Object.assign(
-            setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            styles.subHeading,
-          )}
-        >
-          {loginMessage.subHeading.defaultMessage}
-        </CustomText>
-        <View style={styles.phoneNumberContainer}>
+        <View>
+          <View style={styles.logo}>
+            <IMAGES.Logo height="100%" width="100%" />
+          </View>
           <CustomText
             style={Object.assign(
               setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-              styles.phoneNumberLabel,
+              styles.englishHeadingFont,
             )}
           >
-            {loginMessage.number.defaultMessage}
+            {loginMessage.heading.defaultMessage}
           </CustomText>
-          <PhoneInput
-            bottomSheetHeading={Object.assign(
-              setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.REGULAR),
-              styles.bottomSheetHeading,
-            )}
-            layout="second"
-            headingText={loginMessage.bottomSheetHeading.defaultMessage}
-            closeButtonImage={IMAGES.ChevronLeft}
-            closeButtonStyle={styles.closeButtonStyle}
-            countryTextStyle={styles.countryTextStyle}
-            filterProps={{
-              style: styles.filterStyle,
-              placeholder: loginMessage.countryPlaceholder.defaultMessage,
-            }}
-            ref={phoneInput}
-            value={mobileNumber}
-            code={country.code}
-            defaultCode={country.alpha2Code}
-            onChangeText={onChangeTextHandler}
-            onChangeCountry={(newCountry) => onChangeCountryHandler(newCountry)}
-            textInputProps={{
-              placeholder: loginMessage.placeholder.defaultMessage,
-              placeholderTextColor: COLORS.codGray,
-              padding: 0,
-              ref: phoneTextInput,
-              onFocus: isEqual(OS, 'android') ? null : null,
-              value: mobileNumber,
-            }}
-            textInputStyle={Object.assign(
+          <CustomText
+            style={Object.assign(
               setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-              {
-                paddingBottom: isEqual(currentLanguage, CONSTANTS.HICode)
-                  ? hp(0.62)
-                  : 0,
-              },
-              styles.numberText,
+              styles.subHeading,
             )}
-            textContainerStyle={styles.number}
-            containerStyle={inputStyle}
-            countryPickerButtonStyle={styles.countryCode}
-            codeTextStyle={Object.assign(
+          >
+            {loginMessage.subHeading.defaultMessage}
+          </CustomText>
+          <View style={styles.phoneNumberContainer}>
+            <CustomText
+              style={Object.assign(
+                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                styles.phoneNumberLabel,
+              )}
+            >
+              {loginMessage.number.defaultMessage}
+            </CustomText>
+            <PhoneInput
+              bottomSheetHeading={Object.assign(
+                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.REGULAR),
+                styles.bottomSheetHeading,
+              )}
+              layout="second"
+              headingText={loginMessage.bottomSheetHeading.defaultMessage}
+              closeButtonImage={IMAGES.ChevronLeft}
+              closeButtonStyle={styles.closeButtonStyle}
+              countryTextStyle={styles.countryTextStyle}
+              filterProps={{
+                style: styles.filterStyle,
+                placeholder: loginMessage.countryPlaceholder.defaultMessage,
+              }}
+              ref={phoneInput}
+              value={mobileNumber}
+              code={country.code}
+              defaultCode={country.alpha2Code}
+              onChangeText={onChangeTextHandler}
+              onChangeCountry={(newCountry) =>
+                onChangeCountryHandler(newCountry)
+              }
+              textInputProps={{
+                placeholder: loginMessage.placeholder.defaultMessage,
+                placeholderTextColor: COLORS.codGray,
+                padding: 0,
+                ref: phoneTextInput,
+                onFocus: isEqual(OS, 'android') ? null : null,
+                value: mobileNumber,
+              }}
+              textInputStyle={Object.assign(
+                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                {
+                  paddingBottom: isEqual(currentLanguage, CONSTANTS.HICode)
+                    ? hp(0.62)
+                    : 0,
+                },
+                styles.numberText,
+              )}
+              textContainerStyle={styles.number}
+              containerStyle={inputStyle}
+              countryPickerButtonStyle={styles.countryCode}
+              codeTextStyle={Object.assign(
+                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                styles.codeTextStyle,
+              )}
+              showCross={mobileNumber > 0}
+              CloseCross={RenderCross}
+              closeCrossContainerStyle={styles.closeCrossContainer}
+              closeCrossStyle={styles.closeCross}
+              clear={erase}
+              focusedBox={setFocusedBoxOnBox}
+              keyboardType="phone-pad"
+              flagButtonStyle={styles.flagButton}
+            />
+            {!valid ? (
+              <CustomText
+                style={Object.assign(
+                  setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                  styles.errorText,
+                )}
+              >
+                {loginMessage.warningHalf.defaultMessage}
+                {loginMessage.warningOtherHalf.defaultMessage}
+              </CustomText>
+            ) : null}
+          </View>
+          <CustomButton
+            title={loginMessage.login.defaultMessage}
+            labelStyle={Object.assign(
               setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-              styles.codeTextStyle,
+              styles.buttonLabel,
             )}
-            showCross={mobileNumber > 0}
-            CloseCross={RenderCross}
-            closeCrossContainerStyle={styles.closeCrossContainer}
-            closeCrossStyle={styles.closeCross}
-            clear={erase}
-            focusedBox={setFocusedBoxOnBox}
-            keyboardType="phone-pad"
-            flagButtonStyle={styles.flagButton}
+            style={styles.buttonContainer}
+            onPress={() => navigateToNext()}
           />
-          {!valid ? (
+          <View style={styles.mainLineContainer}>
+            <View style={styles.line} />
             <CustomText
               style={Object.assign(
                 setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                styles.errorText,
+                styles.continueText,
               )}
             >
-              {loginMessage.warningHalf.defaultMessage}
-              {loginMessage.warningOtherHalf.defaultMessage}
+              {loginMessage.continue.defaultMessage}
             </CustomText>
-          ) : null}
+            <View style={styles.line} />
+          </View>
+          <View style={styles.socialIconContainer}>
+            <TouchableOpacity activeOpacity={0.8} style={styles.socialIcon}>
+              <View style={styles.socialIconBox}>
+                <IMAGES.Facebook height="100%" width="100%" />
+              </View>
+              <CustomText
+                style={Object.assign(
+                  setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                  styles.facebookText,
+                )}
+              >
+                {loginMessage.facebook.defaultMessage}
+              </CustomText>
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.8} style={styles.socialIcon}>
+              <View style={styles.socialIconBox}>
+                <IMAGES.Google height="100%" width="100%" />
+              </View>
+              <CustomText
+                style={Object.assign(
+                  setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                  styles.facebookText,
+                )}
+              >
+                {loginMessage.google.defaultMessage}
+              </CustomText>
+            </TouchableOpacity>
+          </View>
         </View>
-        <CustomButton
-          title={loginMessage.login.defaultMessage}
-          labelStyle={Object.assign(
-            setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            styles.buttonLabel,
-          )}
-          style={styles.buttonContainer}
-          onPress={() => navigateToNext()}
-        />
-        <View style={styles.mainLineContainer}>
-          <View style={styles.line} />
-          <CustomText
-            style={Object.assign(
-              setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-              styles.continueText,
-            )}
-          >
-            {loginMessage.continue.defaultMessage}
-          </CustomText>
-          <View style={styles.line} />
-        </View>
-        <View style={styles.socialIconContainer}>
-          <TouchableOpacity activeOpacity={0.8} style={styles.socialIcon}>
-            <View style={styles.socialIconBox}>
-              <IMAGES.Facebook height="100%" width="100%" />
-            </View>
+        <View>
+          <View style={styles.footerText}>
             <CustomText
               style={Object.assign(
                 setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                styles.facebookText,
+                styles.dont,
               )}
             >
-              {loginMessage.facebook.defaultMessage}
+              {loginMessage.dont.defaultMessage}
             </CustomText>
-          </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.8} style={styles.socialIcon}>
-            <View style={styles.socialIconBox}>
-              <IMAGES.Google height="100%" width="100%" />
-            </View>
-            <CustomText
-              style={Object.assign(
-                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                styles.facebookText,
-              )}
-            >
-              {loginMessage.google.defaultMessage}
-            </CustomText>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.footerText}>
-          <CustomText
-            style={Object.assign(
-              setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-              styles.dont,
-            )}
-          >
-            {loginMessage.dont.defaultMessage}
-          </CustomText>
-          <TouchableOpacity activeOpacity={0.8}>
-            <CustomText
-              style={Object.assign(
-                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                styles.create,
-              )}
-            >
-              {loginMessage.create.defaultMessage}
-            </CustomText>
-          </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.8}>
+              <CustomText
+                style={Object.assign(
+                  setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                  styles.create,
+                )}
+              >
+                {loginMessage.create.defaultMessage}
+              </CustomText>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </LinearGradient>

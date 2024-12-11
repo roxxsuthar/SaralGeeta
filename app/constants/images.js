@@ -12,6 +12,7 @@ import Logo from '../assets/images/logo-saral-geeta.svg';
 import LeftArrow from '../assets/images/ic-right.svg';
 import PlayerIcon from '../assets/images/player-play.svg';
 import Heart from '../assets/images/heart.svg';
+import ShlokBackground from '../assets/images/shlok_background.svg';
 
 // const PlanCard = require('../assets/images/planCard.png');
 const GeetLearn = require('../assets/images/img-geeta-learn.png');
@@ -21,7 +22,7 @@ const Frame = require('../assets/images/Frame.png');
 const Rath = require('../assets/images/img-john-fitness.png');
 const Trainer = require('../assets/images/Trainer_Photo.png');
 const Krishna = require('../assets/images/krishna.png');
-const Cloud = require('../assets/images/cloud1.webp');
+const Cartoon_cloud = require('../assets/images/Cartoon_cloud.png');
 
 const IMAGES = {
   GeetLearn,
@@ -41,6 +42,7 @@ const IMAGES = {
   Rath,
   Trainer,
   Krishna,
-  Cloud,
+  Cartoon_cloud,
+  ShlokBackground,
 };
 export default IMAGES;

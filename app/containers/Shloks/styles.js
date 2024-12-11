@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { hp, wp } from '../../utils/responsive';
 import { COLORS } from '../../constants';
-import { head } from 'lodash';
 
 const styles = StyleSheet.create({
   container: {
@@ -94,6 +93,8 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     lineHeight: hp(30),
     color: COLORS.doveGray,
+    flexWrap: 'wrap',
+    width: wp(220),
   },
   languageText: {
     fontSize: hp(15),
