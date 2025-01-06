@@ -50,7 +50,7 @@ class MainApplication : Application(), ReactApplication {
         }
         
         // Initialize Flipper
-    /* ReactNativeFlipper.initializeFlipper(
+     /*ReactNativeFlipper.initializeFlipper(
             this,
             reactNativeHost.reactInstanceManager
         )*/

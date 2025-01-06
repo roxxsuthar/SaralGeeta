@@ -63,6 +63,7 @@ function OurIdeals({
           style={styles.cardImage}
           source={{ uri: item?.image }}
           resizeMode={FastImage.resizeMode.contain}
+          // onLoad={}
         />
 
         <CustomText

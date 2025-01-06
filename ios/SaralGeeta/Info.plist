@@ -31,6 +31,9 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+<key>NSMicrophoneUsageDescription</key>
+<string>This app needs access to microphone to record audio.</string>
+
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
 	<key>UILaunchStoryboardName</key>

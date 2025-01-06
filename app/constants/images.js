@@ -12,6 +12,8 @@ import Logo from '../assets/images/logo-saral-geeta.svg';
 import LeftArrow from '../assets/images/ic-right.svg';
 import PlayerIcon from '../assets/images/player-play.svg';
 import Heart from '../assets/images/heart.svg';
+import MicIcon from '../assets/images/micIcon.svg';
+import PauseIcon from '../assets/images/pauseIcon.svg';
 import ShlokBackground from '../assets/images/shlok_background.svg';
 
 // const PlanCard = require('../assets/images/planCard.png');
@@ -44,5 +46,7 @@ const IMAGES = {
   Krishna,
   Cartoon_cloud,
   ShlokBackground,
+  MicIcon,
+  PauseIcon,
 };
 export default IMAGES;

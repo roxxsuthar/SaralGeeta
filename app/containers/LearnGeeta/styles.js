@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     height: hp(150),
     width: wp(320),
     position: 'absolute',
-    top: hp(30),
+    bottom: hp(5),
     left: wp(313),
   },
   shlokText: {
@@ -39,8 +39,46 @@ const styles = StyleSheet.create({
     fontSize: hp(13.48),
     lineHeight: hp(27.93),
     position: 'absolute',
-    top: hp(74.25),
+    bottom: hp(55),
     left: wp(365.43),
+  },
+  buttonContainerStyles: {
+    position: 'absolute',
+    left: 310,
+    top: 335,
+  },
+  buttonStyle: {
+    borderRadius: hp(50),
+    height: hp(70),
+    width: wp(70),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonIconStyle: {
+    height: hp(40),
+    width: wp(40),
+  },
+  container3: {
+    flex: 1,
+    position: 'absolute',
+    left: 290,
+    top: 365,
+  },
+  dot: {
+    width: 20,
+    height: 20,
+    backgroundColor: 'red',
+    borderRadius: 10,
+  },
+  translationText: {
+    position: 'absolute',
+    bottom: hp(110),
+    left: wp(150),
+    color: COLORS.black,
+    fontSize: hp(13.48),
+    lineHeight: hp(27.93),
+    fontFamily: FONTS.HINDI,
+    fontWeight: '600',
   },
 });
 
