@@ -17,31 +17,16 @@ const styles = StyleSheet.create({
     overflow: 'hidden', // Clip video to fit within border
   },
   backgroundVideo: {
-    width: '100%',
-    height: '100%',
+    ...StyleSheet.absoluteFillObject,
+    // width: '100%',
+    // height: '100%',
   },
   cloud: {
     width: 150,
     height: 100,
     opacity: 0.8, // Slight transparency
   },
-  shlokBackground: {
-    height: hp(150),
-    width: wp(320),
-    position: 'absolute',
-    bottom: hp(5),
-    left: wp(313),
-  },
-  shlokText: {
-    fontFamily: FONTS.HINDI,
-    fontWeight: '400',
-    color: COLORS.black,
-    fontSize: hp(13.48),
-    lineHeight: hp(27.93),
-    position: 'absolute',
-    bottom: hp(55),
-    left: wp(365.43),
-  },
+
   buttonContainerStyles: {
     position: 'absolute',
     left: 310,
@@ -49,10 +34,10 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     borderRadius: hp(50),
-    height: hp(70),
-    width: wp(70),
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: hp(90),
+    zIndex: 999,
   },
   buttonIconStyle: {
     height: hp(40),
@@ -60,9 +45,9 @@ const styles = StyleSheet.create({
   },
   container3: {
     flex: 1,
-    position: 'absolute',
-    left: 290,
-    top: 365,
+    marginTop: hp(100),
+    marginLeft: wp(310),
+    paddingHorizontal: 0,
   },
   dot: {
     width: 20,
@@ -72,13 +57,83 @@ const styles = StyleSheet.create({
   },
   translationText: {
     position: 'absolute',
-    bottom: hp(110),
-    left: wp(150),
     color: COLORS.black,
     fontSize: hp(13.48),
     lineHeight: hp(27.93),
     fontFamily: FONTS.HINDI,
     fontWeight: '600',
+    verticalAlign: 'top',
+    left: wp(100),
+    top: hp(20),
+  },
+  overlay: {
+    position: 'absolute', // Ensures this container overlays the video
+    right: wp(150),
+    bottom: hp(0),
+    flexDirection: 'row',
+    justifyContent: 'center', // Centers content vertically
+    alignItems: 'center', // Centers content horizontally
+  },
+  svgImageContainer: {
+    position: 'relative', // Allows positioning of child elements relative to this container
+    height: hp(135),
+    width: wp(280),
+    justifyContent: 'center', // Optional: Centers text vertically inside the image
+    alignItems: 'center', // Optional: Centers text horizontally inside the image
+  },
+  overlayText: {
+    position: 'absolute', // Ensures the text is over the image
+    fontFamily: FONTS.HINDI,
+    fontWeight: '400',
+    color: COLORS.black,
+    fontSize: hp(13.48),
+    lineHeight: hp(27.93),
+    textAlign: 'center',
+  },
+  animation: {
+    width: 'auto', // Adjust the width
+    height: hp(50), // Adjust the height
+  },
+  cloudAnimationContainer: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 99,
+  },
+  cloudAnimation: {
+    height: '100%',
+    width: '100%',
+  },
+  controlContainer: {
+    position: 'absolute',
+    left: wp(380),
+    top: hp(170),
+    flexDirection: 'row',
+    zIndex: 90,
+  },
+  controlButtonStyle: {
+    borderRadius: hp(50),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.semiTransparent,
+    padding: hp(3),
+    height: hp(40),
+    width: hp(40),
+  },
+  controlButtonStyle1: {
+    borderRadius: hp(50),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.semiTransparent,
+    marginHorizontal: wp(15),
+    height: hp(40),
+    width: hp(40),
+  },
+  controlIconStyle: {
+    height: hp(30),
+    width: hp(30),
   },
 });
 

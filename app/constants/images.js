@@ -15,6 +15,9 @@ import Heart from '../assets/images/heart.svg';
 import MicIcon from '../assets/images/micIcon.svg';
 import PauseIcon from '../assets/images/pauseIcon.svg';
 import ShlokBackground from '../assets/images/shlok_background.svg';
+import Right from '../assets/images/right.svg';
+import Left from '../assets/images/left.svg';
+import Refresh from '../assets/images/refresh.svg';
 
 // const PlanCard = require('../assets/images/planCard.png');
 const GeetLearn = require('../assets/images/img-geeta-learn.png');
@@ -25,6 +28,9 @@ const Rath = require('../assets/images/img-john-fitness.png');
 const Trainer = require('../assets/images/Trainer_Photo.png');
 const Krishna = require('../assets/images/krishna.png');
 const Cartoon_cloud = require('../assets/images/Cartoon_cloud.png');
+const PlayerLottie = require('../assets/images/playerLottie.json');
+const CloudAnimation = require('../assets/images/cloudAnimation.json');
+const TranslationAnimation = require('../assets/images/translationAnimation.json');
 
 const IMAGES = {
   GeetLearn,
@@ -48,5 +54,11 @@ const IMAGES = {
   ShlokBackground,
   MicIcon,
   PauseIcon,
+  PlayerLottie,
+  CloudAnimation,
+  TranslationAnimation,
+  Right,
+  Left,
+  Refresh,
 };
 export default IMAGES;

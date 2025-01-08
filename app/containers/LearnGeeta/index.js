@@ -6,13 +6,12 @@ import {
   AppState,
   TouchableOpacity,
   Platform,
-  Animated,
   BackHandler,
   Alert,
 } from 'react-native';
 import PropTypes from 'prop-types';
-
 import { connect } from 'react-redux';
+
 import LinearGradient from 'react-native-linear-gradient';
 import Video from 'react-native-video';
 import Orientation from 'react-native-orientation-locker';
@@ -27,6 +26,7 @@ import {
 } from 'react-native-permissions';
 import stringSimilarity from 'string-similarity';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Lottie from 'lottie-react-native';
 import { createStructuredSelector } from 'reselect';
 import SoundRecorder from 'react-native-sound-recorder';
 import get from 'lodash/get';
@@ -38,9 +38,10 @@ import { useNavigation } from '@react-navigation/native';
 import { IMAGES } from '../../constants';
 import styles from './styles';
 import { getShloksDetail } from './actions';
-import { makeSelectIntroVideo } from '../App/selectors';
+import { makeSelectIntroVideo, makeSelectUser } from '../App/selectors';
 import { introVideoWatched } from '../App/actions';
 import CustomText from '../../components/CustomText';
+import makeSelectShloks from '../Shloks/selectors';
 
 Sound.setCategory('Playback'); // Allow audio to play in the background
 const GLADIA_API_KEY = 'bbebcb87-bb37-4aff-b8ba-d5bda7a96f4c';
@@ -50,6 +51,8 @@ function LearnGeeta({
   introVideo,
   handleIntroVideo,
   learnGeeta,
+  user,
+  shloks,
 }) {
   const videoRef = useRef(null);
   const [audio, setAudio] = useState(null);
@@ -61,8 +64,21 @@ function LearnGeeta({
   const [isRecordingButton, setIsRecordingButton] = useState(false);
   const [isButton, setIsButton] = useState(false);
   const [transcription, setTranscription] = useState('');
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [waitingForTranslation, setWaitingForTranslation] = useState('');
+  const [shlokIndex, setShlokIndex] = useState();
+  const [videoUrl, setVideoUrl] = useState(
+    get(learnGeeta, 'data.shlokas_video_hls'),
+  );
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const animationRef = useRef(null);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    setShlokIndex(
+      shloks?.data?.findIndex((item) => item.uuid === learnGeeta?.data?.uuid),
+    );
+  }, [shloks, learnGeeta]);
 
   useEffect(() => {
     // Lock to portrait
@@ -87,7 +103,14 @@ function LearnGeeta({
           audio.pause();
         }
       } else if (nextAppState === 'active') {
-        if (audio && isAudioReady && introVideo) {
+        if (
+          audio &&
+          isAudioReady &&
+          introVideo &&
+          isVideoReady &&
+          !isLoading &&
+          !isButton
+        ) {
           playAudio();
         }
       }
@@ -101,6 +124,7 @@ function LearnGeeta({
     // Initial audio load
     if (learnGeeta) {
       loadAudio();
+      setVideoUrl(get(learnGeeta, 'data.shlokas_video_hls'));
     }
 
     // Cleanup
@@ -130,7 +154,6 @@ function LearnGeeta({
       const fileExists = await RNFS.exists(localPath);
 
       if (!fileExists) {
-        console.log('Downloading audio file...');
         const downloadResult = await RNFS.downloadFile({
           fromUrl: audioUrl,
           toFile: localPath,
@@ -155,19 +178,33 @@ function LearnGeeta({
 
         sound.setVolume(1.0);
         setAudio(sound);
+        console.log;
         setIsAudioReady(true);
         setIsAudioLoading(false);
-
-        // Auto play if conditions are met
-        if (introVideo && AppState.currentState === 'active') {
-          playAudio();
-        }
       });
     } catch (err) {
       setIsAudioLoading(false);
       setIsAudioReady(false);
     }
   };
+
+  useEffect(() => {
+    // Trigger playback when both audio and video are ready
+    if (!introVideo) {
+      videoRef.current?.seek(0);
+      // videoRef.current?.play();
+    } else if (
+      isAudioReady &&
+      isVideoReady &&
+      AppState.currentState === 'active' &&
+      !isLoading &&
+      !isButton
+    ) {
+      playAudio();
+      videoRef.current?.seek(0);
+      // videoRef.current?.play();
+    }
+  }, [isAudioReady, isVideoReady, introVideo, isLoading, isButton]);
 
   const playAudio = () => {
     if (!audio || !isAudioReady) {
@@ -187,13 +224,6 @@ function LearnGeeta({
       }
     });
   };
-
-  // Effect to handle auto-play when conditions are met
-  useEffect(() => {
-    if (isAudioReady && introVideo && AppState.currentState === 'active') {
-      playAudio();
-    }
-  }, [isAudioReady, introVideo]);
 
   // Effect to handle cleanup
   useEffect(() => {
@@ -218,9 +248,9 @@ function LearnGeeta({
       // Navigate to the previous screen
       if (audio) {
         audio.stop();
+        SoundRecorder.stop();
       }
       navigation.goBack();
-      stopRecording();
       return true; // Prevent default back behavior
     };
 
@@ -316,12 +346,13 @@ function LearnGeeta({
 
   const startRecording = async () => {
     try {
-      blinkingBar();
+      audio.stop();
+      audio.release();
       console.log('Attempting to start recording...');
-
       // Ensure the recording button state is correct
+      videoRef.current.seek(0);
+      setIsVideoPlaying(false);
       setIsRecordingButton(true);
-
       // Check permissions
       const hasPermissions = await requestPermissions();
       if (!hasPermissions) {
@@ -417,6 +448,7 @@ function LearnGeeta({
     };
 
     console.log('- Sending initial request to Gladia API...');
+    setWaitingForTranslation(true);
     const initialResponse = await makeFetchRequest(gladiaUrl, {
       method: 'POST',
       headers,
@@ -432,6 +464,8 @@ function LearnGeeta({
 
   const stopRecording = async () => {
     try {
+      videoRef.current.pause();
+      setIsVideoPlaying(true);
       // Check if the recording state is active
       if (!isRecordingButton) {
         console.warn('Recorder is not active. Cannot stop recording.');
@@ -495,10 +529,14 @@ function LearnGeeta({
       });
 
       if (pollResponse.status === 'done') {
+        setWaitingForTranslation(false);
         console.log('- Transcription done: \n');
         const audioToLlmResults = pollResponse.result.audio_to_llm;
         const textOriginal = audioToLlmResults?.results[0]?.results?.prompt;
         const textTranslated = audioToLlmResults?.results[0]?.results?.response;
+
+        console.log('-------textOriginal--------', textOriginal);
+        console.log('-------textTranslated--------', textTranslated);
         const getSimilarityPercentage = (originalText, translatedText) => {
           const similarity = stringSimilarity.compareTwoStrings(
             originalText,
@@ -521,27 +559,40 @@ function LearnGeeta({
       }
     }
   }
-  const [opacity] = useState(new Animated.Value(1));
 
-  const blinkingBar = useCallback(() => {
-    const blink = Animated.loop(
-      Animated.sequence([
-        Animated.timing(opacity, {
-          toValue: 0,
-          duration: 500,
-          useNativeDriver: true,
-        }),
-        Animated.timing(opacity, {
-          toValue: 1,
-          duration: 500,
-          useNativeDriver: true,
-        }),
-      ]),
-    );
-    blink.start();
+  const isVideoPaused = useCallback(() => {
+    if (isVideoPlaying) {
+      return isVideoPlaying;
+    } else {
+      return !isAudioReady && !isVideoReady;
+    }
+  }, [isVideoPlaying, isAudioReady, isVideoReady]);
 
-    return () => blink.stop();
-  }, [opacity]);
+  useEffect(() => {
+    if (introVideo) setVideoUrl(get(learnGeeta, 'data.shlokas_video_hls'));
+  }, [introVideo]);
+
+  const getPreviousShlok = useCallback(() => {
+    setIsButton(false);
+    setTranscription('');
+    setIsVideoPlaying(false);
+    handleGetShloksDetail({ shlok_id: shloks?.data[shlokIndex - 1]?.uuid });
+  }, [shloks, shlokIndex]);
+
+  const getNextShlok = useCallback(() => {
+    setIsButton(false);
+    setTranscription('');
+    setIsVideoPlaying(false);
+    handleGetShloksDetail({ shlok_id: shloks?.data[shlokIndex + 1]?.uuid });
+  }, [shloks, shlokIndex]);
+
+  const playAgain = useCallback(() => {
+    setIsButton(false);
+    setTranscription('');
+    setIsVideoPlaying(false);
+    setVideoUrl(get(learnGeeta, 'data.shlokas_video_hls'));
+    setIsVideoReady(false);
+  }, []);
 
   return (
     <SafeAreaView style={styles.container} edges={['left', 'right']}>
@@ -550,128 +601,225 @@ function LearnGeeta({
         translucent
         backgroundColor="transparent"
       />
-      <LinearGradient
-        colors={['#000000', '#000000']}
-        style={styles.gradientBorder}
-      >
-        <View style={[styles.videoWrapper, { aspectRatio }]}>
-          <Video
-            source={
-              isEqual(introVideo, false)
-                ? {
-                    uri: 'https://saral-gita.s3.ap-south-1.amazonaws.com/video/ganeshji/Ganesh_ji_intro.m3u8',
-                    type: 'm3u8',
-                    headers: {
-                      'User-Agent': 'Mozilla/5.0',
-                    },
-                  }
-                : {
-                    uri: `${get(learnGeeta, 'data.shlokas_video_hls')}`,
-                    type: 'm3u8',
-                    headers: {
-                      'User-Agent': 'Mozilla/5.0',
-                    },
-                  }
-            }
-            ref={videoRef}
-            style={styles.backgroundVideo}
-            resizeMode="contain"
-            paused={!isAudioReady || !isVideoReady}
-            volume={1.0}
-            audioFocus={false}
-            ignoreSilentSwitch="ignore"
-            mixWithOthers={true}
-            playInBackground={false}
-            playWhenInactive={false}
-            onError={() => {
-              setIsVideoReady(false);
-            }}
-            onLoad={(data) => {
-              console.log('Video loaded:', data);
-              setIsVideoReady(true);
-              videoRef.current?.seek(0);
-            }}
-            onEnd={() => {
-              isEqual(introVideo, false) && setIsButton(true);
-              console.log('Video ended');
-              isEqual(introVideo, false) && handleIntroPlay();
-            }}
-            onPlaybackStalled={() => {
-              console.log('Playback stalled');
-              // Attempt to recover from stall
-              if (videoRef.current) {
-                videoRef.current.seek(0);
-              }
-            }}
-            onReadyForDisplay={() => {
-              console.log('Ready for display');
-              setIsVideoReady(true);
-            }}
-            bufferConfig={{
-              minBufferMs: 15000,
-              maxBufferMs: 50000,
-              bufferForPlaybackMs: 2500,
-              bufferForPlaybackAfterRebufferMs: 5000,
-            }}
-            // controls={true}
-            fullscreen={false}
-            progressUpdateInterval={250}
-            repeat={false}
-            poster="path_to_placeholder_image" // Add a placeholder image while video loads
-            posterResizeMode="contain"
+      {get(learnGeeta, 'loading') ? (
+        <View style={styles.cloudAnimationContainer}>
+          <Lottie
+            ref={animationRef}
+            source={IMAGES.CloudAnimation} // Path to your Lottie animation JSON
+            autoPlay
+            loop
+            style={styles.cloudAnimation}
           />
         </View>
-        {introVideo && (
-          <>
-            <View style={styles.shlokBackground}>
-              <IMAGES.ShlokBackground height="100%" width="100%" />
+      ) : (
+        <LinearGradient
+          colors={['#000000', '#000000']}
+          style={styles.gradientBorder}
+        >
+          <View style={[styles.videoWrapper, { aspectRatio }]}>
+            <Video
+              source={
+                isEqual(introVideo, false)
+                  ? {
+                      uri: 'https://saral-gita.s3.ap-south-1.amazonaws.com/video/ganeshji/Ganesh_ji_intro.m3u8',
+                      type: 'm3u8',
+                      headers: {
+                        'User-Agent': 'Mozilla/5.0',
+                      },
+                    }
+                  : {
+                      uri: videoUrl,
+                      type: 'm3u8',
+                      headers: {
+                        'User-Agent': 'Mozilla/5.0',
+                      },
+                    }
+              }
+              ref={videoRef}
+              style={styles.backgroundVideo}
+              resizeMode="contain"
+              paused={isVideoPaused()}
+              volume={1.0}
+              audioFocus={false}
+              ignoreSilentSwitch="ignore"
+              mixWithOthers={true}
+              playInBackground={false}
+              playWhenInactive={false}
+              onError={() => {
+                setIsVideoReady(false);
+                audio.pause();
+              }}
+              onLoadStart={() => {
+                setIsLoading(true);
+              }}
+              onLoad={(data) => {
+                setIsLoading(false);
+                console.log('Video loaded:', data);
+                setIsVideoReady(true);
+              }}
+              onEnd={() => {
+                console.log('video ended');
+                isEqual(introVideo, true) && setIsButton(true);
+                isEqual(introVideo, false) && handleIntroPlay();
+                if (introVideo) {
+                  setIsVideoPlaying(true);
+                  if (isEqual(get(user, 'gender'), 1)) {
+                    setVideoUrl(get(learnGeeta, 'data.male_user_video_hls'));
+                    videoRef.current.pause();
+                  } else {
+                    get(learnGeeta, 'data.female_user_video_hls')
+                      ? setVideoUrl(
+                          get(learnGeeta, 'data.female_user_video_hls'),
+                        )
+                      : setVideoUrl(
+                          get(learnGeeta, 'data.male_user_video_hls'),
+                        );
+                    videoRef.current.pause();
+                  }
+                }
+              }}
+              onPlaybackStalled={() => {
+                console.log('Playback stalled');
+                // Pause the audio when the video is stuck
+                if (audio && audio.isPlaying()) {
+                  audio.pause();
+                }
+              }}
+              onPlaybackResume={() => {
+                console.log('Playback resumed');
+                // Resume the audio when the video plays again
+                if (audio && !audio.isPlaying()) {
+                  audio.play();
+                }
+              }}
+              bufferConfig={{
+                minBufferMs: 15000,
+                maxBufferMs: 50000,
+                bufferForPlaybackMs: 2500,
+                bufferForPlaybackAfterRebufferMs: 5000,
+              }}
+              // controls={true}
+              fullscreen={false}
+              progressUpdateInterval={250}
+              repeat={false}
+              poster="path_to_placeholder_image" // Add a placeholder image while video loads
+              posterResizeMode="contain"
+            />
+          </View>
+          {waitingForTranslation && (
+            <View style={styles.cloudAnimationContainer}>
+              <Lottie
+                ref={animationRef}
+                source={IMAGES.TranslationAnimation} // Path to your Lottie animation JSON
+                autoPlay
+                loop
+                style={styles.cloudAnimation}
+              />
             </View>
-            <CustomText style={styles.shlokText}>
-              {get(learnGeeta, 'data.shlokas_text')}
-            </CustomText>
-          </>
-        )}
-
-        {introVideo && !isButton && (
-          <>
-            {isRecordingButton && (
-              <View style={styles.container3}>
-                <Animated.View style={[styles.dot, { opacity }]} />
-              </View>
-            )}
-            <View style={styles.buttonContainerStyles}>
-              {!isRecordingButton ? (
-                <>
-                  <TouchableOpacity
-                    style={styles.buttonStyle}
-                    onPress={startRecording}
-                    activeOpacity={0.8}
-                  >
-                    <View style={styles.buttonIconStyle}>
-                      <IMAGES.MicIcon height="100%" width="100%" />
-                    </View>
-                  </TouchableOpacity>
-                </>
-              ) : (
+          )}
+          {!isEmpty(transcription) && (
+            <View style={styles.controlContainer}>
+              {!(shlokIndex < 1) && (
                 <TouchableOpacity
-                  style={styles.buttonStyle}
-                  onPress={stopRecording}
+                  style={styles.controlButtonStyle}
+                  onPress={getPreviousShlok}
                   activeOpacity={0.8}
                 >
-                  <View style={styles.buttonIconStyle}>
-                    <IMAGES.PauseIcon height="100%" width="100%" />
+                  <View style={styles.controlIconStyle}>
+                    <IMAGES.Left height="100%" width="100%" />
                   </View>
                 </TouchableOpacity>
               )}
-              {!isEmpty(transcription) && (
-                <CustomText style={styles.translationText}>
-                  Result: {transcription}
-                </CustomText>
+              <TouchableOpacity
+                style={styles.controlButtonStyle1}
+                onPress={playAgain}
+                activeOpacity={0.8}
+              >
+                <View style={styles.controlIconStyle}>
+                  <IMAGES.PlayerIcon height="100%" width="100%" />
+                </View>
+              </TouchableOpacity>
+              {!(shlokIndex + 1 < shloks?.length) && (
+                <TouchableOpacity
+                  style={styles.controlButtonStyle}
+                  onPress={() => getNextShlok()}
+                  activeOpacity={0.8}
+                >
+                  <View style={styles.controlIconStyle}>
+                    <IMAGES.Right height="100%" width="100%" />
+                  </View>
+                </TouchableOpacity>
               )}
             </View>
-          </>
-        )}
-      </LinearGradient>
+          )}
+          {introVideo && (
+            <>
+              {isLoading ? (
+                <View style={styles.cloudAnimationContainer}>
+                  <Lottie
+                    ref={animationRef}
+                    source={IMAGES.CloudAnimation} // Path to your Lottie animation JSON
+                    autoPlay
+                    loop
+                    style={styles.cloudAnimation}
+                  />
+                </View>
+              ) : (
+                <View style={styles.overlay}>
+                  {isButton && (
+                    <>
+                      {isRecordingButton && (
+                        <View style={styles.container3}>
+                          <Lottie
+                            ref={animationRef}
+                            source={IMAGES.PlayerLottie} // Path to your Lottie animation JSON
+                            autoPlay
+                            loop
+                            style={styles.animation}
+                          />
+                        </View>
+                      )}
+
+                      {!isRecordingButton ? (
+                        <TouchableOpacity
+                          style={styles.buttonStyle}
+                          onPress={startRecording}
+                          activeOpacity={0.8}
+                        >
+                          <View style={styles.buttonIconStyle}>
+                            <IMAGES.MicIcon height="100%" width="100%" />
+                          </View>
+                        </TouchableOpacity>
+                      ) : (
+                        <TouchableOpacity
+                          style={styles.buttonStyle}
+                          onPress={stopRecording}
+                          activeOpacity={0.8}
+                        >
+                          <View style={styles.buttonIconStyle}>
+                            <IMAGES.PauseIcon height="100%" width="100%" />
+                          </View>
+                        </TouchableOpacity>
+                      )}
+                    </>
+                  )}
+                  <View style={styles.svgImageContainer}>
+                    <IMAGES.ShlokBackground width="100%" height="100%" />
+                    {!isEmpty(transcription) && (
+                      <CustomText style={styles.translationText}>
+                        Result: {transcription}
+                      </CustomText>
+                    )}
+                    <CustomText style={styles.overlayText}>
+                      {get(learnGeeta, 'data.shlokas_text')}
+                    </CustomText>
+                  </View>
+                </View>
+              )}
+            </>
+          )}
+        </LinearGradient>
+      )}
     </SafeAreaView>
   );
 }
@@ -683,11 +831,15 @@ LearnGeeta.propTypes = {
   route: PropTypes.object,
   introVideo: PropTypes.bool,
   learnGeeta: PropTypes.object,
+  user: PropTypes.object,
+  shloks: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   learnGeeta: makeSelectLearnGeeta(),
   introVideo: makeSelectIntroVideo(),
+  user: makeSelectUser(),
+  shloks: makeSelectShloks(),
 });
 
 function mapDispatchToProps(dispatch) {

@@ -18,5 +18,6 @@ const COLORS = {
   alto: '#D9D9D9',
   doveGray: '#666666',
   loadingTransparent: '#0A030088',
+  semiTransparent: `rgba(0, 0, 0, 0.2)`,
 };
 export default COLORS;
