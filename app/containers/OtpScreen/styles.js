@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     width: 'auto',
     marginTop: hp(26),
     marginBottom: hp(15),
+    height: hp(45),
   },
   chakraStyle: {
     position: 'absolute',
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
     top: hp(-200),
     height: hp(450),
     width: hp(470),
+    opacity: 0.4,
   },
   icon: {
     height: hp(20),
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
     fontSize: hp(15),
     lineHeight: hp(21),
     color: COLORS.codGray,
-    textAlign: 'center',
+    marginTop: hp(3),
   },
   create: {
     fontWeight: '700',
@@ -112,6 +114,11 @@ const styles = StyleSheet.create({
   },
   resendText: {
     alignContent: 'center',
+  },
+  timerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 

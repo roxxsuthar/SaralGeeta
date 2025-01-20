@@ -37,6 +37,9 @@ const makeSelectIdealDetails = () =>
 const makeSelectIntroVideo = () =>
   createSelector(selectAppDomain, (substate) => substate.introVideo);
 
+const makeSelectAppLoading = () =>
+  createSelector(selectAppDomain, (substate) => substate.loading);
+
 export default makeSelectApp;
 export {
   selectAppDomain,
@@ -47,4 +50,5 @@ export {
   makeSelectOtpDetails,
   makeSelectIdealDetails,
   makeSelectIntroVideo,
+  makeSelectAppLoading,
 };

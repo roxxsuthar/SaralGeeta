@@ -11,21 +11,21 @@ import {
   SectionList,
   TouchableOpacity,
   FlatList,
+  ImageBackground,
 } from 'react-native';
-import split from 'lodash/split';
+// import split from 'lodash/split';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import FastImage from 'react-native-fast-image';
 import makeSelectChapters from './selectors';
 import styles from './styles';
-import LinearGradient from 'react-native-linear-gradient';
 import CustomText from '../../components/CustomText';
 import { setFontFamily } from '../../utils/device';
 import { FONTS, IMAGES } from '../../constants';
 import strings from '../../../i18n';
 import { makeSelectAppLanguage } from '../App/selectors';
 
-function Chapters({ language, navigation }) {
+function Chapters({ language }) {
   const { Chapters: ChaptersMessage } = strings;
   const { currentLanguage } = language;
 
@@ -102,36 +102,36 @@ function Chapters({ language, navigation }) {
     },
   ];
 
-  const timeStringToSeconds = (timeString) => {
-    const timeParts = split(timeString, ':').map(Number);
+  // const timeStringToSeconds = (timeString) => {
+  //   const timeParts = split(timeString, ':').map(Number);
 
-    if (timeParts.length === 2) {
-      // MM:SS format
-      return timeParts[0] * 60 + timeParts[1];
-    } else if (timeParts.length === 3) {
-      // HH:MM:SS format
-      return timeParts[0] * 3600 + timeParts[1] * 60 + timeParts[2];
-    } else {
-      console.warn('Invalid time format:', timeString);
-    }
+  //   if (timeParts.length === 2) {
+  //     // MM:SS format
+  //     return timeParts[0] * 60 + timeParts[1];
+  //   } else if (timeParts.length === 3) {
+  //     // HH:MM:SS format
+  //     return timeParts[0] * 3600 + timeParts[1] * 60 + timeParts[2];
+  //   } else {
+  //     console.warn('Invalid time format:', timeString);
+  //   }
 
-    return 0;
-  };
+  //   return 0;
+  // };
 
-  const VideoProgressBar = (currentTime, duration) => {
-    // Calculate progress as a percentage
-    const totalDuration = timeStringToSeconds(duration);
-    const current = timeStringToSeconds(currentTime);
-    const progress = (current / totalDuration) * 100;
+  // const VideoProgressBar = (currentTime, duration) => {
+  //   // Calculate progress as a percentage
+  //   const totalDuration = timeStringToSeconds(duration);
+  //   const current = timeStringToSeconds(currentTime);
+  //   const progress = (current / totalDuration) * 100;
 
-    return (
-      <View style={styles.container}>
-        <View style={styles.progressBackground}>
-          <View style={[styles.progressBar, { width: `${progress}%` }]} />
-        </View>
-      </View>
-    );
-  };
+  //   return (
+  //     <View style={styles.container}>
+  //       <View style={styles.progressBackground}>
+  //         <View style={[styles.progressBar, { width: `${progress}%` }]} />
+  //       </View>
+  //     </View>
+  //   );
+  // };
 
   const renderItemBasedOnSection = (title, item) => {
     switch (title) {
@@ -196,9 +196,10 @@ function Chapters({ language, navigation }) {
     alert();
   }, []);
   return (
-    <LinearGradient
-      colors={['rgb(227,126,93)', 'rgb(242,206,88)']}
+    <ImageBackground
+      source={IMAGES.AppBackground}
       style={styles.container}
+      resizeMode="cover" // Similar to background-size in CSS
     >
       <StatusBar
         barStyle="light-content"
@@ -286,7 +287,7 @@ function Chapters({ language, navigation }) {
           showsVerticalScrollIndicator={false}
         />
       </View>
-    </LinearGradient>
+    </ImageBackground>
   );
 }
 

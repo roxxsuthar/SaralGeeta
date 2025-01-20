@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
   Keyboard,
   TextInput,
+  ImageBackground,
 } from 'react-native';
 
-import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import SmsRetriever from 'react-native-sms-retriever';
@@ -21,12 +21,17 @@ import CustomText from '../../components/CustomText';
 import CustomButton from '../../components/CustomButton';
 import { OS, setFontFamily } from '../../utils/device';
 import { startCountdown, stopCountdown } from '../../utils/countdown';
-import { makeSelectAppLanguage, makeSelectOtpDetails } from '../App/selectors';
+import {
+  makeSelectAppLanguage,
+  makeSelectAppLoading,
+  makeSelectOtpDetails,
+} from '../App/selectors';
 import isEqual from 'lodash/isEqual';
 import styles from './styles';
 import strings from '../../../i18n';
 import { CONSTANTS, FONTS, IMAGES } from '../../constants';
 import { sendOtpAction, verifyOtpAction } from '../App/actions';
+import LoadingScreen from '../../components/LoadingScreen';
 
 function OtpScreen({
   language,
@@ -34,6 +39,7 @@ function OtpScreen({
   otpDetails,
   handleVerifyOtp,
   handleSendOtp,
+  loading,
 }) {
   const { currentLanguage } = language;
   const otpScreenMessage = strings?.otpScreen || {}; // Ensure `strings` exists
@@ -129,9 +135,10 @@ function OtpScreen({
   const backHandler = useCallback(() => navigation.goBack(), [navigation]);
 
   return (
-    <LinearGradient
-      colors={['rgb(227,126,93)', 'rgb(242,206,88)']}
+    <ImageBackground
+      source={IMAGES.AppBackground}
       style={styles.container}
+      resizeMode="cover" // Similar to background-size in CSS
     >
       <StatusBar
         barStyle="light-content"
@@ -143,117 +150,133 @@ function OtpScreen({
         source={IMAGES.Chakra}
         resizeMode={FastImage.resizeMode.contain}
       />
-      <View style={styles.mainContainer}>
-        {/* Back Button */}
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={backHandler}
-          style={styles.headerContainer}
-        >
-          <View style={styles.icon}>
-            <IMAGES.LeftArrow height="100%" width="100%" />
-          </View>
-        </TouchableOpacity>
+      {loading ? (
+        <LoadingScreen />
+      ) : (
+        <View style={styles.mainContainer}>
+          {/* Back Button */}
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={backHandler}
+            style={styles.headerContainer}
+          >
+            <View style={styles.icon}>
+              <IMAGES.LeftArrow height="100%" width="100%" />
+            </View>
+          </TouchableOpacity>
 
-        {/* Headings */}
-        <CustomText
-          style={{
-            ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            ...styles.englishHeadingFont,
-          }}
-        >
-          {otpScreenMessage.heading?.defaultMessage || 'Enter OTP'}
-        </CustomText>
-        <CustomText
-          style={{
-            ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            ...styles.subHeading,
-          }}
-        >
-          {otpScreenMessage.subHeading?.defaultMessage ||
-            'We sent an OTP to your number'}
-        </CustomText>
-        <CustomText
-          style={{
-            ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            ...styles.labelOtp,
-          }}
-        >
-          {otpScreenMessage.enterOtp?.defaultMessage || 'Enter the OTP below'}
-        </CustomText>
-
-        {/* OTP Input */}
-        <View style={styles.OtpContainer}>
-          <OTPInputView
-            pinCount={4}
-            ref={otpRef}
-            code={oneTimeInput}
-            codeInputFieldStyle={styles.box}
-            autoFocusOnLoad={false}
-            onCodeChanged={setOneTimeInput}
-            autofillFromClipboard={false}
-          />
-        </View>
-        <View style={styles.resendCode}>
-          {!expired && (
-            <TextInput
-              ref={timer}
-              editable={false}
-              style={Object.assign(
-                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.REGULAR),
-                styles.timer1,
-              )}
-            />
-          )}
-          {expired && (
-            <CustomText
-              style={Object.assign(
-                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.REGULAR),
-                styles.timer,
-              )}
-            >
-              {otpScreenMessage.timeElapsed.defaultMessage}
-            </CustomText>
-          )}
-        </View>
-        {/* Submit Button */}
-        <CustomButton
-          title={otpScreenMessage.submit?.defaultMessage || 'Submit'}
-          labelStyle={{
-            ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            ...styles.buttonLabel,
-          }}
-          style={styles.buttonContainer}
-          onPress={navigateToNext}
-        />
-
-        {/* Footer */}
-        <View style={styles.footerText}>
+          {/* Headings */}
           <CustomText
             style={{
               ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-              ...styles.dont,
+              ...styles.englishHeadingFont,
             }}
           >
-            {otpScreenMessage.dont?.defaultMessage || "Didn't receive an OTP?"}
+            {otpScreenMessage.heading?.defaultMessage || 'Enter OTP'}
           </CustomText>
-          <TouchableOpacity
-            style={styles.resendText}
-            activeOpacity={0.8}
-            onPress={handleResendOTP}
+          <CustomText
+            style={{
+              ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+              ...styles.subHeading,
+            }}
           >
+            {otpScreenMessage.subHeading?.defaultMessage ||
+              'We sent an OTP to your number'}
+          </CustomText>
+          <View style={styles.timerContainer}>
             <CustomText
               style={{
                 ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                ...styles.create,
+                ...styles.labelOtp,
               }}
             >
-              {otpScreenMessage.create?.defaultMessage || 'Resend'}
+              {otpScreenMessage.enterOtp?.defaultMessage ||
+                'Enter the OTP below'}
             </CustomText>
-          </TouchableOpacity>
+            <View style={styles.resendCode}>
+              {!expired && (
+                <TextInput
+                  ref={timer}
+                  editable={false}
+                  style={Object.assign(
+                    setFontFamily(
+                      currentLanguage,
+                      FONTS.REGULAR,
+                      FONTS.REGULAR,
+                    ),
+                    styles.timer1,
+                  )}
+                />
+              )}
+              {/* {expired && (
+                <CustomText
+                  style={Object.assign(
+                    setFontFamily(
+                      currentLanguage,
+                      FONTS.REGULAR,
+                      FONTS.REGULAR,
+                    ),
+                    styles.timer,
+                  )}
+                >
+                  {otpScreenMessage.timeElapsed.defaultMessage}
+                </CustomText>
+              )} */}
+            </View>
+          </View>
+          {/* OTP Input */}
+          <View style={styles.OtpContainer}>
+            <OTPInputView
+              pinCount={4}
+              ref={otpRef}
+              code={oneTimeInput}
+              codeInputFieldStyle={styles.box}
+              autoFocusOnLoad={false}
+              onCodeChanged={setOneTimeInput}
+              autofillFromClipboard={false}
+            />
+          </View>
+
+          {/* Submit Button */}
+          <CustomButton
+            title={otpScreenMessage.submit?.defaultMessage || 'Submit'}
+            labelStyle={{
+              ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+              ...styles.buttonLabel,
+            }}
+            style={styles.buttonContainer}
+            onPress={navigateToNext}
+          />
+
+          {/* Footer */}
+          <View style={styles.footerText}>
+            <CustomText
+              style={{
+                ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                ...styles.dont,
+              }}
+            >
+              {otpScreenMessage.dont?.defaultMessage ||
+                "Didn't receive an OTP?"}
+            </CustomText>
+            <TouchableOpacity
+              style={styles.resendText}
+              activeOpacity={0.8}
+              onPress={handleResendOTP}
+            >
+              <CustomText
+                style={{
+                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                  ...styles.create,
+                }}
+              >
+                {otpScreenMessage.create?.defaultMessage || 'Resend'}
+              </CustomText>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </LinearGradient>
+      )}
+    </ImageBackground>
   );
 }
 
@@ -263,12 +286,14 @@ OtpScreen.propTypes = {
   otpDetails: PropTypes.object,
   handleVerifyOtp: PropTypes.func,
   handleSendOtp: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
   otpScreen: makeSelectOtpScreen(),
   language: makeSelectAppLanguage(),
   otpDetails: makeSelectOtpDetails(),
+  loading: makeSelectAppLoading(),
 });
 
 function mapDispatchToProps(dispatch) {

@@ -9,7 +9,7 @@ import React, { memo, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { createStructuredSelector } from 'reselect';
-// import SplashScreen from 'react-native-splash-screen';
+import SplashScreen from 'react-native-splash-screen';
 import { compose } from 'redux';
 import { NavigationContainer } from '@react-navigation/native';
 import MainNavigatorWithBackAndAppState from './MainNavigator';
@@ -26,9 +26,9 @@ export function Navigation({ navigation, language, onboarding, token, user }) {
   const { isLanguageSelected, currentLanguage } = language;
   const { isOnboardingVisited } = onboarding;
 
-  // useEffect(() => {
-  //   SplashScreen.hide(); // Hide the splash screen once the app is ready
-  // }, []);
+  useEffect(() => {
+    SplashScreen.hide(); // Hide the splash screen once the app is ready
+  }, []);
 
   return (
     <NavigationContainer>

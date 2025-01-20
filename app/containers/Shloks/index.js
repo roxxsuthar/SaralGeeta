@@ -4,8 +4,13 @@ Shloks
 
 import React, { useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { View, StatusBar, FlatList, TouchableOpacity } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import {
+  View,
+  StatusBar,
+  FlatList,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -17,13 +22,11 @@ import CustomText from '../../components/CustomText';
 import LoadingScreen from '../../components/LoadingScreen';
 import { setFontFamily } from '../../utils/device';
 import { makeSelectAppLanguage } from '../App/selectors';
-import strings from '../../../i18n';
 import { FONTS, IMAGES } from '../../constants';
 import { getShloks } from './actions';
 import { Navigation } from '../../constants/constants';
 
 function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
-  const { Shloks: ShloksMessage } = strings;
   const { currentLanguage } = language;
 
   useEffect(() => {
@@ -84,10 +87,13 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
     [],
   );
 
+  const backHandler = useCallback(() => navigation.goBack(), [navigation]);
+
   return (
-    <LinearGradient
-      colors={['rgb(227,126,93)', 'rgb(242,206,88)']}
+    <ImageBackground
+      source={IMAGES.AppBackground}
       style={styles.container}
+      resizeMode="cover" // Similar to background-size in CSS
     >
       <StatusBar
         barStyle="light-content"
@@ -100,41 +106,62 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
         resizeMode={FastImage.resizeMode.contain}
       />
       <View style={styles.mainContainer}>
-        <View style={styles.header}>
+        <View style={styles.headerContainer}>
+          <View style={styles.imageContainer}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={backHandler}
+              style={styles.headerSubContainer}
+            >
+              <View style={styles.icon}>
+                <IMAGES.WhiteArrowIcon height="100%" width="100%" />
+              </View>
+            </TouchableOpacity>
+            <FastImage
+              style={styles.chapterImage}
+              source={IMAGES.Trainer}
+              resizeMode={FastImage.resizeMode.contain}
+            />
+          </View>
           <CustomText
             style={{
               ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
               ...styles.headerText,
             }}
           >
-            {ShloksMessage.headerText.defaultMessage}
+            {get(shloksData, 'data[0].chapter_details.name', 'Shloks')}
           </CustomText>
+          <View style={styles.headerIcons}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              // onPress={backHandler}
+              style={styles.headerSearchContainer}
+            >
+              <View style={styles.icon}>
+                <IMAGES.SearchIcon height="100%" width="100%" />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              // onPress={backHandler}
+              style={styles.headerSearchContainer}
+            >
+              <View style={styles.icon}>
+                <IMAGES.WhitePlayIcon height="100%" width="100%" />
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
         {shloksData?.loading ? (
           <LoadingScreen />
         ) : (
           <>
-            <View style={styles.headerComponent}>
-              <FastImage
-                style={styles.chapterImage}
-                source={IMAGES.Trainer}
-                resizeMode={FastImage.resizeMode.contain}
-              />
-              <CustomText
-                style={{
-                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                  ...styles.headerComponentText,
-                }}
-              >
-                {get(shloksData, 'data[0].chapter_details.name')}
-              </CustomText>
-            </View>
             <CustomText
               style={{
                 ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
                 ...styles.headerComponentDescription,
               }}
-              numberOfLines={4}
+              numberOfLines={8}
             >
               {get(shloksData, 'data[0].chapter_details.description')}
             </CustomText>
@@ -151,7 +178,7 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
           </>
         )}
       </View>
-    </LinearGradient>
+    </ImageBackground>
   );
 }
 

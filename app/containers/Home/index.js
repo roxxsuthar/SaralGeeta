@@ -6,15 +6,19 @@ Home
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StatusBar, SectionList, TouchableOpacity } from 'react-native';
+import {
+  View,
+  StatusBar,
+  SectionList,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import split from 'lodash/split';
-// import isEqual from 'lodash/isEqual';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import FastImage from 'react-native-fast-image';
 import makeSelectHome from './selectors';
 import styles from './styles';
-import LinearGradient from 'react-native-linear-gradient';
 import CustomText from '../../components/CustomText';
 import LoadingScreen from '../../components/LoadingScreen';
 import { setFontFamily } from '../../utils/device';
@@ -29,19 +33,19 @@ function Home({ language, navigation, handleGetChapters, home }) {
   const { currentLanguage } = language;
 
   const sections = [
-    {
-      title: 'Recent View',
-      data: [
-        {
-          id: 1,
-          image: 'https://picsum.photos/700',
-          icon: 'https://picsum.photos/700',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          videoTime: '10:20',
-          timeUsed: '05:10',
-        },
-      ],
-    },
+    // {
+    //   title: 'Recent View',
+    //   data: [
+    //     {
+    //       id: 1,
+    //       image: 'https://picsum.photos/700',
+    //       icon: 'https://picsum.photos/700',
+    //       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    //       videoTime: '10:20',
+    //       timeUsed: '05:10',
+    //     },
+    //   ],
+    // },
     {
       title: 'Chapters',
       data: home?.data || [],
@@ -150,13 +154,13 @@ function Home({ language, navigation, handleGetChapters, home }) {
                 {item.description}
               </CustomText>
               <View style={styles.imageContainer}>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                   activeOpacity={0.8}
                   style={styles.iconContainer}
                   onPress={() => navigateToShloks(item?.uuid)}
                 >
                   <IMAGES.PlayerIcon height="100%" width="100%" />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
                 {/* <TouchableOpacity
                   activeOpacity={0.8}
                   style={styles.iconContainer}
@@ -181,17 +185,23 @@ function Home({ language, navigation, handleGetChapters, home }) {
   const ItemSeparator = () => <View style={styles.separator} />;
 
   return (
-    <LinearGradient
-      colors={['rgb(227,126,93)', 'rgb(242,206,88)']}
+    <ImageBackground
+      source={IMAGES.AppBackground}
       style={styles.container}
+      resizeMode="cover" // Similar to background-size in CSS
     >
       <StatusBar
         barStyle="light-content"
         translucent={true}
         backgroundColor="transparent"
       />
+      <FastImage
+        style={styles.chakraStyle}
+        source={IMAGES.Chakra}
+        resizeMode={FastImage.resizeMode.contain}
+      />
       <View style={styles.mainContainer}>
-        <View style={styles.header}>
+        {/* <View style={styles.header}>
           <CustomText
             style={{
               ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
@@ -200,6 +210,46 @@ function Home({ language, navigation, handleGetChapters, home }) {
           >
             {HomeMessage.headerText.defaultMessage}
           </CustomText>
+        </View> */}
+        <View style={styles.headerContainer}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            // onPress={backHandler}
+            style={styles.headerSubContainer}
+          >
+            <View style={styles.icon}>
+              <IMAGES.ThreeBars height="100%" width="100%" />
+            </View>
+          </TouchableOpacity>
+
+          <CustomText
+            style={{
+              ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+              ...styles.headerText,
+            }}
+          >
+            {HomeMessage.headerText.defaultMessage}
+          </CustomText>
+          <View style={styles.rightIconContainer}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              // onPress={backHandler}
+              style={styles.headerSearchContainer}
+            >
+              <View style={styles.icon}>
+                <IMAGES.SearchIcon height="100%" width="100%" />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              // onPress={backHandler}
+              style={styles.headerBellContainer}
+            >
+              <View style={styles.icon}>
+                <IMAGES.BellIcon height="100%" width="100%" />
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
         {home?.loading ? (
           <LoadingScreen />
@@ -207,11 +257,13 @@ function Home({ language, navigation, handleGetChapters, home }) {
           <SectionList
             sections={sections}
             keyExtractor={(item) => item.uuid}
+            // stickySectionHeadersEnabled
+            showsVerticalScrollIndicator={false}
             renderSectionHeader={({ section }) => (
               <View style={styles.sectionHeaderContainer}>
-                <CustomText style={styles.sectionHeader}>
+                {/* <CustomText style={styles.sectionHeader}>
                   {section.title}
-                </CustomText>
+                </CustomText> */}
                 {/* {!isEqual(section?.title, 'Recent View') && (
                   <TouchableOpacity
                     activeOpacity={0.8}
@@ -232,7 +284,7 @@ function Home({ language, navigation, handleGetChapters, home }) {
           />
         )}
       </View>
-    </LinearGradient>
+    </ImageBackground>
   );
 }
 

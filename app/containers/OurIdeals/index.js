@@ -5,7 +5,13 @@ OurIdeals
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StatusBar, FlatList, TouchableOpacity } from 'react-native';
+import {
+  View,
+  StatusBar,
+  FlatList,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import isEqual from 'lodash/isEqual';
 
 import { createStructuredSelector } from 'reselect';
@@ -14,7 +20,6 @@ import { compose } from 'redux';
 import makeSelectOurIdeals from './selectors';
 import styles from './styles';
 import FastImage from 'react-native-fast-image';
-import LinearGradient from 'react-native-linear-gradient';
 import { FONTS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import { setFontFamily } from '../../utils/device';
@@ -102,9 +107,10 @@ function OurIdeals({
   }, [selectCard, user]);
 
   return (
-    <LinearGradient
-      colors={['rgb(227,126,93)', 'rgb(242,206,88)']}
+    <ImageBackground
+      source={IMAGES.AppBackground}
       style={styles.container}
+      resizeMode="cover" // Similar to background-size in CSS
     >
       <StatusBar
         barStyle="light-content"
@@ -147,7 +153,7 @@ function OurIdeals({
           onPress={navigateToHome}
         />
       </View>
-    </LinearGradient>
+    </ImageBackground>
   );
 }
 

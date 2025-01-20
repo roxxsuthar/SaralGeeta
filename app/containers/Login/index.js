@@ -7,9 +7,14 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StatusBar, TouchableOpacity } from 'react-native';
+import {
+  View,
+  StatusBar,
+  TouchableOpacity,
+  ImageBackground,
+  ActivityIndicator,
+} from 'react-native';
 import { createStructuredSelector } from 'reselect';
-import LinearGradient from 'react-native-linear-gradient';
 import { compose } from 'redux';
 import PhoneInput from 'react-native-phone-number-input';
 import FastImage from 'react-native-fast-image';
@@ -19,7 +24,7 @@ import get from 'lodash/get';
 
 import makeSelectLogin from './selectors';
 import styles from './styles';
-import { makeSelectAppLanguage } from '../App/selectors';
+import { makeSelectAppLanguage, makeSelectAppLoading } from '../App/selectors';
 import strings from '../../../i18n';
 import CustomText from '../../components/CustomText';
 import CustomButton from '../../components/CustomButton';
@@ -28,7 +33,7 @@ import { COLORS, CONSTANTS, FONTS, IMAGES } from '../../constants';
 import { hp } from '../../utils/responsive';
 import { sendOtpAction } from '../App/actions';
 
-function Login({ language, navigation, handleSendOtp }) {
+function Login({ language, navigation, handleSendOtp, loading }) {
   const { currentLanguage } = language;
   const { login: loginMessage } = strings;
 
@@ -87,9 +92,10 @@ function Login({ language, navigation, handleSendOtp }) {
   }, [mobileNumber]);
 
   return (
-    <LinearGradient
-      colors={['rgb(227,126,93)', 'rgb(242,206,88)']}
+    <ImageBackground
+      source={IMAGES.AppBackground}
       style={styles.container}
+      resizeMode="cover" // Similar to background-size in CSS
     >
       <StatusBar
         barStyle="light-content"
@@ -199,7 +205,13 @@ function Login({ language, navigation, handleSendOtp }) {
             ) : null}
           </View>
           <CustomButton
-            title={loginMessage.login.defaultMessage}
+            title={
+              loading ? (
+                <ActivityIndicator />
+              ) : (
+                loginMessage.login.defaultMessage
+              )
+            }
             labelStyle={Object.assign(
               setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
               styles.buttonLabel,
@@ -248,30 +260,28 @@ function Login({ language, navigation, handleSendOtp }) {
             </TouchableOpacity>
           </View>
         </View>
-        <View>
-          <View style={styles.footerText}>
+        {/* <View style={styles.footerText}>
+          <CustomText
+            style={Object.assign(
+              setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+              styles.dont,
+            )}
+          >
+            {loginMessage.dont.defaultMessage}
+          </CustomText>
+          <TouchableOpacity activeOpacity={0.8}>
             <CustomText
               style={Object.assign(
                 setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                styles.dont,
+                styles.create,
               )}
             >
-              {loginMessage.dont.defaultMessage}
+              {loginMessage.create.defaultMessage}
             </CustomText>
-            <TouchableOpacity activeOpacity={0.8}>
-              <CustomText
-                style={Object.assign(
-                  setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                  styles.create,
-                )}
-              >
-                {loginMessage.create.defaultMessage}
-              </CustomText>
-            </TouchableOpacity>
-          </View>
-        </View>
+          </TouchableOpacity>
+        </View> */}
       </View>
-    </LinearGradient>
+    </ImageBackground>
   );
 }
 
@@ -282,6 +292,7 @@ Login.propTypes = {
 const mapStateToProps = createStructuredSelector({
   login: makeSelectLogin(),
   language: makeSelectAppLanguage(),
+  loading: makeSelectAppLoading(),
 });
 
 function mapDispatchToProps(dispatch) {

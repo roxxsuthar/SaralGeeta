@@ -12,7 +12,6 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import LinearGradient from 'react-native-linear-gradient';
 import Video from 'react-native-video';
 import Orientation from 'react-native-orientation-locker';
 import RNFS from 'react-native-fs';
@@ -42,6 +41,7 @@ import { makeSelectIntroVideo, makeSelectUser } from '../App/selectors';
 import { introVideoWatched } from '../App/actions';
 import CustomText from '../../components/CustomText';
 import makeSelectShloks from '../Shloks/selectors';
+import { ImageBackground } from 'react-native';
 
 Sound.setCategory('Playback'); // Allow audio to play in the background
 const GLADIA_API_KEY = 'bbebcb87-bb37-4aff-b8ba-d5bda7a96f4c';
@@ -217,10 +217,14 @@ function LearnGeeta({
       return;
     }
 
+    console.log('audio', audio);
+    // Attempt to play the audio
     audio.play((success) => {
+      console.log('-----is audio playing-----', audio.isPlaying());
       if (!success) {
-        console.error('Audio playback failed');
-        // Optional: Implement retry logic here
+        console.error(`Audio playback failed.`);
+      } else {
+        console.log('Audio playback successful');
       }
     });
   };
@@ -346,6 +350,7 @@ function LearnGeeta({
 
   const startRecording = async () => {
     try {
+      setTranscription('');
       audio.stop();
       audio.release();
       console.log('Attempting to start recording...');
@@ -587,34 +592,41 @@ function LearnGeeta({
   }, [shloks, shlokIndex]);
 
   const playAgain = useCallback(() => {
+    Sound.setCategory('Playback', true);
     setIsButton(false);
     setTranscription('');
     setIsVideoPlaying(false);
     setVideoUrl(get(learnGeeta, 'data.shlokas_video_hls'));
     setIsVideoReady(false);
-  }, []);
+    loadAudio();
+  }, [learnGeeta]);
 
   return (
-    <SafeAreaView style={styles.container} edges={['left', 'right']}>
+    <SafeAreaView
+      style={styles.container}
+      edges={['left', 'right', 'bottom', 'top']}
+    >
       <StatusBar
         barStyle="light-content"
         translucent
         backgroundColor="transparent"
+        hidden={true}
       />
       {get(learnGeeta, 'loading') ? (
         <View style={styles.cloudAnimationContainer}>
           <Lottie
             ref={animationRef}
-            source={IMAGES.CloudAnimation} // Path to your Lottie animation JSON
+            source={IMAGES.TranslationAnimation} // Path to your Lottie animation JSON
             autoPlay
             loop
             style={styles.cloudAnimation}
           />
         </View>
       ) : (
-        <LinearGradient
-          colors={['#000000', '#000000']}
+        <ImageBackground
+          source={IMAGES.MainScreenBackground}
           style={styles.gradientBorder}
+          resizeMode="cover" // Similar to background-size in CSS
         >
           <View style={[styles.videoWrapper, { aspectRatio }]}>
             <Video
@@ -637,7 +649,7 @@ function LearnGeeta({
               }
               ref={videoRef}
               style={styles.backgroundVideo}
-              resizeMode="contain"
+              resizeMode="cover"
               paused={isVideoPaused()}
               volume={1.0}
               audioFocus={false}
@@ -678,13 +690,33 @@ function LearnGeeta({
                   }
                 }
               }}
-              onPlaybackStalled={() => {
-                console.log('Playback stalled');
-                // Pause the audio when the video is stuck
-                if (audio && audio.isPlaying()) {
-                  audio.pause();
+              onPlaybackStateChanged={(e) => {
+                console.log('------playback state change', e?.isPlaying);
+                if (isEqual(e?.isPlaying, false) && !isVideoPlaying) {
+                  if (audio) {
+                    console.log('-----pause-----');
+                    audio.pause();
+                  }
+                } else {
+                  if (audio) {
+                    console.log('-----playing-----');
+                    audio.play();
+                  }
                 }
               }}
+              // onPlaybackStalled={() => {
+              //   console.log('Playback stalled');
+              //   // Pause the audio when the video is stuck
+              //   if (audio && audio.isPlaying()) {
+              //     audio.pause();
+              //   }
+              // }}
+              // onBuffer={() => {
+              //   console.log('Playback buffering');
+              //   if (audio && audio.isPlaying()) {
+              //     audio.pause();
+              //   }
+              // }}
               onPlaybackResume={() => {
                 console.log('Playback resumed');
                 // Resume the audio when the video plays again
@@ -703,7 +735,7 @@ function LearnGeeta({
               progressUpdateInterval={250}
               repeat={false}
               poster="path_to_placeholder_image" // Add a placeholder image while video loads
-              posterResizeMode="contain"
+              posterResizeMode="cover"
             />
           </View>
           {waitingForTranslation && (
@@ -719,37 +751,41 @@ function LearnGeeta({
           )}
           {!isEmpty(transcription) && (
             <View style={styles.controlContainer}>
-              {!(shlokIndex < 1) && (
-                <TouchableOpacity
-                  style={styles.controlButtonStyle}
-                  onPress={getPreviousShlok}
-                  activeOpacity={0.8}
-                >
+              <TouchableOpacity
+                style={styles.controlButtonStyle}
+                onPress={!(shlokIndex < 1) ? getPreviousShlok : null}
+                activeOpacity={0.8}
+              >
+                {!(shlokIndex < 1) && (
                   <View style={styles.controlIconStyle}>
-                    <IMAGES.Left height="100%" width="100%" />
+                    <IMAGES.WhiteLeftArrowIcon height="100%" width="100%" />
                   </View>
-                </TouchableOpacity>
-              )}
+                )}
+              </TouchableOpacity>
+
               <TouchableOpacity
                 style={styles.controlButtonStyle1}
                 onPress={playAgain}
                 activeOpacity={0.8}
               >
                 <View style={styles.controlIconStyle}>
-                  <IMAGES.PlayerIcon height="100%" width="100%" />
+                  <IMAGES.ReplayButton height="100%" width="100%" />
                 </View>
               </TouchableOpacity>
-              {!(shlokIndex + 1 < shloks?.length) && (
-                <TouchableOpacity
-                  style={styles.controlButtonStyle}
-                  onPress={() => getNextShlok()}
-                  activeOpacity={0.8}
-                >
+
+              <TouchableOpacity
+                style={styles.controlButtonStyle}
+                onPress={() =>
+                  shlokIndex + 1 < shloks?.data?.length ? getNextShlok() : null
+                }
+                activeOpacity={0.8}
+              >
+                {shlokIndex + 1 < shloks?.data?.length && (
                   <View style={styles.controlIconStyle}>
-                    <IMAGES.Right height="100%" width="100%" />
+                    <IMAGES.WhiteRightArrowIcon height="100%" width="100%" />
                   </View>
-                </TouchableOpacity>
-              )}
+                )}
+              </TouchableOpacity>
             </View>
           )}
           {introVideo && (
@@ -758,7 +794,7 @@ function LearnGeeta({
                 <View style={styles.cloudAnimationContainer}>
                   <Lottie
                     ref={animationRef}
-                    source={IMAGES.CloudAnimation} // Path to your Lottie animation JSON
+                    source={IMAGES.TranslationAnimation} // Path to your Lottie animation JSON
                     autoPlay
                     loop
                     style={styles.cloudAnimation}
@@ -766,43 +802,6 @@ function LearnGeeta({
                 </View>
               ) : (
                 <View style={styles.overlay}>
-                  {isButton && (
-                    <>
-                      {isRecordingButton && (
-                        <View style={styles.container3}>
-                          <Lottie
-                            ref={animationRef}
-                            source={IMAGES.PlayerLottie} // Path to your Lottie animation JSON
-                            autoPlay
-                            loop
-                            style={styles.animation}
-                          />
-                        </View>
-                      )}
-
-                      {!isRecordingButton ? (
-                        <TouchableOpacity
-                          style={styles.buttonStyle}
-                          onPress={startRecording}
-                          activeOpacity={0.8}
-                        >
-                          <View style={styles.buttonIconStyle}>
-                            <IMAGES.MicIcon height="100%" width="100%" />
-                          </View>
-                        </TouchableOpacity>
-                      ) : (
-                        <TouchableOpacity
-                          style={styles.buttonStyle}
-                          onPress={stopRecording}
-                          activeOpacity={0.8}
-                        >
-                          <View style={styles.buttonIconStyle}>
-                            <IMAGES.PauseIcon height="100%" width="100%" />
-                          </View>
-                        </TouchableOpacity>
-                      )}
-                    </>
-                  )}
                   <View style={styles.svgImageContainer}>
                     <IMAGES.ShlokBackground width="100%" height="100%" />
                     {!isEmpty(transcription) && (
@@ -810,15 +809,51 @@ function LearnGeeta({
                         Result: {transcription}
                       </CustomText>
                     )}
-                    <CustomText style={styles.overlayText}>
-                      {get(learnGeeta, 'data.shlokas_text')}
-                    </CustomText>
+                    {isEmpty(transcription) && (
+                      <CustomText style={styles.overlayText}>
+                        {get(learnGeeta, 'data.shlokas_text')}
+                      </CustomText>
+                    )}
+                    {isButton && (
+                      <>
+                        {!isRecordingButton ? (
+                          <TouchableOpacity
+                            style={styles.buttonStyle}
+                            onPress={startRecording}
+                            activeOpacity={0.8}
+                          >
+                            <View style={styles.buttonIconStyle}>
+                              <IMAGES.MicIcon height="100%" width="100%" />
+                            </View>
+                          </TouchableOpacity>
+                        ) : (
+                          <TouchableOpacity
+                            style={styles.buttonStyle}
+                            onPress={stopRecording}
+                            activeOpacity={0.8}
+                          >
+                            <View style={styles.buttonIconStyle}>
+                              <IMAGES.PauseIcon height="100%" width="100%" />
+                            </View>
+                          </TouchableOpacity>
+                        )}
+                        {isRecordingButton && (
+                          <Lottie
+                            ref={animationRef}
+                            source={IMAGES.PlayerLottie}
+                            autoPlay
+                            loop
+                            style={styles.animation}
+                          />
+                        )}
+                      </>
+                    )}
                   </View>
                 </View>
               )}
             </>
           )}
-        </LinearGradient>
+        </ImageBackground>
       )}
     </SafeAreaView>
   );
@@ -852,3 +887,14 @@ function mapDispatchToProps(dispatch) {
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(withConnect)(LearnGeeta);
+{
+  /* <View style={styles.cloudAnimationContainer}>
+          <Lottie
+            ref={animationRef}
+            source={IMAGES.CloudAnimation} // Path to your Lottie animation JSON
+            autoPlay
+            loop
+            style={styles.cloudAnimation}
+          />
+        </View> */
+}

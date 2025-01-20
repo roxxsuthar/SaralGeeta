@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     borderRadius: hp(12),
     width: 'auto',
     marginTop: hp(26),
+    height: hp(45),
   },
   languageSelectContainer: {
     marginTop: hp(40),
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
     top: hp(-200),
     height: hp(450),
     width: hp(470),
+    opacity: 0.4,
   },
 });
 

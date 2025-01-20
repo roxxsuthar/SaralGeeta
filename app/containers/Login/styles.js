@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     borderRadius: hp(12),
     width: 'auto',
     marginTop: hp(20),
-    height: hp(44),
+    height: hp(45),
   },
   continueText: {
     fontSize: hp(14),
@@ -80,19 +80,23 @@ const styles = StyleSheet.create({
   dont: {
     fontWeight: '400',
     fontSize: hp(15),
-    lineHeight: hp(21),
+    lineHeight: hp(16),
     color: COLORS.codGray,
+    textAlign: 'center',
+    marginTop: hp(5),
   },
   create: {
     fontWeight: '700',
     fontSize: hp(15),
     lineHeight: hp(21),
     color: COLORS.codGray,
+    textAlign: 'center',
   },
   footerText: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: hp(40),
+    alignItems: 'center',
   },
   phoneNumberContainer: {
     marginTop: hp(25),
@@ -199,6 +203,7 @@ const styles = StyleSheet.create({
     top: hp(-200),
     height: hp(450),
     width: hp(470),
+    opacity: 0.4,
   },
 });
 

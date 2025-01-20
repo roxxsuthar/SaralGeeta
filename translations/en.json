@@ -36,7 +36,7 @@
     },
     "buttonLabel": {
       "id": "container.OnboardingOne.buttonLabel",
-      "defaultMessage": "Skip"
+      "defaultMessage": "Next"
     }
   },
   "OnboardingSecond": {
@@ -54,7 +54,7 @@
     },
     "buttonLabel": {
       "id": "container.OnboardingSecond.buttonLabel",
-      "defaultMessage": "Skip"
+      "defaultMessage": "Finish"
     }
   },
   "language": {
@@ -140,7 +140,7 @@
     },
     "enterOtp": {
       "id": "container.otpScreen.login",
-      "defaultMessage": "Enter otp here"
+      "defaultMessage": "Enter OTP here"
     },
     "dont": {
       "id": "container.otpScreen.dont",
@@ -180,7 +180,7 @@
   "Home": {
     "headerText": {
       "id": "app.containers.Home.headerText",
-      "defaultMessage": "Home"
+      "defaultMessage": "Chapters"
     }
   },
   "Chapters": {

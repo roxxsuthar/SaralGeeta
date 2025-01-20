@@ -7,10 +7,14 @@
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, TouchableOpacity, StatusBar } from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  StatusBar,
+  ImageBackground,
+} from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
 
 import makeSelectLanguage from './selectors';
@@ -38,9 +42,10 @@ function Language({ navigation, language, _handleSetLanguage }) {
   }, [languageType]);
 
   return (
-    <LinearGradient
-      colors={['rgb(227,126,93)', 'rgb(242,206,88)']}
+    <ImageBackground
+      source={IMAGES.AppBackground}
       style={styles.container}
+      resizeMode="cover" // Similar to background-size in CSS
     >
       <StatusBar
         barStyle="light-content"
@@ -118,7 +123,7 @@ function Language({ navigation, language, _handleSetLanguage }) {
           onPress={() => updateLanguage()}
         />
       </View>
-    </LinearGradient>
+    </ImageBackground>
   );
 }
 Language.propTypes = {

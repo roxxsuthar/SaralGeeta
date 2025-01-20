@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     marginHorizontal: wp(16),
-    marginTop: hp(69),
+    marginTop: hp(35),
   },
   headerText: {
     fontSize: hp(17),

@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     marginHorizontal: wp(16),
-    marginTop: hp(69),
+    marginTop: hp(35),
   },
   headerText: {
     fontSize: hp(17),
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   sectionHeader: {
     fontSize: hp(15),
-    fontWeight: '600',
+    fontWeight: '700',
     lineHeight: hp(22),
     color: COLORS.black,
   },
@@ -130,6 +130,41 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: COLORS.firefly,
     textAlign: 'center',
+  },
+  chakraStyle: {
+    position: 'absolute',
+    right: hp(-200),
+    top: hp(-200),
+    height: hp(450),
+    width: hp(470),
+    opacity: 0.4,
+  },
+  headerSubContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  icon: {
+    height: hp(24),
+    width: hp(24),
+  },
+  headerContainer: {
+    height: hp(43),
+    marginBottom: hp(10),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  headerSearchContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerBellContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: wp(20),
+  },
+  rightIconContainer: {
+    flexDirection: 'row',
   },
 });
 

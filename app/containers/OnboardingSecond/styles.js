@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     borderRadius: hp(12),
     width: 'auto',
     marginTop: hp(20),
+    height: hp(45),
   },
 });
 

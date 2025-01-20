@@ -12,16 +12,16 @@ const styles = StyleSheet.create({
     top: hp(-200),
     height: hp(450),
     width: hp(470),
+    opacity: 0.4,
   },
   chapterImage: {
-    height: hp(60),
-    width: hp(60),
+    height: hp(36),
+    width: hp(36),
     borderRadius: hp(75),
   },
   mainContainer: {
     flex: 1,
-
-    marginTop: hp(69),
+    marginTop: hp(35),
   },
   header: { marginHorizontal: wp(16) },
   headerText: {
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     lineHeight: hp(22),
     fontWeight: '700',
     color: COLORS.white,
+    textAlignVertical: 'center',
     textAlign: 'center',
   },
   headerComponent: {
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     marginTop: hp(10),
     paddingHorizontal: wp(16),
+    paddingBottom: hp(24),
   },
   itemSeparator: {
     height: hp(20),
@@ -110,6 +112,34 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     lineHeight: hp(22),
     color: COLORS.doveGray,
+  },
+  headerSubContainer: {
+    height: hp(30),
+    width: hp(30),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: wp(16),
+  },
+  icon: {
+    height: hp(24),
+    width: hp(24),
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  headerSearchContainer: {
+    height: hp(30),
+    width: hp(30),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: wp(16),
+  },
+  imageContainer: {
+    flexDirection: 'row',
+  },
+  headerIcons: {
+    flexDirection: 'row',
   },
 });
 
