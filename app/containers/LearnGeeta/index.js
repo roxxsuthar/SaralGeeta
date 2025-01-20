@@ -192,7 +192,6 @@ function LearnGeeta({
     // Trigger playback when both audio and video are ready
     if (!introVideo) {
       videoRef.current?.seek(0);
-      // videoRef.current?.play();
     } else if (
       isAudioReady &&
       isVideoReady &&
@@ -204,7 +203,7 @@ function LearnGeeta({
       videoRef.current?.seek(0);
       // videoRef.current?.play();
     }
-  }, [isAudioReady, isVideoReady, introVideo, isLoading, isButton]);
+  }, [isAudioReady, isVideoReady, isLoading, isButton]);
 
   const playAudio = () => {
     if (!audio || !isAudioReady) {
@@ -604,7 +603,7 @@ function LearnGeeta({
   return (
     <SafeAreaView
       style={styles.container}
-      edges={['left', 'right', 'bottom', 'top']}
+      // edges={['left', 'right', 'bottom', 'top']}
     >
       <StatusBar
         barStyle="light-content"
@@ -628,7 +627,8 @@ function LearnGeeta({
           style={styles.gradientBorder}
           resizeMode="cover" // Similar to background-size in CSS
         >
-          <View style={[styles.videoWrapper, { aspectRatio }]}>
+          {/* <View style={[styles.videoWrapper, { aspectRatio }]}> */}
+          <View style={styles.videoWrapper}>
             <Video
               source={
                 isEqual(introVideo, false)
@@ -657,6 +657,7 @@ function LearnGeeta({
               mixWithOthers={true}
               playInBackground={false}
               playWhenInactive={false}
+              setFullScreen={true}
               onError={() => {
                 setIsVideoReady(false);
                 audio.pause();
@@ -692,13 +693,17 @@ function LearnGeeta({
               }}
               onPlaybackStateChanged={(e) => {
                 console.log('------playback state change', e?.isPlaying);
-                if (isEqual(e?.isPlaying, false) && !isVideoPlaying) {
+                if (
+                  isEqual(e?.isPlaying, false) &&
+                  !isVideoPlaying &&
+                  introVideo
+                ) {
                   if (audio) {
                     console.log('-----pause-----');
                     audio.pause();
                   }
                 } else {
-                  if (audio) {
+                  if (audio && !isVideoPlaying && introVideo) {
                     console.log('-----playing-----');
                     audio.play();
                   }
@@ -730,8 +735,7 @@ function LearnGeeta({
                 bufferForPlaybackMs: 2500,
                 bufferForPlaybackAfterRebufferMs: 5000,
               }}
-              // controls={true}
-              fullscreen={false}
+              controls={false}
               progressUpdateInterval={250}
               repeat={false}
               poster="path_to_placeholder_image" // Add a placeholder image while video loads
@@ -887,14 +891,3 @@ function mapDispatchToProps(dispatch) {
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(withConnect)(LearnGeeta);
-{
-  /* <View style={styles.cloudAnimationContainer}>
-          <Lottie
-            ref={animationRef}
-            source={IMAGES.CloudAnimation} // Path to your Lottie animation JSON
-            autoPlay
-            loop
-            style={styles.cloudAnimation}
-          />
-        </View> */
-}
