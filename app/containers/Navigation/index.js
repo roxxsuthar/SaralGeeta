@@ -27,7 +27,9 @@ export function Navigation({ navigation, language, onboarding, token, user }) {
   const { isOnboardingVisited } = onboarding;
 
   useEffect(() => {
-    SplashScreen.hide(); // Hide the splash screen once the app is ready
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 3000);
   }, []);
 
   return (
