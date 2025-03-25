@@ -11,6 +11,10 @@ enableScreens(true);
 
 const { store, persistor } = configureStore();
 
+if (__DEV__) {
+  require('./ReactotronConfig');
+}
+
 function App() {
   return (
     <Provider store={store}>

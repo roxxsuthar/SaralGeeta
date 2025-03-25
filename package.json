@@ -63,6 +63,7 @@
     "react-native-video-player": "^0.14.0",
     "react-redux": "^9.1.2",
     "react-three-fiber": "^6.0.13",
+    "reactotron-react-native": "^5.1.12",
     "redux": "^5.0.1",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",

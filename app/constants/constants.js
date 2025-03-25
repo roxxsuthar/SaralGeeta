@@ -22,6 +22,7 @@ export const Navigation = {
   EBooks: 'EBooks',
   Shloks: 'Shloks',
   LearnGeeta: 'LearnGeeta',
+  Profile: 'Profile',
 };
 
 export default CONSTANTS;

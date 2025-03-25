@@ -10,6 +10,7 @@ import OnboardingSecond from '../OnboardingSecond';
 import Language from '../Language';
 import Login from '../Login';
 import OtpScreen from '../OtpScreen';
+import Profile from '../Profile';
 
 const AppStack = createStackNavigator();
 
@@ -26,7 +27,7 @@ const AuthNavigator = ({
         headerShown: false,
       }}
     >
-      {!isOnboardingVisited && (
+      {/* {!isOnboardingVisited && (
         <>
           <AppStack.Screen
             name={Navigation.OnboardingOne}
@@ -79,6 +80,14 @@ const AuthNavigator = ({
       <AppStack.Screen
         name="DashboardNavigator"
         component={DashboardNavigator}
+        options={{
+          headerShown: false,
+        }}
+        initialParams={{ currentLanguage }}
+      /> */}
+      <AppStack.Screen
+        name={Navigation.Profile}
+        component={Profile}
         options={{
           headerShown: false,
         }}
