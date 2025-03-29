@@ -11,6 +11,10 @@ import Language from '../Language';
 import Login from '../Login';
 import OtpScreen from '../OtpScreen';
 import Profile from '../Profile';
+import EditProfile from '../EditProfile';
+import PrivacyPolicy from '../PrivacyPolicy';
+import TermsOfUse from '../TermsOfUse';
+import ContactUs from '../ContactUs';
 
 const AppStack = createStackNavigator();
 
@@ -85,9 +89,42 @@ const AuthNavigator = ({
         }}
         initialParams={{ currentLanguage }}
       /> */}
-      <AppStack.Screen
+      {/* <AppStack.Screen
         name={Navigation.Profile}
         component={Profile}
+        options={{
+          headerShown: false,
+        }}
+        initialParams={{ currentLanguage }}
+      />
+    </AppStack.Navigator> */}
+    {/* <AppStack.Screen
+        name={Navigation.EditProfile}
+        component={EditProfile}
+        options={{
+          headerShown: false,
+        }}
+        initialParams={{ currentLanguage }}
+      /> */}
+       {/* <AppStack.Screen
+        name={Navigation.PrivacyPolicy}
+        component={PrivacyPolicy}
+        options={{
+          headerShown: false,
+        }}
+        initialParams={{ currentLanguage }}
+      /> */}
+      {/* <AppStack.Screen
+        name={Navigation.TermsOfUse}
+        component={TermsOfUse}
+        options={{
+          headerShown: false,
+        }}
+        initialParams={{ currentLanguage }}
+      /> */}
+      <AppStack.Screen
+        name={Navigation.ContactUs}
+        component={ContactUs}
         options={{
           headerShown: false,
         }}

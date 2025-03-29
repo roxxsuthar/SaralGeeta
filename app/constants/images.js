@@ -8,6 +8,7 @@ import Facebook from '../assets/images/facebook.svg';
 import Google from '../assets/images/google.svg';
 import CloseIcon from '../assets/images/CloseIcon.svg';
 import ChevronLeft from '../assets/images/chevron-left.svg';
+import ChevronLeftSolid from '../assets/images/chevron-left-solid.svg';
 import Logo from '../assets/images/logo-saral-geeta.svg';
 import LeftArrow from '../assets/images/ic-right.svg';
 import PlayerIcon from '../assets/images/player-play.svg';
@@ -26,6 +27,11 @@ import WhiteLeftArrowIcon from '../assets/images/chevron-left-solid.svg';
 import WhiteRightArrowIcon from '../assets/images/chevron-right-solid.svg';
 import WhitePlayIcon from '../assets/images/white-play-button.svg';
 import ReplayButton from '../assets/images/replayButton.svg';
+import Bars from '../assets/images/bars-3.svg';
+import User from '../assets/images/user.svg';
+import Lock from '../assets/images/lock.svg';
+import ChevronDown from '../assets/images/chevron-down.svg';
+import Message from '../assets/images/message.svg';
 
 // const PlanCard = require('../assets/images/planCard.png');
 const GeetLearn = require('../assets/images/img-geeta-learn.png');
@@ -43,9 +49,15 @@ const CloudAnimation = require('../assets/images/cloudAnimation.json');
 const TranslationAnimation = require('../assets/images/translationAnimation.json');
 
 const IMAGES = {
+  ChevronLeftSolid,
+  User,
+  Lock,
+  Bars,
   GeetLearn,
   KrishnaImage,
   CircleCheck,
+  ChevronDown,
+  Message,
   Circle,
   Facebook,
   Google,

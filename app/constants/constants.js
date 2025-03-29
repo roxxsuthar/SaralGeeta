@@ -23,6 +23,10 @@ export const Navigation = {
   Shloks: 'Shloks',
   LearnGeeta: 'LearnGeeta',
   Profile: 'Profile',
+  EditProfile: 'EditProfile',
+  PrivacyPolicy:'PrivacyPolicy',
+  TermsOfUse:'TermsOfUse',
+  ContactUs:'ContactUs'
 };
 
 export default CONSTANTS;
