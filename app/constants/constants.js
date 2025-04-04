@@ -10,7 +10,9 @@ const CONSTANTS = {
 };
 
 export const Navigation = {
+  Dashboard: "Dashboard",
   AppNavigator: 'AppNavigator',
+  DrawerNavigator: 'DrawerNavigator',
   OnboardingOne: 'OnboardingOne',
   OnboardingSecond: 'OnboardingSecond',
   Language: 'Language',

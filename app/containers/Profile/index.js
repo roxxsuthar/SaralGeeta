@@ -14,7 +14,9 @@ import styles from './styles';
 import { IMAGES } from '../../constants';
 import { TouchableOpacity } from 'react-native';
 import CustomText from '../../components/CustomText';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 function Profile() {
+  const navigation= useNavigation()
   return (
     <ImageBackground
       source={IMAGES.AppBackground}
@@ -28,7 +30,7 @@ function Profile() {
       />
       <View style="{styles.container}">
         <View style={styles.header}>
-          <TouchableOpacity activeOpacity={0.8} style={styles.iconContainer}>
+          <TouchableOpacity activeOpacity={0.8} style={styles.iconContainer} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
             <View style={styles.icon}>
               <IMAGES.Bars height="100%" width="100%" />
             </View>
@@ -64,7 +66,7 @@ function Profile() {
               <CustomText style={styles.detailText}>1x</CustomText>
             </View>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity style={styles.button}onPress={() => navigation.navigate('EditProfile')}>
                 <IMAGES.User
                   style={styles.icon}
                 />

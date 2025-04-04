@@ -27,11 +27,11 @@ import strings from '../../../i18n';
 import { makeSelectAppLanguage } from '../App/selectors';
 import { getChapters } from './actions';
 import { Navigation } from '../../constants/constants';
+import { DrawerActions, } from '@react-navigation/native';
 
 function Home({ language, navigation, handleGetChapters, home }) {
   const { Home: HomeMessage } = strings;
   const { currentLanguage } = language;
-
   const sections = [
     // {
     //   title: 'Recent View',
@@ -213,6 +213,7 @@ function Home({ language, navigation, handleGetChapters, home }) {
         </View> */}
         <View style={styles.headerContainer}>
           <TouchableOpacity
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
             activeOpacity={0.8}
             // onPress={backHandler}
             style={styles.headerSubContainer}

@@ -7,6 +7,7 @@ import SaralGeetaApp from './app/containers/App';
 
 import configureStore from './configureStore';
 
+
 enableScreens(true);
 
 const { store, persistor } = configureStore();

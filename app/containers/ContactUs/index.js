@@ -14,7 +14,9 @@ import styles from './styles';
 import { COLORS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import { TouchableOpacity } from 'react-native';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 function ContactUs() {
+  const navigation = useNavigation();
   return (
     <ImageBackground
       source={IMAGES.AppBackground}
@@ -28,7 +30,7 @@ function ContactUs() {
       />
       <View style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity activeOpacity={0.8} style={styles.iconContainer}>
+          <TouchableOpacity activeOpacity={0.8} style={styles.iconContainer} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
             <View style={styles.icon}>
               <IMAGES.Bars height="100%" width="100%" />
             </View>

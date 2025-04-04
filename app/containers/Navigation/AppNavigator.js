@@ -2,7 +2,6 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import DashboardNavigator from './DashboardNavigator';
 import { COLORS } from '../../constants';
 import { Navigation } from '../../constants/constants';
 import OnboardingOne from '../OnboardingOne';
@@ -15,6 +14,7 @@ import EditProfile from '../EditProfile';
 import PrivacyPolicy from '../PrivacyPolicy';
 import TermsOfUse from '../TermsOfUse';
 import ContactUs from '../ContactUs';
+import DrawerNavigator from './DrawerNavigator';
 
 const AppStack = createStackNavigator();
 
@@ -122,9 +122,17 @@ const AuthNavigator = ({
         }}
         initialParams={{ currentLanguage }}
       /> */}
-      <AppStack.Screen
+      {/* <AppStack.Screen
         name={Navigation.ContactUs}
         component={ContactUs}
+        options={{
+          headerShown: false,
+        }}
+        initialParams={{ currentLanguage }}
+      /> */}
+      <AppStack.Screen
+        name="Drawer"
+        component={DrawerNavigator}
         options={{
           headerShown: false,
         }}

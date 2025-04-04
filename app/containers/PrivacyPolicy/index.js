@@ -15,8 +15,10 @@ import { IMAGES } from '../../constants';
 import { TouchableOpacity } from 'react-native';
 import CustomText from '../../components/CustomText';
 import { ScrollView } from 'react-native-gesture-handler';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 
 function PrivacyPolicy() {
+  const navigation = useNavigation();
   return (
     <ImageBackground
       source={IMAGES.AppBackground}
@@ -30,7 +32,7 @@ function PrivacyPolicy() {
       />
       <View style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity activeOpacity={0.8} style={styles.iconContainer}>
+          <TouchableOpacity activeOpacity={0.8} style={styles.iconContainer} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}> 
             <View style={styles.icon}>
               <IMAGES.Bars height="100%" width="100%" />
             </View>

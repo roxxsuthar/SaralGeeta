@@ -2,6 +2,14 @@
 // All IMAGES constants here.
 
 // import LogoSignEmoha from '../assets/images/LogoSignEmoha.svg';
+import DashBoard from '../assets/images/dashborad.svg'
+import Contact from '../assets/images/contact-us.svg'
+import Bell from '../assets/images/bell.svg'
+import Privacy from '../assets/images/privacy-policy.svg'
+import TermsOfUse from '../assets/images/terms-of-use.svg'
+import Instragram from '../assets/images/instagram.svg'
+import Twitter from '../assets/images/x.svg'
+import SignOut from '../assets/images/signout.svg'
 import CircleCheck from '../assets/images/circle-check.svg';
 import Circle from '../assets/images/circle.svg';
 import Facebook from '../assets/images/facebook.svg';
@@ -34,6 +42,7 @@ import ChevronDown from '../assets/images/chevron-down.svg';
 import Message from '../assets/images/message.svg';
 
 // const PlanCard = require('../assets/images/planCard.png');
+const Avatar = require('../assets/images/Avatar.png');
 const GeetLearn = require('../assets/images/img-geeta-learn.png');
 const KrishnaImage = require('../assets/images/img-krishna.png');
 const Chakra = require('../assets/images/geeta_learn_animation.gif');
@@ -49,6 +58,15 @@ const CloudAnimation = require('../assets/images/cloudAnimation.json');
 const TranslationAnimation = require('../assets/images/translationAnimation.json');
 
 const IMAGES = {
+  Avatar,
+  DashBoard,
+  Contact,
+  Bell,
+  Privacy,
+  TermsOfUse,
+  Instragram,
+  Twitter,
+  SignOut,
   ChevronLeftSolid,
   User,
   Lock,
