@@ -10,7 +10,9 @@ const CONSTANTS = {
 };
 
 export const Navigation = {
+  Dashboard: "Dashboard",
   AppNavigator: 'AppNavigator',
+  DrawerNavigator: 'DrawerNavigator',
   OnboardingOne: 'OnboardingOne',
   OnboardingSecond: 'OnboardingSecond',
   Language: 'Language',
@@ -23,6 +25,10 @@ export const Navigation = {
   Shloks: 'Shloks',
   LearnGeeta: 'LearnGeeta',
   Profile: 'Profile',
+  EditProfile: 'EditProfile',
+  PrivacyPolicy:'PrivacyPolicy',
+  TermsOfUse:'TermsOfUse',
+  ContactUs:'ContactUs'
 };
 
 export default CONSTANTS;

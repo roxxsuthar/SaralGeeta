@@ -2,6 +2,7 @@
 const COLORS = {
   black: '#000000',
   white: '#FFFFFF',
+  orange:"#F06225",
   transparent: '#00FFFFFF',
   firefly: '#10312B',
   dark: (opacity = 1) => `rgba(54, 60, 75, ${opacity})`,
