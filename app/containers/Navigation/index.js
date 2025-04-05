@@ -4,31 +4,58 @@
  *
  */
 
-import React, {memo} from 'react';
+import React, { memo, useEffect } from 'react';
 // import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import {createStructuredSelector} from 'reselect';
-import {compose} from 'redux';
-import {NavigationContainer} from '@react-navigation/native';
+import { createStructuredSelector } from 'reselect';
+import SplashScreen from 'react-native-splash-screen';
+import { compose } from 'redux';
+import { NavigationContainer } from '@react-navigation/native';
+import MainNavigatorWithBackAndAppState from './MainNavigator';
+import {
+  makeSelectAppLanguage,
+  makeSelectOnboardingVisited,
+  makeSelectToken,
+  makeSelectUser,
+} from '../App/selectors';
 
 import makeSelectNavigation from './selectors';
-import RootNavigator from './RootNavigator';
 
-export function Navigation() {
+export function Navigation({ navigation, language, onboarding, token, user }) {
+  const { isLanguageSelected, currentLanguage } = language;
+  const { isOnboardingVisited } = onboarding;
+
+  useEffect(() => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 3000);
+  }, []);
+
   return (
     <NavigationContainer>
-      <RootNavigator />
+      <MainNavigatorWithBackAndAppState
+        currentLanguage={currentLanguage}
+        isLanguageSelected={isLanguageSelected}
+        navigation={navigation}
+        isOnboardingVisited={isOnboardingVisited}
+        token={token}
+        user={user}
+      />
     </NavigationContainer>
   );
 }
 
 Navigation.propTypes = {
-  // dispatch: PropTypes.func.isRequired,
+  ...Navigation,
 };
 
 const mapStateToProps = createStructuredSelector({
   navigation: makeSelectNavigation(),
+  language: makeSelectAppLanguage(),
+  onboarding: makeSelectOnboardingVisited(),
+  token: makeSelectToken(),
+  user: makeSelectUser(),
 });
 
 function mapDispatchToProps(dispatch) {

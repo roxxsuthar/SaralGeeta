@@ -1,19 +1,10 @@
-import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import * as React from 'react';
 
-import Test from '../Test';
+export const isReadyRef = React.createRef();
+export const navigationRef = React.createRef();
 
-const RootAppNavigator = createStackNavigator();
-function MainNavigator() {
-  return (
-    <RootAppNavigator.Navigator>
-      <RootAppNavigator.Screen name="Test" component={Test} />
-    </RootAppNavigator.Navigator>
-  );
+export function navigate(name, params) {
+  if (isReadyRef.current && navigationRef.current) {
+    navigationRef.current.navigate(name, params);
+  }
 }
-
-MainNavigator.propTypes = {
-  ...MainNavigator,
-};
-
-export default MainNavigator;

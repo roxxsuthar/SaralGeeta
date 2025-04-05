@@ -2,31 +2,28 @@
 
 import axios from 'axios';
 import handleError from './handleError';
-// import { getRequest } from './firebaseTraceRequest';
 
 export const axiosInstance = axios.create({
   responseType: 'json',
 });
 
 axiosInstance.interceptors.request.use(
-  config => {
-    // console.log('REQUEST: ', config);
-    // getRequest(config?.url, config?.method);
+  (config) => {
     config.headers.deviceType = 'mobile';
     return config;
   },
-  err => Promise.reject(err),
+  (err) => Promise.reject(err),
 );
 
 axiosInstance.interceptors.response.use(
-  response => {
+  (response) => {
     // console.log('RESPONSE: ', response);
-    if (response.data) {
+    if (response) {
       return response.data;
     }
-    return response;
+    return response.data;
   },
-  err => {
+  (err) => {
     handleError(err);
     return Promise.reject(err);
   },
