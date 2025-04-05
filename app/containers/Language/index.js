@@ -36,6 +36,8 @@ function Language({ navigation, language, _handleSetLanguage }) {
   const { language: languageMessage } = strings;
   const [languageType, setLanguageType] = useState();
 
+  console.log('Language--------------', language);
+
   const updateLanguage = useCallback(() => {
     _handleSetLanguage(languageType);
     navigation.navigate(Navigation.Login);
@@ -137,7 +139,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    _handleSetLanguage: () => dispatch(setLanguage()),
+    _handleSetLanguage: (payload) => dispatch(setLanguage(payload)),
   };
 }
 

@@ -8,6 +8,8 @@ import Shloks from '../Shloks';
 import LearnGeeta from '../LearnGeeta';
 import { useSelector } from 'react-redux';
 import { makeSelectIdealDetails } from '../App/selectors';
+
+import DrawerNavigator from './DrawerNavigator';
 import isEqual from 'lodash/isEqual';
 
 const DashboardStack = createStackNavigator();
@@ -20,6 +22,13 @@ const DashboardNavigator = () => {
         headerShown: false,
       }}
     >
+      <DashboardStack.Screen
+        name="Drawer"
+        component={DrawerNavigator}
+        options={{
+          headerShown: false,
+        }}
+      />
       {isEqual(idealDetails, null) && (
         <DashboardStack.Screen
           name={Navigation.OurIdeals}
