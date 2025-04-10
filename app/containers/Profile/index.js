@@ -10,13 +10,15 @@ import { View, StatusBar, ImageBackground, Image } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import makeSelectProfile from './selectors';
+import strings from '../../../i18n'
 import styles from './styles';
 import { IMAGES } from '../../constants';
 import { TouchableOpacity } from 'react-native';
 import CustomText from '../../components/CustomText';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 function Profile() {
-  const navigation= useNavigation()
+  const navigation= useNavigation();
+  const {profile: ProfileMessage} = strings;
   return (
     <ImageBackground
       source={IMAGES.AppBackground}

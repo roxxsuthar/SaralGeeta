@@ -194,5 +194,11 @@
       "id": "app.containers.Shloks.headerText",
       "defaultMessage": "Shloks"
     }
+  },
+  "Profile": {
+    "name": {
+      "id": "app.containers.Profile.name",
+      "defaultMessage": "Name"
+    }
   }
 }
