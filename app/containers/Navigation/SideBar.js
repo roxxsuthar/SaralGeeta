@@ -48,7 +48,7 @@ const SideBar = (props) => {
                   
                 </View>
               )}
-              onPress={() => props.navigation.navigate('Dashboard')}
+              onPress={() => props.navigation.navigate('Home')}
             />
             <DrawerItem
               label="Chapters"
