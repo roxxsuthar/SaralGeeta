@@ -84,7 +84,6 @@ function Profile() {
               </TouchableOpacity>
             </View>
           </View>
-
           <ImageBackground
             source={IMAGES.AppBackground}
             style={styles.footerImage}
