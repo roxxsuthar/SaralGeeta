@@ -3,6 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Navigation } from '../../constants/constants';
 import Home from '../Home';
 import Profile from '../Profile';
+import EditProfile from '../EditProfile';
 import Dashboard from '../Dashboard';
 import Chapters from '../Chapters';
 import PrivacyPolicy from '../PrivacyPolicy';
@@ -27,6 +28,7 @@ const DrawerNavigator = () => {
     >
       <Drawer.Screen name={Navigation.Home} component={Home} />
       <Drawer.Screen name={Navigation.Profile} component={Profile} />
+      <Drawer.Screen name={Navigation.EditProfile} component={EditProfile} />
       <Drawer.Screen name={Navigation.Dashboard} component={Dashboard} />
       <Drawer.Screen name={Navigation.Chapters} component={Chapters} />
       <Drawer.Screen
