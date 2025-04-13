@@ -15,6 +15,7 @@ import { COLORS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import { TouchableOpacity } from 'react-native';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
+
 function ContactUs() {
   const navigation = useNavigation();
   return (
