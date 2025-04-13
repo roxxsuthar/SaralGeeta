@@ -16,9 +16,13 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { IMAGES } from '../../constants';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation,DrawerActions } from '@react-navigation/native';
+import strings from '../../../i18n';
+import { makeSelectAppLanguage } from '../App/selectors';
 
 
-function TermsOfUse() {
+function TermsOfUse({language}) {
+  const { currentLanguage } = language;
+  const { TermsOfUse: TermsOfUseMessage } = strings;
   const navigation = useNavigation()
   return (
   <ImageBackground
@@ -38,12 +42,12 @@ function TermsOfUse() {
                 <IMAGES.Bars height="100%" width="100%" />
               </View>
             </TouchableOpacity>
-            <CustomText style={styles.heading}>Terms Of Use</CustomText>
+            <CustomText style={styles.heading}>{TermsOfUseMessage.heading.defaultMessage}</CustomText>
           </View>
           <View style={styles.mainContainer}>
           <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
           <View style={styles.policyContainer}>
-            <CustomText style={styles.lable}>Terms and Condition</CustomText>
+            <CustomText style={styles.lable}>{TermsOfUseMessage.termsAndCondition.defaultMessage}</CustomText>
             <CustomText style={styles.policyText}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
               justo in nisl convallis rhoncus condimentum in nunc. Nulla aliquam
@@ -94,6 +98,8 @@ TermsOfUse.propTypes = { dispatch: PropTypes.func.isRequired };
 
 const mapStateToProps = createStructuredSelector({
   termsOfUse: makeSelectTermsOfUse(),
+  language: makeSelectAppLanguage(),
+
 });
 
 function mapDispatchToProps(dispatch) {

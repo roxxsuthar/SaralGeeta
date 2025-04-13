@@ -16,8 +16,12 @@ import { TouchableOpacity } from 'react-native';
 import CustomText from '../../components/CustomText';
 import { ScrollView } from 'react-native-gesture-handler';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
+import strings from '../../../i18n';
+import { makeSelectAppLanguage } from '../App/selectors';
 
-function PrivacyPolicy() {
+function PrivacyPolicy({language}) {
+  const { currentLanguage } = language;
+  const { PrivacyPolicy: PrivacyPolicyMessage } = strings;
   const navigation = useNavigation();
   return (
     <ImageBackground
@@ -37,12 +41,12 @@ function PrivacyPolicy() {
               <IMAGES.Bars height="100%" width="100%" />
             </View>
           </TouchableOpacity>
-          <CustomText style={styles.heading}>PrivacyPolicy</CustomText>
+          <CustomText style={styles.heading}>{PrivacyPolicyMessage.heading.defaultMessage}</CustomText>
         </View>
         <View style={styles.mainContainer}>
         <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         <View style={styles.policyContainer}>
-          <CustomText style={styles.lable}>Privacy Policy</CustomText>
+          <CustomText style={styles.lable}>{PrivacyPolicyMessage.heading.defaultMessage}</CustomText>
           <CustomText style={styles.policyText}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
             justo in nisl convallis rhoncus condimentum in nunc. Nulla aliquam
@@ -93,6 +97,8 @@ PrivacyPolicy.propTypes = { dispatch: PropTypes.func.isRequired };
 
 const mapStateToProps = createStructuredSelector({
   privacyPolicy: makeSelectPrivacyPolicy(),
+  language: makeSelectAppLanguage(),
+
 });
 
 function mapDispatchToProps(dispatch) {
