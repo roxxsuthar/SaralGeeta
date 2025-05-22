@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 import { hp, wp } from '../../utils/responsive';
 import { COLORS } from '../../constants';
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -31,26 +30,29 @@ const styles = StyleSheet.create({
     color: COLORS.white,
   },
   mainContainer: {
-    height: hp(722),
+    flex: 1,
+    justifyContent: 'space-between',
     padding: wp(20),
+  },
+  formContainer: {
     gap: hp(20),
   },
   inputContainer: {
-    gap:hp(5)
+    gap: hp(5),
   },
   label: {
-    fontWeight:"600",
+    fontWeight: '600',
     fontSize: hp(14),
     color: COLORS.black,
   },
   input: {
-    borderWidth: 1,
+    borderWidth: hp(1),
     borderColor: COLORS.black,
     borderRadius: hp(12),
     height: hp(44),
     paddingHorizontal: hp(10),
     fontSize: hp(14),
-    fontWeight:"400",
+    fontWeight: '400',
     color: COLORS.black,
   },
   phoneContainer: {
@@ -59,20 +61,20 @@ const styles = StyleSheet.create({
     borderRadius: hp(12),
     borderWidth: 1,
     borderColor: COLORS.black,
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
   },
   textInput: {
     paddingVertical: 0,
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
   },
-  slider:{
-    height:hp(20),
-    width:wp(20),
-    color: COLORS.white
+  slider: {
+    height: hp(20),
+    width: wp(20),
+    color: COLORS.white,
   },
   track: {
-    height: hp(5),  
-    borderRadius: hp(10), 
+    height: hp(5),
+    borderRadius: hp(10),
   },
   thumb: {
     height: hp(15),
@@ -81,18 +83,18 @@ const styles = StyleSheet.create({
     borderRadius: hp(15),
   },
   button: {
-    justifyContent: "center",
-    alignItems:"center",
-    backgroundColor : COLORS.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.white,
     height: hp(45),
-    borderRadius: wp(12),  
+    borderRadius: wp(12),
   },
   buttonText: {
-    color: COLORS.black, 
+    color: COLORS.black,
     fontSize: hp(15),
-    fontWeight:"600",
-    lineHeight:hp(22),
-    marginLeft:hp(5)
+    fontWeight: '600',
+    lineHeight: hp(22),
+    marginLeft: hp(5),
   },
 });
 

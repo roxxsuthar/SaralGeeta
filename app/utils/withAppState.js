@@ -1,23 +1,28 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { AppState } from 'react-native';
 
-const withAppState = (WrappedComponent) => (props) => {
-  const [appState, updateAppState] = useState(AppState.currentState);
+const withAppState = (WrappedComponent) => {
+  const WithAppState = (props) => {
+    const [appState, updateAppState] = useState(AppState.currentState);
 
-  const handleAppStateChange = useCallback(
-    (nextAppState) => {
-      updateAppState(nextAppState);
-    },
-    [appState],
-  );
+    const handleAppStateChange = useCallback(
+      (nextAppState) => {
+        updateAppState(nextAppState);
+      },
+      [appState],
+    );
 
-  useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange);
+    useEffect(() => {
+      AppState.addEventListener('change', handleAppStateChange);
 
-    return () => AppState.removeEventListener('change', handleAppStateChange);
-  }, []);
+      return () => AppState.removeEventListener('change', handleAppStateChange);
+    }, []);
+    return <WrappedComponent {...props} appState={appState} />;
+  };
 
-  return <WrappedComponent {...props} appState={appState} />;
+  WithAppState.displayName = `withAppState(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+
+  return WithAppState;
 };
 
 export default withAppState;

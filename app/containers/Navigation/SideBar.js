@@ -6,6 +6,7 @@ import { ImageBackground } from 'react-native';
 import { IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Navigation } from '../../constants/constants';
 
 const SideBar = (props) => {
   return (
@@ -17,20 +18,17 @@ const SideBar = (props) => {
         imageStyle={styles.bgImage}
         resizeMode="cover"
       >
-        <View style={styles.header}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => props.navigation.navigate(Navigation.Profile)}
+          style={styles.header}
+        >
           <Image source={IMAGES.Avatar} style={styles.profilePic} />
           <View style={styles.profile}>
             <CustomText style={styles.profileName}>Jane Cooper</CustomText>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={() => props.navigation.navigate('Profile')}
-            >
-              <CustomText style={styles.viewProfileBtn}>
-                View Profile
-              </CustomText>
-            </TouchableOpacity>
+            <CustomText style={styles.viewProfileBtn}>View Profile</CustomText>
           </View>
-        </View>
+        </TouchableOpacity>
       </ImageBackground>
 
       <SafeAreaView style={styles.container}>
@@ -41,22 +39,22 @@ const SideBar = (props) => {
               labelStyle={styles.label}
               icon={() => (
                 <View style={styles.icon}>
-                  <IMAGES.DashBoard height="100%" width="100%" />
-                </View>
-              )}
-              onPress={() => props.navigation.navigate('Home')}
-            />
-            <DrawerItem
-              label="Chapters"
-              labelStyle={styles.label}
-              icon={() => (
-                <View style={styles.icon}>
                   <IMAGES.Contact height="100%" width="100%" />
                 </View>
               )}
               onPress={() => props.navigation.navigate('Chapters')}
             />
             <DrawerItem
+              label="Chapters"
+              labelStyle={styles.label}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.DashBoard height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate('Home')}
+            />
+            {/* <DrawerItem
               label="Notifications"
               labelStyle={styles.label}
               icon={() => (
@@ -65,7 +63,7 @@ const SideBar = (props) => {
                 </View>
               )}
               onPress={() => props.navigation.navigate('Notifications')}
-            />
+            /> */}
           </View>
           <View style={styles.draweritems}>
             <CustomText style={styles.drawerHeading}>Help & Support</CustomText>

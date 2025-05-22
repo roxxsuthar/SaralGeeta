@@ -33,7 +33,7 @@ const makeSelectUser = () =>
 const makeSelectOtpDetails = () =>
   createSelector(selectAppDomain, (substate) => substate.sentOtpDetail);
 const makeSelectIdealDetails = () =>
-  createSelector(selectAppDomain, (substate) => substate.selectedIdeal);
+  createSelector(selectAppDomain, (substate) => substate.selectedIdeal || null);
 const makeSelectIntroVideo = () =>
   createSelector(selectAppDomain, (substate) => substate.introVideo);
 

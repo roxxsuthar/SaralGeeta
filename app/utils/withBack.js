@@ -2,19 +2,17 @@
 import React, { useEffect, useCallback } from 'react';
 import { Alert, BackHandler } from 'react-native';
 import isEqual from 'lodash/isEqual';
-import { CommonActions } from '@react-navigation/native';
 import { navigationRef } from '../containers/Navigation/RootNavigator';
 import { Navigation } from '../constants/constants';
 
 const withBack = (WrappedComponent) => {
   const ScreenWithBack = (props) => {
-    const { handleIncreaseChatCount, currentLanguage } = props;
-
     const onBack = useCallback(() => {
       const navigation = navigationRef.current;
-      const currentRouteName = navigation.getCurrentRoute()?.name;
+      const currentRouteName = navigation?.getCurrentRoute()?.name;
 
       if (isEqual(currentRouteName, Navigation.Home1)) {
+        // Show exit confirmation dialog
         Alert.alert('Exit', 'Are you sure you want to exit?', [
           {
             text: 'Cancel',
@@ -26,40 +24,17 @@ const withBack = (WrappedComponent) => {
             onPress: () => BackHandler.exitApp(),
           },
         ]);
-        return true;
+        return true; // Prevent default back behavior
       }
 
-      // if (navigation?.canGoBack?.() && isEqual(currentRouteName, 'Profile')) {
-      //   navigation.navigate(Navigation.Home);
-      //   return true;
-      // }
-
-      // if (!navigation?.canGoBack?.() && isEqual(currentRouteName, 'Profile')) {
-      //   navigation?.dispatch(
-      //     CommonActions?.navigate({
-      //       name: Navigation.Home,
-      //     }),
-      //   );
-
-      //   return true;
-      // }
-
-      if (!navigation?.canGoBack?.()) {
-        Alert.alert('Exit', 'Are you sure you want to exit?', [
-          {
-            text: 'Cancel',
-            onPress: () => null,
-            style: 'cancel',
-          },
-          {
-            text: 'Yes',
-            onPress: () => BackHandler.exitApp(),
-          },
-        ]);
-        return true;
+      if (navigation?.canGoBack()) {
+        navigation.goBack(); // Navigate back
+        return true; // Prevent default back behavior
       }
+
+      // Default behavior for other cases
       return false;
-    }, [currentLanguage, navigationRef.current]);
+    }, []);
 
     useEffect(() => {
       BackHandler.removeEventListener('hardwareBackPress', onBack);

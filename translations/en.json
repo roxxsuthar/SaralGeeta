@@ -195,123 +195,122 @@
       "defaultMessage": "Shloks"
     }
   },
-  "contactUs":{
-    "heading":{
-      "id":"app.container.Contactus.heading",
+  "contactUs": {
+    "heading": {
+      "id": "app.container.Contactus.heading",
       "defaultMessage": "Contact Us"
     },
-    "serviceType":{
-      "id":"app.container.Contactus.serviceType",
+    "serviceType": {
+      "id": "app.container.Contactus.serviceType",
       "defaultMessage": "Service Type"
     },
-    "name":{
-      "id":"app.container.Contactus.name",
+    "name": {
+      "id": "app.container.Contactus.name",
       "defaultMessage": "Name"
     },
-    "mobile":{
-      "id":"app.container.Contactus.mobile",
+    "mobile": {
+      "id": "app.container.Contactus.mobile",
       "defaultMessage": "Mobile Number"
     },
-    "message":{
-      "id":"app.container.Contactus.message",
+    "message": {
+      "id": "app.container.Contactus.message",
       "defaultMessage": "Message"
     },
-    "placeholder":{
-       "id":"app.container.Contactus.placeholder",
+    "placeholder": {
+      "id": "app.container.Contactus.placeholder",
       "defaultMessage": "Type here..."
     },
-    "button":{
-      "id":"app.container.Contactus.button",
+    "button": {
+      "id": "app.container.Contactus.button",
       "defaultMessage": "Send Message"
     }
   },
-  "Profile":{
-    "heading":{
-      "id":"app.container.Profile.heading",
+  "Profile": {
+    "heading": {
+      "id": "app.container.Profile.heading",
       "defaultMessage": "Profile"
     },
-    "name":{
-      "id":"app.container.Profile.name",
-      "defaultMessage": "Name"
+    "name": {
+      "id": "app.container.Profile.name",
+      "defaultMessage": "First name"
     },
-    "email":{
-      "id":"app.container.Profile.email",
+    "email": {
+      "id": "app.container.Profile.email",
       "defaultMessage": "Email"
     },
-    "mobile":{
-      "id":"app.container.Profile.mobile",
+    "mobile": {
+      "id": "app.container.Profile.mobile",
       "defaultMessage": "Mobile"
     },
-    "gender":{
-      "id":"app.container.Profile.gender",
+    "gender": {
+      "id": "app.container.Profile.gender",
       "defaultMessage": "Gender"
     },
-    "voice":{
-      "id":"app.container.Profile.voice",
+    "voice": {
+      "id": "app.container.Profile.voice",
       "defaultMessage": "Voice"
     },
-    "shlokSpeed":{
-      "id":"app.container.Profile.shlokSpeed",
-      "defaultMessage": "Shlok Speed"
+    "shlokSpeed": {
+      "id": "app.container.Profile.shlokSpeed",
+      "defaultMessage": "Shlok speed"
     },
-    "updateProfile":{
-      "id":"app.container.Profile.updateProfile",
-      "defaultMessage": "Update Profile"
+    "updateProfile": {
+      "id": "app.container.Profile.updateProfile",
+      "defaultMessage": "Update profile"
     },
-    "changePassword":{
-      "id":"app.container.Profile.changePassword",
-      "defaultMessage": "Change Password"
+    "changePassword": {
+      "id": "app.container.Profile.changePassword",
+      "defaultMessage": "Change password"
     }
   },
-  "EditProfile":{
-    "heading":{
-      "id":"app.container.EditProfile.heading",
+  "EditProfile": {
+    "heading": {
+      "id": "app.container.EditProfile.heading",
       "defaultMessage": "Profile"
     },
-    "name":{
-      "id":"app.container.EditProfile.name",
-      "defaultMessage": "Name"
+    "name": {
+      "id": "app.container.EditProfile.name",
+      "defaultMessage": "First name"
     },
-    "lastName":{
-      "id":"app.container.EditProfile.lastName",
-      "defaultMessage": "Last Name"
+    "lastName": {
+      "id": "app.container.EditProfile.lastName",
+      "defaultMessage": "Last name"
     },
-    "email":{
-      "id":"app.container.EditProfile.email",
+    "email": {
+      "id": "app.container.EditProfile.email",
       "defaultMessage": "Email"
     },
-    "mobile":{
-      "id":"app.container.EditProfile.mobile",
-      "defaultMessage": "Phone Number"
+    "mobile": {
+      "id": "app.container.EditProfile.mobile",
+      "defaultMessage": "Phone number"
     },
-    "gender":{
-      "id":"app.container.EditProfile.gender",
+    "gender": {
+      "id": "app.container.EditProfile.gender",
       "defaultMessage": "Gender"
     },
-    "shlokSpeed":{
-      "id":"app.container.EditProfile.shlokSpeed",
-      "defaultMessage": "Shlok Speed"
+    "shlokSpeed": {
+      "id": "app.container.EditProfile.shlokSpeed",
+      "defaultMessage": "Shlok speed"
     },
-    "update":{
-      "id":"app.container.EditProfile.updateProfile",
+    "update": {
+      "id": "app.container.EditProfile.updateProfile",
       "defaultMessage": "Update"
     }
   },
-  "PrivacyPolicy":{
-    "heading":{
-      "id":"app.container.PrivacyPolicy.heading",
+  "PrivacyPolicy": {
+    "heading": {
+      "id": "app.container.PrivacyPolicy.heading",
       "defaultMessage": "Privacy Policy"
     }
   },
-  "TermsOfUse":{
-    "heading":{
-      "id":"app.container.TermsOfUse.heading",
+  "TermsOfUse": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
       "defaultMessage": "Terms of Use"
     },
-    "termsAndCondition":{
-      "id":"app.container.TermsOfUse.termsAndCondition",
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
       "defaultMessage": "Terms and Condition"
     }
   }
-  }
-
+}

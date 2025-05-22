@@ -31,7 +31,7 @@ function Chapters({ language }) {
 
   const sections = [
     {
-      title: 'Audio',
+      title: 'Recent View',
       data: [
         {
           id: 1,
@@ -59,47 +59,47 @@ function Chapters({ language }) {
         },
       ],
     },
-    {
-      title: 'E-Book',
-      data: [
-        {
-          id: 1,
-          image: IMAGES.Rath,
-          title: 'Sankhya Yog',
-          description:
-            'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-          videoTime: '10:20',
-          timeUsed: '05:10',
-        },
-        {
-          id: 2,
-          image: IMAGES.Rath,
-          title: 'Sankhya Yog',
-          description:
-            'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-          videoTime: '10:20',
-          timeUsed: '05:10',
-        },
-        {
-          id: 3,
-          image: IMAGES.Rath,
-          title: 'Sankhya Yog',
-          description:
-            'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-          videoTime: '10:20',
-          timeUsed: '05:10',
-        },
-        {
-          id: 4,
-          image: IMAGES.Rath,
-          title: 'Sankhya Yog',
-          description:
-            'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-          videoTime: '10:20',
-          timeUsed: '05:10',
-        },
-      ],
-    },
+    // {
+    //   title: 'E-Book',
+    //   data: [
+    //     {
+    //       id: 1,
+    //       image: IMAGES.Rath,
+    //       title: 'Sankhya Yog',
+    //       description:
+    //         'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
+    //       videoTime: '10:20',
+    //       timeUsed: '05:10',
+    //     },
+    //     {
+    //       id: 2,
+    //       image: IMAGES.Rath,
+    //       title: 'Sankhya Yog',
+    //       description:
+    //         'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
+    //       videoTime: '10:20',
+    //       timeUsed: '05:10',
+    //     },
+    //     {
+    //       id: 3,
+    //       image: IMAGES.Rath,
+    //       title: 'Sankhya Yog',
+    //       description:
+    //         'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
+    //       videoTime: '10:20',
+    //       timeUsed: '05:10',
+    //     },
+    //     {
+    //       id: 4,
+    //       image: IMAGES.Rath,
+    //       title: 'Sankhya Yog',
+    //       description:
+    //         'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
+    //       videoTime: '10:20',
+    //       timeUsed: '05:10',
+    //     },
+    //   ],
+    // },
   ];
 
   // const timeStringToSeconds = (timeString) => {
@@ -133,68 +133,69 @@ function Chapters({ language }) {
   //   );
   // };
 
-  const renderItemBasedOnSection = (title, item) => {
-    switch (title) {
-      case 'E-Book':
-        return (
-          <View style={styles.AudioContainer}>
-            <FastImage
-              style={styles.audioCardImage}
-              // source={{ uri: item.image }}
-              source={item.image}
-              resizeMode={FastImage.resizeMode.contain}
-            />
-            <View style={styles.audioTextContainer}>
-              <CustomText
-                style={{
-                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                  ...styles.audioCardTitle,
-                }}
-              >
-                {item.title}
-              </CustomText>
-              <CustomText
-                style={{
-                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                  ...styles.audioCardDescription,
-                }}
-              >
-                {item.description}
-              </CustomText>
-              <View style={styles.imageContainer}>
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  style={styles.iconContainer}
-                >
-                  <IMAGES.PlayerIcon height="100%" width="100%" />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  style={styles.iconContainer}
-                >
-                  <IMAGES.Heart height="100%" width="100%" />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  style={styles.iconContainer}
-                >
-                  <CustomText style={styles.oneXText}>1</CustomText>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
-        );
-      default:
-        return null;
-    }
-  };
+  // const renderItemBasedOnSection = (title, item) => {
+  //   switch (title) {
+  //     case 'E-Book':
+  //       return (
+  //         <View style={styles.AudioContainer}>
+  //           <FastImage
+  //             style={styles.audioCardImage}
+  //             // source={{ uri: item.image }}
+  //             source={item.image}
+  //             resizeMode={FastImage.resizeMode.contain}
+  //           />
+  //           <View style={styles.audioTextContainer}>
+  //             <CustomText
+  //               style={{
+  //                 ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+  //                 ...styles.audioCardTitle,
+  //               }}
+  //             >
+  //               {item.title}
+  //             </CustomText>
+  //             <CustomText
+  //               style={{
+  //                 ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+  //                 ...styles.audioCardDescription,
+  //               }}
+  //             >
+  //               {item.description}
+  //             </CustomText>
+  //             <View style={styles.imageContainer}>
+  //               <TouchableOpacity
+  //                 activeOpacity={0.8}
+  //                 style={styles.iconContainer}
+  //               >
+  //                 <IMAGES.PlayerIcon height="100%" width="100%" />
+  //               </TouchableOpacity>
+  //               <TouchableOpacity
+  //                 activeOpacity={0.8}
+  //                 style={styles.iconContainer}
+  //               >
+  //                 <IMAGES.Heart height="100%" width="100%" />
+  //               </TouchableOpacity>
+  //               <TouchableOpacity
+  //                 activeOpacity={0.8}
+  //                 style={styles.iconContainer}
+  //               >
+  //                 <CustomText style={styles.oneXText}>1</CustomText>
+  //               </TouchableOpacity>
+  //             </View>
+  //           </View>
+  //         </View>
+  //       );
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   const ItemSeparator = () => <View style={styles.separator} />;
   const flatListItemSeparator = () => <View style={styles.flatSeparator} />;
 
-  const navigateToAudio = useCallback(() => {
-    alert();
-  }, []);
+  // const navigateToAudio = useCallback(() => {
+  //   alert();
+  // }, []);
+
   return (
     <ImageBackground
       source={IMAGES.AppBackground}
@@ -228,7 +229,7 @@ function Chapters({ language }) {
 
               <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={() => navigateToAudio()}
+                // onPress={() => navigateToAudio()}
               >
                 <CustomText style={styles.sectionViewAll}>View all</CustomText>
               </TouchableOpacity>
@@ -236,7 +237,7 @@ function Chapters({ language }) {
           )}
           renderItem={({ item, section, index }) => {
             // Render "Audio" using FlatList horizontally
-            if (section.title === 'Audio' && index === 0) {
+            if (section.title === 'Recent View' && index === 0) {
               return (
                 <FlatList
                   data={section.data}
@@ -280,7 +281,7 @@ function Chapters({ language }) {
             }
 
             // For other sections like "E-Book", continue using SectionList
-            return renderItemBasedOnSection(section.title, item);
+            // return renderItemBasedOnSection(section.title, item);
           }}
           SectionSeparatorComponent={ItemSeparator}
           ItemSeparatorComponent={ItemSeparator}

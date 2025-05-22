@@ -29,6 +29,8 @@ import { Navigation } from '../../constants/constants';
 function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
   const { currentLanguage } = language;
 
+  console.log('------------------------', get(route));
+
   useEffect(() => {
     handleGetShloks({ chapterId: get(route, 'params.chapterId') });
   }, [route]);

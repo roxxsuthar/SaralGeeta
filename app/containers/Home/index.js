@@ -13,7 +13,6 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import split from 'lodash/split';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import FastImage from 'react-native-fast-image';
@@ -27,25 +26,12 @@ import strings from '../../../i18n';
 import { makeSelectAppLanguage } from '../App/selectors';
 import { getChapters } from './actions';
 import { Navigation } from '../../constants/constants';
-import { DrawerActions, } from '@react-navigation/native';
+import { DrawerActions } from '@react-navigation/native';
 
 function Home({ language, navigation, handleGetChapters, home }) {
   const { Home: HomeMessage } = strings;
   const { currentLanguage } = language;
   const sections = [
-    // {
-    //   title: 'Recent View',
-    //   data: [
-    //     {
-    //       id: 1,
-    //       image: 'https://picsum.photos/700',
-    //       icon: 'https://picsum.photos/700',
-    //       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    //       videoTime: '10:20',
-    //       timeUsed: '05:10',
-    //     },
-    //   ],
-    // },
     {
       title: 'Chapters',
       data: home?.data || [],
@@ -60,69 +46,8 @@ function Home({ language, navigation, handleGetChapters, home }) {
     navigation.navigate(Navigation.Shloks, { chapterId: id });
   }, []);
 
-  const timeStringToSeconds = (timeString) => {
-    const timeParts = split(timeString, ':').map(Number);
-
-    if (timeParts.length === 2) {
-      // MM:SS format
-      return timeParts[0] * 60 + timeParts[1];
-    } else if (timeParts.length === 3) {
-      // HH:MM:SS format
-      return timeParts[0] * 3600 + timeParts[1] * 60 + timeParts[2];
-    } else {
-      console.warn('Invalid time format:', timeString);
-    }
-
-    return 0;
-  };
-
-  const VideoProgressBar = (currentTime, duration) => {
-    // Calculate progress as a percentage
-    const totalDuration = timeStringToSeconds(duration);
-    const current = timeStringToSeconds(currentTime);
-    const progress = (current / totalDuration) * 100;
-
-    return (
-      <View style={styles.container}>
-        <View style={styles.progressBackground}>
-          <View style={[styles.progressBar, { width: `${progress}%` }]} />
-        </View>
-      </View>
-    );
-  };
-
   const renderItemBasedOnSection = (title, item) => {
-    // if (!item) return null;
     switch (title) {
-      case 'Recent View':
-        return (
-          <View style={styles.recentViewContainer}>
-            <FastImage
-              style={styles.cardImage}
-              source={{ uri: item.image }}
-              resizeMode={FastImage.resizeMode.contain}
-            />
-            <View style={styles.recentTextContainer}>
-              <CustomText
-                style={{
-                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                  ...styles.recentCardText,
-                }}
-              >
-                {item.text}
-              </CustomText>
-              <CustomText
-                style={{
-                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                  ...styles.recentCardTimeText,
-                }}
-              >
-                {item.videoTime} - {item.timeUsed}
-              </CustomText>
-              {VideoProgressBar(item.timeUsed, item.videoTime)}
-            </View>
-          </View>
-        );
       case 'Chapters':
         return (
           <TouchableOpacity
@@ -188,7 +113,7 @@ function Home({ language, navigation, handleGetChapters, home }) {
     <ImageBackground
       source={IMAGES.AppBackground}
       style={styles.container}
-      resizeMode="cover" // Similar to background-size in CSS
+      resizeMode="cover"
     >
       <StatusBar
         barStyle="light-content"
@@ -201,19 +126,9 @@ function Home({ language, navigation, handleGetChapters, home }) {
         resizeMode={FastImage.resizeMode.contain}
       />
       <View style={styles.mainContainer}>
-        {/* <View style={styles.header}>
-          <CustomText
-            style={{
-              ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-              ...styles.headerText,
-            }}
-          >
-            {HomeMessage.headerText.defaultMessage}
-          </CustomText>
-        </View> */}
         <View style={styles.headerContainer}>
           <TouchableOpacity
-          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
             activeOpacity={0.8}
             // onPress={backHandler}
             style={styles.headerSubContainer}

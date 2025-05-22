@@ -5,7 +5,7 @@ Profile
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StatusBar, ImageBackground, Image } from 'react-native';
+import { View, StatusBar, ImageBackground } from 'react-native';
 import strings from '../../../i18n';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -16,10 +16,9 @@ import { TouchableOpacity } from 'react-native';
 import CustomText from '../../components/CustomText';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { makeSelectAppLanguage } from '../App/selectors';
-function Profile({language}) {
-  const { currentLanguage } = language;
+function Profile() {
   const { Profile: profileMessage } = strings;
-  const navigation= useNavigation()
+  const navigation = useNavigation();
   return (
     <ImageBackground
       source={IMAGES.AppBackground}
@@ -33,59 +32,84 @@ function Profile({language}) {
       />
       <View style="{styles.container}">
         <View style={styles.header}>
-          <TouchableOpacity activeOpacity={0.8} style={styles.iconContainer} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.iconContainer}
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+          >
             <View style={styles.icon}>
               <IMAGES.Bars height="100%" width="100%" />
             </View>
           </TouchableOpacity>
-          <CustomText style={styles.heading}>{profileMessage.heading.defaultMessage}</CustomText>
+          <CustomText style={styles.heading}>
+            {profileMessage.heading.defaultMessage}
+          </CustomText>
         </View>
         <View style={styles.mainContainer}>
           <View style={styles.userDetails}>
-            <View>
-              <CustomText style={styles.detailTitle}>{profileMessage.name.defaultMessage}</CustomText>
-              <CustomText style={styles.detailText}>Arjun</CustomText>
-            </View>
-            <View>
-              <CustomText style={styles.detailTitle}>{profileMessage.email.defaultMessage}</CustomText>
-              <CustomText style={styles.detailText}>
-                arjun@gmail.com
-              </CustomText>
-            </View>
-            <View>
-              <CustomText style={styles.detailTitle}>{profileMessage.mobile.defaultMessage}</CustomText>
-              <CustomText style={styles.detailText}>+91 857329723</CustomText>
-            </View>
-            <View>
-              <CustomText style={styles.detailTitle}>{profileMessage.gender.defaultMessage}</CustomText>
-              <CustomText style={styles.detailText}>Male</CustomText>
-            </View>
-            <View>
-              <CustomText style={styles.detailTitle}>{profileMessage.voice.defaultMessage}</CustomText>
-              <CustomText style={styles.detailText}>Ganesh Bhagwan</CustomText>
-            </View>
-            <View>
-              <CustomText style={styles.detailTitle}>{profileMessage.shlokSpeed.defaultMessage}</CustomText>
-              <CustomText style={styles.detailText}>1x</CustomText>
+            <View style={styles.userData}>
+              <View>
+                <CustomText style={styles.detailTitle}>
+                  {profileMessage.name.defaultMessage}
+                </CustomText>
+                <CustomText style={styles.detailText}>Arjun</CustomText>
+              </View>
+              <View>
+                <CustomText style={styles.detailTitle}>
+                  {profileMessage.email.defaultMessage}
+                </CustomText>
+                <CustomText style={styles.detailText}>
+                  arjun@gmail.com
+                </CustomText>
+              </View>
+              <View>
+                <CustomText style={styles.detailTitle}>
+                  {profileMessage.mobile.defaultMessage}
+                </CustomText>
+                <CustomText style={styles.detailText}>+91 857329723</CustomText>
+              </View>
+              <View>
+                <CustomText style={styles.detailTitle}>
+                  {profileMessage.gender.defaultMessage}
+                </CustomText>
+                <CustomText style={styles.detailText}>Male</CustomText>
+              </View>
+              <View>
+                <CustomText style={styles.detailTitle}>
+                  {profileMessage.voice.defaultMessage}
+                </CustomText>
+                <CustomText style={styles.detailText}>
+                  Ganesh Bhagwan
+                </CustomText>
+              </View>
+              {/* <View>
+                <CustomText style={styles.detailTitle}>
+                  {profileMessage.shlokSpeed.defaultMessage}
+                </CustomText>
+                <CustomText style={styles.detailText}>1x</CustomText>
+              </View> */}
             </View>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.button}onPress={() => navigation.navigate('EditProfile')}>
-                <IMAGES.User
-                  style={styles.icon}
-                />
-                 <CustomText style={styles.buttonText}>{profileMessage.updateProfile.defaultMessage}</CustomText>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigation.navigate('EditProfile')}
+              >
+                <IMAGES.User style={styles.icon} />
+                <CustomText style={styles.buttonText}>
+                  {profileMessage.updateProfile.defaultMessage}
+                </CustomText>
               </TouchableOpacity>
             </View>
-            <View style={styles.buttonContainer}>
+            {/* <View style={styles.buttonContainer}>
               <TouchableOpacity style={styles.button}>
                 <IMAGES.Lock
                   style={styles.icon}
                 />
                  <CustomText style={styles.buttonText}>{profileMessage.changePassword.defaultMessage}</CustomText>
               </TouchableOpacity>
-            </View>
+            </View> */}
           </View>
-          <ImageBackground
+          {/* <ImageBackground
             source={IMAGES.AppBackground}
             style={styles.footerImage}
           >
@@ -97,7 +121,7 @@ function Profile({language}) {
               />
               <CustomText style={styles.footerText}>version 1.1.0</CustomText>
             </View>
-          </ImageBackground>
+          </ImageBackground> */}
         </View>
       </View>
     </ImageBackground>

@@ -22,24 +22,33 @@ const DashboardNavigator = () => {
         headerShown: false,
       }}
     >
-      <DashboardStack.Screen
-        name="Drawer"
-        component={DrawerNavigator}
-        options={{
-          headerShown: false,
-        }}
-      />
       {isEqual(idealDetails, null) && (
-        <DashboardStack.Screen
-          name={Navigation.OurIdeals}
-          component={OurIdeals}
-          options={{
-            headerShown: false,
-          }}
-        />
+        <>
+          <DashboardStack.Screen
+            name={Navigation.OurIdeals}
+            component={OurIdeals}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <DashboardStack.Screen
+            name="Drawer"
+            component={DrawerNavigator}
+            options={{
+              headerShown: false,
+            }}
+          />
+        </>
       )}
       {!isEqual(idealDetails, null) && (
         <>
+          <DashboardStack.Screen
+            name="Drawer"
+            component={DrawerNavigator}
+            options={{
+              headerShown: false,
+            }}
+          />
           <DashboardStack.Screen
             name={Navigation.Home}
             component={Home}
