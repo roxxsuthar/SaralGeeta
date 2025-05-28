@@ -3,7 +3,7 @@
 Home
 * */
 
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
@@ -27,20 +27,44 @@ import { makeSelectAppLanguage } from '../App/selectors';
 import { getChapters } from './actions';
 import { Navigation } from '../../constants/constants';
 import { DrawerActions } from '@react-navigation/native';
+import { TextInput } from 'react-native-gesture-handler';
 
 function Home({ language, navigation, handleGetChapters, home }) {
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchText, setSearchText] = useState('');
+  const [filteredChapters, setFilteredChapters] = useState([]);
+
   const { Home: HomeMessage } = strings;
   const { currentLanguage } = language;
   const sections = [
     {
       title: 'Chapters',
-      data: home?.data || [],
+      data: filteredChapters || [],
     },
   ];
+  console.log('Home render', home?.data, filteredChapters);
+  
+useEffect(() => {
+  handleGetChapters(); 
+}, []);
 
   useEffect(() => {
-    handleGetChapters();
-  }, []);
+    if (home?.data) {
+      setFilteredChapters(home.data);
+    }
+  }, [home?.data]);
+
+  useEffect(() => {
+    console.log('SearchText changed:', searchText);
+    if (searchText.trim() === '') {
+      setFilteredChapters(home?.data || []);
+    } else {
+      const filtered = home?.data?.filter((item) =>
+        item.name?.toLowerCase().includes(searchText.toLowerCase()),
+      );
+      setFilteredChapters(filtered);
+    }
+  }, [searchText, home?.data]);
 
   const navigateToShloks = useCallback((id) => {
     navigation.navigate(Navigation.Shloks, { chapterId: id });
@@ -147,15 +171,17 @@ function Home({ language, navigation, handleGetChapters, home }) {
             {HomeMessage.headerText.defaultMessage}
           </CustomText>
           <View style={styles.rightIconContainer}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              // onPress={backHandler}
-              style={styles.headerSearchContainer}
-            >
-              <View style={styles.icon}>
-                <IMAGES.SearchIcon height="100%" width="100%" />
-              </View>
-            </TouchableOpacity>
+    
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => setShowSearch((prev) => !prev)}
+                style={styles.headerSearchContainer}
+              >
+
+                <View style={styles.icon}>
+                  <IMAGES.SearchIcon height="100%" width="100%" />
+                </View>
+              </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.8}
               // onPress={backHandler}
@@ -165,8 +191,21 @@ function Home({ language, navigation, handleGetChapters, home }) {
                 <IMAGES.BellIcon height="100%" width="100%" />
               </View>
             </TouchableOpacity>
+           
           </View>
+          
         </View>
+          {showSearch && (
+                  <View style={styles.searchContainer}>
+                    <TextInput
+                      style={styles.searchInput}
+                      placeholder="Search Chapters..."
+                      placeholderTextColor="#aaa"
+                      value={searchText}
+                      onChangeText={setSearchText}
+                    />
+                  </View>
+                )}
         {home?.loading ? (
           <LoadingScreen />
         ) : (

@@ -18,6 +18,18 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     textAlign: 'center',
   },
+  searchContainer: {
+  paddingHorizontal: wp(5),
+  paddingBottom: hp(10),
+},
+searchInput: {
+  height: hp(45),
+  backgroundColor:COLORS.white,
+  borderRadius: hp(12),
+  paddingHorizontal: wp(20),
+  fontSize: hp(14),
+},
+
   sectionHeaderContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',

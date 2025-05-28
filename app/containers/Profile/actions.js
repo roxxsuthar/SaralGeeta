@@ -11,3 +11,21 @@ export function defaultAction() {
     type: DEFAULT_ACTION,
   };
 }
+
+export function getProfile() {
+  return {
+    type: 'GET_PROFILE',
+  };
+}
+export function getProfileSuccess(payload) {
+  return {
+    type: 'GET_PROFILE_SUCCESS',
+    payload,
+  };
+}
+export function getProfileFail(error) {
+  return {
+    type: 'GET_PROFILE_Fail',
+    error,
+  };
+}

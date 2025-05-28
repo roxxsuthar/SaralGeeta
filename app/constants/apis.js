@@ -5,6 +5,7 @@ const APIS = {
   VERIFY_OTP: '/auth/verify/mobile-number',
   IDEALS: '/gita/ideals',
   CHAPTERS: '/gita/chapters',
+  PROFILE: '/auth/users',
   UPDATE_USER: '/auth/users',
   SHLOKS: '/gita/shlokas',
 };
