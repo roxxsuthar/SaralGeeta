@@ -27,6 +27,7 @@ import {
   makeSelectOtpDetails,
 } from '../App/selectors';
 import isEqual from 'lodash/isEqual';
+import gt from 'lodash/gt';
 import styles from './styles';
 import strings from '../../../i18n';
 import { CONSTANTS, FONTS, IMAGES } from '../../constants';
@@ -47,7 +48,7 @@ function OtpScreen({
   const timer = useRef(null);
   const otpRef = useRef(null);
   const [expired, setExpired] = useState(false);
-  const [oneTimeInput, setOneTimeInput] = useState('');
+  const [oneTimeInput, setOneTimeInput] = useState(otpDetails?.otp?.toString());
 
   const onFinish = useCallback(() => setExpired(true), []);
   const onStart = useCallback(() => setExpired(false), []);
@@ -91,12 +92,14 @@ function OtpScreen({
   };
 
   useEffect(() => {
-    if (isEqual(oneTimeInput.length, 4)) {
+    if (gt(oneTimeInput.length, 3)) {
       const payload = {
-        mobile_number: otpDetails?.mobile_number,
-        code: 1234,
+        phone: otpDetails?.mobile_number ?? 4444440011,
+        otp: oneTimeInput,
       };
-      handleVerifyOtp(payload);
+      setTimeout(() => {
+        handleVerifyOtp(payload);
+      }, 3000);
     }
   }, [oneTimeInput]);
 
@@ -126,8 +129,8 @@ function OtpScreen({
   const navigateToNext = useCallback(() => {
     // Ensure 'Login' is defined in your navigator
     const payload = {
-      mobile_number: otpDetails?.mobile_number,
-      code: 1234,
+      phone: otpDetails?.mobile_number,
+      otp: oneTimeInput,
     };
     handleVerifyOtp(payload);
   }, [navigation, otpDetails]);

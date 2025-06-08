@@ -42,11 +42,14 @@ function Home({ language, navigation, handleGetChapters, home }) {
       data: filteredChapters || [],
     },
   ];
-  console.log('Home render', home?.data, filteredChapters);
-  
-useEffect(() => {
-  handleGetChapters(); 
-}, []);
+
+  useEffect(() => {
+    handleGetChapters();
+    return () => {
+      setShowSearch(false);
+      setSearchText('');
+    };
+  }, []);
 
   useEffect(() => {
     if (home?.data) {
@@ -55,7 +58,6 @@ useEffect(() => {
   }, [home?.data]);
 
   useEffect(() => {
-    console.log('SearchText changed:', searchText);
     if (searchText.trim() === '') {
       setFilteredChapters(home?.data || []);
     } else {
@@ -67,6 +69,8 @@ useEffect(() => {
   }, [searchText, home?.data]);
 
   const navigateToShloks = useCallback((id) => {
+    setShowSearch(false);
+    setSearchText('');
     navigation.navigate(Navigation.Shloks, { chapterId: id });
   }, []);
 
@@ -76,7 +80,7 @@ useEffect(() => {
         return (
           <TouchableOpacity
             style={styles.AudioContainer}
-            onPress={() => navigateToShloks(item?.uuid)}
+            onPress={() => navigateToShloks(item?.id)}
             activeOpacity={0.8}
           >
             <FastImage
@@ -102,27 +106,7 @@ useEffect(() => {
               >
                 {item.description}
               </CustomText>
-              <View style={styles.imageContainer}>
-                {/* <TouchableOpacity
-                  activeOpacity={0.8}
-                  style={styles.iconContainer}
-                  onPress={() => navigateToShloks(item?.uuid)}
-                >
-                  <IMAGES.PlayerIcon height="100%" width="100%" />
-                </TouchableOpacity> */}
-                {/* <TouchableOpacity
-                  activeOpacity={0.8}
-                  style={styles.iconContainer}
-                >
-                  <IMAGES.Heart height="100%" width="100%" />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  style={styles.iconContainer}
-                >
-                  <CustomText style={styles.oneXText}>1</CustomText>
-                </TouchableOpacity> */}
-              </View>
+              <View style={styles.imageContainer}></View>
             </View>
           </TouchableOpacity>
         );
@@ -171,17 +155,15 @@ useEffect(() => {
             {HomeMessage.headerText.defaultMessage}
           </CustomText>
           <View style={styles.rightIconContainer}>
-    
-              <TouchableOpacity
-                activeOpacity={0.8}
-                onPress={() => setShowSearch((prev) => !prev)}
-                style={styles.headerSearchContainer}
-              >
-
-                <View style={styles.icon}>
-                  <IMAGES.SearchIcon height="100%" width="100%" />
-                </View>
-              </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => setShowSearch((prev) => !prev)}
+              style={styles.headerSearchContainer}
+            >
+              <View style={styles.icon}>
+                <IMAGES.SearchIcon height="100%" width="100%" />
+              </View>
+            </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.8}
               // onPress={backHandler}
@@ -191,27 +173,25 @@ useEffect(() => {
                 <IMAGES.BellIcon height="100%" width="100%" />
               </View>
             </TouchableOpacity>
-           
           </View>
-          
         </View>
-          {showSearch && (
-                  <View style={styles.searchContainer}>
-                    <TextInput
-                      style={styles.searchInput}
-                      placeholder="Search Chapters..."
-                      placeholderTextColor="#aaa"
-                      value={searchText}
-                      onChangeText={setSearchText}
-                    />
-                  </View>
-                )}
+        {showSearch && (
+          <View style={styles.searchContainer}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search Chapters..."
+              placeholderTextColor="#aaa"
+              value={searchText}
+              onChangeText={setSearchText}
+            />
+          </View>
+        )}
         {home?.loading ? (
           <LoadingScreen />
         ) : (
           <SectionList
             sections={sections}
-            keyExtractor={(item) => item.uuid}
+            keyExtractor={(item) => item.id}
             // stickySectionHeadersEnabled
             showsVerticalScrollIndicator={false}
             renderSectionHeader={({ section }) => (

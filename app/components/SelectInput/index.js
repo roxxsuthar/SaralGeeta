@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo, useRef, useState } from 'react';
+import React, { memo, useRef, useState, useCallback } from 'react';
 import {
   View,
   Text,
@@ -18,7 +18,7 @@ import { IMAGES } from '../../constants';
 import { COLORS } from '../../constants';
 import defaultStyles from './styles'; // You’ll create styles separately like LoadingScreen
 
-function SelectInput({ label, options, onSelect, value, loading }) {
+function SelectInput({ label, options, onSelect, loading, value }) {
   const inputRef = useRef(null);
   const [inputLayout, setInputLayout] = useState({ x: 0, y: 0, width: 0 });
   const [visible, setVisible] = useState(false);
@@ -28,12 +28,17 @@ function SelectInput({ label, options, onSelect, value, loading }) {
     setVisible(false);
   };
 
+  const getLabel = useCallback(() => {
+    const selected = options?.find((ele) => ele?.value == value);
+    return selected?.label || '';
+  }, [options, value]);
+
   return (
     <>
       <TouchableOpacity
         onPress={() => {
           inputRef?.current?.measureInWindow((x, y, width, height) => {
-            setInputLayout({ x, y: y + height - 1, width }); 
+            setInputLayout({ x, y: y + height - 1, width });
             setVisible(true);
           });
         }}
@@ -45,7 +50,7 @@ function SelectInput({ label, options, onSelect, value, loading }) {
             style={defaultStyles.input}
             placeholder={label}
             placeholderTextColor={COLORS.gray}
-            value={value?.label || ''}
+            value={getLabel()}
             editable={false}
             pointerEvents="none"
           />

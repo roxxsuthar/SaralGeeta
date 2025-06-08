@@ -1,13 +1,18 @@
 // All API constants here.
 const APIS = {
-  VERSION_URL: '/api/v1/',
+  LOGIN: '/send-otp',
   REGISTRATION: '/auth/registration',
-  VERIFY_OTP: '/auth/verify/mobile-number',
-  IDEALS: '/gita/ideals',
-  CHAPTERS: '/gita/chapters',
+  VERIFY_OTP: '/verify-otp',
+  IDEALS: '/list-ideal',
+  CHAPTERS: '/chapters',
   PROFILE: '/auth/users',
-  UPDATE_USER: '/auth/users',
-  SHLOKS: '/gita/shlokas',
+  UPDATE_USER: '/user/update',
+  SHLOKS: '/shloke',
+  CONTACT_US: '/contact-us',
+  SAVE_IDOL: '/choose-ideal',
+  LANGUAGES: '/list-language',
+  SAVE_RESULT: '/submit-result',
+  RECENT_WATCHED: '/recent-shlokes',
 };
 export const API_URL = ' https://app.saralgita.in/api';
 

@@ -198,6 +198,10 @@
       "id": "app.container.EditProfile.gender",
       "defaultMessage": "Gender"
     },
+    "language": {
+      "id": "app.container.EditProfile.language",
+      "defaultMessage": "Language"
+    },
     "shlokSpeed": {
       "id": "app.container.EditProfile.shlokSpeed",
       "defaultMessage": "Shlok Speed"

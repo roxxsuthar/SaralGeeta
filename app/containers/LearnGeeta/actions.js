@@ -6,6 +6,9 @@
 
 import {
   DEFAULT_ACTION,
+  SAVE_RESULT,
+  SAVE_RESULT_FAIL,
+  SAVE_RESULT_SUCCESS,
   SHLOKS_DETAILS,
   SHLOKS_DETAILS_FAIL,
   SHLOKS_DETAILS_SUCCESS,
@@ -34,5 +37,24 @@ export function getShloksDetailSuccess(payload) {
 export function getShloksDetailFail() {
   return {
     type: SHLOKS_DETAILS_FAIL,
+  };
+}
+
+export function saveResult(payload) {
+  return {
+    type: SAVE_RESULT,
+    payload,
+  };
+}
+
+export function saveResultSuccess() {
+  return {
+    type: SAVE_RESULT_SUCCESS,
+  };
+}
+
+export function saveResultFail() {
+  return {
+    type: SAVE_RESULT_FAIL,
   };
 }

@@ -29,8 +29,6 @@ import { Navigation } from '../../constants/constants';
 function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
   const { currentLanguage } = language;
 
-  console.log('------------------------', get(route));
-
   useEffect(() => {
     handleGetShloks({ chapterId: get(route, 'params.chapterId') });
   }, [route]);
@@ -49,7 +47,7 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
         >
           <FastImage
             style={styles.cardImage}
-            source={IMAGES.Krishna}
+            source={{ uri: item?.image }}
             resizeMode={FastImage.resizeMode.contain}
           />
           <View style={styles.textContainer}>
@@ -59,24 +57,8 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
                 styles.cardTitle,
               )}
             >
-              {get(item, 'shlokas_text')}
+              {get(item, 'shloke')}
             </CustomText>
-            {/* <CustomText
-              style={Object.assign(
-                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                styles.languageText,
-              )}
-            >
-              {item?.language}
-            </CustomText>
-            <CustomText
-              style={Object.assign(
-                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                styles.timeText,
-              )}
-            >
-              Time: {item?.time}
-            </CustomText> */}
           </View>
         </TouchableOpacity>
       );

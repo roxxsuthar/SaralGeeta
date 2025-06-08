@@ -6,7 +6,9 @@ import { GET_PROFILE } from './constants';
 import { getProfileFail, getProfileSuccess } from './actions';
 
 function* fetchProfile() {
-  const url = Helpers.getUrl(APIS.PROFILE);
+  let url = Helpers.getUrl(APIS.PROFILE);
+  url = `${url}/`;
+
   const options = {
     method: 'GET',
     url,

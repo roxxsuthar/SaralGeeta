@@ -8,7 +8,7 @@ import { LOGIN_ACTION } from '../App/constants';
 import { Navigation } from '../../constants/constants';
 
 function* sendOtpApiHandler({ payload, callback }) {
-  const url = Helpers.getUrl(APIS.REGISTRATION);
+  const url = Helpers.getUrl(APIS.LOGIN);
   const options = {
     method: 'POST',
     url,
@@ -17,8 +17,7 @@ function* sendOtpApiHandler({ payload, callback }) {
 
   try {
     const res = yield call(request, options);
-    console.log('res', res);
-    yield put(sendOtpSuccessAction(res.results));
+    yield put(sendOtpSuccessAction(res.data));
     callback?.navigate(Navigation.OtpScreen);
   } catch (e) {
     yield put(sendOtpFailAction(e));

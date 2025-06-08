@@ -13,13 +13,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     height: '100%',
+    zIndex: 0,
   },
   videoWrapper: {
     width: '100%',
     overflow: 'hidden', // Clip video to fit within border
   },
   backgroundVideo: {
-    ...StyleSheet.absoluteFillObject,
+    width: '100%',
+    height: '100%',
   },
   cloud: {
     width: 150,

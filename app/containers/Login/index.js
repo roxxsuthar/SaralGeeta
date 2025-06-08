@@ -86,7 +86,7 @@ function Login({ language, navigation, handleSendOtp, loading }) {
 
   const navigateToNext = useCallback(() => {
     const payload = {
-      mobile_number: mobileNumber,
+      phone: mobileNumber,
     };
     handleSendOtp(payload, navigation);
   }, [mobileNumber]);

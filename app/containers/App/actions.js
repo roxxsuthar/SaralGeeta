@@ -19,6 +19,9 @@ import {
   UPDATE_USER_DETAILS_FAIL,
   SELECT_IDEALS,
   INTRO_VIDEO_PLAY,
+  EDIT_PROFILE_ACTION,
+  EDIT_PROFILE_ACTION_SUCCESS,
+  EDIT_PROFILE_ACTION_FAIL,
 } from './constants';
 
 export function defaultAction() {
@@ -111,5 +114,26 @@ export function selectIdeal(payload) {
 export function introVideoWatched() {
   return {
     type: INTRO_VIDEO_PLAY,
+  };
+}
+
+export function editProfile(payload, navigation) {
+  return {
+    type: EDIT_PROFILE_ACTION,
+    payload,
+    navigation,
+  };
+}
+
+export function editProfileSuccess(payload) {
+  return {
+    type: EDIT_PROFILE_ACTION_SUCCESS,
+    payload,
+  };
+}
+
+export function editProfileFail() {
+  return {
+    type: EDIT_PROFILE_ACTION_FAIL,
   };
 }

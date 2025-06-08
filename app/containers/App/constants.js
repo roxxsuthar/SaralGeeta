@@ -25,3 +25,13 @@ export const UPDATE_USER_DETAILS_FAIL =
 
 export const SELECT_IDEALS = 'app/containers/App/SELECT_IDEALS';
 export const INTRO_VIDEO_PLAY = 'app/containers/App/INTRO_VIDEO_PLAY';
+
+export const GET_PROFILE = 'app/containers/App/GET_PROFILE';
+export const GET_PROFILE_SUCCESS = 'app/containers/App/GET_PROFILE_SUCCESS';
+export const GET_PROFILE_FAIL = 'app/containers/App/GET_PROFILE_FAIL';
+
+export const EDIT_PROFILE_ACTION = 'app/containers/App/EDIT_PROFILE_ACTION';
+export const EDIT_PROFILE_ACTION_SUCCESS =
+  'app/containers/App/EDIT_PROFILE_ACTION_SUCCESS';
+export const EDIT_PROFILE_ACTION_FAIL =
+  'app/containers/App/EDIT_PROFILE_ACTION_FAIL';

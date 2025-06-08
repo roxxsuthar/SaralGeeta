@@ -7,8 +7,7 @@ import { GET_CHAPTERS } from './constants';
 import { getChaptersFail, getChaptersSuccess } from './actions';
 
 function* getChaptersHandler() {
-  let url = Helpers.getUrl(APIS.CHAPTERS);
-  url = `${url}?limit=all`;
+  const url = Helpers.getUrl(APIS.CHAPTERS);
   const options = {
     method: 'GET',
     url,
@@ -16,7 +15,7 @@ function* getChaptersHandler() {
 
   try {
     const res = yield call(request, options);
-    yield put(getChaptersSuccess(res.results));
+    yield put(getChaptersSuccess(res.data));
   } catch (e) {
     yield put(getChaptersFail(e));
   }

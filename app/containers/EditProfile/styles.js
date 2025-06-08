@@ -96,6 +96,12 @@ const styles = StyleSheet.create({
     lineHeight: hp(22),
     marginLeft: hp(5),
   },
+  errorText: {
+    color: COLORS.red,
+    fontSize: hp(12),
+    fontWeight: '400',
+    marginTop: hp(5),
+  },
 });
 
 export default styles;

@@ -16,7 +16,7 @@ function* verifyOtpHandler({ payload, callback }) {
 
   try {
     const res = yield call(request, options);
-    yield put(verifyOtpSuccessAction(res.results));
+    yield put(verifyOtpSuccessAction(res.data));
     callback?.();
   } catch (e) {
     yield put(verifyOtpFailAction(e));

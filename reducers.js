@@ -8,6 +8,8 @@ import ourIdealsReducer from './app/containers/OurIdeals/reducer';
 import homeReducer from './app/containers/Home/reducer';
 import shloksReducer from './app/containers/Shloks/reducer';
 import learnGeetaReducer from './app/containers/LearnGeeta/reducer';
+import editProfileReducer from './app/containers/EditProfile/reducer';
+import chaptersReducer from './app/containers/Chapters/reducer';
 
 const appPersistConfig = {
   key: 'app',
@@ -21,6 +23,8 @@ const combinedReducers = combineReducers({
   home: homeReducer,
   shloks: shloksReducer,
   learnGeeta: learnGeetaReducer,
+  editProfile: editProfileReducer,
+  chapters: chaptersReducer,
 });
 
 // Root Reducer

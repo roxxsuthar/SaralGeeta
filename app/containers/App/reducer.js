@@ -6,6 +6,12 @@
 import { produce } from 'immer';
 import {
   DEFAULT_ACTION,
+  EDIT_PROFILE_ACTION,
+  EDIT_PROFILE_ACTION_FAIL,
+  EDIT_PROFILE_ACTION_SUCCESS,
+  GET_PROFILE,
+  GET_PROFILE_FAIL,
+  GET_PROFILE_SUCCESS,
   INTRO_VIDEO_PLAY,
   LOGIN_ACTION,
   LOGIN_ACTION_FAIL,
@@ -65,7 +71,7 @@ const appReducer = (state = initialState, action) =>
         draft.loading = true;
         break;
       case VERIFY_OTP_SUCCESS:
-        draft.user = action.payload;
+        draft.user = action.payload.user;
         draft.accessToken = action.payload.access_token;
         draft.loading = false;
         break;
@@ -87,6 +93,27 @@ const appReducer = (state = initialState, action) =>
         break;
       case INTRO_VIDEO_PLAY:
         draft.introVideo = true;
+        break;
+
+      case GET_PROFILE:
+        draft.loading = true;
+        break;
+      case GET_PROFILE_SUCCESS:
+        draft.user = action.payload;
+        draft.loading = false;
+        break;
+      case GET_PROFILE_FAIL:
+        draft.loading = false;
+        break;
+      case EDIT_PROFILE_ACTION:
+        draft.loading = true;
+        break;
+      case EDIT_PROFILE_ACTION_SUCCESS:
+        draft.user = action.payload;
+        draft.loading = false;
+        break;
+      case EDIT_PROFILE_ACTION_FAIL:
+        draft.loading = false;
         break;
     }
   });

@@ -7,8 +7,8 @@ import { GET_SHLOKS } from './constants';
 import { getShloksFail, getShloksSuccess } from './actions';
 
 function* getShloksHandler({ payload }) {
-  let url = Helpers.getUrl(APIS.SHLOKS);
-  url = `${url}?limit=all&chapter_id=${payload?.chapterId}`;
+  let url = Helpers.getUrl(APIS.CHAPTERS);
+  url = `${url}/${payload?.chapterId}/shlokes`;
   const options = {
     method: 'GET',
     url,
@@ -16,7 +16,7 @@ function* getShloksHandler({ payload }) {
 
   try {
     const res = yield call(request, options);
-    yield put(getShloksSuccess(res.results));
+    yield put(getShloksSuccess(res.data));
   } catch (e) {
     yield put(getShloksFail(e));
   }

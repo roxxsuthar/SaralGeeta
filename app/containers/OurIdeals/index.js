@@ -49,7 +49,7 @@ function OurIdeals({
 
   const getStyleOfCard = useCallback(
     (item) => {
-      if (isEqual(selectCard?.uuid, item?.uuid)) {
+      if (isEqual(selectCard?.id, item?.id)) {
         return styles.boarderCardContainer;
       }
       return styles.cardContainer;
@@ -99,8 +99,7 @@ function OurIdeals({
   const navigateToHome = useCallback(() => {
     selectIdealHandler(selectCard);
     const payload = {
-      data: { ideal: selectCard?.uuid },
-      userId: user?.uuid,
+      data: { ideal_id: selectCard?.id },
     };
     handleUpdateUser(payload);
     navigation.navigate(Navigation.Home);
@@ -138,7 +137,7 @@ function OurIdeals({
             <FlatList
               data={ourIdeals?.data}
               renderItem={renderItem}
-              keyExtractor={(item) => item.uuid}
+              keyExtractor={(item) => item.id}
               ItemSeparatorComponent={itemSeparatorComponent}
             />
           </View>

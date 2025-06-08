@@ -232,7 +232,7 @@
     },
     "name": {
       "id": "app.container.Profile.name",
-      "defaultMessage": "First name"
+      "defaultMessage": "Name"
     },
     "email": {
       "id": "app.container.Profile.email",
@@ -287,6 +287,10 @@
     "gender": {
       "id": "app.container.EditProfile.gender",
       "defaultMessage": "Gender"
+    },
+    "language": {
+      "id": "app.container.EditProfile.language",
+      "defaultMessage": "Language"
     },
     "shlokSpeed": {
       "id": "app.container.EditProfile.shlokSpeed",

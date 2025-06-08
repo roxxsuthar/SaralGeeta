@@ -24,8 +24,10 @@ import { setFontFamily } from '../../utils/device';
 import { FONTS, IMAGES } from '../../constants';
 import strings from '../../../i18n';
 import { makeSelectAppLanguage } from '../App/selectors';
+import { getRecentWatched } from './actions';
+import { useEffect } from 'react';
 
-function Chapters({ language }) {
+function Chapters({ language, handleGetRecent }) {
   const { Chapters: ChaptersMessage } = strings;
   const { currentLanguage } = language;
 
@@ -101,6 +103,10 @@ function Chapters({ language }) {
     //   ],
     // },
   ];
+
+  useEffect(() => {
+    handleGetRecent();
+  }, []);
 
   // const timeStringToSeconds = (timeString) => {
   //   const timeParts = split(timeString, ':').map(Number);
@@ -295,6 +301,7 @@ function Chapters({ language }) {
 Chapters.propTypes = {
   language: PropTypes.object,
   navigation: PropTypes.object,
+  handleGetRecent: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -303,7 +310,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 function mapDispatchToProps(dispatch) {
-  return { dispatch };
+  return { handleGetRecent: () => dispatch(getRecentWatched()) };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

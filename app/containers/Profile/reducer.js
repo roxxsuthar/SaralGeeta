@@ -4,7 +4,12 @@
  *
  */
 import { produce } from 'immer';
-import { DEFAULT_ACTION,GET_PROFILE,GET_PROFILE_SUCCESS,GET_PROFILE_FAIL } from './constants';
+import {
+  DEFAULT_ACTION,
+  GET_PROFILE,
+  GET_PROFILE_SUCCESS,
+  GET_PROFILE_FAIL,
+} from './constants';
 
 export const initialState = {
   data: null,
@@ -28,7 +33,6 @@ const profileReducer = (state = initialState, action) =>
       case GET_PROFILE_FAIL:
         draft.loading = false;
         break;
-     
     }
   });
 

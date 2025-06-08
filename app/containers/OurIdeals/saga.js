@@ -12,8 +12,7 @@ import {
 } from '../App/actions';
 
 function* getOurIdealsHandler() {
-  let url = Helpers.getUrl(APIS.IDEALS);
-  url = `${url}?limit=all`;
+  const url = Helpers.getUrl(APIS.IDEALS);
   const options = {
     method: 'GET',
     url,
@@ -21,15 +20,15 @@ function* getOurIdealsHandler() {
 
   try {
     const res = yield call(request, options);
-    yield put(getIdealsSuccess(res.results));
+    yield put(getIdealsSuccess(res.data));
   } catch (e) {
     yield put(getIdealsFail(e));
   }
 }
 
 function* saveUserDetails({ payload }) {
-  let url = Helpers.getUrl(APIS.UPDATE_USER);
-  url = `${url}/${payload?.userId}`;
+  const url = Helpers.getUrl(APIS.SAVE_IDOL);
+
   const options = {
     method: 'PATCH',
     url,
@@ -38,7 +37,7 @@ function* saveUserDetails({ payload }) {
 
   try {
     const res = yield call(request, options);
-    yield put(updateUserDetailsSuccess(res?.results));
+    yield put(updateUserDetailsSuccess(res?.data));
   } catch (e) {
     yield put(updateUserDetailsFail(e));
   }

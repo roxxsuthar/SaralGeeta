@@ -36,29 +36,34 @@ import makeSelectLearnGeeta from './selectors';
 import { useNavigation } from '@react-navigation/native';
 import { IMAGES } from '../../constants';
 import styles from './styles';
-import { getShloksDetail } from './actions';
-import { makeSelectIntroVideo, makeSelectUser } from '../App/selectors';
+import { getShloksDetail, saveResult } from './actions';
+import {
+  makeSelectIdealDetails,
+  makeSelectIntroVideo,
+  makeSelectUser,
+} from '../App/selectors';
 import { introVideoWatched } from '../App/actions';
 import CustomText from '../../components/CustomText';
 import makeSelectShloks from '../Shloks/selectors';
 import { ImageBackground } from 'react-native';
+import makeSelectOurIdeals from '../OurIdeals/selectors';
 
 Sound.setCategory('Playback'); // Allow audio to play in the background
 const GLADIA_API_KEY = 'bbebcb87-bb37-4aff-b8ba-d5bda7a96f4c';
 function LearnGeeta({
   handleGetShloksDetail,
   route,
-  introVideo,
+  isIntroVideoPlayed,
   handleIntroVideo,
   learnGeeta,
   user,
   shloks,
+  introVideo,
+  handleSaveResult,
 }) {
   const videoRef = useRef(null);
   const [audio, setAudio] = useState(null);
   const [isAudioReady, setIsAudioReady] = useState(false);
-  const { width, height } = Dimensions.get('window');
-  const aspectRatio = width / height;
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [isAudioLoading, setIsAudioLoading] = useState(false);
   const [isRecordingButton, setIsRecordingButton] = useState(false);
@@ -68,15 +73,16 @@ function LearnGeeta({
   const [waitingForTranslation, setWaitingForTranslation] = useState('');
   const [shlokIndex, setShlokIndex] = useState();
   const [videoUrl, setVideoUrl] = useState(
-    get(learnGeeta, 'data.shlokas_video_hls'),
+    learnGeeta?.data?.media?.hls_male_path,
   );
+
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const animationRef = useRef(null);
   const navigation = useNavigation();
 
   useEffect(() => {
     setShlokIndex(
-      shloks?.data?.findIndex((item) => item.uuid === learnGeeta?.data?.uuid),
+      shloks?.data?.findIndex((item) => item.id === learnGeeta?.data?.id),
     );
   }, [shloks, learnGeeta]);
 
@@ -106,7 +112,7 @@ function LearnGeeta({
         if (
           audio &&
           isAudioReady &&
-          introVideo &&
+          isIntroVideoPlayed &&
           isVideoReady &&
           !isLoading &&
           !isButton
@@ -124,7 +130,7 @@ function LearnGeeta({
     // Initial audio load
     if (learnGeeta) {
       loadAudio();
-      setVideoUrl(get(learnGeeta, 'data.shlokas_video_hls'));
+      setVideoUrl(get(learnGeeta, 'data.media.hls_male_path'));
     }
 
     // Cleanup
@@ -144,10 +150,10 @@ function LearnGeeta({
 
     try {
       // Get audio file name from URL
-      const audioUrl = get(learnGeeta, 'data.shlokas_voice');
+      const audioUrl = get(learnGeeta, 'data.media.audio');
 
       const fileName = audioUrl.split('/').pop();
-      const uniqueFileName = `${get(learnGeeta, 'data.uuid')}_audio.${fileName}`;
+      const uniqueFileName = `${get(learnGeeta, 'data.id')}_audio.${fileName}`;
       const localPath = `${RNFS.DocumentDirectoryPath}/${uniqueFileName}`;
 
       // Check if file exists locally
@@ -190,7 +196,7 @@ function LearnGeeta({
 
   useEffect(() => {
     // Trigger playback when both audio and video are ready
-    if (!introVideo) {
+    if (!isIntroVideoPlayed) {
       videoRef.current?.seek(0);
     } else if (
       isAudioReady &&
@@ -216,12 +222,9 @@ function LearnGeeta({
       return;
     }
 
-    console.log('audio', audio);
-    // Attempt to play the audio
     audio.play((success) => {
-      console.log('-----is audio playing-----', audio.isPlaying());
       if (!success) {
-        console.error(`Audio playback failed.`);
+        // console.error(`Audio playback failed.`);
       } else {
         console.log('Audio playback successful');
       }
@@ -239,7 +242,7 @@ function LearnGeeta({
   }, [audio]);
 
   useEffect(() => {
-    handleGetShloksDetail({ shlok_id: get(route, 'params.uuid') });
+    handleGetShloksDetail({ shlok: get(route, 'params') });
   }, [route]);
 
   const handleIntroPlay = useCallback(() => {
@@ -352,12 +355,9 @@ function LearnGeeta({
       setTranscription('');
       audio.stop();
       audio.release();
-      console.log('Attempting to start recording...');
-      // Ensure the recording button state is correct
       videoRef.current.seek(0);
       setIsVideoPlaying(false);
       setIsRecordingButton(true);
-      // Check permissions
       const hasPermissions = await requestPermissions();
       if (!hasPermissions) {
         console.error('Permissions not granted.');
@@ -376,11 +376,11 @@ function LearnGeeta({
           console.log('Recording successfully started at:', path);
         })
         .catch((error) => {
-          console.error('Failed to start recording:', error);
+          // console.error('Failed to start recording:', error);
           setIsRecordingButton(false);
         });
     } catch (error) {
-      console.error('Error starting recorder:', error.message);
+      // console.error('Error starting recorder:', error.message);
       setIsRecordingButton(false);
     }
   };
@@ -429,7 +429,7 @@ function LearnGeeta({
       console.log('Upload successful:', result);
       return result; // This typically includes the URL of the uploaded file
     } catch (error) {
-      console.error('Error uploading audio file:', error.message);
+      // console.error('Error uploading audio file:', error.message);
       throw error;
     }
   };
@@ -442,7 +442,7 @@ function LearnGeeta({
       language: 'sa',
       detect_language: false,
       audio_to_llm_config: {
-        prompts: [`${get(learnGeeta, 'data.shlokas_text')}`],
+        prompts: [`${get(learnGeeta, 'data.shloke')}`],
       },
     };
     const gladiaUrl = 'https://api.gladia.io/v2/pre-recorded/';
@@ -482,7 +482,7 @@ function LearnGeeta({
       SoundRecorder.stop()
         .then(async (result) => {
           if (!result) {
-            console.error('No active recording session to stop.');
+            // console.error('No active recording session to stop.');
             return;
           }
 
@@ -494,7 +494,7 @@ function LearnGeeta({
 
           const fileExists = await RNFS.exists(cleanedPath);
           if (!fileExists) {
-            console.error('File not found at the specified path:', cleanedPath);
+            // console.error('File not found at the specified path:', cleanedPath);
             throw new Error('File not found at the specified path.');
           }
 
@@ -506,17 +506,17 @@ function LearnGeeta({
               startTranscription(uploadResult?.audio_url);
             })
             .catch((error) => {
-              console.error('File upload failed:', error.message);
+              // console.error('File upload failed:', error.message);
             });
 
           // Update the recording button state
           setIsRecordingButton(false);
         })
         .catch((error) => {
-          console.error('Error stopping the recording:', error);
+          // console.error('Error stopping the recording:', error);
         });
     } catch (error) {
-      console.error('Error stopping recorder:', error.message);
+      // console.error('Error stopping recorder:', error.message);
     }
   };
 
@@ -527,20 +527,17 @@ function LearnGeeta({
 
   async function pollForResult(resultUrl, headers) {
     while (true) {
-      console.log('Polling for results...');
       const pollResponse = await makeFetchRequest(resultUrl, {
         headers,
       });
 
       if (pollResponse.status === 'done') {
         setWaitingForTranslation(false);
-        console.log('- Transcription done: \n');
+
         const audioToLlmResults = pollResponse.result.audio_to_llm;
         const textOriginal = audioToLlmResults?.results[0]?.results?.prompt;
         const textTranslated = audioToLlmResults?.results[0]?.results?.response;
 
-        console.log('-------textOriginal--------', textOriginal);
-        console.log('-------textTranslated--------', textTranslated);
         const getSimilarityPercentage = (originalText, translatedText) => {
           const similarity = stringSimilarity.compareTwoStrings(
             originalText,
@@ -554,8 +551,13 @@ function LearnGeeta({
           textTranslated,
         );
 
-        console.log('similarityPercentage status : ', similarityPercentage);
         setTranscription(similarityPercentage);
+
+        const obj = {
+          result: similarityPercentage,
+          media: get(learnGeeta, 'data.media.id', ''),
+        };
+        handleSaveResult(obj);
         break;
       } else {
         console.log('Transcription status : ', pollResponse.status);
@@ -573,21 +575,22 @@ function LearnGeeta({
   }, [isVideoPlaying, isAudioReady, isVideoReady]);
 
   useEffect(() => {
-    if (introVideo) setVideoUrl(get(learnGeeta, 'data.shlokas_video_hls'));
-  }, [introVideo]);
+    if (isIntroVideoPlayed)
+      setVideoUrl(get(learnGeeta, 'data.media.hls_male_path'));
+  }, [isIntroVideoPlayed]);
 
   const getPreviousShlok = useCallback(() => {
     setIsButton(false);
     setTranscription('');
     setIsVideoPlaying(false);
-    handleGetShloksDetail({ shlok_id: shloks?.data[shlokIndex - 1]?.uuid });
+    handleGetShloksDetail({ shlok: { id: shloks?.data[shlokIndex - 1]?.id } });
   }, [shloks, shlokIndex]);
 
   const getNextShlok = useCallback(() => {
     setIsButton(false);
     setTranscription('');
     setIsVideoPlaying(false);
-    handleGetShloksDetail({ shlok_id: shloks?.data[shlokIndex + 1]?.uuid });
+    handleGetShloksDetail({ shlok: { id: shloks?.data[shlokIndex + 1]?.id } });
   }, [shloks, shlokIndex]);
 
   const playAgain = useCallback(() => {
@@ -595,7 +598,7 @@ function LearnGeeta({
     setIsButton(false);
     setTranscription('');
     setIsVideoPlaying(false);
-    setVideoUrl(get(learnGeeta, 'data.shlokas_video_hls'));
+    setVideoUrl(get(learnGeeta, 'data.media.hls_male_path'));
     setIsVideoReady(false);
     loadAudio();
   }, [learnGeeta]);
@@ -631,9 +634,9 @@ function LearnGeeta({
           <View style={styles.videoWrapper}>
             <Video
               source={
-                isEqual(introVideo, false)
+                isEqual(isIntroVideoPlayed, false)
                   ? {
-                      uri: 'https://saral-gita.s3.ap-south-1.amazonaws.com/video/ganeshji/Ganesh_ji_intro.m3u8',
+                      uri: introVideo?.hls_male_path,
                       type: 'm3u8',
                       headers: {
                         'User-Agent': 'Mozilla/5.0',
@@ -647,6 +650,9 @@ function LearnGeeta({
                       },
                     }
               }
+              // source={{
+              //   uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+              // }}
               ref={videoRef}
               style={styles.backgroundVideo}
               resizeMode="cover"
@@ -672,20 +678,20 @@ function LearnGeeta({
               }}
               onEnd={() => {
                 console.log('video ended');
-                isEqual(introVideo, true) && setIsButton(true);
-                isEqual(introVideo, false) && handleIntroPlay();
-                if (introVideo) {
+                isEqual(isIntroVideoPlayed, true) && setIsButton(true);
+                isEqual(isIntroVideoPlayed, false) && handleIntroPlay();
+                if (isIntroVideoPlayed) {
                   setIsVideoPlaying(true);
-                  if (isEqual(get(user, 'gender'), 1)) {
-                    setVideoUrl(get(learnGeeta, 'data.male_user_video_hls'));
+                  if (isEqual(get(user, 'gender'), 'male')) {
+                    setVideoUrl(get(learnGeeta, 'data.media.hls_male_user'));
                     videoRef.current.pause();
                   } else {
-                    get(learnGeeta, 'data.female_user_video_hls')
+                    get(learnGeeta, 'data.media.hls_female_user')
                       ? setVideoUrl(
-                          get(learnGeeta, 'data.female_user_video_hls'),
+                          get(learnGeeta, 'data.media.hls_female_user'),
                         )
                       : setVideoUrl(
-                          get(learnGeeta, 'data.male_user_video_hls'),
+                          get(learnGeeta, 'data.media.hls_male_user'),
                         );
                     videoRef.current.pause();
                   }
@@ -696,14 +702,14 @@ function LearnGeeta({
                 if (
                   isEqual(e?.isPlaying, false) &&
                   !isVideoPlaying &&
-                  introVideo
+                  isIntroVideoPlayed
                 ) {
                   if (audio) {
                     console.log('-----pause-----');
                     audio.pause();
                   }
                 } else {
-                  if (audio && !isVideoPlaying && introVideo) {
+                  if (audio && !isVideoPlaying && isIntroVideoPlayed) {
                     console.log('-----playing-----');
                     audio.play();
                   }
@@ -792,7 +798,7 @@ function LearnGeeta({
               </TouchableOpacity>
             </View>
           )}
-          {introVideo && (
+          {isIntroVideoPlayed && (
             <>
               {isLoading ? (
                 <View style={styles.cloudAnimationContainer}>
@@ -815,7 +821,7 @@ function LearnGeeta({
                     )}
                     {isEmpty(transcription) && (
                       <CustomText style={styles.overlayText}>
-                        {get(learnGeeta, 'data.shlokas_text')}
+                        {get(learnGeeta, 'data.shloke')}
                       </CustomText>
                     )}
                     {isButton && (
@@ -868,23 +874,27 @@ LearnGeeta.propTypes = {
   handleGetShloksDetail: PropTypes.func,
   handleIntroVideo: PropTypes.func,
   route: PropTypes.object,
-  introVideo: PropTypes.bool,
+  isIntroVideoPlayed: PropTypes.bool,
   learnGeeta: PropTypes.object,
   user: PropTypes.object,
   shloks: PropTypes.object,
+  introVideo: PropTypes.object,
+  handleSaveResult: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
   learnGeeta: makeSelectLearnGeeta(),
-  introVideo: makeSelectIntroVideo(),
+  isIntroVideoPlayed: makeSelectIntroVideo(),
   user: makeSelectUser(),
   shloks: makeSelectShloks(),
+  introVideo: makeSelectIdealDetails(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     handleGetShloksDetail: (payload) => dispatch(getShloksDetail(payload)),
     handleIntroVideo: () => dispatch(introVideoWatched()),
+    handleSaveResult: (payload) => dispatch(saveResult(payload)),
   };
 }
 

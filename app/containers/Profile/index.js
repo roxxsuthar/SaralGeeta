@@ -15,17 +15,21 @@ import { IMAGES } from '../../constants';
 import { TouchableOpacity } from 'react-native';
 import CustomText from '../../components/CustomText';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
-import { makeSelectAppLanguage } from '../App/selectors';
+import {
+  makeSelectAppLanguage,
+  makeSelectIdealDetails,
+  makeSelectUser,
+} from '../App/selectors';
 
-
-function Profile() {
+function Profile({ user, ideal }) {
   const { Profile: profileMessage } = strings;
   const navigation = useNavigation();
+
   return (
     <ImageBackground
       source={IMAGES.AppBackground}
       style={styles.container}
-      resizeMode="cover" 
+      resizeMode="cover"
     >
       <StatusBar
         barStyle="light-content"
@@ -54,34 +58,42 @@ function Profile() {
                 <CustomText style={styles.detailTitle}>
                   {profileMessage.name.defaultMessage}
                 </CustomText>
-                <CustomText style={styles.detailText}>Arjun</CustomText>
+                <CustomText style={styles.detailText}>
+                  {user?.name || 'Guest'}
+                </CustomText>
               </View>
               <View>
                 <CustomText style={styles.detailTitle}>
                   {profileMessage.email.defaultMessage}
                 </CustomText>
                 <CustomText style={styles.detailText}>
-                  arjun@gmail.com
+                  {user?.email || 'N/A'}
                 </CustomText>
               </View>
               <View>
                 <CustomText style={styles.detailTitle}>
                   {profileMessage.mobile.defaultMessage}
                 </CustomText>
-                <CustomText style={styles.detailText}>+91 857329723</CustomText>
+                <CustomText style={styles.detailText}>
+                  {' '}
+                  {user?.phone || 'N/A'}
+                </CustomText>
               </View>
               <View>
                 <CustomText style={styles.detailTitle}>
                   {profileMessage.gender.defaultMessage}
                 </CustomText>
-                <CustomText style={styles.detailText}>Male</CustomText>
+                <CustomText style={styles.detailText}>
+                  {' '}
+                  {user?.gender || 'N/A'}
+                </CustomText>
               </View>
               <View>
                 <CustomText style={styles.detailTitle}>
                   {profileMessage.voice.defaultMessage}
                 </CustomText>
                 <CustomText style={styles.detailText}>
-                  Ganesh Bhagwan
+                  {ideal?.name || 'N/A'}
                 </CustomText>
               </View>
               {/* <View>
@@ -130,11 +142,17 @@ function Profile() {
   );
 }
 
-Profile.propTypes = { dispatch: PropTypes.func.isRequired };
+Profile.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  user: PropTypes.object,
+  ideal: PropTypes.object,
+};
 
 const mapStateToProps = createStructuredSelector({
   profile: makeSelectProfile(),
   language: makeSelectAppLanguage(),
+  user: makeSelectUser(),
+  ideal: makeSelectIdealDetails(),
 });
 
 function mapDispatchToProps(dispatch) {
