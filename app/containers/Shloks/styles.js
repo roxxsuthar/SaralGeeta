@@ -106,6 +106,8 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     marginLeft: wp(15),
+    flexShrink: 1, // Allow text to shrink and wrap
+    maxWidth: wp(220),
   },
   timeText: {
     fontSize: hp(15),

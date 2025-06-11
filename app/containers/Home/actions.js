@@ -9,6 +9,9 @@ import {
   GET_CHAPTERS,
   GET_CHAPTERS_FAIL,
   GET_CHAPTERS_SUCCESS,
+  GET_RECENT,
+  GET_RECENT_FAIL,
+  GET_RECENT_SUCCESS,
 } from './constants';
 
 export function defaultAction() {
@@ -31,5 +34,24 @@ export function getChaptersSuccess(payload) {
 export function getChaptersFail() {
   return {
     type: GET_CHAPTERS_FAIL,
+  };
+}
+
+export function getRecentWatched() {
+  return {
+    type: GET_RECENT,
+  };
+}
+
+export function getRecentWatchedSuccess(payload) {
+  return {
+    type: GET_RECENT_SUCCESS,
+    payload,
+  };
+}
+
+export function getRecentWatchedFail() {
+  return {
+    type: GET_RECENT_FAIL,
   };
 }

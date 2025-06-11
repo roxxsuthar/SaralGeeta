@@ -47,6 +47,7 @@ import CustomText from '../../components/CustomText';
 import makeSelectShloks from '../Shloks/selectors';
 import { ImageBackground } from 'react-native';
 import makeSelectOurIdeals from '../OurIdeals/selectors';
+import { getShloks } from '../Shloks/actions';
 
 Sound.setCategory('Playback'); // Allow audio to play in the background
 const GLADIA_API_KEY = 'bbebcb87-bb37-4aff-b8ba-d5bda7a96f4c';
@@ -60,6 +61,7 @@ function LearnGeeta({
   shloks,
   introVideo,
   handleSaveResult,
+  handleGetShloks,
 }) {
   const videoRef = useRef(null);
   const [audio, setAudio] = useState(null);
@@ -79,6 +81,10 @@ function LearnGeeta({
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const animationRef = useRef(null);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    handleGetShloks({ chapterId: get(route, 'params.chapter') });
+  }, []);
 
   useEffect(() => {
     setShlokIndex(
@@ -143,7 +149,7 @@ function LearnGeeta({
     };
   }, [learnGeeta]);
 
-  const loadAudio = async () => {
+  const loadAudio = useCallback(async () => {
     if (isAudioLoading) return;
 
     setIsAudioLoading(true);
@@ -153,7 +159,7 @@ function LearnGeeta({
       const audioUrl = get(learnGeeta, 'data.media.audio');
 
       const fileName = audioUrl.split('/').pop();
-      const uniqueFileName = `${get(learnGeeta, 'data.id')}_audio.${fileName}`;
+      const uniqueFileName = `${get(learnGeeta, 'data.id')}_audio.${fileName.slice(-3)}`;
       const localPath = `${RNFS.DocumentDirectoryPath}/${uniqueFileName}`;
 
       // Check if file exists locally
@@ -182,9 +188,8 @@ function LearnGeeta({
           return;
         }
 
-        sound.setVolume(1.0);
+        sound.setVolume(2.0);
         setAudio(sound);
-        console.log;
         setIsAudioReady(true);
         setIsAudioLoading(false);
       });
@@ -192,7 +197,7 @@ function LearnGeeta({
       setIsAudioLoading(false);
       setIsAudioReady(false);
     }
-  };
+  }, [learnGeeta, audio]);
 
   useEffect(() => {
     // Trigger playback when both audio and video are ready
@@ -222,13 +227,7 @@ function LearnGeeta({
       return;
     }
 
-    audio.play((success) => {
-      if (!success) {
-        // console.error(`Audio playback failed.`);
-      } else {
-        console.log('Audio playback successful');
-      }
-    });
+    audio.play((success) => {});
   };
 
   // Effect to handle cleanup
@@ -467,57 +466,53 @@ function LearnGeeta({
   }
 
   const stopRecording = async () => {
-    try {
-      videoRef.current.pause();
-      setIsVideoPlaying(true);
-      // Check if the recording state is active
-      if (!isRecordingButton) {
-        console.warn('Recorder is not active. Cannot stop recording.');
-        return;
-      }
-
-      console.log('Attempting to stop recording...');
-
-      // Attempt to stop the recorder
-      SoundRecorder.stop()
-        .then(async (result) => {
-          if (!result) {
-            // console.error('No active recording session to stop.');
-            return;
-          }
-
-          console.log('Recording stopped successfully:', result);
-
-          // Clean the file path and verify its existence
-          const cleanedPath = result?.path;
-          console.log('Cleaned file path:', cleanedPath);
-
-          const fileExists = await RNFS.exists(cleanedPath);
-          if (!fileExists) {
-            // console.error('File not found at the specified path:', cleanedPath);
-            throw new Error('File not found at the specified path.');
-          }
-
-          // Proceed with uploading the audio file
-          console.log('Uploading audio to Gladia...');
-          uploadAudioToGladia(cleanedPath, GLADIA_API_KEY)
-            .then((uploadResult) => {
-              console.log('File uploaded successfully:', uploadResult);
-              startTranscription(uploadResult?.audio_url);
-            })
-            .catch((error) => {
-              // console.error('File upload failed:', error.message);
-            });
-
-          // Update the recording button state
-          setIsRecordingButton(false);
-        })
-        .catch((error) => {
-          // console.error('Error stopping the recording:', error);
-        });
-    } catch (error) {
-      // console.error('Error stopping recorder:', error.message);
+    videoRef.current.pause();
+    setIsVideoPlaying(true);
+    // Check if the recording state is active
+    if (!isRecordingButton) {
+      console.warn('Recorder is not active. Cannot stop recording.');
+      return;
     }
+
+    console.log('Attempting to stop recording...');
+
+    // Attempt to stop the recorder
+    SoundRecorder.stop()
+      .then(async (result) => {
+        if (!result) {
+          // console.error('No active recording session to stop.');
+          return;
+        }
+
+        console.log('Recording stopped successfully:', result);
+
+        // Clean the file path and verify its existence
+        const cleanedPath = result?.path;
+        console.log('Cleaned file path:', cleanedPath);
+
+        const fileExists = await RNFS.exists(cleanedPath);
+        if (!fileExists) {
+          // console.error('File not found at the specified path:', cleanedPath);
+          throw new Error('File not found at the specified path.');
+        }
+
+        // Proceed with uploading the audio file
+        console.log('Uploading audio to Gladia...');
+        uploadAudioToGladia(cleanedPath, GLADIA_API_KEY)
+          .then((uploadResult) => {
+            console.log('File uploaded successfully:', uploadResult);
+            startTranscription(uploadResult?.audio_url);
+          })
+          .catch((error) => {
+            // console.error('File upload failed:', error.message);
+          });
+
+        // Update the recording button state
+        setIsRecordingButton(false);
+      })
+      .catch((error) => {
+        // console.error('Error stopping the recording:', error);
+      });
   };
 
   async function makeFetchRequest(url, options) {
@@ -880,6 +875,7 @@ LearnGeeta.propTypes = {
   shloks: PropTypes.object,
   introVideo: PropTypes.object,
   handleSaveResult: PropTypes.func,
+  handleGetShloks: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -895,6 +891,7 @@ function mapDispatchToProps(dispatch) {
     handleGetShloksDetail: (payload) => dispatch(getShloksDetail(payload)),
     handleIntroVideo: () => dispatch(introVideoWatched()),
     handleSaveResult: (payload) => dispatch(saveResult(payload)),
+    handleGetShloks: (payload) => dispatch(getShloks(payload)),
   };
 }
 

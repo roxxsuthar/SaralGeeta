@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import isNil from 'lodash/isNil';
 import { COLORS } from '../../constants';
 import { Navigation } from '../../constants/constants';
 import OnboardingOne from '../OnboardingOne';
@@ -26,6 +26,7 @@ const AuthNavigator = ({
         headerShown: false,
       }}
     >
+      {/* Show onboarding screens if not visited */}
       {!isOnboardingVisited && (
         <>
           <AppStack.Screen
@@ -46,6 +47,8 @@ const AuthNavigator = ({
           />
         </>
       )}
+
+      {/* Show language selection screen if onboarding is visited but language is not selected */}
       {isOnboardingVisited && !isLanguageSelected && (
         <AppStack.Screen
           name={Navigation.Language}
@@ -56,8 +59,20 @@ const AuthNavigator = ({
           initialParams={{ currentLanguage }}
         />
       )}
-      {!token && (
+
+      {/* If token exists, directly navigate to DashboardNavigator */}
+      {!isNil(token) ? (
+        <AppStack.Screen
+          name="DashboardNavigator"
+          component={DashboardNavigator}
+          options={{
+            headerShown: false,
+          }}
+          initialParams={{ currentLanguage }}
+        />
+      ) : (
         <>
+          {/* If no token, show Login and OtpScreen */}
           <AppStack.Screen
             name={Navigation.Login}
             component={Login}
@@ -76,14 +91,6 @@ const AuthNavigator = ({
           />
         </>
       )}
-      <AppStack.Screen
-        name="DashboardNavigator"
-        component={DashboardNavigator}
-        options={{
-          headerShown: false,
-        }}
-        initialParams={{ currentLanguage }}
-      />
     </AppStack.Navigator>
   </>
 );

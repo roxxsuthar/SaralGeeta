@@ -94,7 +94,7 @@ function OtpScreen({
   useEffect(() => {
     if (gt(oneTimeInput.length, 3)) {
       const payload = {
-        phone: otpDetails?.mobile_number ?? 4444440011,
+        phone: otpDetails?.phone,
         otp: oneTimeInput,
       };
       setTimeout(() => {
@@ -122,14 +122,14 @@ function OtpScreen({
       alert();
       setOneTimeInput('');
       setupSmsRetriever();
-      handleSendOtp({ mobile_number: otpDetails?.mobile_number });
+      handleSendOtp({ phone: otpDetails?.phone });
     }
   }, [expired, otpDetails]);
 
   const navigateToNext = useCallback(() => {
     // Ensure 'Login' is defined in your navigator
     const payload = {
-      phone: otpDetails?.mobile_number,
+      phone: otpDetails?.phone,
       otp: oneTimeInput,
     };
     handleVerifyOtp(payload);

@@ -251,6 +251,7 @@ EditProfile.propTypes = {
   handleGetLanguages: PropTypes.func,
   handleUpdateUserDetail: PropTypes.func,
   user: PropTypes.object,
+  loading: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({

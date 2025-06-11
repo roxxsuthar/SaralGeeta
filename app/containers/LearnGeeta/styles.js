@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     fontSize: hp(13.48),
     lineHeight: hp(27.93),
     fontFamily: FONTS.HINDI,
-    fontWeight: '400',
+    fontWeight: '700',
     alignSelf: 'center',
     marginTop: hp(40),
   },

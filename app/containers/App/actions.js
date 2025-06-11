@@ -22,6 +22,9 @@ import {
   EDIT_PROFILE_ACTION,
   EDIT_PROFILE_ACTION_SUCCESS,
   EDIT_PROFILE_ACTION_FAIL,
+  LOGOUT_USER,
+  LOGOUT_USER_SUCCESS,
+  LOGOUT_USER_FAIL,
 } from './constants';
 
 export function defaultAction() {
@@ -135,5 +138,24 @@ export function editProfileSuccess(payload) {
 export function editProfileFail() {
   return {
     type: EDIT_PROFILE_ACTION_FAIL,
+  };
+}
+
+export function logOutUser(payload) {
+  return {
+    type: LOGOUT_USER,
+    payload,
+  };
+}
+
+export function logOutUserSuccess() {
+  return {
+    type: LOGOUT_USER_SUCCESS,
+  };
+}
+
+export function logOutUserFail() {
+  return {
+    type: LOGOUT_USER_FAIL,
   };
 }

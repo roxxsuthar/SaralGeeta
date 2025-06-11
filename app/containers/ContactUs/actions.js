@@ -17,11 +17,12 @@ export function defaultAction() {
   };
 }
 
-export function addContactUs(payload, navigation) {
+export function addContactUs(payload, navigation, action) {
   return {
     type: CONTACT_US_ACTION,
     payload,
     navigation,
+    action,
   };
 }
 export function addContactUsSuccess() {

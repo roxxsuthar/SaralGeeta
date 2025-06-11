@@ -35,3 +35,7 @@ export const EDIT_PROFILE_ACTION_SUCCESS =
   'app/containers/App/EDIT_PROFILE_ACTION_SUCCESS';
 export const EDIT_PROFILE_ACTION_FAIL =
   'app/containers/App/EDIT_PROFILE_ACTION_FAIL';
+
+export const LOGOUT_USER = 'app/containers/App/LOGOUT_USER';
+export const LOGOUT_USER_SUCCESS = 'app/containers/App/LOGOUT_USER_SUCCESS';
+export const LOGOUT_USER_FAIL = 'app/containers/App/LOGOUT_USER_FAIL';

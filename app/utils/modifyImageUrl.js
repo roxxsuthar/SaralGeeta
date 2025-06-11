@@ -3,14 +3,18 @@ import split from 'lodash/split';
 
 import { CONSTANTS } from '../constants';
 
-const modifyUrl = (imageUrl) => {
-  const url =
-    imageUrl &&
-    isEqual(typeof imageUrl, 'string') &&
-    !split(imageUrl, CONSTANTS.httpString)[1]
-      ? null
-      : imageUrl;
-  return url;
+const modifyUrl = (imageUrl, isLocal) => {
+  if (isLocal) {
+    return imageUrl;
+  } else {
+    const url =
+      imageUrl &&
+      isEqual(typeof imageUrl, 'string') &&
+      !split(imageUrl, CONSTANTS.httpString)[1]
+        ? null
+        : imageUrl;
+    return url;
+  }
 };
 
 export { modifyUrl };

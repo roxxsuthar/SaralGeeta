@@ -113,7 +113,7 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
               ...styles.headerText,
             }}
           >
-            {get(shloksData, 'data[0].chapter_details.name', 'Shloks')}
+            {get(shloksData, 'data[0].chapter_name', 'Shloks')}
           </CustomText>
           <View style={styles.headerIcons}>
             <TouchableOpacity

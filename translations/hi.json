@@ -2,229 +2,319 @@
   "App": {
     "header": {
       "id": "container.App.header",
-      "defaultMessage": "This is the App container!"
+      "defaultMessage": "यह App कंटेनर है!"
     },
     "languageUpdated": {
       "id": "container.App.languageUpdated",
-      "defaultMessage": "App language has been updated!"
+      "defaultMessage": "App की भाषा अपडेट कर दी गई है!"
     }
   },
   "Root": {
     "header": {
       "id": "container.Root.header",
-      "defaultMessage": "This is the Root container!"
+      "defaultMessage": "यह Root कंटेनर है!"
     }
   },
   "Language": {
     "header": {
       "id": "container.Language.header",
-      "defaultMessage": "This is the Language container!"
+      "defaultMessage": "यह Language कंटेनर है!"
     }
   },
   "OnboardingOne": {
     "header": {
       "id": "container.OnboardingOne.header",
-      "defaultMessage": "This is the Onboarding container!"
+      "defaultMessage": "यह Onboarding कंटेनर है!"
     },
     "heading": {
       "id": "container.OnboardingOne.heading",
-      "defaultMessage": "Gita Learn - Simplified"
+      "defaultMessage": "गीता लर्न – सरल बनावट"
     },
     "description": {
       "id": "container.OnboardingOne.description",
-      "defaultMessage": "Read the Gita anytime, where ever you wish."
+      "defaultMessage": "कहीं भी, कभी भी गीता पढ़ें।"
     },
     "buttonLabel": {
       "id": "container.OnboardingOne.buttonLabel",
-      "defaultMessage": "Skip"
+      "defaultMessage": "अगला"
     }
   },
   "OnboardingSecond": {
     "header": {
       "id": "container.OnboardingSecond.header",
-      "defaultMessage": "This is the Onboarding container!"
+      "defaultMessage": "यह Onboarding कंटेनर है!"
     },
     "heading": {
       "id": "container.OnboardingSecond.heading",
-      "defaultMessage": "Gita Learn - Simplified"
+      "defaultMessage": "गीता लर्न – सरल बनावट"
     },
     "description": {
       "id": "container.OnboardingSecond.description",
-      "defaultMessage": "Read the Gita anytime, where ever you wish."
+      "defaultMessage": "कहीं भी, कभी भी गीता पढ़ें।"
     },
     "buttonLabel": {
       "id": "container.OnboardingSecond.buttonLabel",
-      "defaultMessage": "Skip"
+      "defaultMessage": "समाप्त करें"
     }
   },
   "language": {
     "header": {
       "id": "container.language.header",
-      "defaultMessage": "This is the Language container!"
+      "defaultMessage": "यह Language कंटेनर है!"
     },
     "buttonLabel": {
       "id": "container.language.buttonLabel",
-      "defaultMessage": "Continue"
+      "defaultMessage": "जारी रखें"
     }
   },
   "login": {
     "heading": {
       "id": "container.login.header",
-      "defaultMessage": "Welcome back!"
+      "defaultMessage": "फिर से स्वागत है!"
     },
     "subHeading": {
       "id": "container.login.subHeading",
-      "defaultMessage": "Please enter your credentials to sign in!"
+      "defaultMessage": "साइन इन करने के लिए अपनी प्रमाण-पत्र दर्ज करें!"
     },
     "number": {
       "id": "container.login.subHeading",
-      "defaultMessage": "Mobile Number"
+      "defaultMessage": "मोबाइल नंबर"
     },
     "typeHere": {
       "id": "container.login.typeHere",
-      "defaultMessage": "Type here..."
+      "defaultMessage": "यहाँ टाइप करें..."
     },
     "login": {
       "id": "container.login.login",
-      "defaultMessage": "Login"
+      "defaultMessage": "लॉगिन"
     },
     "continue": {
       "id": "container.login.continue",
-      "defaultMessage": "Or Continue With"
+      "defaultMessage": "या जारी रखें"
     },
     "facebook": {
       "id": "container.login.facebook",
-      "defaultMessage": "Facebook"
+      "defaultMessage": "फेसबुक"
     },
     "google": {
       "id": "container.login.google",
-      "defaultMessage": "Google"
+      "defaultMessage": "गूगल"
     },
     "buttonLabel": {
-      "id": "container.language.buttonLabel",
-      "defaultMessage": "Continue"
+      "id": "container.login.buttonLabel",
+      "defaultMessage": "जारी रखें"
+    },
+    "dont": {
+      "id": "container.login.dont",
+      "defaultMessage": "अभी तक खाता नहीं है? "
+    },
+    "create": {
+      "id": "container.login.dont",
+      "defaultMessage": "अभी बनाएं"
+    },
+    "bottomSheetHeading": {
+      "id": "containers.login.bottomSheetHeading",
+      "defaultMessage": "अपना देश चुनें"
+    },
+    "countryPlaceholder": {
+      "id": "containers.login.warningOtherHalf",
+      "defaultMessage": "देश का नाम खोजें"
+    },
+    "placeholder": {
+      "id": "containers.login.placeholder",
+      "defaultMessage": "फोन नंबर"
+    }
+  },
+  "otpScreen": {
+    "heading": {
+      "id": "container.otpScreen.header",
+      "defaultMessage": "फिर से स्वागत है"
+    },
+    "subHeading": {
+      "id": "container.otpScreen.subHeading",
+      "defaultMessage": "कृपया अपने पंजीकृत मोबाइल नंबर पर भेजा गया OTP दर्ज करें।"
+    },
+    "submit": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "जमा करें"
+    },
+    "enterOtp": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "यहाँ OTP दर्ज करें"
+    },
+    "dont": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "कोड प्राप्त नहीं हुआ? "
+    },
+    "create": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "फिर से भेजें"
+    },
+    "minute": {
+      "id": "app.containers.otpScreen.minute",
+      "defaultMessage": "मिनट"
+    },
+    "second": {
+      "id": "app.containers.otpScreen.second",
+      "defaultMessage": "सेकंड शेष"
+    },
+    "minutes": {
+      "id": "app.containers.otpScreen.minutes",
+      "defaultMessage": "मिनट"
+    },
+    "seconds": {
+      "id": "app.containers.otpScreen.seconds",
+      "defaultMessage": "सेकंड शेष"
+    },
+    "timeElapsed": {
+      "id": "app.containers.otpScreen.timeElapsed",
+      "defaultMessage": "समय व्यतीत"
+    }
+  },
+  "OurIdeals": {
+    "buttonLabel": {
+      "id": "app.containers.OurIdeals.buttonLabel",
+      "defaultMessage": "जारी रखें"
+    }
+  },
+  "Home": {
+    "headerText": {
+      "id": "app.containers.Home.headerText",
+      "defaultMessage": "अध्याय"
+    }
+  },
+  "Chapters": {
+    "headerText": {
+      "id": "app.containers.Chapters.headerText",
+      "defaultMessage": "अध्याय"
+    }
+  },
+  "Shloks": {
+    "headerText": {
+      "id": "app.containers.Shloks.headerText",
+      "defaultMessage": "श्लोक"
     }
   },
   "contactUs": {
     "heading": {
       "id": "app.container.Contactus.heading",
-      "defaultMessage": "Contact Us"
+      "defaultMessage": "संपर्क करें"
     },
     "serviceType": {
       "id": "app.container.Contactus.serviceType",
-      "defaultMessage": "Service Type"
+      "defaultMessage": "सेवा का प्रकार"
     },
     "name": {
       "id": "app.container.Contactus.name",
-      "defaultMessage": "Name"
+      "defaultMessage": "नाम"
     },
     "mobile": {
       "id": "app.container.Contactus.mobile",
-      "defaultMessage": "Mobile Number"
+      "defaultMessage": "मोबाइल नंबर"
     },
     "message": {
       "id": "app.container.Contactus.message",
-      "defaultMessage": "Message"
+      "defaultMessage": "संदेश"
     },
     "placeholder": {
       "id": "app.container.Contactus.placeholder",
-      "defaultMessage": "Type here..."
+      "defaultMessage": "यहाँ टाइप करें..."
     },
     "button": {
       "id": "app.container.Contactus.button",
-      "defaultMessage": "Send Message"
+      "defaultMessage": "संदेश भेजें"
     }
   },
   "Profile": {
     "heading": {
       "id": "app.container.Profile.heading",
-      "defaultMessage": "Profile"
+      "defaultMessage": "प्रोफ़ाइल"
     },
     "name": {
       "id": "app.container.Profile.name",
-      "defaultMessage": "Name"
+      "defaultMessage": "नाम"
     },
     "email": {
       "id": "app.container.Profile.email",
-      "defaultMessage": "Email"
+      "defaultMessage": "ईमेल"
     },
     "mobile": {
       "id": "app.container.Profile.mobile",
-      "defaultMessage": "Mobile"
+      "defaultMessage": "मोबाइल"
     },
     "gender": {
       "id": "app.container.Profile.gender",
-      "defaultMessage": "Gender"
+      "defaultMessage": "लिंग"
     },
     "voice": {
       "id": "app.container.Profile.voice",
-      "defaultMessage": "Voice"
+      "defaultMessage": "वॉइस"
     },
     "shlokSpeed": {
       "id": "app.container.Profile.shlokSpeed",
-      "defaultMessage": "Shlok Speed"
+      "defaultMessage": "श्लोक गति"
     },
-    "updateProfile": {
+    " updateProfile": {
       "id": "app.container.Profile.updateProfile",
-      "defaultMessage": "Update Profile"
+      "defaultMessage": "प्रोफ़ाइल अपडेट करें"
     },
     "changePassword": {
       "id": "app.container.Profile.changePassword",
-      "defaultMessage": "Change Password"
+      "defaultMessage": "पासवर्ड बदलें"
     }
   },
   "EditProfile": {
     "heading": {
       "id": "app.container.EditProfile.heading",
-      "defaultMessage": "Profile"
+      "defaultMessage": "प्रोफ़ाइल"
     },
     "name": {
       "id": "app.container.EditProfile.name",
-      "defaultMessage": "First name"
+      "defaultMessage": "पहला नाम"
     },
     "lastName": {
       "id": "app.container.EditProfile.lastName",
-      "defaultMessage": "Last name"
+      "defaultMessage": "अंतिम नाम"
     },
     "email": {
       "id": "app.container.EditProfile.email",
-      "defaultMessage": "Email"
+      "defaultMessage": "ईमेल"
     },
     "mobile": {
       "id": "app.container.EditProfile.mobile",
-      "defaultMessage": "Phone Number"
+      "defaultMessage": "फोन नंबर"
     },
     "gender": {
       "id": "app.container.EditProfile.gender",
-      "defaultMessage": "Gender"
+      "defaultMessage": "लिंग"
     },
     "language": {
       "id": "app.container.EditProfile.language",
-      "defaultMessage": "Language"
+      "defaultMessage": "भाषा"
     },
     "shlokSpeed": {
       "id": "app.container.EditProfile.shlokSpeed",
-      "defaultMessage": "Shlok Speed"
+      "defaultMessage": "श्लोक गति"
     },
     "update": {
       "id": "app.container.EditProfile.updateProfile",
-      "defaultMessage": "Update"
+      "defaultMessage": "अपडेट करें"
     }
   },
   "PrivacyPolicy": {
     "heading": {
       "id": "app.container.PrivacyPolicy.heading",
-      "defaultMessage": "Privacy Policy"
+      "defaultMessage": "गोपनीयता नीति"
     }
   },
   "TermsOfUse": {
     "heading": {
       "id": "app.container.TermsOfUse.heading",
-      "defaultMessage": "Terms of Use"
+      "defaultMessage": "उपयोग की शर्तें"
     },
     "termsAndCondition": {
       "id": "app.container.TermsOfUse.termsAndCondition",
-      "defaultMessage": "Terms and Condition"
+      "defaultMessage": "शर्तें एवं नीतियाँ"
     }
   }
 }

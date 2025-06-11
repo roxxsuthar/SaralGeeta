@@ -1,14 +1,30 @@
 import React from 'react';
 import { View, Image, StatusBar, TouchableOpacity } from 'react-native';
+import { CommonActions } from '@react-navigation/native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { useSelector, useDispatch } from 'react-redux';
+import get from 'lodash/get';
 import styles from './styles';
 import { ImageBackground } from 'react-native';
 import { IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Navigation } from '../../constants/constants';
+import { logOutUser } from '../App/actions';
 
 const SideBar = (props) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.app.user);
+
+  const logOut = () => {
+    dispatch(logOutUser());
+    props.navigation?.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: Navigation.Login }],
+      }),
+    );
+  };
   return (
     <View style={styles.container}>
       <StatusBar hidden={true} />
@@ -25,7 +41,9 @@ const SideBar = (props) => {
         >
           <Image source={IMAGES.Avatar} style={styles.profilePic} />
           <View style={styles.profile}>
-            <CustomText style={styles.profileName}>Jane Cooper</CustomText>
+            <CustomText
+              style={styles.profileName}
+            >{`${get(user, 'first_name')} ${get(user, 'last_name')}`}</CustomText>
             <CustomText style={styles.viewProfileBtn}>View Profile</CustomText>
           </View>
         </TouchableOpacity>
@@ -34,16 +52,6 @@ const SideBar = (props) => {
       <SafeAreaView style={styles.container}>
         <DrawerContentScrollView {...props}>
           <View style={styles.draweritems}>
-            <DrawerItem
-              label="Dashboard"
-              labelStyle={styles.label}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.Contact height="100%" width="100%" />
-                </View>
-              )}
-              onPress={() => props.navigation.navigate('Chapters')}
-            />
             <DrawerItem
               label="Chapters"
               labelStyle={styles.label}
@@ -54,16 +62,6 @@ const SideBar = (props) => {
               )}
               onPress={() => props.navigation.navigate('Home')}
             />
-            {/* <DrawerItem
-              label="Notifications"
-              labelStyle={styles.label}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.Bell height="100%" width="100%" />
-                </View>
-              )}
-              onPress={() => props.navigation.navigate('Notifications')}
-            /> */}
           </View>
           <View style={styles.draweritems}>
             <CustomText style={styles.drawerHeading}>Help & Support</CustomText>
@@ -140,7 +138,7 @@ const SideBar = (props) => {
                   <IMAGES.SignOut height="100%" width="100%" />
                 </View>
               )}
-              onPress={() => props.navigation.navigate('')}
+              onPress={() => logOut()}
             />
           </View>
         </DrawerContentScrollView>

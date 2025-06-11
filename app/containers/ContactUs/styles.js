@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     paddingHorizontal: 16,
     paddingVertical: 10,
-    marginTop: hp(50),
+    marginTop: hp(40),
   },
   heading: {
     fontWeight: '700',
@@ -75,10 +75,10 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
   },
   buttonContainer: {
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   button: {
-    flexDirection: "row",
+    flexDirection: 'row',
     borderWidth: 1,
     borderColor: COLORS.black,
     justifyContent: 'center',

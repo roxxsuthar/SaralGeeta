@@ -208,9 +208,9 @@
       "id": "app.container.Contactus.name",
       "defaultMessage": "Name"
     },
-    "mobile": {
-      "id": "app.container.Contactus.mobile",
-      "defaultMessage": "Mobile Number"
+    "email": {
+      "id": "app.container.Contactus.email",
+      "defaultMessage": "Email"
     },
     "message": {
       "id": "app.container.Contactus.message",

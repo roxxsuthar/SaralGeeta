@@ -19,16 +19,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   searchContainer: {
-  paddingHorizontal: wp(5),
-  paddingBottom: hp(10),
-},
-searchInput: {
-  height: hp(45),
-  backgroundColor:COLORS.white,
-  borderRadius: hp(12),
-  paddingHorizontal: wp(20),
-  fontSize: hp(14),
-},
+    paddingHorizontal: wp(5),
+    paddingBottom: hp(10),
+  },
+  searchInput: {
+    height: hp(45),
+    backgroundColor: COLORS.white,
+    borderRadius: hp(12),
+    paddingHorizontal: wp(20),
+    fontSize: hp(14),
+  },
 
   sectionHeaderContainer: {
     justifyContent: 'space-between',
@@ -40,27 +40,16 @@ searchInput: {
     lineHeight: hp(22),
     color: COLORS.black,
   },
-  recentViewContainer: {
-    flex: 1,
-    backgroundColor: COLORS.white,
-    borderRadius: hp(12),
-    padding: hp(10),
-    flexDirection: 'row',
-  },
   cardImage: {
-    height: hp(80),
-    width: hp(80),
-    borderRadius: hp(12),
+    height: hp(170),
+    borderRadius: hp(10),
   },
+
   recentCardText: {
     fontSize: hp(12),
     lineHeight: 16,
     fontWeight: '400',
     color: COLORS.firefly,
-  },
-  recentTextContainer: {
-    marginLeft: wp(10),
-    width: wp(233),
   },
   recentCardTimeText: {
     fontSize: hp(12),
@@ -123,6 +112,7 @@ searchInput: {
     marginTop: hp(5),
   },
   iconContainer: {
+    position: 'absolute',
     borderRadius: hp(10),
     paddingHorizontal: wp(10),
     paddingVertical: hp(8),
@@ -130,7 +120,8 @@ searchInput: {
     borderColor: COLORS.firefly,
     height: hp(40),
     width: hp(40),
-    marginRight: wp(10),
+    marginTop: hp(85),
+    marginLeft: wp(150),
   },
   imageContainer: {
     marginTop: wp(10),
@@ -177,6 +168,26 @@ searchInput: {
   },
   rightIconContainer: {
     flexDirection: 'row',
+  },
+  recentViewContainer: {
+    flex: 1,
+    backgroundColor: COLORS.white,
+    borderRadius: hp(20),
+    padding: hp(16),
+  },
+  recentTextContainer: {
+    height: hp(70),
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  audioCardText: {
+    fontSize: hp(18),
+    lineHeight: hp(22),
+    fontWeight: '400',
+    color: COLORS.black,
+    textAlign: 'center',
   },
 });
 

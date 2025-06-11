@@ -6,6 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { View, StatusBar, ImageBackground } from 'react-native';
+import get from 'lodash/get';
 import strings from '../../../i18n';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -36,7 +37,7 @@ function Profile({ user, ideal }) {
         translucent={true}
         backgroundColor="transparent"
       />
-      <View style="{styles.container}">
+      <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity
             activeOpacity={0.8}
@@ -59,7 +60,7 @@ function Profile({ user, ideal }) {
                   {profileMessage.name.defaultMessage}
                 </CustomText>
                 <CustomText style={styles.detailText}>
-                  {user?.name || 'Guest'}
+                  {`${get(user, 'first_name')} ${get(user, 'last_name')}`}
                 </CustomText>
               </View>
               <View>
@@ -88,6 +89,15 @@ function Profile({ user, ideal }) {
                   {user?.gender || 'N/A'}
                 </CustomText>
               </View>
+              {/* <View>
+                <CustomText style={styles.detailTitle}>
+                  {profileMessage.gender.defaultMessage}
+                </CustomText>
+                <CustomText style={styles.detailText}>
+                  {' '}
+                  {user?.language || 'N/A'}
+                </CustomText>
+              </View> */}
               <View>
                 <CustomText style={styles.detailTitle}>
                   {profileMessage.voice.defaultMessage}

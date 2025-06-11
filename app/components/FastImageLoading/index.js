@@ -24,6 +24,7 @@ function FastImageLoading({
   children,
   iconSize,
   resizeMode,
+  isLocal,
 }) {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
@@ -32,13 +33,17 @@ function FastImageLoading({
     setLoader(false);
     setError(false);
   }, [loader]);
-  const onErrorHandler = useCallback(() => {
-    setError(true);
-    setLoader(false);
-    //
-  }, [error, loader]);
+  const onErrorHandler = useCallback(
+    (err) => {
+      console.log('-------err-----------', err);
+      setError(true);
+      setLoader(false);
+      //
+    },
+    [error, loader],
+  );
 
-  const url = modifyUrl(imageUrl);
+  const url = modifyUrl(imageUrl, isLocal);
 
   const checkForLoaderIconAndIndicator = useCallback(() => {
     if (loader) {
@@ -72,14 +77,11 @@ function FastImageLoading({
   return (
     <FastImage
       style={styles}
-      source={{
-        uri: url,
-        priority: FastImage.priority.high,
-      }}
+      source={isLocal ? url : { uri: url, priority: FastImage.priority.high }}
       resizeMode={resizeMode}
       onLoadStart={activeLoadingHandler}
       onLoad={deactivateLoadingHandler}
-      onError={onErrorHandler}
+      onError={(err) => onErrorHandler(err)}
     >
       {checkForLoaderIconAndIndicator()}
       {children}
@@ -94,11 +96,13 @@ FastImageLoading.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   iconSize: PropTypes.number,
   resizeMode: PropTypes.string,
+  isLocal: PropTypes.bool,
 };
 
 FastImageLoading.defaultProps = {
   indicatorSize: 'small',
   iconSize: hp(3),
   resizeMode: FastImage.resizeMode.cover,
+  isLocal: false,
 };
 export default FastImageLoading;

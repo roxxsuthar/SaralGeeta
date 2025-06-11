@@ -13,6 +13,8 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
+import isEmpty from 'lodash/isEmpty';
+import get from 'lodash/get';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import FastImage from 'react-native-fast-image';
@@ -24,26 +26,37 @@ import { setFontFamily } from '../../utils/device';
 import { FONTS, IMAGES } from '../../constants';
 import strings from '../../../i18n';
 import { makeSelectAppLanguage } from '../App/selectors';
-import { getChapters } from './actions';
+import { getChapters, getRecentWatched } from './actions';
 import { Navigation } from '../../constants/constants';
 import { DrawerActions } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 
-function Home({ language, navigation, handleGetChapters, home }) {
+function Home({
+  language,
+  navigation,
+  handleGetChapters,
+  home,
+  handleGetRecent,
+}) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [filteredChapters, setFilteredChapters] = useState([]);
-
   const { Home: HomeMessage } = strings;
   const { currentLanguage } = language;
+  const recent = get(home, 'recent');
   const sections = [
     {
+      title: 'Recent',
+      data: recent ? [recent] : [], // Ensure Recent is a single-item array
+    },
+    {
       title: 'Chapters',
-      data: filteredChapters || [],
+      data: filteredChapters?.filter((item) => item.id !== recent?.id) || [], // Exclude Recent from Chapters
     },
   ];
 
   useEffect(() => {
+    handleGetRecent();
     handleGetChapters();
     return () => {
       setShowSearch(false);
@@ -74,8 +87,40 @@ function Home({ language, navigation, handleGetChapters, home }) {
     navigation.navigate(Navigation.Shloks, { chapterId: id });
   }, []);
 
+  const navigateToLearnShlock = (item) => {
+    navigation.navigate(Navigation.LearnGeeta, item);
+  };
+
   const renderItemBasedOnSection = (title, item) => {
     switch (title) {
+      case 'Recent':
+        return (
+          <TouchableOpacity
+            style={styles.recentViewContainer}
+            onPress={() => navigateToLearnShlock(item)}
+            activeOpacity={0.8}
+          >
+            <FastImage
+              style={styles.cardImage}
+              source={{ uri: get(item, 'image') }}
+              resizeMode={FastImage.resizeMode.cover}
+            />
+            <View style={styles.cardSeparator} />
+            <TouchableOpacity activeOpacity={0.8} style={styles.iconContainer}>
+              <IMAGES.PlayerIcon height="100%" width="100%" />
+            </TouchableOpacity>
+            <View style={styles.recentTextContainer}>
+              <CustomText
+                style={{
+                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                  ...styles.audioCardText,
+                }}
+              >
+                {get(item, 'shloke')}
+              </CustomText>
+            </View>
+          </TouchableOpacity>
+        );
       case 'Chapters':
         return (
           <TouchableOpacity
@@ -166,7 +211,6 @@ function Home({ language, navigation, handleGetChapters, home }) {
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.8}
-              // onPress={backHandler}
               style={styles.headerBellContainer}
             >
               <View style={styles.icon}>
@@ -191,28 +235,21 @@ function Home({ language, navigation, handleGetChapters, home }) {
         ) : (
           <SectionList
             sections={sections}
-            keyExtractor={(item) => item.id}
-            // stickySectionHeadersEnabled
+            keyExtractor={(item) => item.title}
             showsVerticalScrollIndicator={false}
             renderSectionHeader={({ section }) => (
-              <View style={styles.sectionHeaderContainer}>
-                {/* <CustomText style={styles.sectionHeader}>
-                  {section.title}
-                </CustomText> */}
-                {/* {!isEqual(section?.title, 'Recent View') && (
-                  <TouchableOpacity
-                    activeOpacity={0.8}
-                    onPress={() => navigateToAudio()}
-                  >
-                    <CustomText style={styles.sectionViewAll}>
-                      View all
+              <>
+                {!isEmpty(section?.data) && (
+                  <View style={styles.sectionHeaderContainer}>
+                    <CustomText style={styles.sectionHeader}>
+                      {section.title}
                     </CustomText>
-                  </TouchableOpacity>
-                )} */}
-              </View>
+                  </View>
+                )}
+              </>
             )}
             renderItem={({ item, section }) =>
-              renderItemBasedOnSection(section.title, item)
+              renderItemBasedOnSection(section.title, item, section)
             }
             SectionSeparatorComponent={ItemSeparator}
             ItemSeparatorComponent={ItemSeparator}
@@ -227,6 +264,8 @@ Home.propTypes = {
   language: PropTypes.object,
   navigation: PropTypes.object,
   handleGetChapters: PropTypes.func,
+  home: PropTypes.object,
+  handleGetRecent: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -235,7 +274,10 @@ const mapStateToProps = createStructuredSelector({
 });
 
 function mapDispatchToProps(dispatch) {
-  return { handleGetChapters: () => dispatch(getChapters()) };
+  return {
+    handleGetChapters: () => dispatch(getChapters()),
+    handleGetRecent: () => dispatch(getRecentWatched()),
+  };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

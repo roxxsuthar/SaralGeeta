@@ -16,6 +16,9 @@ import {
   LOGIN_ACTION,
   LOGIN_ACTION_FAIL,
   LOGIN_ACTION_SUCCESS,
+  LOGOUT_USER,
+  LOGOUT_USER_FAIL,
+  LOGOUT_USER_SUCCESS,
   SELECT_IDEALS,
   SET_LANGUAGE,
   SET_ONBOARDING_VISITED,
@@ -114,6 +117,19 @@ const appReducer = (state = initialState, action) =>
         break;
       case EDIT_PROFILE_ACTION_FAIL:
         draft.loading = false;
+        break;
+      case LOGOUT_USER:
+        draft.accessToken = null;
+        draft.user = null;
+        // draft.loading = true;
+        break;
+      case LOGOUT_USER_SUCCESS:
+        draft.accessToken = null;
+        draft.user = null;
+        // draft.loading = false;
+        break;
+      case LOGOUT_USER_FAIL:
+        // draft.loading = false;
         break;
     }
   });

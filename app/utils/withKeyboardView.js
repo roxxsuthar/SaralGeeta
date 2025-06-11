@@ -1,14 +1,15 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
   Dimensions,
   StyleSheet,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import isEqual from 'lodash/isEqual';
 
-import {OS} from './device';
-import {COLORS} from '../constants';
+import { OS } from './device';
+import { COLORS } from '../constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,7 +24,7 @@ const useIsFloatingKeyboard = () => {
   const windowWidth = Dimensions.get('window').width;
 
   const onKeyboardWillChangeFrame = useCallback(
-    event => {
+    (event) => {
       setFloating(event.endCoordinates.width !== windowWidth);
     },
     [windowWidth],
@@ -45,7 +46,7 @@ const useIsFloatingKeyboard = () => {
   return isFloating;
 };
 
-function WithKeyboardAvoidingView({children, ...props}) {
+function WithKeyboardAvoidingView({ children, ...props }) {
   const isFloatingKeyboard = useIsFloatingKeyboard();
 
   return (
@@ -53,8 +54,12 @@ function WithKeyboardAvoidingView({children, ...props}) {
       style={styles.container}
       behavior={isEqual(OS, 'ios') && 'padding'}
       enabled={!isFloatingKeyboard && isEqual(OS, 'ios')}
-      {...props}>
-      {children}
+      keyboardVerticalOffset={100}
+      {...props}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        {children}
+      </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 }

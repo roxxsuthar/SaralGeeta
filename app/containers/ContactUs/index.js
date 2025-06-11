@@ -19,8 +19,9 @@ import { TouchableOpacity } from 'react-native';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import strings from '../../../i18n';
 import { addContactUs } from './actions';
+import LoadingScreen from '../../components/LoadingScreen';
 
-function ContactUs({ handleSaveContactFormDetail }) {
+function ContactUs({ handleSaveContactFormDetail, contactUs }) {
   const { contactUs: contactUsMessage } = strings;
 
   const navigation = useNavigation();
@@ -28,9 +29,9 @@ function ContactUs({ handleSaveContactFormDetail }) {
   // Validation Schema
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
-    mobile: Yup.string()
-      .required('Mobile number is required')
-      .matches(/^[0-9]{10}$/, 'Mobile number must be 10 digits'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
     message: Yup.string().required('Message is required'),
   });
 
@@ -60,99 +61,106 @@ function ContactUs({ handleSaveContactFormDetail }) {
             {contactUsMessage.heading.defaultMessage}
           </CustomText>
         </View>
-        <Formik
-          initialValues={{
-            name: '',
-            email: '',
-            message: '',
-          }}
-          validationSchema={validationSchema}
-          onSubmit={(values) => {
-            handleSaveContactFormDetail(values, navigation);
-          }}
-        >
-          {({
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            values,
-            errors,
-            touched,
-          }) => (
-            <View style={styles.mainContainer}>
-              {/* Name */}
-              <View style={styles.inputContainer}>
-                <CustomText style={styles.label}>
-                  {contactUsMessage.name.defaultMessage}
-                </CustomText>
-                <TextInput
-                  style={styles.input}
-                  placeholder={contactUsMessage.placeholder.defaultMessage}
-                  placeholderTextColor={COLORS.gray}
-                  onChangeText={handleChange('name')}
-                  onBlur={handleBlur('name')}
-                  value={values.name}
-                />
-                {touched.name && errors.name && (
-                  <CustomText style={styles.errorText}>
-                    {errors.name}
+        {contactUs?.loading ? (
+          <LoadingScreen />
+        ) : (
+          <Formik
+            initialValues={{
+              name: '',
+              email: '',
+              message: '',
+            }}
+            validationSchema={validationSchema}
+            onSubmit={(values, action) => {
+              handleSaveContactFormDetail(values, navigation, action);
+            }}
+          >
+            {({
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              values,
+              errors,
+              touched,
+            }) => (
+              <View style={styles.mainContainer}>
+                {/* Name */}
+                <View style={styles.inputContainer}>
+                  <CustomText style={styles.label}>
+                    {contactUsMessage.name.defaultMessage}
                   </CustomText>
-                )}
-              </View>
+                  <TextInput
+                    style={styles.input}
+                    placeholder={contactUsMessage.placeholder.defaultMessage}
+                    placeholderTextColor={COLORS.gray}
+                    onChangeText={handleChange('name')}
+                    onBlur={handleBlur('name')}
+                    value={values.name}
+                  />
+                  {touched.name && errors.name && (
+                    <CustomText style={styles.errorText}>
+                      {errors.name}
+                    </CustomText>
+                  )}
+                </View>
 
-              {/* Mobile */}
-              <View style={styles.inputContainer}>
-                <CustomText style={styles.label}>
-                  {contactUsMessage.mobile.defaultMessage}
-                </CustomText>
-                <TextInput
-                  style={styles.input}
-                  placeholder={contactUsMessage.placeholder.defaultMessage}
-                  placeholderTextColor={COLORS.gray}
-                  onChangeText={handleChange('email')}
-                  onBlur={handleBlur('email')}
-                  value={values.email}
-                />
-                {touched.email && errors.email && (
-                  <CustomText style={styles.errorText}>
-                    {errors.email}
+                {/* Mobile */}
+                <View style={styles.inputContainer}>
+                  <CustomText style={styles.label}>
+                    {contactUsMessage.email.defaultMessage}
                   </CustomText>
-                )}
-              </View>
+                  <TextInput
+                    style={styles.input}
+                    placeholder={contactUsMessage.placeholder.defaultMessage}
+                    placeholderTextColor={COLORS.gray}
+                    onChangeText={handleChange('email')}
+                    onBlur={handleBlur('email')}
+                    value={values.email}
+                  />
+                  {touched.email && errors.email && (
+                    <CustomText style={styles.errorText}>
+                      {errors.email}
+                    </CustomText>
+                  )}
+                </View>
 
-              {/* Message */}
-              <View style={styles.inputContainer}>
-                <CustomText style={styles.label}>
-                  {contactUsMessage.message.defaultMessage}
-                </CustomText>
-                <TextInput
-                  style={styles.messageInput}
-                  placeholder={contactUsMessage.placeholder.defaultMessage}
-                  placeholderTextColor={COLORS.gray}
-                  onChangeText={handleChange('message')}
-                  onBlur={handleBlur('message')}
-                  value={values.message}
-                  multiline
-                />
-                {touched.message && errors.message && (
-                  <CustomText style={styles.errorText}>
-                    {errors.message}
+                {/* Message */}
+                <View style={styles.inputContainer}>
+                  <CustomText style={styles.label}>
+                    {contactUsMessage.message.defaultMessage}
                   </CustomText>
-                )}
-              </View>
+                  <TextInput
+                    style={styles.messageInput}
+                    placeholder={contactUsMessage.placeholder.defaultMessage}
+                    placeholderTextColor={COLORS.gray}
+                    onChangeText={handleChange('message')}
+                    onBlur={handleBlur('message')}
+                    value={values.message}
+                    multiline
+                  />
+                  {touched.message && errors.message && (
+                    <CustomText style={styles.errorText}>
+                      {errors.message}
+                    </CustomText>
+                  )}
+                </View>
 
-              {/* Submit Button */}
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-                  <IMAGES.Message style={styles.icon} />
-                  <CustomText style={styles.buttonText}>
-                    {contactUsMessage.button.defaultMessage}
-                  </CustomText>
-                </TouchableOpacity>
+                {/* Submit Button */}
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity
+                    style={styles.button}
+                    onPress={handleSubmit}
+                  >
+                    <IMAGES.Message style={styles.icon} />
+                    <CustomText style={styles.buttonText}>
+                      {contactUsMessage.button.defaultMessage}
+                    </CustomText>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          )}
-        </Formik>
+            )}
+          </Formik>
+        )}
       </View>
     </ImageBackground>
   );
@@ -161,6 +169,7 @@ function ContactUs({ handleSaveContactFormDetail }) {
 ContactUs.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSaveContactFormDetail: PropTypes.func,
+  contactUs: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -169,8 +178,8 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleSaveContactFormDetail: (payload, navigation) =>
-      dispatch(addContactUs(payload, navigation)),
+    handleSaveContactFormDetail: (payload, navigation, action) =>
+      dispatch(addContactUs(payload, navigation, action)),
   };
 }
 

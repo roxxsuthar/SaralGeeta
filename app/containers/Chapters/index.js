@@ -61,146 +61,14 @@ function Chapters({ language, handleGetRecent }) {
         },
       ],
     },
-    // {
-    //   title: 'E-Book',
-    //   data: [
-    //     {
-    //       id: 1,
-    //       image: IMAGES.Rath,
-    //       title: 'Sankhya Yog',
-    //       description:
-    //         'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-    //       videoTime: '10:20',
-    //       timeUsed: '05:10',
-    //     },
-    //     {
-    //       id: 2,
-    //       image: IMAGES.Rath,
-    //       title: 'Sankhya Yog',
-    //       description:
-    //         'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-    //       videoTime: '10:20',
-    //       timeUsed: '05:10',
-    //     },
-    //     {
-    //       id: 3,
-    //       image: IMAGES.Rath,
-    //       title: 'Sankhya Yog',
-    //       description:
-    //         'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-    //       videoTime: '10:20',
-    //       timeUsed: '05:10',
-    //     },
-    //     {
-    //       id: 4,
-    //       image: IMAGES.Rath,
-    //       title: 'Sankhya Yog',
-    //       description:
-    //         'Certified personal trainer with 5 years of experience. Specializes in weight lifting and high-intensity training.',
-    //       videoTime: '10:20',
-    //       timeUsed: '05:10',
-    //     },
-    //   ],
-    // },
   ];
 
   useEffect(() => {
     handleGetRecent();
   }, []);
 
-  // const timeStringToSeconds = (timeString) => {
-  //   const timeParts = split(timeString, ':').map(Number);
-
-  //   if (timeParts.length === 2) {
-  //     // MM:SS format
-  //     return timeParts[0] * 60 + timeParts[1];
-  //   } else if (timeParts.length === 3) {
-  //     // HH:MM:SS format
-  //     return timeParts[0] * 3600 + timeParts[1] * 60 + timeParts[2];
-  //   } else {
-  //     console.warn('Invalid time format:', timeString);
-  //   }
-
-  //   return 0;
-  // };
-
-  // const VideoProgressBar = (currentTime, duration) => {
-  //   // Calculate progress as a percentage
-  //   const totalDuration = timeStringToSeconds(duration);
-  //   const current = timeStringToSeconds(currentTime);
-  //   const progress = (current / totalDuration) * 100;
-
-  //   return (
-  //     <View style={styles.container}>
-  //       <View style={styles.progressBackground}>
-  //         <View style={[styles.progressBar, { width: `${progress}%` }]} />
-  //       </View>
-  //     </View>
-  //   );
-  // };
-
-  // const renderItemBasedOnSection = (title, item) => {
-  //   switch (title) {
-  //     case 'E-Book':
-  //       return (
-  //         <View style={styles.AudioContainer}>
-  //           <FastImage
-  //             style={styles.audioCardImage}
-  //             // source={{ uri: item.image }}
-  //             source={item.image}
-  //             resizeMode={FastImage.resizeMode.contain}
-  //           />
-  //           <View style={styles.audioTextContainer}>
-  //             <CustomText
-  //               style={{
-  //                 ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-  //                 ...styles.audioCardTitle,
-  //               }}
-  //             >
-  //               {item.title}
-  //             </CustomText>
-  //             <CustomText
-  //               style={{
-  //                 ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-  //                 ...styles.audioCardDescription,
-  //               }}
-  //             >
-  //               {item.description}
-  //             </CustomText>
-  //             <View style={styles.imageContainer}>
-  //               <TouchableOpacity
-  //                 activeOpacity={0.8}
-  //                 style={styles.iconContainer}
-  //               >
-  //                 <IMAGES.PlayerIcon height="100%" width="100%" />
-  //               </TouchableOpacity>
-  //               <TouchableOpacity
-  //                 activeOpacity={0.8}
-  //                 style={styles.iconContainer}
-  //               >
-  //                 <IMAGES.Heart height="100%" width="100%" />
-  //               </TouchableOpacity>
-  //               <TouchableOpacity
-  //                 activeOpacity={0.8}
-  //                 style={styles.iconContainer}
-  //               >
-  //                 <CustomText style={styles.oneXText}>1</CustomText>
-  //               </TouchableOpacity>
-  //             </View>
-  //           </View>
-  //         </View>
-  //       );
-  //     default:
-  //       return null;
-  //   }
-  // };
-
   const ItemSeparator = () => <View style={styles.separator} />;
   const flatListItemSeparator = () => <View style={styles.flatSeparator} />;
-
-  // const navigateToAudio = useCallback(() => {
-  //   alert();
-  // }, []);
 
   return (
     <ImageBackground

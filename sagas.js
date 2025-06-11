@@ -8,6 +8,7 @@ import ShloksSaga from './app/containers/Shloks/saga';
 import LearnGeetaSaga from './app/containers/LearnGeeta/saga';
 import EditProfileSaga from './app/containers/EditProfile/saga';
 import chaptersSaga from './app/containers/Chapters/saga';
+import contactUs from './app/containers/ContactUs/saga';
 
 export default function* rootContainerSaga() {
   yield all([
@@ -20,5 +21,6 @@ export default function* rootContainerSaga() {
     LearnGeetaSaga(),
     EditProfileSaga(),
     chaptersSaga(),
+    contactUs(),
   ]);
 }

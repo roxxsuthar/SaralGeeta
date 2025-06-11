@@ -10,6 +10,7 @@ import shloksReducer from './app/containers/Shloks/reducer';
 import learnGeetaReducer from './app/containers/LearnGeeta/reducer';
 import editProfileReducer from './app/containers/EditProfile/reducer';
 import chaptersReducer from './app/containers/Chapters/reducer';
+import contactUsReducer from './app/containers/ContactUs/reducer';
 
 const appPersistConfig = {
   key: 'app',
@@ -25,6 +26,7 @@ const combinedReducers = combineReducers({
   learnGeeta: learnGeetaReducer,
   editProfile: editProfileReducer,
   chapters: chaptersReducer,
+  contactUs: contactUsReducer,
 });
 
 // Root Reducer
