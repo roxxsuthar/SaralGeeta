@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: hp(24),
-    lineHeight: hp(32),
+    lineHeight: hp(40),
     color: COLORS.black,
     fontWeight: '600',
   },
@@ -84,8 +84,20 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: COLORS.firefly,
   },
+  disableButtonLabel: {
+    fontSize: hp(15),
+    fontWeight: '700',
+    color: COLORS.firefly,
+  },
   buttonContainer: {
     backgroundColor: COLORS.white,
+    borderRadius: hp(12),
+    width: 'auto',
+    marginTop: hp(20),
+    height: hp(45),
+  },
+  disabledButtonContainer: {
+    backgroundColor: COLORS.emoDivider,
     borderRadius: hp(12),
     width: 'auto',
     marginTop: hp(20),

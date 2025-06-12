@@ -175,12 +175,24 @@
     "buttonLabel": {
       "id": "app.containers.OurIdeals.buttonLabel",
       "defaultMessage": "Continue"
+    },
+    "ourIdeals": {
+      "id": "app.containers.OurIdeals.ourIdeals",
+      "defaultMessage": "Our Ideals"
     }
   },
   "Home": {
     "headerText": {
       "id": "app.containers.Home.headerText",
       "defaultMessage": "Chapters"
+    },
+    "chapters": {
+      "id": "app.containers.Home.chapters",
+      "defaultMessage": "Chapters"
+    },
+    "recent": {
+      "id": "app.containers.Home.recent",
+      "defaultMessage": "Recent"
     }
   },
   "Chapters": {
@@ -315,6 +327,52 @@
     "termsAndCondition": {
       "id": "app.container.TermsOfUse.termsAndCondition",
       "defaultMessage": "Terms and Condition"
+    }
+  },
+  "SideBar": {
+    "viewAll": {
+      "id": "app.container.SideBar.viewAll",
+      "defaultMessage": "View Profile"
+    },
+    "chapters": {
+      "id": "app.container.SideBar.chapters",
+      "defaultMessage": "Chapters"
+    },
+    "helpSupport": {
+      "id": "app.container.SideBar.helpSupport",
+      "defaultMessage": "Help & Support"
+    },
+    "contactUs": {
+      "id": "app.container.SideBar.contactUs",
+      "defaultMessage": "Contact Us"
+    },
+    "privacyPolicy": {
+      "id": "app.container.SideBar.privacyPolicy",
+      "defaultMessage": "Privacy Policy"
+    },
+    "termOfUse": {
+      "id": "app.container.SideBar.termOfUse",
+      "defaultMessage": "Terms Of Use"
+    },
+    "social": {
+      "id": "app.container.SideBar.social",
+      "defaultMessage": "Social media Links"
+    },
+    "fb": {
+      "id": "app.container.SideBar.fb",
+      "defaultMessage": "Facebook"
+    },
+    "insta": {
+      "id": "app.container.SideBar.insta",
+      "defaultMessage": "Instagram"
+    },
+    "x": {
+      "id": "app.container.SideBar.x",
+      "defaultMessage": "X"
+    },
+    "signOut": {
+      "id": "app.container.SideBar.signOut",
+      "defaultMessage": "Sign Out"
     }
   }
 }

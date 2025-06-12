@@ -42,6 +42,7 @@ function OurIdeals({
   const { OurIdeals: OurIdealsMessage } = strings;
   const { currentLanguage } = language;
   const [selectCard, setSelectCard] = useState(null);
+  const [disableBtn, setDisableBtn] = useState(true);
 
   useEffect(() => {
     getOurIdealsHandler();
@@ -57,11 +58,16 @@ function OurIdeals({
     [selectCard],
   );
 
+  const selectItem = useCallback((item) => {
+    setSelectCard(item);
+    setDisableBtn(false);
+  });
+
   const renderItem = useCallback(
     ({ item }) => (
       <TouchableOpacity
         style={getStyleOfCard(item)}
-        onPress={() => setSelectCard(item)}
+        onPress={() => selectItem(item)}
         activeOpacity={0.8}
       >
         <FastImage
@@ -128,7 +134,7 @@ function OurIdeals({
             styles.heading,
           )}
         >
-          Our Ideals
+          {OurIdealsMessage.ourIdeals.defaultMessage}
         </CustomText>
         {ourIdeals?.loading ? (
           <LoadingScreen />
@@ -149,7 +155,13 @@ function OurIdeals({
             styles.buttonLabel,
           )}
           style={styles.buttonContainer}
+          disabledStyle={styles.disabledButtonContainer}
+          disabledLabelStyle={Object.assign(
+            setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+            styles.disableButtonLabel,
+          )}
           onPress={navigateToHome}
+          disabled={disableBtn}
         />
       </View>
     </ImageBackground>

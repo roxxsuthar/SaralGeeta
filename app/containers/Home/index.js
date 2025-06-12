@@ -44,13 +44,14 @@ function Home({
   const { Home: HomeMessage } = strings;
   const { currentLanguage } = language;
   const recent = get(home, 'recent');
+
   const sections = [
     {
-      title: 'Recent',
+      title: HomeMessage.recent.defaultMessage,
       data: recent ? [recent] : [], // Ensure Recent is a single-item array
     },
     {
-      title: 'Chapters',
+      title: HomeMessage.chapters.defaultMessage,
       data: filteredChapters?.filter((item) => item.id !== recent?.id) || [], // Exclude Recent from Chapters
     },
   ];

@@ -13,6 +13,7 @@ const APIS = {
   LANGUAGES: '/list-language',
   SAVE_RESULT: '/submit-result',
   RECENT_WATCHED: '/recent-shlokes',
+  LOG_OUT: '/user/logout',
 };
 export const API_URL = ' https://app.saralgita.in/api';
 

@@ -83,7 +83,7 @@ function LearnGeeta({
   const navigation = useNavigation();
 
   useEffect(() => {
-    handleGetShloks({ chapterId: get(route, 'params.chapter') });
+    handleGetShloks({ chapterId: get(route, 'params.chapter.id') });
   }, []);
 
   useEffect(() => {

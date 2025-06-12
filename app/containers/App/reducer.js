@@ -40,6 +40,7 @@ export const initialState = {
   },
   loading: false,
   accessToken: null,
+  refreshToken: null,
   user: null,
   sentOtpDetail: null,
   selectedIdeal: null,
@@ -76,6 +77,7 @@ const appReducer = (state = initialState, action) =>
       case VERIFY_OTP_SUCCESS:
         draft.user = action.payload.user;
         draft.accessToken = action.payload.access_token;
+        draft.refreshToken = action.payload.refresh_token;
         draft.loading = false;
         break;
       case VERIFY_OTP_FAIL:

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   englishHeadingFont: {
     fontWeight: '600',
     fontSize: hp(24),
-    lineHeight: hp(32),
+
     color: COLORS.ebony,
   },
   subHeading: {
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   phoneNumberLabel: {
     fontWeight: '500',
     fontSize: hp(14),
-    lineHeight: hp(17),
+    lineHeight: hp(22),
     color: COLORS.codGray,
   },
   mobileNumberOnBlur: {
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     borderRadius: hp(12),
   },
   numberText: {
-    height: hp(17),
+    height: hp(24),
     fontSize: hp(14),
     paddingTop: 0,
     paddingRight: wp(4.27),

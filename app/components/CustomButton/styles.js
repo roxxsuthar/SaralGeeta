@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.emoGrey,
     borderColor: COLORS.white,
     borderWidth: hp(1),
+    marginBottom: marginBottom(24),
   },
   disabledButtonText: {
     fontSize: hp(17),

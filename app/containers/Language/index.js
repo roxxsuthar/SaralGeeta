@@ -36,9 +36,8 @@ function Language({ navigation, language, _handleSetLanguage }) {
   const { language: languageMessage } = strings;
   const [languageType, setLanguageType] = useState();
 
-  console.log('Language--------------', language);
-
   const updateLanguage = useCallback(() => {
+    strings.setLanguage(languageType);
     _handleSetLanguage(languageType);
     navigation.navigate(Navigation.Login);
   }, [languageType]);

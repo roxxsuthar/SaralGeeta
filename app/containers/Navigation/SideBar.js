@@ -5,6 +5,7 @@ import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { useSelector, useDispatch } from 'react-redux';
 import get from 'lodash/get';
 import styles from './styles';
+import strings from '../../../i18n';
 import { ImageBackground } from 'react-native';
 import { IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
@@ -13,11 +14,13 @@ import { Navigation } from '../../constants/constants';
 import { logOutUser } from '../App/actions';
 
 const SideBar = (props) => {
+  const { SideBar: sideBarMessage } = strings;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.app.user);
+  const refreshToken = useSelector((state) => state.app.refreshToken);
 
   const logOut = () => {
-    dispatch(logOutUser());
+    dispatch(logOutUser({ refresh: refreshToken }));
     props.navigation?.dispatch(
       CommonActions.reset({
         index: 0,
@@ -44,7 +47,9 @@ const SideBar = (props) => {
             <CustomText
               style={styles.profileName}
             >{`${get(user, 'first_name')} ${get(user, 'last_name')}`}</CustomText>
-            <CustomText style={styles.viewProfileBtn}>View Profile</CustomText>
+            <CustomText style={styles.viewProfileBtn}>
+              {sideBarMessage.viewAll.defaultMessage}
+            </CustomText>
           </View>
         </TouchableOpacity>
       </ImageBackground>
@@ -53,7 +58,7 @@ const SideBar = (props) => {
         <DrawerContentScrollView {...props}>
           <View style={styles.draweritems}>
             <DrawerItem
-              label="Chapters"
+              label={sideBarMessage.chapters.defaultMessage}
               labelStyle={styles.label}
               icon={() => (
                 <View style={styles.icon}>
@@ -64,9 +69,11 @@ const SideBar = (props) => {
             />
           </View>
           <View style={styles.draweritems}>
-            <CustomText style={styles.drawerHeading}>Help & Support</CustomText>
+            <CustomText style={styles.drawerHeading}>
+              {sideBarMessage.helpSupport.defaultMessage}
+            </CustomText>
             <DrawerItem
-              label="Contact Us"
+              label={sideBarMessage.contactUs.defaultMessage}
               labelStyle={styles.label}
               icon={() => (
                 <View style={styles.icon}>
@@ -76,7 +83,7 @@ const SideBar = (props) => {
               onPress={() => props.navigation.navigate('ContactUs')}
             />
             <DrawerItem
-              label="Privacy Policy"
+              label={sideBarMessage.privacyPolicy.defaultMessage}
               labelStyle={styles.label}
               icon={() => (
                 <View style={styles.icon}>
@@ -86,7 +93,7 @@ const SideBar = (props) => {
               onPress={() => props.navigation.navigate('PrivacyPolicy')}
             />
             <DrawerItem
-              label="Terms Of Use"
+              label={sideBarMessage.termOfUse.defaultMessage}
               labelStyle={styles.label}
               icon={() => (
                 <View style={styles.icon}>
@@ -98,10 +105,10 @@ const SideBar = (props) => {
           </View>
           <View style={styles.draweritems}>
             <CustomText style={styles.drawerHeading}>
-              Social media Links
+              {sideBarMessage.social.defaultMessage}
             </CustomText>
             <DrawerItem
-              label="Facebook"
+              label={sideBarMessage.fb.defaultMessage}
               labelStyle={styles.label}
               icon={() => (
                 <View style={styles.icon}>
@@ -111,7 +118,7 @@ const SideBar = (props) => {
               onPress={() => props.navigation.navigate('')}
             />
             <DrawerItem
-              label="Instagram"
+              label={sideBarMessage.insta.defaultMessage}
               labelStyle={styles.label}
               icon={() => (
                 <View style={styles.icon}>
@@ -121,7 +128,7 @@ const SideBar = (props) => {
               onPress={() => props.navigation.navigate('')}
             />
             <DrawerItem
-              label="Twitter"
+              label={sideBarMessage.x.defaultMessage}
               labelStyle={styles.label}
               icon={() => (
                 <View style={styles.icon}>
@@ -131,7 +138,7 @@ const SideBar = (props) => {
               onPress={() => props.navigation.navigate('')}
             />
             <DrawerItem
-              label="Sign Out"
+              label={sideBarMessage.signOut.defaultMessage}
               labelStyle={styles.label}
               icon={() => (
                 <View style={styles.icon}>
