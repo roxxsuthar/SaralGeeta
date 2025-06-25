@@ -13,7 +13,14 @@ import {
   TouchableOpacity,
   ImageBackground,
   ActivityIndicator,
+  Alert,
 } from 'react-native';
+
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import config from 'react-native-config';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import PhoneInput from 'react-native-phone-number-input';
@@ -90,6 +97,33 @@ function Login({ language, navigation, handleSendOtp, loading }) {
     };
     handleSendOtp(payload, navigation);
   }, [mobileNumber]);
+  console.log('-------------', config.GOOGLE_WEB_CLIENT_ID);
+
+  const handleGoogleLogin = useCallback(async () => {
+    try {
+      GoogleSignin.configure({
+        // webClientId: config.GOOGLE_WEB_CLIENT_ID,
+        webClientId:
+          '76566576857-1vapuaomikv9qbgqrth8bd0i2uj6dhla.apps.googleusercontent.com',
+        offlineAccess: true,
+      });
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log('-=-=-=-=-=-=-=-=', userInfo);
+      Alert.alert('Login Success', JSON.stringify(userInfo.user));
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        Alert.alert('Cancelled');
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        Alert.alert('In progress');
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        Alert.alert('Play services not available');
+      } else {
+        console.log('-=-=-=-=-=-=-=', error.message);
+        Alert.alert('Some other error', error.message);
+      }
+    }
+  }, []);
 
   return (
     <ImageBackground
@@ -245,7 +279,11 @@ function Login({ language, navigation, handleSendOtp, loading }) {
                 {loginMessage.facebook.defaultMessage}
               </CustomText>
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.8} style={styles.socialIcon}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={styles.socialIcon}
+              onPress={handleGoogleLogin}
+            >
               <View style={styles.socialIconBox}>
                 <IMAGES.Google height="100%" width="100%" />
               </View>

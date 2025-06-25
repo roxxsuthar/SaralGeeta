@@ -9,7 +9,6 @@ import strings from '../../../i18n';
 import { ImageBackground } from 'react-native';
 import { IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Navigation } from '../../constants/constants';
 import { logOutUser } from '../App/actions';
 
@@ -42,7 +41,7 @@ const SideBar = (props) => {
           onPress={() => props.navigation.navigate(Navigation.Profile)}
           style={styles.header}
         >
-          <Image source={IMAGES.Avatar} style={styles.profilePic} />
+          <Image source={{ uri: user?.profile }} style={styles.profilePic} />
           <View style={styles.profile}>
             <CustomText
               style={styles.profileName}
@@ -54,8 +53,11 @@ const SideBar = (props) => {
         </TouchableOpacity>
       </ImageBackground>
 
-      <SafeAreaView style={styles.container}>
-        <DrawerContentScrollView {...props}>
+      <View style={styles.container}>
+        <DrawerContentScrollView
+          {...props}
+          contentContainerStyle={{ paddingTop: 0 }}
+        >
           <View style={styles.draweritems}>
             <DrawerItem
               label={sideBarMessage.chapters.defaultMessage}
@@ -149,7 +151,7 @@ const SideBar = (props) => {
             />
           </View>
         </DrawerContentScrollView>
-      </SafeAreaView>
+      </View>
     </View>
   );
 };

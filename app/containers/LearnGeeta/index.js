@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import {
   View,
   StatusBar,
-  Dimensions,
   AppState,
   TouchableOpacity,
   Platform,
@@ -46,10 +45,9 @@ import { introVideoWatched } from '../App/actions';
 import CustomText from '../../components/CustomText';
 import makeSelectShloks from '../Shloks/selectors';
 import { ImageBackground } from 'react-native';
-import makeSelectOurIdeals from '../OurIdeals/selectors';
 import { getShloks } from '../Shloks/actions';
 
-Sound.setCategory('Playback'); // Allow audio to play in the background
+Sound.setCategory('Playback');
 const GLADIA_API_KEY = 'bbebcb87-bb37-4aff-b8ba-d5bda7a96f4c';
 function LearnGeeta({
   handleGetShloksDetail,
@@ -74,6 +72,7 @@ function LearnGeeta({
   const [isLoading, setIsLoading] = useState(false);
   const [waitingForTranslation, setWaitingForTranslation] = useState('');
   const [shlokIndex, setShlokIndex] = useState();
+
   const [videoUrl, setVideoUrl] = useState(
     learnGeeta?.data?.media?.hls_male_path,
   );
@@ -230,7 +229,6 @@ function LearnGeeta({
     audio.play((success) => {});
   };
 
-  // Effect to handle cleanup
   useEffect(() => {
     return () => {
       if (audio) {
@@ -333,7 +331,6 @@ function LearnGeeta({
     }
   };
 
-  // Use it in your useEffect
   useEffect(() => {
     const checkPermissions = async () => {
       const hasPermissions = await requestPermissions();
@@ -574,6 +571,8 @@ function LearnGeeta({
       setVideoUrl(get(learnGeeta, 'data.media.hls_male_path'));
   }, [isIntroVideoPlayed]);
 
+  const colorArray = ['#9C27B0', '#4CAF50', '#2196F3', '#FF9800'];
+
   const getPreviousShlok = useCallback(() => {
     setIsButton(false);
     setTranscription('');
@@ -599,10 +598,7 @@ function LearnGeeta({
   }, [learnGeeta]);
 
   return (
-    <SafeAreaView
-      style={styles.container}
-      // edges={['left', 'right', 'bottom', 'top']}
-    >
+    <SafeAreaView style={styles.container}>
       <StatusBar
         barStyle="light-content"
         translucent
@@ -625,7 +621,6 @@ function LearnGeeta({
           style={styles.gradientBorder}
           resizeMode="cover" // Similar to background-size in CSS
         >
-          {/* <View style={[styles.videoWrapper, { aspectRatio }]}> */}
           <View style={styles.videoWrapper}>
             <Video
               source={
@@ -645,9 +640,6 @@ function LearnGeeta({
                       },
                     }
               }
-              // source={{
-              //   uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-              // }}
               ref={videoRef}
               style={styles.backgroundVideo}
               resizeMode="cover"
@@ -693,36 +685,20 @@ function LearnGeeta({
                 }
               }}
               onPlaybackStateChanged={(e) => {
-                console.log('------playback state change', e?.isPlaying);
                 if (
                   isEqual(e?.isPlaying, false) &&
                   !isVideoPlaying &&
                   isIntroVideoPlayed
                 ) {
                   if (audio) {
-                    console.log('-----pause-----');
                     audio.pause();
                   }
                 } else {
                   if (audio && !isVideoPlaying && isIntroVideoPlayed) {
-                    console.log('-----playing-----');
                     audio.play();
                   }
                 }
               }}
-              // onPlaybackStalled={() => {
-              //   console.log('Playback stalled');
-              //   // Pause the audio when the video is stuck
-              //   if (audio && audio.isPlaying()) {
-              //     audio.pause();
-              //   }
-              // }}
-              // onBuffer={() => {
-              //   console.log('Playback buffering');
-              //   if (audio && audio.isPlaying()) {
-              //     audio.pause();
-              //   }
-              // }}
               onPlaybackResume={() => {
                 console.log('Playback resumed');
                 // Resume the audio when the video plays again
@@ -754,7 +730,7 @@ function LearnGeeta({
               />
             </View>
           )}
-          {!isEmpty(transcription) && (
+          {isButton && !isRecordingButton && (
             <View style={styles.controlContainer}>
               <TouchableOpacity
                 style={styles.controlButtonStyle}
@@ -814,11 +790,18 @@ function LearnGeeta({
                         Result: {transcription}
                       </CustomText>
                     )}
-                    {isEmpty(transcription) && (
-                      <CustomText style={styles.overlayText}>
-                        {get(learnGeeta, 'data.shloke')}
-                      </CustomText>
-                    )}
+                    {isEmpty(transcription) &&
+                      learnGeeta?.data?.shloke_parts?.map((item, idx) => (
+                        <CustomText
+                          key={idx}
+                          style={{
+                            ...styles.overlayText,
+                            color: colorArray[idx],
+                          }}
+                        >
+                          {item}
+                        </CustomText>
+                      ))}
                     {isButton && (
                       <>
                         {!isRecordingButton ? (

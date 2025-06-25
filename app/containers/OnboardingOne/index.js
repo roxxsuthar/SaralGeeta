@@ -6,7 +6,7 @@
 
 import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
-import { View, Image, StatusBar } from 'react-native';
+import { View, Image, StatusBar, SafeAreaView } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import strings from '../../../i18n';
@@ -40,7 +40,7 @@ function OnboardingOne({ navigation, language }) {
         source={IMAGES.GeetLearn}
         style={styles.imageDimensions}
       />
-      <View style={styles.detailContainer}>
+      <SafeAreaView style={styles.detailContainer}>
         <CustomText
           style={Object.assign(
             setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
@@ -66,7 +66,7 @@ function OnboardingOne({ navigation, language }) {
           style={styles.buttonContainer}
           onPress={() => navigateToSecond()}
         />
-      </View>
+      </SafeAreaView>
     </View>
   );
 }

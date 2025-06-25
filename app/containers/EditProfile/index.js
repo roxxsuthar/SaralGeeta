@@ -29,6 +29,7 @@ import { editProfile } from '../App/actions';
 import { useEffect } from 'react';
 import { getLanguage } from './actions';
 import LoadingScreen from '../../components/LoadingScreen';
+import ImagePicker from '../../components/ImagePicker';
 
 function EditProfile({
   handleGetLanguages,
@@ -70,6 +71,16 @@ function EditProfile({
   useEffect(() => {
     handleGetLanguages();
   }, []);
+
+  const getImagePicker = (res) => {
+    const formData = new FormData();
+    formData.append('profile', {
+      uri: res.uri,
+      name: res.fileName || 'photo.jpg',
+      type: res.type || 'image/jpeg',
+    });
+    handleUpdateUserDetail(formData, navigation);
+  };
 
   return (
     <ImageBackground
@@ -125,6 +136,10 @@ function EditProfile({
                     </CustomText>
                   </View>
                   <View style={styles.mainContainer}>
+                    <ImagePicker
+                      onImageSelected={getImagePicker}
+                      image={user?.profile}
+                    />
                     <View style={styles.formContainer}>
                       {/* First Name */}
                       <View style={styles.inputContainer}>

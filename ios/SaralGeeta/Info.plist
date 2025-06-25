@@ -31,9 +31,6 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
-<key>NSMicrophoneUsageDescription</key>
-<string>This app needs access to microphone to record audio.</string>
-
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string/>
 	<key>UILaunchStoryboardName</key>
@@ -50,6 +47,17 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSMicrophoneUsageDescription</key>
+<string>Saral-Geeta need access to your microphone to record your voice.</string>
+
+<key>NSCameraUsageDescription</key>
+<string>Saral-Geeta need camera access to let you take profile photos.</string>
+
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Saral-Geeta need access to your photo library to read media.</string>
+
+<key>NSDocumentsFolderUsageDescription</key>
+<string>Saral-Geeta need access to documents for saving files.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Inter-Black.ttf</string>

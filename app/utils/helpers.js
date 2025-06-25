@@ -4,4 +4,3 @@ export default class Helpers {
     return `${config.API_URL}${apiPath}`;
   }
 }
-console.log(config.API_URL);

@@ -28,6 +28,9 @@ function* editProfile({ payload, navigation }) {
   const url = Helpers.getUrl(APIS.UPDATE_USER);
   const options = {
     method: 'PATCH',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
     url,
     data: payload,
   };

@@ -30,6 +30,7 @@ import { getChapters, getRecentWatched } from './actions';
 import { Navigation } from '../../constants/constants';
 import { DrawerActions } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native';
 
 function Home({
   language,
@@ -179,7 +180,7 @@ function Home({
         source={IMAGES.Chakra}
         resizeMode={FastImage.resizeMode.contain}
       />
-      <View style={styles.mainContainer}>
+      <SafeAreaView style={styles.mainContainer}>
         <View style={styles.headerContainer}>
           <TouchableOpacity
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
@@ -256,7 +257,7 @@ function Home({
             ItemSeparatorComponent={ItemSeparator}
           />
         )}
-      </View>
+      </SafeAreaView>
     </ImageBackground>
   );
 }

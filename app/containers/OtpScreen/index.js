@@ -67,17 +67,6 @@ function OtpScreen({
       setTimeout(() => otpRef.current?.focusField(0), 250);
     }
   }, []);
-
-  // Android-specific SMS Retriever setup
-  useEffect(() => {
-    if (isEqual(OS, 'android')) {
-      setupSmsRetriever();
-    }
-    return () => {
-      SmsRetriever.removeSmsListener();
-    };
-  }, []);
-
   const setupSmsRetriever = async () => {
     try {
       const registered = await SmsRetriever.startSmsRetriever();
@@ -90,6 +79,19 @@ function OtpScreen({
       console.error('Error setting up SMS Retriever:', err);
     }
   };
+
+  // Android-specific SMS Retriever setup
+  useEffect(async () => {
+    const registered = await SmsRetriever.startSmsRetriever();
+    if (registered) {
+      SmsRetriever.addSmsListener(async (event) => {
+        otpHandler(event?.message);
+      });
+    }
+    return () => {
+      SmsRetriever.removeSmsListener();
+    };
+  }, []);
 
   useEffect(() => {
     if (gt(oneTimeInput.length, 3)) {

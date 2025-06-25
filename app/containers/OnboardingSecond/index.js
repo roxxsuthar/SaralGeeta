@@ -6,7 +6,7 @@
 
 import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
-import { View, Image, StatusBar } from 'react-native';
+import { View, Image, StatusBar, SafeAreaView } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import strings from '../../../i18n';
@@ -42,7 +42,7 @@ function OnboardingSecond({ navigation, language, _handleSetOnboarding }) {
         source={IMAGES.KrishnaImage}
         style={styles.imageDimensions}
       />
-      <View style={styles.detailContainer}>
+      <SafeAreaView style={styles.detailContainer}>
         <CustomText
           style={Object.assign(
             setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
@@ -68,7 +68,7 @@ function OnboardingSecond({ navigation, language, _handleSetOnboarding }) {
           style={styles.buttonContainer}
           onPress={() => navigateToLogin()}
         />
-      </View>
+      </SafeAreaView>
     </View>
   );
 }

@@ -29,6 +29,7 @@ import { Navigation } from '../../constants/constants';
 import { getIdealsData } from './actions';
 import { selectIdeal, updateUserDetails } from '../App/actions';
 import LoadingScreen from '../../components/LoadingScreen';
+import { SafeAreaView } from 'react-native';
 
 function OurIdeals({
   navigation,
@@ -127,7 +128,7 @@ function OurIdeals({
         source={IMAGES.Chakra}
         resizeMode={FastImage.resizeMode.contain}
       />
-      <View style={styles.mainContainer}>
+      <SafeAreaView style={styles.mainContainer}>
         <CustomText
           style={Object.assign(
             setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
@@ -163,7 +164,7 @@ function OurIdeals({
           onPress={navigateToHome}
           disabled={disableBtn}
         />
-      </View>
+      </SafeAreaView>
     </ImageBackground>
   );
 }
