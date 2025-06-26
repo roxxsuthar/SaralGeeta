@@ -99,14 +99,17 @@ function Login({ language, navigation, handleSendOtp, loading }) {
   }, [mobileNumber]);
   console.log('-------------', config.GOOGLE_WEB_CLIENT_ID);
 
+  useEffect(() => {
+    GoogleSignin.configure({
+      // webClientId: config.GOOGLE_WEB_CLIENT_ID,
+      webClientId:
+        '76566576857-1vapuaomikv9qbgqrth8bd0i2uj6dhla.apps.googleusercontent.com',
+      offlineAccess: true,
+    });
+  }, []);
+
   const handleGoogleLogin = useCallback(async () => {
     try {
-      GoogleSignin.configure({
-        // webClientId: config.GOOGLE_WEB_CLIENT_ID,
-        webClientId:
-          '76566576857-1vapuaomikv9qbgqrth8bd0i2uj6dhla.apps.googleusercontent.com',
-        offlineAccess: true,
-      });
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       console.log('-=-=-=-=-=-=-=-=', userInfo);

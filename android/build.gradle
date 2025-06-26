@@ -14,7 +14,8 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:8.2.0") // Ensure latest version
         classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22") // Explicit version
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22") 
+        classpath ('com.google.gms:google-services:4.3.15')
     }
 }
 
