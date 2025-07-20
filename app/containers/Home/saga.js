@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-
+import isEmpty from 'lodash/isEmpty'
 import request from '../../utils/request';
 import Helpers from '../../utils/helpers';
 import { APIS } from '../../constants';
@@ -35,7 +35,7 @@ function* getRecentWatched() {
 
   try {
     const res = yield call(request, options);
-    yield put(getRecentWatchedSuccess(res?.data));
+    yield put(getRecentWatchedSuccess(isEmpty(res?.data)?null:res?.data));
   } catch (e) {
     yield put(getRecentWatchedFail(e));
   }

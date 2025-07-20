@@ -28,6 +28,7 @@ import {
   VERIFY_OTP,
   VERIFY_OTP_FAIL,
   VERIFY_OTP_SUCCESS,
+  OAUTH_ACTION
 } from './constants';
 
 export const initialState = {
@@ -71,6 +72,9 @@ const appReducer = (state = initialState, action) =>
       case LOGIN_ACTION_FAIL:
         draft.loading = false;
         break;
+        case OAUTH_ACTION:
+          draft.loading=true;
+          break;
       case VERIFY_OTP:
         draft.loading = true;
         break;

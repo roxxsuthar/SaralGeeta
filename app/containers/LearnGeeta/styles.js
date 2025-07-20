@@ -37,19 +37,17 @@ const styles = StyleSheet.create({
   buttonStyle: {
     position: 'absolute',
     borderRadius: hp(40),
-    marginLeft: wp(65),
-    marginTop: hp(95),
+    marginLeft: wp(80),
+    marginTop: hp(190),
     zIndex: 999,
   },
   buttonIconStyle: {
-    height: hp(24),
-    width: wp(24),
+    height: hp(48),
+    width: wp(48),
   },
   container3: {
-    // position: 'absolute',
     marginTop: hp(95),
     marginLeft: hp(80),
-    // zIndex: 1,
   },
   dot: {
     width: 20,
@@ -60,17 +58,16 @@ const styles = StyleSheet.create({
   translationText: {
     position: 'absolute',
     color: COLORS.black,
-    fontSize: hp(20),
-    lineHeight: hp(27.93),
+    fontSize: hp(50),
+    lineHeight: hp(60),
     fontFamily: FONTS.HINDI,
     fontWeight: '600',
     verticalAlign: 'top',
     left: wp(110),
-    top: hp(60),
+    top: hp(80),
   },
   overlay: {
     position: 'absolute', // Ensures this container overlays the video
-    right: wp(150),
     bottom: hp(0),
     flexDirection: 'row',
     justifyContent: 'center', // Centers content vertically
@@ -78,25 +75,25 @@ const styles = StyleSheet.create({
   },
   svgImageContainer: {
     position: 'relative', // Allows positioning of child elements relative to this container
-    height: hp(150),
+    height: hp(300),
     width: wp(320),
   },
   overlayText: {
     position: 'absolute',
     color: COLORS.black,
-    fontSize: hp(13.48),
-    lineHeight: hp(27.93),
+    fontSize: hp(50),
+    lineHeight: hp(70),
     fontFamily: FONTS.HINDI,
     fontWeight: '700',
     alignSelf: 'center',
-    marginTop: hp(40),
+    marginTop: hp(60),
   },
   animation: {
     position: 'absolute',
-    marginLeft: wp(90),
-    marginTop: hp(85),
-    width: wp(100), // Adjust the width
-    height: hp(50), // Adjust the height
+    marginLeft: wp(40),
+    marginTop: hp(170),
+    width: wp(200), // Adjust the width
+    height: hp(100), // Adjust the height
   },
   cloudAnimationContainer: {
     position: 'absolute',
@@ -114,7 +111,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'space-between',
     alignItems: 'center',
-    top: hp(170),
+    top: hp(350),
     flexDirection: 'row',
     zIndex: 90,
     width: '100%',
@@ -124,19 +121,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: hp(3),
-    height: hp(24),
-    width: hp(24),
+    height: hp(48),
+    width: hp(48),
   },
   controlButtonStyle1: {
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: wp(15),
-    height: hp(24),
-    width: hp(24),
+    height: hp(48),
+    width: hp(48),
   },
   controlIconStyle: {
-    height: hp(24),
-    width: hp(24),
+    height: hp(48),
+    width: hp(48),
   },
 });
 

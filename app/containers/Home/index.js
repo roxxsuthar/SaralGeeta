@@ -46,10 +46,12 @@ function Home({
   const { currentLanguage } = language;
   const recent = get(home, 'recent');
 
+  console.log("---------------",recent)
+
   const sections = [
     {
       title: HomeMessage.recent.defaultMessage,
-      data: recent ? [recent] : [], // Ensure Recent is a single-item array
+      data: !recent ? [] : [recent], // Ensure Recent is a single-item array
     },
     {
       title: HomeMessage.chapters.defaultMessage,

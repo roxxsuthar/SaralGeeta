@@ -20,6 +20,7 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 import config from 'react-native-config';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -38,9 +39,9 @@ import CustomButton from '../../components/CustomButton';
 import { OS, setFontFamily } from '../../utils/device';
 import { COLORS, CONSTANTS, FONTS, IMAGES } from '../../constants';
 import { hp } from '../../utils/responsive';
-import { sendOtpAction } from '../App/actions';
+import { oAuthAction, sendOtpAction } from '../App/actions';
 
-function Login({ language, navigation, handleSendOtp, loading }) {
+function Login({ language, navigation, handleSendOtp, loading,handleOAuthHandler }) {
   const { currentLanguage } = language;
   const { login: loginMessage } = strings;
 
@@ -97,38 +98,36 @@ function Login({ language, navigation, handleSendOtp, loading }) {
     };
     handleSendOtp(payload, navigation);
   }, [mobileNumber]);
-  console.log('-------------', config.GOOGLE_WEB_CLIENT_ID);
 
   useEffect(() => {
     GoogleSignin.configure({
+      webClientId: '875650845029-nr66a7iaslpoa9d68sl1to23ssbbkukk.apps.googleusercontent.com',
       // webClientId: config.GOOGLE_WEB_CLIENT_ID,
-      webClientId:
-        '76566576857-1vapuaomikv9qbgqrth8bd0i2uj6dhla.apps.googleusercontent.com',
       offlineAccess: true,
     });
   }, []);
 
-  const handleGoogleLogin = useCallback(async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      console.log('-=-=-=-=-=-=-=-=', userInfo);
-      Alert.alert('Login Success', JSON.stringify(userInfo.user));
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        Alert.alert('Cancelled');
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        Alert.alert('In progress');
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        Alert.alert('Play services not available');
-      } else {
-        console.log('-=-=-=-=-=-=-=', error.message);
-        Alert.alert('Some other error', error.message);
-      }
-    }
-  }, []);
 
-  return (
+  const sendOAuthData=useCallback((token,type)=>{
+   const payload={
+    idToken:token,
+    social_media:type
+   } 
+handleOAuthHandler(payload)
+  })
+
+const handleGoogleLogin = useCallback(async () => {
+  try {
+    await GoogleSignin.hasPlayServices();
+    const userInfo = await GoogleSignin.signIn();
+    sendOAuthData(userInfo?.data?.idToken,'Google')
+   
+  } catch (error) {
+      const errorMessage = error?.message || error?.toString() || 'Unknown error occurred';
+  }
+}, []);
+
+return (
     <ImageBackground
       source={IMAGES.AppBackground}
       style={styles.container}
@@ -340,6 +339,7 @@ function mapDispatchToProps(dispatch) {
   return {
     handleSendOtp: (payload, callback) =>
       dispatch(sendOtpAction(payload, callback)),
+    handleOAuthHandler:(payload)=>dispatch(oAuthAction(payload))
   };
 }
 

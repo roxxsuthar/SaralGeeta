@@ -25,6 +25,7 @@ import {
   LOGOUT_USER,
   LOGOUT_USER_SUCCESS,
   LOGOUT_USER_FAIL,
+  OAUTH_ACTION
 } from './constants';
 
 export function defaultAction() {
@@ -157,5 +158,12 @@ export function logOutUserSuccess() {
 export function logOutUserFail() {
   return {
     type: LOGOUT_USER_FAIL,
+  };
+}
+
+export function oAuthAction(payload) {
+  return {
+    type: OAUTH_ACTION,
+    payload,
   };
 }

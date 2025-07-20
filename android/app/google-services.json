@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "875650845029",
+    "project_id": "saral-gita-b91c5",
+    "storage_bucket": "saral-gita-b91c5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875650845029:android:31feeae1e2e30eee37b98c",
+        "android_client_info": {
+          "package_name": "com.saralgeeta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875650845029-43drrd3jdac2cmr7lhn20a44qqt4q67l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saralgeeta",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "875650845029-nr66a7iaslpoa9d68sl1to23ssbbkukk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXq_Qh0FwA0qfAvFTBfXjsDz0Ri3TwoJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875650845029-nr66a7iaslpoa9d68sl1to23ssbbkukk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -92,20 +92,14 @@ function LearnGeeta({
   }, [shloks, learnGeeta]);
 
   useEffect(() => {
-    // Lock to portrait
     Orientation.lockToLandscape();
 
-    // Or lock to landscape
-    // Orientation.lockToLandscape();
-
-    // Cleanup
     return () => {
       Orientation.unlockAllOrientations();
     };
   }, []);
 
   useEffect(() => {
-    // Enable playback in silence mode
     Sound.setCategory('Playback', true);
 
     const handleAppStateChange = (nextAppState) => {
@@ -154,14 +148,12 @@ function LearnGeeta({
     setIsAudioLoading(true);
 
     try {
-      // Get audio file name from URL
       const audioUrl = get(learnGeeta, 'data.media.audio');
 
       const fileName = audioUrl.split('/').pop();
       const uniqueFileName = `${get(learnGeeta, 'data.id')}_audio.${fileName.slice(-3)}`;
       const localPath = `${RNFS.DocumentDirectoryPath}/${uniqueFileName}`;
 
-      // Check if file exists locally
       const fileExists = await RNFS.exists(localPath);
 
       if (!fileExists) {
@@ -175,7 +167,6 @@ function LearnGeeta({
         }
       }
 
-      // Release existing audio if any
       if (audio) {
         audio.release();
       }
@@ -199,7 +190,6 @@ function LearnGeeta({
   }, [learnGeeta, audio]);
 
   useEffect(() => {
-    // Trigger playback when both audio and video are ready
     if (!isIntroVideoPlayed) {
       videoRef.current?.seek(0);
     } else if (
@@ -211,7 +201,6 @@ function LearnGeeta({
     ) {
       playAudio();
       videoRef.current?.seek(0);
-      // videoRef.current?.play();
     }
   }, [isAudioReady, isVideoReady, isLoading, isButton]);
 
@@ -220,8 +209,6 @@ function LearnGeeta({
       console.log('Audio not ready to play');
       return;
     }
-
-    // Don't play if already playing
     if (audio.isPlaying()) {
       return;
     }
@@ -248,13 +235,12 @@ function LearnGeeta({
 
   useEffect(() => {
     const onBackPress = () => {
-      // Navigate to the previous screen
       if (audio) {
         audio.stop();
         SoundRecorder.stop();
       }
       navigation.goBack();
-      return true; // Prevent default back behavior
+      return true;
     };
 
     BackHandler.addEventListener('hardwareBackPress', onBackPress);
@@ -271,27 +257,19 @@ function LearnGeeta({
 
   const requestPermissions = async () => {
     try {
-      // First check if we already have permissions
       const checkResults = await Promise.all(
         REQUIRED_PERMISSIONS.map((permission) => check(permission)),
       );
 
-      // If all permissions are already granted, return true
       if (checkResults.every((result) => result == RESULTS.GRANTED)) {
         console.log('All permissions already granted');
         return true;
-      } else {
-        checkResults.every((result) => console.log('-------', result));
       }
 
-      // Request permissions
       const requestResults = await Promise.all(
         REQUIRED_PERMISSIONS.map((permission) => request(permission)),
       );
 
-      console.log('Permission Results:', requestResults);
-
-      // Check for "never_ask_again" or "blocked"
       const hasBlocked = requestResults.some(
         (result) => result == RESULTS.BLOCKED || result == RESULTS.DENIED,
       );
@@ -316,11 +294,6 @@ function LearnGeeta({
       );
 
       if (!allGranted) {
-        // Alert.alert(
-        //   'Permissions Required',
-        //   'Please grant all permissions to use this feature.',
-        //   [{ text: 'OK' }],
-        // );
         return false;
       }
 
