@@ -41,7 +41,13 @@ import { COLORS, CONSTANTS, FONTS, IMAGES } from '../../constants';
 import { hp } from '../../utils/responsive';
 import { oAuthAction, sendOtpAction } from '../App/actions';
 
-function Login({ language, navigation, handleSendOtp, loading,handleOAuthHandler }) {
+function Login({
+  language,
+  navigation,
+  handleSendOtp,
+  loading,
+  handleOAuthHandler,
+}) {
   const { currentLanguage } = language;
   const { login: loginMessage } = strings;
 
@@ -101,33 +107,29 @@ function Login({ language, navigation, handleSendOtp, loading,handleOAuthHandler
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId: '875650845029-nr66a7iaslpoa9d68sl1to23ssbbkukk.apps.googleusercontent.com',
-      // webClientId: config.GOOGLE_WEB_CLIENT_ID,
+      webClientId:
+        '875650845029-nr66a7iaslpoa9d68sl1to23ssbbkukk.apps.googleusercontent.com',
       offlineAccess: true,
     });
   }, []);
 
+  const sendOAuthData = useCallback((token, type) => {
+    const payload = {
+      idToken: token,
+      social_media: type,
+    };
+    handleOAuthHandler(payload);
+  });
 
-  const sendOAuthData=useCallback((token,type)=>{
-   const payload={
-    idToken:token,
-    social_media:type
-   } 
-handleOAuthHandler(payload)
-  })
-
-const handleGoogleLogin = useCallback(async () => {
-  try {
+  const handleGoogleLogin = useCallback(async () => {
     await GoogleSignin.hasPlayServices();
     const userInfo = await GoogleSignin.signIn();
-    sendOAuthData(userInfo?.data?.idToken,'Google')
-   
-  } catch (error) {
-      const errorMessage = error?.message || error?.toString() || 'Unknown error occurred';
-  }
-}, []);
+    sendOAuthData(userInfo?.data?.idToken, 'Google');
+  }, []);
 
-return (
+  console.log('--------', loading);
+
+  return (
     <ImageBackground
       source={IMAGES.AppBackground}
       style={styles.container}
@@ -252,7 +254,9 @@ return (
               setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
               styles.buttonLabel,
             )}
+            disabled={loading}
             style={styles.buttonContainer}
+            disabledStyle={styles.buttonContainer}
             onPress={() => navigateToNext()}
           />
           <View style={styles.mainLineContainer}>
@@ -339,7 +343,7 @@ function mapDispatchToProps(dispatch) {
   return {
     handleSendOtp: (payload, callback) =>
       dispatch(sendOtpAction(payload, callback)),
-    handleOAuthHandler:(payload)=>dispatch(oAuthAction(payload))
+    handleOAuthHandler: (payload) => dispatch(oAuthAction(payload)),
   };
 }
 

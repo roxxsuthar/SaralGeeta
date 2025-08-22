@@ -11,7 +11,7 @@ const withBack = (WrappedComponent) => {
       const navigation = navigationRef.current;
       const currentRouteName = navigation?.getCurrentRoute()?.name;
 
-      if (isEqual(currentRouteName, Navigation.Home1)) {
+      if (isEqual(currentRouteName, Navigation.Home)) {
         // Show exit confirmation dialog
         Alert.alert('Exit', 'Are you sure you want to exit?', [
           {

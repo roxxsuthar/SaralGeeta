@@ -28,14 +28,18 @@ import { Navigation } from '../../constants/constants';
 
 function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
   const { currentLanguage } = language;
-
+  console.log('route', route);
   useEffect(() => {
     handleGetShloks({ chapterId: get(route, 'params.chapterId') });
   }, [route]);
 
-  const navigateToLearnGeeta = useCallback((item) => {
-    navigation.navigate(Navigation.LearnGeeta, item);
-  }, []);
+  const navigateToLearnGeeta = useCallback(
+    (item) => {
+      // Since we're already inside DrawerNavigator, navigate directly to the screen
+      navigation.navigate(Navigation.LearnGeeta, item);
+    },
+    [navigation],
+  );
 
   const renderItem = useCallback(
     (item) => {

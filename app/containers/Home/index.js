@@ -46,8 +46,6 @@ function Home({
   const { currentLanguage } = language;
   const recent = get(home, 'recent');
 
-  console.log("---------------",recent)
-
   const sections = [
     {
       title: HomeMessage.recent.defaultMessage,
@@ -85,11 +83,15 @@ function Home({
     }
   }, [searchText, home?.data]);
 
-  const navigateToShloks = useCallback((id) => {
-    setShowSearch(false);
-    setSearchText('');
-    navigation.navigate(Navigation.Shloks, { chapterId: id });
-  }, []);
+  const navigateToShloks = useCallback(
+    (id) => {
+      setShowSearch(false);
+      setSearchText('');
+      // Since we're already inside DrawerNavigator, navigate directly to the screen
+      navigation.navigate(Navigation.Shloks, { chapterId: id });
+    },
+    [navigation],
+  );
 
   const navigateToLearnShlock = (item) => {
     navigation.navigate(Navigation.LearnGeeta, item);
@@ -239,7 +241,7 @@ function Home({
         ) : (
           <SectionList
             sections={sections}
-            keyExtractor={(item) => item.title}
+            keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
             renderSectionHeader={({ section }) => (
               <>

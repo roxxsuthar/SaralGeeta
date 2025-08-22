@@ -109,8 +109,11 @@ function OurIdeals({
       data: { ideal_id: selectCard?.id },
     };
     handleUpdateUser(payload);
-    navigation.navigate(Navigation.Home);
-  }, [selectCard, user]);
+    // Navigate to Drawer first, then to Home since we're outside DrawerNavigator
+    navigation.navigate('Drawer', {
+      screen: Navigation.Home,
+    });
+  }, [selectCard, user, navigation]);
 
   return (
     <ImageBackground

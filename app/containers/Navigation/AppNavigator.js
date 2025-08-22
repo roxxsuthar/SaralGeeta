@@ -48,7 +48,6 @@ const AuthNavigator = ({
         </>
       )}
 
-      {/* Show language selection screen if onboarding is visited but language is not selected */}
       {isOnboardingVisited && !isLanguageSelected && (
         <AppStack.Screen
           name={Navigation.Language}

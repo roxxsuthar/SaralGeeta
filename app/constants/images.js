@@ -2,14 +2,14 @@
 // All IMAGES constants here.
 
 // import LogoSignEmoha from '../assets/images/LogoSignEmoha.svg';
-import DashBoard from '../assets/images/dashborad.svg'
-import Contact from '../assets/images/contact-us.svg'
-import Bell from '../assets/images/bell.svg'
-import Privacy from '../assets/images/privacy-policy.svg'
-import TermsOfUse from '../assets/images/terms-of-use.svg'
-import Instragram from '../assets/images/instagram.svg'
-import Twitter from '../assets/images/x.svg'
-import SignOut from '../assets/images/signout.svg'
+import DashBoard from '../assets/images/dashborad.svg';
+import Contact from '../assets/images/contact-us.svg';
+import Bell from '../assets/images/bell.svg';
+import Privacy from '../assets/images/privacy-policy.svg';
+import TermsOfUse from '../assets/images/terms-of-use.svg';
+import Instragram from '../assets/images/instagram.svg';
+import Twitter from '../assets/images/x.svg';
+import SignOut from '../assets/images/signout.svg';
 import CircleCheck from '../assets/images/circle-check.svg';
 import Circle from '../assets/images/circle.svg';
 import Facebook from '../assets/images/facebook.svg';
@@ -23,7 +23,7 @@ import PlayerIcon from '../assets/images/player-play.svg';
 import Heart from '../assets/images/heart.svg';
 import MicIcon from '../assets/images/micIcon.svg';
 import PauseIcon from '../assets/images/pauseIcon.svg';
-import ShlokBackground from '../assets/images/shlok_background.svg';
+import ShlokBackground from '../assets/images/shlok_background.png';
 import Right from '../assets/images/right.svg';
 import Left from '../assets/images/left.svg';
 import Refresh from '../assets/images/refresh.svg';

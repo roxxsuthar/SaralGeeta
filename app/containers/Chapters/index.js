@@ -122,8 +122,11 @@ function Chapters({ language, handleGetRecent }) {
                     <View style={styles.recentViewContainer}>
                       <FastImage
                         style={styles.cardImage}
-                        // source={{ uri: item.image }}
-                        source={item.image}
+                        source={
+                          typeof item.image === 'string'
+                            ? { uri: item.image }
+                            : item.image
+                        }
                         resizeMode={FastImage.resizeMode.contain}
                       />
                       <View style={styles.cardSeparator} />

@@ -21,6 +21,7 @@ import {
   makeSelectIdealDetails,
   makeSelectUser,
 } from '../App/selectors';
+import { Navigation } from '../../constants/constants';
 
 function Profile({ user, ideal }) {
   const { Profile: profileMessage } = strings;
@@ -116,7 +117,7 @@ function Profile({ user, ideal }) {
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => navigation.navigate('EditProfile')}
+                onPress={() => navigation.navigate(Navigation.EditProfile)}
               >
                 <IMAGES.User style={styles.icon} />
                 <CustomText style={styles.buttonText}>

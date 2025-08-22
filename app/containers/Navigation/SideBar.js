@@ -67,7 +67,7 @@ const SideBar = (props) => {
                   <IMAGES.DashBoard height="100%" width="100%" />
                 </View>
               )}
-              onPress={() => props.navigation.navigate('Home')}
+              onPress={() => props.navigation.navigate(Navigation.Home)}
             />
           </View>
           <View style={styles.draweritems}>
@@ -82,7 +82,7 @@ const SideBar = (props) => {
                   <IMAGES.Contact height="100%" width="100%" />
                 </View>
               )}
-              onPress={() => props.navigation.navigate('ContactUs')}
+              onPress={() => props.navigation.navigate(Navigation.ContactUs)}
             />
             <DrawerItem
               label={sideBarMessage.privacyPolicy.defaultMessage}
@@ -92,7 +92,9 @@ const SideBar = (props) => {
                   <IMAGES.Privacy height="100%" width="100%" />
                 </View>
               )}
-              onPress={() => props.navigation.navigate('PrivacyPolicy')}
+              onPress={() =>
+                props.navigation.navigate(Navigation.PrivacyPolicy)
+              }
             />
             <DrawerItem
               label={sideBarMessage.termOfUse.defaultMessage}
@@ -102,7 +104,7 @@ const SideBar = (props) => {
                   <IMAGES.TermsOfUse height="100%" width="100%" />
                 </View>
               )}
-              onPress={() => props.navigation.navigate('TermsOfUse')}
+              onPress={() => props.navigation.navigate(Navigation.TermsOfUse)}
             />
           </View>
           <View style={styles.draweritems}>
@@ -117,7 +119,10 @@ const SideBar = (props) => {
                   <IMAGES.Facebook height="100%" width="100%" />
                 </View>
               )}
-              onPress={() => props.navigation.navigate('')}
+              onPress={() => {
+                // Handle Facebook navigation or remove if not needed
+                console.log('Facebook navigation not implemented');
+              }}
             />
             <DrawerItem
               label={sideBarMessage.insta.defaultMessage}
@@ -127,7 +132,10 @@ const SideBar = (props) => {
                   <IMAGES.Instragram height="100%" width="100%" />
                 </View>
               )}
-              onPress={() => props.navigation.navigate('')}
+              onPress={() => {
+                // Handle Instagram navigation or remove if not needed
+                console.log('Instagram navigation not implemented');
+              }}
             />
             <DrawerItem
               label={sideBarMessage.x.defaultMessage}
@@ -137,7 +145,10 @@ const SideBar = (props) => {
                   <IMAGES.Twitter height="100%" width="100%" />
                 </View>
               )}
-              onPress={() => props.navigation.navigate('')}
+              onPress={() => {
+                // Handle Twitter navigation or remove if not needed
+                console.log('Twitter navigation not implemented');
+              }}
             />
             <DrawerItem
               label={sideBarMessage.signOut.defaultMessage}
