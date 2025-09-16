@@ -17,7 +17,7 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
   (response) => {
-    // console.log('RESPONSE: ', response);
+    // logger.log('RESPONSE: ', response);
     if (response) {
       return response.data;
     }

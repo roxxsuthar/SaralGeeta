@@ -1,3 +1,4 @@
+import logger from '../../utils/logger';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, View, Text } from 'react-native';
@@ -15,13 +16,13 @@ const VoiceRecording = () => {
     const result = await audioRecorderPlayer.startRecorder(path);
     setPath(result);
     setRecording(true);
-    console.log('Recording started');
+    logger.log('Recording started');
   };
 
   const stopRecording = async () => {
     const result = await audioRecorderPlayer.stopRecorder();
     setRecording(false);
-    console.log('Recording stopped, saved at:', result);
+    logger.log('Recording stopped, saved at:', result);
     sendToGladia(result);
   };
 
@@ -50,9 +51,9 @@ const VoiceRecording = () => {
 
       const { data } = response;
       setTranscription(data.text); // assuming Gladia returns a text property with the transcribed text
-      console.log('Transcription:', data.text);
+      logger.log('Transcription:', data.text);
     } catch (error) {
-      console.error('Error sending audio to Gladia:', error);
+      logger.error('Error sending audio to Gladia:', error);
     }
   };
 

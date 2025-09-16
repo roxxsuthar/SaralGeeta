@@ -1,3 +1,4 @@
+import logger from '../../utils/logger';
 /** * *
 Shloks
 * */
@@ -28,7 +29,7 @@ import { Navigation } from '../../constants/constants';
 
 function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
   const { currentLanguage } = language;
-  console.log('route', route);
+  logger.log('route', route);
   useEffect(() => {
     handleGetShloks({ chapterId: get(route, 'params.chapterId') });
   }, [route]);

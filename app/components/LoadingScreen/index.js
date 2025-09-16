@@ -15,16 +15,32 @@ import CustomText from '../CustomText';
 import { setFontFamily } from '../../utils/device';
 function LoadingScreen({ currentLanguage }) {
   return (
-    <Modal transparent statusBarTranslucent animationType="none">
-      <View style={defaultStyles.container}>
+    <Modal
+      transparent
+      statusBarTranslucent
+      animationType="none"
+      testID="loading-screen-modal"
+    >
+      <View
+        style={defaultStyles.container}
+        testID="loading-screen-main-container"
+      >
         <View
           style={{
             ...defaultStyles.container,
             ...{ backgroundColor: COLORS.loadingTransparent },
           }}
+          testID="loading-screen-background"
         >
-          <View style={defaultStyles.loadingContainer}>
-            <ActivityIndicator size="large" color={COLORS.flamingo} />
+          <View
+            style={defaultStyles.loadingContainer}
+            testID="loading-screen-loading-container"
+          >
+            <ActivityIndicator
+              size="large"
+              color={COLORS.flamingo}
+              testID="loading-screen-activity-indicator"
+            />
             <CustomText
               style={Object.assign(
                 setFontFamily(
@@ -34,6 +50,7 @@ function LoadingScreen({ currentLanguage }) {
                 ),
                 defaultStyles.loadingText,
               )}
+              testID="loading-screen-text"
             >
               loading.....
             </CustomText>

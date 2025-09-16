@@ -1,3 +1,4 @@
+import logger from '../../../utils/logger';
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
@@ -28,7 +29,7 @@ const VideoPlayer = ({
   user,
 }) => {
   const handleVideoEnd = () => {
-    console.log('video ended');
+    logger.log('video ended');
     if (isIntroVideoPlayed) {
       setIsButton(true);
       setIsVideoPlaying(true);

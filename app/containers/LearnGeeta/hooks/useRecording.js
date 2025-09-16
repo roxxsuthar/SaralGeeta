@@ -1,3 +1,4 @@
+import logger from '../../../utils/logger';
 import { useState, useCallback } from 'react';
 import { Platform, Alert } from 'react-native';
 import RNFS from 'react-native-fs';
@@ -37,7 +38,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
       );
 
       if (checkResults.every((result) => result === RESULTS.GRANTED)) {
-        console.log('All permissions already granted');
+        logger.log('All permissions already granted');
         return true;
       }
 
@@ -70,7 +71,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
       return allGranted;
     } catch (err) {
-      console.warn('Permission request error:', err);
+      logger.warn('Permission request error:', err);
       return false;
     }
   }, []);
@@ -117,7 +118,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
       return result;
     } catch (error) {
-      console.error('Error uploading audio file:', error.message);
+      logger.error('Error uploading audio file:', error.message);
       throw error;
     }
   }, []);
@@ -152,7 +153,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
           await pollForResult(initialResponse.result_url, headers);
         }
       } catch (error) {
-        console.error('Transcription error:', error);
+        logger.error('Transcription error:', error);
         setWaitingForTranslation(false);
       }
     },
@@ -195,7 +196,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
             );
           }
         } catch (error) {
-          console.error('Polling error:', error);
+          logger.error('Polling error:', error);
           setWaitingForTranslation(false);
           break;
         }
@@ -218,7 +219,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
         const hasPermissions = await requestPermissions();
         if (!hasPermissions) {
-          console.error('Permissions not granted.');
+          logger.error('Permissions not granted.');
           return;
         }
 
@@ -229,9 +230,9 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
         });
 
         await SoundRecorder.start(path);
-        console.log('Recording successfully started at:', path);
+        logger.log('Recording successfully started at:', path);
       } catch (error) {
-        console.error('Error starting recorder:', error.message);
+        logger.error('Error starting recorder:', error.message);
         setIsRecordingButton(false);
       }
     },
@@ -244,7 +245,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
       setIsVideoPlaying(true);
 
       if (!isRecordingButton) {
-        console.warn('Recorder is not active. Cannot stop recording.');
+        logger.warn('Recorder is not active. Cannot stop recording.');
         return;
       }
 
@@ -265,7 +266,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
         await startTranscription(uploadResult?.audio_url);
         setIsRecordingButton(false);
       } catch (error) {
-        console.error('Error stopping recording:', error);
+        logger.error('Error stopping recording:', error);
         setIsRecordingButton(false);
       }
     },

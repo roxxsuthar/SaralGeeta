@@ -111,10 +111,14 @@ const ImagePicker = ({ onImageSelected, image }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={handleSelectImage}>
+      <TouchableOpacity
+        onPress={handleSelectImage}
+        testID="image-picker-touchable"
+      >
         <Image
           source={{ uri: imageUri || DEFAULT_IMAGE }}
           style={styles.avatar}
+          testID="image-picker-image"
         />
       </TouchableOpacity>
     </View>
@@ -122,7 +126,8 @@ const ImagePicker = ({ onImageSelected, image }) => {
 };
 
 ImagePicker.propTypes = {
-  onImageSelected: PropTypes.string,
+  onImageSelected: PropTypes.func,
+  image: PropTypes.string,
 };
 
 export default memo(ImagePicker);

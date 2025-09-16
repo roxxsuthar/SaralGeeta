@@ -1,3 +1,4 @@
+import logger from '../../utils/logger';
 import React, { useCallback, useRef, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -76,7 +77,7 @@ function OtpScreen({
         });
       }
     } catch (err) {
-      console.error('Error setting up SMS Retriever:', err);
+      logger.error('Error setting up SMS Retriever:', err);
     }
   };
 
@@ -115,7 +116,7 @@ function OtpScreen({
       }
       Keyboard.dismiss();
     } catch (err) {
-      console.error('Error handling OTP:', err);
+      logger.error('Error handling OTP:', err);
     }
   }, []);
 

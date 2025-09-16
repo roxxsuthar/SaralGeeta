@@ -11,7 +11,12 @@ import PropTypes from 'prop-types';
 
 function CustomText({ children, style, numberOfLines, ...props }) {
   return (
-    <Text {...props} style={style} numberOfLines={numberOfLines}>
+    <Text
+      testID="myText"
+      {...props}
+      style={style}
+      numberOfLines={numberOfLines}
+    >
       {children}
     </Text>
   );

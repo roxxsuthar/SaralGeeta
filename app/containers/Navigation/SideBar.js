@@ -1,3 +1,4 @@
+import logger from '../../utils/logger';
 import React from 'react';
 import { View, Image, StatusBar, TouchableOpacity } from 'react-native';
 import { CommonActions } from '@react-navigation/native';
@@ -121,7 +122,7 @@ const SideBar = (props) => {
               )}
               onPress={() => {
                 // Handle Facebook navigation or remove if not needed
-                console.log('Facebook navigation not implemented');
+                logger.log('Facebook navigation not implemented');
               }}
             />
             <DrawerItem
@@ -134,7 +135,7 @@ const SideBar = (props) => {
               )}
               onPress={() => {
                 // Handle Instagram navigation or remove if not needed
-                console.log('Instagram navigation not implemented');
+                logger.log('Instagram navigation not implemented');
               }}
             />
             <DrawerItem
@@ -147,7 +148,7 @@ const SideBar = (props) => {
               )}
               onPress={() => {
                 // Handle Twitter navigation or remove if not needed
-                console.log('Twitter navigation not implemented');
+                logger.log('Twitter navigation not implemented');
               }}
             />
             <DrawerItem

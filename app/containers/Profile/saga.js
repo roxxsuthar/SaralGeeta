@@ -1,3 +1,4 @@
+import logger from '../../utils/logger';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import request from '../../utils/request';
 import Helpers from '../../utils/helpers';
@@ -16,7 +17,7 @@ function* fetchProfile() {
 
   try {
     const res = yield call(request, options);
-    console.log('Profile API response:', res);
+    logger.log('Profile API response:', res);
 
     // Agar aapko sure nahi ki data kaha hai, to poora res bhejo reducer me
     yield put(getProfileSuccess(res)); // ya yield put(getProfileSuccess(res.results));

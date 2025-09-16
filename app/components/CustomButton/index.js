@@ -44,13 +44,13 @@ function CustomButton({
     >
       <View style={styles.textIconContainer}>
         {isEqual(previousNavigateIcon, true) && (
-          <View style={styles.previousNavigateIcon}>
+          <View testID="back-icon" style={styles.previousNavigateIcon}>
             <IMAGES.BackIcon width="100%" height="100%" color="white" />
           </View>
         )}
         <Text style={textStyle()}>{title}</Text>
         {isEqual(nextNavigateIcon, true) && (
-          <View style={styles.nextNavigateIcon}>
+          <View testID="next-icon" style={styles.nextNavigateIcon}>
             <IMAGES.NavigateNext width="100%" height="100%" />
           </View>
         )}

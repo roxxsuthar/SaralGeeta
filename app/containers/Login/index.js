@@ -1,3 +1,4 @@
+import logger from '../../utils/logger';
 /**
  *
  * Login
@@ -127,7 +128,7 @@ function Login({
     sendOAuthData(userInfo?.data?.idToken, 'Google');
   }, []);
 
-  console.log('--------', loading);
+  logger.log('--------', loading);
 
   return (
     <ImageBackground

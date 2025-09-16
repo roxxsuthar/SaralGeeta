@@ -41,6 +41,7 @@ import { getShloks } from '../Shloks/actions';
 // Constants and styles
 import { IMAGES } from '../../constants';
 import styles from './styles';
+import makeSelectOurIdeals from '../OurIdeals/selectors';
 
 function LearnGeeta({
   handleGetShloksDetail,
@@ -53,10 +54,11 @@ function LearnGeeta({
   introVideo,
   handleSaveResult,
   handleGetShloks,
+  ourIdeals,
 }) {
   const videoRef = useRef(null);
   const animationRef = useRef(null);
-
+  // console.log('ourIdeals', ourIdeals);
   // Local state
   const [isButton, setIsButton] = useState(false);
   const [shlokIndex, setShlokIndex] = useState();
@@ -310,6 +312,7 @@ LearnGeeta.propTypes = {
   introVideo: PropTypes.object.isRequired,
   handleSaveResult: PropTypes.func.isRequired,
   handleGetShloks: PropTypes.func.isRequired,
+  ourIdeals: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -318,6 +321,7 @@ const mapStateToProps = createStructuredSelector({
   user: makeSelectUser(),
   shloks: makeSelectShloks(),
   introVideo: makeSelectIdealDetails(),
+  ourIdeals: makeSelectOurIdeals(),
 });
 
 function mapDispatchToProps(dispatch) {

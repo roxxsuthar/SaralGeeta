@@ -1,3 +1,4 @@
+import logger from '../../utils/logger';
 /*
  *
  * EditProfile actions
@@ -18,7 +19,7 @@ export function defaultAction() {
 }
 
 export function getLanguage() {
-  console.log('---------FIRED------');
+  logger.log('---------FIRED------');
   return {
     type: GET_LANGUAGES,
   };

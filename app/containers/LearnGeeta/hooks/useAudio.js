@@ -1,3 +1,4 @@
+import logger from '../../../utils/logger';
 import { useState, useCallback, useEffect } from 'react';
 import Sound from 'react-native-sound';
 import RNFS from 'react-native-fs';
@@ -55,7 +56,7 @@ export const useAudio = (learnGeeta) => {
         setIsAudioLoading(false);
       });
     } catch (err) {
-      console.error('Audio loading error:', err);
+      logger.error('Audio loading error:', err);
       setIsAudioLoading(false);
       setIsAudioReady(false);
     }
@@ -63,7 +64,7 @@ export const useAudio = (learnGeeta) => {
 
   const playAudio = useCallback(() => {
     if (!audio || !isAudioReady) {
-      console.log('Audio not ready to play');
+      logger.log('Audio not ready to play');
       return;
     }
     if (audio.isPlaying()) {
@@ -72,7 +73,7 @@ export const useAudio = (learnGeeta) => {
 
     audio.play((success) => {
       if (!success) {
-        console.log('Audio playback failed');
+        logger.log('Audio playback failed');
       }
     });
   }, [audio, isAudioReady]);

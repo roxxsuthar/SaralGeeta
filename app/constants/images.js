@@ -46,6 +46,8 @@ const Avatar = require('../assets/images/Avatar.png');
 const GeetLearn = require('../assets/images/img-geeta-learn.png');
 const KrishnaImage = require('../assets/images/img-krishna.png');
 const Chakra = require('../assets/images/geeta_learn_animation.gif');
+const Leaf = require('../assets/images/leaf.gif');
+const PeacockFeather = require('../assets/images/peacockFeather.gif');
 const Frame = require('../assets/images/Frame.png');
 const Rath = require('../assets/images/img-john-fitness.png');
 const Trainer = require('../assets/images/Trainer_Photo.png');
@@ -110,5 +112,7 @@ const IMAGES = {
   WhiteRightArrowIcon,
   WhitePlayIcon,
   ReplayButton,
+  Leaf,
+  PeacockFeather,
 };
 export default IMAGES;
