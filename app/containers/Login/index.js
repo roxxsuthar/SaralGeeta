@@ -1,8 +1,6 @@
-import logger from '../../utils/logger';
 /**
  *
  * Login
- *
  */
 
 import React, { useRef, useState, useCallback, useEffect } from 'react';
@@ -21,8 +19,6 @@ import {
   GoogleSignin,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-import auth from '@react-native-firebase/auth';
-import config from 'react-native-config';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import PhoneInput from 'react-native-phone-number-input';
@@ -63,6 +59,7 @@ function Login({
   const [valid, setValid] = useState(true);
   const [focusedBox, setFocusedBox] = useState(false);
   const [inputStyle, setInputStyle] = useState(styles.mobileNumberOnBlur);
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   const onChangeTextHandler = useCallback(
     (text) => setMobileNumber(text.replace(/[^0-9]/g, '')),
@@ -106,35 +103,92 @@ function Login({
     handleSendOtp(payload, navigation);
   }, [mobileNumber]);
 
+  // Configure Google Sign-In on component mount
   useEffect(() => {
     GoogleSignin.configure({
       webClientId:
         '875650845029-nr66a7iaslpoa9d68sl1to23ssbbkukk.apps.googleusercontent.com',
       offlineAccess: true,
+      hostedDomain: '', // Optional
+      forceCodeForRefreshToken: true, // For refresh tokens
     });
   }, []);
 
-  const sendOAuthData = useCallback((token, type) => {
-    const payload = {
-      idToken: token,
-      social_media: type,
-    };
-    handleOAuthHandler(payload);
-  });
+  const sendOAuthData = useCallback(
+    (token, type) => {
+      const payload = {
+        idToken: token,
+        social_media: type,
+      };
+      handleOAuthHandler(payload);
+    },
+    [handleOAuthHandler],
+  );
 
   const handleGoogleLogin = useCallback(async () => {
-    await GoogleSignin.hasPlayServices();
-    const userInfo = await GoogleSignin.signIn();
-    sendOAuthData(userInfo?.data?.idToken, 'Google');
-  }, []);
+    try {
+      setGoogleLoading(true);
 
-  logger.log('--------', loading);
+      // Check if device supports Google Play Services
+      await GoogleSignin.hasPlayServices({
+        showPlayServicesUpdateDialog: true,
+      });
+
+      // Perform Google Sign-In
+      const userInfo = await GoogleSignin.signIn();
+
+      console.log('Google Sign-In Success:', userInfo);
+
+      // Extract idToken - check both possible locations
+      const idToken = userInfo?.data?.idToken || userInfo?.idToken;
+
+      if (!idToken) {
+        console.error('No idToken received from Google Sign-In');
+        Alert.alert(
+          'Error',
+          'Failed to get authentication token. Please try again.',
+        );
+        setGoogleLoading(false);
+        return;
+      }
+
+      // Send OAuth data to your backend
+      sendOAuthData(idToken, 'Google');
+
+      setGoogleLoading(false);
+    } catch (error) {
+      setGoogleLoading(false);
+
+      console.error('Google Sign-In Error:', error);
+
+      // Handle specific error codes
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // User cancelled the sign-in flow
+        console.log('User cancelled Google Sign-In');
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // Sign-in is already in progress
+        Alert.alert('Please wait', 'Sign-in is already in progress');
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // Play services not available or outdated
+        Alert.alert(
+          'Google Play Services',
+          'Google Play Services are not available or outdated on this device',
+        );
+      } else {
+        // Other errors
+        Alert.alert(
+          'Sign-In Failed',
+          error.message || 'An error occurred during Google Sign-In',
+        );
+      }
+    }
+  }, [sendOAuthData]);
 
   return (
     <ImageBackground
       source={IMAGES.AppBackground}
       style={styles.container}
-      resizeMode="cover" // Similar to background-size in CSS
+      resizeMode="cover"
     >
       <StatusBar
         barStyle="light-content"
@@ -273,7 +327,7 @@ function Login({
             <View style={styles.line} />
           </View>
           <View style={styles.socialIconContainer}>
-            <TouchableOpacity activeOpacity={0.8} style={styles.socialIcon}>
+            {/* <TouchableOpacity activeOpacity={0.8} style={styles.socialIcon}>
               <View style={styles.socialIconBox}>
                 <IMAGES.Facebook height="100%" width="100%" />
               </View>
@@ -285,14 +339,19 @@ function Login({
               >
                 {loginMessage.facebook.defaultMessage}
               </CustomText>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity
               activeOpacity={0.8}
               style={styles.socialIcon}
               onPress={handleGoogleLogin}
+              disabled={googleLoading || loading}
             >
               <View style={styles.socialIconBox}>
-                <IMAGES.Google height="100%" width="100%" />
+                {googleLoading ? (
+                  <ActivityIndicator size="small" color={COLORS.primary} />
+                ) : (
+                  <IMAGES.Google height="100%" width="100%" />
+                )}
               </View>
               <CustomText
                 style={Object.assign(

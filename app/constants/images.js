@@ -17,7 +17,7 @@ import Google from '../assets/images/google.svg';
 import CloseIcon from '../assets/images/CloseIcon.svg';
 import ChevronLeft from '../assets/images/chevron-left.svg';
 import ChevronLeftSolid from '../assets/images/chevron-left-solid.svg';
-import Logo from '../assets/images/logo-saral-geeta.svg';
+import Logo from '../assets/images/logo-saral-gita.svg';
 import LeftArrow from '../assets/images/ic-right.svg';
 import PlayerIcon from '../assets/images/player-play.svg';
 import Heart from '../assets/images/heart.svg';
@@ -40,6 +40,7 @@ import User from '../assets/images/user.svg';
 import Lock from '../assets/images/lock.svg';
 import ChevronDown from '../assets/images/chevron-down.svg';
 import Message from '../assets/images/message.svg';
+import Mic from '../assets/images/Mic.svg';
 
 // const PlanCard = require('../assets/images/planCard.png');
 const Avatar = require('../assets/images/Avatar.png');
@@ -114,5 +115,6 @@ const IMAGES = {
   ReplayButton,
   Leaf,
   PeacockFeather,
+  Mic,
 };
 export default IMAGES;

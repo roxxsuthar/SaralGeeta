@@ -1,26 +1,61 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { BackHandler } from 'react-native';
 import SoundRecorder from 'react-native-sound-recorder';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 export const useBackHandler = (audio) => {
   const navigation = useNavigation();
 
-  useEffect(() => {
-    const onBackPress = () => {
+  const handleBackPress = useCallback(() => {
+    try {
+      // Stop and cleanup audio
       if (audio) {
-        audio.stop();
-        audio.release();
+        audio.stop().catch(() => {});
+        audio.release().catch(() => {});
       }
-      SoundRecorder.stop();
+
+      // Stop recording if active
+      SoundRecorder.stop().catch(() => {});
+
+      // Navigate back
+      if (navigation.canGoBack()) {
+        navigation.goBack();
+        return true; // Prevent default behavior
+      }
+      return false; // Let default behavior handle it
+    } catch (error) {
+      console.error('Back handler error:', error);
       navigation.goBack();
       return true;
-    };
-
-    BackHandler.addEventListener('hardwareBackPress', onBackPress);
-
-    return () => {
-      BackHandler.removeEventListener('hardwareBackPress', onBackPress);
-    };
+    }
   }, [navigation, audio]);
+
+  // Handle hardware back button
+  useEffect(() => {
+    const subscription = BackHandler.addEventListener(
+      'hardwareBackPress',
+      handleBackPress,
+    );
+    return () => {
+      subscription.remove();
+    };
+  }, [handleBackPress]);
+
+  // Handle screen focus/blur
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        // Cleanup when leaving screen
+        try {
+          if (audio) {
+            audio.stop().catch(() => {});
+            audio.release().catch(() => {});
+          }
+          SoundRecorder.stop().catch(() => {});
+        } catch (error) {
+          console.error('Cleanup error:', error);
+        }
+      };
+    }, [audio]),
+  );
 };

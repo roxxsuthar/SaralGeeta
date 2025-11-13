@@ -12,6 +12,7 @@ import { createStructuredSelector } from 'reselect';
 import SplashScreen from 'react-native-splash-screen';
 import { compose } from 'redux';
 import { NavigationContainer } from '@react-navigation/native';
+import { navigationRef, isReadyRef } from './RootNavigator';
 import MainNavigatorWithBackAndAppState from './MainNavigator';
 import {
   makeSelectAppLanguage,
@@ -33,7 +34,16 @@ export function Navigation({ navigation, language, onboarding, token, user }) {
   }, []);
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      ref={navigationRef}
+      onReady={() => {
+        isReadyRef.current = true;
+      }}
+      onStateChange={(state) => {
+        // Optional: Track navigation state changes
+        console.log('New navigation state:', state);
+      }}
+    >
       <MainNavigatorWithBackAndAppState
         currentLanguage={currentLanguage}
         isLanguageSelected={isLanguageSelected}

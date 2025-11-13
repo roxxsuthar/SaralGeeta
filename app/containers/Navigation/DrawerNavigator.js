@@ -25,6 +25,12 @@ const DrawerNavigator = () => {
           borderBottomRightRadius: 0,
         },
         headerShown: false,
+        gestureEnabled: true,
+        gestureHandlerProps: {
+          enabled: true,
+        },
+        swipeEnabled: true,
+        animationEnabled: true,
       }}
       drawerContent={(props) => <SideBar {...props} />}
     >

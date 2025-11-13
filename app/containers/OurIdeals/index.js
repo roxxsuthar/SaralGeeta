@@ -46,7 +46,10 @@ function OurIdeals({
   const [disableBtn, setDisableBtn] = useState(true);
 
   useEffect(() => {
-    getOurIdealsHandler();
+    const fetchData = async () => {
+      await getOurIdealsHandler();
+    };
+    fetchData();
   }, []);
 
   const getStyleOfCard = useCallback(
@@ -109,7 +112,6 @@ function OurIdeals({
       data: { ideal_id: selectCard?.id },
     };
     handleUpdateUser(payload);
-    // Navigate to Drawer first, then to Home since we're outside DrawerNavigator
     navigation.navigate('Drawer', {
       screen: Navigation.Home,
     });
@@ -119,7 +121,7 @@ function OurIdeals({
     <ImageBackground
       source={IMAGES.AppBackground}
       style={styles.container}
-      resizeMode="cover" // Similar to background-size in CSS
+      resizeMode="cover"
     >
       <StatusBar
         barStyle="light-content"

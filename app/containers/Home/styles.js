@@ -19,17 +19,39 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   searchContainer: {
-    paddingHorizontal: wp(5),
-    paddingBottom: hp(10),
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 16,
+    marginVertical: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
   },
   searchInput: {
-    height: hp(45),
-    backgroundColor: COLORS.white,
-    borderRadius: hp(12),
-    paddingHorizontal: wp(20),
-    fontSize: hp(14),
+    flex: 1,
+    fontSize: 16,
+    color: '#333',
+    paddingVertical: 8,
   },
-
+  voiceButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#007AFF',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 8,
+  },
+  voiceButtonActive: {
+    backgroundColor: '#FF3B30',
+  },
+  voiceButtonText: {
+    fontSize: 20,
+  },
+  listeningIcon: {
+    tintColor: '#ff0000',
+  },
   sectionHeaderContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',

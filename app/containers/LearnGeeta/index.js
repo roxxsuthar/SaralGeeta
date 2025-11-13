@@ -42,6 +42,7 @@ import { getShloks } from '../Shloks/actions';
 import { IMAGES } from '../../constants';
 import styles from './styles';
 import makeSelectOurIdeals from '../OurIdeals/selectors';
+import FastImage from 'react-native-fast-image';
 
 function LearnGeeta({
   handleGetShloksDetail,
@@ -58,7 +59,7 @@ function LearnGeeta({
 }) {
   const videoRef = useRef(null);
   const animationRef = useRef(null);
-  // console.log('ourIdeals', ourIdeals);
+  console.log('ourIdeals', ourIdeals?.data[0]?.name);
   // Local state
   const [isButton, setIsButton] = useState(false);
   const [shlokIndex, setShlokIndex] = useState();
@@ -163,7 +164,6 @@ function LearnGeeta({
   );
 
   const handlePlaybackResume = useCallback(() => {
-    console.log('Playback resumed');
     if (audio && !audio.isPlaying()) {
       playAudio();
     }
@@ -221,7 +221,16 @@ function LearnGeeta({
           backgroundColor="transparent"
           hidden={true}
         />
-        <LoadingAnimation animationRef={animationRef} />
+
+        <FastImage
+          style={styles.cloudAnimationContainer}
+          source={
+            ourIdeals?.data[0]?.name === 'Krishan'
+              ? IMAGES.PeacockFeather
+              : IMAGES.Leaf
+          }
+          resizeMode={FastImage.resizeMode.contain}
+        />
       </SafeAreaView>
     );
   }
@@ -279,7 +288,15 @@ function LearnGeeta({
         {isIntroVideoPlayed && (
           <>
             {isLoading ? (
-              <LoadingAnimation animationRef={animationRef} />
+              <FastImage
+                style={styles.cloudAnimationContainer}
+                source={
+                  ourIdeals?.data[0]?.name === 'Krishan'
+                    ? IMAGES.PeacockFeather
+                    : IMAGES.Leaf
+                }
+                resizeMode={FastImage.resizeMode.contain}
+              />
             ) : (
               <RecordingInterface
                 transcription={transcription}

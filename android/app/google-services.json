@@ -7,18 +7,26 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:875650845029:android:31feeae1e2e30eee37b98c",
+        "mobilesdk_app_id": "1:875650845029:android:81b991e7abdcedbc37b98c",
         "android_client_info": {
-          "package_name": "com.saralgeeta"
+          "package_name": "com.saralgita"
         }
       },
       "oauth_client": [
         {
-          "client_id": "875650845029-43drrd3jdac2cmr7lhn20a44qqt4q67l.apps.googleusercontent.com",
+          "client_id": "875650845029-2loh6eoom41ql3l3npajdb699ha722vq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.saralgeeta",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+            "package_name": "com.saralgita",
+            "certificate_hash": "62ba10f32a589ca4c3927b63ab0b06e7652d8024"
+          }
+        },
+        {
+          "client_id": "875650845029-p4kpuids531p6lqi111qm4fkb7k7t90u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saralgita",
+            "certificate_hash": "8f97d7fd355678b8e39f5fa58e191a1e789fd1d4"
           }
         },
         {
@@ -37,6 +45,13 @@
             {
               "client_id": "875650845029-nr66a7iaslpoa9d68sl1to23ssbbkukk.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "875650845029-if2ago2l0dnnk8qef2m5ti2cqogf36rq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.saralgita"
+              }
             }
           ]
         }

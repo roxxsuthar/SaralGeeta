@@ -16,6 +16,11 @@ const DashboardNavigator = () => {
     <DashboardStack.Navigator
       screenOptions={{
         headerShown: false,
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+        animation: 'slide_from_right',
+        animationTypeForReplace: 'pop',
+        animationEnabled: true,
       }}
     >
       {isEqual(idealDetails, null) && (

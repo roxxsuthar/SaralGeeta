@@ -1,8 +1,9 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.facebook.react")
-    id("kotlin-parcelize")
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.facebook.react'
+    id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
 }
 
 def enableProguardInReleaseBuilds = false
@@ -13,9 +14,20 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.saralgeeta"
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+        apiVersion = "2.1"
+        languageVersion = "2.1"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    namespace "com.saralgita"
     defaultConfig {
-        applicationId "com.saralgeeta"
+        applicationId "com.saralgita"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -29,6 +41,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('saral-geeta-release-key.keystore')
+            storePassword System.getenv("MYAPP_RELEASE_STORE_PASSWORD") ?: 'saralgeeta'
+            keyAlias System.getenv("MYAPP_RELEASE_KEY_ALIAS") ?: 'saral-geeta'
+            keyPassword System.getenv("MYAPP_RELEASE_KEY_PASSWORD") ?: 'saralgeeta'
+        }
     }
 
     buildTypes {
@@ -36,7 +54,7 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -45,14 +63,20 @@ android {
     buildFeatures {
         buildConfig true
     }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
     implementation("com.facebook.react:react-android")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-analytics")
     
     // AndroidX dependencies
-    implementation("androidx.core:core:1.12.0")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.activity:activity:1.8.2")
     implementation("androidx.activity:activity-ktx:1.8.2")
@@ -61,7 +85,6 @@ dependencies {
     implementation("androidx.window:window:1.2.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
-    implementation("androidx.core:core:1.12.0")
     
     // React Native dependencies
     if (rootProject.ext.hermesEnabled.toBoolean()) {

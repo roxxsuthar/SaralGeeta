@@ -17,10 +17,15 @@ const appPersistConfig = {
   storage: AsyncStorage,
 };
 
+const ourIdealsPersistConfig = {
+  key: 'ourIdeals',
+  storage: AsyncStorage,
+};
+
 const combinedReducers = combineReducers({
   app: persistReducer(appPersistConfig, appReducer),
   login: loginReducer,
-  ourIdeals: ourIdealsReducer,
+  ourIdeals: persistReducer(ourIdealsPersistConfig, ourIdealsReducer),
   home: homeReducer,
   shloks: shloksReducer,
   learnGeeta: learnGeetaReducer,

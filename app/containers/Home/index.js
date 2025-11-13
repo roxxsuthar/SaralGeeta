@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /** * *
 Home
 * */
@@ -12,12 +11,16 @@ import {
   SectionList,
   TouchableOpacity,
   ImageBackground,
+  Platform,
+  PermissionsAndroid,
 } from 'react-native';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import FastImage from 'react-native-fast-image';
+import Voice from '@react-native-voice/voice';
+
 import makeSelectHome from './selectors';
 import styles from './styles';
 import CustomText from '../../components/CustomText';
@@ -42,6 +45,8 @@ function Home({
   const [showSearch, setShowSearch] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [filteredChapters, setFilteredChapters] = useState([]);
+  const [isListening, setIsListening] = useState(false);
+
   const { Home: HomeMessage } = strings;
   const { currentLanguage } = language;
   const recent = get(home, 'recent');
@@ -49,20 +54,63 @@ function Home({
   const sections = [
     {
       title: HomeMessage.recent.defaultMessage,
-      data: !recent ? [] : [recent], // Ensure Recent is a single-item array
+      data: !recent ? [] : [recent],
     },
     {
       title: HomeMessage.chapters.defaultMessage,
-      data: filteredChapters?.filter((item) => item.id !== recent?.id) || [], // Exclude Recent from Chapters
+      data: filteredChapters?.filter((item) => item.id !== recent?.id) || [],
     },
   ];
 
   useEffect(() => {
     handleGetRecent();
     handleGetChapters();
+
+    let mounted = true;
+
+    // Set up voice recognition callbacks
+    const voiceSetup = async () => {
+      if (!mounted) return;
+
+      try {
+        // Clean up first
+        await Voice.destroy().catch(() => {});
+        await Voice.removeAllListeners();
+
+        // Wait a moment before setting up
+        await new Promise((resolve) => setTimeout(resolve, 300));
+
+        if (!mounted) return;
+
+        // Set up event listeners
+        Voice.onSpeechStart = onSpeechStart;
+        Voice.onSpeechEnd = onSpeechEnd;
+        Voice.onSpeechResults = onSpeechResults;
+        Voice.onSpeechError = onSpeechError;
+        Voice.onSpeechPartialResults = onSpeechResults;
+        Voice.onSpeechVolumeChanged = () => {};
+      } catch {
+        /* empty */
+      }
+    };
+
+    voiceSetup();
+
     return () => {
-      setShowSearch(false);
-      setSearchText('');
+      mounted = false;
+      const cleanup = async () => {
+        try {
+          setShowSearch(false);
+          setSearchText('');
+          setIsListening(false);
+          await Voice.stop().catch(() => {});
+          await Voice.destroy().catch(() => {});
+          await Voice.removeAllListeners();
+        } catch {
+          /* empty */
+        }
+      };
+      cleanup();
     };
   }, []);
 
@@ -83,11 +131,138 @@ function Home({
     }
   }, [searchText, home?.data]);
 
+  // Voice Recognition Handlers
+  const onSpeechStart = () => {
+    setIsListening(true);
+  };
+
+  const onSpeechEnd = () => {
+    // Just update the state, don't try to stop again
+    setIsListening(false);
+  };
+
+  const onSpeechResults = (e) => {
+    if (e.value && e.value.length > 0) {
+      const recognizedText = e.value[0].trim();
+      setSearchText(recognizedText);
+
+      // Filter chapters based on the recognized text
+      if (home?.data) {
+        const filtered = home.data.filter((item) =>
+          item.name?.toLowerCase().includes(recognizedText.toLowerCase()),
+        );
+        setFilteredChapters(filtered);
+      }
+    }
+
+    setIsListening(false);
+    // Automatically stop voice recognition after getting results
+    Voice.stop().catch();
+  };
+
+  const onSpeechError = async (e) => {
+    setIsListening(false);
+
+    // Don't show alerts for common cases
+    if (
+      e.error?.code === '7' || // no match
+      e.error?.code === '0' || // cancelled
+      e.error?.message?.includes('cancelled')
+    ) {
+      return;
+    }
+
+    try {
+      // Cleanup
+      await Voice.stop().catch(() => {});
+      await Voice.destroy().catch(() => {});
+    } catch {
+      /* empty */
+    }
+  };
+
+  const requestMicrophonePermission = async () => {
+    try {
+      if (Platform.OS === 'android') {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+          {
+            title: 'Microphone Permission',
+            message:
+              'This app needs access to your microphone for voice search',
+            buttonNeutral: 'Ask Me Later',
+            buttonNegative: 'Cancel',
+            buttonPositive: 'OK',
+          },
+        );
+        return granted === PermissionsAndroid.RESULTS.GRANTED;
+      } else if (Platform.OS === 'ios') {
+        // For iOS, we need to check microphone permission
+        try {
+          await Voice.isAvailable();
+          return true;
+        } catch {
+          return false;
+        }
+      }
+      return false;
+    } catch {
+      return false;
+    }
+  };
+
+  const startVoiceSearch = async () => {
+    if (isListening) {
+      await stopVoiceSearch();
+      return;
+    }
+
+    try {
+      setSearchText(''); // Clear existing search text
+      setIsListening(true);
+
+      // Clean up previous instance
+      await Voice.destroy().catch(() => {});
+      await Voice.removeAllListeners();
+
+      // Check permissions first
+      const hasPermission = await requestMicrophonePermission();
+      if (!hasPermission) {
+        setIsListening(false);
+        return;
+      }
+
+      // Set up event listeners
+      Voice.onSpeechStart = onSpeechStart;
+      Voice.onSpeechEnd = onSpeechEnd;
+      Voice.onSpeechResults = onSpeechResults;
+      Voice.onSpeechError = onSpeechError;
+      Voice.onSpeechPartialResults = onSpeechResults;
+
+      // Use the correct language code based on current app language
+      const languageCode = currentLanguage === 'hindi' ? 'hi-IN' : 'en-US';
+
+      // Start recognition
+      await Voice.start(languageCode);
+    } catch {
+      setIsListening(false);
+    }
+  };
+
+  const stopVoiceSearch = async () => {
+    try {
+      setIsListening(false);
+      await Voice.stop();
+      await Voice.destroy();
+    } catch {
+      /* empty */
+    }
+  };
+
   const navigateToShloks = useCallback(
     (id) => {
       setShowSearch(false);
       setSearchText('');
-      // Since we're already inside DrawerNavigator, navigate directly to the screen
       navigation.navigate(Navigation.Shloks, { chapterId: id });
     },
     [navigation],
@@ -189,7 +364,6 @@ function Home({
           <TouchableOpacity
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
             activeOpacity={0.8}
-            // onPress={backHandler}
             style={styles.headerSubContainer}
           >
             <View style={styles.icon}>
@@ -234,6 +408,18 @@ function Home({
               value={searchText}
               onChangeText={setSearchText}
             />
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={isListening ? stopVoiceSearch : startVoiceSearch}
+              style={[
+                styles.voiceButton,
+                isListening && styles.voiceButtonActive,
+              ]}
+            >
+              <CustomText style={styles.voiceButtonText}>
+                {isListening ? '🎤' : '🎙️'}
+              </CustomText>
+            </TouchableOpacity>
           </View>
         )}
         {home?.loading ? (

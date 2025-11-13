@@ -34,7 +34,7 @@ import { isEqual } from 'lodash';
 function Language({ navigation, language, _handleSetLanguage }) {
   const { currentLanguage } = language;
   const { language: languageMessage } = strings;
-  const [languageType, setLanguageType] = useState();
+  const [languageType, setLanguageType] = useState(strings.getLanguage());
 
   const updateLanguage = useCallback(() => {
     strings.setLanguage(languageType);

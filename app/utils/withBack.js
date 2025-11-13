@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useCallback } from 'react';
 import { Alert, BackHandler } from 'react-native';
-import isEqual from 'lodash/isEqual';
+
 import { navigationRef } from '../containers/Navigation/RootNavigator';
 import { Navigation } from '../constants/constants';
 
@@ -9,36 +9,106 @@ const withBack = (WrappedComponent) => {
   const ScreenWithBack = (props) => {
     const onBack = useCallback(() => {
       const navigation = navigationRef.current;
-      const currentRouteName = navigation?.getCurrentRoute()?.name;
+      if (!navigation) return false;
 
-      if (isEqual(currentRouteName, Navigation.Home)) {
-        // Show exit confirmation dialog
-        Alert.alert('Exit', 'Are you sure you want to exit?', [
-          {
-            text: 'Cancel',
-            onPress: () => null,
-            style: 'cancel',
-          },
-          {
-            text: 'Yes',
-            onPress: () => BackHandler.exitApp(),
-          },
-        ]);
-        return true; // Prevent default back behavior
+      const currentRoute = navigation.getCurrentRoute();
+      const currentRouteName = currentRoute?.name;
+      const state = navigation.getState();
+
+      // Check if we're in a nested navigator
+      const isInNestedNavigator = state.routes.length > 1;
+
+      // Handle special cases for certain screens
+      switch (currentRouteName) {
+        case Navigation.Home:
+          // Show exit confirmation dialog on Home screen
+          Alert.alert('Exit', 'Are you sure you want to exit?', [
+            {
+              text: 'Cancel',
+              onPress: () => null,
+              style: 'cancel',
+            },
+            {
+              text: 'Yes',
+              onPress: () => BackHandler.exitApp(),
+            },
+          ]);
+          return true;
+
+        case Navigation.LearnGeeta:
+        case Navigation.Shloks:
+        case Navigation.Chapters:
+          // For these screens, try navigating up through the stack
+          try {
+            if (isInNestedNavigator) {
+              navigation.goBack();
+              return true;
+            }
+          } catch {
+            /* empty */
+          }
+          break;
+
+        case Navigation.OtpScreen:
+        case Navigation.Login:
+          // For auth screens, ensure we can go back before attempting
+          if (state.routes.length > 1) {
+            navigation.goBack();
+            return true;
+          }
+          break;
+
+        default:
+          // For drawer screens and others
+          try {
+            const isDrawerScreen = [
+              Navigation.Profile,
+              Navigation.EditProfile,
+              Navigation.PrivacyPolicy,
+              Navigation.TermsOfUse,
+              Navigation.ContactUs,
+            ].includes(currentRouteName);
+
+            if (isDrawerScreen) {
+              // Use replace to avoid navigation stack issues
+              navigation.reset({
+                index: 0,
+                routes: [{ name: Navigation.Home }],
+              });
+              return true;
+            } else if (isInNestedNavigator) {
+              // For other screens in nested navigators
+              navigation.goBack();
+              return true;
+            }
+          } catch {
+            /* empty */
+          }
+          break;
       }
 
-      if (navigation?.canGoBack()) {
-        navigation.goBack(); // Navigate back
-        return true; // Prevent default back behavior
+      // If nothing above handled it and we can go back, do it
+      if (navigation.canGoBack()) {
+        navigation.goBack();
+        return true;
       }
 
-      // Default behavior for other cases
+      // Return false to let the default handler run
       return false;
     }, []);
 
     useEffect(() => {
-      BackHandler.removeEventListener('hardwareBackPress', onBack);
-      BackHandler.addEventListener('hardwareBackPress', onBack);
+      const subscription = BackHandler.addEventListener(
+        'hardwareBackPress',
+        onBack,
+      );
+      return () => {
+        try {
+          subscription.remove();
+        } catch {
+          /* empty */
+        }
+      };
     }, [onBack]);
 
     return <WrappedComponent {...props} />;

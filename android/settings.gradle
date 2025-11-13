@@ -4,28 +4,24 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
-    plugins {
-        id("com.android.application") version "7.4.2"
-        id("org.jetbrains.kotlin.android") version "1.8.0"
-        id("com.facebook.react")
-    }
 }
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
         maven {
             url("$rootDir/../node_modules/react-native/android")
         }
         maven {
             url("$rootDir/../node_modules/@react-native/gradle-plugin")
         }
+        maven { url 'https://jitpack.io' }
     }
 }
 
-rootProject.name = 'SaralGeeta'
+rootProject.name = 'saralgita'
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')

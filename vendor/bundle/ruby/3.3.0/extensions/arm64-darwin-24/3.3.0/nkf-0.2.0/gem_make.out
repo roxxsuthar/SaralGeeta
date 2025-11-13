@@ -1,0 +1,18 @@
+current directory: /Users/bhagirathsuthar/Documents/projects/SaralGeeta/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
+/Users/bhagirathsuthar/.rbenv/versions/3.3.0/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/bhagirathsuthar/Documents/projects/SaralGeeta/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20251112-50425-oijrdz sitelibdir\=./.gem.20251112-50425-oijrdz clean
+
+current directory: /Users/bhagirathsuthar/Documents/projects/SaralGeeta/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20251112-50425-oijrdz sitelibdir\=./.gem.20251112-50425-oijrdz
+compiling nkf.c
+linking shared-object nkf.bundle
+
+current directory: /Users/bhagirathsuthar/Documents/projects/SaralGeeta/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20251112-50425-oijrdz sitelibdir\=./.gem.20251112-50425-oijrdz install
+/usr/bin/install -c -m 0755 nkf.bundle ./.gem.20251112-50425-oijrdz
+
+current directory: /Users/bhagirathsuthar/Documents/projects/SaralGeeta/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
+make DESTDIR\= sitearchdir\=./.gem.20251112-50425-oijrdz sitelibdir\=./.gem.20251112-50425-oijrdz clean

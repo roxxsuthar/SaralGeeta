@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   socialIcon: {
-    width: wp(164.5),
+    width: '100%',
     height: hp(45),
     borderRadius: hp(8),
     flexDirection: 'row',
@@ -62,8 +62,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
   },
   socialIconContainer: {
+    flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     marginTop: hp(20),
   },
   socialIconBox: {
