@@ -13,10 +13,15 @@
   self.initialProps = @{};
 
   // Google Sign-In configuration
+  // Load the CLIENT_ID from GoogleService-Info.plist
   NSString *path = [[NSBundle mainBundle] pathForResource:@"GoogleService-Info" ofType:@"plist"];
-  NSDictionary *plist = [NSDictionary dictionaryWithContentsOfFile:path];
-  if (plist[@"CLIENT_ID"]) {
-    [GIDSignIn.sharedInstance configureWithConfiguration:[[GIDConfiguration alloc] initWithClientID:plist[@"CLIENT_ID"]]];
+  if (path) {
+    NSDictionary *plist = [NSDictionary dictionaryWithContentsOfFile:path];
+    NSString *clientID = plist[@"CLIENT_ID"];
+    if (clientID) {
+      GIDConfiguration *config = [[GIDConfiguration alloc] initWithClientID:clientID];
+      [GIDSignIn sharedInstance].configuration = config;
+    }
   }
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];

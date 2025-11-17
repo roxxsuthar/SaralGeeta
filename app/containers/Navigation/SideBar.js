@@ -14,6 +14,7 @@ import { Navigation } from '../../constants/constants';
 import { logOutUser } from '../App/actions';
 
 const SideBar = (props) => {
+  const DEFAULT_IMAGE = 'https://www.w3schools.com/howto/img_avatar.png';
   const { SideBar: sideBarMessage } = strings;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.app.user);
@@ -42,7 +43,10 @@ const SideBar = (props) => {
           onPress={() => props.navigation.navigate(Navigation.Profile)}
           style={styles.header}
         >
-          <Image source={{ uri: user?.profile }} style={styles.profilePic} />
+          <Image
+            source={{ uri: user?.profile || DEFAULT_IMAGE }}
+            style={styles.profilePic}
+          />
           <View style={styles.profile}>
             <CustomText
               style={styles.profileName}

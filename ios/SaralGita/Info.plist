@@ -55,8 +55,8 @@
 	<string>Saral-Gita need access to your microphone to record your voice.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Saral-Gita need access to your photo library to read media.</string>
-	<key>NSMicrophoneUsageDescription</key>
-<string>This app needs access to your microphone for voice search</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Saral-Gita need access to save photos to your photo library.</string>
 <key>NSSpeechRecognitionUsageDescription</key>
 <string>This app needs access to speech recognition for voice search</string>
 	<key>UIAppFonts</key>

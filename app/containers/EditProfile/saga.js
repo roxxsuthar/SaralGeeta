@@ -1,5 +1,4 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { useNavigation } from 'react-native';
 import request from '../../utils/request';
 import Helpers from '../../utils/helpers';
 import { APIS } from '../../constants';
@@ -23,8 +22,7 @@ function* getLanguage() {
   }
 }
 
-function* editProfile({ payload, navigation }) {
-  // const navigation = useNavigation();
+function* editProfile({ payload }) {
   const url = Helpers.getUrl(APIS.UPDATE_USER);
   const options = {
     method: 'PATCH',
@@ -38,7 +36,6 @@ function* editProfile({ payload, navigation }) {
   try {
     const res = yield call(request, options);
     yield put(editProfileSuccess(res.data));
-    navigation.goBack(null);
   } catch (e) {
     yield put(editProfileFail(e));
   }

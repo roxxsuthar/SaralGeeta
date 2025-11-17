@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { enableScreens } from 'react-native-screens';
 import { PersistGate } from 'redux-persist/integration/react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import SaralGeetaApp from './app/containers/App';
 
@@ -17,11 +18,13 @@ if (__DEV__) {
 
 function App() {
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <SaralGeetaApp />
-      </PersistGate>
-    </Provider>
+    <SafeAreaProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <SaralGeetaApp />
+        </PersistGate>
+      </Provider>
+    </SafeAreaProvider>
   );
 }
 

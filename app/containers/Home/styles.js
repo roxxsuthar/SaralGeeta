@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     marginHorizontal: wp(16),
-    marginTop: hp(35),
+    // marginTop: hp(35), // Removed - SafeAreaView handles this now
   },
   headerText: {
     fontSize: hp(17),
@@ -174,6 +174,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     height: hp(43),
+    marginTop: hp(10),
     marginBottom: hp(10),
     flexDirection: 'row',
     justifyContent: 'space-between',

@@ -79,7 +79,7 @@ function EditProfile({
       name: res.fileName || 'photo.jpg',
       type: res.type || 'image/jpeg',
     });
-    handleUpdateUserDetail(formData, navigation);
+    handleUpdateUserDetail(formData);
   };
 
   return (
@@ -104,7 +104,7 @@ function EditProfile({
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
-            handleUpdateUserDetail(values, navigation);
+            handleUpdateUserDetail(values);
           }}
         >
           {({

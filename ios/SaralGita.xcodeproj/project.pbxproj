@@ -13,6 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		22CC825D05A542EAA9B70FE7 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D877534638074B7E8F81AF87 /* Inter-Black.ttf */; };
+		2306014E4A83D61F1C7FFCB7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7252D9CF28814CFBE1729386 /* GoogleService-Info.plist */; };
 		2E67594D64C20FA72D47317C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FCBCECAB26D071B0C31B034A /* PrivacyInfo.xcprivacy */; };
 		5EB557CCEBC64B4989AAF5D1 /* TiroDevanagariHindi-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4ED05C997FB44FC0AEB17456 /* TiroDevanagariHindi-Regular.ttf */; };
 		6B12627D90A74515B03EB527 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07FAB55BCB50431F9F914880 /* Inter-Bold.ttf */; };
@@ -51,6 +52,7 @@
 		4ED05C997FB44FC0AEB17456 /* TiroDevanagariHindi-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "TiroDevanagariHindi-Regular.ttf"; path = "../app/assets/fonts/TiroDevanagariHindi-Regular.ttf"; sourceTree = "<group>"; };
 		5E4ED580831140408B80494C /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../app/assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		60F12D2C9B01067274216799 /* Pods-SaralGita-SaralGitaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaralGita-SaralGitaTests.debug.xcconfig"; path = "Target Support Files/Pods-SaralGita-SaralGitaTests/Pods-SaralGita-SaralGitaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7252D9CF28814CFBE1729386 /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7DF5B95F255B4A30B56B08EF /* Inter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.ttf"; path = "../app/assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SaralGita/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B37892DEBCA5B1FD4BE0F0D /* Pods-SaralGita-SaralGitaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaralGita-SaralGitaTests.release.xcconfig"; path = "Target Support Files/Pods-SaralGita-SaralGitaTests/Pods-SaralGita-SaralGitaTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				FCBCECAB26D071B0C31B034A /* PrivacyInfo.xcprivacy */,
+				7252D9CF28814CFBE1729386 /* GoogleService-Info.plist */,
 			);
 			name = SaralGita;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				C0539E2E9F3C45D89F46B266 /* Inter-SemiBold.ttf in Resources */,
 				5EB557CCEBC64B4989AAF5D1 /* TiroDevanagariHindi-Regular.ttf in Resources */,
 				2E67594D64C20FA72D47317C /* PrivacyInfo.xcprivacy in Resources */,
+				2306014E4A83D61F1C7FFCB7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

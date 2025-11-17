@@ -108,14 +108,6 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - Permission-Camera (3.10.1):
-    - RNPermissions
-  - Permission-MediaLibrary (3.10.1):
-    - RNPermissions
-  - Permission-Microphone (3.10.1):
-    - RNPermissions
-  - Permission-PhotoLibrary (3.10.1):
-    - RNPermissions
   - PromisesObjC (2.4.0)
   - RCT-Folly (2024.01.01.00):
     - boost
@@ -1450,10 +1442,6 @@ DEPENDENCIES:
   - fmt (from `../node_modules/react-native/third-party-podspecs/fmt.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - lottie-react-native (from `../node_modules/lottie-react-native`)
-  - Permission-Camera (from `../node_modules/react-native-permissions/ios/Camera`)
-  - Permission-MediaLibrary (from `../node_modules/react-native-permissions/ios/MediaLibrary`)
-  - Permission-Microphone (from `../node_modules/react-native-permissions/ios/Microphone`)
-  - Permission-PhotoLibrary (from `../node_modules/react-native-permissions/ios/PhotoLibrary`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
@@ -1568,14 +1556,6 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   lottie-react-native:
     :path: "../node_modules/lottie-react-native"
-  Permission-Camera:
-    :path: "../node_modules/react-native-permissions/ios/Camera"
-  Permission-MediaLibrary:
-    :path: "../node_modules/react-native-permissions/ios/MediaLibrary"
-  Permission-Microphone:
-    :path: "../node_modules/react-native-permissions/ios/Microphone"
-  Permission-PhotoLibrary:
-    :path: "../node_modules/react-native-permissions/ios/PhotoLibrary"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTDeprecation:
@@ -1746,10 +1726,6 @@ SPEC CHECKSUMS:
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
   lottie-ios: a881093fab623c467d3bce374367755c272bdd59
   lottie-react-native: 57dd48d07694568d929e2d3d1432384fe51f91af
-  Permission-Camera: 9b70902f34a83c10e198d2d01f0e453e58842776
-  Permission-MediaLibrary: c49ea6e00b4919404ef4fc8e5a541628790cea5a
-  Permission-Microphone: 8d045745c0c12aed0370ba89c36b6bc1ba54d7eb
-  Permission-PhotoLibrary: 03c52ed95dadfb0f2ba4c7663786cce0c4e0c978
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RCT-Folly: 02617c592a293bd6d418e0a88ff4ee1f88329b47
   RCTDeprecation: c4e6e3f6d44f76c45a964b40fa3eb2475259c027
@@ -1816,7 +1792,7 @@ SPEC CHECKSUMS:
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
   RNGestureHandler: 0de8f091cb7d68e247ac60010f5c03fba2e42cc3
   RNGoogleSignin: f57de86a017d67e98fa9c5c0c1c62f0387433cbd
-  RNPermissions: 4e3714e18afe7141d000beae3755e5b5fb2f5e05
+  RNPermissions: 5e1ef24f3383abb9b4523be07032836b37184d55
   RNReanimated: 0a538197f7cc9e203276668dea8e832de519fedc
   RNScreens: 7001fd611bd5d62f0ee30170496c01e68084a77d
   RNSnackbar: b0914bd060cdb82862dc1a987be57a8b918610bf
@@ -1829,6 +1805,6 @@ SPEC CHECKSUMS:
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: 6986e115ef4e300f1f5b4910d5eef51c711c8747
 
-PODFILE CHECKSUM: 880687f32174eb12183b078490af0a1069f463af
+PODFILE CHECKSUM: d71b8d47d04a50f4d28e7c44fbd5c10d886e3504
 
 COCOAPODS: 1.16.2

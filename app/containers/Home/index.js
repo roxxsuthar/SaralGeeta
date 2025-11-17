@@ -33,7 +33,7 @@ import { getChapters, getRecentWatched } from './actions';
 import { Navigation } from '../../constants/constants';
 import { DrawerActions } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function Home({
   language,
@@ -359,7 +359,10 @@ function Home({
         source={IMAGES.Chakra}
         resizeMode={FastImage.resizeMode.contain}
       />
-      <SafeAreaView style={styles.mainContainer}>
+      <SafeAreaView
+        style={styles.mainContainer}
+        edges={['top', 'left', 'right']}
+      >
         <View style={styles.headerContainer}>
           <TouchableOpacity
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
@@ -389,14 +392,14 @@ function Home({
                 <IMAGES.SearchIcon height="100%" width="100%" />
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               activeOpacity={0.8}
               style={styles.headerBellContainer}
             >
               <View style={styles.icon}>
                 <IMAGES.BellIcon height="100%" width="100%" />
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
         {showSearch && (

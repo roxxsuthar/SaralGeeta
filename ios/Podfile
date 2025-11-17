@@ -3,19 +3,16 @@ use_modular_headers!
 
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+require_relative '../node_modules/react-native-permissions/scripts/setup'
 
 use_frameworks! :linkage => :static
 
-def common_permissions
-  permissions_path = '../node_modules/react-native-permissions/ios'
-  
-  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
-  pod 'Permission-Microphone', :path => "#{permissions_path}/Microphone"
-  pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary"
-  pod 'Permission-MediaLibrary', :path => "#{permissions_path}/MediaLibrary"
-  pod 'React-RCTAppDelegate', :path => "../node_modules/react-native/Libraries/AppDelegate"
-
-end
+setup_permissions([
+  'Camera',
+  'Microphone',
+  'PhotoLibrary',
+  'MediaLibrary',
+])
 
 target 'SaralGita' do
   config = use_native_modules!
@@ -24,8 +21,6 @@ target 'SaralGita' do
     :path => config[:reactNativePath],
     :hermes_enabled => false
   )
-
-  common_permissions()
 
   target 'SaralGitaTests' do
     inherit! :complete
@@ -40,15 +35,6 @@ target 'SaralGita' do
     
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
-        # Add the preprocessor macros
-        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
-          '$(inherited)',
-          'PERMISSION_CAMERA=1',
-          'PERMISSION_MICROPHONE=1',
-          'PERMISSION_PHOTO_LIBRARY=1',
-          'PERMISSION_MEDIA_LIBRARY=1'
-        ]
-        
         # Force all pods to use the same deployment target
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.0'
       end

@@ -9,6 +9,7 @@ import {
   Keyboard,
   TextInput,
   ImageBackground,
+  Platform,
 } from 'react-native';
 
 import FastImage from 'react-native-fast-image';
@@ -68,29 +69,52 @@ function OtpScreen({
       setTimeout(() => otpRef.current?.focusField(0), 250);
     }
   }, []);
-  const setupSmsRetriever = async () => {
-    try {
-      const registered = await SmsRetriever.startSmsRetriever();
-      if (registered) {
-        SmsRetriever.addSmsListener(async (event) => {
-          otpHandler(event?.message);
-        });
-      }
-    } catch (err) {
-      logger.error('Error setting up SMS Retriever:', err);
-    }
-  };
 
   // Android-specific SMS Retriever setup
-  useEffect(async () => {
-    const registered = await SmsRetriever.startSmsRetriever();
-    if (registered) {
-      SmsRetriever.addSmsListener(async (event) => {
-        otpHandler(event?.message);
-      });
-    }
+  useEffect(() => {
+    let smsListener = null;
+
+    const setupSmsListener = async () => {
+      try {
+        // Only setup SMS Retriever on Android
+        if (Platform.OS !== 'android') {
+          return;
+        }
+
+        const registered = await SmsRetriever.startSmsRetriever();
+        if (registered) {
+          smsListener = SmsRetriever.addSmsListener((event) => {
+            if (event?.message) {
+              const otp = /(\d{4})/g.exec(event.message)?.[1];
+              if (otp) {
+                setOneTimeInput(otp);
+                Keyboard.dismiss();
+              }
+            }
+          });
+        }
+      } catch (err) {
+        logger.error('Error setting up SMS Retriever:', err);
+      }
+    };
+
+    setupSmsListener();
+
     return () => {
-      SmsRetriever.removeSmsListener();
+      try {
+        // Only cleanup if we're on Android and have a listener
+        if (Platform.OS !== 'android') {
+          return;
+        }
+
+        if (smsListener && typeof smsListener.remove === 'function') {
+          smsListener.remove();
+        } else if (SmsRetriever && typeof SmsRetriever.removeSmsListener === 'function') {
+          SmsRetriever.removeSmsListener();
+        }
+      } catch (err) {
+        logger.error('Error removing SMS listener:', err);
+      }
     };
   }, []);
 
@@ -106,25 +130,26 @@ function OtpScreen({
     }
   }, [oneTimeInput]);
 
-  const otpHandler = useCallback(async (message) => {
-    try {
-      const otp = /(\d{4})/g.exec(message)?.[1];
-      if (otp) {
-        setOneTimeInput(otp);
-        SmsRetriever.removeSmsListener(); // Cleanup existing listener
-        await setupSmsRetriever(); // Restart listener
-      }
-      Keyboard.dismiss();
-    } catch (err) {
-      logger.error('Error handling OTP:', err);
-    }
-  }, []);
+  // Commented out - SMS handling is now done inline in useEffect above
+  // const otpHandler = useCallback(async (message) => {
+  //   try {
+  //     const otp = /(\d{4})/g.exec(message)?.[1];
+  //     if (otp) {
+  //       setOneTimeInput(otp);
+  //       SmsRetriever.removeSmsListener(); // Cleanup existing listener
+  //       await setupSmsRetriever(); // Restart listener
+  //     }
+  //     Keyboard.dismiss();
+  //   } catch (err) {
+  //     logger.error('Error handling OTP:', err);
+  //   }
+  // }, []);
 
   const handleResendOTP = useCallback(() => {
     if (expired) {
-      alert();
+      // alert(); // Commented out - no need to alert
       setOneTimeInput('');
-      setupSmsRetriever();
+      // setupSmsRetriever(); // Commented out - SMS listener is handled in useEffect
       handleSendOtp({ phone: otpDetails?.phone });
     }
   }, [expired, otpDetails]);

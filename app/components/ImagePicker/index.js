@@ -5,7 +5,15 @@
  */
 
 import React, { useState, memo } from 'react';
-import { View, Image, TouchableOpacity, Alert, Platform } from 'react-native';
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  Alert,
+  Platform,
+  Linking,
+  ActivityIndicator,
+} from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions';
 import PropTypes from 'prop-types';
@@ -15,6 +23,7 @@ const DEFAULT_IMAGE = 'https://www.w3schools.com/howto/img_avatar.png'; // or yo
 
 const ImagePicker = ({ onImageSelected, image }) => {
   const [imageUri, setImageUri] = useState(image);
+  const [isLoading, setIsLoading] = useState(false);
 
   const requestCameraPermission = async () => {
     const permission =
@@ -25,7 +34,28 @@ const ImagePicker = ({ onImageSelected, image }) => {
     if (result === RESULTS.DENIED || result === RESULTS.LIMITED) {
       result = await request(permission);
     }
-    return result === RESULTS.GRANTED;
+
+    // On iOS, if user denied, show alert to go to settings
+    if (result === RESULTS.BLOCKED || result === RESULTS.UNAVAILABLE) {
+      Alert.alert(
+        'Camera Permission Required',
+        'Please enable camera access in Settings to take photos.',
+        [
+          { text: 'Cancel', style: 'cancel' },
+          {
+            text: 'Open Settings',
+            onPress: () => {
+              if (Platform.OS === 'ios') {
+                Linking.openURL('app-settings:');
+              }
+            },
+          },
+        ],
+      );
+      return false;
+    }
+
+    return result === RESULTS.GRANTED || result === RESULTS.LIMITED;
   };
 
   const requestGalleryPermission = async () => {
@@ -43,7 +73,28 @@ const ImagePicker = ({ onImageSelected, image }) => {
     if (result === RESULTS.DENIED || result === RESULTS.LIMITED) {
       result = await request(permission);
     }
-    return result === RESULTS.GRANTED;
+
+    // On iOS, if user denied, show alert to go to settings
+    if (result === RESULTS.BLOCKED || result === RESULTS.UNAVAILABLE) {
+      Alert.alert(
+        'Photo Library Permission Required',
+        'Please enable photo library access in Settings to select photos.',
+        [
+          { text: 'Cancel', style: 'cancel' },
+          {
+            text: 'Open Settings',
+            onPress: () => {
+              if (Platform.OS === 'ios') {
+                Linking.openURL('app-settings:');
+              }
+            },
+          },
+        ],
+      );
+      return false;
+    }
+
+    return result === RESULTS.GRANTED || result === RESULTS.LIMITED;
   };
 
   const handleSelectImage = () => {
@@ -82,10 +133,25 @@ const ImagePicker = ({ onImageSelected, image }) => {
   };
 
   const openCamera = () => {
-    launchCamera({ mediaType: 'photo', saveToPhotos: true }, (response) => {
-      if (response.didCancel) return;
+    const options = {
+      mediaType: 'photo',
+      saveToPhotos: true,
+      quality: 1,
+      includeBase64: false,
+    };
+
+    launchCamera(options, (response) => {
+      if (response.didCancel) {
+        console.log('User cancelled camera');
+        return;
+      }
       if (response.errorCode) {
-        Alert.alert('Camera error', response.errorMessage);
+        console.log('Camera Error: ', response.errorMessage);
+        Alert.alert(
+          'Camera Error',
+          response.errorMessage ||
+            'Unable to access camera. Please check permissions in Settings.',
+        );
         return;
       }
       if (response.assets && response.assets.length > 0) {
@@ -96,10 +162,25 @@ const ImagePicker = ({ onImageSelected, image }) => {
   };
 
   const openGallery = () => {
-    launchImageLibrary({ mediaType: 'photo' }, (response) => {
-      if (response.didCancel) return;
+    const options = {
+      mediaType: 'photo',
+      quality: 1,
+      includeBase64: false,
+      selectionLimit: 1,
+    };
+
+    launchImageLibrary(options, (response) => {
+      if (response.didCancel) {
+        console.log('User cancelled gallery');
+        return;
+      }
       if (response.errorCode) {
-        Alert.alert('Gallery error', response.errorMessage);
+        console.log('Gallery Error: ', response.errorMessage);
+        Alert.alert(
+          'Gallery Error',
+          response.errorMessage ||
+            'Unable to access photo library. Please check permissions in Settings.',
+        );
         return;
       }
       if (response.assets && response.assets.length > 0) {
@@ -114,12 +195,21 @@ const ImagePicker = ({ onImageSelected, image }) => {
       <TouchableOpacity
         onPress={handleSelectImage}
         testID="image-picker-touchable"
+        disabled={isLoading}
       >
         <Image
           source={{ uri: imageUri || DEFAULT_IMAGE }}
           style={styles.avatar}
           testID="image-picker-image"
+          onLoadStart={() => setIsLoading(true)}
+          onLoadEnd={() => setIsLoading(false)}
+          onError={() => setIsLoading(false)}
         />
+        {isLoading && (
+          <View style={styles.loaderContainer}>
+            <ActivityIndicator size="large" color="#ffa600ff" />
+          </View>
+        )}
       </TouchableOpacity>
     </View>
   );
