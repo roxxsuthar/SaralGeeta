@@ -19,6 +19,7 @@ const RecordingInterface = ({
   audio,
   videoRef,
   setIsVideoPlaying,
+  waitingForTranslation,
 }) => {
   const handleStartRecording = () => {
     startRecording(audio, videoRef, setIsVideoPlaying);
@@ -43,22 +44,26 @@ const RecordingInterface = ({
           Result: {transcription}
         </CustomText>
       ) : (
-        learnGeeta?.data?.shloke_parts?.map((item, idx) => (
-          <CustomText
-            key={idx}
-            style={{
-              ...styles.overlayText,
-              color: COLOR_ARRAY[idx],
-              ...(!isButton ? { bottom: hp(35) } : {}),
-            }}
-          >
-            {item}
+        !waitingForTranslation && (
+          <CustomText style={styles.overlayText}>
+            {learnGeeta?.data?.shloke_parts?.map((item, idx) => (
+              <CustomText
+                key={idx}
+                style={{
+                  ...styles.overlayText,
+                  color: COLOR_ARRAY[idx],
+                  ...(!isButton ? { bottom: hp(35) } : {}),
+                }}
+              >
+                {item}
+              </CustomText>
+            ))}
           </CustomText>
-        ))
+        )
       )}
 
       {/* Buttons and animation on top */}
-      {isButton && (
+      {isButton && !waitingForTranslation && (
         <>
           {!isRecordingButton ? (
             <TouchableOpacity
@@ -106,6 +111,7 @@ RecordingInterface.propTypes = {
   audio: PropTypes.object,
   videoRef: PropTypes.object,
   setIsVideoPlaying: PropTypes.func,
+  waitingForTranslation: PropTypes.bool,
 };
 
 export default RecordingInterface;

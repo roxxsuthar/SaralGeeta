@@ -142,9 +142,9 @@ const ImagePicker = ({ onImageSelected, image }) => {
 
     launchCamera(options, (response) => {
       if (response.didCancel) {
-        console.log('User cancelled camera');
         return;
       }
+      console.log('-------', response);
       if (response.errorCode) {
         console.log('Camera Error: ', response.errorMessage);
         Alert.alert(

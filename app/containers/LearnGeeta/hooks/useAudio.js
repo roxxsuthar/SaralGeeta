@@ -1,5 +1,5 @@
 import logger from '../../../utils/logger';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import Sound from 'react-native-sound';
 import RNFS from 'react-native-fs';
 import { get } from 'lodash';
@@ -11,18 +11,23 @@ export const useAudio = (learnGeeta) => {
   const [audio, setAudio] = useState(null);
   const [isAudioReady, setIsAudioReady] = useState(false);
   const [isAudioLoading, setIsAudioLoading] = useState(false);
+  const audioRef = useRef(null);
 
   const loadAudio = useCallback(async () => {
-    if (isAudioLoading || !learnGeeta) return;
+    if (!learnGeeta) return;
+
+    const audioUrl = get(learnGeeta, 'data.media.audio');
+    if (!audioUrl) {
+      logger.log('Audio URL not available yet, skipping load');
+      setIsAudioReady(false);
+      return;
+    } else {
+      console.log('-----', get(learnGeeta, 'data.media'));
+    }
 
     setIsAudioLoading(true);
 
     try {
-      const audioUrl = get(learnGeeta, 'data.media.audio');
-      if (!audioUrl) {
-        throw new Error('No audio URL available');
-      }
-
       const fileName = audioUrl.split('/').pop();
       const uniqueFileName = `${get(learnGeeta, 'data.id')}${AUDIO_FILE_SUFFIX}.${fileName.slice(-3)}`;
       const localPath = `${RNFS.DocumentDirectoryPath}/${uniqueFileName}`;
@@ -40,17 +45,24 @@ export const useAudio = (learnGeeta) => {
         }
       }
 
-      if (audio) {
-        audio.release();
+      if (audioRef.current) {
+        try {
+          audioRef.current.release();
+        } catch (err) {
+          logger.error('Error releasing previous audio:', err);
+        }
       }
 
       const sound = new Sound(localPath, '', (error) => {
         if (error) {
+          logger.error('Failed to load sound:', error);
           setIsAudioLoading(false);
+          setIsAudioReady(false);
           return;
         }
 
         sound.setVolume(AUDIO_VOLUME);
+        audioRef.current = sound;
         setAudio(sound);
         setIsAudioReady(true);
         setIsAudioLoading(false);
@@ -60,53 +72,85 @@ export const useAudio = (learnGeeta) => {
       setIsAudioLoading(false);
       setIsAudioReady(false);
     }
-  }, [learnGeeta, audio, isAudioLoading]);
+  }, [learnGeeta]);
 
   const playAudio = useCallback(() => {
     if (!audio || !isAudioReady) {
-      logger.log('Audio not ready to play');
       return;
     }
     if (audio.isPlaying()) {
       return;
     }
 
-    audio.play((success) => {
-      if (!success) {
-        logger.log('Audio playback failed');
-      }
-    });
+    try {
+      audio.play((success) => {
+        if (!success) {
+          logger.log('Audio playback failed');
+        }
+      });
+    } catch (err) {
+      logger.error('Error playing audio:', err);
+    }
   }, [audio, isAudioReady]);
 
   const pauseAudio = useCallback(() => {
     if (audio && audio.isPlaying()) {
-      audio.pause();
+      try {
+        audio.pause();
+      } catch (err) {
+        logger.error('Error pausing audio:', err);
+      }
     }
   }, [audio]);
 
   const stopAudio = useCallback(() => {
     if (audio) {
-      audio.stop();
+      try {
+        audio.stop();
+      } catch (err) {
+        logger.error('Error stopping audio:', err);
+      }
     }
   }, [audio]);
 
   const releaseAudio = useCallback(() => {
-    if (audio) {
-      audio.release();
+    const currentAudio = audioRef.current;
+    if (currentAudio) {
+      try {
+        currentAudio.release();
+      } catch (err) {
+        logger.error('Error releasing audio:', err);
+      }
+      audioRef.current = null;
       setAudio(null);
       setIsAudioReady(false);
     }
-  }, [audio]);
+  }, []);
 
   useEffect(() => {
-    if (learnGeeta) {
-      loadAudio();
+    const audioUrl = get(learnGeeta, 'data.media.audio');
+    const shlokId = get(learnGeeta, 'data.id');
+
+    if (!shlokId || !audioUrl) {
+      return;
     }
 
+    loadAudio();
+
     return () => {
-      releaseAudio();
+      const currentAudio = audioRef.current;
+      if (currentAudio) {
+        try {
+          currentAudio.release();
+        } catch (err) {
+          logger.error('Error releasing audio:', err);
+        }
+        audioRef.current = null;
+        setAudio(null);
+        setIsAudioReady(false);
+      }
     };
-  }, [learnGeeta]);
+  }, [get(learnGeeta, 'data.id'), get(learnGeeta, 'data.media.audio')]);
 
   return {
     audio,

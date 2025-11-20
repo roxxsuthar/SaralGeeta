@@ -76,6 +76,18 @@ const SideBar = (props) => {
             />
           </View>
           <View style={styles.draweritems}>
+            <DrawerItem
+              label={sideBarMessage.ideal.defaultMessage}
+              labelStyle={styles.label}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.User height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate(Navigation.OurIdeals)}
+            />
+          </View>
+          <View style={styles.draweritems}>
             <CustomText style={styles.drawerHeading}>
               {sideBarMessage.helpSupport.defaultMessage}
             </CustomText>

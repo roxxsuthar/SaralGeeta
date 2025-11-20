@@ -354,15 +354,13 @@ function Home({
         translucent={true}
         backgroundColor="transparent"
       />
+
       <FastImage
         style={styles.chakraStyle}
         source={IMAGES.Chakra}
         resizeMode={FastImage.resizeMode.contain}
       />
-      <SafeAreaView
-        style={styles.mainContainer}
-        edges={['top', 'left', 'right']}
-      >
+      <SafeAreaView style={styles.mainContainer}>
         <View style={styles.headerContainer}>
           <TouchableOpacity
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
@@ -407,21 +405,24 @@ function Home({
             <TextInput
               style={styles.searchInput}
               placeholder="Search Chapters..."
-              placeholderTextColor="#aaa"
+              placeholderTextColor="#ffffff"
               value={searchText}
               onChangeText={setSearchText}
             />
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={isListening ? stopVoiceSearch : startVoiceSearch}
-              style={[
-                styles.voiceButton,
-                isListening && styles.voiceButtonActive,
-              ]}
+              style={styles.voiceButton}
             >
-              <CustomText style={styles.voiceButtonText}>
-                {isListening ? '🎤' : '🎙️'}
-              </CustomText>
+              {isListening ? (
+                <View style={styles.iconPlay}>
+                  <IMAGES.MicPlay height="100%" width="100%" />
+                </View>
+              ) : (
+                <View style={styles.iconPlay}>
+                  <IMAGES.MicToPlay height="100%" width="100%" />
+                </View>
+              )}
             </TouchableOpacity>
           </View>
         )}

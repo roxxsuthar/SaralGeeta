@@ -5,11 +5,13 @@ import { COLORS } from '../../constants';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+    height: '100%',
   },
   mainContainer: {
     flex: 1,
     marginHorizontal: wp(16),
-    // marginTop: hp(35), // Removed - SafeAreaView handles this now
+    marginTop: hp(35), // Removed - SafeAreaView handles this now
   },
   headerText: {
     fontSize: hp(17),
@@ -21,36 +23,26 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginHorizontal: 16,
-    marginVertical: 10,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    borderRadius: 10,
+    marginVertical: hp(10),
+    backgroundColor: 'rgba(255, 255, 255, 0)',
+    borderRadius: hp(10),
     paddingHorizontal: 12,
-    paddingVertical: 8,
+    borderColor: 'rgba(255, 255, 255, 0.8)',
+    borderWidth: hp(1),
   },
   searchInput: {
     flex: 1,
     fontSize: 16,
-    color: '#333',
+    color: 'white',
     paddingVertical: 8,
   },
   voiceButton: {
-    width: 40,
-    height: 40,
+    width: hp(40),
+    height: hp(40),
     borderRadius: 20,
-    backgroundColor: '#007AFF',
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 8,
-  },
-  voiceButtonActive: {
-    backgroundColor: '#FF3B30',
-  },
-  voiceButtonText: {
-    fontSize: 20,
-  },
-  listeningIcon: {
-    tintColor: '#ff0000',
   },
   sectionHeaderContainer: {
     justifyContent: 'space-between',
@@ -171,6 +163,11 @@ const styles = StyleSheet.create({
   icon: {
     height: hp(24),
     width: hp(24),
+  },
+  iconPlay: {
+    height: hp(20),
+    width: wp(20),
+    color: '#ffffff',
   },
   headerContainer: {
     height: hp(43),

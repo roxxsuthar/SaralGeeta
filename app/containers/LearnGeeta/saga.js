@@ -14,6 +14,7 @@ import {
 function* getShloksDetailHandler({ payload }) {
   let url = Helpers.getUrl(APIS.SHLOKS);
   url = `${url}/${payload.shlok?.id}/media`;
+  console.log('--url--', url);
   const options = {
     method: 'GET',
     url,

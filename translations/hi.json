@@ -373,6 +373,10 @@
     "signOut": {
       "id": "app.container.SideBar.signOut",
       "defaultMessage": "साइन आउट"
+    },
+    "ideal": {
+      "id": "app.container.SideBar.ideal",
+      "defaultMessage": "हमारे आदर्श"
     }
   }
 }

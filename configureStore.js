@@ -15,13 +15,23 @@ const configureStore = () => {
 
   const sagaMiddleware = createSagaMiddleware();
   middleware.push(sagaMiddleware);
-  middleware.push(logger);
+
+  // Only add logger in development
+  if (__DEV__) {
+    middleware.push(logger);
+  }
 
   enhancers.push(applyMiddleware(...middleware));
+
+  // Use Reactotron's createEnhancer in development
+  if (__DEV__ && console.tron && console.tron.createEnhancer) {
+    enhancers.push(console.tron.createEnhancer());
+  }
 
   const store = createStore(reducers, compose(...enhancers));
   const persistor = persistStore(store);
   sagaMiddleware.run(sagas);
+
   return { store, persistor };
 };
 

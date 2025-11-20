@@ -35,7 +35,31 @@ const withBack = (WrappedComponent) => {
           ]);
           return true;
 
-        case Navigation.LearnGeeta:
+        case Navigation.LearnGeeta: {
+          const drawerState =
+            state.routes[0]?.state?.routes[0]?.state?.routes[0]?.state;
+
+          // Check if Shloks route exists with params - that's where we came from
+          if (drawerState) {
+            const shloksRoute = drawerState.routes.find(
+              (route) => route.name === 'Shloks',
+            );
+
+            if (shloksRoute && shloksRoute.params) {
+              navigation.navigate('Shloks', shloksRoute.params);
+              return true;
+            } else {
+            }
+          } else {
+          }
+
+          if (navigation.canGoBack()) {
+            navigation.goBack();
+            return true;
+          }
+          return false;
+        }
+
         case Navigation.Shloks:
         case Navigation.Chapters:
           // For these screens, try navigating up through the stack

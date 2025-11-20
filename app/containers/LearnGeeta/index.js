@@ -7,6 +7,8 @@ import { ImageBackground } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { get } from 'lodash';
 import { compose } from 'redux';
+import Orientation from 'react-native-orientation-locker';
+import { useFocusEffect } from '@react-navigation/native';
 
 // Custom hooks
 import {
@@ -14,17 +16,12 @@ import {
   useVideo,
   useRecording,
   useAppState,
-  useOrientation,
+  // useOrientation,
   useBackHandler,
 } from './hooks';
 
 // Components
-import {
-  VideoPlayer,
-  ControlButtons,
-  RecordingInterface,
-  LoadingAnimation,
-} from './components';
+import { VideoPlayer, ControlButtons, RecordingInterface } from './components';
 
 // Redux
 import makeSelectLearnGeeta from './selectors';
@@ -43,6 +40,7 @@ import { IMAGES } from '../../constants';
 import styles from './styles';
 import makeSelectOurIdeals from '../OurIdeals/selectors';
 import FastImage from 'react-native-fast-image';
+import logger from '../../utils/logger';
 
 function LearnGeeta({
   handleGetShloksDetail,
@@ -58,8 +56,6 @@ function LearnGeeta({
   ourIdeals,
 }) {
   const videoRef = useRef(null);
-  const animationRef = useRef(null);
-  console.log('ourIdeals', ourIdeals?.data[0]?.name);
   // Local state
   const [isButton, setIsButton] = useState(false);
   const [shlokIndex, setShlokIndex] = useState();
@@ -91,7 +87,16 @@ function LearnGeeta({
   } = useRecording(learnGeeta, handleSaveResult);
 
   // Setup orientation and back handler
-  useOrientation();
+  useFocusEffect(
+    useCallback(() => {
+      Orientation.lockToLandscape();
+
+      return () => {
+        Orientation.unlockAllOrientations();
+      };
+    }, []),
+  );
+
   useBackHandler(audio);
 
   // Setup app state management
@@ -123,7 +128,14 @@ function LearnGeeta({
       playAudio();
       videoRef.current?.seek(0);
     }
-  }, [isAudioReady, isVideoReady, isLoading, isButton, playAudio]);
+  }, [
+    isAudioReady,
+    isVideoReady,
+    isLoading,
+    isButton,
+    playAudio,
+    isIntroVideoPlayed,
+  ]);
 
   useEffect(() => {
     handleGetShloksDetail({ shlok: get(route, 'params') });
@@ -134,10 +146,15 @@ function LearnGeeta({
     handleIntroVideo();
   }, [handleIntroVideo]);
 
-  const handleVideoError = useCallback(() => {
-    setVideoReady(false);
-    pauseAudio();
-  }, [setVideoReady, pauseAudio]);
+  const handleVideoError = useCallback(
+    (error) => {
+      console.log('Video error:', error);
+      setVideoReady(false);
+      setVideoLoading(false);
+      pauseAudio();
+    },
+    [setVideoReady, setVideoLoading, pauseAudio],
+  );
 
   const handleVideoLoadStart = useCallback(() => {
     setVideoLoading(true);
@@ -199,8 +216,15 @@ function LearnGeeta({
     setIsButton(false);
     resetTranscription();
     setVideoPlayingState(false);
-    updateVideoUrl(get(learnGeeta, 'data.media.hls_male_path'));
-    resetVideoState();
+
+    const videoPath = get(learnGeeta, 'data.media.hls_male_path');
+    if (videoPath) {
+      updateVideoUrl(videoPath);
+      resetVideoState();
+    } else {
+      logger.log('Video URL not available for replay');
+    }
+
     loadAudio();
   }, [
     learnGeeta,
@@ -229,7 +253,7 @@ function LearnGeeta({
               ? IMAGES.PeacockFeather
               : IMAGES.Leaf
           }
-          resizeMode={FastImage.resizeMode.contain}
+          resizeMode={FastImage.resizeMode.cover}
         />
       </SafeAreaView>
     );
@@ -237,6 +261,20 @@ function LearnGeeta({
 
   const poster =
     get(learnGeeta, 'data.image') || get(learnGeeta, 'data.cover_image');
+
+  // Check if media URLs are available
+  const hasAudioUrl = !!get(learnGeeta, 'data.media.audio');
+  const hasVideoUrl = isIntroVideoPlayed
+    ? get(learnGeeta, 'data.media.hls_male_path')
+    : introVideo?.hls_male_path;
+
+  // Show loading animation for intro video
+  const shouldShowIntroLoading =
+    !isIntroVideoPlayed && (isLoading || !isVideoReady);
+
+  // Show loading animation after intro video
+  const shouldShowLoading =
+    isIntroVideoPlayed && (isLoading || !hasVideoUrl || !hasAudioUrl);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -270,12 +308,32 @@ function LearnGeeta({
           learnGeeta={learnGeeta}
           user={user}
         />
-
+        {/* <LoadingAnimation animationRef={animationRef} /> */}
         {waitingForTranslation && (
-          <LoadingAnimation animationRef={animationRef} />
+          <FastImage
+            style={styles.cloudAnimationContainer}
+            source={
+              ourIdeals?.data[0]?.name === 'Krishan'
+                ? IMAGES.PeacockFeather
+                : IMAGES.Leaf
+            }
+            resizeMode={FastImage.resizeMode.cover}
+          />
         )}
 
-        {isButton && isRecordingButton && (
+        {shouldShowIntroLoading && (
+          <FastImage
+            style={styles.cloudAnimationContainer}
+            source={
+              ourIdeals?.data[0]?.name === 'Krishan'
+                ? IMAGES.PeacockFeather
+                : IMAGES.Leaf
+            }
+            resizeMode={FastImage.resizeMode.cover}
+          />
+        )}
+
+        {isButton && !isRecordingButton && (
           <ControlButtons
             shlokIndex={shlokIndex}
             shloks={shloks}
@@ -287,7 +345,7 @@ function LearnGeeta({
 
         {isIntroVideoPlayed && (
           <>
-            {isLoading ? (
+            {shouldShowLoading ? (
               <FastImage
                 style={styles.cloudAnimationContainer}
                 source={
@@ -295,7 +353,7 @@ function LearnGeeta({
                     ? IMAGES.PeacockFeather
                     : IMAGES.Leaf
                 }
-                resizeMode={FastImage.resizeMode.contain}
+                resizeMode={FastImage.resizeMode.cover}
               />
             ) : (
               <RecordingInterface
@@ -308,6 +366,8 @@ function LearnGeeta({
                 audio={audio}
                 videoRef={videoRef}
                 setIsVideoPlaying={setVideoPlayingState}
+                ourIdeals={ourIdeals}
+                waitingForTranslation={waitingForTranslation}
               />
             )}
           </>
@@ -318,7 +378,6 @@ function LearnGeeta({
 }
 
 LearnGeeta.propTypes = {
-  navigation: PropTypes.object,
   handleGetShloksDetail: PropTypes.func.isRequired,
   handleIntroVideo: PropTypes.func.isRequired,
   route: PropTypes.object.isRequired,

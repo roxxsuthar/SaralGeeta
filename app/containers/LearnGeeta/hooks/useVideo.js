@@ -3,49 +3,62 @@ import { get } from 'lodash';
 
 export const useVideo = (learnGeeta, introVideo, isIntroVideoPlayed) => {
   const [videoUrl, setVideoUrl] = useState(
-    learnGeeta?.data?.media?.hls_male_path,
+    get(learnGeeta, 'data.media.hls_male_path') || null,
   );
   const [isVideoReady, setIsVideoReady] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const updateVideoUrl = useCallback((newUrl) => {
+  const updateVideoUrl = (newUrl) => {
     setVideoUrl(newUrl);
-  }, []);
+  };
 
-  const setVideoReady = useCallback((ready) => {
+  const setVideoReady = (ready) => {
     setIsVideoReady(ready);
-  }, []);
+  };
 
-  const setVideoLoading = useCallback((loading) => {
+  const setVideoLoading = (loading) => {
     setIsLoading(loading);
-  }, []);
+  };
 
-  const setVideoPlayingState = useCallback((playing) => {
+  const setVideoPlayingState = (playing) => {
     setIsVideoPlaying(playing);
-  }, []);
+  };
 
-  const resetVideoState = useCallback(() => {
+  const resetVideoState = () => {
     setIsVideoReady(false);
     setIsVideoPlaying(false);
     setIsLoading(false);
-  }, []);
+  };
 
   useEffect(() => {
     if (isIntroVideoPlayed) {
-      setVideoUrl(get(learnGeeta, 'data.media.hls_male_path'));
+      const newVideoUrl = get(learnGeeta, 'data.media.hls_male_path');
+      if (newVideoUrl) {
+        setVideoUrl(newVideoUrl);
+      } else {
+        setVideoUrl(null);
+      }
     }
   }, [isIntroVideoPlayed, learnGeeta]);
 
   const getVideoSource = useCallback(() => {
     if (!isIntroVideoPlayed) {
+      const introUri = introVideo?.hls_male_path;
+      if (!introUri) {
+        return null;
+      }
       return {
-        uri: introVideo?.hls_male_path,
+        uri: introUri,
         type: 'm3u8',
         headers: {
           'User-Agent': 'Mozilla/5.0',
         },
       };
+    }
+
+    if (!videoUrl) {
+      return null;
     }
 
     return {

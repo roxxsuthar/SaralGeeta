@@ -11,6 +11,7 @@ import PrivacyPolicy from '../PrivacyPolicy';
 import TermsOfUse from '../TermsOfUse';
 import ContactUs from '../ContactUs';
 import SideBar from './SideBar';
+import OurIdeals from '../OurIdeals';
 
 const Drawer = createDrawerNavigator();
 
@@ -35,6 +36,7 @@ const DrawerNavigator = () => {
       drawerContent={(props) => <SideBar {...props} />}
     >
       <Drawer.Screen name={Navigation.Home} component={Home} />
+      <Drawer.Screen name={Navigation.OurIdeals} component={OurIdeals} />
       <Drawer.Screen name={Navigation.Profile} component={Profile} />
       <Drawer.Screen name={Navigation.EditProfile} component={EditProfile} />
       <Drawer.Screen name={Navigation.Chapters} component={Chapters} />

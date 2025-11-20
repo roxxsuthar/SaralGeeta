@@ -41,6 +41,8 @@ import Lock from '../assets/images/lock.svg';
 import ChevronDown from '../assets/images/chevron-down.svg';
 import Message from '../assets/images/message.svg';
 import Mic from '../assets/images/Mic.svg';
+import MicPlay from '../assets/images/microphone-voice-icon.svg';
+import MicToPlay from '../assets/images/microphone-line-icon.svg';
 
 // const PlanCard = require('../assets/images/planCard.png');
 const Avatar = require('../assets/images/Avatar.png');
@@ -116,5 +118,7 @@ const IMAGES = {
   Leaf,
   PeacockFeather,
   Mic,
+  MicPlay,
+  MicToPlay,
 };
 export default IMAGES;

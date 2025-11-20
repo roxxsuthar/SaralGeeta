@@ -1,4 +1,3 @@
-import logger from '../../../utils/logger';
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
@@ -29,19 +28,22 @@ const VideoPlayer = ({
   user,
 }) => {
   const handleVideoEnd = () => {
-    logger.log('video ended');
     if (isIntroVideoPlayed) {
       setIsButton(true);
       setIsVideoPlaying(true);
 
-      if (get(user, 'gender') === 'male') {
-        updateVideoUrl(get(learnGeeta, 'data.media.hls_male_user'));
+      if (get(user, 'gender') !== 'female') {
+        const maleUserPath = get(learnGeeta, 'data.media.hls_male_user');
+        if (maleUserPath) {
+          updateVideoUrl(maleUserPath);
+        }
         videoRef.current?.pause();
       } else {
         const femalePath = get(learnGeeta, 'data.media.hls_female_user');
-        updateVideoUrl(
-          femalePath || get(learnGeeta, 'data.media.hls_male_user'),
-        );
+        const fallbackPath = get(learnGeeta, 'data.media.hls_male_user');
+        if (femalePath || fallbackPath) {
+          updateVideoUrl(femalePath || fallbackPath);
+        }
         videoRef.current?.pause();
       }
     } else {
@@ -49,18 +51,40 @@ const VideoPlayer = ({
     }
   };
 
+  // Don't render video if source is invalid
+  if (!videoSource || !videoSource.uri) {
+    return <View style={styles.videoWrapper} />;
+  }
+
+  // Safe video source with required properties
+  const safeVideoSource = {
+    uri: videoSource.uri || '',
+    type: videoSource.type || 'm3u8',
+    headers: videoSource.headers || {
+      'User-Agent': 'Mozilla/5.0',
+    },
+  };
+
+  // Safe paused state
+  let pausedState = true;
+  try {
+    pausedState = isVideoPaused ? isVideoPaused() : true;
+  } catch {
+    pausedState = true;
+  }
+
   return (
     <View style={styles.videoWrapper}>
       <Video
-        source={videoSource}
+        source={safeVideoSource}
         ref={videoRef}
         style={styles.backgroundVideo}
         resizeMode="cover"
-        paused={isVideoPaused()}
+        paused={pausedState}
         volume={1.0}
         audioFocus={false}
         ignoreSilentSwitch="ignore"
-        mixWithOthers={true}
+        // mixWithOthers={true}
         playInBackground={false}
         playWhenInactive={false}
         setFullScreen={true}

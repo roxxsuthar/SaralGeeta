@@ -15,6 +15,8 @@ import FastImage from 'react-native-fast-image';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import get from 'lodash/get';
+import Orientation from 'react-native-orientation-locker';
+import { useFocusEffect } from '@react-navigation/native';
 
 import makeSelectShloks from './selectors';
 import styles from './styles';
@@ -28,6 +30,18 @@ import { Navigation } from '../../constants/constants';
 
 function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
   const { currentLanguage } = language;
+
+  // Lock orientation to portrait when screen is focused
+  useFocusEffect(
+    useCallback(() => {
+      Orientation.lockToPortrait();
+
+      return () => {
+        Orientation.unlockAllOrientations();
+      };
+    }, []),
+  );
+
   useEffect(() => {
     handleGetShloks({ chapterId: get(route, 'params.chapterId') });
   }, [route]);
@@ -97,7 +111,7 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
           <View style={styles.imageContainer}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={backHandler}
+              onPress={() => backHandler()}
               style={styles.headerSubContainer}
             >
               <View style={styles.icon}>
@@ -124,18 +138,18 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
               // onPress={backHandler}
               style={styles.headerSearchContainer}
             >
-              <View style={styles.icon}>
+              {/* <View style={styles.icon}>
                 <IMAGES.SearchIcon height="100%" width="100%" />
-              </View>
+              </View> */}
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.8}
               // onPress={backHandler}
               style={styles.headerSearchContainer}
             >
-              <View style={styles.icon}>
+              {/* <View style={styles.icon}>
                 <IMAGES.WhitePlayIcon height="100%" width="100%" />
-              </View>
+              </View> */}
             </TouchableOpacity>
           </View>
         </View>

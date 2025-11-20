@@ -338,6 +338,10 @@
       "id": "app.container.SideBar.chapters",
       "defaultMessage": "Chapters"
     },
+    "ideal": {
+      "id": "app.container.SideBar.ideal",
+      "defaultMessage": "Ideals"
+    },
     "helpSupport": {
       "id": "app.container.SideBar.helpSupport",
       "defaultMessage": "Help & Support"
