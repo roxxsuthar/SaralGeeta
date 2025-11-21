@@ -125,8 +125,13 @@ function LearnGeeta({
     if (!isIntroVideoPlayed) {
       videoRef.current?.seek(0);
     } else if (isAudioReady && isVideoReady && !isLoading && !isButton) {
-      playAudio();
+      // Synchronize audio and video start
+      console.log('Starting synchronized playback');
       videoRef.current?.seek(0);
+      // Small delay to ensure video is ready
+      setTimeout(() => {
+        playAudio();
+      }, 100);
     }
   }, [
     isAudioReady,
@@ -272,9 +277,9 @@ function LearnGeeta({
   const shouldShowIntroLoading =
     !isIntroVideoPlayed && (isLoading || !isVideoReady);
 
-  // Show loading animation after intro video
+  // Show loading animation after intro video - show until BOTH audio and video are ready
   const shouldShowLoading =
-    isIntroVideoPlayed && (isLoading || !hasVideoUrl || !hasAudioUrl);
+    isIntroVideoPlayed && (isLoading || !isVideoReady || !isAudioReady || !hasVideoUrl || !hasAudioUrl);
 
   return (
     <SafeAreaView style={styles.container}>

@@ -13,7 +13,7 @@ class MainActivity : ReactActivity() {
     }
 
     override fun getMainComponentName(): String {
-        return "saralgita"
+        return "SaralGita"
     }
 
     override fun createReactActivityDelegate(): ReactActivityDelegate {

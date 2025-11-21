@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 import React, { useEffect, useCallback } from 'react';
 import { Alert, BackHandler } from 'react-native';
 
@@ -45,12 +45,9 @@ const withBack = (WrappedComponent) => {
               (route) => route.name === 'Shloks',
             );
 
-            if (shloksRoute && shloksRoute.params) {
-              navigation.navigate('Shloks', shloksRoute.params);
-              return true;
-            } else {
-            }
-          } else {
+          if (shloksRoute && shloksRoute.params) {
+            navigation.navigate('Shloks', shloksRoute.params);
+            return true;
           }
 
           if (navigation.canGoBack()) {
