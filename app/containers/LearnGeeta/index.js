@@ -11,14 +11,7 @@ import Orientation from 'react-native-orientation-locker';
 import { useFocusEffect } from '@react-navigation/native';
 
 // Custom hooks
-import {
-  useAudio,
-  useVideo,
-  useRecording,
-  useAppState,
-  // useOrientation,
-  useBackHandler,
-} from './hooks';
+import { useAudio, useVideo, useRecording, useAppState } from './hooks';
 
 // Components
 import { VideoPlayer, ControlButtons, RecordingInterface } from './components';
@@ -40,7 +33,6 @@ import { IMAGES } from '../../constants';
 import styles from './styles';
 import makeSelectOurIdeals from '../OurIdeals/selectors';
 import FastImage from 'react-native-fast-image';
-import logger from '../../utils/logger';
 
 function LearnGeeta({
   handleGetShloksDetail,
@@ -60,13 +52,11 @@ function LearnGeeta({
   const [isButton, setIsButton] = useState(false);
   const [shlokIndex, setShlokIndex] = useState();
 
-  // Custom hooks
-  const { audio, isAudioReady, playAudio, pauseAudio, loadAudio } =
-    useAudio(learnGeeta);
+  // Custom hooks - keep audio for recording, but don't use playback functions
+  const { audio } = useAudio(learnGeeta);
 
   const {
     isVideoReady,
-    isVideoPlaying,
     isLoading,
     updateVideoUrl,
     setVideoReady,
@@ -97,17 +87,15 @@ function LearnGeeta({
     }, []),
   );
 
-  useBackHandler(audio);
-
-  // Setup app state management
+  // Setup app state management - keep audio object for recording but don't play
   useAppState(
     audio,
-    isAudioReady,
+    false, // Don't check audio ready state for playback
     isIntroVideoPlayed,
     isVideoReady,
     isLoading,
     isButton,
-    playAudio,
+    null, // No audio playback function
   );
 
   // Effects
@@ -124,23 +112,10 @@ function LearnGeeta({
   useEffect(() => {
     if (!isIntroVideoPlayed) {
       videoRef.current?.seek(0);
-    } else if (isAudioReady && isVideoReady && !isLoading && !isButton) {
-      // Synchronize audio and video start
-      console.log('Starting synchronized playback');
+    } else if (isVideoReady && !isLoading && !isButton) {
       videoRef.current?.seek(0);
-      // Small delay to ensure video is ready
-      setTimeout(() => {
-        playAudio();
-      }, 100);
     }
-  }, [
-    isAudioReady,
-    isVideoReady,
-    isLoading,
-    isButton,
-    playAudio,
-    isIntroVideoPlayed,
-  ]);
+  }, [isVideoReady, isLoading, isButton, isIntroVideoPlayed]);
 
   useEffect(() => {
     handleGetShloksDetail({ shlok: get(route, 'params') });
@@ -151,45 +126,19 @@ function LearnGeeta({
     handleIntroVideo();
   }, [handleIntroVideo]);
 
-  const handleVideoError = useCallback(
-    (error) => {
-      console.log('Video error:', error);
-      setVideoReady(false);
-      setVideoLoading(false);
-      pauseAudio();
-    },
-    [setVideoReady, setVideoLoading, pauseAudio],
-  );
+  const handleVideoError = useCallback(() => {
+    setVideoReady(false);
+    setVideoLoading(false);
+  }, [setVideoReady, setVideoLoading]);
 
   const handleVideoLoadStart = useCallback(() => {
     setVideoLoading(true);
   }, [setVideoLoading]);
 
-  const handleVideoLoad = useCallback(
-    (data) => {
-      setVideoLoading(false);
-      console.log('Video loaded:', data);
-      setVideoReady(true);
-    },
-    [setVideoLoading, setVideoReady],
-  );
-
-  const handlePlaybackStateChanged = useCallback(
-    (e) => {
-      if (e?.isPlaying === false && !isVideoPlaying && isIntroVideoPlayed) {
-        pauseAudio();
-      } else if (audio && !isVideoPlaying && isIntroVideoPlayed) {
-        playAudio();
-      }
-    },
-    [isVideoPlaying, isIntroVideoPlayed, audio, pauseAudio, playAudio],
-  );
-
-  const handlePlaybackResume = useCallback(() => {
-    if (audio && !audio.isPlaying()) {
-      playAudio();
-    }
-  }, [audio, playAudio]);
+  const handleVideoLoad = useCallback(() => {
+    setVideoLoading(false);
+    setVideoReady(true);
+  }, [setVideoLoading, setVideoReady]);
 
   const getPreviousShlok = useCallback(() => {
     setIsButton(false);
@@ -226,18 +175,13 @@ function LearnGeeta({
     if (videoPath) {
       updateVideoUrl(videoPath);
       resetVideoState();
-    } else {
-      logger.log('Video URL not available for replay');
     }
-
-    loadAudio();
   }, [
     learnGeeta,
     resetTranscription,
     setVideoPlayingState,
     updateVideoUrl,
     resetVideoState,
-    loadAudio,
   ]);
 
   // Render loading state
@@ -267,8 +211,6 @@ function LearnGeeta({
   const poster =
     get(learnGeeta, 'data.image') || get(learnGeeta, 'data.cover_image');
 
-  // Check if media URLs are available
-  const hasAudioUrl = !!get(learnGeeta, 'data.media.audio');
   const hasVideoUrl = isIntroVideoPlayed
     ? get(learnGeeta, 'data.media.hls_male_path')
     : introVideo?.hls_male_path;
@@ -277,9 +219,8 @@ function LearnGeeta({
   const shouldShowIntroLoading =
     !isIntroVideoPlayed && (isLoading || !isVideoReady);
 
-  // Show loading animation after intro video - show until BOTH audio and video are ready
-  const shouldShowLoading =
-    isIntroVideoPlayed && (isLoading || !isVideoReady || !isAudioReady || !hasVideoUrl || !hasAudioUrl);
+  // Show loading animation after intro video
+  const shouldShowLoading = isIntroVideoPlayed && (isLoading || !hasVideoUrl);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -302,8 +243,6 @@ function LearnGeeta({
           onError={handleVideoError}
           onLoadStart={handleVideoLoadStart}
           onLoad={handleVideoLoad}
-          onPlaybackStateChanged={handlePlaybackStateChanged}
-          onPlaybackResume={handlePlaybackResume}
           poster={poster}
           isIntroVideoPlayed={isIntroVideoPlayed}
           handleIntroPlay={handleIntroPlay}
@@ -313,18 +252,6 @@ function LearnGeeta({
           learnGeeta={learnGeeta}
           user={user}
         />
-        {/* <LoadingAnimation animationRef={animationRef} /> */}
-        {waitingForTranslation && (
-          <FastImage
-            style={styles.cloudAnimationContainer}
-            source={
-              ourIdeals?.data[0]?.name === 'Krishan'
-                ? IMAGES.PeacockFeather
-                : IMAGES.Leaf
-            }
-            resizeMode={FastImage.resizeMode.cover}
-          />
-        )}
 
         {shouldShowIntroLoading && (
           <FastImage
@@ -338,7 +265,20 @@ function LearnGeeta({
           />
         )}
 
-        {isButton && !isRecordingButton && (
+        {/* Show loading when switching videos (e.g., hls_male_path to hls_male_user) */}
+        {isButton && isLoading && (
+          <FastImage
+            style={styles.cloudAnimationContainer}
+            source={
+              ourIdeals?.data[0]?.name === 'Krishan'
+                ? IMAGES.PeacockFeather
+                : IMAGES.Leaf
+            }
+            resizeMode={FastImage.resizeMode.cover}
+          />
+        )}
+
+        {isButton && !isRecordingButton && !isLoading && (
           <ControlButtons
             shlokIndex={shlokIndex}
             shloks={shloks}

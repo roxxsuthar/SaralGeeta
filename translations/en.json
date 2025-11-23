@@ -273,6 +273,10 @@
     "changePassword": {
       "id": "app.container.Profile.changePassword",
       "defaultMessage": "Change password"
+    },
+    "language": {
+      "id": "app.container.Profile.language",
+      "defaultMessage": "Language"
     }
   },
   "EditProfile": {

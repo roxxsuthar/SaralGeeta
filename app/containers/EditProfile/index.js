@@ -25,7 +25,7 @@ import {
   makeSelectUser,
 } from '../App/selectors';
 import WithKeyboardAvoidingView from '../../utils/withKeyboardView';
-import { editProfile } from '../App/actions';
+import { editProfile, setLanguage } from '../App/actions';
 import { useEffect } from 'react';
 import { getLanguage } from './actions';
 import LoadingScreen from '../../components/LoadingScreen';
@@ -37,6 +37,7 @@ function EditProfile({
   handleUpdateUserDetail,
   user,
   loading,
+  _handleSetLanguage,
 }) {
   const { EditProfile: EditProfileMessage } = strings;
   const navigation = useNavigation();
@@ -105,6 +106,8 @@ function EditProfile({
           validationSchema={validationSchema}
           onSubmit={(values) => {
             handleUpdateUserDetail(values);
+            strings.setLanguage(user?.language);
+            _handleSetLanguage(user?.language);
           }}
         >
           {({
@@ -265,6 +268,7 @@ EditProfile.propTypes = {
   editProfile: PropTypes.object,
   handleGetLanguages: PropTypes.func,
   handleUpdateUserDetail: PropTypes.func,
+  _handleSetLanguage: PropTypes.func,
   user: PropTypes.object,
   loading: PropTypes.bool,
 };
@@ -281,6 +285,7 @@ function mapDispatchToProps(dispatch) {
     handleGetLanguages: () => dispatch(getLanguage()),
     handleUpdateUserDetail: (payload, navigation) =>
       dispatch(editProfile(payload, navigation)),
+    _handleSetLanguage: (payload) => dispatch(setLanguage(payload)),
   };
 }
 

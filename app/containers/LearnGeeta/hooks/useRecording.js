@@ -206,20 +206,21 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
   );
 
   const startRecording = useCallback(
-    async (audio, videoRef, setIsVideoPlaying) => {
+    async (videoRef, setIsVideoPlaying) => {
       try {
         setTranscription('');
-        if (audio) {
-          audio.stop();
-          audio.release();
-        }
+        
+        // Start playing the video from beginning
         videoRef.current?.seek(0);
-        setIsVideoPlaying(false);
+        setIsVideoPlaying(false); // This will unpause the video
+        
         setIsRecordingButton(true);
 
         const hasPermissions = await requestPermissions();
         if (!hasPermissions) {
           logger.error('Permissions not granted.');
+          setIsRecordingButton(false);
+          videoRef.current?.pause();
           return;
         }
 
@@ -234,6 +235,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
       } catch (error) {
         logger.error('Error starting recorder:', error.message);
         setIsRecordingButton(false);
+        videoRef.current?.pause();
       }
     },
     [requestPermissions, getTimestampedFileName],
@@ -241,8 +243,9 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
   const stopRecording = useCallback(
     async (videoRef, setIsVideoPlaying) => {
+      // Pause the video immediately
       videoRef.current?.pause();
-      setIsVideoPlaying(true);
+      setIsVideoPlaying(true); // This will pause the video
 
       if (!isRecordingButton) {
         logger.warn('Recorder is not active. Cannot stop recording.');
@@ -252,6 +255,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
       try {
         const result = await SoundRecorder.stop();
         if (!result) {
+          setIsRecordingButton(false);
           return;
         }
 

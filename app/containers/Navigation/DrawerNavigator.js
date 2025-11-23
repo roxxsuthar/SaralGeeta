@@ -1,12 +1,9 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Navigation } from '../../constants/constants';
-import Home from '../Home';
+import HomeStackNavigator from './HomeStackNavigator';
 import Profile from '../Profile';
 import EditProfile from '../EditProfile';
-import Chapters from '../Chapters';
-import Shloks from '../Shloks';
-import LearnGeeta from '../LearnGeeta';
 import PrivacyPolicy from '../PrivacyPolicy';
 import TermsOfUse from '../TermsOfUse';
 import ContactUs from '../ContactUs';
@@ -18,7 +15,7 @@ const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator
-      initialRouteName={Navigation.Home}
+      initialRouteName="HomeStack"
       screenOptions={{
         drawerStyle: {
           width: '75%',
@@ -35,13 +32,14 @@ const DrawerNavigator = () => {
       }}
       drawerContent={(props) => <SideBar {...props} />}
     >
-      <Drawer.Screen name={Navigation.Home} component={Home} />
+      <Drawer.Screen
+        name="HomeStack"
+        component={HomeStackNavigator}
+        options={{ title: 'Home' }}
+      />
       <Drawer.Screen name={Navigation.OurIdeals} component={OurIdeals} />
       <Drawer.Screen name={Navigation.Profile} component={Profile} />
       <Drawer.Screen name={Navigation.EditProfile} component={EditProfile} />
-      <Drawer.Screen name={Navigation.Chapters} component={Chapters} />
-      <Drawer.Screen name={Navigation.Shloks} component={Shloks} />
-      <Drawer.Screen name={Navigation.LearnGeeta} component={LearnGeeta} />
       <Drawer.Screen
         name={Navigation.PrivacyPolicy}
         component={PrivacyPolicy}

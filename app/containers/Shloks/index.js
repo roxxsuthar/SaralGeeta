@@ -15,8 +15,6 @@ import FastImage from 'react-native-fast-image';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import get from 'lodash/get';
-import Orientation from 'react-native-orientation-locker';
-import { useFocusEffect } from '@react-navigation/native';
 
 import makeSelectShloks from './selectors';
 import styles from './styles';
@@ -31,24 +29,12 @@ import { Navigation } from '../../constants/constants';
 function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
   const { currentLanguage } = language;
 
-  // Lock orientation to portrait when screen is focused
-  useFocusEffect(
-    useCallback(() => {
-      Orientation.lockToPortrait();
-
-      return () => {
-        Orientation.unlockAllOrientations();
-      };
-    }, []),
-  );
-
   useEffect(() => {
     handleGetShloks({ chapterId: get(route, 'params.chapterId') });
   }, [route]);
 
   const navigateToLearnGeeta = useCallback(
     (item) => {
-      // Since we're already inside DrawerNavigator, navigate directly to the screen
       navigation.navigate(Navigation.LearnGeeta, item);
     },
     [navigation],

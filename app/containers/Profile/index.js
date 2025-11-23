@@ -90,6 +90,15 @@ function Profile({ user, ideal }) {
                   {user?.gender || 'N/A'}
                 </CustomText>
               </View>
+              <View>
+                <CustomText style={styles.detailTitle}>
+                  {profileMessage.language.defaultMessage}
+                </CustomText>
+                <CustomText style={styles.detailText}>
+                  {' '}
+                  {user?.gender || 'N/A'}
+                </CustomText>
+              </View>
               {/* <View>
                 <CustomText style={styles.detailTitle}>
                   {profileMessage.gender.defaultMessage}

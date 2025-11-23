@@ -3,7 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import Lottie from 'lottie-react-native';
 import FastImage from 'react-native-fast-image';
-import { IMAGES } from '../../../constants';
+import { IMAGES, FONTS } from '../../../constants';
 import CustomText from '../../../components/CustomText';
 import styles from '../styles';
 import { COLOR_ARRAY } from '../../../constants/constants';
@@ -16,13 +16,12 @@ const RecordingInterface = ({
   isRecordingButton,
   startRecording,
   stopRecording,
-  audio,
   videoRef,
   setIsVideoPlaying,
   waitingForTranslation,
 }) => {
   const handleStartRecording = () => {
-    startRecording(audio, videoRef, setIsVideoPlaying);
+    startRecording(videoRef, setIsVideoPlaying);
   };
 
   const handleStopRecording = () => {
@@ -39,26 +38,32 @@ const RecordingInterface = ({
       />
 
       {/* Now overlay the shloke parts text or transcription */}
-      {transcription ? (
+      {transcription || waitingForTranslation ? (
         <CustomText style={styles.translationText}>
-          Result: {transcription}
+          {waitingForTranslation ? 'Result: ...' : 'Result:'} {transcription}
         </CustomText>
       ) : (
         !waitingForTranslation && (
-          <CustomText style={styles.overlayText}>
-            {learnGeeta?.data?.shloke_parts?.map((item, idx) => (
-              <CustomText
-                key={idx}
-                style={{
-                  ...styles.overlayText,
-                  color: COLOR_ARRAY[idx],
-                  ...(!isButton ? { bottom: hp(35) } : {}),
-                }}
-              >
-                {item}
-              </CustomText>
-            ))}
-          </CustomText>
+          <View style={styles.overlayText}>
+            <CustomText style={{ textAlign: 'center', lineHeight: hp(35) }}>
+              {learnGeeta?.data?.shloke_parts?.map((item, idx) => (
+                <React.Fragment key={idx}>
+                  <CustomText
+                    style={{
+                      fontSize: hp(24),
+                      fontFamily: FONTS.HINDI,
+                      fontWeight: '700',
+                      color: COLOR_ARRAY[idx],
+                      ...(!isButton ? { bottom: hp(35) } : {}),
+                    }}
+                  >
+                    {item}
+                  </CustomText>
+                  {idx === 1 && '\n'}
+                </React.Fragment>
+              ))}
+            </CustomText>
+          </View>
         )
       )}
 

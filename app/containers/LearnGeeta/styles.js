@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
 
   svgImageContainer1: {
     position: 'absolute',
-    height: hp(140),
-    width: wp(620),
+    height: hp(120),
+    width: wp(520),
     bottom: 0,
     alignSelf: 'center',
   },
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     zIndex: 1000,
     textAlign: 'center',
-    bottom: hp(50),
+    bottom: hp(30),
     width: wp(500),
   },
 
@@ -66,16 +66,16 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     zIndex: 1000,
     textAlign: 'center',
-    bottom: hp(60),
+    bottom: hp(40),
     width: wp(500),
   },
 
   // Button styles
   buttonStyle: {
     // position: 'absolute',
-    bottom: hp(25),
+    bottom: hp(5),
     borderRadius: hp(40),
-    left: -120,
+    left: -90,
     zIndex: 999,
   },
 
@@ -114,17 +114,17 @@ const styles = StyleSheet.create({
   },
 
   controlIconStyle: {
-    height: hp(24),
-    width: hp(24),
+    height: hp(34),
+    width: hp(34),
   },
 
   // Animation styles
   animation: {
     position: 'absolute',
-    left: -120,
+    left: -90,
     width: wp(200),
     height: hp(50),
-    bottom: hp(15),
+    bottom: hp(-5),
   },
 
   cloudAnimationContainer: {

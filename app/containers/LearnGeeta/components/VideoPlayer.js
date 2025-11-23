@@ -16,8 +16,6 @@ const VideoPlayer = ({
   onError,
   onLoadStart,
   onLoad,
-  onPlaybackStateChanged,
-  onPlaybackResume,
   poster,
   isIntroVideoPlayed,
   handleIntroPlay,
@@ -29,23 +27,49 @@ const VideoPlayer = ({
 }) => {
   const handleVideoEnd = () => {
     if (isIntroVideoPlayed) {
+      // Check if we're already on the user practice video
+      const currentVideoUrl = videoSource?.uri;
+      const maleUserPath = get(learnGeeta, 'data.media.hls_male_user');
+      const femaleUserPath = get(learnGeeta, 'data.media.hls_female_user');
+      
+      // If we're already on user practice video, don't switch again
+      const isAlreadyOnUserVideo = 
+        currentVideoUrl === maleUserPath || 
+        currentVideoUrl === femaleUserPath;
+      
+      if (isAlreadyOnUserVideo) {
+        console.log('User practice video ended, not loading another video');
+        // Just keep the buttons visible, don't trigger loading
+        setIsButton(true);
+        setIsVideoPlaying(false);
+        videoRef.current?.pause();
+        return;
+      }
+
+      // Only switch to user video if we're on the main video
+      console.log('Main video ended, switching to user practice video');
       setIsButton(true);
       setIsVideoPlaying(true);
 
-      if (get(user, 'gender') !== 'female') {
-        const maleUserPath = get(learnGeeta, 'data.media.hls_male_user');
-        if (maleUserPath) {
-          updateVideoUrl(maleUserPath);
+      // Manually trigger loading state before changing video URL
+      onLoadStart();
+
+      // Small delay to ensure loading state is set before URL changes
+      setTimeout(() => {
+        if (get(user, 'gender') !== 'female') {
+          if (maleUserPath) {
+            updateVideoUrl(maleUserPath);
+          }
+          videoRef.current?.pause();
+        } else {
+          const fallbackPath = maleUserPath;
+
+          if (femaleUserPath || fallbackPath) {
+            updateVideoUrl(femaleUserPath || fallbackPath);
+          }
+          videoRef.current?.pause();
         }
-        videoRef.current?.pause();
-      } else {
-        const femalePath = get(learnGeeta, 'data.media.hls_female_user');
-        const fallbackPath = get(learnGeeta, 'data.media.hls_male_user');
-        if (femalePath || fallbackPath) {
-          updateVideoUrl(femalePath || fallbackPath);
-        }
-        videoRef.current?.pause();
-      }
+      }, 100);
     } else {
       handleIntroPlay();
     }
@@ -92,8 +116,6 @@ const VideoPlayer = ({
         onLoadStart={onLoadStart}
         onLoad={onLoad}
         onEnd={handleVideoEnd}
-        onPlaybackStateChanged={onPlaybackStateChanged}
-        onPlaybackResume={onPlaybackResume}
         bufferConfig={VIDEO_BUFFER_CONFIG}
         controls={false}
         progressUpdateInterval={VIDEO_PROGRESS_UPDATE_INTERVAL}
@@ -113,8 +135,6 @@ VideoPlayer.propTypes = {
   onLoadStart: PropTypes.func,
   onLoad: PropTypes.func,
   onEnd: PropTypes.func,
-  onPlaybackStateChanged: PropTypes.func,
-  onPlaybackResume: PropTypes.func,
   poster: PropTypes.string,
   isIntroVideoPlayed: PropTypes.bool,
   handleIntroPlay: PropTypes.func,

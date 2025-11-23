@@ -1,6 +1,6 @@
-
 import React, { useEffect, useCallback } from 'react';
 import { Alert, BackHandler } from 'react-native';
+import { StackActions } from '@react-navigation/native';
 
 import { navigationRef } from '../containers/Navigation/RootNavigator';
 import { Navigation } from '../constants/constants';
@@ -36,27 +36,19 @@ const withBack = (WrappedComponent) => {
           return true;
 
         case Navigation.LearnGeeta: {
-          const drawerState =
-            state.routes[0]?.state?.routes[0]?.state?.routes[0]?.state;
-
-          // Check if Shloks route exists with params - that's where we came from
-          if (drawerState) {
-            const shloksRoute = drawerState.routes.find(
-              (route) => route.name === 'Shloks',
-            );
-
-          if (shloksRoute && shloksRoute.params) {
-            navigation.navigate('Shloks', shloksRoute.params);
+          try {
+            // Use pop to remove the screen from stack completely
+            navigation.dispatch(StackActions.pop(1));
             return true;
+          } catch {
+            if (navigation.canGoBack()) {
+              navigation.goBack();
+              return true;
+            }
           }
-
-          if (navigation.canGoBack()) {
-            navigation.goBack();
-            return true;
-          }
-          return false;
+          navigation.navigate(Navigation.Home);
+          return true;
         }
-
         case Navigation.Shloks:
         case Navigation.Chapters:
           // For these screens, try navigating up through the stack
