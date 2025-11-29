@@ -75,7 +75,7 @@ function TermsOfUse({ termsOfUse, handleGetTerms, app }) {
         </style>
       </head>
       <body>
-        ${data?.content || data?.description || '<p>Loading content...</p>'}
+        ${data?.contant || data?.description || '<p>Loading content...</p>'}
       </body>
     </html>
   `;

@@ -32,6 +32,8 @@ function PrivacyPolicy({ privacyPolicy, handleGetPolicy, app }) {
 
   const { loading, data } = privacyPolicy;
 
+  console.log('------', data);
+
   // HTML template for WebView
   const htmlContent = `
     <!DOCTYPE html>
@@ -74,7 +76,7 @@ function PrivacyPolicy({ privacyPolicy, handleGetPolicy, app }) {
         </style>
       </head>
       <body>
-        ${data?.content || data?.description || '<p>Loading content...</p>'}
+        ${data?.contant || data?.description || '<p>Loading content...</p>'}
       </body>
     </html>
   `;

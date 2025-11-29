@@ -109,7 +109,10 @@ function OtpScreen({
 
         if (smsListener && typeof smsListener.remove === 'function') {
           smsListener.remove();
-        } else if (SmsRetriever && typeof SmsRetriever.removeSmsListener === 'function') {
+        } else if (
+          SmsRetriever &&
+          typeof SmsRetriever.removeSmsListener === 'function'
+        ) {
           SmsRetriever.removeSmsListener();
         }
       } catch (err) {

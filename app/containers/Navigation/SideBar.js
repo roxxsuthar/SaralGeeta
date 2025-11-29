@@ -1,6 +1,12 @@
 import logger from '../../utils/logger';
 import React from 'react';
-import { View, Image, StatusBar, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Image,
+  StatusBar,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
 import { CommonActions } from '@react-navigation/native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { useSelector, useDispatch } from 'react-redux';
@@ -151,8 +157,11 @@ const SideBar = (props) => {
                 </View>
               )}
               onPress={() => {
-                // Handle Facebook navigation or remove if not needed
-                logger.log('Facebook navigation not implemented');
+                Linking.openURL(
+                  'https://www.facebook.com/people/Saral-Gita/61577334227489/',
+                ).catch((err) =>
+                  logger.error('Failed to open Facebook URL:', err),
+                );
               }}
             />
             <DrawerItem
@@ -164,8 +173,9 @@ const SideBar = (props) => {
                 </View>
               )}
               onPress={() => {
-                // Handle Instagram navigation or remove if not needed
-                logger.log('Instagram navigation not implemented');
+                Linking.openURL('https://www.instagram.com/saralgitaapp').catch(
+                  (err) => logger.error('Failed to open Instagram URL:', err),
+                );
               }}
             />
             <DrawerItem

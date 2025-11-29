@@ -124,7 +124,7 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
             </TouchableOpacity>
             <FastImage
               style={styles.chapterImage}
-              source={IMAGES.Trainer}
+              source={{ uri: get(shloksData, 'data[0].image', '') }}
               resizeMode={FastImage.resizeMode.contain}
             />
           </View>

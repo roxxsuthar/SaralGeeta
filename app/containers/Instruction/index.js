@@ -74,7 +74,7 @@ function Instruction({ instruction, handleGetInstruction, app }) {
         </style>
       </head>
       <body>
-        ${data?.content || data?.description || '<p>Loading content...</p>'}
+        ${data?.contant || data?.description || '<p>Loading content...</p>'}
       </body>
     </html>
   `;
@@ -144,4 +144,3 @@ function mapDispatchToProps(dispatch) {
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(withConnect, memo)(Instruction);
-
