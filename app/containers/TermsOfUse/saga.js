@@ -1,7 +1,25 @@
-// import { take, call, put, select } from 'redux-saga/effects';
-// import request from '../../utils/request';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import request from '../../utils/request';
+import Helpers from '../../utils/helpers';
+import { APIS } from '../../constants';
+import { getTermsSuccess, getTermsFail } from './actions';
+import { GET_TERMS } from './constants';
 
-// Individual exports for testing
+function* fetchTerms({ policyType }) {
+  const url = Helpers.getUrl(`${APIS.POLICY}/${policyType}`);
+  const options = {
+    method: 'GET',
+    url,
+  };
+
+  try {
+    const res = yield call(request, options);
+    yield put(getTermsSuccess(res?.data));
+  } catch {
+    yield put(getTermsFail());
+  }
+}
+
 export default function* termsOfUseSaga() {
-  // See example in containers/HomePage/saga.js
+  yield takeLatest(GET_TERMS, fetchTerms);
 }

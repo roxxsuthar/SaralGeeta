@@ -114,6 +114,21 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     marginBottom: 5,
   },
+  webview: {
+    flex: 1,
+    backgroundColor: 'transparent',
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: hp(50),
+  },
+  loadingText: {
+    marginTop: hp(15),
+    fontSize: hp(16),
+    color: COLORS.black,
+  },
 });
 
 export default styles;

@@ -11,6 +11,9 @@ import learnGeetaReducer from './app/containers/LearnGeeta/reducer';
 import editProfileReducer from './app/containers/EditProfile/reducer';
 import chaptersReducer from './app/containers/Chapters/reducer';
 import contactUsReducer from './app/containers/ContactUs/reducer';
+import privacyPolicyReducer from './app/containers/PrivacyPolicy/reducer';
+import termsOfUseReducer from './app/containers/TermsOfUse/reducer';
+import instructionReducer from './app/containers/Instruction/reducer';
 
 const appPersistConfig = {
   key: 'app',
@@ -42,6 +45,9 @@ const combinedReducers = combineReducers({
   editProfile: editProfileReducer,
   chapters: chaptersReducer,
   contactUs: contactUsReducer,
+  privacyPolicy: privacyPolicyReducer,
+  termsOfUse: termsOfUseReducer,
+  instruction: instructionReducer,
 });
 
 // Root Reducer

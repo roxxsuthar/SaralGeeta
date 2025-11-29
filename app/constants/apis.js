@@ -15,6 +15,7 @@ const APIS = {
   RECENT_WATCHED: '/recent-shlokes',
   LOG_OUT: '/user/logout',
   OAUTH: '/auth/social-media',
+  POLICY: '/policy',
 };
 export const API_URL = ' https://app.saralgita.in/api';
 

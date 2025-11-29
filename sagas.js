@@ -9,6 +9,9 @@ import LearnGeetaSaga from './app/containers/LearnGeeta/saga';
 import EditProfileSaga from './app/containers/EditProfile/saga';
 import chaptersSaga from './app/containers/Chapters/saga';
 import contactUs from './app/containers/ContactUs/saga';
+import privacyPolicySaga from './app/containers/PrivacyPolicy/saga';
+import termsOfUseSaga from './app/containers/TermsOfUse/saga';
+import instructionSaga from './app/containers/Instruction/saga';
 
 export default function* rootContainerSaga() {
   yield all([
@@ -22,5 +25,8 @@ export default function* rootContainerSaga() {
     EditProfileSaga(),
     chaptersSaga(),
     contactUs(),
+    privacyPolicySaga(),
+    termsOfUseSaga(),
+    instructionSaga(),
   ]);
 }
