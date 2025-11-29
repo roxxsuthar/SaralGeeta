@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     bottom: 0,
+    width: '100%',
+    pointerEvents: 'box-none',
   },
 
   svgImageContainer1: {
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
     lineHeight: hp(35),
     fontFamily: FONTS.HINDI,
     fontWeight: '700',
-    zIndex: 1000,
+    zIndex: 1,
     textAlign: 'center',
     bottom: hp(30),
     width: wp(500),
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     lineHeight: hp(35),
     fontFamily: FONTS.HINDI,
     fontWeight: '700',
-    zIndex: 1000,
+    zIndex: 1,
     textAlign: 'center',
     bottom: hp(40),
     width: wp(500),
@@ -72,11 +74,11 @@ const styles = StyleSheet.create({
 
   // Button styles
   buttonStyle: {
-    // position: 'absolute',
-    bottom: hp(5),
+    position: 'absolute',
+    bottom: hp(10),
     borderRadius: hp(40),
-    left: -90,
-    zIndex: 999,
+    left: 170,
+    zIndex: 1000,
   },
 
   buttonIconStyle: {
@@ -89,11 +91,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'space-between',
     alignItems: 'center',
-    top: 0,
-    bottom: 0,
+    bottom: hp(60),
     flexDirection: 'row',
-    zIndex: 90,
-    width: '100%',
+    zIndex: 1000,
+    width: wp(550),
     paddingHorizontal: wp(24),
   },
 
@@ -102,29 +103,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: hp(3),
     height: hp(48),
-    width: hp(48),
+    width: wp(48),
   },
 
   controlButtonStyle1: {
+    position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: wp(15),
     height: hp(48),
-    width: hp(48),
+    width: wp(48),
+    marginTop: hp(60),
   },
 
   controlIconStyle: {
-    height: hp(34),
-    width: hp(34),
+    height: hp(28),
+    width: wp(28),
   },
 
   // Animation styles
   animation: {
     position: 'absolute',
-    left: -90,
+    left: 170,
     width: wp(200),
     height: hp(50),
     bottom: hp(-5),
+    zIndex: 999,
   },
 
   cloudAnimationContainer: {

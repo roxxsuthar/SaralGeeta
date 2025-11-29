@@ -31,12 +31,11 @@ const VideoPlayer = ({
       const currentVideoUrl = videoSource?.uri;
       const maleUserPath = get(learnGeeta, 'data.media.hls_male_user');
       const femaleUserPath = get(learnGeeta, 'data.media.hls_female_user');
-      
+
       // If we're already on user practice video, don't switch again
-      const isAlreadyOnUserVideo = 
-        currentVideoUrl === maleUserPath || 
-        currentVideoUrl === femaleUserPath;
-      
+      const isAlreadyOnUserVideo =
+        currentVideoUrl === maleUserPath || currentVideoUrl === femaleUserPath;
+
       if (isAlreadyOnUserVideo) {
         console.log('User practice video ended, not loading another video');
         // Just keep the buttons visible, don't trigger loading

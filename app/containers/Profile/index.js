@@ -53,6 +53,7 @@ function Profile({ user, ideal }) {
             {profileMessage.heading.defaultMessage}
           </CustomText>
         </View>
+
         <View style={styles.mainContainer}>
           <View style={styles.userDetails}>
             <View style={styles.userData}>
@@ -95,8 +96,7 @@ function Profile({ user, ideal }) {
                   {profileMessage.language.defaultMessage}
                 </CustomText>
                 <CustomText style={styles.detailText}>
-                  {' '}
-                  {user?.gender || 'N/A'}
+                  {(user?.language === 'hi' ? 'Hindi' : 'English') || 'N/A'}
                 </CustomText>
               </View>
               {/* <View>

@@ -144,7 +144,6 @@ const ImagePicker = ({ onImageSelected, image }) => {
       if (response.didCancel) {
         return;
       }
-      console.log('-------', response);
       if (response.errorCode) {
         console.log('Camera Error: ', response.errorMessage);
         Alert.alert(

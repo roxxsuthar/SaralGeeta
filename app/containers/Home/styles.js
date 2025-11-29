@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     marginHorizontal: wp(16),
-    marginTop: hp(35), // Removed - SafeAreaView handles this now
   },
   headerText: {
     fontSize: hp(17),
@@ -104,7 +103,6 @@ const styles = StyleSheet.create({
     height: hp(170),
     borderTopRightRadius: hp(10),
     borderTopLeftRadius: hp(10),
-    backgroundColor: 'yellow',
   },
   audioTextContainer: {
     marginTop: hp(-16),
@@ -171,7 +169,6 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     height: hp(43),
-    marginTop: hp(10),
     marginBottom: hp(10),
     flexDirection: 'row',
     justifyContent: 'space-between',

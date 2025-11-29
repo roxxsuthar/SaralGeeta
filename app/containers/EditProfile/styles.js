@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     paddingHorizontal: 16,
     paddingVertical: 10,
-    marginTop: hp(50),
+    marginTop: hp(40),
   },
   iconContainer: {
     position: 'absolute',

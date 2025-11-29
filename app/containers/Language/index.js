@@ -46,7 +46,7 @@ function Language({ navigation, language, _handleSetLanguage }) {
     <ImageBackground
       source={IMAGES.AppBackground}
       style={styles.container}
-      resizeMode="cover" // Similar to background-size in CSS
+      resizeMode="cover"
     >
       <StatusBar
         barStyle="light-content"

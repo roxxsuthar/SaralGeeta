@@ -20,6 +20,7 @@ import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import FastImage from 'react-native-fast-image';
 import Voice from '@react-native-voice/voice';
+import { useFocusEffect } from '@react-navigation/native';
 
 import makeSelectHome from './selectors';
 import styles from './styles';
@@ -61,6 +62,16 @@ function Home({
       data: filteredChapters?.filter((item) => item.id !== recent?.id) || [],
     },
   ];
+
+  useFocusEffect(
+    useCallback(() => {
+      // Ensure StatusBar is visible when Home screen is focused
+      StatusBar.setHidden(false);
+
+      handleGetRecent();
+      handleGetChapters();
+    }, [handleGetRecent, handleGetChapters]),
+  );
 
   useEffect(() => {
     handleGetRecent();
@@ -131,7 +142,6 @@ function Home({
     }
   }, [searchText, home?.data]);
 
-  // Voice Recognition Handlers
   const onSpeechStart = () => {
     setIsListening(true);
   };
@@ -239,7 +249,6 @@ function Home({
       Voice.onSpeechError = onSpeechError;
       Voice.onSpeechPartialResults = onSpeechResults;
 
-      // Use the correct language code based on current app language
       const languageCode = currentLanguage === 'hindi' ? 'hi-IN' : 'en-US';
 
       // Start recognition
@@ -260,10 +269,13 @@ function Home({
   };
 
   const navigateToShloks = useCallback(
-    (id) => {
+    (id, serial) => {
       setShowSearch(false);
       setSearchText('');
-      navigation.navigate(Navigation.Shloks, { chapterId: id });
+      navigation.navigate(Navigation.Shloks, {
+        chapterId: id,
+        serialNumber: serial,
+      });
     },
     [navigation],
   );
@@ -274,7 +286,7 @@ function Home({
 
   const renderItemBasedOnSection = (title, item) => {
     switch (title) {
-      case 'Recent':
+      case HomeMessage.recent.defaultMessage:
         return (
           <TouchableOpacity
             style={styles.recentViewContainer}
@@ -291,22 +303,45 @@ function Home({
               <IMAGES.PlayerIcon height="100%" width="100%" />
             </TouchableOpacity>
             <View style={styles.recentTextContainer}>
-              <CustomText
-                style={{
-                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                  ...styles.audioCardText,
-                }}
-              >
-                {get(item, 'shloke')}
-              </CustomText>
+              <View style={{ flexDirection: 'column' }}>
+                <CustomText
+                  style={{
+                    ...setFontFamily(
+                      currentLanguage,
+                      FONTS.REGULAR,
+                      FONTS.HINDI,
+                    ),
+                    ...styles.audioCardText,
+                    textAlign: 'center',
+                  }}
+                >
+                  {get(item, 'shloke_parts', []).map((part, idx) => (
+                    <React.Fragment key={idx}>
+                      <CustomText
+                        style={{
+                          ...setFontFamily(
+                            currentLanguage,
+                            FONTS.REGULAR,
+                            FONTS.HINDI,
+                          ),
+                          ...styles.audioCardText,
+                        }}
+                      >
+                        {part}
+                      </CustomText>
+                      {idx < 3 && (idx === 1 ? '\n' : ' ')}
+                    </React.Fragment>
+                  ))}
+                </CustomText>
+              </View>
             </View>
           </TouchableOpacity>
         );
-      case 'Chapters':
+      case HomeMessage.chapters.defaultMessage:
         return (
           <TouchableOpacity
             style={styles.AudioContainer}
-            onPress={() => navigateToShloks(item?.id)}
+            onPress={() => navigateToShloks(item?.id, item?.serial)}
             activeOpacity={0.8}
           >
             <FastImage
@@ -315,14 +350,34 @@ function Home({
               resizeMode={FastImage.resizeMode.cover}
             />
             <View style={styles.audioTextContainer}>
-              <CustomText
-                style={{
-                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                  ...styles.audioCardTitle,
-                }}
-              >
-                {item.name}
-              </CustomText>
+              <View style={{ flex: 1, flexDirection: 'row' }}>
+                <CustomText
+                  style={{
+                    ...setFontFamily(
+                      currentLanguage,
+                      FONTS.REGULAR,
+                      FONTS.HINDI,
+                    ),
+                    ...styles.audioCardTitle,
+                  }}
+                >
+                  {item.name}
+                </CustomText>
+                <CustomText
+                  style={{
+                    ...setFontFamily(
+                      currentLanguage,
+                      FONTS.REGULAR,
+                      FONTS.HINDI,
+                    ),
+                    ...styles.audioCardTitle,
+                  }}
+                >
+                  {'  ('}
+                  {HomeMessage.chapter.defaultMessage} {item?.serial}
+                  {')'}
+                </CustomText>
+              </View>
               <CustomText
                 style={{
                   ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
@@ -352,6 +407,7 @@ function Home({
       <StatusBar
         barStyle="light-content"
         translucent={true}
+        hidden={false}
         backgroundColor="transparent"
       />
 

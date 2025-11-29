@@ -45,6 +45,14 @@ const AuthNavigator = ({
             }}
             initialParams={{ currentLanguage }}
           />
+          <AppStack.Screen
+            name={Navigation.Language}
+            component={Language}
+            options={{
+              headerShown: false,
+            }}
+            initialParams={{ currentLanguage }}
+          />
         </>
       )}
 

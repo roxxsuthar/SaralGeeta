@@ -178,7 +178,7 @@
     },
     "ourIdeals": {
       "id": "app.containers.OurIdeals.ourIdeals",
-      "defaultMessage": "हमारे आदर्श"
+      "defaultMessage": "हमारे गुरुवर"
     }
   },
   "Home": {
@@ -193,6 +193,10 @@
     "recent": {
       "id": "app.containers.Home.recent",
       "defaultMessage": "हाल का"
+    },
+    "chapter": {
+      "id": "app.containers.Home.chapter",
+      "defaultMessage": "अध्याय"
     }
   },
   "Chapters": {
@@ -354,6 +358,10 @@
       "id": "app.container.SideBar.privacyPolicy",
       "defaultMessage": "गोपनीयता नीति"
     },
+    "instruction": {
+      "id": "app.container.SideBar.instruction",
+      "defaultMessage": "उप्योगे की विधि"
+    },
     "termOfUse": {
       "id": "app.container.SideBar.termOfUse",
       "defaultMessage": "उपयोग की शर्तें"
@@ -380,7 +388,7 @@
     },
     "ideal": {
       "id": "app.container.SideBar.ideal",
-      "defaultMessage": "हमारे आदर्श"
+      "defaultMessage": "हमारे गुरुवर"
     }
   }
 }

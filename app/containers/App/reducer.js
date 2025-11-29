@@ -28,7 +28,7 @@ import {
   VERIFY_OTP,
   VERIFY_OTP_FAIL,
   VERIFY_OTP_SUCCESS,
-  OAUTH_ACTION
+  OAUTH_ACTION,
 } from './constants';
 
 export const initialState = {
@@ -46,6 +46,7 @@ export const initialState = {
   sentOtpDetail: null,
   selectedIdeal: null,
   introVideo: false,
+  introVideoDate: null, // Track when intro video was last played
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -72,9 +73,9 @@ const appReducer = (state = initialState, action) =>
       case LOGIN_ACTION_FAIL:
         draft.loading = false;
         break;
-        case OAUTH_ACTION:
-          draft.loading=true;
-          break;
+      case OAUTH_ACTION:
+        draft.loading = true;
+        break;
       case VERIFY_OTP:
         draft.loading = true;
         break;
@@ -102,6 +103,7 @@ const appReducer = (state = initialState, action) =>
         break;
       case INTRO_VIDEO_PLAY:
         draft.introVideo = true;
+        draft.introVideoDate = new Date().toDateString(); // Store current date
         break;
 
       case GET_PROFILE:

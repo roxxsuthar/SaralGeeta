@@ -15,6 +15,16 @@ import contactUsReducer from './app/containers/ContactUs/reducer';
 const appPersistConfig = {
   key: 'app',
   storage: AsyncStorage,
+  whitelist: [
+    'language',
+    'onboarding',
+    'accessToken',
+    'refreshToken',
+    'user',
+    'selectedIdeal',
+    'introVideo',
+    'introVideoDate',
+  ],
 };
 
 const ourIdealsPersistConfig = {

@@ -6,6 +6,7 @@ import { EDIT_PROFILE_ACTION } from '../App/constants';
 import { editProfileFail, editProfileSuccess } from '../App/actions';
 import { GET_LANGUAGES } from './constants';
 import { getLanguageFail, getLanguageSuccess } from './actions';
+import handleError from '../../utils/handleError';
 
 function* getLanguage() {
   const url = Helpers.getUrl(APIS.LANGUAGES);
@@ -36,6 +37,7 @@ function* editProfile({ payload }) {
   try {
     const res = yield call(request, options);
     yield put(editProfileSuccess(res.data));
+    handleError({ message: 'Profile updated successfully.' });
   } catch (e) {
     yield put(editProfileFail(e));
   }

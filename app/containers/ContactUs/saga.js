@@ -5,7 +5,8 @@ import Helpers from '../../utils/helpers';
 import { APIS } from '../../constants';
 import { CONTACT_US_ACTION } from './constants';
 import { addContactUsFails, addContactUsSuccess } from './actions';
-function* addContact({ payload, navigation, action }) {
+import handleError from '../../utils/handleError';
+function* addContact({ payload, action }) {
   const url = Helpers.getUrl(APIS.CONTACT_US);
   const options = {
     method: 'POST',
@@ -17,7 +18,7 @@ function* addContact({ payload, navigation, action }) {
     yield call(request, options);
     yield put(addContactUsSuccess());
     action?.resetForm();
-    navigation.goBack(null);
+    handleError({ message: "Message sent! We'll be in touch soon." });
   } catch (e) {
     yield put(addContactUsFails(e));
   }

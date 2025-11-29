@@ -19,6 +19,11 @@ const RecordingInterface = ({
   videoRef,
   setIsVideoPlaying,
   waitingForTranslation,
+  shlokIndex,
+  shloks,
+  getPreviousShlok,
+  playAgain,
+  getNextShlok,
 }) => {
   const handleStartRecording = () => {
     startRecording(videoRef, setIsVideoPlaying);
@@ -59,7 +64,7 @@ const RecordingInterface = ({
                   >
                     {item}
                   </CustomText>
-                  {idx === 1 && '\n'}
+                  {idx < 3 && (idx === 1 ? '\n' : ' ')}
                 </React.Fragment>
               ))}
             </CustomText>
@@ -70,17 +75,46 @@ const RecordingInterface = ({
       {/* Buttons and animation on top */}
       {isButton && !waitingForTranslation && (
         <>
-          {!isRecordingButton ? (
-            <TouchableOpacity
-              style={styles.buttonStyle}
-              onPress={handleStartRecording}
-              activeOpacity={0.8}
-            >
-              <View style={styles.buttonIconStyle}>
-                <IMAGES.MicIcon height="100%" width="100%" />
-              </View>
-            </TouchableOpacity>
-          ) : (
+          {/* Control buttons - Previous, Play Again, Next */}
+          <View style={styles.controlContainer}>
+            {shlokIndex > 0 && (
+              <TouchableOpacity
+                style={styles.controlButtonStyle}
+                onPress={getPreviousShlok}
+                activeOpacity={0.8}
+              >
+                <View style={styles.controlIconStyle}>
+                  <IMAGES.WhiteLeftArrowIcon height="100%" width="100%" />
+                </View>
+              </TouchableOpacity>
+            )}
+
+            <View>
+              {shlokIndex + 1 < (shloks?.data?.length || 0) && (
+                <TouchableOpacity
+                  style={styles.controlButtonStyle}
+                  onPress={getNextShlok}
+                  activeOpacity={0.8}
+                >
+                  <View style={styles.controlIconStyle}>
+                    <IMAGES.WhiteRightArrowIcon height="100%" width="100%" />
+                  </View>
+                </TouchableOpacity>
+              )}
+              <TouchableOpacity
+                style={styles.controlButtonStyle1}
+                onPress={playAgain}
+                activeOpacity={0.8}
+              >
+                <View style={styles.controlIconStyle}>
+                  <IMAGES.ReplayButton height="100%" width="100%" />
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* Mic/Pause button */}
+          {isRecordingButton ? (
             <TouchableOpacity
               style={styles.buttonStyle}
               onPress={handleStopRecording}
@@ -88,6 +122,16 @@ const RecordingInterface = ({
             >
               <View style={styles.buttonIconStyle}>
                 <IMAGES.PauseIcon height="100%" width="100%" />
+              </View>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              style={styles.buttonStyle}
+              onPress={handleStartRecording}
+              activeOpacity={0.8}
+            >
+              <View style={styles.buttonIconStyle}>
+                <IMAGES.MicIcon height="100%" width="100%" />
               </View>
             </TouchableOpacity>
           )}
@@ -117,6 +161,11 @@ RecordingInterface.propTypes = {
   videoRef: PropTypes.object,
   setIsVideoPlaying: PropTypes.func,
   waitingForTranslation: PropTypes.bool,
+  shlokIndex: PropTypes.number,
+  shloks: PropTypes.object,
+  getPreviousShlok: PropTypes.func,
+  playAgain: PropTypes.func,
+  getNextShlok: PropTypes.func,
 };
 
 export default RecordingInterface;

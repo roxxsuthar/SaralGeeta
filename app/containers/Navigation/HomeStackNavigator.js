@@ -16,10 +16,10 @@ const HomeStackNavigator = () => {
         headerShown: false,
         gestureEnabled: true,
         gestureDirection: 'horizontal',
-        animation: 'slide_from_right',
+        animation: 'default',
         animationEnabled: true,
         presentation: 'card',
-        cardOverlayEnabled: false,
+        detachPreviousScreen: true,
       }}
     >
       <HomeStack.Screen
@@ -37,6 +37,8 @@ const HomeStackNavigator = () => {
         options={{
           gestureEnabled: false,
           animationEnabled: true,
+          animation: 'fade',
+          animationDuration: 200,
         }}
       />
     </HomeStack.Navigator>

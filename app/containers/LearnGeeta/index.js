@@ -14,7 +14,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useAudio, useVideo, useRecording, useAppState } from './hooks';
 
 // Components
-import { VideoPlayer, ControlButtons, RecordingInterface } from './components';
+import { VideoPlayer, RecordingInterface } from './components';
 
 // Redux
 import makeSelectLearnGeeta from './selectors';
@@ -100,6 +100,7 @@ function LearnGeeta({
 
   // Effects
   useEffect(() => {
+    StatusBar.setHidden(true);
     handleGetShloks({ chapterId: get(route, 'params.chapter.id') });
   }, [handleGetShloks, route]);
 
@@ -192,7 +193,6 @@ function LearnGeeta({
           barStyle="light-content"
           translucent
           backgroundColor="transparent"
-          hidden={true}
         />
 
         <FastImage
@@ -226,9 +226,8 @@ function LearnGeeta({
     <SafeAreaView style={styles.container}>
       <StatusBar
         barStyle="light-content"
-        translucent
+        translucent={true}
         backgroundColor="transparent"
-        hidden={true}
       />
 
       <ImageBackground
@@ -278,16 +277,6 @@ function LearnGeeta({
           />
         )}
 
-        {isButton && !isRecordingButton && !isLoading && (
-          <ControlButtons
-            shlokIndex={shlokIndex}
-            shloks={shloks}
-            getPreviousShlok={getPreviousShlok}
-            playAgain={playAgain}
-            getNextShlok={getNextShlok}
-          />
-        )}
-
         {isIntroVideoPlayed && (
           <>
             {shouldShowLoading ? (
@@ -313,6 +302,11 @@ function LearnGeeta({
                 setIsVideoPlaying={setVideoPlayingState}
                 ourIdeals={ourIdeals}
                 waitingForTranslation={waitingForTranslation}
+                shlokIndex={shlokIndex}
+                shloks={shloks}
+                getPreviousShlok={getPreviousShlok}
+                playAgain={playAgain}
+                getNextShlok={getNextShlok}
               />
             )}
           </>

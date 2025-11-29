@@ -209,11 +209,11 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
     async (videoRef, setIsVideoPlaying) => {
       try {
         setTranscription('');
-        
+
         // Start playing the video from beginning
         videoRef.current?.seek(0);
         setIsVideoPlaying(false); // This will unpause the video
-        
+
         setIsRecordingButton(true);
 
         const hasPermissions = await requestPermissions();
@@ -231,9 +231,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
         });
 
         await SoundRecorder.start(path);
-        logger.log('Recording successfully started at:', path);
-      } catch (error) {
-        logger.error('Error starting recorder:', error.message);
+      } catch {
         setIsRecordingButton(false);
         videoRef.current?.pause();
       }

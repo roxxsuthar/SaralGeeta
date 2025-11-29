@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
 import { Alert, BackHandler } from 'react-native';
-import { StackActions } from '@react-navigation/native';
 
 import { navigationRef } from '../containers/Navigation/RootNavigator';
 import { Navigation } from '../constants/constants';
@@ -13,10 +12,6 @@ const withBack = (WrappedComponent) => {
 
       const currentRoute = navigation.getCurrentRoute();
       const currentRouteName = currentRoute?.name;
-      const state = navigation.getState();
-
-      // Check if we're in a nested navigator
-      const isInNestedNavigator = state.routes.length > 1;
 
       // Handle special cases for certain screens
       switch (currentRouteName) {
@@ -35,79 +30,43 @@ const withBack = (WrappedComponent) => {
           ]);
           return true;
 
-        case Navigation.LearnGeeta: {
-          try {
-            // Use pop to remove the screen from stack completely
-            navigation.dispatch(StackActions.pop(1));
-            return true;
-          } catch {
-            if (navigation.canGoBack()) {
-              navigation.goBack();
-              return true;
-            }
-          }
-          navigation.navigate(Navigation.Home);
-          return true;
-        }
+        case Navigation.LearnGeeta:
         case Navigation.Shloks:
         case Navigation.Chapters:
-          // For these screens, try navigating up through the stack
-          try {
-            if (isInNestedNavigator) {
-              navigation.goBack();
-              return true;
-            }
-          } catch {
-            /* empty */
-          }
-          break;
-
-        case Navigation.OtpScreen:
-        case Navigation.Login:
-          // For auth screens, ensure we can go back before attempting
-          if (state.routes.length > 1) {
+          // For screens in HomeStack, let React Navigation handle it
+          // Return false to not intercept the back button
+          if (navigation.canGoBack()) {
             navigation.goBack();
             return true;
           }
-          break;
+          return false;
+
+        case Navigation.OtpScreen:
+        case Navigation.Login:
+          // For auth screens
+          if (navigation.canGoBack()) {
+            navigation.goBack();
+            return true;
+          }
+          return false;
+
+        case Navigation.Profile:
+        case Navigation.EditProfile:
+        case Navigation.PrivacyPolicy:
+        case Navigation.TermsOfUse:
+        case Navigation.ContactUs:
+          // For drawer screens, navigate to HomeStack
+          navigation.navigate('HomeStack', { screen: Navigation.Home });
+          return true;
 
         default:
-          // For drawer screens and others
-          try {
-            const isDrawerScreen = [
-              Navigation.Profile,
-              Navigation.EditProfile,
-              Navigation.PrivacyPolicy,
-              Navigation.TermsOfUse,
-              Navigation.ContactUs,
-            ].includes(currentRouteName);
-
-            if (isDrawerScreen) {
-              // Use replace to avoid navigation stack issues
-              navigation.reset({
-                index: 0,
-                routes: [{ name: Navigation.Home }],
-              });
-              return true;
-            } else if (isInNestedNavigator) {
-              // For other screens in nested navigators
-              navigation.goBack();
-              return true;
-            }
-          } catch {
-            /* empty */
+          // For other screens, try going back if possible
+          if (navigation.canGoBack()) {
+            navigation.goBack();
+            return true;
           }
-          break;
+          return false;
       }
-
-      // If nothing above handled it and we can go back, do it
-      if (navigation.canGoBack()) {
-        navigation.goBack();
-        return true;
-      }
-
-      // Return false to let the default handler run
-      return false;
     }, []);
 
     useEffect(() => {

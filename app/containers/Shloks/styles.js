@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   mainContainer: {
     flex: 1,
-    marginTop: hp(35),
+    marginTop: hp(55),
   },
   header: { marginHorizontal: wp(16) },
   headerText: {
@@ -75,6 +75,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.alto,
     borderRadius: hp(20),
     flexDirection: 'row',
+    minHeight: hp(110),
+    alignItems: 'center',
   },
   cardImage: {
     height: hp(80),
@@ -96,7 +98,13 @@ const styles = StyleSheet.create({
     lineHeight: hp(30),
     color: COLORS.doveGray,
     flexWrap: 'wrap',
-    width: wp(220),
+  },
+  cardTitle1: {
+    fontSize: hp(20),
+    fontWeight: '600',
+    lineHeight: hp(20),
+    color: COLORS.doveGray,
+    flexWrap: 'wrap',
   },
   languageText: {
     fontSize: hp(15),
@@ -106,8 +114,10 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     marginLeft: wp(15),
-    flexShrink: 1, // Allow text to shrink and wrap
-    maxWidth: wp(220),
+    marginVertical: wp(5),
+    marginRight: wp(5),
+    flex: 1,
+    flexShrink: 1,
   },
   timeText: {
     fontSize: hp(15),

@@ -30,6 +30,7 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
   const { currentLanguage } = language;
 
   useEffect(() => {
+    StatusBar.setHidden(false);
     handleGetShloks({ chapterId: get(route, 'params.chapterId') });
   }, [route]);
 
@@ -59,8 +60,25 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
                 setFontFamily(currentLanguage, FONTS.HINDI, FONTS.HINDI),
                 styles.cardTitle,
               )}
+              numberOfLines={0}
             >
-              {get(item, 'shloke')}
+              {get(item, 'shloke_parts', []).map((part, idx) => (
+                <React.Fragment key={idx}>
+                  <CustomText
+                    style={Object.assign(
+                      setFontFamily(currentLanguage, FONTS.HINDI, FONTS.HINDI),
+                      styles.cardTitle,
+                    )}
+                  >
+                    {part}
+                  </CustomText>
+                  {idx < 3 && ' '}
+                </React.Fragment>
+              ))}
+              {'\n'}
+              <CustomText style={styles.cardTitle1}>
+                ||{get(item, 'chapter.serial', '')},{get(item, 'name', '')}||
+              </CustomText>
             </CustomText>
           </View>
         </TouchableOpacity>
@@ -80,7 +98,7 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
     <ImageBackground
       source={IMAGES.AppBackground}
       style={styles.container}
-      resizeMode="cover" // Similar to background-size in CSS
+      resizeMode="cover"
     >
       <StatusBar
         barStyle="light-content"

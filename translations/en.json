@@ -193,6 +193,10 @@
     "recent": {
       "id": "app.containers.Home.recent",
       "defaultMessage": "Recent"
+    },
+    "chapter": {
+      "id": "app.containers.Home.chapter",
+      "defaultMessage": "Chapter"
     }
   },
   "Chapters": {
@@ -358,6 +362,10 @@
       "id": "app.container.SideBar.privacyPolicy",
       "defaultMessage": "Privacy Policy"
     },
+    "instruction": {
+      "id": "app.container.SideBar.instruction",
+      "defaultMessage": "Method of use"
+    },
     "termOfUse": {
       "id": "app.container.SideBar.termOfUse",
       "defaultMessage": "Terms Of Use"
@@ -381,6 +389,16 @@
     "signOut": {
       "id": "app.container.SideBar.signOut",
       "defaultMessage": "Sign Out"
+    }
+  },
+  "Instruction": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "Method of use"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "Terms and Condition"
     }
   }
 }

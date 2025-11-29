@@ -22,8 +22,17 @@ import {
 } from '../App/selectors';
 
 import makeSelectNavigation from './selectors';
+import { getProfile } from '../Profile/actions';
+import strings from '../../../i18n';
 
-export function Navigation({ navigation, language, onboarding, token, user }) {
+export function Navigation({
+  navigation,
+  language,
+  onboarding,
+  token,
+  user,
+  handleGetProfile,
+}) {
   const { isLanguageSelected, currentLanguage } = language;
   const { isOnboardingVisited } = onboarding;
 
@@ -33,16 +42,23 @@ export function Navigation({ navigation, language, onboarding, token, user }) {
     }, 3000);
   }, []);
 
+  useEffect(() => {
+    handleGetProfile();
+  }, []);
+
+  useEffect(() => {
+    if (user?.language) {
+      strings.setLanguage(user?.language);
+    }
+  }, [user?.language]);
+
   return (
     <NavigationContainer
       ref={navigationRef}
       onReady={() => {
         isReadyRef.current = true;
       }}
-      onStateChange={(state) => {
-        // Optional: Track navigation state changes
-        console.log('New navigation state:', state);
-      }}
+      onStateChange={() => {}}
     >
       <MainNavigatorWithBackAndAppState
         currentLanguage={currentLanguage}
@@ -71,6 +87,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
+    handleGetProfile: () => dispatch(getProfile()),
   };
 }
 

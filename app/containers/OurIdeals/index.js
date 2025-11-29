@@ -89,13 +89,6 @@ function OurIdeals({
         >
           {item?.name}
         </CustomText>
-        <View style={styles.cardIconContainer}>
-          <FastImage
-            style={styles.cardIcon}
-            source={{ uri: item?.avatar }}
-            resizeMode={FastImage.resizeMode.contain}
-          />
-        </View>
       </TouchableOpacity>
     ),
     [currentLanguage, getStyleOfCard, setSelectCard],
@@ -112,8 +105,11 @@ function OurIdeals({
       data: { ideal_id: selectCard?.id },
     };
     handleUpdateUser(payload);
+
+    // Navigate through Drawer to HomeStack (for initial setup flow)
     navigation.navigate('Drawer', {
-      screen: Navigation.Home,
+      screen: 'HomeStack',
+      params: { screen: Navigation.Home },
     });
   }, [selectCard, user, navigation]);
 

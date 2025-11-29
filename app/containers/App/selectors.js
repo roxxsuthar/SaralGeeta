@@ -35,7 +35,19 @@ const makeSelectOtpDetails = () =>
 const makeSelectIdealDetails = () =>
   createSelector(selectAppDomain, (substate) => substate.selectedIdeal || null);
 const makeSelectIntroVideo = () =>
-  createSelector(selectAppDomain, (substate) => substate.introVideo);
+  createSelector(selectAppDomain, (substate) => {
+    const today = new Date().toDateString();
+    const lastPlayedDate = substate.introVideoDate;
+
+    // If intro video has never been played, or was played on a different day, return false
+    // This will show the intro video
+    if (!lastPlayedDate || lastPlayedDate !== today) {
+      return false;
+    }
+
+    // If intro video was already played today, return true (don't show again)
+    return substate.introVideo;
+  });
 
 const makeSelectAppLoading = () =>
   createSelector(selectAppDomain, (substate) => substate.loading);

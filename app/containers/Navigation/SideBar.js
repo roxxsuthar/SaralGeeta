@@ -72,7 +72,11 @@ const SideBar = (props) => {
                   <IMAGES.DashBoard height="100%" width="100%" />
                 </View>
               )}
-              onPress={() => props.navigation.navigate(Navigation.Home)}
+              onPress={() =>
+                props.navigation.navigate('HomeStack', {
+                  screen: Navigation.Home,
+                })
+              }
             />
           </View>
           <View style={styles.draweritems}>
@@ -100,6 +104,16 @@ const SideBar = (props) => {
                 </View>
               )}
               onPress={() => props.navigation.navigate(Navigation.ContactUs)}
+            />
+            <DrawerItem
+              label={sideBarMessage.instruction.defaultMessage}
+              labelStyle={styles.label}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.Privacy height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate(Navigation.Instructions)}
             />
             <DrawerItem
               label={sideBarMessage.privacyPolicy.defaultMessage}

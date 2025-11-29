@@ -5,7 +5,7 @@ const APIS = {
   VERIFY_OTP: '/verify-otp',
   IDEALS: '/list-ideal',
   CHAPTERS: '/chapters',
-  PROFILE: '/auth/users',
+  PROFILE: '/user/profile',
   UPDATE_USER: '/user/update',
   SHLOKS: '/shloke',
   CONTACT_US: '/contact-us',
@@ -14,7 +14,7 @@ const APIS = {
   SAVE_RESULT: '/submit-result',
   RECENT_WATCHED: '/recent-shlokes',
   LOG_OUT: '/user/logout',
-  OAUTH:'/auth/social-media'
+  OAUTH: '/auth/social-media',
 };
 export const API_URL = ' https://app.saralgita.in/api';
 

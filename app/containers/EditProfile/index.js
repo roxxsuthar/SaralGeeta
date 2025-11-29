@@ -59,7 +59,7 @@ function EditProfile({
   const validationSchema = Yup.object().shape({
     first_name: Yup.string().required('First name is required'),
     last_name: Yup.string().required('Last name is required'),
-    language: Yup.string().required('Language is required'),
+    language_id: Yup.string().required('Language is required'),
     email: Yup.string()
       .required('Email is required')
       .matches(
@@ -99,7 +99,7 @@ function EditProfile({
           initialValues={{
             first_name: user?.first_name || '',
             last_name: user?.last_name || '',
-            language: user?.language || '',
+            language_id: user?.language_id || '',
             email: user?.email || '',
             gender: user?.gender || '',
           }}
@@ -229,14 +229,14 @@ function EditProfile({
                         <SelectInput
                           label="Select language"
                           options={transformData(editProfile?.language)}
-                          value={values.language}
+                          value={values.language_id}
                           onSelect={(item) =>
-                            setFieldValue('language', item.value)
+                            setFieldValue('language_id', item.value)
                           }
                         />
-                        {touched.language && errors.language && (
+                        {touched.language_id && errors.language_id && (
                           <CustomText style={styles.errorText}>
-                            {errors.language}
+                            {errors.language_id}
                           </CustomText>
                         )}
                       </View>

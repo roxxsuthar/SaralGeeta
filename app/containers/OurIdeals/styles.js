@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     marginHorizontal: wp(16),
-    marginTop: hp(128),
+    marginTop: hp(100),
   },
   chakraStyle: {
     position: 'absolute',
@@ -22,8 +22,9 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: hp(24),
     lineHeight: hp(40),
-    color: COLORS.black,
+    color: COLORS.white,
     fontWeight: '600',
+    textAlign: 'center',
   },
   contentContainerStyle: {
     paddingBottom: hp(24),
@@ -67,6 +68,7 @@ const styles = StyleSheet.create({
     color: COLORS.firefly,
     fontWeight: '700',
     width: wp(143),
+    marginRight: wp(60),
   },
   cardIcon: {
     height: hp(62),
