@@ -77,6 +77,7 @@ const RecordingInterface = ({
         <>
           {/* Control buttons - Previous, Play Again, Next */}
           <View style={styles.controlContainer}>
+            {/* Left arrow - top left */}
             {shlokIndex > 0 && (
               <TouchableOpacity
                 style={styles.controlButtonStyle}
@@ -89,10 +90,12 @@ const RecordingInterface = ({
               </TouchableOpacity>
             )}
 
-            <View>
+            {/* Right side container for right arrow and replay button */}
+            <View style={styles.fixRightButton}>
+              {/* Right arrow - top right */}
               {shlokIndex + 1 < (shloks?.data?.length || 0) && (
                 <TouchableOpacity
-                  style={styles.controlButtonStyle}
+                  style={styles.controlButtonStyle2}
                   onPress={getNextShlok}
                   activeOpacity={0.8}
                 >
@@ -101,6 +104,8 @@ const RecordingInterface = ({
                   </View>
                 </TouchableOpacity>
               )}
+
+              {/* Replay button - bottom right */}
               <TouchableOpacity
                 style={styles.controlButtonStyle1}
                 onPress={playAgain}

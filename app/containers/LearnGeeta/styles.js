@@ -89,16 +89,17 @@ const styles = StyleSheet.create({
   // Control buttons styles
   controlContainer: {
     position: 'absolute',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     bottom: hp(60),
-    flexDirection: 'row',
     zIndex: 1000,
     width: wp(550),
+    height: hp(120),
     paddingHorizontal: wp(24),
   },
 
   controlButtonStyle: {
+    position: 'absolute',
+    left: wp(24),
+    top: hp(70),
     justifyContent: 'center',
     alignItems: 'center',
     padding: hp(3),
@@ -108,11 +109,28 @@ const styles = StyleSheet.create({
 
   controlButtonStyle1: {
     position: 'absolute',
+    right: 0,
+    top: hp(60),
     justifyContent: 'center',
     alignItems: 'center',
     height: hp(48),
     width: wp(48),
-    marginTop: hp(60),
+  },
+  fixRightButton: {
+    position: 'absolute',
+    right: wp(24),
+    top: hp(70),
+    bottom: 0,
+  },
+  controlButtonStyle2: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: hp(3),
+    height: hp(48),
+    width: wp(48),
   },
 
   controlIconStyle: {
