@@ -12,6 +12,7 @@ import {
 } from './actions';
 
 function* getShloksDetailHandler({ payload }) {
+  console.log('------------', payload);
   let url = Helpers.getUrl(APIS.SHLOKS);
   url = `${url}/${payload.shlok?.id}/media`;
   console.log('--url--', url);

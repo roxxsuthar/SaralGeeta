@@ -55,7 +55,7 @@ const RecordingInterface = ({
                 <React.Fragment key={idx}>
                   <CustomText
                     style={{
-                      fontSize: hp(24),
+                      fontSize: hp(22),
                       fontFamily: FONTS.HINDI,
                       fontWeight: '700',
                       color: COLOR_ARRAY[idx],

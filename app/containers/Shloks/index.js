@@ -24,7 +24,8 @@ import { setFontFamily } from '../../utils/device';
 import { makeSelectAppLanguage } from '../App/selectors';
 import { FONTS, IMAGES } from '../../constants';
 import { getShloks } from './actions';
-import { Navigation } from '../../constants/constants';
+import { COLOR_ARRAY, Navigation } from '../../constants/constants';
+import { hp } from '../../utils/responsive';
 
 function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
   const { currentLanguage } = language;
@@ -36,6 +37,7 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
 
   const navigateToLearnGeeta = useCallback(
     (item) => {
+      console.log('-----test-------', item);
       navigation.navigate(Navigation.LearnGeeta, item);
     },
     [navigation],
@@ -65,20 +67,25 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
               {get(item, 'shloke_parts', []).map((part, idx) => (
                 <React.Fragment key={idx}>
                   <CustomText
-                    style={Object.assign(
-                      setFontFamily(currentLanguage, FONTS.HINDI, FONTS.HINDI),
-                      styles.cardTitle,
-                    )}
+                    style={{
+                      fontSize: hp(20),
+                      fontFamily: FONTS.HINDI,
+                      fontWeight: '400',
+                      color: COLOR_ARRAY[idx],
+                    }}
                   >
                     {part}
+                    {idx === 3 && (
+                      <CustomText style={styles.cardTitle1}>
+                        ||{get(item, 'chapter.serial', '')},
+                        {get(item, 'name', '')}||
+                      </CustomText>
+                    )}
                   </CustomText>
-                  {idx < 3 && ' '}
+                  {idx < 3 && (idx === 1 ? '\n' : ' ')}
                 </React.Fragment>
               ))}
-              {'\n'}
-              <CustomText style={styles.cardTitle1}>
-                ||{get(item, 'chapter.serial', '')},{get(item, 'name', '')}||
-              </CustomText>
+              {'  '}
             </CustomText>
           </View>
         </TouchableOpacity>

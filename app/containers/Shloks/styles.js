@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
     fontSize: hp(20),
     fontWeight: '600',
     lineHeight: hp(20),
-    color: COLORS.doveGray,
     flexWrap: 'wrap',
   },
   languageText: {

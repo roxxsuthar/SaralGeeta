@@ -220,6 +220,7 @@ const styles = StyleSheet.create({
 
   closeButton: {
     padding: hp(5),
+    alignItems: 'flex-end',
   },
 
   drawerContent: {
@@ -232,6 +233,32 @@ const styles = StyleSheet.create({
     fontSize: hp(16),
     lineHeight: hp(24),
     color: '#333333',
+  },
+  text: {
+    fontSize: hp(16),
+    lineHeight: hp(24),
+    fontWeight: '600',
+    color: '#333333',
+    marginTop: hp(10),
+  },
+  shloke: {
+    fontSize: hp(16),
+    lineHeight: hp(24),
+    color: '#333333',
+  },
+  commentory: {
+    fontSize: hp(14),
+    lineHeight: hp(24),
+    fontWeight: '600',
+    color: '#333333',
+    textAlign: 'center',
+  },
+  chapterName: {
+    fontSize: hp(16),
+    lineHeight: hp(24),
+    fontWeight: '600',
+    color: '#333333',
+    textAlign: 'center',
   },
 });
 

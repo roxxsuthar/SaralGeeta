@@ -263,6 +263,9 @@ function LearnGeeta({
           onClose={() => setIsDrawerVisible(false)}
           translationContent={translationContent}
           currentLanguage={currentLanguage}
+          commentary={learnGeeta?.data?.commentary}
+          shloke={learnGeeta?.data?.shloke_parts}
+          chapterDetail={learnGeeta?.data?.chapter}
         />
 
         <VideoPlayer
