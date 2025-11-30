@@ -24,6 +24,7 @@ import {
 import makeSelectNavigation from './selectors';
 import { getProfile } from '../Profile/actions';
 import strings from '../../../i18n';
+import { setLanguage } from '../App/actions';
 
 export function Navigation({
   navigation,
@@ -32,6 +33,7 @@ export function Navigation({
   token,
   user,
   handleGetProfile,
+  _handleSetLanguage,
 }) {
   const { isLanguageSelected, currentLanguage } = language;
   const { isOnboardingVisited } = onboarding;
@@ -49,6 +51,7 @@ export function Navigation({
   useEffect(() => {
     if (user?.language) {
       strings.setLanguage(user?.language);
+      _handleSetLanguage(user?.language);
     }
   }, [user?.language]);
 
@@ -88,6 +91,7 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     handleGetProfile: () => dispatch(getProfile()),
+    _handleSetLanguage: (payload) => dispatch(setLanguage(payload)),
   };
 }
 

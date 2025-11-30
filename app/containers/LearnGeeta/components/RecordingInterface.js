@@ -63,6 +63,7 @@ const RecordingInterface = ({
                     }}
                   >
                     {item}
+                    {idx === 3 && '||'}
                   </CustomText>
                   {idx < 3 && (idx === 1 ? '\n' : ' ')}
                 </React.Fragment>

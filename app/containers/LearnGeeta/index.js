@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -14,12 +14,17 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useAudio, useVideo, useRecording, useAppState } from './hooks';
 
 // Components
-import { VideoPlayer, RecordingInterface } from './components';
+import {
+  VideoPlayer,
+  RecordingInterface,
+  TranslationDrawer,
+} from './components';
 
 // Redux
 import makeSelectLearnGeeta from './selectors';
 import { getShloksDetail, saveResult } from './actions';
 import {
+  makeSelectAppLanguage,
   makeSelectIdealDetails,
   makeSelectIntroVideo,
   makeSelectUser,
@@ -46,11 +51,15 @@ function LearnGeeta({
   handleSaveResult,
   handleGetShloks,
   ourIdeals,
+  language,
 }) {
   const videoRef = useRef(null);
+
+  const { currentLanguage } = language;
   // Local state
   const [isButton, setIsButton] = useState(false);
   const [shlokIndex, setShlokIndex] = useState();
+  const [isDrawerVisible, setIsDrawerVisible] = useState(false);
 
   // Custom hooks - keep audio for recording, but don't use playback functions
   const { audio } = useAudio(learnGeeta);
@@ -222,6 +231,8 @@ function LearnGeeta({
   // Show loading animation after intro video
   const shouldShowLoading = isIntroVideoPlayed && (isLoading || !hasVideoUrl);
 
+  const translationContent = learnGeeta?.data?.translation?.translation || '';
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -235,6 +246,25 @@ function LearnGeeta({
         style={styles.gradientBorder}
         resizeMode="cover"
       >
+        {/* Eye Icon - Top Right */}
+        {isIntroVideoPlayed && (
+          <TouchableOpacity
+            style={styles.eyeIconButton}
+            onPress={() => setIsDrawerVisible(true)}
+            activeOpacity={0.8}
+          >
+            <IMAGES.InfoIcon height={28} width={28} />
+          </TouchableOpacity>
+        )}
+
+        {/* Translation Drawer */}
+        <TranslationDrawer
+          visible={isDrawerVisible}
+          onClose={() => setIsDrawerVisible(false)}
+          translationContent={translationContent}
+          currentLanguage={currentLanguage}
+        />
+
         <VideoPlayer
           videoRef={videoRef}
           videoSource={getVideoSource()}
@@ -328,6 +358,7 @@ LearnGeeta.propTypes = {
   handleSaveResult: PropTypes.func.isRequired,
   handleGetShloks: PropTypes.func.isRequired,
   ourIdeals: PropTypes.object,
+  language: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -337,6 +368,7 @@ const mapStateToProps = createStructuredSelector({
   shloks: makeSelectShloks(),
   introVideo: makeSelectIdealDetails(),
   ourIdeals: makeSelectOurIdeals(),
+  language: makeSelectAppLanguage(),
 });
 
 function mapDispatchToProps(dispatch) {

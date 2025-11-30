@@ -163,6 +163,76 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
   },
+
+  // Eye Icon styles
+  eyeIconButton: {
+    position: 'absolute',
+    top: hp(20),
+    right: wp(20),
+    zIndex: 1001,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: hp(20),
+    padding: hp(8),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  // Drawer styles
+  drawerOverlay: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+
+  drawerBackdrop: {
+    flex: 1,
+  },
+
+  drawerContainer: {
+    width: wp(300),
+    height: '100%',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: -2,
+      height: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+
+  drawerHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: wp(20),
+    paddingVertical: hp(15),
+    borderBottomWidth: 1,
+    borderBottomColor: '#E0E0E0',
+  },
+
+  drawerTitle: {
+    fontSize: hp(20),
+    fontWeight: '700',
+    color: '#000000',
+  },
+
+  closeButton: {
+    padding: hp(5),
+  },
+
+  drawerContent: {
+    flex: 1,
+    paddingHorizontal: wp(20),
+    paddingVertical: hp(15),
+  },
+
+  translationContent: {
+    fontSize: hp(16),
+    lineHeight: hp(24),
+    color: '#333333',
+  },
 });
 
 export default styles;
