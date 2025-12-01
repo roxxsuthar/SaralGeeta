@@ -45,8 +45,10 @@ export function Navigation({
   }, []);
 
   useEffect(() => {
-    handleGetProfile();
-  }, []);
+    if (user) {
+      handleGetProfile();
+    }
+  }, [user?.id]);
 
   useEffect(() => {
     if (user?.language) {

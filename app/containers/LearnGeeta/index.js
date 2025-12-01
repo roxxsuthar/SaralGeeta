@@ -19,6 +19,7 @@ import {
   RecordingInterface,
   TranslationDrawer,
 } from './components';
+import CustomText from '../../components/CustomText';
 
 // Redux
 import makeSelectLearnGeeta from './selectors';
@@ -284,6 +285,17 @@ function LearnGeeta({
           learnGeeta={learnGeeta}
           user={user}
         />
+
+        {/* Skip button for intro video */}
+        {!isIntroVideoPlayed && !shouldShowIntroLoading && (
+          <TouchableOpacity
+            style={styles.skipButton}
+            onPress={handleIntroPlay}
+            activeOpacity={0.8}
+          >
+            <CustomText style={styles.skipButtonText}>Skip</CustomText>
+          </TouchableOpacity>
+        )}
 
         {shouldShowIntroLoading && (
           <FastImage

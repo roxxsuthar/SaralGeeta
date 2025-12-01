@@ -260,6 +260,26 @@ const styles = StyleSheet.create({
     color: '#333333',
     textAlign: 'center',
   },
+
+  // Skip button styles
+  skipButton: {
+    position: 'absolute',
+    top: hp(20),
+    right: wp(20),
+    zIndex: 1001,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    borderRadius: hp(8),
+    paddingHorizontal: wp(20),
+    paddingVertical: hp(10),
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  skipButtonText: {
+    fontSize: hp(16),
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
 });
 
 export default styles;

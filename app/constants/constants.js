@@ -51,7 +51,7 @@ export const VIDEO_BUFFER_CONFIG = {
 export const VIDEO_PROGRESS_UPDATE_INTERVAL = 250;
 
 // UI Constants
-export const COLOR_ARRAY = ['#9C27B0', '#4CAF50', '#2196F3', '#FF9800'];
+export const COLOR_ARRAY = ['#9C27B0', '#4CAF50', '#2196F3', '#fb732b'];
 
 // Polling Configuration
 export const TRANSCRIPTION_POLL_INTERVAL = 1000;

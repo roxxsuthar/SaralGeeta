@@ -356,7 +356,7 @@
     },
     "contactUs": {
       "id": "app.container.SideBar.contactUs",
-      "defaultMessage": "Contact Us"
+      "defaultMessage": "Suggestion box"
     },
     "privacyPolicy": {
       "id": "app.container.SideBar.privacyPolicy",

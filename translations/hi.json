@@ -352,7 +352,7 @@
     },
     "contactUs": {
       "id": "app.container.SideBar.contactUs",
-      "defaultMessage": "संपर्क करें"
+      "defaultMessage": "सुझाव पत्रिका"
     },
     "privacyPolicy": {
       "id": "app.container.SideBar.privacyPolicy",
