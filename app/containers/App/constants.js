@@ -25,6 +25,7 @@ export const UPDATE_USER_DETAILS_FAIL =
 
 export const SELECT_IDEALS = 'app/containers/App/SELECT_IDEALS';
 export const INTRO_VIDEO_PLAY = 'app/containers/App/INTRO_VIDEO_PLAY';
+export const INTRO_VIDEO_RESET = 'app/containers/App/INTRO_VIDEO_RESET';
 
 export const GET_PROFILE = 'app/containers/App/GET_PROFILE';
 export const GET_PROFILE_SUCCESS = 'app/containers/App/GET_PROFILE_SUCCESS';
@@ -40,4 +41,4 @@ export const LOGOUT_USER = 'app/containers/App/LOGOUT_USER';
 export const LOGOUT_USER_SUCCESS = 'app/containers/App/LOGOUT_USER_SUCCESS';
 export const LOGOUT_USER_FAIL = 'app/containers/App/LOGOUT_USER_FAIL';
 
-export const OAUTH_ACTION="app/container/App/OAUTH_ACTION"
+export const OAUTH_ACTION = 'app/container/App/OAUTH_ACTION';

@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
+import { CommonActions } from '@react-navigation/native';
 import isEqual from 'lodash/isEqual';
 
 import { createStructuredSelector } from 'reselect';
@@ -106,11 +107,28 @@ function OurIdeals({
     };
     handleUpdateUser(payload);
 
-    // Navigate through Drawer to HomeStack (for initial setup flow)
-    navigation.navigate('Drawer', {
-      screen: 'HomeStack',
-      params: { screen: Navigation.Home },
-    });
+    // Clear navigation stack and navigate to Home
+    // This makes Home the root screen, preventing back navigation to OurIdeals
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'Drawer',
+            state: {
+              routes: [
+                {
+                  name: 'HomeStack',
+                  state: {
+                    routes: [{ name: Navigation.Home }],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      }),
+    );
   }, [selectCard, user, navigation]);
 
   return (

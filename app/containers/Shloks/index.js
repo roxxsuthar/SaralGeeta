@@ -24,10 +24,18 @@ import { setFontFamily } from '../../utils/device';
 import { makeSelectAppLanguage } from '../App/selectors';
 import { FONTS, IMAGES } from '../../constants';
 import { getShloks } from './actions';
+import { resetIntroVideo } from '../App/actions';
 import { COLOR_ARRAY, Navigation } from '../../constants/constants';
 import { hp } from '../../utils/responsive';
 
-function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
+function Shloks({
+  language,
+  handleGetShloks,
+  route,
+  shloksData,
+  navigation,
+  handleResetIntroVideo,
+}) {
   const { currentLanguage } = language;
 
   useEffect(() => {
@@ -37,11 +45,22 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
 
   const navigateToLearnGeeta = useCallback(
     (item) => {
-      console.log('-----test-------', item);
       navigation.navigate(Navigation.LearnGeeta, item);
     },
     [navigation],
   );
+
+  const navigateToIntroVideo = useCallback(() => {
+    // Reset intro video state so it plays again
+    handleResetIntroVideo();
+
+    // Get the first shlok from the chapter
+    const firstShlok = get(shloksData, 'data[0]');
+    if (firstShlok) {
+      // Navigate to LearnGeeta - intro video will play because state is reset
+      navigation.navigate(Navigation.LearnGeeta, firstShlok);
+    }
+  }, [shloksData, navigation, handleResetIntroVideo]);
 
   const renderItem = useCallback(
     (item) => {
@@ -155,12 +174,12 @@ function Shloks({ language, handleGetShloks, route, shloksData, navigation }) {
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.8}
-              // onPress={backHandler}
+              onPress={navigateToIntroVideo}
               style={styles.headerSearchContainer}
             >
-              {/* <View style={styles.icon}>
+              <View style={styles.icon}>
                 <IMAGES.WhitePlayIcon height="100%" width="100%" />
-              </View> */}
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -202,7 +221,10 @@ const mapStateToProps = createStructuredSelector({
 });
 
 function mapDispatchToProps(dispatch) {
-  return { handleGetShloks: (payload) => dispatch(getShloks(payload)) };
+  return {
+    handleGetShloks: (payload) => dispatch(getShloks(payload)),
+    handleResetIntroVideo: () => dispatch(resetIntroVideo()),
+  };
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

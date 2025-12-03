@@ -12,6 +12,12 @@ const DashboardStack = createStackNavigator();
 
 const DashboardNavigator = () => {
   const idealDetails = useSelector(makeSelectIdealDetails());
+
+  // Set initial route based on whether user has selected an ideal
+  const initialRouteName = isEqual(idealDetails, null)
+    ? Navigation.OurIdeals
+    : 'Drawer';
+
   return (
     <DashboardStack.Navigator
       screenOptions={{
@@ -22,16 +28,15 @@ const DashboardNavigator = () => {
         animationTypeForReplace: 'pop',
         animationEnabled: true,
       }}
+      initialRouteName={initialRouteName}
     >
-      {isEqual(idealDetails, null) && (
-        <DashboardStack.Screen
-          name={Navigation.OurIdeals}
-          component={OurIdeals}
-          options={{
-            headerShown: false,
-          }}
-        />
-      )}
+      <DashboardStack.Screen
+        name={Navigation.OurIdeals}
+        component={OurIdeals}
+        options={{
+          headerShown: false,
+        }}
+      />
       <DashboardStack.Screen
         name="Drawer"
         component={DrawerNavigator}

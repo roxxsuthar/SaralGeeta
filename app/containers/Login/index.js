@@ -14,6 +14,7 @@ import {
   ActivityIndicator,
   Alert,
 } from 'react-native';
+import { CommonActions } from '@react-navigation/native';
 
 import {
   GoogleSignin,
@@ -120,9 +121,19 @@ function Login({
         idToken: token,
         social_media: type,
       };
-      handleOAuthHandler(payload);
+      const callback = () => {
+        // Reset navigation stack and navigate to DashboardNavigator
+        // This prevents going back to Login screen
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [{ name: 'DashboardNavigator' }],
+          }),
+        );
+      };
+      handleOAuthHandler(payload, callback);
     },
-    [handleOAuthHandler],
+    [handleOAuthHandler, navigation],
   );
 
   const handleGoogleLogin = useCallback(async () => {
@@ -403,7 +414,8 @@ function mapDispatchToProps(dispatch) {
   return {
     handleSendOtp: (payload, callback) =>
       dispatch(sendOtpAction(payload, callback)),
-    handleOAuthHandler: (payload) => dispatch(oAuthAction(payload)),
+    handleOAuthHandler: (payload, callback) =>
+      dispatch(oAuthAction(payload, callback)),
   };
 }
 

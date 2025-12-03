@@ -11,6 +11,7 @@ import {
   ImageBackground,
   Platform,
 } from 'react-native';
+import { CommonActions } from '@react-navigation/native';
 
 import FastImage from 'react-native-fast-image';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
@@ -127,11 +128,21 @@ function OtpScreen({
         phone: otpDetails?.phone,
         otp: oneTimeInput,
       };
+      const callback = () => {
+        // Reset navigation stack and navigate to DashboardNavigator
+        // This prevents going back to OTP/Login screens
+        navigation.dispatch(
+          CommonActions.reset({
+            index: 0,
+            routes: [{ name: 'DashboardNavigator' }],
+          }),
+        );
+      };
       setTimeout(() => {
-        handleVerifyOtp(payload);
+        handleVerifyOtp(payload, callback);
       }, 3000);
     }
-  }, [oneTimeInput]);
+  }, [oneTimeInput, otpDetails, navigation, handleVerifyOtp]);
 
   // Commented out - SMS handling is now done inline in useEffect above
   // const otpHandler = useCallback(async (message) => {
@@ -158,13 +169,22 @@ function OtpScreen({
   }, [expired, otpDetails]);
 
   const navigateToNext = useCallback(() => {
-    // Ensure 'Login' is defined in your navigator
     const payload = {
       phone: otpDetails?.phone,
       otp: oneTimeInput,
     };
-    handleVerifyOtp(payload);
-  }, [navigation, otpDetails]);
+    const callback = () => {
+      // Reset navigation stack and navigate to DashboardNavigator
+      // This prevents going back to OTP/Login screens
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{ name: 'DashboardNavigator' }],
+        }),
+      );
+    };
+    handleVerifyOtp(payload, callback);
+  }, [navigation, otpDetails, oneTimeInput, handleVerifyOtp]);
 
   const backHandler = useCallback(() => navigation.goBack(), [navigation]);
 
@@ -332,7 +352,8 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleVerifyOtp: (payload) => dispatch(verifyOtpAction(payload)),
+    handleVerifyOtp: (payload, callback) =>
+      dispatch(verifyOtpAction(payload, callback)),
     handleSendOtp: (payload) => dispatch(sendOtpAction(payload)),
   };
 }

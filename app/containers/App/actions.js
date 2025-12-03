@@ -19,13 +19,14 @@ import {
   UPDATE_USER_DETAILS_FAIL,
   SELECT_IDEALS,
   INTRO_VIDEO_PLAY,
+  INTRO_VIDEO_RESET,
   EDIT_PROFILE_ACTION,
   EDIT_PROFILE_ACTION_SUCCESS,
   EDIT_PROFILE_ACTION_FAIL,
   LOGOUT_USER,
   LOGOUT_USER_SUCCESS,
   LOGOUT_USER_FAIL,
-  OAUTH_ACTION
+  OAUTH_ACTION,
 } from './constants';
 
 export function defaultAction() {
@@ -68,10 +69,11 @@ export function sendOtpFailAction() {
   };
 }
 
-export function verifyOtpAction(payload) {
+export function verifyOtpAction(payload, callback) {
   return {
     type: VERIFY_OTP,
     payload,
+    callback,
   };
 }
 
@@ -121,6 +123,12 @@ export function introVideoWatched() {
   };
 }
 
+export function resetIntroVideo() {
+  return {
+    type: INTRO_VIDEO_RESET,
+  };
+}
+
 export function editProfile(payload, navigation) {
   return {
     type: EDIT_PROFILE_ACTION,
@@ -161,9 +169,10 @@ export function logOutUserFail() {
   };
 }
 
-export function oAuthAction(payload) {
+export function oAuthAction(payload, callback) {
   return {
     type: OAUTH_ACTION,
     payload,
+    callback,
   };
 }

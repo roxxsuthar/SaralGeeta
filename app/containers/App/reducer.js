@@ -13,6 +13,7 @@ import {
   GET_PROFILE_FAIL,
   GET_PROFILE_SUCCESS,
   INTRO_VIDEO_PLAY,
+  INTRO_VIDEO_RESET,
   LOGIN_ACTION,
   LOGIN_ACTION_FAIL,
   LOGIN_ACTION_SUCCESS,
@@ -104,6 +105,10 @@ const appReducer = (state = initialState, action) =>
       case INTRO_VIDEO_PLAY:
         draft.introVideo = true;
         draft.introVideoDate = new Date().toDateString(); // Store current date
+        break;
+      case INTRO_VIDEO_RESET:
+        draft.introVideo = false;
+        draft.introVideoDate = null; // Clear the date
         break;
 
       case GET_PROFILE:
