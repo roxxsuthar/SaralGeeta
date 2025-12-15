@@ -38,6 +38,13 @@ export function Navigation({
   const { isLanguageSelected, currentLanguage } = language;
   const { isOnboardingVisited } = onboarding;
 
+  // Set initial language in strings object
+  useEffect(() => {
+    if (currentLanguage) {
+      strings.setLanguage(currentLanguage);
+    }
+  }, [currentLanguage]);
+
   useEffect(() => {
     setTimeout(() => {
       SplashScreen.hide();

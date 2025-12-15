@@ -28,11 +28,11 @@
     },
     "heading": {
       "id": "container.OnboardingOne.heading",
-      "defaultMessage": "Gita Learn - Simplified"
+      "defaultMessage": "Welcome to Saral Geeta"
     },
     "description": {
       "id": "container.OnboardingOne.description",
-      "defaultMessage": "Read the Gita anytime, where ever you wish."
+      "defaultMessage": "Learn and understand the Bhagavad Gita in a simple and interactive way. Practice pronunciation and explore the teachings of Lord Krishna."
     },
     "buttonLabel": {
       "id": "container.OnboardingOne.buttonLabel",
@@ -46,15 +46,15 @@
     },
     "heading": {
       "id": "container.OnboardingSecond.heading",
-      "defaultMessage": "Gita Learn - Simplified"
+      "defaultMessage": "Learn with Your Ideal"
     },
     "description": {
       "id": "container.OnboardingSecond.description",
-      "defaultMessage": "Read the Gita anytime, where ever you wish."
+      "defaultMessage": "Choose your spiritual guide and embark on a personalized journey through the Bhagavad Gita. Practice with audio, video, and interactive lessons."
     },
     "buttonLabel": {
       "id": "container.OnboardingSecond.buttonLabel",
-      "defaultMessage": "Finish"
+      "defaultMessage": "Get Started"
     }
   },
   "language": {

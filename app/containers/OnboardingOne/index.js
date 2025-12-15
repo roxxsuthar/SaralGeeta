@@ -4,7 +4,7 @@
  *
  */
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { View, Image, StatusBar, SafeAreaView } from 'react-native';
 import { createStructuredSelector } from 'reselect';
@@ -20,8 +20,16 @@ import { makeSelectAppLanguage } from '../App/selectors';
 import { setFontFamily } from '../../utils/device';
 
 function OnboardingOne({ navigation, language }) {
-  const { OnboardingOne: OnboardingOneMessage } = strings;
   const { currentLanguage } = language;
+  const [messages, setMessages] = useState(strings.OnboardingOne);
+
+  // Set the language in strings object based on Redux state
+  useEffect(() => {
+    if (currentLanguage) {
+      strings.setLanguage(currentLanguage);
+      setMessages(strings.OnboardingOne); // Update messages after language change
+    }
+  }, [currentLanguage]);
 
   const navigateToSecond = useCallback(() => {
     navigation.navigate(Navigation.OnboardingSecond);
@@ -47,7 +55,7 @@ function OnboardingOne({ navigation, language }) {
             styles.headingText,
           )}
         >
-          {OnboardingOneMessage.heading.defaultMessage}
+          {messages.heading.defaultMessage}
         </CustomText>
         <CustomText
           style={Object.assign(
@@ -55,10 +63,10 @@ function OnboardingOne({ navigation, language }) {
             styles.descriptionText,
           )}
         >
-          {OnboardingOneMessage.description.defaultMessage}
+          {messages.description.defaultMessage}
         </CustomText>
         <CustomButton
-          title={OnboardingOneMessage.buttonLabel.defaultMessage}
+          title={messages.buttonLabel.defaultMessage}
           labelStyle={Object.assign(
             setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
             styles.buttonLabel,

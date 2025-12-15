@@ -4,7 +4,7 @@
  *
  */
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { View, Image, StatusBar, SafeAreaView } from 'react-native';
 import { createStructuredSelector } from 'reselect';
@@ -27,8 +27,16 @@ function OnboardingSecond({
   _handleSetOnboarding,
   token,
 }) {
-  const { OnboardingSecond: OnboardingSecondMessage } = strings;
   const { currentLanguage } = language;
+  const [messages, setMessages] = useState(strings.OnboardingSecond);
+
+  // Set the language in strings object based on Redux state
+  useEffect(() => {
+    if (currentLanguage) {
+      strings.setLanguage(currentLanguage);
+      setMessages(strings.OnboardingSecond); // Update messages after language change
+    }
+  }, [currentLanguage]);
 
   const navigateToLogin = useCallback(() => {
     _handleSetOnboarding();
@@ -61,7 +69,7 @@ function OnboardingSecond({
             styles.headingText,
           )}
         >
-          {OnboardingSecondMessage.heading.defaultMessage}
+          {messages.heading.defaultMessage}
         </CustomText>
         <CustomText
           style={Object.assign(
@@ -69,10 +77,10 @@ function OnboardingSecond({
             styles.descriptionText,
           )}
         >
-          {OnboardingSecondMessage.description.defaultMessage}
+          {messages.description.defaultMessage}
         </CustomText>
         <CustomButton
-          title={OnboardingSecondMessage.buttonLabel.defaultMessage}
+          title={messages.buttonLabel.defaultMessage}
           labelStyle={Object.assign(
             setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
             styles.buttonLabel,

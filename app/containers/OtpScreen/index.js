@@ -22,14 +22,13 @@ import { compose } from 'redux';
 import makeSelectOtpScreen from './selectors';
 import CustomText from '../../components/CustomText';
 import CustomButton from '../../components/CustomButton';
-import { OS, setFontFamily } from '../../utils/device';
+import { setFontFamily } from '../../utils/device';
 import { startCountdown, stopCountdown } from '../../utils/countdown';
 import {
   makeSelectAppLanguage,
   makeSelectAppLoading,
   makeSelectOtpDetails,
 } from '../App/selectors';
-import isEqual from 'lodash/isEqual';
 import gt from 'lodash/gt';
 import styles from './styles';
 import strings from '../../../i18n';
@@ -51,7 +50,7 @@ function OtpScreen({
   const timer = useRef(null);
   const otpRef = useRef(null);
   const [expired, setExpired] = useState(false);
-  const [oneTimeInput, setOneTimeInput] = useState(otpDetails?.otp?.toString());
+  const [oneTimeInput, setOneTimeInput] = useState();
 
   const onFinish = useCallback(() => setExpired(true), []);
   const onStart = useCallback(() => setExpired(false), []);

@@ -28,15 +28,15 @@
     },
     "heading": {
       "id": "container.OnboardingOne.heading",
-      "defaultMessage": "गीता लर्न - सरल"
+      "defaultMessage": "सरल गीता में आपका स्वागत है"
     },
     "description": {
       "id": "container.OnboardingOne.description",
-      "defaultMessage": "गीता को कभी भी, कहीं भी पढ़ें।"
+      "defaultMessage": "भगवद गीता को सरल और इंटरैक्टिव तरीके से सीखें और समझें। उच्चारण का अभ्यास करें और भगवान कृष्ण की शिक्षाओं का अन्वेषण करें।"
     },
     "buttonLabel": {
       "id": "container.OnboardingOne.buttonLabel",
-      "defaultMessage": "अगला"
+      "defaultMessage": "आगे बढ़ें"
     }
   },
   "OnboardingSecond": {
@@ -46,15 +46,15 @@
     },
     "heading": {
       "id": "container.OnboardingSecond.heading",
-      "defaultMessage": "गीता लर्न - सरल"
+      "defaultMessage": "अपने आदर्श के साथ सीखें"
     },
     "description": {
       "id": "container.OnboardingSecond.description",
-      "defaultMessage": "गीता को कभी भी, कहीं भी पढ़ें।"
+      "defaultMessage": "अपने आध्यात्मिक मार्गदर्शक को चुनें और भगवद गीता के माध्यम से एक व्यक्तिगत यात्रा शुरू करें। ऑडियो, वीडियो और इंटरैक्टिव पाठों के साथ अभ्यास करें।"
     },
     "buttonLabel": {
       "id": "container.OnboardingSecond.buttonLabel",
-      "defaultMessage": "समाप्त"
+      "defaultMessage": "शुरू करें"
     }
   },
   "language": {
