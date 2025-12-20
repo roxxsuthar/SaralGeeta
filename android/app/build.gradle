@@ -1,13 +1,19 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'com.facebook.react'
     id 'kotlin-parcelize'
     id 'com.google.gms.google-services'
+    id 'com.facebook.react'
 }
 
 def enableProguardInReleaseBuilds = false
-def jscFlavor = 'org.webkit:android-jsc:+'
+
+react {
+    root = file("../../")
+    reactNativeDir = file("../../node_modules/react-native")
+    codegenDir = file("../../node_modules/@react-native/codegen")
+    hermesEnabled = rootProject.ext.hermesEnabled.toBoolean()
+}
 
 android {
     ndkVersion rootProject.ext.ndkVersion
@@ -16,8 +22,8 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
-        apiVersion = "2.1"
-        languageVersion = "2.1"
+        apiVersion = "1.9"         
+        languageVersion = "1.9"
     }
 
     compileOptions {
@@ -26,10 +32,11 @@ android {
     }
 
     namespace "com.saralgita"
+    
     defaultConfig {
         applicationId "com.saralgita"
         minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
     }
@@ -72,35 +79,36 @@ android {
 
 dependencies {
     implementation("com.facebook.react:react-android")
-    implementation("com.google.android.gms:play-services-auth:20.7.0")
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.android.gms:play-services-auth:21.2.0")  // ← Updated
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))  // ← Updated
     implementation("com.google.firebase:firebase-analytics")
+
+    // AndroidX dependencies - updated for SDK 35
+    implementation("androidx.core:core-ktx:1.15.0")
+    implementation("androidx.activity:activity:1.9.3")
+    implementation("androidx.activity:activity-ktx:1.9.3")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.fragment:fragment:1.8.5")
+    implementation("androidx.window:window:1.3.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.8.7")
     
-    // AndroidX dependencies
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.activity:activity:1.8.2")
-    implementation("androidx.activity:activity-ktx:1.8.2")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.fragment:fragment:1.6.2")
-    implementation("androidx.window:window:1.2.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
-    
-    // React Native dependencies
+    // Material Components for theme
+    implementation("com.google.android.material:material:1.12.0")
+
+    // React Native JS engine
     if (rootProject.ext.hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
-        implementation project.ext.jscFlavor
+        implementation("com.facebook.react:react-android")
+        implementation("org.webkit:android-jsc:+")
     }
-    
+
     // Debug dependencies
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
-        exclude group:'com.squareup.okhttp3', module:'okhttp'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.squareup.okhttp3', module:'okhttp'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
     }
 }
-
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle")
-applyNativeModulesAppBuildGradle(project)

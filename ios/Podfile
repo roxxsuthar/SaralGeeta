@@ -22,10 +22,6 @@ target 'SaralGita' do
     :hermes_enabled => false
   )
 
-  target 'SaralGitaTests' do
-    inherit! :complete
-  end
-
   post_install do |installer|
     react_native_post_install(
       installer,

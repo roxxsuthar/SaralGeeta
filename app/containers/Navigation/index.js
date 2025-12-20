@@ -46,9 +46,8 @@ export function Navigation({
   }, [currentLanguage]);
 
   useEffect(() => {
-    setTimeout(() => {
-      SplashScreen.hide();
-    }, 3000);
+    console.warn('HIDING SPLASH SCREEN NOW');
+    SplashScreen.hide();
   }, []);
 
   useEffect(() => {

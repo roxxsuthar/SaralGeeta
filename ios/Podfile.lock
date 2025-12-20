@@ -1012,9 +1012,9 @@ PODS:
   - React-Mapbuffer (0.74.7):
     - glog
     - React-debug
-  - react-native-config (1.5.9):
-    - react-native-config/App (= 1.5.9)
-  - react-native-config/App (1.5.9):
+  - react-native-config (1.6.1):
+    - react-native-config/App (= 1.6.1)
+  - react-native-config/App (1.6.1):
     - React-Core
   - react-native-image-picker (8.2.1):
     - DoubleConversion
@@ -1088,6 +1088,27 @@ PODS:
     - Yoga
   - react-native-voice (3.2.4):
     - React-Core
+  - react-native-webview (13.16.0):
+    - DoubleConversion
+    - glog
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - React-nativeconfig (0.74.7)
   - React-NativeModulesApple (0.74.7):
     - glog
@@ -1475,6 +1496,7 @@ DEPENDENCIES:
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-video (from `../node_modules/react-native-video`)
   - "react-native-voice (from `../node_modules/@react-native-voice/voice`)"
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
@@ -1618,6 +1640,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-video"
   react-native-voice:
     :path: "../node_modules/@react-native-voice/voice"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-nativeconfig:
     :path: "../node_modules/react-native/ReactCommon"
   React-NativeModulesApple:
@@ -1751,13 +1775,14 @@ SPEC CHECKSUMS:
   React-jsitracing: 719445d613a2e34962e9991e86f603e81465d5ed
   React-logger: 87cddd161bd9784d60fc5528f21c57ca07d2962a
   React-Mapbuffer: 1cc78f4d99f0b72286776ebf3406afd816838055
-  react-native-config: ec6c5f8782a987964b80a6845e7b974d2d9b3020
+  react-native-config: 97ffff0aec29e12269f4dd2d41c6669c0056c7aa
   react-native-image-picker: 447631470556690f26644df6e93601f8f1d57819
   react-native-orientation-locker: 5819fd23ca89cbac0d736fb4314745f62716d517
   react-native-safe-area-context: 141eca0fd4e4191288dfc8b96a7c7e1c2983447a
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   react-native-video: 949e6e42142c1cf3f07a9742cd9256cad20e840a
   react-native-voice: f5e8eec2278451d0017eb6a30a6ccc726aca34e0
+  react-native-webview: eeb2c0240bfcc4a275c670faaaace32673f2e7bc
   React-nativeconfig: fc1e87992e794e20f5e22116221577f21e05a18c
   React-NativeModulesApple: 75fc400639652abb14255959a08472d5ffdf43bb
   React-perflogger: e9ebfc705cb9f60ef5d471637350ccab7abd0444
@@ -1805,6 +1830,6 @@ SPEC CHECKSUMS:
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: 6986e115ef4e300f1f5b4910d5eef51c711c8747
 
-PODFILE CHECKSUM: d71b8d47d04a50f4d28e7c44fbd5c10d886e3504
+PODFILE CHECKSUM: b3ecd91ba172d83cfbe0e76749a42ffe999209dd
 
 COCOAPODS: 1.16.2

@@ -1,20 +1,28 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     ext {
-        buildToolsVersion = "34.0.0"
-        minSdkVersion = 23
-        compileSdkVersion = 34
-        targetSdkVersion = 34
-        ndkVersion = "25.1.8937393"
-        kotlinVersion = "1.9.10"
+        buildToolsVersion = "36.0.0"
+        minSdkVersion = 24
+        compileSdkVersion = 36
+        targetSdkVersion = 36
+        ndkVersion = "26.1.10909125"
+        kotlinVersion = "1.9.24"
         hermesEnabled = true
     }
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.3.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("com.google.gms:google-services:4.4.0")
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
         maven {
             url("$rootDir/../node_modules/react-native/android")
         }
@@ -22,10 +30,11 @@ buildscript {
             url("$rootDir/../node_modules/@react-native/gradle-plugin")
         }
     }
-    dependencies {
-        classpath("com.android.tools.build:gradle:8.2.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-        classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath('com.google.gms:google-services:4.4.0')
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = "17"
+        allWarningsAsErrors = false
     }
 }

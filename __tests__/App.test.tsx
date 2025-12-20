@@ -1,12 +1,9 @@
-/**
- * @format
- */
-
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import ReactTestRenderer from 'react-test-renderer';
 import App from '../App';
-
-test('renders correctly', () => {
-  const tree = render(<App />);
-  expect(tree).toBeTruthy();
+ 
+test('renders correctly', async () => {
+  await ReactTestRenderer.act(() => {
+    ReactTestRenderer.create(<App />);
+  });
 });

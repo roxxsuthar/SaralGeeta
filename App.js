@@ -11,7 +11,6 @@ if (__DEV__) {
 }
 
 import SaralGeetaApp from './app/containers/App';
-
 import configureStore from './configureStore';
 
 enableScreens(true);
