@@ -1,5 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
+import 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Provider } from 'react-redux';
 import { enableScreens } from 'react-native-screens';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -20,13 +22,15 @@ const { store, persistor } = configureStore();
 
 function App() {
   return (
-    <SafeAreaProvider>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <SaralGeetaApp />
-        </PersistGate>
-      </Provider>
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <SaralGeetaApp />
+          </PersistGate>
+        </Provider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
 

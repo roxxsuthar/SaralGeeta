@@ -2,7 +2,7 @@
  * Metro configuration for React Native
  * https://github.com/facebook/react-native
  *
- * @format
+ * @type {import('@react-native/metro-config').MetroConfig}
  */
 
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');

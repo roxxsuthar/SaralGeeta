@@ -8,6 +8,7 @@ import org.devio.rn.splashscreen.SplashScreen
 
 class MainActivity : ReactActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Show splash using default show() overload to avoid missing style reference during build
         SplashScreen.show(this)
         super.onCreate(savedInstanceState)
     }

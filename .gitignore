@@ -33,6 +33,8 @@ android/commonlib/*
 android/mobilertc/*
 *.hprof
 
+.kotlin/
+
 # node.js
 #
 node_modules/
