@@ -1,0 +1,404 @@
+{
+  "App": {
+    "header": {
+      "id": "container.App.header",
+      "defaultMessage": "This is the App container!"
+    },
+    "languageUpdated": {
+      "id": "container.App.languageUpdated",
+      "defaultMessage": "App language has been updated!"
+    }
+  },
+  "Root": {
+    "header": {
+      "id": "container.Root.header",
+      "defaultMessage": "This is the Root container!"
+    }
+  },
+  "Language": {
+    "header": {
+      "id": "container.Language.header",
+      "defaultMessage": "This is the Language container!"
+    }
+  },
+  "OnboardingOne": {
+    "header": {
+      "id": "container.OnboardingOne.header",
+      "defaultMessage": "This is the Onboarding container!"
+    },
+    "heading": {
+      "id": "container.OnboardingOne.heading",
+      "defaultMessage": "Welcome to Saral Geeta"
+    },
+    "description": {
+      "id": "container.OnboardingOne.description",
+      "defaultMessage": "Learn and understand the Bhagavad Gita in a simple and interactive way. Practice pronunciation and explore the teachings of Lord Krishna."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingOne.buttonLabel",
+      "defaultMessage": "Next"
+    }
+  },
+  "OnboardingSecond": {
+    "header": {
+      "id": "container.OnboardingSecond.header",
+      "defaultMessage": "This is the Onboarding container!"
+    },
+    "heading": {
+      "id": "container.OnboardingSecond.heading",
+      "defaultMessage": "Learn with Your Ideal"
+    },
+    "description": {
+      "id": "container.OnboardingSecond.description",
+      "defaultMessage": "Choose your spiritual guide and embark on a personalized journey through the Bhagavad Gita. Practice with audio, video, and interactive lessons."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingSecond.buttonLabel",
+      "defaultMessage": "Get Started"
+    }
+  },
+  "language": {
+    "header": {
+      "id": "container.language.header",
+      "defaultMessage": "This is the Language container!"
+    },
+    "buttonLabel": {
+      "id": "container.language.buttonLabel",
+      "defaultMessage": "Continue"
+    }
+  },
+  "login": {
+    "heading": {
+      "id": "container.login.header",
+      "defaultMessage": "Welcome back!"
+    },
+    "subHeading": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "Please enter your credentials to sign in!"
+    },
+    "number": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "Mobile Number"
+    },
+    "typeHere": {
+      "id": "container.login.typeHere",
+      "defaultMessage": "Type here..."
+    },
+    "login": {
+      "id": "container.login.login",
+      "defaultMessage": "Login"
+    },
+    "continue": {
+      "id": "container.login.continue",
+      "defaultMessage": "Or Continue With"
+    },
+    "facebook": {
+      "id": "container.login.facebook",
+      "defaultMessage": "Facebook"
+    },
+    "google": {
+      "id": "container.login.google",
+      "defaultMessage": "Google"
+    },
+    "buttonLabel": {
+      "id": "container.login.buttonLabel",
+      "defaultMessage": "Continue"
+    },
+    "dont": {
+      "id": "container.login.dont",
+      "defaultMessage": "Don’t have account? "
+    },
+    "create": {
+      "id": "container.login.dont",
+      "defaultMessage": "Create Now"
+    },
+    "bottomSheetHeading": {
+      "id": "containers.login.bottomSheetHeading",
+      "defaultMessage": "Select your country"
+    },
+    "countryPlaceholder": {
+      "id": "containers.login.warningOtherHalf",
+      "defaultMessage": "Search by country name"
+    },
+    "placeholder": {
+      "id": "containers.login.placeholder",
+      "defaultMessage": "Phone number"
+    }
+  },
+  "otpScreen": {
+    "heading": {
+      "id": "container.otpScreen.header",
+      "defaultMessage": "Welcome back"
+    },
+    "subHeading": {
+      "id": "container.otpScreen.subHeading",
+      "defaultMessage": "Please enter the OTP sent to your registered mobile number."
+    },
+    "submit": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "Submit"
+    },
+    "enterOtp": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "Enter OTP here"
+    },
+    "dont": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "Didn’t receive the code? "
+    },
+    "create": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "Resend"
+    },
+    "minute": {
+      "id": "app.containers.otpScreen.minute",
+      "defaultMessage": "minute"
+    },
+    "second": {
+      "id": "app.containers.otpScreen.second",
+      "defaultMessage": "second left"
+    },
+    "minutes": {
+      "id": "app.containers.otpScreen.minutes",
+      "defaultMessage": "minutes"
+    },
+    "seconds": {
+      "id": "app.containers.otpScreen.seconds",
+      "defaultMessage": "seconds left"
+    },
+    "timeElapsed": {
+      "id": "app.containers.otpScreen.timeElapsed",
+      "defaultMessage": "Time Elapsed"
+    }
+  },
+  "OurIdeals": {
+    "buttonLabel": {
+      "id": "app.containers.OurIdeals.buttonLabel",
+      "defaultMessage": "Continue"
+    },
+    "ourIdeals": {
+      "id": "app.containers.OurIdeals.ourIdeals",
+      "defaultMessage": "Our Ideals"
+    }
+  },
+  "Home": {
+    "headerText": {
+      "id": "app.containers.Home.headerText",
+      "defaultMessage": "Chapters"
+    },
+    "chapters": {
+      "id": "app.containers.Home.chapters",
+      "defaultMessage": "Chapters"
+    },
+    "recent": {
+      "id": "app.containers.Home.recent",
+      "defaultMessage": "Recent"
+    },
+    "chapter": {
+      "id": "app.containers.Home.chapter",
+      "defaultMessage": "Chapter"
+    }
+  },
+  "Chapters": {
+    "headerText": {
+      "id": "app.containers.Chapters.headerText",
+      "defaultMessage": "Chapters"
+    }
+  },
+  "Shloks": {
+    "headerText": {
+      "id": "app.containers.Shloks.headerText",
+      "defaultMessage": "Shloks"
+    }
+  },
+  "contactUs": {
+    "heading": {
+      "id": "app.container.Contactus.heading",
+      "defaultMessage": "Contact Us"
+    },
+    "serviceType": {
+      "id": "app.container.Contactus.serviceType",
+      "defaultMessage": "Service Type"
+    },
+    "name": {
+      "id": "app.container.Contactus.name",
+      "defaultMessage": "Name"
+    },
+    "email": {
+      "id": "app.container.Contactus.email",
+      "defaultMessage": "Email"
+    },
+    "message": {
+      "id": "app.container.Contactus.message",
+      "defaultMessage": "Message"
+    },
+    "placeholder": {
+      "id": "app.container.Contactus.placeholder",
+      "defaultMessage": "Type here..."
+    },
+    "button": {
+      "id": "app.container.Contactus.button",
+      "defaultMessage": "Send Message"
+    }
+  },
+  "Profile": {
+    "heading": {
+      "id": "app.container.Profile.heading",
+      "defaultMessage": "Profile"
+    },
+    "name": {
+      "id": "app.container.Profile.name",
+      "defaultMessage": "Name"
+    },
+    "email": {
+      "id": "app.container.Profile.email",
+      "defaultMessage": "Email"
+    },
+    "mobile": {
+      "id": "app.container.Profile.mobile",
+      "defaultMessage": "Mobile"
+    },
+    "gender": {
+      "id": "app.container.Profile.gender",
+      "defaultMessage": "Gender"
+    },
+    "voice": {
+      "id": "app.container.Profile.voice",
+      "defaultMessage": "Voice"
+    },
+    "shlokSpeed": {
+      "id": "app.container.Profile.shlokSpeed",
+      "defaultMessage": "Shlok speed"
+    },
+    "updateProfile": {
+      "id": "app.container.Profile.updateProfile",
+      "defaultMessage": "Update profile"
+    },
+    "changePassword": {
+      "id": "app.container.Profile.changePassword",
+      "defaultMessage": "Change password"
+    },
+    "language": {
+      "id": "app.container.Profile.language",
+      "defaultMessage": "Language"
+    }
+  },
+  "EditProfile": {
+    "heading": {
+      "id": "app.container.EditProfile.heading",
+      "defaultMessage": "Profile"
+    },
+    "name": {
+      "id": "app.container.EditProfile.name",
+      "defaultMessage": "First name"
+    },
+    "lastName": {
+      "id": "app.container.EditProfile.lastName",
+      "defaultMessage": "Last name"
+    },
+    "email": {
+      "id": "app.container.EditProfile.email",
+      "defaultMessage": "Email"
+    },
+    "mobile": {
+      "id": "app.container.EditProfile.mobile",
+      "defaultMessage": "Phone number"
+    },
+    "gender": {
+      "id": "app.container.EditProfile.gender",
+      "defaultMessage": "Gender"
+    },
+    "language": {
+      "id": "app.container.EditProfile.language",
+      "defaultMessage": "Language"
+    },
+    "shlokSpeed": {
+      "id": "app.container.EditProfile.shlokSpeed",
+      "defaultMessage": "Shlok speed"
+    },
+    "update": {
+      "id": "app.container.EditProfile.updateProfile",
+      "defaultMessage": "Update"
+    }
+  },
+  "PrivacyPolicy": {
+    "heading": {
+      "id": "app.container.PrivacyPolicy.heading",
+      "defaultMessage": "Privacy Policy"
+    }
+  },
+  "TermsOfUse": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "Terms of Use"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "Terms and Condition"
+    }
+  },
+  "SideBar": {
+    "viewAll": {
+      "id": "app.container.SideBar.viewAll",
+      "defaultMessage": "View Profile"
+    },
+    "chapters": {
+      "id": "app.container.SideBar.chapters",
+      "defaultMessage": "Chapters"
+    },
+    "ideal": {
+      "id": "app.container.SideBar.ideal",
+      "defaultMessage": "Ideals"
+    },
+    "helpSupport": {
+      "id": "app.container.SideBar.helpSupport",
+      "defaultMessage": "Help & Support"
+    },
+    "contactUs": {
+      "id": "app.container.SideBar.contactUs",
+      "defaultMessage": "Suggestion box"
+    },
+    "privacyPolicy": {
+      "id": "app.container.SideBar.privacyPolicy",
+      "defaultMessage": "Privacy Policy"
+    },
+    "instruction": {
+      "id": "app.container.SideBar.instruction",
+      "defaultMessage": "Method of use"
+    },
+    "termOfUse": {
+      "id": "app.container.SideBar.termOfUse",
+      "defaultMessage": "Terms Of Use"
+    },
+    "social": {
+      "id": "app.container.SideBar.social",
+      "defaultMessage": "Social media Links"
+    },
+    "fb": {
+      "id": "app.container.SideBar.fb",
+      "defaultMessage": "Facebook"
+    },
+    "insta": {
+      "id": "app.container.SideBar.insta",
+      "defaultMessage": "Instagram"
+    },
+    "x": {
+      "id": "app.container.SideBar.x",
+      "defaultMessage": "X"
+    },
+    "signOut": {
+      "id": "app.container.SideBar.signOut",
+      "defaultMessage": "Sign Out"
+    }
+  },
+  "Instruction": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "Method of use"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "Terms and Condition"
+    }
+  }
+}

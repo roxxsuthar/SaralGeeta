@@ -1,0 +1,394 @@
+{
+  "App": {
+    "header": {
+      "id": "container.App.header",
+      "defaultMessage": "यह ऐप कंटेनर है!"
+    },
+    "languageUpdated": {
+      "id": "container.App.languageUpdated",
+      "defaultMessage": "ऐप की भाषा अपडेट हो गई है!"
+    }
+  },
+  "Root": {
+    "header": {
+      "id": "container.Root.header",
+      "defaultMessage": "यह रूट कंटेनर है!"
+    }
+  },
+  "Language": {
+    "header": {
+      "id": "container.Language.header",
+      "defaultMessage": "यह भाषा कंटेनर है!"
+    }
+  },
+  "OnboardingOne": {
+    "header": {
+      "id": "container.OnboardingOne.header",
+      "defaultMessage": "यह ऑनबोर्डिंग कंटेनर है!"
+    },
+    "heading": {
+      "id": "container.OnboardingOne.heading",
+      "defaultMessage": "सरल गीता में आपका स्वागत है"
+    },
+    "description": {
+      "id": "container.OnboardingOne.description",
+      "defaultMessage": "भगवद गीता को सरल और इंटरैक्टिव तरीके से सीखें और समझें। उच्चारण का अभ्यास करें और भगवान कृष्ण की शिक्षाओं का अन्वेषण करें।"
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingOne.buttonLabel",
+      "defaultMessage": "आगे बढ़ें"
+    }
+  },
+  "OnboardingSecond": {
+    "header": {
+      "id": "container.OnboardingSecond.header",
+      "defaultMessage": "यह ऑनबोर्डिंग कंटेनर है!"
+    },
+    "heading": {
+      "id": "container.OnboardingSecond.heading",
+      "defaultMessage": "अपने आदर्श के साथ सीखें"
+    },
+    "description": {
+      "id": "container.OnboardingSecond.description",
+      "defaultMessage": "अपने आध्यात्मिक मार्गदर्शक को चुनें और भगवद गीता के माध्यम से एक व्यक्तिगत यात्रा शुरू करें। ऑडियो, वीडियो और इंटरैक्टिव पाठों के साथ अभ्यास करें।"
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingSecond.buttonLabel",
+      "defaultMessage": "शुरू करें"
+    }
+  },
+  "language": {
+    "header": {
+      "id": "container.language.header",
+      "defaultMessage": "यह भाषा कंटेनर है!"
+    },
+    "buttonLabel": {
+      "id": "container.language.buttonLabel",
+      "defaultMessage": "जारी रखें"
+    }
+  },
+  "login": {
+    "heading": {
+      "id": "container.login.header",
+      "defaultMessage": "वापस स्वागत है!"
+    },
+    "subHeading": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "कृपया साइन इन करने के लिए अपनी जानकारी दर्ज करें!"
+    },
+    "number": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "मोबाइल नंबर"
+    },
+    "typeHere": {
+      "id": "container.login.typeHere",
+      "defaultMessage": "यहाँ टाइप करें..."
+    },
+    "login": {
+      "id": "container.login.login",
+      "defaultMessage": "लॉगिन"
+    },
+    "continue": {
+      "id": "container.login.continue",
+      "defaultMessage": "या इसके साथ जारी रखें"
+    },
+    "facebook": {
+      "id": "container.login.facebook",
+      "defaultMessage": "फेसबुक"
+    },
+    "google": {
+      "id": "container.login.google",
+      "defaultMessage": "गूगल"
+    },
+    "buttonLabel": {
+      "id": "container.login.buttonLabel",
+      "defaultMessage": "जारी रखें"
+    },
+    "dont": {
+      "id": "container.login.dont",
+      "defaultMessage": "खाता नहीं है? "
+    },
+    "create": {
+      "id": "container.login.dont",
+      "defaultMessage": "अब बनाएँ"
+    },
+    "bottomSheetHeading": {
+      "id": "containers.login.bottomSheetHeading",
+      "defaultMessage": "अपना देश चुनें"
+    },
+    "countryPlaceholder": {
+      "id": "containers.login.warningOtherHalf",
+      "defaultMessage": "देश के नाम से खोजें"
+    },
+    "placeholder": {
+      "id": "containers.login.placeholder",
+      "defaultMessage": "फोन नंबर"
+    }
+  },
+  "otpScreen": {
+    "heading": {
+      "id": "container.otpScreen.header",
+      "defaultMessage": "वापस स्वागत है"
+    },
+    "subHeading": {
+      "id": "container.otpScreen.subHeading",
+      "defaultMessage": "कृपया अपने पंजीकृत मोबाइल नंबर पर भेजा गया ओटीपी दर्ज करें।"
+    },
+    "submit": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "जमा करें"
+    },
+    "enterOtp": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "यहाँ ओटीपी दर्ज करें"
+    },
+    "dont": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "कोड प्राप्त नहीं हुआ? "
+    },
+    "create": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "पुनः भेजें"
+    },
+    "minute": {
+      "id": "app.containers.otpScreen.minute",
+      "defaultMessage": "मिनट"
+    },
+    "second": {
+      "id": "app.containers.otpScreen.second",
+      "defaultMessage": "सेकंड बाकी"
+    },
+    "minutes": {
+      "id": "app.containers.otpScreen.minutes",
+      "defaultMessage": "मिनट"
+    },
+    "seconds": {
+      "id": "app.containers.otpScreen.seconds",
+      "defaultMessage": "सेकंड बाकी"
+    },
+    "timeElapsed": {
+      "id": "app.containers.otpScreen.timeElapsed",
+      "defaultMessage": "समय समाप्त"
+    }
+  },
+  "OurIdeals": {
+    "buttonLabel": {
+      "id": "app.containers.OurIdeals.buttonLabel",
+      "defaultMessage": "जारी रखें"
+    },
+    "ourIdeals": {
+      "id": "app.containers.OurIdeals.ourIdeals",
+      "defaultMessage": "हमारे गुरुवर"
+    }
+  },
+  "Home": {
+    "headerText": {
+      "id": "app.containers.Home.headerText",
+      "defaultMessage": "अध्याय"
+    },
+    "chapters": {
+      "id": "app.containers.Home.chapters",
+      "defaultMessage": "अध्याय"
+    },
+    "recent": {
+      "id": "app.containers.Home.recent",
+      "defaultMessage": "हाल का"
+    },
+    "chapter": {
+      "id": "app.containers.Home.chapter",
+      "defaultMessage": "अध्याय"
+    }
+  },
+  "Chapters": {
+    "headerText": {
+      "id": "app.containers.Chapters.headerText",
+      "defaultMessage": "अध्याय"
+    }
+  },
+  "Shloks": {
+    "headerText": {
+      "id": "app.containers.Shloks.headerText",
+      "defaultMessage": "श्लोक"
+    }
+  },
+  "contactUs": {
+    "heading": {
+      "id": "app.container.Contactus.heading",
+      "defaultMessage": "संपर्क करें"
+    },
+    "serviceType": {
+      "id": "app.container.Contactus.serviceType",
+      "defaultMessage": "सेवा का प्रकार"
+    },
+    "name": {
+      "id": "app.container.Contactus.name",
+      "defaultMessage": "नाम"
+    },
+    "email": {
+      "id": "app.container.Contactus.email",
+      "defaultMessage": "ईमेल"
+    },
+    "message": {
+      "id": "app.container.Contactus.message",
+      "defaultMessage": "संदेश"
+    },
+    "placeholder": {
+      "id": "app.container.Contactus.placeholder",
+      "defaultMessage": "यहाँ टाइप करें..."
+    },
+    "button": {
+      "id": "app.container.Contactus.button",
+      "defaultMessage": "संदेश भेजें"
+    }
+  },
+  "Profile": {
+    "heading": {
+      "id": "app.container.Profile.heading",
+      "defaultMessage": "प्रोफाइल"
+    },
+    "name": {
+      "id": "app.container.Profile.name",
+      "defaultMessage": "नाम"
+    },
+    "email": {
+      "id": "app.container.Profile.email",
+      "defaultMessage": "ईमेल"
+    },
+    "mobile": {
+      "id": "app.container.Profile.mobile",
+      "defaultMessage": "मोबाइल"
+    },
+    "gender": {
+      "id": "app.container.Profile.gender",
+      "defaultMessage": "लिंग"
+    },
+    "voice": {
+      "id": "app.container.Profile.voice",
+      "defaultMessage": "आवाज"
+    },
+    "shlokSpeed": {
+      "id": "app.container.Profile.shlokSpeed",
+      "defaultMessage": "श्लोक गति"
+    },
+    "updateProfile": {
+      "id": "app.container.Profile.updateProfile",
+      "defaultMessage": "प्रोफाइल अपडेट करें"
+    },
+    "changePassword": {
+      "id": "app.container.Profile.changePassword",
+      "defaultMessage": "पासवर्ड बदलें"
+    },
+    "language": {
+      "id": "app.container.Profile.language",
+      "defaultMessage": "भाषा"
+    }
+  },
+  "EditProfile": {
+    "heading": {
+      "id": "app.container.EditProfile.heading",
+      "defaultMessage": "प्रोफाइल"
+    },
+    "name": {
+      "id": "app.container.EditProfile.name",
+      "defaultMessage": "पहला नाम"
+    },
+    "lastName": {
+      "id": "app.container.EditProfile.lastName",
+      "defaultMessage": "अंतिम नाम"
+    },
+    "email": {
+      "id": "app.container.EditProfile.email",
+      "defaultMessage": "ईमेल"
+    },
+    "mobile": {
+      "id": "app.container.EditProfile.mobile",
+      "defaultMessage": "फोन नंबर"
+    },
+    "gender": {
+      "id": "app.container.EditProfile.gender",
+      "defaultMessage": "लिंग"
+    },
+    "language": {
+      "id": "app.container.EditProfile.language",
+      "defaultMessage": "भाषा"
+    },
+    "shlokSpeed": {
+      "id": "app.container.EditProfile.shlokSpeed",
+      "defaultMessage": "श्लोक गति"
+    },
+    "update": {
+      "id": "app.container.EditProfile.updateProfile",
+      "defaultMessage": "अपडेट करें"
+    }
+  },
+  "PrivacyPolicy": {
+    "heading": {
+      "id": "app.container.PrivacyPolicy.heading",
+      "defaultMessage": "गोपनीयता नीति"
+    }
+  },
+  "TermsOfUse": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "उपयोग की शर्तें"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "नियम और शर्तें"
+    }
+  },
+  "SideBar": {
+    "viewAll": {
+      "id": "app.container.SideBar.viewAll",
+      "defaultMessage": "प्रोफाइल देखें"
+    },
+    "chapters": {
+      "id": "app.container.SideBar.chapters",
+      "defaultMessage": "अध्याय"
+    },
+    "helpSupport": {
+      "id": "app.container.SideBar.helpSupport",
+      "defaultMessage": "सहायता और समर्थन"
+    },
+    "contactUs": {
+      "id": "app.container.SideBar.contactUs",
+      "defaultMessage": "सुझाव पत्रिका"
+    },
+    "privacyPolicy": {
+      "id": "app.container.SideBar.privacyPolicy",
+      "defaultMessage": "गोपनीयता नीति"
+    },
+    "instruction": {
+      "id": "app.container.SideBar.instruction",
+      "defaultMessage": "उप्योगे की विधि"
+    },
+    "termOfUse": {
+      "id": "app.container.SideBar.termOfUse",
+      "defaultMessage": "उपयोग की शर्तें"
+    },
+    "social": {
+      "id": "app.container.SideBar.social",
+      "defaultMessage": "सोशल मीडिया लिंक"
+    },
+    "fb": {
+      "id": "app.container.SideBar.fb",
+      "defaultMessage": "फेसबुक"
+    },
+    "insta": {
+      "id": "app.container.SideBar.insta",
+      "defaultMessage": "इंस्टाग्राम"
+    },
+    "x": {
+      "id": "app.container.SideBar.x",
+      "defaultMessage": "एक्स"
+    },
+    "signOut": {
+      "id": "app.container.SideBar.signOut",
+      "defaultMessage": "साइन आउट"
+    },
+    "ideal": {
+      "id": "app.container.SideBar.ideal",
+      "defaultMessage": "हमारे गुरुवर"
+    }
+  }
+}

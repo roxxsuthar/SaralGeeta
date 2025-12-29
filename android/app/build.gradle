@@ -92,6 +92,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('saral-geeta-release-key.keystore')
+            storePassword System.getenv("MYAPP_RELEASE_STORE_PASSWORD") ?: 'saralgeeta'
+            keyAlias System.getenv("MYAPP_RELEASE_KEY_ALIAS") ?: 'saral-geeta'
+            keyPassword System.getenv("MYAPP_RELEASE_KEY_PASSWORD") ?: 'saralgeeta'
+        }
     }
     buildTypes {
         debug {
@@ -110,6 +116,10 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation "androidx.core:core-splashscreen:1.0.0-beta01"
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
