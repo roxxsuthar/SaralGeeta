@@ -48,7 +48,7 @@ export function Navigation({
   useEffect(() => {
     setTimeout(() => {
       RNBootSplash.hide({ fade: true });
-    }, 3000);
+    }, 2000);
   }, []);
 
   useEffect(() => {

@@ -1,10 +1,10 @@
 /*
  *
- * Test actions
+ * Splash actions
  *
  */
 
-import {DEFAULT_ACTION} from './constants';
+import { DEFAULT_ACTION } from './constants';
 
 export function defaultAction() {
   return {

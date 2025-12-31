@@ -58,6 +58,7 @@ const Trainer = require('../assets/images/Trainer_Photo.png');
 const Krishna = require('../assets/images/krishna.png');
 const Cartoon_cloud = require('../assets/images/Cartoon_cloud.png');
 const AppBackground = require('../assets/images/appBackground.png');
+const Splash = require('../assets/images/splash_screen.png');
 const MainScreenBackground = require('../assets/images/mainScreenBackground.png');
 const PlayerLottie = require('../assets/images/playerLottie.json');
 const CloudAnimation = require('../assets/images/cloudAnimation.json');
@@ -122,5 +123,6 @@ const IMAGES = {
   MicPlay,
   MicToPlay,
   InfoIcon,
+  Splash,
 };
 export default IMAGES;

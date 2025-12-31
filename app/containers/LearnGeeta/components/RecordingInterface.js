@@ -163,7 +163,6 @@ RecordingInterface.propTypes = {
   isRecordingButton: PropTypes.bool,
   startRecording: PropTypes.func,
   stopRecording: PropTypes.func,
-  audio: PropTypes.object,
   videoRef: PropTypes.object,
   setIsVideoPlaying: PropTypes.func,
   waitingForTranslation: PropTypes.bool,

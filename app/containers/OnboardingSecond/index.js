@@ -45,7 +45,7 @@ function OnboardingSecond({
     if (!isNil(token)) {
       navigation.navigate('DashboardNavigator');
     } else {
-      navigation.navigate(Navigation.Login);
+      navigation.navigate(Navigation.Language);
     }
   }, [_handleSetOnboarding, token, navigation]);
 

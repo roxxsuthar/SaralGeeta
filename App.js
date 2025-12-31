@@ -1,19 +1,12 @@
 /* eslint-disable no-undef */
+import 'react-native-gesture-handler'; // FIRST
+import 'react-native-reanimated';
 import React from 'react';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { enableScreens } from 'react-native-screens';
-import { NewAppScreen } from '@react-native/new-app-screen';
-
-// Load Reactotron BEFORE configuring store
-if (__DEV__) {
-  require('./ReactotronConfig');
-}
 
 import SaralGeetaApp from './app/containers/App';
 import configureStore from './configureStore';
@@ -38,12 +31,8 @@ function App() {
 }
 
 function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
   return (
     <View style={styles.container}>
-      {/* Keep RN’s NewAppScreen for template preview, but render your app inside */}
-      <NewAppScreen templateFileName="App.js" safeAreaInsets={safeAreaInsets} />
       <SaralGeetaApp />
     </View>
   );

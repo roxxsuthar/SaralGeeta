@@ -9,6 +9,7 @@ import Language from '../Language';
 import Login from '../Login';
 import OtpScreen from '../OtpScreen';
 import DashboardNavigator from './DashboardNavigator';
+// import Splash from '../Splash';
 
 const AppStack = createStackNavigator();
 
@@ -22,6 +23,14 @@ const AuthNavigator = ({ currentLanguage }) => (
       initialRouteName={Navigation.OnboardingOne}
     >
       {/* Always show onboarding screens */}
+      {/* <AppStack.Screen
+        name={Navigation.Splash}
+        component={Splash}
+        options={{
+          headerShown: false,
+        }}
+        initialParams={{ currentLanguage }}
+      /> */}
       <AppStack.Screen
         name={Navigation.OnboardingOne}
         component={OnboardingOne}

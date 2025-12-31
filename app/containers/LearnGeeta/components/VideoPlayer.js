@@ -37,16 +37,11 @@ const VideoPlayer = ({
         currentVideoUrl === maleUserPath || currentVideoUrl === femaleUserPath;
 
       if (isAlreadyOnUserVideo) {
-        console.log('User practice video ended, not loading another video');
-        // Just keep the buttons visible, don't trigger loading
         setIsButton(true);
         setIsVideoPlaying(false);
         videoRef.current?.pause();
         return;
       }
-
-      // Only switch to user video if we're on the main video
-      console.log('Main video ended, switching to user practice video');
       setIsButton(true);
       setIsVideoPlaying(true);
 

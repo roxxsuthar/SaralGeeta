@@ -1,6 +1,6 @@
 /*
  *
- * Test reducer
+ * Splash reducer
  *
  */
 import { produce } from 'immer';
@@ -10,7 +10,7 @@ export const initialState = {};
 
 /* eslint-disable default-case, no-param-reassign */
 // eslint-disable-next-line default-param-last
-const testReducer = (state = initialState, action) =>
+const SplashReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
     switch (action.type) {
       case DEFAULT_ACTION:
@@ -18,4 +18,4 @@ const testReducer = (state = initialState, action) =>
     }
   });
 
-export default testReducer;
+export default SplashReducer;

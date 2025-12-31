@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for Test
+ * Asynchronously loads the component for Splash
  *
  */
 

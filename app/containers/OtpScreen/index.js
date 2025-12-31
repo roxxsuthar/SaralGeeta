@@ -122,7 +122,7 @@ function OtpScreen({
   }, []);
 
   useEffect(() => {
-    if (gt(oneTimeInput.length, 3)) {
+    if (gt(oneTimeInput?.length, 3)) {
       const payload = {
         phone: otpDetails?.phone,
         otp: oneTimeInput,

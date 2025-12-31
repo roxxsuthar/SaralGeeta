@@ -121,7 +121,7 @@ function Language({ navigation, language, _handleSetLanguage }) {
             styles.buttonLabel,
           )}
           style={styles.buttonContainer}
-          onPress={() => updateLanguage()}
+          onPress={updateLanguage}
         />
       </View>
     </ImageBackground>

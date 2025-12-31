@@ -2,6 +2,6 @@
 // import request from '../../utils/request';
 
 // Individual exports for testing
-export default function* testSaga() {
+export default function* SplashSaga() {
   // See example in containers/HomePage/saga.js
 }

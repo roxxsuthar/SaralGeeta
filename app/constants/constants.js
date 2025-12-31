@@ -29,6 +29,7 @@ export const Navigation = {
   TermsOfUse: 'TermsOfUse',
   ContactUs: 'ContactUs',
   Instructions: 'Instructions',
+  Splash: 'Splash',
 };
 // API Configuration
 export const GLADIA_API_KEY = 'bbebcb87-bb37-4aff-b8ba-d5bda7a96f4c';
