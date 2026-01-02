@@ -11,13 +11,13 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import get from 'lodash/get';
 
 import makeSelectShloks from './selectors';
 import styles from './styles';
+import FastImageLoading from '../../components/FastImageLoading';
 import CustomText from '../../components/CustomText';
 import LoadingScreen from '../../components/LoadingScreen';
 import { setFontFamily } from '../../utils/device';
@@ -70,10 +70,11 @@ function Shloks({
           style={styles.cardContainer}
           onPress={() => navigateToLearnGeeta(item)}
         >
-          <FastImage
-            style={styles.cardImage}
-            source={{ uri: item?.image }}
-            resizeMode={FastImage.resizeMode.contain}
+          <FastImageLoading
+            styles={styles.cardImage}
+            imageUrl={item?.image}
+            resizeMode="contain"
+            indicatorColor="#ffa600ff"
           />
           <View style={styles.textContainer}>
             <CustomText
@@ -131,10 +132,12 @@ function Shloks({
         translucent={true}
         backgroundColor="transparent"
       />
-      <FastImage
-        style={styles.chakraStyle}
-        source={IMAGES.Chakra}
-        resizeMode={FastImage.resizeMode.contain}
+      <FastImageLoading
+        styles={styles.chakraStyle}
+        imageUrl={IMAGES.Chakra}
+        resizeMode="contain"
+        isLocal={true}
+        indicatorColor="#ffa600ff"
       />
       <View style={styles.mainContainer}>
         <View style={styles.headerContainer}>
@@ -148,10 +151,11 @@ function Shloks({
                 <IMAGES.WhiteArrowIcon height="100%" width="100%" />
               </View>
             </TouchableOpacity>
-            <FastImage
-              style={styles.chapterImage}
-              source={{ uri: get(shloksData, 'data[0].image', '') }}
-              resizeMode={FastImage.resizeMode.contain}
+            <FastImageLoading
+              styles={styles.chapterImage}
+              imageUrl={get(shloksData, 'data[0].image', '')}
+              resizeMode="contain"
+              indicatorColor="#ffa600ff"
             />
           </View>
           <CustomText

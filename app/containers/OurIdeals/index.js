@@ -20,7 +20,7 @@ import { makeSelectAppLanguage, makeSelectUser } from '../App/selectors';
 import { compose } from 'redux';
 import makeSelectOurIdeals from './selectors';
 import styles from './styles';
-import FastImage from 'react-native-fast-image';
+import FastImageLoading from '../../components/FastImageLoading';
 import { FONTS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import { setFontFamily } from '../../utils/device';
@@ -75,11 +75,11 @@ function OurIdeals({
         onPress={() => selectItem(item)}
         activeOpacity={0.8}
       >
-        <FastImage
-          style={styles.cardImage}
-          source={{ uri: item?.image }}
-          resizeMode={FastImage.resizeMode.contain}
-          // onLoad={}
+        <FastImageLoading
+          styles={styles.cardImage}
+          imageUrl={item?.image}
+          resizeMode="contain"
+          indicatorColor="#ffa600ff"
         />
 
         <CustomText
@@ -142,10 +142,12 @@ function OurIdeals({
         translucent={true}
         backgroundColor="transparent"
       />
-      <FastImage
-        style={styles.chakraStyle}
-        source={IMAGES.Chakra}
-        resizeMode={FastImage.resizeMode.contain}
+      <FastImageLoading
+        styles={styles.chakraStyle}
+        imageUrl={IMAGES.Chakra}
+        resizeMode="contain"
+        isLocal={true}
+        indicatorColor="#ffa600ff"
       />
       <SafeAreaView style={styles.mainContainer}>
         <CustomText

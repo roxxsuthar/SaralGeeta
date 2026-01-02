@@ -148,16 +148,13 @@ function Login({
       // Perform Google Sign-In
       const userInfo = await GoogleSignin.signIn();
 
-      console.log('Google Sign-In Success:', userInfo);
-
       // Extract idToken - check both possible locations
       const idToken = userInfo?.data?.idToken || userInfo?.idToken;
 
       if (!idToken) {
-        console.error('No idToken received from Google Sign-In');
         Alert.alert(
           'Error',
-          'Failed to get authentication token. Please try again.',
+          'Failed to get authentication. Please try again.',
         );
         setGoogleLoading(false);
         return;
@@ -170,12 +167,9 @@ function Login({
     } catch (error) {
       setGoogleLoading(false);
 
-      console.error('Google Sign-In Error:', error);
-
       // Handle specific error codes
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // User cancelled the sign-in flow
-        console.log('User cancelled Google Sign-In');
       } else if (error.code === statusCodes.IN_PROGRESS) {
         // Sign-in is already in progress
         Alert.alert('Please wait', 'Sign-in is already in progress');

@@ -26,6 +26,7 @@ function FastImageLoading({
   iconSize,
   resizeMode,
   isLocal,
+  indicatorColor,
 }) {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
@@ -50,7 +51,10 @@ function FastImageLoading({
     if (loader) {
       return (
         <View style={baseStyle.activityLoaderStyle}>
-          <ActivityIndicator size={indicatorSize} color={COLORS.emoRed} />
+          <ActivityIndicator
+            size={indicatorSize}
+            color={indicatorColor || COLORS.emoRed}
+          />
         </View>
       );
     }
@@ -98,6 +102,7 @@ FastImageLoading.propTypes = {
   iconSize: PropTypes.number,
   resizeMode: PropTypes.string,
   isLocal: PropTypes.bool,
+  indicatorColor: PropTypes.string,
 };
 
 FastImageLoading.defaultProps = {
@@ -105,5 +110,6 @@ FastImageLoading.defaultProps = {
   iconSize: hp(3),
   resizeMode: FastImage.resizeMode.cover,
   isLocal: false,
+  indicatorColor: COLORS.orange,
 };
 export default FastImageLoading;

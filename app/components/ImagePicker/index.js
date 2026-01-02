@@ -145,7 +145,6 @@ const ImagePicker = ({ onImageSelected, image }) => {
         return;
       }
       if (response.errorCode) {
-        console.log('Camera Error: ', response.errorMessage);
         Alert.alert(
           'Camera Error',
           response.errorMessage ||
@@ -170,11 +169,9 @@ const ImagePicker = ({ onImageSelected, image }) => {
 
     launchImageLibrary(options, (response) => {
       if (response.didCancel) {
-        console.log('User cancelled gallery');
         return;
       }
       if (response.errorCode) {
-        console.log('Gallery Error: ', response.errorMessage);
         Alert.alert(
           'Gallery Error',
           response.errorMessage ||
@@ -200,7 +197,7 @@ const ImagePicker = ({ onImageSelected, image }) => {
           source={{ uri: imageUri || DEFAULT_IMAGE }}
           style={styles.avatar}
           testID="image-picker-image"
-          onLoadStart={() => setIsLoading(true)}
+          onLoadStart={() => imageUri && setIsLoading(true)}
           onLoadEnd={() => setIsLoading(false)}
           onError={() => setIsLoading(false)}
         />

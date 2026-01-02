@@ -9,7 +9,6 @@ export function navigate(name, params) {
     try {
       navigationRef.current.navigate(name, params);
     } catch (error) {
-      console.error('Navigation error:', error);
     }
   }
 }
@@ -23,7 +22,7 @@ export function goBack() {
         return true;
       }
     } catch (error) {
-      console.error('Navigation back error:', error);
+     
     }
   }
   return false;
@@ -34,7 +33,7 @@ export function resetRoot(state) {
     try {
       navigationRef.current.resetRoot(state);
     } catch (error) {
-      console.error('Navigation reset error:', error);
+    
     }
   }
 }

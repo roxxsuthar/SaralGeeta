@@ -281,7 +281,6 @@ function Home({
   );
 
   const navigateToLearnShlock = (item) => {
-    console.log('---test---', item);
     navigation.navigate(Navigation.LearnGeeta, item);
   };
 

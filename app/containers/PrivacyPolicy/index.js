@@ -32,8 +32,6 @@ function PrivacyPolicy({ privacyPolicy, handleGetPolicy, app }) {
 
   const { loading, data } = privacyPolicy;
 
-  console.log('------', data);
-
   // HTML template for WebView
   const htmlContent = `
     <!DOCTYPE html>
