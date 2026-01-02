@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "875650845029-g2flhg31triod8tk01643ovm5hls8vvc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saralgita",
+            "certificate_hash": "9bafb1f1c7a6aaad3ae1fb70bd5b5cd0839ae644"
+          }
+        },
+        {
+          "client_id": "875650845029-p4kpuids531p6lqi111qm4fkb7k7t90u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saralgita",
+            "certificate_hash": "8f97d7fd355678b8e39f5fa58e191a1e789fd1d4"
+          }
+        },
+        {
           "client_id": "875650845029-vh1smoujsmqv2mbc7erkapqahcc7ugkj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

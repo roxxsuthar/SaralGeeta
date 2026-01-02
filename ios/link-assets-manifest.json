@@ -1,0 +1,293 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "app/assets/fonts/Inter-Medium.ttf",
+      "sha1": "126d31d9fbb0d742763c266a1c2ace71b106e34a"
+    },
+    {
+      "path": "app/assets/fonts/Inter-Bold.ttf",
+      "sha1": "0325b9b3992fa2fdc9c715730a33135696c68a39"
+    },
+    {
+      "path": "app/assets/fonts/Inter-Regular.ttf",
+      "sha1": "5c95e5d66572aeca303512ba41a8dde0cea92c80"
+    },
+    {
+      "path": "app/assets/fonts/TiroDevanagariHindi-Regular.ttf",
+      "sha1": "ef67b6ecb1d5ef20f309aab707098afbec5babbb"
+    },
+    {
+      "path": "app/assets/fonts/Inter-ExtraBold.ttf",
+      "sha1": "4a028f1fa4dbd6b4bfbfeec4a5b5e222a005b563"
+    },
+    {
+      "path": "app/assets/fonts/Inter-ExtraLight.ttf",
+      "sha1": "101abfe1c234d9e29504a55c7b5911f7e20e9425"
+    },
+    {
+      "path": "app/assets/fonts/Inter-Black.ttf",
+      "sha1": "5e5d8c866c2a7abfd14a12df505c4c419a2a56f7"
+    },
+    {
+      "path": "app/assets/fonts/Inter-SemiBold.ttf",
+      "sha1": "d48310d2f04c57af1bce0851e053be7b58b25dca"
+    },
+    {
+      "path": "app/assets/images/peacockFeather.gif",
+      "sha1": "b92a98d0d2f50dd5321d9fecad9a7f7475de3bc1"
+    },
+    {
+      "path": "app/assets/images/contact-us.svg",
+      "sha1": "354eba8752f8b65be7b771e5c63bae9df5dd9f2a"
+    },
+    {
+      "path": "app/assets/images/tabler-icon-bell.svg",
+      "sha1": "898975be1eb37ca7c898131db50e5bd3f49033c5"
+    },
+    {
+      "path": "app/assets/images/user.svg",
+      "sha1": "c771c633d8595e385d89d2540e4d9c486bc11745"
+    },
+    {
+      "path": "app/assets/images/circle.svg",
+      "sha1": "089f71ec617a8a8e62e8f06e634762280ba51cee"
+    },
+    {
+      "path": "app/assets/images/chevron-down.svg",
+      "sha1": "ab30bfa551ec7404a9d88e1592c19463cd5dbd98"
+    },
+    {
+      "path": "app/assets/images/shlok_background.png",
+      "sha1": "cf7cbd270bd4138ab80877851a4226759aa44b44"
+    },
+    {
+      "path": "app/assets/images/chevron-left-solid.svg",
+      "sha1": "8d3ea21197ea5d1e8dd1801d48e657765b6110c7"
+    },
+    {
+      "path": "app/assets/images/img-krishna@2x.png",
+      "sha1": "64b82c774c8a53a9fefc79a419630c9951cbe960"
+    },
+    {
+      "path": "app/assets/images/chevron-right-solid.svg",
+      "sha1": "c9d30027912b1d0c43d979cff8a360fb60bc4fb6"
+    },
+    {
+      "path": "app/assets/images/microphone-line-icon.svg",
+      "sha1": "ef219e236e757863f53c1282ca1e42b06aafb97a"
+    },
+    {
+      "path": "app/assets/images/microphone-voice-icon.svg",
+      "sha1": "967ccfd966535b0062f51d96b02be9a8dce96312"
+    },
+    {
+      "path": "app/assets/images/x.svg",
+      "sha1": "ae9241a8f4526303de1a812e298f774a62dcff45"
+    },
+    {
+      "path": "app/assets/images/lock.svg",
+      "sha1": "ef94b209cddeda6f3639de467f78355b94b22f77"
+    },
+    {
+      "path": "app/assets/images/instagram.svg",
+      "sha1": "92f5e7983307dc496d4f4145282701a166480d52"
+    },
+    {
+      "path": "app/assets/images/img-krishna.png",
+      "sha1": "87c0c10356a1a9bfb5f19c40cf5585eab202c6f2"
+    },
+    {
+      "path": "app/assets/images/playerLottie.json",
+      "sha1": "1cba804c79a029735405d4f7a98af81a7b2c4da7"
+    },
+    {
+      "path": "app/assets/images/leaf.gif",
+      "sha1": "85dee385766786208afdb3119880caefb2d1a6f5"
+    },
+    {
+      "path": "app/assets/images/CloseIcon.svg",
+      "sha1": "4a08537dec231b78c91e9720f1f13fcb5ef9240e"
+    },
+    {
+      "path": "app/assets/images/bars-3.svg",
+      "sha1": "23a2cfdc2f008d489973a174d7ade1cf141a47ee"
+    },
+    {
+      "path": "app/assets/images/geeta_learn_animation.gif",
+      "sha1": "8bb71c1b47632d7c20290b385e19cdf9469b866a"
+    },
+    {
+      "path": "app/assets/images/terms-of-use.svg",
+      "sha1": "4239cd61aaabf9db596f25e2f52ff0c0390805eb"
+    },
+    {
+      "path": "app/assets/images/replayButton.svg",
+      "sha1": "f5d80c31e30b0c3045ad697b3332773be4b94906"
+    },
+    {
+      "path": "app/assets/images/circle-check.svg",
+      "sha1": "7e9a96192b4e7d0b190b95d3af1c85ab696e2181"
+    },
+    {
+      "path": "app/assets/images/tabler-icon-search.svg",
+      "sha1": "a665b77167e46dd1cebfd950c6184640b841713f"
+    },
+    {
+      "path": "app/assets/images/bell.svg",
+      "sha1": "6e60ddfe3fdce9ccb4dca4f213c05308fa586aab"
+    },
+    {
+      "path": "app/assets/images/ic-right.svg",
+      "sha1": "8049f1a32a81d5e127934868e4ed99f7ea98b054"
+    },
+    {
+      "path": "app/assets/images/micIcon.svg",
+      "sha1": "d2fd62d376dc53d7ba6ce10adbd3e89eb3e48139"
+    },
+    {
+      "path": "app/assets/images/img-geeta-learn.png",
+      "sha1": "4d1e108f7dc8b3eff6088dd932ff2ee509824425"
+    },
+    {
+      "path": "app/assets/images/info.svg",
+      "sha1": "cd1df824f86c7a3abf184151b422d7cd1033eb90"
+    },
+    {
+      "path": "app/assets/images/Mic.svg",
+      "sha1": "fece28324f5caf493e61d54b764fe33c796a2213"
+    },
+    {
+      "path": "app/assets/images/refresh.svg",
+      "sha1": "b2eb251ae17da4708558bac4acd33bb533eb8fe6"
+    },
+    {
+      "path": "app/assets/images/right.svg",
+      "sha1": "01a2322eaa16d7af542841ba0579ebc2d930cf28"
+    },
+    {
+      "path": "app/assets/images/Avatar.png",
+      "sha1": "ea047c2d618fc6f117d2beedae68bfae423d0b64"
+    },
+    {
+      "path": "app/assets/images/message.svg",
+      "sha1": "02c75d6f9d18bd8e22a00dd22c8a81362c410d0c"
+    },
+    {
+      "path": "app/assets/images/logo-saral-gita.svg",
+      "sha1": "03f4a1618beb9bf42622e6998dc6f57e455af83b"
+    },
+    {
+      "path": "app/assets/images/translationAnimation.json",
+      "sha1": "b3e0a929da9cc5629d5090eba85a32206e7e9666"
+    },
+    {
+      "path": "app/assets/images/facebook.svg",
+      "sha1": "e21ab08e348976e6f9a1297d2af6d35543ca610e"
+    },
+    {
+      "path": "app/assets/images/Cartoon_cloud.png",
+      "sha1": "7e89f8d27302da3b959d3dec8fa448ce67441ad9"
+    },
+    {
+      "path": "app/assets/images/whitePlay.svg",
+      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    },
+    {
+      "path": "app/assets/images/google.svg",
+      "sha1": "7cefd8076cc0518af4a63f520856cee5292c11c2"
+    },
+    {
+      "path": "app/assets/images/splash_screen.png",
+      "sha1": "c7e44bfd6c05656b7bd12b0ffeb6b055c582a381"
+    },
+    {
+      "path": "app/assets/images/cloudAnimation.json",
+      "sha1": "6d5302bc00c40fb2fb7cbb0ff83be7711123ca7f"
+    },
+    {
+      "path": "app/assets/images/mainScreenBackground.png",
+      "sha1": "a6441b17a6cc9047dd047485f95bbc10ef9931cf"
+    },
+    {
+      "path": "app/assets/images/signout.svg",
+      "sha1": "12dc2923ebb424b05c3916d517098a6c5cbae37c"
+    },
+    {
+      "path": "app/assets/images/Frame.png",
+      "sha1": "268d48cbf5878735b94de4a9677e059d874b4440"
+    },
+    {
+      "path": "app/assets/images/eye.svg",
+      "sha1": "bded087832ca5642d0b4653b18c21b1146a8cf03"
+    },
+    {
+      "path": "app/assets/images/Trainer_Photo.png",
+      "sha1": "6ef25ea6c9c604c82dd36d2d2f4674b6dc7c8c3d"
+    },
+    {
+      "path": "app/assets/images/tabler-icon-chevron-left.svg",
+      "sha1": "90f983e955dc0d54f014171bde7afc7cadd48f37"
+    },
+    {
+      "path": "app/assets/images/privacy-policy.svg",
+      "sha1": "eb08173aab938e53c2b9252420af8b169cc7cc9e"
+    },
+    {
+      "path": "app/assets/images/img-john-fitness.png",
+      "sha1": "74d8402ae1264978be69b6b2c50fdaff87587abd"
+    },
+    {
+      "path": "app/assets/images/img-geeta-learn@2x.png",
+      "sha1": "4b452f26ca4984f0b47cdc849014499d6a6b2093"
+    },
+    {
+      "path": "app/assets/images/Carousel_2.png",
+      "sha1": "1566cafb90c0c383e1c38606f12415a7043da82e"
+    },
+    {
+      "path": "app/assets/images/white-play-button.svg",
+      "sha1": "b0e5c659910f6c9f6a5d2e8efffef960d65d168c"
+    },
+    {
+      "path": "app/assets/images/Carousel_3.png",
+      "sha1": "7919809fad4372e6ae5bbbf19bbd59d17b52d84c"
+    },
+    {
+      "path": "app/assets/images/Carousel_1.png",
+      "sha1": "3cf076d2577a9c22502286c8a23062f54da1b3df"
+    },
+    {
+      "path": "app/assets/images/pauseIcon.svg",
+      "sha1": "03e2104caec151955708c69db31a0e1223892bcd"
+    },
+    {
+      "path": "app/assets/images/left.svg",
+      "sha1": "d4b20ff043e9d5c5ee6aceb7778c0f8f78a534da"
+    },
+    {
+      "path": "app/assets/images/player-play.svg",
+      "sha1": "e65e313992a2dfe0c06fa53a3b2e0d046fc7d2f3"
+    },
+    {
+      "path": "app/assets/images/chevron-left.svg",
+      "sha1": "0c5d4a287c0b6922fe243f0ad34ec3efa97e0260"
+    },
+    {
+      "path": "app/assets/images/appBackground.png",
+      "sha1": "35bc498333017559aa63dad0a7706c5114b358c1"
+    },
+    {
+      "path": "app/assets/images/krishna.png",
+      "sha1": "822a7369209a9f52dbe82f04abd4807a3e7e02c8"
+    },
+    {
+      "path": "app/assets/images/dashborad.svg",
+      "sha1": "c72590ff84fce76fc80eb84bdbab88a3642e1d33"
+    },
+    {
+      "path": "app/assets/images/heart.svg",
+      "sha1": "b673774918051972dbd3d3048c89552cab20c3b8"
+    }
+  ]
+}
