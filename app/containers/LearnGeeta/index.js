@@ -89,7 +89,11 @@ function LearnGeeta({
     useCallback(() => {
      OrientationModule.lockToLandscape(); 
      
-     return () => { OrientationModule.lockToPortrait(); }
+      return () => {
+        setTimeout(() => {
+          OrientationModule.lockToPortrait();
+        }, 500);
+      };
     }, []),
   );
 

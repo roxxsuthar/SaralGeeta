@@ -35,10 +35,11 @@ const HomeStackNavigator = () => {
         name={Navigation.LearnGeeta}
         component={LearnGeeta}
         options={{
-          gestureEnabled: false,
+          gestureEnabled: true,
           animationEnabled: true,
           animation: 'fade',
           animationDuration: 200,
+          fullScreenGestureEnabled: true,
         }}
       />
     </HomeStack.Navigator>
