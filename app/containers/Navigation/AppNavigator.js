@@ -19,6 +19,7 @@ const AuthNavigator = ({ currentLanguage }) => (
     <AppStack.Navigator
       screenOptions={{
         headerShown: false,
+        gestureEnabled: true,
       }}
       initialRouteName={Navigation.OnboardingOne}
     >

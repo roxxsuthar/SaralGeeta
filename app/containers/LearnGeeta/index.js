@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { StatusBar, TouchableOpacity } from 'react-native';
+import { StatusBar, TouchableOpacity,NativeModules } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -8,6 +8,7 @@ import { createStructuredSelector } from 'reselect';
 import { get } from 'lodash';
 import { compose } from 'redux';
 import Orientation from 'react-native-orientation-locker';
+const { OrientationModule } = NativeModules;
 import { useFocusEffect } from '@react-navigation/native';
 
 // Custom hooks
@@ -86,11 +87,9 @@ function LearnGeeta({
   // Setup orientation and back handler
   useFocusEffect(
     useCallback(() => {
-      Orientation.lockToLandscape();
-
-      return () => {
-        Orientation.unlockAllOrientations();
-      };
+     OrientationModule.lockToLandscape(); 
+     
+     return () => { OrientationModule.lockToPortrait(); }
     }, []),
   );
 

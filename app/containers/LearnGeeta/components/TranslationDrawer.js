@@ -46,6 +46,7 @@ const TranslationDrawer = ({
       transparent={true}
       animationType="fade"
       onRequestClose={onClose}
+      supportedOrientations={['portrait', 'landscape']}
     >
       <View style={styles.drawerOverlay}>
         <TouchableOpacity

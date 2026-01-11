@@ -31,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     return true
   }
+
+  func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    // Check for presented modal (e.g. from react-native-modals or generic) to avoid "no common orientation" crash
+    if let rootController = window?.rootViewController?.presentedViewController {
+        return .all
+    }
+    return OrientationModule.supportedOrientation
+  }
 }
 
 class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {

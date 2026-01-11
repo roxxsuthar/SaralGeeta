@@ -8,12 +8,20 @@ require Pod::Executable.execute_command(
    )',
    __dir__]
 ).strip
+require_relative '../node_modules/react-native-permissions/scripts/setup'
 
 platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
 # ✅ REQUIRED for Hermes + Firebase
 use_frameworks! :linkage => :static
+
+setup_permissions([
+  'Camera',
+  'Microphone',
+  'PhotoLibrary',
+  'MediaLibrary',
+])
 
 target 'SaralGita' do
   config = use_native_modules!

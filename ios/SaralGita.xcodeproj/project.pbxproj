@@ -10,16 +10,16 @@
 		00B7A3A79EEF4641B05E0FD1 /* circle-check.svg in Resources */ = {isa = PBXBuildFile; fileRef = A542B950052C4A3794E02BA7 /* circle-check.svg */; };
 		096C523A88F64E25862645EA /* ic-right.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6C698B89EDCD479593FC8CE2 /* ic-right.svg */; };
 		0A1B93315033455D8DC163A0 /* signout.svg in Resources */ = {isa = PBXBuildFile; fileRef = A387905A76F24FF8841B3CFE /* signout.svg */; };
-		0A27C7827BAB41D6B173471D /* Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ECBE618319E4E5AB181204C /* Frame.png */; };
+		0A27C7827BAB41D6B173471D /* frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ECBE618319E4E5AB181204C /* frame.png */; };
 		0BBEACE35D1B4605B4189539 /* bell.svg in Resources */ = {isa = PBXBuildFile; fileRef = 20222F61985F49E18003928C /* bell.svg */; };
 		1380D4DA92F3465D9023F51A /* Mic.svg in Resources */ = {isa = PBXBuildFile; fileRef = 254D0A2CB3A64D6CB47FE547 /* Mic.svg */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		141E7BF140E44757A9672D8B /* right.svg in Resources */ = {isa = PBXBuildFile; fileRef = 6DF60A7B28104820AB429470 /* right.svg */; };
 		19C1231F3216A6947386C322 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		19D08BB42B85402F86EB87C5 /* leaf.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3A825AF2806745F286567410 /* leaf.gif */; };
-		1CFC63C8E41E4C608FDE1DA8 /* Carousel_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E7AF6333B0F546668A7B7742 /* Carousel_3.png */; };
+		1CFC63C8E41E4C608FDE1DA8 /* carousel_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E7AF6333B0F546668A7B7742 /* carousel_3.png */; };
 		2049A232243C4578BCB65218 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 872816ACA28443CEBD5BE886 /* Inter-SemiBold.ttf */; };
-		20772306A95F48A681ED6BC3 /* appBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B5EFAEE0EE2465AA9DF36EE /* appBackground.png */; };
+		20772306A95F48A681ED6BC3 /* app_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B5EFAEE0EE2465AA9DF36EE /* app_background.png */; };
 		23B9EF9289FA46D8BA353C64 /* circle.svg in Resources */ = {isa = PBXBuildFile; fileRef = C3804B2F6EB745B1AD4E0F5E /* circle.svg */; };
 		243497FA096543CCB1511811 /* microphone-voice-icon.svg in Resources */ = {isa = PBXBuildFile; fileRef = D6652AA9046C4388B685CAED /* microphone-voice-icon.svg */; };
 		296235E68F264A9B83B8EB33 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9096C20205774847B73D8CF8 /* BootSplash.storyboard */; };
@@ -29,40 +29,42 @@
 		2D2E28589AB747649EAD77E0 /* message.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4DD0D8EB065C4366BD576EF1 /* message.svg */; };
 		2F99CE5E33E3466796C32C7E /* playerLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 40719D84460F40D5B20E0036 /* playerLottie.json */; };
 		30017904912F4CB1A5928122 /* eye.svg in Resources */ = {isa = PBXBuildFile; fileRef = 62AC3C1F53374C3C9F4CBC39 /* eye.svg */; };
+		3076A81B91CA478B60344DB5 /* OrientationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BF470F95FEC99D7E45F80EA /* OrientationModule.m */; };
 		33390FAB71B2444D9C1982D1 /* facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = 955EAB6B399A4FF28A75EFE1 /* facebook.svg */; };
 		3939793E24AD4A97B6424D55 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13AE1663B67540E2A2C6F97A /* Inter-Medium.ttf */; };
 		3E1DE83B1CE0401FAD795AC9 /* info.svg in Resources */ = {isa = PBXBuildFile; fileRef = A9E7DE413E43496981DA97EC /* info.svg */; };
 		3EA85663DBC64FCD8A55D209 /* chevron-down.svg in Resources */ = {isa = PBXBuildFile; fileRef = 5F721E1CAC994AF49BA32CAA /* chevron-down.svg */; };
 		485876CC462741FDA03F5BE2 /* contact-us.svg in Resources */ = {isa = PBXBuildFile; fileRef = 55C93EB4191240EBBC5BD118 /* contact-us.svg */; };
-		4CC516CE24C64F39A1AE3F72 /* Avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 953452B6215A4A0F9FC1D255 /* Avatar.png */; };
+		4CC516CE24C64F39A1AE3F72 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 953452B6215A4A0F9FC1D255 /* avatar.png */; };
 		4CD0E9E286A9463CA9DF4C81 /* whitePlay.svg in Resources */ = {isa = PBXBuildFile; fileRef = 69340FEBBE54461CBC5B2C70 /* whitePlay.svg */; };
-		55D396DCE1324FFCA7DBAF32 /* img-geeta-learn.png in Resources */ = {isa = PBXBuildFile; fileRef = 884E158092774C1092E11CF5 /* img-geeta-learn.png */; };
+		55D396DCE1324FFCA7DBAF32 /* img_geeta_learn.png in Resources */ = {isa = PBXBuildFile; fileRef = 884E158092774C1092E11CF5 /* img_geeta_learn.png */; };
 		56A090E7E6E0450C83EAE30D /* heart.svg in Resources */ = {isa = PBXBuildFile; fileRef = 27B5C0F8C5BE45D48116E53D /* heart.svg */; };
 		59A3B877DB1C448082446738 /* lock.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2D82C2D9A62641E39A5AF7C5 /* lock.svg */; };
-		59E43CF7EE7F4D9297EE8351 /* mainScreenBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F113B5E7FB344BE873F4E45 /* mainScreenBackground.png */; };
+		59E43CF7EE7F4D9297EE8351 /* main_screen_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7F113B5E7FB344BE873F4E45 /* main_screen_background.png */; };
 		5CCCF31ADF5F47AEAA5D5BC0 /* refresh.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9CEC1C34112840B5AC248AFE /* refresh.svg */; };
 		685A3E5C988D49CBBB06509F /* TiroDevanagariHindi-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30186CBE6F094A8891F58238 /* TiroDevanagariHindi-Regular.ttf */; };
-		6A2C33AAB34E47BF860FCCE9 /* img-geeta-learn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D76E42FD8A543C088DF0A02 /* img-geeta-learn@2x.png */; };
+		6A2C33AAB34E47BF860FCCE9 /* img_geeta_learn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D76E42FD8A543C088DF0A02 /* img_geeta_learn@2x.png */; };
 		6AF2CC2F898E4215B2C0C048 /* chevron-left.svg in Resources */ = {isa = PBXBuildFile; fileRef = 7BD51D89FF474E5C8E9C0BCC /* chevron-left.svg */; };
 		6BB7677006A947E3BE65F5D4 /* krishna.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C917649DEF244818C65661F /* krishna.png */; };
 		6D67C3F2874E495385AEF5E6 /* translationAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 52DF9823A4394D07ABF89D35 /* translationAnimation.json */; };
-		6F77B9904EA54853B78CF251 /* img-krishna.png in Resources */ = {isa = PBXBuildFile; fileRef = 29EB39C66FD84F06BD82853C /* img-krishna.png */; };
+		6F77B9904EA54853B78CF251 /* img_krishna.png in Resources */ = {isa = PBXBuildFile; fileRef = 29EB39C66FD84F06BD82853C /* img_krishna.png */; };
 		703B24C42F0834F6008A6CF3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 703B24C32F0834F6008A6CF3 /* GoogleService-Info.plist */; };
 		736089A48BEF4EB69570A2A7 /* terms-of-use.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0D15F93A39554822A9969F0C /* terms-of-use.svg */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		7A142C91296D41BC9F4A2F6B /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC43C091BB1A402B84B266C4 /* Inter-Regular.ttf */; };
 		7C5F0951CE564141803A2AA9 /* privacy-policy.svg in Resources */ = {isa = PBXBuildFile; fileRef = B5F18B79A6454372B234FB9B /* privacy-policy.svg */; };
-		7FE97E50EB90442497154687 /* Trainer_Photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3CE03433804BE2B64662D5 /* Trainer_Photo.png */; };
+		7FE97E50EB90442497154687 /* trainer_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D3CE03433804BE2B64662D5 /* trainer_photo.png */; };
 		802FEABB7CD6487F871104DC /* replayButton.svg in Resources */ = {isa = PBXBuildFile; fileRef = DF5C25FF292F46DEBBBE943D /* replayButton.svg */; };
 		80F4B37D661D426393BA39E1 /* dashborad.svg in Resources */ = {isa = PBXBuildFile; fileRef = C5C5D0FBF93E42E287617EAB /* dashborad.svg */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8295190AAC9144CCBD33D0FB /* cloudAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = A490D5600E914E41B279D052 /* cloudAnimation.json */; };
 		830188A1D3244D7BA4EA9C4C /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 228B7431A9D84468A8623EB6 /* Inter-ExtraBold.ttf */; };
 		86E6E59EC1034A47A8A0926C /* user.svg in Resources */ = {isa = PBXBuildFile; fileRef = FCAF00D3352D495B827AA263 /* user.svg */; };
+		89DD7A0F58F3E570566F1CF8 /* OrientationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BCD2D2D5A5061E9EAB7C4B /* OrientationModule.swift */; };
 		8AFD8E89E1474C7B8F8441C6 /* google.svg in Resources */ = {isa = PBXBuildFile; fileRef = 300170DE8BF0406F817B4A41 /* google.svg */; };
 		8C2AEEE2B66C45C0861EFC02 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE4F6F578C0341E48CE678B5 /* Colors.xcassets */; };
-		97090FE78A5947C2A731ADD7 /* img-krishna@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290C66B5B8164405A0625FF4 /* img-krishna@2x.png */; };
-		97179B58F7704C7BAB3D9796 /* Carousel_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB58F984E4441518301B9D1 /* Carousel_1.png */; };
+		97090FE78A5947C2A731ADD7 /* img_krishna@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290C66B5B8164405A0625FF4 /* img_krishna@2x.png */; };
+		97179B58F7704C7BAB3D9796 /* carousel_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FB58F984E4441518301B9D1 /* carousel_1.png */; };
 		99A25311155E44CB86F1DA3F /* CloseIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 02C2C9FECB914CE3BD6F9FE9 /* CloseIcon.svg */; };
 		A4DE0D42C0BA4D2FB23C8230 /* tabler-icon-bell.svg in Resources */ = {isa = PBXBuildFile; fileRef = 1E94D465BB484C3E87C55F7B /* tabler-icon-bell.svg */; };
 		A71677CBAED347FC991F6254 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38311AE0FD0F4524AF229D31 /* Inter-Black.ttf */; };
@@ -73,18 +75,18 @@
 		AB69B354469346BC99614A70 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFDF02F9ABF54D58B5814C37 /* Inter-ExtraLight.ttf */; };
 		ACE5EA04F05D42E992F47BFC /* chevron-right-solid.svg in Resources */ = {isa = PBXBuildFile; fileRef = 2F8E12738C6F48988BCC5C32 /* chevron-right-solid.svg */; };
 		BB5D2DC787CD46D6B262041C /* tabler-icon-chevron-left.svg in Resources */ = {isa = PBXBuildFile; fileRef = 96CD81CE98D0415A8ADACD2B /* tabler-icon-chevron-left.svg */; };
-		BEFED50247344361A6A5FD6A /* Cartoon_cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = F6BB9C6E783D4E9CAF2F26C4 /* Cartoon_cloud.png */; };
+		BEFED50247344361A6A5FD6A /* cartoon_cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = F6BB9C6E783D4E9CAF2F26C4 /* cartoon_cloud.png */; };
 		CB9956441C4B41D28BDE885F /* bars-3.svg in Resources */ = {isa = PBXBuildFile; fileRef = AC137E9B637A45859F83B451 /* bars-3.svg */; };
 		CD3E99AE1D284597AC64AA66 /* tabler-icon-search.svg in Resources */ = {isa = PBXBuildFile; fileRef = 652721D21E5C4145806272C6 /* tabler-icon-search.svg */; };
 		D16698AB8A9E4A49AA0FC265 /* micIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 45D04390A1A0456180B62C4C /* micIcon.svg */; };
 		D6A4FA95F733438BBBA0A85E /* x.svg in Resources */ = {isa = PBXBuildFile; fileRef = C3F320A2435D4B3A8898697D /* x.svg */; };
 		DC4FD1CB7ECB4C63A8765054 /* pauseIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 28E43F12EF754CC19C3CB742 /* pauseIcon.svg */; };
 		DEF406DD2F6E4F7384461EF5 /* logo-saral-gita.svg in Resources */ = {isa = PBXBuildFile; fileRef = E035739ABFF841EF85F6C3D7 /* logo-saral-gita.svg */; };
-		E0C5E83E28394F7B8B6BAA1A /* Carousel_2.png in Resources */ = {isa = PBXBuildFile; fileRef = BA306E59544A463981B974DB /* Carousel_2.png */; };
-		EA97F51356C74885824337DC /* img-john-fitness.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B71F645186E428A831410AD /* img-john-fitness.png */; };
+		E0C5E83E28394F7B8B6BAA1A /* carousel_2.png in Resources */ = {isa = PBXBuildFile; fileRef = BA306E59544A463981B974DB /* carousel_2.png */; };
+		EA97F51356C74885824337DC /* img_john_fitness.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B71F645186E428A831410AD /* img_john_fitness.png */; };
 		EEC869522EE44C2D817F0665 /* player-play.svg in Resources */ = {isa = PBXBuildFile; fileRef = EF840DAC3D994ABC9C8E1007 /* player-play.svg */; };
 		F35F404EF4C84686AB0999ED /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 877292571BAF4E8798767D81 /* Inter-Bold.ttf */; };
-		F40154FC6AA74F45BCBC29D0 /* peacockFeather.gif in Resources */ = {isa = PBXBuildFile; fileRef = F9CED476C07C4B5AA1339DA4 /* peacockFeather.gif */; };
+		F40154FC6AA74F45BCBC29D0 /* peacock_feather.gif in Resources */ = {isa = PBXBuildFile; fileRef = F9CED476C07C4B5AA1339DA4 /* peacock_feather.gif */; };
 		FA97E0B7CB39D1FCEFB9019C /* Pods_SaralGita.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010A8088D826BB9903046392 /* Pods_SaralGita.framework */; };
 		FE446CBCB68D4327BD9E78A1 /* chevron-left-solid.svg in Resources */ = {isa = PBXBuildFile; fileRef = D1FA35BC669A41CDA087F52B /* chevron-left-solid.svg */; };
 /* End PBXBuildFile section */
@@ -102,7 +104,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SaralGita/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = SaralGita/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19DE4C41A5B646EFBFFEF275 /* splash_screen.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = splash_screen.png; path = ../app/assets/images/splash_screen.png; sourceTree = "<group>"; };
-		1B71F645186E428A831410AD /* img-john-fitness.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "img-john-fitness.png"; path = "../app/assets/images/img-john-fitness.png"; sourceTree = "<group>"; };
+		1B71F645186E428A831410AD /* img_john_fitness.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = img_john_fitness.png; path = ../app/assets/images/img_john_fitness.png; sourceTree = "<group>"; };
 		1E94D465BB484C3E87C55F7B /* tabler-icon-bell.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "tabler-icon-bell.svg"; path = "../app/assets/images/tabler-icon-bell.svg"; sourceTree = "<group>"; };
 		20222F61985F49E18003928C /* bell.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = bell.svg; path = ../app/assets/images/bell.svg; sourceTree = "<group>"; };
 		216D14FE2F52EF955244755C /* Pods-SaralGita.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaralGita.debug.xcconfig"; path = "Target Support Files/Pods-SaralGita/Pods-SaralGita.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,9 +112,9 @@
 		254D0A2CB3A64D6CB47FE547 /* Mic.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Mic.svg; path = ../app/assets/images/Mic.svg; sourceTree = "<group>"; };
 		27B5C0F8C5BE45D48116E53D /* heart.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = heart.svg; path = ../app/assets/images/heart.svg; sourceTree = "<group>"; };
 		28E43F12EF754CC19C3CB742 /* pauseIcon.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = pauseIcon.svg; path = ../app/assets/images/pauseIcon.svg; sourceTree = "<group>"; };
-		290C66B5B8164405A0625FF4 /* img-krishna@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "img-krishna@2x.png"; path = "../app/assets/images/img-krishna@2x.png"; sourceTree = "<group>"; };
+		290C66B5B8164405A0625FF4 /* img_krishna@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "img_krishna@2x.png"; path = "../app/assets/images/img_krishna@2x.png"; sourceTree = "<group>"; };
 		2992974CB3694AEFB9056C26 /* shlok_background.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = shlok_background.png; path = ../app/assets/images/shlok_background.png; sourceTree = "<group>"; };
-		29EB39C66FD84F06BD82853C /* img-krishna.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "img-krishna.png"; path = "../app/assets/images/img-krishna.png"; sourceTree = "<group>"; };
+		29EB39C66FD84F06BD82853C /* img_krishna.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = img_krishna.png; path = ../app/assets/images/img_krishna.png; sourceTree = "<group>"; };
 		2D82C2D9A62641E39A5AF7C5 /* lock.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = lock.svg; path = ../app/assets/images/lock.svg; sourceTree = "<group>"; };
 		2F8E12738C6F48988BCC5C32 /* chevron-right-solid.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "chevron-right-solid.svg"; path = "../app/assets/images/chevron-right-solid.svg"; sourceTree = "<group>"; };
 		300170DE8BF0406F817B4A41 /* google.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = google.svg; path = ../app/assets/images/google.svg; sourceTree = "<group>"; };
@@ -122,7 +124,8 @@
 		3D39B909E43F4630B24304A6 /* instagram.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = instagram.svg; path = ../app/assets/images/instagram.svg; sourceTree = "<group>"; };
 		40719D84460F40D5B20E0036 /* playerLottie.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = playerLottie.json; path = ../app/assets/images/playerLottie.json; sourceTree = "<group>"; };
 		45D04390A1A0456180B62C4C /* micIcon.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = micIcon.svg; path = ../app/assets/images/micIcon.svg; sourceTree = "<group>"; };
-		4D3CE03433804BE2B64662D5 /* Trainer_Photo.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Trainer_Photo.png; path = ../app/assets/images/Trainer_Photo.png; sourceTree = "<group>"; };
+		4BF470F95FEC99D7E45F80EA /* OrientationModule.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = SaralGita/OrientationModule.m; sourceTree = "<group>"; };
+		4D3CE03433804BE2B64662D5 /* trainer_photo.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = trainer_photo.png; path = ../app/assets/images/trainer_photo.png; sourceTree = "<group>"; };
 		4DD0D8EB065C4366BD576EF1 /* message.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = message.svg; path = ../app/assets/images/message.svg; sourceTree = "<group>"; };
 		52DF9823A4394D07ABF89D35 /* translationAnimation.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = translationAnimation.json; path = ../app/assets/images/translationAnimation.json; sourceTree = "<group>"; };
 		55C93EB4191240EBBC5BD118 /* contact-us.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "contact-us.svg"; path = "../app/assets/images/contact-us.svg"; sourceTree = "<group>"; };
@@ -131,26 +134,27 @@
 		62AC3C1F53374C3C9F4CBC39 /* eye.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = eye.svg; path = ../app/assets/images/eye.svg; sourceTree = "<group>"; };
 		652721D21E5C4145806272C6 /* tabler-icon-search.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "tabler-icon-search.svg"; path = "../app/assets/images/tabler-icon-search.svg"; sourceTree = "<group>"; };
 		69340FEBBE54461CBC5B2C70 /* whitePlay.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = whitePlay.svg; path = ../app/assets/images/whitePlay.svg; sourceTree = "<group>"; };
-		6B5EFAEE0EE2465AA9DF36EE /* appBackground.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = appBackground.png; path = ../app/assets/images/appBackground.png; sourceTree = "<group>"; };
+		6B5EFAEE0EE2465AA9DF36EE /* app_background.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = app_background.png; path = ../app/assets/images/app_background.png; sourceTree = "<group>"; };
 		6C698B89EDCD479593FC8CE2 /* ic-right.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ic-right.svg"; path = "../app/assets/images/ic-right.svg"; sourceTree = "<group>"; };
-		6D76E42FD8A543C088DF0A02 /* img-geeta-learn@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "img-geeta-learn@2x.png"; path = "../app/assets/images/img-geeta-learn@2x.png"; sourceTree = "<group>"; };
+		6D76E42FD8A543C088DF0A02 /* img_geeta_learn@2x.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "img_geeta_learn@2x.png"; path = "../app/assets/images/img_geeta_learn@2x.png"; sourceTree = "<group>"; };
 		6DF60A7B28104820AB429470 /* right.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = right.svg; path = ../app/assets/images/right.svg; sourceTree = "<group>"; };
 		6E87D573FD424DE2A12D32DD /* left.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = left.svg; path = ../app/assets/images/left.svg; sourceTree = "<group>"; };
 		703B24C32F0834F6008A6CF3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SaralGita/AppDelegate.swift; sourceTree = "<group>"; };
 		7BD51D89FF474E5C8E9C0BCC /* chevron-left.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "chevron-left.svg"; path = "../app/assets/images/chevron-left.svg"; sourceTree = "<group>"; };
-		7F113B5E7FB344BE873F4E45 /* mainScreenBackground.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = mainScreenBackground.png; path = ../app/assets/images/mainScreenBackground.png; sourceTree = "<group>"; };
+		7F113B5E7FB344BE873F4E45 /* main_screen_background.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = main_screen_background.png; path = ../app/assets/images/main_screen_background.png; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SaralGita/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		83BCD2D2D5A5061E9EAB7C4B /* OrientationModule.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SaralGita/OrientationModule.swift; sourceTree = "<group>"; };
 		872816ACA28443CEBD5BE886 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-SemiBold.ttf"; path = "../app/assets/fonts/Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		877292571BAF4E8798767D81 /* Inter-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Bold.ttf"; path = "../app/assets/fonts/Inter-Bold.ttf"; sourceTree = "<group>"; };
-		884E158092774C1092E11CF5 /* img-geeta-learn.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "img-geeta-learn.png"; path = "../app/assets/images/img-geeta-learn.png"; sourceTree = "<group>"; };
-		8ECBE618319E4E5AB181204C /* Frame.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Frame.png; path = ../app/assets/images/Frame.png; sourceTree = "<group>"; };
+		884E158092774C1092E11CF5 /* img_geeta_learn.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = img_geeta_learn.png; path = ../app/assets/images/img_geeta_learn.png; sourceTree = "<group>"; };
+		8ECBE618319E4E5AB181204C /* frame.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = frame.png; path = ../app/assets/images/frame.png; sourceTree = "<group>"; };
 		9096C20205774847B73D8CF8 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = SaralGita/BootSplash.storyboard; sourceTree = "<group>"; };
-		953452B6215A4A0F9FC1D255 /* Avatar.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Avatar.png; path = ../app/assets/images/Avatar.png; sourceTree = "<group>"; };
+		953452B6215A4A0F9FC1D255 /* avatar.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = avatar.png; path = ../app/assets/images/avatar.png; sourceTree = "<group>"; };
 		955EAB6B399A4FF28A75EFE1 /* facebook.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = facebook.svg; path = ../app/assets/images/facebook.svg; sourceTree = "<group>"; };
 		96CD81CE98D0415A8ADACD2B /* tabler-icon-chevron-left.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "tabler-icon-chevron-left.svg"; path = "../app/assets/images/tabler-icon-chevron-left.svg"; sourceTree = "<group>"; };
 		9CEC1C34112840B5AC248AFE /* refresh.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = refresh.svg; path = ../app/assets/images/refresh.svg; sourceTree = "<group>"; };
-		9FB58F984E4441518301B9D1 /* Carousel_1.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Carousel_1.png; path = ../app/assets/images/Carousel_1.png; sourceTree = "<group>"; };
+		9FB58F984E4441518301B9D1 /* carousel_1.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = carousel_1.png; path = ../app/assets/images/carousel_1.png; sourceTree = "<group>"; };
 		A387905A76F24FF8841B3CFE /* signout.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = signout.svg; path = ../app/assets/images/signout.svg; sourceTree = "<group>"; };
 		A490D5600E914E41B279D052 /* cloudAnimation.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = cloudAnimation.json; path = ../app/assets/images/cloudAnimation.json; sourceTree = "<group>"; };
 		A542B950052C4A3794E02BA7 /* circle-check.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "circle-check.svg"; path = "../app/assets/images/circle-check.svg"; sourceTree = "<group>"; };
@@ -158,7 +162,7 @@
 		AC137E9B637A45859F83B451 /* bars-3.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "bars-3.svg"; path = "../app/assets/images/bars-3.svg"; sourceTree = "<group>"; };
 		AD6E6C5F4FDE4374A05F4D10 /* microphone-line-icon.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "microphone-line-icon.svg"; path = "../app/assets/images/microphone-line-icon.svg"; sourceTree = "<group>"; };
 		B5F18B79A6454372B234FB9B /* privacy-policy.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "privacy-policy.svg"; path = "../app/assets/images/privacy-policy.svg"; sourceTree = "<group>"; };
-		BA306E59544A463981B974DB /* Carousel_2.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Carousel_2.png; path = ../app/assets/images/Carousel_2.png; sourceTree = "<group>"; };
+		BA306E59544A463981B974DB /* carousel_2.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = carousel_2.png; path = ../app/assets/images/carousel_2.png; sourceTree = "<group>"; };
 		BC43C091BB1A402B84B266C4 /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../app/assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
 		C3804B2F6EB745B1AD4E0F5E /* circle.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = circle.svg; path = ../app/assets/images/circle.svg; sourceTree = "<group>"; };
 		C3F320A2435D4B3A8898697D /* x.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = x.svg; path = ../app/assets/images/x.svg; sourceTree = "<group>"; };
@@ -169,11 +173,11 @@
 		DE4F6F578C0341E48CE678B5 /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = SaralGita/Colors.xcassets; sourceTree = "<group>"; };
 		DF5C25FF292F46DEBBBE943D /* replayButton.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = replayButton.svg; path = ../app/assets/images/replayButton.svg; sourceTree = "<group>"; };
 		E035739ABFF841EF85F6C3D7 /* logo-saral-gita.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "logo-saral-gita.svg"; path = "../app/assets/images/logo-saral-gita.svg"; sourceTree = "<group>"; };
-		E7AF6333B0F546668A7B7742 /* Carousel_3.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Carousel_3.png; path = ../app/assets/images/Carousel_3.png; sourceTree = "<group>"; };
+		E7AF6333B0F546668A7B7742 /* carousel_3.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = carousel_3.png; path = ../app/assets/images/carousel_3.png; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EF840DAC3D994ABC9C8E1007 /* player-play.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "player-play.svg"; path = "../app/assets/images/player-play.svg"; sourceTree = "<group>"; };
-		F6BB9C6E783D4E9CAF2F26C4 /* Cartoon_cloud.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Cartoon_cloud.png; path = ../app/assets/images/Cartoon_cloud.png; sourceTree = "<group>"; };
-		F9CED476C07C4B5AA1339DA4 /* peacockFeather.gif */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = peacockFeather.gif; path = ../app/assets/images/peacockFeather.gif; sourceTree = "<group>"; };
+		F6BB9C6E783D4E9CAF2F26C4 /* cartoon_cloud.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = cartoon_cloud.png; path = ../app/assets/images/cartoon_cloud.png; sourceTree = "<group>"; };
+		F9CED476C07C4B5AA1339DA4 /* peacock_feather.gif */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = peacock_feather.gif; path = ../app/assets/images/peacock_feather.gif; sourceTree = "<group>"; };
 		FCAF00D3352D495B827AA263 /* user.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = user.svg; path = ../app/assets/images/user.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +204,8 @@
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				9096C20205774847B73D8CF8 /* BootSplash.storyboard */,
 				DE4F6F578C0341E48CE678B5 /* Colors.xcassets */,
+				83BCD2D2D5A5061E9EAB7C4B /* OrientationModule.swift */,
+				4BF470F95FEC99D7E45F80EA /* OrientationModule.m */,
 			);
 			name = SaralGita;
 			sourceTree = "<group>";
@@ -224,7 +230,7 @@
 				CFDF02F9ABF54D58B5814C37 /* Inter-ExtraLight.ttf */,
 				38311AE0FD0F4524AF229D31 /* Inter-Black.ttf */,
 				872816ACA28443CEBD5BE886 /* Inter-SemiBold.ttf */,
-				F9CED476C07C4B5AA1339DA4 /* peacockFeather.gif */,
+				F9CED476C07C4B5AA1339DA4 /* peacock_feather.gif */,
 				55C93EB4191240EBBC5BD118 /* contact-us.svg */,
 				1E94D465BB484C3E87C55F7B /* tabler-icon-bell.svg */,
 				FCAF00D3352D495B827AA263 /* user.svg */,
@@ -232,14 +238,14 @@
 				5F721E1CAC994AF49BA32CAA /* chevron-down.svg */,
 				2992974CB3694AEFB9056C26 /* shlok_background.png */,
 				D1FA35BC669A41CDA087F52B /* chevron-left-solid.svg */,
-				290C66B5B8164405A0625FF4 /* img-krishna@2x.png */,
+				290C66B5B8164405A0625FF4 /* img_krishna@2x.png */,
 				2F8E12738C6F48988BCC5C32 /* chevron-right-solid.svg */,
 				AD6E6C5F4FDE4374A05F4D10 /* microphone-line-icon.svg */,
 				D6652AA9046C4388B685CAED /* microphone-voice-icon.svg */,
 				C3F320A2435D4B3A8898697D /* x.svg */,
 				2D82C2D9A62641E39A5AF7C5 /* lock.svg */,
 				3D39B909E43F4630B24304A6 /* instagram.svg */,
-				29EB39C66FD84F06BD82853C /* img-krishna.png */,
+				29EB39C66FD84F06BD82853C /* img_krishna.png */,
 				40719D84460F40D5B20E0036 /* playerLottie.json */,
 				3A825AF2806745F286567410 /* leaf.gif */,
 				02C2C9FECB914CE3BD6F9FE9 /* CloseIcon.svg */,
@@ -252,39 +258,39 @@
 				20222F61985F49E18003928C /* bell.svg */,
 				6C698B89EDCD479593FC8CE2 /* ic-right.svg */,
 				45D04390A1A0456180B62C4C /* micIcon.svg */,
-				884E158092774C1092E11CF5 /* img-geeta-learn.png */,
+				884E158092774C1092E11CF5 /* img_geeta_learn.png */,
 				A9E7DE413E43496981DA97EC /* info.svg */,
 				254D0A2CB3A64D6CB47FE547 /* Mic.svg */,
 				9CEC1C34112840B5AC248AFE /* refresh.svg */,
 				6DF60A7B28104820AB429470 /* right.svg */,
-				953452B6215A4A0F9FC1D255 /* Avatar.png */,
+				953452B6215A4A0F9FC1D255 /* avatar.png */,
 				4DD0D8EB065C4366BD576EF1 /* message.svg */,
 				E035739ABFF841EF85F6C3D7 /* logo-saral-gita.svg */,
 				52DF9823A4394D07ABF89D35 /* translationAnimation.json */,
 				955EAB6B399A4FF28A75EFE1 /* facebook.svg */,
-				F6BB9C6E783D4E9CAF2F26C4 /* Cartoon_cloud.png */,
+				F6BB9C6E783D4E9CAF2F26C4 /* cartoon_cloud.png */,
 				69340FEBBE54461CBC5B2C70 /* whitePlay.svg */,
 				300170DE8BF0406F817B4A41 /* google.svg */,
 				19DE4C41A5B646EFBFFEF275 /* splash_screen.png */,
 				A490D5600E914E41B279D052 /* cloudAnimation.json */,
-				7F113B5E7FB344BE873F4E45 /* mainScreenBackground.png */,
+				7F113B5E7FB344BE873F4E45 /* main_screen_background.png */,
 				A387905A76F24FF8841B3CFE /* signout.svg */,
-				8ECBE618319E4E5AB181204C /* Frame.png */,
+				8ECBE618319E4E5AB181204C /* frame.png */,
 				62AC3C1F53374C3C9F4CBC39 /* eye.svg */,
-				4D3CE03433804BE2B64662D5 /* Trainer_Photo.png */,
+				4D3CE03433804BE2B64662D5 /* trainer_photo.png */,
 				96CD81CE98D0415A8ADACD2B /* tabler-icon-chevron-left.svg */,
 				B5F18B79A6454372B234FB9B /* privacy-policy.svg */,
-				1B71F645186E428A831410AD /* img-john-fitness.png */,
-				6D76E42FD8A543C088DF0A02 /* img-geeta-learn@2x.png */,
-				BA306E59544A463981B974DB /* Carousel_2.png */,
+				1B71F645186E428A831410AD /* img_john_fitness.png */,
+				6D76E42FD8A543C088DF0A02 /* img_geeta_learn@2x.png */,
+				BA306E59544A463981B974DB /* carousel_2.png */,
 				5629FDD0F6004AA0AA4E1E3D /* white-play-button.svg */,
-				E7AF6333B0F546668A7B7742 /* Carousel_3.png */,
-				9FB58F984E4441518301B9D1 /* Carousel_1.png */,
+				E7AF6333B0F546668A7B7742 /* carousel_3.png */,
+				9FB58F984E4441518301B9D1 /* carousel_1.png */,
 				28E43F12EF754CC19C3CB742 /* pauseIcon.svg */,
 				6E87D573FD424DE2A12D32DD /* left.svg */,
 				EF840DAC3D994ABC9C8E1007 /* player-play.svg */,
 				7BD51D89FF474E5C8E9C0BCC /* chevron-left.svg */,
-				6B5EFAEE0EE2465AA9DF36EE /* appBackground.png */,
+				6B5EFAEE0EE2465AA9DF36EE /* app_background.png */,
 				0C917649DEF244818C65661F /* krishna.png */,
 				C5C5D0FBF93E42E287617EAB /* dashborad.svg */,
 				27B5C0F8C5BE45D48116E53D /* heart.svg */,
@@ -405,7 +411,7 @@
 				AB69B354469346BC99614A70 /* Inter-ExtraLight.ttf in Resources */,
 				A71677CBAED347FC991F6254 /* Inter-Black.ttf in Resources */,
 				2049A232243C4578BCB65218 /* Inter-SemiBold.ttf in Resources */,
-				F40154FC6AA74F45BCBC29D0 /* peacockFeather.gif in Resources */,
+				F40154FC6AA74F45BCBC29D0 /* peacock_feather.gif in Resources */,
 				485876CC462741FDA03F5BE2 /* contact-us.svg in Resources */,
 				A4DE0D42C0BA4D2FB23C8230 /* tabler-icon-bell.svg in Resources */,
 				86E6E59EC1034A47A8A0926C /* user.svg in Resources */,
@@ -413,14 +419,14 @@
 				3EA85663DBC64FCD8A55D209 /* chevron-down.svg in Resources */,
 				AB25E2F98E6A4AF68F48C6E1 /* shlok_background.png in Resources */,
 				FE446CBCB68D4327BD9E78A1 /* chevron-left-solid.svg in Resources */,
-				97090FE78A5947C2A731ADD7 /* img-krishna@2x.png in Resources */,
+				97090FE78A5947C2A731ADD7 /* img_krishna@2x.png in Resources */,
 				ACE5EA04F05D42E992F47BFC /* chevron-right-solid.svg in Resources */,
 				2C92EF7ECE9748CAB44D33AF /* microphone-line-icon.svg in Resources */,
 				243497FA096543CCB1511811 /* microphone-voice-icon.svg in Resources */,
 				D6A4FA95F733438BBBA0A85E /* x.svg in Resources */,
 				59A3B877DB1C448082446738 /* lock.svg in Resources */,
 				A83C2CAF5A2A4CD9AA646B46 /* instagram.svg in Resources */,
-				6F77B9904EA54853B78CF251 /* img-krishna.png in Resources */,
+				6F77B9904EA54853B78CF251 /* img_krishna.png in Resources */,
 				2F99CE5E33E3466796C32C7E /* playerLottie.json in Resources */,
 				19D08BB42B85402F86EB87C5 /* leaf.gif in Resources */,
 				99A25311155E44CB86F1DA3F /* CloseIcon.svg in Resources */,
@@ -433,40 +439,40 @@
 				0BBEACE35D1B4605B4189539 /* bell.svg in Resources */,
 				096C523A88F64E25862645EA /* ic-right.svg in Resources */,
 				D16698AB8A9E4A49AA0FC265 /* micIcon.svg in Resources */,
-				55D396DCE1324FFCA7DBAF32 /* img-geeta-learn.png in Resources */,
+				55D396DCE1324FFCA7DBAF32 /* img_geeta_learn.png in Resources */,
 				3E1DE83B1CE0401FAD795AC9 /* info.svg in Resources */,
 				1380D4DA92F3465D9023F51A /* Mic.svg in Resources */,
 				5CCCF31ADF5F47AEAA5D5BC0 /* refresh.svg in Resources */,
 				141E7BF140E44757A9672D8B /* right.svg in Resources */,
-				4CC516CE24C64F39A1AE3F72 /* Avatar.png in Resources */,
+				4CC516CE24C64F39A1AE3F72 /* avatar.png in Resources */,
 				2D2E28589AB747649EAD77E0 /* message.svg in Resources */,
 				DEF406DD2F6E4F7384461EF5 /* logo-saral-gita.svg in Resources */,
 				6D67C3F2874E495385AEF5E6 /* translationAnimation.json in Resources */,
 				33390FAB71B2444D9C1982D1 /* facebook.svg in Resources */,
-				BEFED50247344361A6A5FD6A /* Cartoon_cloud.png in Resources */,
+				BEFED50247344361A6A5FD6A /* cartoon_cloud.png in Resources */,
 				4CD0E9E286A9463CA9DF4C81 /* whitePlay.svg in Resources */,
 				8AFD8E89E1474C7B8F8441C6 /* google.svg in Resources */,
 				2C18A65B725E46C0AB8FB2FB /* splash_screen.png in Resources */,
 				8295190AAC9144CCBD33D0FB /* cloudAnimation.json in Resources */,
-				59E43CF7EE7F4D9297EE8351 /* mainScreenBackground.png in Resources */,
+				59E43CF7EE7F4D9297EE8351 /* main_screen_background.png in Resources */,
 				0A1B93315033455D8DC163A0 /* signout.svg in Resources */,
-				0A27C7827BAB41D6B173471D /* Frame.png in Resources */,
+				0A27C7827BAB41D6B173471D /* frame.png in Resources */,
 				30017904912F4CB1A5928122 /* eye.svg in Resources */,
-				7FE97E50EB90442497154687 /* Trainer_Photo.png in Resources */,
+				7FE97E50EB90442497154687 /* trainer_photo.png in Resources */,
 				BB5D2DC787CD46D6B262041C /* tabler-icon-chevron-left.svg in Resources */,
 				7C5F0951CE564141803A2AA9 /* privacy-policy.svg in Resources */,
-				EA97F51356C74885824337DC /* img-john-fitness.png in Resources */,
-				6A2C33AAB34E47BF860FCCE9 /* img-geeta-learn@2x.png in Resources */,
+				EA97F51356C74885824337DC /* img_john_fitness.png in Resources */,
+				6A2C33AAB34E47BF860FCCE9 /* img_geeta_learn@2x.png in Resources */,
 				703B24C42F0834F6008A6CF3 /* GoogleService-Info.plist in Resources */,
-				E0C5E83E28394F7B8B6BAA1A /* Carousel_2.png in Resources */,
+				E0C5E83E28394F7B8B6BAA1A /* carousel_2.png in Resources */,
 				2AD6430F2F4C4C9FABB39938 /* white-play-button.svg in Resources */,
-				1CFC63C8E41E4C608FDE1DA8 /* Carousel_3.png in Resources */,
-				97179B58F7704C7BAB3D9796 /* Carousel_1.png in Resources */,
+				1CFC63C8E41E4C608FDE1DA8 /* carousel_3.png in Resources */,
+				97179B58F7704C7BAB3D9796 /* carousel_1.png in Resources */,
 				DC4FD1CB7ECB4C63A8765054 /* pauseIcon.svg in Resources */,
 				A7BA1D4D4AE44543B1B6C235 /* left.svg in Resources */,
 				EEC869522EE44C2D817F0665 /* player-play.svg in Resources */,
 				6AF2CC2F898E4215B2C0C048 /* chevron-left.svg in Resources */,
-				20772306A95F48A681ED6BC3 /* appBackground.png in Resources */,
+				20772306A95F48A681ED6BC3 /* app_background.png in Resources */,
 				6BB7677006A947E3BE65F5D4 /* krishna.png in Resources */,
 				80F4B37D661D426393BA39E1 /* dashborad.svg in Resources */,
 				56A090E7E6E0450C83EAE30D /* heart.svg in Resources */,
@@ -522,13 +528,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -543,13 +545,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -565,8 +563,6 @@
 				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "[CP-User] [RNFB] Core Configuration";
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/usr/bin/env bash\n#\n# Copyright (c) 2016-present Invertase Limited & Contributors\n#\n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this library except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n#\n\n##########################################################################\n##########################################################################\n#\n#  NOTE THAT IF YOU CHANGE THIS FILE YOU MUST RUN pod install AFTERWARDS\n#\n#  This file is installed as an Xcode build script in the project file\n#  by cocoapods, and you will not see your changes until you pod install\n#\n##########################################################################\n##########################################################################\n\nset -e\n\n_MAX_LOOKUPS=2;\n_SEARCH_RESULT=''\n_RN_ROOT_EXISTS=''\n_CURRENT_LOOKUPS=1\n_JSON_ROOT=\"'react-native'\"\n_JSON_FILE_NAME='firebase.json'\n_JSON_OUTPUT_BASE64='e30=' # { }\n_CURRENT_SEARCH_DIR=${PROJECT_DIR}\n_PLIST_BUDDY=/usr/libexec/PlistBuddy\n_TARGET_PLIST=\"${BUILT_PRODUCTS_DIR}/${INFOPLIST_PATH}\"\n_DSYM_PLIST=\"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist\"\n\n# plist arrays\n_PLIST_ENTRY_KEYS=()\n_PLIST_ENTRY_TYPES=()\n_PLIST_ENTRY_VALUES=()\n\nfunction setPlistValue {\n  echo \"note:      setting plist entry '$1' of type '$2' in file '$4'\"\n  ${_PLIST_BUDDY} -c \"Add :$1 $2 '$3'\" $4 || echo \"note:      '$1' already exists\"\n}\n\nfunction getFirebaseJsonKeyValue () {\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    ruby -Ku -e \"require 'rubygems';require 'json'; output=JSON.parse('$1'); puts output[$_JSON_ROOT]['$2']\"\n  else\n    echo \"\"\n  fi;\n}\n\nfunction jsonBoolToYesNo () {\n  if [[ $1 == \"false\" ]]; then\n    echo \"NO\"\n  elif [[ $1 == \"true\" ]]; then\n    echo \"YES\"\n  else echo \"NO\"\n  fi\n}\n\necho \"note: -> RNFB build script started\"\necho \"note: 1) Locating ${_JSON_FILE_NAME} file:\"\n\nif [[ -z ${_CURRENT_SEARCH_DIR} ]]; then\n  _CURRENT_SEARCH_DIR=$(pwd)\nfi;\n\nwhile true; do\n  _CURRENT_SEARCH_DIR=$(dirname \"$_CURRENT_SEARCH_DIR\")\n  if [[ \"$_CURRENT_SEARCH_DIR\" == \"/\" ]] || [[ ${_CURRENT_LOOKUPS} -gt ${_MAX_LOOKUPS} ]]; then break; fi;\n  echo \"note:      ($_CURRENT_LOOKUPS of $_MAX_LOOKUPS) Searching in '$_CURRENT_SEARCH_DIR' for a ${_JSON_FILE_NAME} file.\"\n  _SEARCH_RESULT=$(find \"$_CURRENT_SEARCH_DIR\" -maxdepth 2 -name ${_JSON_FILE_NAME} -print | /usr/bin/head -n 1)\n  if [[ ${_SEARCH_RESULT} ]]; then\n    echo \"note:      ${_JSON_FILE_NAME} found at $_SEARCH_RESULT\"\n    break;\n  fi;\n  _CURRENT_LOOKUPS=$((_CURRENT_LOOKUPS+1))\ndone\n\nif [[ ${_SEARCH_RESULT} ]]; then\n  _JSON_OUTPUT_RAW=$(cat \"${_SEARCH_RESULT}\")\n  if ! _RN_ROOT_EXISTS=$(ruby -Ku -e \"require 'json'; output=JSON.parse('$_JSON_OUTPUT_RAW'); puts output[$_JSON_ROOT]\"); then\n    echo \"error: Failed to parse firebase.json, check for syntax errors.\"\n    exit 1\n  fi\n\n  if [[ ${_RN_ROOT_EXISTS} ]]; then\n    if ! python3 --version >/dev/null 2>&1; then echo \"error: python3 not found, firebase.json file processing error.\" && exit 1; fi\n    _JSON_OUTPUT_BASE64=$(python3 -c 'import json,sys,base64;print(base64.b64encode(bytes(json.dumps(json.loads(open('\"'${_SEARCH_RESULT}'\"', '\"'rb'\"').read())['${_JSON_ROOT}']), '\"'utf-8'\"')).decode())' || echo \"e30=\")\n  fi\n\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n\n  # config.app_data_collection_default_enabled\n  _APP_DATA_COLLECTION_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_data_collection_default_enabled\")\n  if [[ $_APP_DATA_COLLECTION_ENABLED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseDataCollectionDefaultEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_DATA_COLLECTION_ENABLED\")\")\n  fi\n\n  # config.analytics_auto_collection_enabled\n  _ANALYTICS_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_auto_collection_enabled\")\n  if [[ $_ANALYTICS_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_COLLECTION\")\")\n  fi\n\n  # config.analytics_collection_deactivated\n  _ANALYTICS_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_collection_deactivated\")\n  if [[ $_ANALYTICS_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_DEACTIVATED\")\")\n  fi\n\n  # config.analytics_idfv_collection_enabled\n  _ANALYTICS_IDFV_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_idfv_collection_enabled\")\n  if [[ $_ANALYTICS_IDFV_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_IDFV_COLLECTION\")\")\n  fi\n\n  # config.analytics_default_allow_analytics_storage\n  _ANALYTICS_STORAGE=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_analytics_storage\")\n  if [[ $_ANALYTICS_STORAGE ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_ANALYTICS_STORAGE\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_STORAGE\")\")\n  fi\n\n  # config.analytics_default_allow_ad_storage\n  _ANALYTICS_AD_STORAGE=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_storage\")\n  if [[ $_ANALYTICS_AD_STORAGE ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_STORAGE\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AD_STORAGE\")\")\n  fi\n\n  # config.analytics_default_allow_ad_user_data\n  _ANALYTICS_AD_USER_DATA=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_user_data\")\n  if [[ $_ANALYTICS_AD_USER_DATA ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_USER_DATA\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AD_USER_DATA\")\")\n  fi\n\n  # config.analytics_default_allow_ad_personalization_signals\n  _ANALYTICS_PERSONALIZATION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"analytics_default_allow_ad_personalization_signals\")\n  if [[ $_ANALYTICS_PERSONALIZATION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_PERSONALIZATION\")\")\n  fi\n\n  # config.analytics_registration_with_ad_network_enabled\n  _ANALYTICS_REGISTRATION_WITH_AD_NETWORK=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_registration_with_ad_network_enabled\")\n  if [[ $_ANALYTICS_REGISTRATION_WITH_AD_NETWORK ]]; then\n    _PLIST_ENTRY_KEYS+=(\"GOOGLE_ANALYTICS_REGISTRATION_WITH_AD_NETWORK_ENABLED\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_REGISTRATION_WITH_AD_NETWORK\")\")\n  fi\n\n  # config.google_analytics_automatic_screen_reporting_enabled\n  _ANALYTICS_AUTO_SCREEN_REPORTING=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"google_analytics_automatic_screen_reporting_enabled\")\n  if [[ $_ANALYTICS_AUTO_SCREEN_REPORTING ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAutomaticScreenReportingEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_ANALYTICS_AUTO_SCREEN_REPORTING\")\")\n  fi\n\n  # config.perf_auto_collection_enabled\n  _PERF_AUTO_COLLECTION=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_auto_collection_enabled\")\n  if [[ $_PERF_AUTO_COLLECTION ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_enabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_AUTO_COLLECTION\")\")\n  fi\n\n  # config.perf_collection_deactivated\n  _PERF_DEACTIVATED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"perf_collection_deactivated\")\n  if [[ $_PERF_DEACTIVATED ]]; then\n    _PLIST_ENTRY_KEYS+=(\"firebase_performance_collection_deactivated\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_PERF_DEACTIVATED\")\")\n  fi\n\n  # config.messaging_auto_init_enabled\n  _MESSAGING_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"messaging_auto_init_enabled\")\n  if [[ $_MESSAGING_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseMessagingAutoInitEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_MESSAGING_AUTO_INIT\")\")\n  fi\n\n  # config.in_app_messaging_auto_colllection_enabled\n  _FIAM_AUTO_INIT=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"in_app_messaging_auto_collection_enabled\")\n  if [[ $_FIAM_AUTO_INIT ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseInAppMessagingAutomaticDataCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_FIAM_AUTO_INIT\")\")\n  fi\n\n  # config.app_check_token_auto_refresh\n  _APP_CHECK_TOKEN_AUTO_REFRESH=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"app_check_token_auto_refresh\")\n  if [[ $_APP_CHECK_TOKEN_AUTO_REFRESH ]]; then\n    _PLIST_ENTRY_KEYS+=(\"FirebaseAppCheckTokenAutoRefreshEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"$(jsonBoolToYesNo \"$_APP_CHECK_TOKEN_AUTO_REFRESH\")\")\n  fi\n\n  # config.crashlytics_disable_auto_disabler - undocumented for now - mainly for debugging, document if becomes useful\n  _CRASHLYTICS_AUTO_DISABLE_ENABLED=$(getFirebaseJsonKeyValue \"$_JSON_OUTPUT_RAW\" \"crashlytics_disable_auto_disabler\")\n  if [[ $_CRASHLYTICS_AUTO_DISABLE_ENABLED == \"true\" ]]; then\n    echo \"Disabled Crashlytics auto disabler.\" # do nothing\n  else\n    _PLIST_ENTRY_KEYS+=(\"FirebaseCrashlyticsCollectionEnabled\")\n    _PLIST_ENTRY_TYPES+=(\"bool\")\n    _PLIST_ENTRY_VALUES+=(\"NO\")\n  fi\nelse\n  _PLIST_ENTRY_KEYS+=(\"firebase_json_raw\")\n  _PLIST_ENTRY_TYPES+=(\"string\")\n  _PLIST_ENTRY_VALUES+=(\"$_JSON_OUTPUT_BASE64\")\n  echo \"warning:   A firebase.json file was not found, whilst this file is optional it is recommended to include it to configure firebase services in React Native Firebase.\"\nfi;\n\necho \"note: 2) Injecting Info.plist entries: \"\n\n# Log out the keys we're adding\nfor i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n  echo \"    ->  $i) ${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\"\ndone\n\nfor plist in \"${_TARGET_PLIST}\" \"${_DSYM_PLIST}\" ; do\n  if [[ -f \"${plist}\" ]]; then\n\n    # paths with spaces break the call to setPlistValue. temporarily modify\n    # the shell internal field separator variable (IFS), which normally\n    # includes spaces, to consist only of line breaks\n    oldifs=$IFS\n    IFS=\"\n\"\n\n    for i in \"${!_PLIST_ENTRY_KEYS[@]}\"; do\n      setPlistValue \"${_PLIST_ENTRY_KEYS[$i]}\" \"${_PLIST_ENTRY_TYPES[$i]}\" \"${_PLIST_ENTRY_VALUES[$i]}\" \"${plist}\"\n    done\n\n    # restore the original internal field separator value\n    IFS=$oldifs\n  else\n    echo \"warning:   A Info.plist build output file was not found (${plist})\"\n  fi\ndone\n\necho \"note: <- RNFB build script finished\"\n";
@@ -579,6 +575,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				761780ED2CA45674006654EE /* AppDelegate.swift in Sources */,
+				89DD7A0F58F3E570566F1CF8 /* OrientationModule.swift in Sources */,
+				3076A81B91CA478B60344DB5 /* OrientationModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,6 +612,7 @@
 				PRODUCT_NAME = SaralGita;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DEVELOPMENT_26_01_05;
+				SWIFT_OBJC_BRIDGING_HEADER = "SaralGita/SaralGita-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -648,6 +647,7 @@
 				PRODUCT_NAME = SaralGita;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DEVELOPMENT_26_01_05;
+				SWIFT_OBJC_BRIDGING_HEADER = "SaralGita/SaralGita-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
