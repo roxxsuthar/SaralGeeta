@@ -222,6 +222,15 @@ function LearnGeeta({
   const shouldShowLoading = isIntroVideoPlayed && (isLoading || !hasVideoUrl);
 
   const translationContent = learnGeeta?.data?.translation?.translation || '';
+const handleOpenDrawer = () => {
+  // Lock orientation FIRST
+  OrientationModule.lockToLandscape();
+  
+  // Small delay to ensure orientation is locked before modal opens
+  setTimeout(() => {
+    setIsDrawerVisible(true);
+  }, 100);
+};
 
   return (
     <SafeAreaView style={styles.container}>
@@ -237,15 +246,15 @@ function LearnGeeta({
         resizeMode="cover"
       >
         {/* Eye Icon - Top Right */}
-        {isIntroVideoPlayed && (
-          <TouchableOpacity
-            style={styles.eyeIconButton}
-            onPress={() => setIsDrawerVisible(true)}
-            activeOpacity={0.8}
-          >
-            <IMAGES.InfoIcon height={28} width={28} />
-          </TouchableOpacity>
-        )}
+       {isIntroVideoPlayed && (
+  <TouchableOpacity
+    style={styles.eyeIconButton}
+    onPress={handleOpenDrawer} // Changed this
+    activeOpacity={0.8}
+  >
+    <IMAGES.InfoIcon height={28} width={28} />
+  </TouchableOpacity>
+)}
 
         {/* Translation Drawer */}
         <TranslationDrawer

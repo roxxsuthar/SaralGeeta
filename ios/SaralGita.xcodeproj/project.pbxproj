@@ -49,6 +49,7 @@
 		6D67C3F2874E495385AEF5E6 /* translationAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 52DF9823A4394D07ABF89D35 /* translationAnimation.json */; };
 		6F77B9904EA54853B78CF251 /* img_krishna.png in Resources */ = {isa = PBXBuildFile; fileRef = 29EB39C66FD84F06BD82853C /* img_krishna.png */; };
 		703B24C42F0834F6008A6CF3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 703B24C32F0834F6008A6CF3 /* GoogleService-Info.plist */; };
+		70C6C96C18F1C7015C85B239 /* Pods_SaralGita.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A16A47FA0619959D966C460A /* Pods_SaralGita.framework */; };
 		736089A48BEF4EB69570A2A7 /* terms-of-use.svg in Resources */ = {isa = PBXBuildFile; fileRef = 0D15F93A39554822A9969F0C /* terms-of-use.svg */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		7A142C91296D41BC9F4A2F6B /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC43C091BB1A402B84B266C4 /* Inter-Regular.ttf */; };
@@ -87,17 +88,14 @@
 		EEC869522EE44C2D817F0665 /* player-play.svg in Resources */ = {isa = PBXBuildFile; fileRef = EF840DAC3D994ABC9C8E1007 /* player-play.svg */; };
 		F35F404EF4C84686AB0999ED /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 877292571BAF4E8798767D81 /* Inter-Bold.ttf */; };
 		F40154FC6AA74F45BCBC29D0 /* peacock_feather.gif in Resources */ = {isa = PBXBuildFile; fileRef = F9CED476C07C4B5AA1339DA4 /* peacock_feather.gif */; };
-		FA97E0B7CB39D1FCEFB9019C /* Pods_SaralGita.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 010A8088D826BB9903046392 /* Pods_SaralGita.framework */; };
 		FE446CBCB68D4327BD9E78A1 /* chevron-left-solid.svg in Resources */ = {isa = PBXBuildFile; fileRef = D1FA35BC669A41CDA087F52B /* chevron-left-solid.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		010A8088D826BB9903046392 /* Pods_SaralGita.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaralGita.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C2C9FECB914CE3BD6F9FE9 /* CloseIcon.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = CloseIcon.svg; path = ../app/assets/images/CloseIcon.svg; sourceTree = "<group>"; };
 		07A18B19135944728CC05741 /* geeta_learn_animation.gif */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = geeta_learn_animation.gif; path = ../app/assets/images/geeta_learn_animation.gif; sourceTree = "<group>"; };
 		0C917649DEF244818C65661F /* krishna.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = krishna.png; path = ../app/assets/images/krishna.png; sourceTree = "<group>"; };
 		0D15F93A39554822A9969F0C /* terms-of-use.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "terms-of-use.svg"; path = "../app/assets/images/terms-of-use.svg"; sourceTree = "<group>"; };
-		0F2B008FF7C61397D7C3594C /* Pods-SaralGita.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaralGita.release.xcconfig"; path = "Target Support Files/Pods-SaralGita/Pods-SaralGita.release.xcconfig"; sourceTree = "<group>"; };
 		13AE1663B67540E2A2C6F97A /* Inter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.ttf"; path = "../app/assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* SaralGita.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaralGita.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SaralGita/Images.xcassets; sourceTree = "<group>"; };
@@ -107,8 +105,8 @@
 		1B71F645186E428A831410AD /* img_john_fitness.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = img_john_fitness.png; path = ../app/assets/images/img_john_fitness.png; sourceTree = "<group>"; };
 		1E94D465BB484C3E87C55F7B /* tabler-icon-bell.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "tabler-icon-bell.svg"; path = "../app/assets/images/tabler-icon-bell.svg"; sourceTree = "<group>"; };
 		20222F61985F49E18003928C /* bell.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = bell.svg; path = ../app/assets/images/bell.svg; sourceTree = "<group>"; };
-		216D14FE2F52EF955244755C /* Pods-SaralGita.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaralGita.debug.xcconfig"; path = "Target Support Files/Pods-SaralGita/Pods-SaralGita.debug.xcconfig"; sourceTree = "<group>"; };
 		228B7431A9D84468A8623EB6 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraBold.ttf"; path = "../app/assets/fonts/Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		22D396B937848586259A46F4 /* Pods-SaralGita.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaralGita.release.xcconfig"; path = "Target Support Files/Pods-SaralGita/Pods-SaralGita.release.xcconfig"; sourceTree = "<group>"; };
 		254D0A2CB3A64D6CB47FE547 /* Mic.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Mic.svg; path = ../app/assets/images/Mic.svg; sourceTree = "<group>"; };
 		27B5C0F8C5BE45D48116E53D /* heart.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = heart.svg; path = ../app/assets/images/heart.svg; sourceTree = "<group>"; };
 		28E43F12EF754CC19C3CB742 /* pauseIcon.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = pauseIcon.svg; path = ../app/assets/images/pauseIcon.svg; sourceTree = "<group>"; };
@@ -155,12 +153,14 @@
 		96CD81CE98D0415A8ADACD2B /* tabler-icon-chevron-left.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "tabler-icon-chevron-left.svg"; path = "../app/assets/images/tabler-icon-chevron-left.svg"; sourceTree = "<group>"; };
 		9CEC1C34112840B5AC248AFE /* refresh.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = refresh.svg; path = ../app/assets/images/refresh.svg; sourceTree = "<group>"; };
 		9FB58F984E4441518301B9D1 /* carousel_1.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = carousel_1.png; path = ../app/assets/images/carousel_1.png; sourceTree = "<group>"; };
+		A16A47FA0619959D966C460A /* Pods_SaralGita.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaralGita.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A387905A76F24FF8841B3CFE /* signout.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = signout.svg; path = ../app/assets/images/signout.svg; sourceTree = "<group>"; };
 		A490D5600E914E41B279D052 /* cloudAnimation.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = cloudAnimation.json; path = ../app/assets/images/cloudAnimation.json; sourceTree = "<group>"; };
 		A542B950052C4A3794E02BA7 /* circle-check.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "circle-check.svg"; path = "../app/assets/images/circle-check.svg"; sourceTree = "<group>"; };
 		A9E7DE413E43496981DA97EC /* info.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = info.svg; path = ../app/assets/images/info.svg; sourceTree = "<group>"; };
 		AC137E9B637A45859F83B451 /* bars-3.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "bars-3.svg"; path = "../app/assets/images/bars-3.svg"; sourceTree = "<group>"; };
 		AD6E6C5F4FDE4374A05F4D10 /* microphone-line-icon.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "microphone-line-icon.svg"; path = "../app/assets/images/microphone-line-icon.svg"; sourceTree = "<group>"; };
+		B5E29941FE37894658849557 /* Pods-SaralGita.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaralGita.debug.xcconfig"; path = "Target Support Files/Pods-SaralGita/Pods-SaralGita.debug.xcconfig"; sourceTree = "<group>"; };
 		B5F18B79A6454372B234FB9B /* privacy-policy.svg */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "privacy-policy.svg"; path = "../app/assets/images/privacy-policy.svg"; sourceTree = "<group>"; };
 		BA306E59544A463981B974DB /* carousel_2.png */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = carousel_2.png; path = ../app/assets/images/carousel_2.png; sourceTree = "<group>"; };
 		BC43C091BB1A402B84B266C4 /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../app/assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA97E0B7CB39D1FCEFB9019C /* Pods_SaralGita.framework in Frameworks */,
+				70C6C96C18F1C7015C85B239 /* Pods_SaralGita.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				010A8088D826BB9903046392 /* Pods_SaralGita.framework */,
+				A16A47FA0619959D966C460A /* Pods_SaralGita.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -331,8 +331,8 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				216D14FE2F52EF955244755C /* Pods-SaralGita.debug.xcconfig */,
-				0F2B008FF7C61397D7C3594C /* Pods-SaralGita.release.xcconfig */,
+				B5E29941FE37894658849557 /* Pods-SaralGita.debug.xcconfig */,
+				22D396B937848586259A46F4 /* Pods-SaralGita.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -344,14 +344,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SaralGita" */;
 			buildPhases = (
-				87EFAB1BA0689B2B8B1E396F /* [CP] Check Pods Manifest.lock */,
+				0DC3F131C9D2AA8E7027C045 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				880858DAFC61BDEB1A524C34 /* [CP] Embed Pods Frameworks */,
-				CD34311A545A38FB1AEA25EB /* [CP] Copy Pods Resources */,
-				D022329198B1B86830DE3814 /* [CP-User] [RNFB] Core Configuration */,
+				A9355CD5F1553A6898F555A4 /* [CP] Embed Pods Frameworks */,
+				3E95EA6EB317C5085B8BD690 /* [CP] Copy Pods Resources */,
+				ECA2E61D0F322EFC7340562E /* [CP-User] [RNFB] Core Configuration */,
 			);
 			buildRules = (
 			);
@@ -498,7 +498,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		87EFAB1BA0689B2B8B1E396F /* [CP] Check Pods Manifest.lock */ = {
+		0DC3F131C9D2AA8E7027C045 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -520,24 +520,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		880858DAFC61BDEB1A524C34 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CD34311A545A38FB1AEA25EB /* [CP] Copy Pods Resources */ = {
+		3E95EA6EB317C5085B8BD690 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -554,7 +537,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D022329198B1B86830DE3814 /* [CP-User] [RNFB] Core Configuration */ = {
+		A9355CD5F1553A6898F555A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SaralGita/Pods-SaralGita-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECA2E61D0F322EFC7340562E /* [CP-User] [RNFB] Core Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -585,7 +585,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 216D14FE2F52EF955244755C /* Pods-SaralGita.debug.xcconfig */;
+			baseConfigurationReference = B5E29941FE37894658849557 /* Pods-SaralGita.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -621,7 +621,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F2B008FF7C61397D7C3594C /* Pods-SaralGita.release.xcconfig */;
+			baseConfigurationReference = 22D396B937848586259A46F4 /* Pods-SaralGita.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

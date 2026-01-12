@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Modal,
   TouchableOpacity,
   ScrollView,
   Animated,
+  NativeModules,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { FONTS, IMAGES } from '../../../constants';
@@ -12,6 +13,8 @@ import CustomText from '../../../components/CustomText';
 import styles from '../styles';
 import { COLOR_ARRAY } from '../../../constants/constants';
 import { hp } from '../../../utils/responsive';
+
+const { OrientationModule } = NativeModules;
 
 const TranslationDrawer = ({
   visible,
@@ -23,32 +26,68 @@ const TranslationDrawer = ({
   chapterDetail,
 }) => {
   const slideAnim = React.useRef(new Animated.Value(300)).current;
+  const opacityAnim = React.useRef(new Animated.Value(0)).current; // Add this
+  const [isReady, setIsReady] = useState(false); // Add this
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (visible) {
-      Animated.timing(slideAnim, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
+      // Lock orientation immediately
+      OrientationModule.lockToLandscape();
+      
+      // Wait for orientation to stabilize
+      setTimeout(() => {
+        setIsReady(true);
+        
+        // Start animations together
+        Animated.parallel([
+          Animated.timing(slideAnim, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.timing(opacityAnim, {
+            toValue: 1,
+            duration: 200,
+            useNativeDriver: true,
+          }),
+        ]).start();
+      }, 150); // Increased delay
     } else {
-      Animated.timing(slideAnim, {
-        toValue: 300,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
+      Animated.parallel([
+        Animated.timing(slideAnim, {
+          toValue: 300,
+          duration: 300,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacityAnim, {
+          toValue: 0,
+          duration: 200,
+          useNativeDriver: true,
+        }),
+      ]).start(() => {
+        setIsReady(false);
+      });
     }
-  }, [visible, slideAnim]);
+  }, [visible, slideAnim, opacityAnim]);
 
   return (
     <Modal
       visible={visible}
       transparent={true}
-      animationType="fade"
+      animationType="none"
       onRequestClose={onClose}
-      supportedOrientations={['portrait', 'landscape']}
+      supportedOrientations={['landscape', 'landscape-left', 'landscape-right']}
+      presentationStyle="overFullScreen"
+      onShow={() => {
+        OrientationModule.lockToLandscape();
+      }}
     >
-      <View style={styles.drawerOverlay}>
+      <Animated.View 
+        style={[
+          styles.drawerOverlay,
+          { opacity: opacityAnim } // Add fade to entire overlay
+        ]}
+      >
         <TouchableOpacity
           style={styles.drawerBackdrop}
           activeOpacity={1}
@@ -114,7 +153,7 @@ const TranslationDrawer = ({
             </CustomText>
           </ScrollView>
         </Animated.View>
-      </View>
+      </Animated.View>
     </Modal>
   );
 };
