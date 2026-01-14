@@ -1,4 +1,7 @@
 {
   "name": "SaralGita",
-  "displayName": "Saral Gita"
+  "displayName": "Saral Gita",
+  "plugins": [
+    "expo-audio"
+  ]
 }

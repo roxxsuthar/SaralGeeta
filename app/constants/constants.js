@@ -1,5 +1,7 @@
 // All APP constants here.
 
+import { Platform } from "react-native";
+
 const CONSTANTS = {
   ENCode: 'en',
   HICode: 'hi',
@@ -39,7 +41,8 @@ export const GLADIA_TRANSCRIPTION_URL =
 
 // Audio Configuration
 export const AUDIO_VOLUME = 2.0;
-export const AUDIO_FILE_EXTENSION = 'wav';
+export const AUDIO_FILE_EXTENSION = Platform.OS === 'ios' ? 'm4a' : 'mp4';
+export const AUDIO_FILE_PREFIX = 'recording_';
 
 // Video Configuration
 export const VIDEO_BUFFER_CONFIG = {
@@ -58,7 +61,6 @@ export const COLOR_ARRAY = ['#9C27B0', '#4CAF50', '#2196F3', '#fb732b'];
 export const TRANSCRIPTION_POLL_INTERVAL = 1000;
 
 // File Naming
-export const AUDIO_FILE_PREFIX = 'audio_';
 export const AUDIO_FILE_SUFFIX = '_audio';
 
 export default CONSTANTS;

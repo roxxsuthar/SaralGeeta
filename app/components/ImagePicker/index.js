@@ -4,7 +4,7 @@
  *
  */
 
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useMemo, useEffect } from 'react';
 import {
   View,
   Image,
@@ -24,6 +24,15 @@ const DEFAULT_IMAGE = 'https://www.w3schools.com/howto/img_avatar.png'; // or yo
 const ImagePicker = ({ onImageSelected, image }) => {
   const [imageUri, setImageUri] = useState(image);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setImageUri(image);
+  }, [image]);
+
+  const source = useMemo(
+    () => ({ uri: imageUri || DEFAULT_IMAGE }),
+    [imageUri],
+  );
 
   const requestCameraPermission = async () => {
     const permission =
@@ -194,10 +203,16 @@ const ImagePicker = ({ onImageSelected, image }) => {
         disabled={isLoading}
       >
         <Image
-          source={{ uri: imageUri || DEFAULT_IMAGE }}
+          key={source.uri}
+          source={source}
           style={styles.avatar}
           testID="image-picker-image"
-          onLoadStart={() => imageUri && setIsLoading(true)}
+          onLoadStart={() => {
+            const isRemote = imageUri && (imageUri.startsWith('http') || imageUri.startsWith('https'));
+            if (isRemote && imageUri !== DEFAULT_IMAGE) {
+              setIsLoading(true);
+            }
+          }}
           onLoadEnd={() => setIsLoading(false)}
           onError={() => setIsLoading(false)}
         />

@@ -22,6 +22,7 @@ const VideoPlayer = ({
   setIsButton,
   setIsVideoPlaying,
   updateVideoUrl,
+  muted = false,
   learnGeeta,
   user,
 }) => {
@@ -99,10 +100,12 @@ const VideoPlayer = ({
         style={styles.backgroundVideo}
         resizeMode="cover"
         paused={pausedState}
+        repeat={false}
+        muted={muted}
         volume={1.0}
         audioFocus={false}
-        ignoreSilentSwitch="ignore"
-        // mixWithOthers={true}
+        // ignoreSilentSwitch="ignore"
+        mixWithOthers={true}
         playInBackground={false}
         playWhenInactive={false}
         setFullScreen={true}
@@ -113,7 +116,6 @@ const VideoPlayer = ({
         bufferConfig={VIDEO_BUFFER_CONFIG}
         controls={false}
         progressUpdateInterval={VIDEO_PROGRESS_UPDATE_INTERVAL}
-        repeat={false}
         poster={poster}
         posterResizeMode="cover"
       />

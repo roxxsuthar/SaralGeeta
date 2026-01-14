@@ -62,6 +62,7 @@ function LearnGeeta({
   const [isButton, setIsButton] = useState(false);
   const [shlokIndex, setShlokIndex] = useState();
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const [isVideoMounted, setIsVideoMounted] = useState(true);
 
   const {
     isVideoReady,
@@ -82,7 +83,7 @@ function LearnGeeta({
     startRecording,
     stopRecording,
     resetTranscription,
-  } = useRecording(learnGeeta, handleSaveResult);
+  } = useRecording(learnGeeta, handleSaveResult, setIsVideoMounted);
 
   // Setup orientation and back handler
   useFocusEffect(
@@ -247,14 +248,14 @@ const handleOpenDrawer = () => {
       >
         {/* Eye Icon - Top Right */}
        {isIntroVideoPlayed && (
-  <TouchableOpacity
-    style={styles.eyeIconButton}
-    onPress={handleOpenDrawer} // Changed this
-    activeOpacity={0.8}
-  >
-    <IMAGES.InfoIcon height={28} width={28} />
-  </TouchableOpacity>
-)}
+          <TouchableOpacity
+            style={styles.eyeIconButton}
+            onPress={handleOpenDrawer} // Changed this
+            activeOpacity={0.8}
+          >
+            <IMAGES.InfoIcon height={28} width={28} />
+          </TouchableOpacity>
+        )}
 
         {/* Translation Drawer */}
         <TranslationDrawer
@@ -267,22 +268,25 @@ const handleOpenDrawer = () => {
           chapterDetail={learnGeeta?.data?.chapter}
         />
 
-        <VideoPlayer
-          videoRef={videoRef}
-          videoSource={getVideoSource()}
-          isVideoPaused={isVideoPaused}
-          onError={handleVideoError}
-          onLoadStart={handleVideoLoadStart}
-          onLoad={handleVideoLoad}
-          poster={poster}
-          isIntroVideoPlayed={isIntroVideoPlayed}
-          handleIntroPlay={handleIntroPlay}
-          setIsButton={setIsButton}
-          setIsVideoPlaying={setVideoPlayingState}
-          updateVideoUrl={updateVideoUrl}
-          learnGeeta={learnGeeta}
-          user={user}
-        />
+        {isVideoMounted && (
+          <VideoPlayer
+            videoRef={videoRef}
+            videoSource={getVideoSource()}
+            isVideoPaused={isVideoPaused}
+            onError={handleVideoError}
+            onLoadStart={handleVideoLoadStart}
+            onLoad={handleVideoLoad}
+            poster={poster}
+            isIntroVideoPlayed={isIntroVideoPlayed}
+            handleIntroPlay={handleIntroPlay}
+            setIsButton={setIsButton}
+            setIsVideoPlaying={setVideoPlayingState}
+            updateVideoUrl={updateVideoUrl}
+            muted={isRecordingButton}
+            learnGeeta={learnGeeta}
+            user={user}
+          />
+        )}
 
         {/* Skip button for intro video */}
         {!isIntroVideoPlayed && !shouldShowIntroLoading && (

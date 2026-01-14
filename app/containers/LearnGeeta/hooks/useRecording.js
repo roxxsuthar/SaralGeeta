@@ -1,7 +1,7 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { Platform, Alert } from 'react-native';
 import RNFS from 'react-native-fs';
-import SoundRecorder from 'react-native-nitro-sound';
+import { useAudioRecorder, RecordingPresets, setAudioModeAsync, getRecordingPermissionsAsync, requestRecordingPermissionsAsync } from 'expo-audio';
 import {
   request,
   check,
@@ -11,7 +11,6 @@ import {
 } from 'react-native-permissions';
 import stringSimilarity from 'string-similarity';
 import { get } from 'lodash';
-import logger from '../../../utils/logger';
 import {
   GLADIA_API_KEY,
   GLADIA_UPLOAD_URL,
@@ -21,12 +20,37 @@ import {
   AUDIO_FILE_PREFIX,
 } from '../../../constants/constants';
 
-export const useRecording = (learnGeeta, handleSaveResult) => {
+export const useRecording = (learnGeeta, handleSaveResult, setIsVideoMounted) => {
   const [isRecordingButton, setIsRecordingButton] = useState(false);
   const [transcription, setTranscription] = useState('');
   const [waitingForTranslation, setWaitingForTranslation] = useState(false);
 
   const recordingStartedAt = useRef(0);
+  
+  // expo-audio recorder hook
+  const audioRecorder = useAudioRecorder(
+    RecordingPresets.HIGH_QUALITY,
+    (status) => {
+      // status listener if needed
+    }
+  );
+
+  // Initialize audio mode for iOS compatibility
+  useEffect(() => {
+    const initAudioMode = async () => {
+      try {
+        await setAudioModeAsync({
+          playsInSilentMode: true,
+          allowsRecording: true,
+          staysActiveInBackground: false,
+          interruptionMode: 'mixWithOthers', // Allow video to play while recording
+        });
+      } catch (error) {
+        // Silent fail for mode init
+      }
+    };
+    initAudioMode();
+  }, []);
 
   /* -------------------- Permissions -------------------- */
 
@@ -37,14 +61,26 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
   const requestPermissions = useCallback(async () => {
     try {
+      // First check with react-native-permissions for external consistency
       const results = await Promise.all(
         REQUIRED_PERMISSIONS.map((p) => check(p)),
       );
 
       if (results.every((r) => r === RESULTS.GRANTED)) {
+        // Double check with expo-audio native response
+        const expoStatus = await getRecordingPermissionsAsync();
+        if (expoStatus.granted) {
+          return true;
+        }
+      }
+
+      // Request using expo-audio native mechanism
+      const expoResult = await requestRecordingPermissionsAsync();
+      if (expoResult.granted) {
         return true;
       }
 
+      // If expo fails, fallback to react-native-permissions request
       const requestResults = await Promise.all(
         REQUIRED_PERMISSIONS.map((p) => request(p)),
       );
@@ -67,7 +103,6 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
       return requestResults.every((r) => r === RESULTS.GRANTED);
     } catch (e) {
-      logger.error('Permission error:', e);
       return false;
     }
   }, []);
@@ -89,121 +124,162 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
         const hasPermission = await requestPermissions();
         if (!hasPermission) return;
 
+        // 1. Pause video
         videoRef.current?.seek(0);
         setIsVideoPlaying(false);
 
         recordingStartedAt.current = Date.now();
         setIsRecordingButton(true);
 
-        // ❗ Android MUST NOT receive path
-        if (Platform.OS === 'android') {
-          await SoundRecorder.startRecorder();
-        } else {
-          const fileName = getTimestampedFileName();
-          await SoundRecorder.startRecorder(fileName);
+        // 2. Hardware release delay (iOS)
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
+        // 3. Configure Audio session
+        try {
+          await setAudioModeAsync({
+            playsInSilentMode: true,
+            allowsRecording: true,
+            staysActiveInBackground: false,
+            interruptionMode: 'mixWithOthers',
+          });
+        } catch (modeError) {
+          // Ignore
         }
+
+        // 4. Prepare and start
+        try {
+          await audioRecorder.prepareToRecordAsync();
+        } catch (prepError) {
+          // One retry for robustness
+          await new Promise((resolve) => setTimeout(resolve, 500));
+          await audioRecorder.prepareToRecordAsync();
+        }
+        
+        audioRecorder.record();
+
+        // 5. Resume video (muted)
+        setTimeout(() => {
+          setIsVideoPlaying(true);
+        }, 300);
       } catch (e) {
-        logger.error('Start recording failed:', e);
+        Alert.alert('Recording Error', `Failed to start recording: ${e.message}`);
         setIsRecordingButton(false);
-        videoRef.current?.pause();
+        setIsVideoPlaying(true);
       }
     },
-    [requestPermissions],
+    [requestPermissions, audioRecorder],
   );
 
   const stopRecording = useCallback(
     async (videoRef, setIsVideoPlaying) => {
-      videoRef.current?.pause();
-      setIsVideoPlaying(true);
-
       if (!isRecordingButton) return;
 
-      // Prevent instant stop
-      if (Date.now() - recordingStartedAt.current < 500) {
-        logger.warn('Recording too short, ignoring stop');
+      const duration = Date.now() - recordingStartedAt.current;
+      if (duration < 1000) {
+        Alert.alert('Recording too short', 'Please record for at least 1 second');
+        setIsRecordingButton(false);
         return;
       }
 
       try {
         setIsRecordingButton(false);
-        const result = await SoundRecorder.stopRecorder();
+        await audioRecorder.stop();
+        
+        const uri = audioRecorder.uri;
+        if (!uri) throw new Error('No recording URI');
 
-        if (!result || typeof result !== 'string') {
-          throw new Error('Invalid recorder output');
-        }
-
-        const filePath = result.startsWith('file://')
-          ? result.replace('file://', '')
-          : result;
+        let filePath = uri.replace('file://', '');
 
         const exists = await RNFS.exists(filePath);
-        if (!exists) {
-          throw new Error('Recorded file not found');
+        if (!exists) throw new Error('Recorded file not found');
+
+        const fileStats = await RNFS.stat(filePath);
+        if (fileStats.size < 100) {
+          throw new Error('Recorded file is empty or too small. Please check microphone.');
         }
 
         const uploadResult = await uploadAudioToGladia(filePath);
         await startTranscription(uploadResult?.audio_url);
       } catch (e) {
-        logger.error('Stop recording failed:', e);
+        Alert.alert('Processing Error', `Failed to process recording: ${e.message}`);
       } finally {
         setIsRecordingButton(false);
+        setIsVideoPlaying(true);
       }
     },
-    [isRecordingButton, uploadAudioToGladia, startTranscription],
+    [isRecordingButton, audioRecorder, uploadAudioToGladia, startTranscription],
   );
 
   /* -------------------- Upload -------------------- */
 
   const uploadAudioToGladia = useCallback(async (filePath) => {
-    const fileUri = Platform.OS === 'android' ? `file://${filePath}` : filePath;
+    try {
+      // Ensure proper file URI format
+      let fileUri = filePath;
+      if (!fileUri.startsWith('file://')) {
+        fileUri = `file://${filePath}`;
+      }
 
-    const formData = new FormData();
-    formData.append('audio', {
-      uri: fileUri,
-      type: `audio/${AUDIO_FILE_EXTENSION}`,
-      name: filePath.split('/').pop(),
-    });
+      const formData = new FormData();
+      formData.append('audio', {
+        uri: fileUri,
+        type: `audio/${AUDIO_FILE_EXTENSION}`,
+        name: filePath.split('/').pop(),
+      });
 
-    const res = await fetch(GLADIA_UPLOAD_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        'x-gladia-key': GLADIA_API_KEY,
-      },
-      body: formData,
-    });
+      const res = await fetch(GLADIA_UPLOAD_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'x-gladia-key': GLADIA_API_KEY,
+        },
+        body: formData,
+      });
 
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.message);
+      const json = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(json.message || 'Upload failed');
+      }
 
-    return json;
+      return json;
+    } catch (error) {
+      throw error;
+    }
   }, []);
 
   /* -------------------- Transcription -------------------- */
 
   const startTranscription = useCallback(
     async (url) => {
-      setWaitingForTranslation(true);
+      try {
+        setWaitingForTranslation(true);
 
-      const response = await fetch(GLADIA_TRANSCRIPTION_URL, {
-        method: 'POST',
-        headers: {
-          'x-gladia-key': GLADIA_API_KEY,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          audio_url: url,
-          audio_to_llm: true,
-          language: 'sa',
-          detect_language: false,
-          audio_to_llm_config: {
-            prompts: [`${get(learnGeeta, 'data.shloke')}`],
+        const response = await fetch(GLADIA_TRANSCRIPTION_URL, {
+          method: 'POST',
+          headers: {
+            'x-gladia-key': GLADIA_API_KEY,
+            'Content-Type': 'application/json',
           },
-        }),
-      }).then((r) => r.json());
+          body: JSON.stringify({
+            audio_url: url,
+            audio_to_llm: true,
+            language: 'sa',
+            detect_language: false,
+            audio_to_llm_config: {
+              prompts: [`${get(learnGeeta, 'data.shloke')}`],
+            },
+          }),
+        }).then((r) => r.json());
 
-      if (response?.result_url) {
-        await pollForResult(response.result_url);
+        if (response?.result_url) {
+          await pollForResult(response.result_url);
+        } else {
+          throw new Error('No result URL in transcription response');
+        }
+      } catch (error) {
+        setWaitingForTranslation(false);
+        Alert.alert('Transcription Error', 'Failed to start transcription');
       }
     },
     [learnGeeta],
@@ -211,7 +287,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
   const pollForResult = useCallback(
     async (url) => {
-      const MAX_RETRIES = 30; // ~20 * interval = total wait time
+      const MAX_RETRIES = 30;
       let attempts = 0;
       let isActive = true;
 
@@ -239,7 +315,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
               media: get(learnGeeta, 'data.media.id', ''),
             });
 
-            return; // ✅ Exit cleanly
+            return;
           }
 
           attempts += 1;
@@ -248,8 +324,8 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
         throw new Error('Transcription timeout');
       } catch (err) {
-        logger.error('Polling failed:', err);
         setWaitingForTranslation(false);
+        Alert.alert('Timeout', 'Transcription took too long');
       }
     },
     [learnGeeta, handleSaveResult],
