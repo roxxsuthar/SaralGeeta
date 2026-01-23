@@ -24,6 +24,8 @@ const VideoPlayer = ({
   updateVideoUrl,
   learnGeeta,
   user,
+  muted = false,
+  disableAudioTrack = false,
 }) => {
   const handleVideoEnd = () => {
     if (isIntroVideoPlayed) {
@@ -101,11 +103,15 @@ const VideoPlayer = ({
         paused={pausedState}
         volume={1.0}
         audioFocus={false}
+        muted={muted}
+        selectedAudioTrack={disableAudioTrack ? { type: 'disabled' } : undefined}
         ignoreSilentSwitch="ignore"
-        // mixWithOthers={true}
+        mixWithOthers="mix"
         playInBackground={false}
         playWhenInactive={false}
         setFullScreen={true}
+        audioSessionCategory="PlayAndRecord"
+        audioSessionMode="VideoRecording"
         onError={onError}
         onLoadStart={onLoadStart}
         onLoad={onLoad}
@@ -137,6 +143,8 @@ VideoPlayer.propTypes = {
   updateVideoUrl: PropTypes.func,
   learnGeeta: PropTypes.object,
   user: PropTypes.object,
+  muted: PropTypes.bool,
+  disableAudioTrack: PropTypes.bool,
 };
 
 export default VideoPlayer;

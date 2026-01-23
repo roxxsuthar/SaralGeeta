@@ -270,6 +270,9 @@ const handleOpenDrawer = () => {
         <VideoPlayer
           videoRef={videoRef}
           videoSource={getVideoSource()}
+          // Disable audio track when recording to prevent session conflicts
+          muted={isButton}
+          disableAudioTrack={isRecordingButton}
           isVideoPaused={isVideoPaused}
           onError={handleVideoError}
           onLoadStart={handleVideoLoadStart}

@@ -1,7 +1,11 @@
 import { useState, useCallback, useRef } from 'react';
-import { Platform, Alert } from 'react-native';
+import { Platform, Alert, NativeModules } from 'react-native';
 import RNFS from 'react-native-fs';
-import SoundRecorder from 'react-native-nitro-sound';
+import SoundRecorder, {
+  AVEncoderAudioQualityIOSType,
+  AudioEncoderAndroidType,
+  AudioSourceAndroidType,
+} from 'react-native-nitro-sound';
 import {
   request,
   check,
@@ -81,6 +85,8 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
   /* -------------------- Recording -------------------- */
 
+  /* -------------------- Recording -------------------- */
+
   const startRecording = useCallback(
     async (videoRef, setIsVideoPlaying) => {
       try {
@@ -89,23 +95,31 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
         const hasPermission = await requestPermissions();
         if (!hasPermission) return;
 
-        videoRef.current?.seek(0);
-        setIsVideoPlaying(false);
-
         recordingStartedAt.current = Date.now();
         setIsRecordingButton(true);
 
-        // ❗ Android MUST NOT receive path
+        const fileName = getTimestampedFileName();
+
         if (Platform.OS === 'android') {
-          await SoundRecorder.startRecorder();
+           const audioSet = {
+            AudioSamplingRate: 44100,
+            AudioChannels: 2,
+            AudioQuality: 'high',
+            AudioEncoderAndroid: AudioEncoderAndroidType.AAC,
+            AudioSourceAndroid: AudioSourceAndroidType.MIC,
+          };
+          // Android uses nitro-sound
+          await SoundRecorder.startRecorder(undefined, audioSet);
         } else {
-          const fileName = getTimestampedFileName();
-          await SoundRecorder.startRecorder(fileName);
+          // --- iOS Native AudioRecorderModule ---
+          // Start (includes atomic session configuration)
+          const path = await NativeModules.AudioRecorderModule.startRecording(fileName);
+          console.log('iOS Native Recorder Started at:', path);
         }
       } catch (e) {
         logger.error('Start recording failed:', e);
+        Alert.alert('Recording Error', `Failed to start: ${e.message}`);
         setIsRecordingButton(false);
-        videoRef.current?.pause();
       }
     },
     [requestPermissions],
@@ -113,9 +127,6 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
   const stopRecording = useCallback(
     async (videoRef, setIsVideoPlaying) => {
-      videoRef.current?.pause();
-      setIsVideoPlaying(true);
-
       if (!isRecordingButton) return;
 
       // Prevent instant stop
@@ -126,15 +137,17 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
       try {
         setIsRecordingButton(false);
-        const result = await SoundRecorder.stopRecorder();
+        let filePath;
 
-        if (!result || typeof result !== 'string') {
-          throw new Error('Invalid recorder output');
+        if (Platform.OS === 'android') {
+            const result = await SoundRecorder.stopRecorder();
+            if (!result || typeof result !== 'string') throw new Error('Invalid recorder output');
+            filePath = result.startsWith('file://') ? result.replace('file://', '') : result;
+        } else {
+            // iOS Native Module returns path directly
+            filePath = await NativeModules.AudioRecorderModule.stopRecording();
+            console.log('iOS Native Recorder Stopped, file:', filePath);
         }
-
-        const filePath = result.startsWith('file://')
-          ? result.replace('file://', '')
-          : result;
 
         const exists = await RNFS.exists(filePath);
         if (!exists) {
@@ -143,8 +156,10 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
         const uploadResult = await uploadAudioToGladia(filePath);
         await startTranscription(uploadResult?.audio_url);
+        
       } catch (e) {
         logger.error('Stop recording failed:', e);
+        Alert.alert('Processing Error', `Failed to process: ${e.message}`);
       } finally {
         setIsRecordingButton(false);
       }

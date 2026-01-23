@@ -39,7 +39,7 @@ export const GLADIA_TRANSCRIPTION_URL =
 
 // Audio Configuration
 export const AUDIO_VOLUME = 2.0;
-export const AUDIO_FILE_EXTENSION = 'wav';
+export const AUDIO_FILE_EXTENSION = 'm4a';
 
 // Video Configuration
 export const VIDEO_BUFFER_CONFIG = {

@@ -1,6 +1,7 @@
 import Foundation
 import UIKit
 import React
+import AVFoundation
 
 @objc(OrientationModule)
 class OrientationModule: NSObject {
@@ -36,6 +37,8 @@ class OrientationModule: NSObject {
       UIViewController.attemptRotationToDeviceOrientation()
     }
   }
+
+
 
   @objc
   static func requiresMainQueueSetup() -> Bool {
