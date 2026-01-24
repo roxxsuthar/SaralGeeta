@@ -1,4 +1,3 @@
-import logger from '../../utils/logger';
 /**
  *
  * FastImageLoading
@@ -37,10 +36,8 @@ function FastImageLoading({
   }, [loader]);
   const onErrorHandler = useCallback(
     (err) => {
-      logger.log('-------err-----------', err);
       setError(true);
       setLoader(false);
-      //
     },
     [error, loader],
   );

@@ -75,26 +75,21 @@ RCT_EXPORT_METHOD(startRecording:(NSString *)fileName
       self.audioSession = [AVAudioSession sharedInstance];
       NSError *error = nil;
       
-      [self.audioSession setCategory:AVAudioSessionCategoryPlayAndRecord
+       [self.audioSession setCategory:AVAudioSessionCategoryPlayAndRecord
                          withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker |
                                     AVAudioSessionCategoryOptionAllowBluetooth |
                                     AVAudioSessionCategoryOptionMixWithOthers
                                error:&error];
-       if (error) NSLog(@"[AudioRecorder] Category Error: %@", error);
 
        [self.audioSession setMode:AVAudioSessionModeVideoRecording error:&error];
-       if (error) NSLog(@"[AudioRecorder] Mode Error: %@", error);
 
        [self.audioSession setActive:YES error:&error];
-       if (error) NSLog(@"[AudioRecorder] Activation Error: %@", error);
 
       // 2. Create file path
       NSString *cachesDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
       self.recordingPath = [cachesDirectory stringByAppendingPathComponent:fileName];
       NSURL *audioURL = [NSURL fileURLWithPath:self.recordingPath];
       
-      NSLog(@"[AudioRecorder] Path: %@", self.recordingPath);
-
       // 3. Audio settings - Switch to MONO (1 Channel) for reliability
       NSDictionary *settings = @{
         AVFormatIDKey: @(kAudioFormatMPEG4AAC),
@@ -117,7 +112,6 @@ RCT_EXPORT_METHOD(startRecording:(NSString *)fileName
       
       BOOL success = [self.audioRecorder prepareToRecord];
       if (!success) {
-        NSLog(@"[AudioRecorder] prepareToRecord returned NO");
         reject(@"prepare_error", @"Failed to prepare recorder (System rejected settings or path)", nil);
         return;
       }

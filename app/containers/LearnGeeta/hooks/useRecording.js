@@ -15,7 +15,6 @@ import {
 } from 'react-native-permissions';
 import stringSimilarity from 'string-similarity';
 import { get } from 'lodash';
-import logger from '../../../utils/logger';
 import {
   GLADIA_API_KEY,
   GLADIA_UPLOAD_URL,
@@ -71,7 +70,6 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
       return requestResults.every((r) => r === RESULTS.GRANTED);
     } catch (e) {
-      logger.error('Permission error:', e);
       return false;
     }
   }, []);
@@ -88,7 +86,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
   /* -------------------- Recording -------------------- */
 
   const startRecording = useCallback(
-    async (videoRef, setIsVideoPlaying) => {
+    async () => {
       try {
         setTranscription('');
 
@@ -113,12 +111,9 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
         } else {
           // --- iOS Native AudioRecorderModule ---
           // Start (includes atomic session configuration)
-          const path = await NativeModules.AudioRecorderModule.startRecording(fileName);
-          console.log('iOS Native Recorder Started at:', path);
+           await NativeModules.AudioRecorderModule.startRecording(fileName);
         }
       } catch (e) {
-        logger.error('Start recording failed:', e);
-        Alert.alert('Recording Error', `Failed to start: ${e.message}`);
         setIsRecordingButton(false);
       }
     },
@@ -126,12 +121,11 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
   );
 
   const stopRecording = useCallback(
-    async (videoRef, setIsVideoPlaying) => {
+    async () => {
       if (!isRecordingButton) return;
 
       // Prevent instant stop
       if (Date.now() - recordingStartedAt.current < 500) {
-        logger.warn('Recording too short, ignoring stop');
         return;
       }
 
@@ -145,8 +139,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
             filePath = result.startsWith('file://') ? result.replace('file://', '') : result;
         } else {
             // iOS Native Module returns path directly
-            filePath = await NativeModules.AudioRecorderModule.stopRecording();
-            console.log('iOS Native Recorder Stopped, file:', filePath);
+          filePath = await NativeModules.AudioRecorderModule.stopRecording();
         }
 
         const exists = await RNFS.exists(filePath);
@@ -158,8 +151,8 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
         await startTranscription(uploadResult?.audio_url);
         
       } catch (e) {
-        logger.error('Stop recording failed:', e);
-        Alert.alert('Processing Error', `Failed to process: ${e.message}`);
+        
+        
       } finally {
         setIsRecordingButton(false);
       }
@@ -263,7 +256,6 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
         throw new Error('Transcription timeout');
       } catch (err) {
-        logger.error('Polling failed:', err);
         setWaitingForTranslation(false);
       }
     },
