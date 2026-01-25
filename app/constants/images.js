@@ -1,7 +1,5 @@
 /* eslint-disable no-undef */
 // All IMAGES constants here.
-
-// import LogoSignEmoha from '../assets/images/LogoSignEmoha.svg';
 import DashBoard from '../assets/images/dashborad.svg';
 import Contact from '../assets/images/contact-us.svg';
 import Bell from '../assets/images/bell.svg';
@@ -45,9 +43,6 @@ import MicPlay from '../assets/images/microphone-voice-icon.svg';
 import MicToPlay from '../assets/images/microphone-line-icon.svg';
 import InfoIcon from '../assets/images/info.svg';
 
-// const PlanCard = require('../assets/images/planCard.png');
-// const PlanCard = require('../assets/images/planCard.png');
-const Avatar = require('../assets/images/avatar.png');
 const GeetLearn = require('../assets/images/img_geeta_learn.png');
 const KrishnaImage = require('../assets/images/img_krishna.png');
 const Chakra = require('../assets/images/geeta_learn_animation.gif');
@@ -62,11 +57,9 @@ const AppBackground = require('../assets/images/app_background.png');
 const Splash = require('../assets/images/splash_screen.png');
 const MainScreenBackground = require('../assets/images/main_screen_background.png');
 const PlayerLottie = require('../assets/images/playerLottie.json');
-const CloudAnimation = require('../assets/images/cloudAnimation.json');
 const TranslationAnimation = require('../assets/images/translationAnimation.json');
 
 const IMAGES = {
-  Avatar,
   DashBoard,
   Contact,
   Bell,
@@ -103,7 +96,6 @@ const IMAGES = {
   MicIcon,
   PauseIcon,
   PlayerLottie,
-  CloudAnimation,
   TranslationAnimation,
   Right,
   Left,

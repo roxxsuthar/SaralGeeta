@@ -87,11 +87,19 @@ function LearnGeeta({
   // Setup orientation and back handler
   useFocusEffect(
     useCallback(() => {
-     OrientationModule.lockToLandscape(); 
-     
+      if (Platform.OS === 'ios') {
+        OrientationModule.lockToLandscape();
+      } else {
+        Orientation.lockToLandscape();
+      }
+
       return () => {
         setTimeout(() => {
-          OrientationModule.lockToPortrait();
+          if (Platform.OS === 'ios') {
+            OrientationModule.lockToPortrait();
+          } else {
+            Orientation.lockToPortrait();
+          }
         }, 500);
       };
     }, []),
@@ -224,7 +232,11 @@ function LearnGeeta({
   const translationContent = learnGeeta?.data?.translation?.translation || '';
 const handleOpenDrawer = () => {
   // Lock orientation FIRST
-  OrientationModule.lockToLandscape();
+   if (Platform.OS === 'ios') {
+        OrientationModule.lockToLandscape();
+      } else {
+        Orientation.lockToLandscape();
+      }
   
   // Small delay to ensure orientation is locked before modal opens
   setTimeout(() => {
@@ -271,8 +283,9 @@ const handleOpenDrawer = () => {
           videoRef={videoRef}
           videoSource={getVideoSource()}
           // Disable audio track when recording to prevent session conflicts
-          muted={isButton}
-          disableAudioTrack={isRecordingButton}
+          // Mute video when recording to prevent echo/feedback, but keep it playing
+          muted={isButton || isRecordingButton}
+          disableAudioTrack={false}
           isVideoPaused={isVideoPaused}
           onError={handleVideoError}
           onLoadStart={handleVideoLoadStart}

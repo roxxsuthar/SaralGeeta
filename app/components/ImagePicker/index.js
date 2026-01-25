@@ -73,7 +73,7 @@ const ImagePicker = ({ onImageSelected, image }) => {
       permission = PERMISSIONS.IOS.PHOTO_LIBRARY;
     } else if (Platform.OS === 'android') {
       if (Platform.Version >= 33) {
-        permission = PERMISSIONS.ANDROID.READ_MEDIA_IMAGES;
+        return true;
       } else {
         permission = PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE;
       }

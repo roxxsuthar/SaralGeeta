@@ -6,7 +6,9 @@ import {
   ScrollView,
   Animated,
   NativeModules,
+  Platform,
 } from 'react-native';
+import Orientation from 'react-native-orientation-locker';
 import PropTypes from 'prop-types';
 import { FONTS, IMAGES } from '../../../constants';
 import CustomText from '../../../components/CustomText';
@@ -32,7 +34,11 @@ const TranslationDrawer = ({
   useEffect(() => {
     if (visible) {
       // Lock orientation immediately
-      OrientationModule.lockToLandscape();
+      if (Platform.OS === 'ios') {
+        OrientationModule.lockToLandscape();
+      } else {
+        Orientation.lockToLandscape();
+      }
       
       // Wait for orientation to stabilize
       setTimeout(() => {
@@ -79,7 +85,11 @@ const TranslationDrawer = ({
       supportedOrientations={['landscape', 'landscape-left', 'landscape-right']}
       presentationStyle="overFullScreen"
       onShow={() => {
-        OrientationModule.lockToLandscape();
+        if (Platform.OS === 'ios') {
+          OrientationModule.lockToLandscape();
+        } else {
+          Orientation.lockToLandscape();
+        }
       }}
     >
       <Animated.View 

@@ -34,10 +34,6 @@
       "sha1": "d48310d2f04c57af1bce0851e053be7b58b25dca"
     },
     {
-      "path": "app/assets/images/peacockFeather.gif",
-      "sha1": "b92a98d0d2f50dd5321d9fecad9a7f7475de3bc1"
-    },
-    {
       "path": "app/assets/images/contact-us.svg",
       "sha1": "354eba8752f8b65be7b771e5c63bae9df5dd9f2a"
     },
@@ -66,10 +62,6 @@
       "sha1": "8d3ea21197ea5d1e8dd1801d48e657765b6110c7"
     },
     {
-      "path": "app/assets/images/img-krishna@2x.png",
-      "sha1": "64b82c774c8a53a9fefc79a419630c9951cbe960"
-    },
-    {
       "path": "app/assets/images/chevron-right-solid.svg",
       "sha1": "c9d30027912b1d0c43d979cff8a360fb60bc4fb6"
     },
@@ -92,10 +84,6 @@
     {
       "path": "app/assets/images/instagram.svg",
       "sha1": "92f5e7983307dc496d4f4145282701a166480d52"
-    },
-    {
-      "path": "app/assets/images/img-krishna.png",
-      "sha1": "87c0c10356a1a9bfb5f19c40cf5585eab202c6f2"
     },
     {
       "path": "app/assets/images/playerLottie.json",
@@ -146,8 +134,12 @@
       "sha1": "d2fd62d376dc53d7ba6ce10adbd3e89eb3e48139"
     },
     {
-      "path": "app/assets/images/img-geeta-learn.png",
-      "sha1": "4d1e108f7dc8b3eff6088dd932ff2ee509824425"
+      "path": "app/assets/images/img_geeta_learn_2x.png",
+      "sha1": "4b452f26ca4984f0b47cdc849014499d6a6b2093"
+    },
+    {
+      "path": "app/assets/images/img_john_fitness.png",
+      "sha1": "74d8402ae1264978be69b6b2c50fdaff87587abd"
     },
     {
       "path": "app/assets/images/info.svg",
@@ -162,12 +154,12 @@
       "sha1": "b2eb251ae17da4708558bac4acd33bb533eb8fe6"
     },
     {
-      "path": "app/assets/images/right.svg",
-      "sha1": "01a2322eaa16d7af542841ba0579ebc2d930cf28"
+      "path": "app/assets/images/img_krishna_2x.png",
+      "sha1": "64b82c774c8a53a9fefc79a419630c9951cbe960"
     },
     {
-      "path": "app/assets/images/Avatar.png",
-      "sha1": "ea047c2d618fc6f117d2beedae68bfae423d0b64"
+      "path": "app/assets/images/right.svg",
+      "sha1": "01a2322eaa16d7af542841ba0579ebc2d930cf28"
     },
     {
       "path": "app/assets/images/message.svg",
@@ -186,12 +178,16 @@
       "sha1": "e21ab08e348976e6f9a1297d2af6d35543ca610e"
     },
     {
-      "path": "app/assets/images/Cartoon_cloud.png",
+      "path": "app/assets/images/cartoon_cloud.png",
       "sha1": "7e89f8d27302da3b959d3dec8fa448ce67441ad9"
     },
     {
-      "path": "app/assets/images/whitePlay.svg",
-      "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+      "path": "app/assets/images/app_background.png",
+      "sha1": "35bc498333017559aa63dad0a7706c5114b358c1"
+    },
+    {
+      "path": "app/assets/images/peacock_feather.gif",
+      "sha1": "b92a98d0d2f50dd5321d9fecad9a7f7475de3bc1"
     },
     {
       "path": "app/assets/images/google.svg",
@@ -202,19 +198,15 @@
       "sha1": "c7e44bfd6c05656b7bd12b0ffeb6b055c582a381"
     },
     {
-      "path": "app/assets/images/cloudAnimation.json",
-      "sha1": "6d5302bc00c40fb2fb7cbb0ff83be7711123ca7f"
-    },
-    {
-      "path": "app/assets/images/mainScreenBackground.png",
-      "sha1": "a6441b17a6cc9047dd047485f95bbc10ef9931cf"
+      "path": "app/assets/images/img_krishna.png",
+      "sha1": "87c0c10356a1a9bfb5f19c40cf5585eab202c6f2"
     },
     {
       "path": "app/assets/images/signout.svg",
       "sha1": "12dc2923ebb424b05c3916d517098a6c5cbae37c"
     },
     {
-      "path": "app/assets/images/Frame.png",
+      "path": "app/assets/images/frame.png",
       "sha1": "268d48cbf5878735b94de4a9677e059d874b4440"
     },
     {
@@ -222,7 +214,7 @@
       "sha1": "bded087832ca5642d0b4653b18c21b1146a8cf03"
     },
     {
-      "path": "app/assets/images/Trainer_Photo.png",
+      "path": "app/assets/images/trainer_photo.png",
       "sha1": "6ef25ea6c9c604c82dd36d2d2f4674b6dc7c8c3d"
     },
     {
@@ -234,28 +226,12 @@
       "sha1": "eb08173aab938e53c2b9252420af8b169cc7cc9e"
     },
     {
-      "path": "app/assets/images/img-john-fitness.png",
-      "sha1": "74d8402ae1264978be69b6b2c50fdaff87587abd"
-    },
-    {
-      "path": "app/assets/images/img-geeta-learn@2x.png",
-      "sha1": "4b452f26ca4984f0b47cdc849014499d6a6b2093"
-    },
-    {
-      "path": "app/assets/images/Carousel_2.png",
-      "sha1": "1566cafb90c0c383e1c38606f12415a7043da82e"
+      "path": "app/assets/images/img_geeta_learn.png",
+      "sha1": "4d1e108f7dc8b3eff6088dd932ff2ee509824425"
     },
     {
       "path": "app/assets/images/white-play-button.svg",
       "sha1": "b0e5c659910f6c9f6a5d2e8efffef960d65d168c"
-    },
-    {
-      "path": "app/assets/images/Carousel_3.png",
-      "sha1": "7919809fad4372e6ae5bbbf19bbd59d17b52d84c"
-    },
-    {
-      "path": "app/assets/images/Carousel_1.png",
-      "sha1": "3cf076d2577a9c22502286c8a23062f54da1b3df"
     },
     {
       "path": "app/assets/images/pauseIcon.svg",
@@ -266,16 +242,16 @@
       "sha1": "d4b20ff043e9d5c5ee6aceb7778c0f8f78a534da"
     },
     {
+      "path": "app/assets/images/main_screen_background.png",
+      "sha1": "a6441b17a6cc9047dd047485f95bbc10ef9931cf"
+    },
+    {
       "path": "app/assets/images/player-play.svg",
       "sha1": "e65e313992a2dfe0c06fa53a3b2e0d046fc7d2f3"
     },
     {
       "path": "app/assets/images/chevron-left.svg",
       "sha1": "0c5d4a287c0b6922fe243f0ad34ec3efa97e0260"
-    },
-    {
-      "path": "app/assets/images/appBackground.png",
-      "sha1": "35bc498333017559aa63dad0a7706c5114b358c1"
     },
     {
       "path": "app/assets/images/krishna.png",

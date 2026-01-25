@@ -21,7 +21,6 @@ jest.mock('react-native-permissions', () => ({
     ANDROID: {
       CAMERA: 'android.permission.CAMERA',
       READ_EXTERNAL_STORAGE: 'android.permission.READ_EXTERNAL_STORAGE',
-      READ_MEDIA_IMAGES: 'android.permission.READ_MEDIA_IMAGES',
     },
   },
   RESULTS: {
@@ -167,10 +166,6 @@ describe('ImagePicker', () => {
     Platform.OS = 'android';
     Platform.Version = 33;
     const { check, request } = require('react-native-permissions');
-    const { PERMISSIONS, RESULTS } = require('react-native-permissions');
-
-    check.mockResolvedValue(RESULTS.DENIED);
-    request.mockResolvedValue(RESULTS.GRANTED);
 
     const { getByTestId } = render(<ImagePicker {...defaultProps} />);
     const touchable = getByTestId('image-picker-touchable');
@@ -182,10 +177,12 @@ describe('ImagePicker', () => {
     const galleryOption = alertCall[2].find(
       (option) => option.text === 'Gallery',
     );
-    await galleryOption.onPress();
+    const result = await galleryOption.onPress();
 
-    expect(check).toHaveBeenCalledWith(PERMISSIONS.ANDROID.READ_MEDIA_IMAGES);
-    expect(request).toHaveBeenCalledWith(PERMISSIONS.ANDROID.READ_MEDIA_IMAGES);
+    // Should NOT call check or request on API 33+
+    expect(check).not.toHaveBeenCalled();
+    expect(request).not.toHaveBeenCalled();
+    // But it should return true or proceed to open gallery
   });
 
   it('handles gallery permission request on Android API < 33', async () => {
