@@ -4,12 +4,9 @@ import { Navigation } from '../../constants/constants';
 import HomeStackNavigator from './HomeStackNavigator';
 import Profile from '../Profile';
 import EditProfile from '../EditProfile';
-import PrivacyPolicy from '../PrivacyPolicy';
-import TermsOfUse from '../TermsOfUse';
-import ContactUs from '../ContactUs';
 import SideBar from './SideBar';
 import OurIdeals from '../OurIdeals';
-import Instruction from '../Instruction';
+import ContactUs from '../ContactUs';
 
 const Drawer = createDrawerNavigator();
 
@@ -41,12 +38,6 @@ const DrawerNavigator = () => {
       <Drawer.Screen name={Navigation.OurIdeals} component={OurIdeals} />
       <Drawer.Screen name={Navigation.Profile} component={Profile} />
       <Drawer.Screen name={Navigation.EditProfile} component={EditProfile} />
-      <Drawer.Screen name={Navigation.Instructions} component={Instruction} />
-      <Drawer.Screen name={Navigation.TermsOfUse} component={TermsOfUse} />
-      <Drawer.Screen
-        name={Navigation.PrivacyPolicy}
-        component={PrivacyPolicy}
-      />
       <Drawer.Screen name={Navigation.ContactUs} component={ContactUs} />
     </Drawer.Navigator>
   );

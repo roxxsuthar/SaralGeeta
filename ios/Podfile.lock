@@ -2690,6 +2690,8 @@ PODS:
   - ReactNativeLocalization (2.3.2):
     - React-Core
   - RecaptchaInterop (101.0.0)
+  - RNAppleAuthentication (2.5.1):
+    - React-Core
   - RNBootSplash (6.3.11):
     - boost
     - DoubleConversion
@@ -3263,6 +3265,7 @@ DEPENDENCIES:
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeLocalization (from `../node_modules/react-native-localization`)
+  - "RNAppleAuthentication (from `../node_modules/@invertase/react-native-apple-authentication`)"
   - RNBootSplash (from `../node_modules/react-native-bootsplash`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
@@ -3471,6 +3474,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeLocalization:
     :path: "../node_modules/react-native-localization"
+  RNAppleAuthentication:
+    :path: "../node_modules/@invertase/react-native-apple-authentication"
   RNBootSplash:
     :path: "../node_modules/react-native-bootsplash"
   RNCAsyncStorage:
@@ -3606,6 +3611,7 @@ SPEC CHECKSUMS:
   ReactCommon: 5cfd842fcd893bb40fc835f98fadc60c42906a20
   ReactNativeLocalization: fb171138cdc80d5d0d4f20243d2fc82c2b3cc48f
   RecaptchaInterop: 11e0b637842dfb48308d242afc3f448062325aba
+  RNAppleAuthentication: d6fe579e5f43cf8db54bdc48518bccea61c592a4
   RNBootSplash: d8407c268d5159ea026dc741ec867ebbe4708f25
   RNCAsyncStorage: 7c9d6b389e2977ffe92fe8cafbea77974649c72b
   RNCClipboard: 4eea71d801c880175c12f6ab14332ca86fed935f

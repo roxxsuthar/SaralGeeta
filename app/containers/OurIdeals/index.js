@@ -16,7 +16,7 @@ import { CommonActions } from '@react-navigation/native';
 import isEqual from 'lodash/isEqual';
 
 import { createStructuredSelector } from 'reselect';
-import { makeSelectAppLanguage, makeSelectUser } from '../App/selectors';
+import { makeSelectAppLanguage, makeSelectIdealDetails, makeSelectUser } from '../App/selectors';
 import { compose } from 'redux';
 import makeSelectOurIdeals from './selectors';
 import styles from './styles';
@@ -40,6 +40,7 @@ function OurIdeals({
   ourIdeals,
   handleUpdateUser,
   user,
+  selectIdealData
 }) {
   const { OurIdeals: OurIdealsMessage } = strings;
   const { currentLanguage } = language;
@@ -53,6 +54,17 @@ function OurIdeals({
     fetchData();
   }, []);
 
+  const selectItem = useCallback((item) => {
+    setSelectCard(item);
+    setDisableBtn(false);
+  });
+
+  useEffect(() => {
+    if (selectIdealData) {
+      selectItem(selectIdealData);
+    }
+  }, [selectIdealData]);
+
   const getStyleOfCard = useCallback(
     (item) => {
       if (isEqual(selectCard?.id, item?.id)) {
@@ -62,11 +74,6 @@ function OurIdeals({
     },
     [selectCard],
   );
-
-  const selectItem = useCallback((item) => {
-    setSelectCard(item);
-    setDisableBtn(false);
-  });
 
   const renderItem = useCallback(
     ({ item }) => (
@@ -198,12 +205,14 @@ OurIdeals.propTypes = {
   getOurIdealsHandler: PropTypes.func,
   selectIdealHandler: PropTypes.func,
   handleUpdateUser: PropTypes.func,
+  selectIdealData: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   ourIdeals: makeSelectOurIdeals(),
   language: makeSelectAppLanguage(),
   user: makeSelectUser(),
+  selectIdealData: makeSelectIdealDetails(),
 });
 
 function mapDispatchToProps(dispatch) {

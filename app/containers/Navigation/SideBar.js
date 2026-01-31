@@ -111,38 +111,6 @@ const SideBar = (props) => {
               )}
               onPress={() => props.navigation.navigate(Navigation.ContactUs)}
             />
-            <DrawerItem
-              label={sideBarMessage.instruction.defaultMessage}
-              labelStyle={styles.label}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.Privacy height="100%" width="100%" />
-                </View>
-              )}
-              onPress={() => props.navigation.navigate(Navigation.Instructions)}
-            />
-            <DrawerItem
-              label={sideBarMessage.privacyPolicy.defaultMessage}
-              labelStyle={styles.label}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.Privacy height="100%" width="100%" />
-                </View>
-              )}
-              onPress={() =>
-                props.navigation.navigate(Navigation.PrivacyPolicy)
-              }
-            />
-            <DrawerItem
-              label={sideBarMessage.termOfUse.defaultMessage}
-              labelStyle={styles.label}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.TermsOfUse height="100%" width="100%" />
-                </View>
-              )}
-              onPress={() => props.navigation.navigate(Navigation.TermsOfUse)}
-            />
           </View>
           <View style={styles.draweritems}>
             <CustomText style={styles.drawerHeading}>

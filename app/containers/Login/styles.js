@@ -96,8 +96,25 @@ const styles = StyleSheet.create({
   footerText: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginBottom: hp(40),
+    marginBottom: hp(20),
     alignItems: 'center',
+  },
+  footerLinks: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: hp(40),
+  },
+  footerLinkText: {
+    fontSize: hp(14),
+    fontWeight: '500',
+    color: COLORS.codGray,
+    textDecorationLine: 'underline',
+  },
+  separator: {
+    fontSize: hp(14),
+    color: COLORS.codGray,
+    marginHorizontal: wp(5),
   },
   phoneNumberContainer: {
     marginTop: hp(25),

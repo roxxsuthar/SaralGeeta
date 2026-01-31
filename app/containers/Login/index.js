@@ -35,7 +35,7 @@ import strings from '../../../i18n';
 import CustomText from '../../components/CustomText';
 import CustomButton from '../../components/CustomButton';
 import { OS, setFontFamily } from '../../utils/device';
-import { COLORS, CONSTANTS, FONTS, IMAGES } from '../../constants';
+import { COLORS, CONSTANTS, FONTS, IMAGES, Navigation } from '../../constants';
 import { hp } from '../../utils/responsive';
 import { oAuthAction, sendOtpAction } from '../App/actions';
 
@@ -369,26 +369,49 @@ function Login({
             </TouchableOpacity>
           </View>
         </View>
-        {/* <View style={styles.footerText}>
-          <CustomText
-            style={Object.assign(
-              setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-              styles.dont,
-            )}
+        <View style={styles.footerLinks}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate(Navigation.PrivacyPolicy)}
           >
-            {loginMessage.dont.defaultMessage}
-          </CustomText>
-          <TouchableOpacity activeOpacity={0.8}>
             <CustomText
               style={Object.assign(
                 setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                styles.create,
+                styles.footerLinkText,
               )}
             >
-              {loginMessage.create.defaultMessage}
+              {strings.SideBar.privacyPolicy.defaultMessage}
             </CustomText>
           </TouchableOpacity>
-        </View> */}
+          <CustomText style={styles.separator}>|</CustomText>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate(Navigation.TermsOfUse)}
+          >
+            <CustomText
+              style={Object.assign(
+                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                styles.footerLinkText,
+              )}
+            >
+              {strings.SideBar.termOfUse.defaultMessage}
+            </CustomText>
+          </TouchableOpacity>
+          <CustomText style={styles.separator}>|</CustomText>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate(Navigation.Instructions)}
+          >
+            <CustomText
+              style={Object.assign(
+                setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                styles.footerLinkText,
+              )}
+            >
+              {strings.SideBar.instruction.defaultMessage}
+            </CustomText>
+          </TouchableOpacity>
+        </View>
       </View>
     </ImageBackground>
   );

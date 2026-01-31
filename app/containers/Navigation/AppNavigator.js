@@ -9,6 +9,9 @@ import Language from '../Language';
 import Login from '../Login';
 import OtpScreen from '../OtpScreen';
 import DashboardNavigator from './DashboardNavigator';
+import PrivacyPolicy from '../PrivacyPolicy';
+import TermsOfUse from '../TermsOfUse';
+import Instruction from '../Instruction';
 // import Splash from '../Splash';
 
 const AppStack = createStackNavigator();
@@ -85,6 +88,27 @@ const AuthNavigator = ({ currentLanguage }) => (
           headerShown: false,
         }}
         initialParams={{ currentLanguage }}
+      />
+      <AppStack.Screen
+        name={Navigation.PrivacyPolicy}
+        component={PrivacyPolicy}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <AppStack.Screen
+        name={Navigation.TermsOfUse}
+        component={TermsOfUse}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <AppStack.Screen
+        name={Navigation.Instructions}
+        component={Instruction}
+        options={{
+          headerShown: false,
+        }}
       />
     </AppStack.Navigator>
   </>

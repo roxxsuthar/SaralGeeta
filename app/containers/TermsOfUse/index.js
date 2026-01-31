@@ -96,10 +96,10 @@ function TermsOfUse({ termsOfUse, handleGetTerms, app }) {
           <TouchableOpacity
             activeOpacity={0.8}
             style={styles.iconContainer}
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            onPress={() => navigation.goBack()}
           >
             <View style={styles.icon}>
-              <IMAGES.Bars height="100%" width="100%" />
+              <IMAGES.WhiteArrowIcon height="100%" width="100%" />
             </View>
           </TouchableOpacity>
           <CustomText style={styles.heading}>
