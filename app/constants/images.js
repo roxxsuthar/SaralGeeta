@@ -12,6 +12,7 @@ import CircleCheck from '../assets/images/circle-check.svg';
 import Circle from '../assets/images/circle.svg';
 import Facebook from '../assets/images/facebook.svg';
 import Google from '../assets/images/google.svg';
+import Apple from '../assets/images/apple.svg';
 import CloseIcon from '../assets/images/CloseIcon.svg';
 import ChevronLeft from '../assets/images/chevron-left.svg';
 import ChevronLeftSolid from '../assets/images/chevron-left-solid.svg';
@@ -31,7 +32,7 @@ import BellIcon from '../assets/images/tabler-icon-bell.svg';
 import WhiteArrowIcon from '../assets/images/tabler-icon-chevron-left.svg';
 import WhiteLeftArrowIcon from '../assets/images/chevron-left-solid.svg';
 import WhiteRightArrowIcon from '../assets/images/chevron-right-solid.svg';
-import WhitePlayIcon from '../assets/images/white-play-button.svg';
+import WhitePlayIcon from '../assets/images/whitePlay.svg';
 import ReplayButton from '../assets/images/replayButton.svg';
 import Bars from '../assets/images/bars-3.svg';
 import User from '../assets/images/user.svg';
@@ -80,6 +81,7 @@ const IMAGES = {
   Circle,
   Facebook,
   Google,
+  Apple,
   CloseIcon,
   Logo,
   Chakra,

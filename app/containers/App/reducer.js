@@ -30,6 +30,9 @@ import {
   VERIFY_OTP_FAIL,
   VERIFY_OTP_SUCCESS,
   OAUTH_ACTION,
+  DEVICE_AUTH,
+  DEVICE_AUTH_SUCCESS,
+  DEVICE_AUTH_FAIL,
 } from './constants';
 
 export const initialState = {
@@ -67,6 +70,21 @@ const appReducer = (state = initialState, action) =>
       case LOGIN_ACTION:
         draft.loading = true;
         break;
+      case DEVICE_AUTH:
+        draft.loading = true;
+        break;
+      case DEVICE_AUTH_SUCCESS:
+        draft.user = action.payload.user;
+        draft.accessToken = action.payload.access_token;
+        draft.refreshToken = action.payload.refresh_token;
+        if (action.payload.user?.ideal) {
+          draft.selectedIdeal = action.payload.user.ideal;
+        }
+        draft.loading = false;
+        break;
+      case DEVICE_AUTH_FAIL:
+        draft.loading = false;
+        break;
       case LOGIN_ACTION_SUCCESS:
         draft.sentOtpDetail = action.payload;
         draft.loading = false;
@@ -84,6 +102,9 @@ const appReducer = (state = initialState, action) =>
         draft.user = action.payload.user;
         draft.accessToken = action.payload.access_token;
         draft.refreshToken = action.payload.refresh_token;
+        if (action.payload.user?.ideal) {
+          draft.selectedIdeal = action.payload.user.ideal;
+        }
         draft.loading = false;
         break;
       case VERIFY_OTP_FAIL:
@@ -94,6 +115,9 @@ const appReducer = (state = initialState, action) =>
         break;
       case UPDATE_USER_DETAILS_SUCCESS:
         draft.user = action.payload;
+        if (action.payload?.ideal) {
+          draft.selectedIdeal = action.payload.ideal;
+        }
         draft.loading = false;
         break;
       case UPDATE_USER_DETAILS_FAIL:

@@ -17,7 +17,6 @@ import { ImageBackground } from 'react-native';
 import { IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import { Navigation } from '../../constants/constants';
-import { logOutUser } from '../App/actions';
 
 const SideBar = (props) => {
   const DEFAULT_IMAGE = 'https://www.w3schools.com/howto/img_avatar.png';
@@ -26,43 +25,10 @@ const SideBar = (props) => {
   const user = useSelector((state) => state.app.user);
   const refreshToken = useSelector((state) => state.app.refreshToken);
 
-  const logOut = () => {
-    dispatch(logOutUser({ refresh: refreshToken }));
-    props.navigation?.dispatch(
-      CommonActions.reset({
-        index: 0,
-        routes: [{ name: Navigation.Login }],
-      }),
-    );
-  };
   return (
     <View style={styles.container}>
       <StatusBar hidden={true} />
-      <ImageBackground
-        source={IMAGES.AppBackground}
-        style={styles.headerBg}
-        imageStyle={styles.bgImage}
-        resizeMode="cover"
-      >
-        <TouchableOpacity
-          activeOpacity={0.8}
-          onPress={() => props.navigation.navigate(Navigation.Profile)}
-          style={styles.header}
-        >
-          <Image
-            source={{ uri: user?.profile || DEFAULT_IMAGE }}
-            style={styles.profilePic}
-          />
-          <View style={styles.profile}>
-            <CustomText
-              style={styles.profileName}
-            >{`${get(user, 'first_name')} ${get(user, 'last_name')}`}</CustomText>
-            <CustomText style={styles.viewProfileBtn}>
-              {sideBarMessage.viewAll.defaultMessage}
-            </CustomText>
-          </View>
-        </TouchableOpacity>
-      </ImageBackground>
+      <View style={{ height: 50 }} />
 
       <View style={styles.container}>
         <DrawerContentScrollView
@@ -97,6 +63,16 @@ const SideBar = (props) => {
               onPress={() => props.navigation.navigate(Navigation.OurIdeals)}
             />
           </View>
+           <DrawerItem
+              label={sideBarMessage.language.defaultMessage}
+              labelStyle={styles.label}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.Message height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate(Navigation.Language)}
+            />
           <View style={styles.draweritems}>
             <CustomText style={styles.drawerHeading}>
               {sideBarMessage.helpSupport.defaultMessage}
@@ -110,6 +86,36 @@ const SideBar = (props) => {
                 </View>
               )}
               onPress={() => props.navigation.navigate(Navigation.ContactUs)}
+            />
+            <DrawerItem
+              label={sideBarMessage.privacyPolicy.defaultMessage}
+              labelStyle={styles.label}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.Privacy height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate(Navigation.PrivacyPolicy)}
+            />
+            <DrawerItem
+              label={sideBarMessage.termOfUse.defaultMessage}
+              labelStyle={styles.label}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.TermsOfUse height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate(Navigation.TermsOfUse)}
+            />
+            <DrawerItem
+              label={sideBarMessage.instruction.defaultMessage}
+              labelStyle={styles.label}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.InfoIcon height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate(Navigation.Instructions)}
             />
           </View>
           <View style={styles.draweritems}>
@@ -155,19 +161,8 @@ const SideBar = (props) => {
                 </View>
               )}
               onPress={() => {
-                // Handle Twitter navigation or remove if not needed
                 logger.log('Twitter navigation not implemented');
               }}
-            />
-            <DrawerItem
-              label={sideBarMessage.signOut.defaultMessage}
-              labelStyle={styles.label}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.SignOut height="100%" width="100%" />
-                </View>
-              )}
-              onPress={() => logOut()}
             />
           </View>
         </DrawerContentScrollView>

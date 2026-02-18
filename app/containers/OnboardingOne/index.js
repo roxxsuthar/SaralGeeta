@@ -5,8 +5,10 @@
  */
 
 import React, { useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { View, Image, StatusBar, SafeAreaView } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import strings from '../../../i18n';
@@ -16,10 +18,11 @@ import { FONTS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import CustomButton from '../../components/CustomButton';
 import { Navigation } from '../../constants/constants';
-import { makeSelectAppLanguage } from '../App/selectors';
 import { setFontFamily } from '../../utils/device';
+import { deviceAuthAction } from '../App/actions';
+import { makeSelectAppLanguage } from '../App/selectors';
 
-function OnboardingOne({ navigation, language }) {
+function OnboardingOne({ navigation, language, handleDeviceAuth }) {
   const { currentLanguage } = language;
   const [messages, setMessages] = useState(strings.OnboardingOne);
 
@@ -30,6 +33,19 @@ function OnboardingOne({ navigation, language }) {
       setMessages(strings.OnboardingOne); // Update messages after language change
     }
   }, [currentLanguage]);
+
+  useEffect(() => {
+    const getDeviceId = async () => {
+      try {
+        const deviceId = await DeviceInfo.getUniqueId();
+        console.log('deviceId', deviceId);
+        handleDeviceAuth({ device_id: deviceId });
+      } catch (error) {
+        // console.error('Error getting device ID:', error);
+      }
+    };
+    getDeviceId();
+  }, [handleDeviceAuth]);
 
   const navigateToSecond = useCallback(() => {
     navigation.navigate(Navigation.OnboardingSecond);
@@ -80,7 +96,9 @@ function OnboardingOne({ navigation, language }) {
 }
 
 OnboardingOne.propTypes = {
-  ...OnboardingOne,
+  navigation: PropTypes.object,
+  language: PropTypes.object,
+  handleDeviceAuth: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -90,7 +108,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    handleDeviceAuth: (payload) => dispatch(deviceAuthAction(payload)),
   };
 }
 

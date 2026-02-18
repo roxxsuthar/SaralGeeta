@@ -20,13 +20,13 @@ import {
   SELECT_IDEALS,
   INTRO_VIDEO_PLAY,
   INTRO_VIDEO_RESET,
-  EDIT_PROFILE_ACTION,
-  EDIT_PROFILE_ACTION_SUCCESS,
-  EDIT_PROFILE_ACTION_FAIL,
   LOGOUT_USER,
   LOGOUT_USER_SUCCESS,
   LOGOUT_USER_FAIL,
   OAUTH_ACTION,
+  DEVICE_AUTH,
+  DEVICE_AUTH_SUCCESS,
+  DEVICE_AUTH_FAIL,
 } from './constants';
 
 export function defaultAction() {
@@ -129,26 +129,6 @@ export function resetIntroVideo() {
   };
 }
 
-export function editProfile(payload, navigation) {
-  return {
-    type: EDIT_PROFILE_ACTION,
-    payload,
-    navigation,
-  };
-}
-
-export function editProfileSuccess(payload) {
-  return {
-    type: EDIT_PROFILE_ACTION_SUCCESS,
-    payload,
-  };
-}
-
-export function editProfileFail() {
-  return {
-    type: EDIT_PROFILE_ACTION_FAIL,
-  };
-}
 
 export function logOutUser(payload) {
   return {
@@ -174,5 +154,27 @@ export function oAuthAction(payload, callback) {
     type: OAUTH_ACTION,
     payload,
     callback,
+  };
+}
+
+export function deviceAuthAction(payload, callback) {
+  return {
+    type: DEVICE_AUTH,
+    payload,
+    callback,
+  };
+}
+
+export function deviceAuthSuccessAction(payload) {
+  return {
+    type: DEVICE_AUTH_SUCCESS,
+    payload,
+  };
+}
+
+export function deviceAuthFailAction(error) {
+  return {
+    type: DEVICE_AUTH_FAIL,
+    error,
   };
 }

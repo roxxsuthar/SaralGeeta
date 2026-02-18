@@ -19,10 +19,10 @@ import {
   makeSelectOnboardingVisited,
   makeSelectToken,
   makeSelectUser,
+  makeSelectIdealDetails,
 } from '../App/selectors';
 
 import makeSelectNavigation from './selectors';
-import { getProfile } from '../Profile/actions';
 import strings from '../../../i18n';
 import { setLanguage } from '../App/actions';
 
@@ -32,7 +32,7 @@ export function Navigation({
   onboarding,
   token,
   user,
-  handleGetProfile,
+  idealDetails,
   _handleSetLanguage,
 }) {
   const { isLanguageSelected, currentLanguage } = language;
@@ -51,11 +51,6 @@ export function Navigation({
     }, 2000);
   }, []);
 
-  useEffect(() => {
-    if (user) {
-      handleGetProfile();
-    }
-  }, [user?.id]);
 
   useEffect(() => {
     if (user?.language) {
@@ -79,6 +74,7 @@ export function Navigation({
         isOnboardingVisited={isOnboardingVisited}
         token={token}
         user={user}
+        idealDetails={idealDetails}
       />
     </NavigationContainer>
   );
@@ -94,12 +90,12 @@ const mapStateToProps = createStructuredSelector({
   onboarding: makeSelectOnboardingVisited(),
   token: makeSelectToken(),
   user: makeSelectUser(),
+  idealDetails: makeSelectIdealDetails(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    handleGetProfile: () => dispatch(getProfile()),
     _handleSetLanguage: (payload) => dispatch(setLanguage(payload)),
   };
 }

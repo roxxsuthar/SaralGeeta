@@ -16,6 +16,7 @@ const APIS = {
   LOG_OUT: '/user/logout',
   OAUTH: '/auth/social-media',
   POLICY: '/policy',
+  DEVICE_AUTH: '/auth/device',
 };
 export const API_URL = ' https://app.saralgita.in/api';
 

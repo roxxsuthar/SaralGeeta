@@ -100,6 +100,10 @@
       "id": "container.login.google",
       "defaultMessage": "गूगल"
     },
+    "apple": {
+      "id": "container.login.apple",
+      "defaultMessage": "ऐप्पल"
+    },
     "buttonLabel": {
       "id": "container.login.buttonLabel",
       "defaultMessage": "जारी रखें"
@@ -382,13 +386,17 @@
       "id": "app.container.SideBar.x",
       "defaultMessage": "एक्स"
     },
-    "signOut": {
-      "id": "app.container.SideBar.signOut",
-      "defaultMessage": "साइन आउट"
-    },
     "ideal": {
       "id": "app.container.SideBar.ideal",
       "defaultMessage": "हमारे गुरुवर"
+    },
+    "language": {
+      "id": "app.container.SideBar.language",
+      "defaultMessage": "भाषा बदलें"
+    },
+    "signOut": {
+      "id": "app.container.SideBar.signOut",
+      "defaultMessage": "साइन आउट"
     }
   }
 }

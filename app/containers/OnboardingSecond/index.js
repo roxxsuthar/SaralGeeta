@@ -17,15 +17,14 @@ import CustomText from '../../components/CustomText';
 import CustomButton from '../../components/CustomButton';
 import { Navigation } from '../../constants/constants';
 import { setFontFamily } from '../../utils/device';
-import { makeSelectAppLanguage, makeSelectToken } from '../App/selectors';
+import { makeSelectAppLanguage, makeSelectToken, makeSelectIdealDetails } from '../App/selectors';
 import { setOnboardingVisited } from '../App/actions';
-import isNil from 'lodash/isNil';
 
 function OnboardingSecond({
   navigation,
   language,
+  idealDetails,
   _handleSetOnboarding,
-  token,
 }) {
   const { currentLanguage } = language;
   const [messages, setMessages] = useState(strings.OnboardingSecond);
@@ -40,14 +39,11 @@ function OnboardingSecond({
 
   const navigateToLogin = useCallback(() => {
     _handleSetOnboarding();
-    // If user has token (logged in), go directly to DashboardNavigator (Home)
-    // Otherwise, go to Login screen
-    if (!isNil(token)) {
-      navigation.navigate('DashboardNavigator');
-    } else {
-      navigation.navigate(Navigation.Language);
-    }
-  }, [_handleSetOnboarding, token, navigation]);
+    // Always navigate to OurIdeals first as requested
+    navigation.navigate('DashboardNavigator', {
+      screen: Navigation.OurIdeals,
+    });
+  }, [_handleSetOnboarding, navigation]);
 
   return (
     <View style={styles.container}>
@@ -100,7 +96,7 @@ OnboardingSecond.propTypes = {
 const mapStateToProps = createStructuredSelector({
   onboardingSecond: makeSelectOnboardingSecond(),
   language: makeSelectAppLanguage(),
-  token: makeSelectToken(),
+  idealDetails: makeSelectIdealDetails(),
 });
 
 function mapDispatchToProps(dispatch) {

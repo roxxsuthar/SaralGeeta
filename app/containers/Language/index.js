@@ -22,7 +22,7 @@ import styles from './styles';
 import CustomText from '../../components/CustomText';
 import CustomButton from '../../components/CustomButton';
 import { setFontFamily } from '../../utils/device';
-import { makeSelectAppLanguage } from '../App/selectors';
+import { makeSelectAppLanguage, makeSelectIdealDetails } from '../App/selectors';
 import strings from '../../../i18n';
 import { FONTS, IMAGES } from '../../constants';
 import { hp } from '../../utils/responsive';
@@ -31,7 +31,7 @@ import { Navigation } from '../../constants/constants';
 import { setLanguage } from '../App/actions';
 import { isEqual } from 'lodash';
 
-function Language({ navigation, language, _handleSetLanguage }) {
+function Language({ navigation, language, idealDetails, _handleSetLanguage }) {
   const { currentLanguage } = language;
   const { language: languageMessage } = strings;
   const [languageType, setLanguageType] = useState(strings.getLanguage());
@@ -39,8 +39,17 @@ function Language({ navigation, language, _handleSetLanguage }) {
   const updateLanguage = useCallback(() => {
     strings.setLanguage(languageType);
     _handleSetLanguage(languageType);
-    navigation.navigate(Navigation.Login);
-  }, [languageType]);
+
+    // Always navigate to Home screen after language selection
+    // using the Drawer/HomeStack path to ensure proper navigation state
+    navigation.navigate('DashboardNavigator', {
+      screen: 'Drawer',
+      params: {
+        screen: 'HomeStack',
+        params: { screen: Navigation.Home },
+      },
+    });
+  }, [languageType, navigation, _handleSetLanguage]);
 
   return (
     <ImageBackground
@@ -134,6 +143,7 @@ Language.propTypes = {
 const mapStateToProps = createStructuredSelector({
   languageData: makeSelectLanguage(),
   language: makeSelectAppLanguage(),
+  idealDetails: makeSelectIdealDetails(),
 });
 
 function mapDispatchToProps(dispatch) {

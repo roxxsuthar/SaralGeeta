@@ -17,6 +17,7 @@ const MainNavigator = ({
   isOnboardingVisited,
   token,
   user,
+  idealDetails,
 }) => (
   <AppStateContext.Provider value={{ appState }}>
     <MainAppNavigator.Navigator
@@ -34,6 +35,7 @@ const MainNavigator = ({
             isOnboardingVisited={isOnboardingVisited}
             token={token}
             user={user}
+            idealDetails={idealDetails}
           />
         )}
       </MainAppNavigator.Screen>

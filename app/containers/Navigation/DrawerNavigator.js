@@ -2,11 +2,13 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Navigation } from '../../constants/constants';
 import HomeStackNavigator from './HomeStackNavigator';
-import Profile from '../Profile';
-import EditProfile from '../EditProfile';
 import SideBar from './SideBar';
 import OurIdeals from '../OurIdeals';
 import ContactUs from '../ContactUs';
+import PrivacyPolicy from '../PrivacyPolicy';
+import TermsOfUse from '../TermsOfUse';
+import Instruction from '../Instruction';
+import Language from '../Language';
 
 const Drawer = createDrawerNavigator();
 
@@ -36,9 +38,11 @@ const DrawerNavigator = () => {
         options={{ title: 'Home' }}
       />
       <Drawer.Screen name={Navigation.OurIdeals} component={OurIdeals} />
-      <Drawer.Screen name={Navigation.Profile} component={Profile} />
-      <Drawer.Screen name={Navigation.EditProfile} component={EditProfile} />
       <Drawer.Screen name={Navigation.ContactUs} component={ContactUs} />
+      <Drawer.Screen name={Navigation.PrivacyPolicy} component={PrivacyPolicy} />
+      <Drawer.Screen name={Navigation.TermsOfUse} component={TermsOfUse} />
+      <Drawer.Screen name={Navigation.Instructions} component={Instruction} />
+      <Drawer.Screen name={Navigation.Language} component={Language} />
     </Drawer.Navigator>
   );
 };

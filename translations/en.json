@@ -100,6 +100,10 @@
       "id": "container.login.google",
       "defaultMessage": "Google"
     },
+    "apple": {
+      "id": "container.login.apple",
+      "defaultMessage": "Apple"
+    },
     "buttonLabel": {
       "id": "container.login.buttonLabel",
       "defaultMessage": "Continue"
@@ -349,6 +353,10 @@
     "ideal": {
       "id": "app.container.SideBar.ideal",
       "defaultMessage": "Ideals"
+    },
+    "language": {
+      "id": "app.container.SideBar.language",
+      "defaultMessage": "Change Language"
     },
     "helpSupport": {
       "id": "app.container.SideBar.helpSupport",

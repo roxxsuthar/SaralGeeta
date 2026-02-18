@@ -134,7 +134,7 @@
       "sha1": "d2fd62d376dc53d7ba6ce10adbd3e89eb3e48139"
     },
     {
-      "path": "app/assets/images/img_geeta_learn_2x.png",
+      "path": "app/assets/images/img_geeta_learn@2x.png",
       "sha1": "4b452f26ca4984f0b47cdc849014499d6a6b2093"
     },
     {
@@ -154,7 +154,7 @@
       "sha1": "b2eb251ae17da4708558bac4acd33bb533eb8fe6"
     },
     {
-      "path": "app/assets/images/img_krishna_2x.png",
+      "path": "app/assets/images/img_krishna@2x.png",
       "sha1": "64b82c774c8a53a9fefc79a419630c9951cbe960"
     },
     {
@@ -184,6 +184,10 @@
     {
       "path": "app/assets/images/app_background.png",
       "sha1": "35bc498333017559aa63dad0a7706c5114b358c1"
+    },
+    {
+      "path": "app/assets/images/whitePlay.svg",
+      "sha1": "b0e5c659910f6c9f6a5d2e8efffef960d65d168c"
     },
     {
       "path": "app/assets/images/peacock_feather.gif",
@@ -230,8 +234,8 @@
       "sha1": "4d1e108f7dc8b3eff6088dd932ff2ee509824425"
     },
     {
-      "path": "app/assets/images/white-play-button.svg",
-      "sha1": "b0e5c659910f6c9f6a5d2e8efffef960d65d168c"
+      "path": "app/assets/images/apple.svg",
+      "sha1": "48afb8d1bac19d50d14e9b23f19f5fb271ea0206"
     },
     {
       "path": "app/assets/images/pauseIcon.svg",
