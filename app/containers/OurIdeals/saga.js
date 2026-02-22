@@ -29,6 +29,11 @@ function* getOurIdealsHandler() {
 function* saveUserDetails({ payload }) {
   const url = Helpers.getUrl(APIS.SAVE_IDOL);
 
+  if (!payload?.data?.ideal_id) {
+    console.log("saveUserDetails error: No ideal_id in payload");
+    return;
+  }
+
   const options = {
     method: 'PATCH',
     url,

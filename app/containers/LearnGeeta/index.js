@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { StatusBar, TouchableOpacity,NativeModules } from 'react-native';
+import { StatusBar, TouchableOpacity, NativeModules } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -49,7 +49,7 @@ function LearnGeeta({
   learnGeeta,
   user,
   shloks,
-  introVideo,
+  selectedIdeal,
   handleSaveResult,
   handleGetShloks,
   ourIdeals,
@@ -73,7 +73,7 @@ function LearnGeeta({
     resetVideoState,
     getVideoSource,
     isVideoPaused,
-  } = useVideo(learnGeeta, introVideo, isIntroVideoPlayed);
+  } = useVideo(learnGeeta, selectedIdeal, isIntroVideoPlayed);
 
   const {
     isRecordingButton,
@@ -104,6 +104,8 @@ function LearnGeeta({
       };
     }, []),
   );
+
+  console.log("--------selectedIdeal------", selectedIdeal)
 
   // Effects
   useEffect(() => {
@@ -205,7 +207,7 @@ function LearnGeeta({
         <FastImage
           style={styles.cloudAnimationContainer}
           source={
-            ourIdeals?.data[0]?.name === 'Krishan'
+            ourIdeals?.data[0]?.name === 'Krishna Bhagwan'
               ? IMAGES.PeacockFeather
               : IMAGES.Leaf
           }
@@ -220,7 +222,7 @@ function LearnGeeta({
 
   const hasVideoUrl = isIntroVideoPlayed
     ? get(learnGeeta, 'data.media.hls_male_path')
-    : introVideo?.hls_male_path;
+    : selectedIdeal?.hls_male_path;
 
   // Show loading animation for intro video
   const shouldShowIntroLoading =
@@ -230,19 +232,19 @@ function LearnGeeta({
   const shouldShowLoading = isIntroVideoPlayed && (isLoading || !hasVideoUrl);
 
   const translationContent = learnGeeta?.data?.translation?.translation || '';
-const handleOpenDrawer = () => {
-  // Lock orientation FIRST
-   if (Platform.OS === 'ios') {
-        OrientationModule.lockToLandscape();
-      } else {
-        Orientation.lockToLandscape();
-      }
-  
-  // Small delay to ensure orientation is locked before modal opens
-  setTimeout(() => {
-    setIsDrawerVisible(true);
-  }, 100);
-};
+  const handleOpenDrawer = () => {
+    // Lock orientation FIRST
+    if (Platform.OS === 'ios') {
+      OrientationModule.lockToLandscape();
+    } else {
+      Orientation.lockToLandscape();
+    }
+
+    // Small delay to ensure orientation is locked before modal opens
+    setTimeout(() => {
+      setIsDrawerVisible(true);
+    }, 100);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -258,15 +260,15 @@ const handleOpenDrawer = () => {
         resizeMode="cover"
       >
         {/* Eye Icon - Top Right */}
-       {isIntroVideoPlayed && (
-  <TouchableOpacity
-    style={styles.eyeIconButton}
-    onPress={handleOpenDrawer} // Changed this
-    activeOpacity={0.8}
-  >
-    <IMAGES.InfoIcon height={28} width={28} />
-  </TouchableOpacity>
-)}
+        {isIntroVideoPlayed && (
+          <TouchableOpacity
+            style={styles.eyeIconButton}
+            onPress={handleOpenDrawer} // Changed this
+            activeOpacity={0.8}
+          >
+            <IMAGES.InfoIcon height={28} width={28} />
+          </TouchableOpacity>
+        )}
 
         {/* Translation Drawer */}
         <TranslationDrawer
@@ -315,7 +317,7 @@ const handleOpenDrawer = () => {
           <FastImage
             style={styles.cloudAnimationContainer}
             source={
-              ourIdeals?.data[0]?.name === 'Krishan'
+              selectedIdeal?.name === 'Krishna Bhagwan'
                 ? IMAGES.PeacockFeather
                 : IMAGES.Leaf
             }
@@ -328,7 +330,7 @@ const handleOpenDrawer = () => {
           <FastImage
             style={styles.cloudAnimationContainer}
             source={
-              ourIdeals?.data[0]?.name === 'Krishan'
+              selectedIdeal?.name === 'Krishna Bhagwan'
                 ? IMAGES.PeacockFeather
                 : IMAGES.Leaf
             }
@@ -342,7 +344,7 @@ const handleOpenDrawer = () => {
               <FastImage
                 style={styles.cloudAnimationContainer}
                 source={
-                  ourIdeals?.data[0]?.name === 'Krishan'
+                  selectedIdeal?.name === 'Krishna Bhagwan'
                     ? IMAGES.PeacockFeather
                     : IMAGES.Leaf
                 }
@@ -382,7 +384,7 @@ LearnGeeta.propTypes = {
   learnGeeta: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   shloks: PropTypes.object.isRequired,
-  introVideo: PropTypes.object.isRequired,
+  selectedIdeal: PropTypes.object.isRequired,
   handleSaveResult: PropTypes.func.isRequired,
   handleGetShloks: PropTypes.func.isRequired,
   ourIdeals: PropTypes.object,
@@ -394,7 +396,7 @@ const mapStateToProps = createStructuredSelector({
   isIntroVideoPlayed: makeSelectIntroVideo(),
   user: makeSelectUser(),
   shloks: makeSelectShloks(),
-  introVideo: makeSelectIdealDetails(),
+  selectedIdeal: makeSelectIdealDetails(),
   ourIdeals: makeSelectOurIdeals(),
   language: makeSelectAppLanguage(),
 });

@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { get } from 'lodash';
 
-export const useVideo = (learnGeeta, introVideo, isIntroVideoPlayed) => {
+export const useVideo = (learnGeeta, selectedIdeal, isIntroVideoPlayed) => {
   const [videoUrl, setVideoUrl] = useState(
     get(learnGeeta, 'data.media.hls_male_path') || null,
   );
@@ -44,7 +44,7 @@ export const useVideo = (learnGeeta, introVideo, isIntroVideoPlayed) => {
 
   const getVideoSource = useCallback(() => {
     if (!isIntroVideoPlayed) {
-      const introUri = introVideo?.hls_male_path;
+      const introUri = selectedIdeal?.hls_male_path;
       if (!introUri) {
         return null;
       }
@@ -68,7 +68,7 @@ export const useVideo = (learnGeeta, introVideo, isIntroVideoPlayed) => {
         'User-Agent': 'Mozilla/5.0',
       },
     };
-  }, [isIntroVideoPlayed, introVideo, videoUrl]);
+  }, [isIntroVideoPlayed, selectedIdeal, videoUrl]);
 
   const isVideoPaused = useCallback(() => {
     if (isVideoPlaying) {

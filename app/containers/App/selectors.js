@@ -33,15 +33,7 @@ const makeSelectUser = () =>
 const makeSelectOtpDetails = () =>
   createSelector(selectAppDomain, (substate) => substate.sentOtpDetail);
 const makeSelectIdealDetails = () =>
-  createSelector(selectAppDomain, (substate) => {
-    if (substate.selectedIdeal && substate.selectedIdeal.id) {
-      return substate.selectedIdeal;
-    }
-    if (substate.user && substate.user.ideal) {
-      return substate.user.ideal;
-    }
-    return null;
-  });
+  createSelector(selectAppDomain, (substate) => substate.selectedIdeal);
 const makeSelectIntroVideo = () =>
   createSelector(selectAppDomain, (substate) => {
     const today = new Date().toDateString();

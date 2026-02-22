@@ -54,18 +54,23 @@ function OurIdeals({
     fetchData();
   }, []);
 
-  const selectItem = useCallback((item) => {
-    setSelectCard(item);
-    selectIdealHandler(item);
-    setDisableBtn(false);
-  });
+  const selectItem = useCallback(
+    (item) => {
+      setSelectCard(item);
+      selectIdealHandler(item);
+      setDisableBtn(false);
+    },
+    [setSelectCard, selectIdealHandler, setDisableBtn],
+  );
 
   useEffect(() => {
-    if (user?.ideal) {
-      selectItem(ourIdeals?.data?.find((item) => item?.id === user?.ideal
-      ));
+    if (user?.ideal && ourIdeals?.data) {
+      const savedIdeal = ourIdeals.data.find((item) => item.id === user.ideal);
+      if (savedIdeal) {
+        selectItem(savedIdeal);
+      }
     }
-  }, [user?.ideal]);
+  }, [user?.ideal, ourIdeals?.data, selectItem]);
 
   const getStyleOfCard = useCallback(
     (item) => {
@@ -136,7 +141,7 @@ function OurIdeals({
         ],
       }),
     );
-  }, [user, navigation]);
+  }, [selectCard, handleUpdateUser, navigation]);
 
   return (
     <ImageBackground

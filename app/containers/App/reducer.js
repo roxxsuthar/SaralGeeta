@@ -77,9 +77,6 @@ const appReducer = (state = initialState, action) =>
         draft.user = action.payload.user;
         draft.accessToken = action.payload.access_token;
         draft.refreshToken = action.payload.refresh_token;
-        if (action.payload.user?.ideal) {
-          draft.selectedIdeal = action.payload.user.ideal;
-        }
         draft.loading = false;
         break;
       case DEVICE_AUTH_FAIL:
@@ -102,9 +99,6 @@ const appReducer = (state = initialState, action) =>
         draft.user = action.payload.user;
         draft.accessToken = action.payload.access_token;
         draft.refreshToken = action.payload.refresh_token;
-        if (action.payload.user?.ideal) {
-          draft.selectedIdeal = action.payload.user.ideal;
-        }
         draft.loading = false;
         break;
       case VERIFY_OTP_FAIL:
@@ -115,9 +109,6 @@ const appReducer = (state = initialState, action) =>
         break;
       case UPDATE_USER_DETAILS_SUCCESS:
         draft.user = action.payload;
-        if (action.payload?.ideal) {
-          draft.selectedIdeal = action.payload.ideal;
-        }
         draft.loading = false;
         break;
       case UPDATE_USER_DETAILS_FAIL:
