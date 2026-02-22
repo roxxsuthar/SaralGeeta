@@ -43,10 +43,10 @@ export const AUDIO_FILE_EXTENSION = 'm4a';
 
 // Video Configuration
 export const VIDEO_BUFFER_CONFIG = {
-  minBufferMs: 15000,
-  maxBufferMs: 50000,
-  bufferForPlaybackMs: 2500,
-  bufferForPlaybackAfterRebufferMs: 5000,
+  minBufferMs: 2000,
+  maxBufferMs: 15000,
+  bufferForPlaybackMs: 500,
+  bufferForPlaybackAfterRebufferMs: 1000,
 };
 
 export const VIDEO_PROGRESS_UPDATE_INTERVAL = 250;

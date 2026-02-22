@@ -39,6 +39,7 @@ function* saveUserDetails({ payload }) {
     const res = yield call(request, options);
     yield put(updateUserDetailsSuccess(res?.data));
   } catch (e) {
+    console.log("saveUserDetails error", e);
     yield put(updateUserDetailsFail(e));
   }
 }

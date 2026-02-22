@@ -30,7 +30,7 @@ import { Navigation } from '../../constants/constants';
 import { getIdealsData } from './actions';
 import { selectIdeal, updateUserDetails } from '../App/actions';
 import LoadingScreen from '../../components/LoadingScreen';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function OurIdeals({
   navigation,
@@ -56,14 +56,16 @@ function OurIdeals({
 
   const selectItem = useCallback((item) => {
     setSelectCard(item);
+    selectIdealHandler(item);
     setDisableBtn(false);
   });
 
   useEffect(() => {
-    if (selectIdealData) {
-      selectItem(selectIdealData);
+    if (user?.ideal) {
+      selectItem(ourIdeals?.data?.find((item) => item?.id === user?.ideal
+      ));
     }
-  }, [selectIdealData]);
+  }, [user?.ideal]);
 
   const getStyleOfCard = useCallback(
     (item) => {
@@ -99,7 +101,7 @@ function OurIdeals({
         </CustomText>
       </TouchableOpacity>
     ),
-    [currentLanguage, getStyleOfCard, setSelectCard],
+    [currentLanguage, getStyleOfCard],
   );
 
   const itemSeparatorComponent = useCallback(
@@ -108,12 +110,10 @@ function OurIdeals({
   );
 
   const navigateToHome = useCallback(() => {
-    selectIdealHandler(selectCard);
     const payload = {
       data: { ideal_id: selectCard?.id },
     };
     handleUpdateUser(payload);
-
     // Clear navigation stack and navigate to Home
     // This makes Home the root screen, preventing back navigation to OurIdeals
     navigation.dispatch(
@@ -136,7 +136,7 @@ function OurIdeals({
         ],
       }),
     );
-  }, [selectCard, user, navigation]);
+  }, [user, navigation]);
 
   return (
     <ImageBackground
