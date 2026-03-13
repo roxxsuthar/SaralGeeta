@@ -3,7 +3,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import request from '../../utils/request';
 import Helpers from '../../utils/helpers';
 import { APIS } from '../../constants';
-import { GET_OUR_IDEALS } from './constants';
+import { GET_OUR_IDEALS, SAVE_OUR_IDEALS } from './constants';
 import { getIdealsFail, getIdealsSuccess } from './actions';
 import { UPDATE_USER_DETAILS } from '../App/constants';
 import {
@@ -27,24 +27,35 @@ function* getOurIdealsHandler() {
 }
 
 function* saveUserDetails({ payload }) {
-  const url = Helpers.getUrl(APIS.SAVE_IDOL);
-
-  if (!payload?.data?.ideal_id) {
-    console.log("saveUserDetails error: No ideal_id in payload");
-    return;
-  }
+  const url = Helpers.getUrl(APIS.UPDATE_USER);
 
   const options = {
     method: 'PATCH',
     url,
-    data: payload.data,
+    data: payload?.data,
   };
-
+  console.log("saveUserDetails options", payload)
   try {
     const res = yield call(request, options);
     yield put(updateUserDetailsSuccess(res?.data));
   } catch (e) {
-    console.log("saveUserDetails error", e);
+    yield put(updateUserDetailsFail(e));
+  }
+}
+
+function* saveOurIdeals({ payload }) {
+  const url = Helpers.getUrl(APIS.SAVE_IDOL);
+
+  const options = {
+    method: 'PATCH',
+    url,
+    data: payload?.data,
+  };
+  console.log("saveUserDetails options", payload)
+  try {
+    const res = yield call(request, options);
+    yield put(updateUserDetailsSuccess(res?.data));
+  } catch (e) {
     yield put(updateUserDetailsFail(e));
   }
 }
@@ -52,4 +63,5 @@ function* saveUserDetails({ payload }) {
 export default function* ourIdealsSaga() {
   yield takeLatest(GET_OUR_IDEALS, getOurIdealsHandler);
   yield takeLatest(UPDATE_USER_DETAILS, saveUserDetails);
+  yield takeLatest(SAVE_OUR_IDEALS, saveOurIdeals);
 }

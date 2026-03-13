@@ -354,6 +354,10 @@
       "id": "app.container.SideBar.ideal",
       "defaultMessage": "Ideals"
     },
+    "setting": {
+      "id": "app.container.SideBar.setting",
+      "defaultMessage": "Setting"
+    },
     "language": {
       "id": "app.container.SideBar.language",
       "defaultMessage": "Change Language"
@@ -380,7 +384,7 @@
     },
     "social": {
       "id": "app.container.SideBar.social",
-      "defaultMessage": "Social media Links"
+      "defaultMessage": "Social Media Links"
     },
     "fb": {
       "id": "app.container.SideBar.fb",

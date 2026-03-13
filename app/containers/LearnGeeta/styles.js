@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { hp, wp } from '../../utils/responsive';
 import { FONTS } from '../../constants';
 
@@ -176,6 +176,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  backButtonBar: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    zIndex: 1002,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    height: hp(45),
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: wp(20),
+  },
+
+  backButtonTitle: {
+    fontSize: hp(20),
+    color: '#FFFFFF',
+    fontFamily: FONTS.HINDI,
+    marginLeft: wp(15),
+    fontWeight: '700',
+  },
 
   // Drawer styles
   drawerOverlay: {
@@ -233,6 +253,7 @@ const styles = StyleSheet.create({
     fontSize: hp(16),
     lineHeight: hp(24),
     color: '#333333',
+    marginBottom: hp(30),
   },
   text: {
     fontSize: hp(16),

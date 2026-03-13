@@ -16,7 +16,7 @@ const selectLanguageDomain = (state) => state.language || initialState;
  */
 
 const makeSelectLanguage = () =>
-  createSelector(selectLanguageDomain, (substate) => substate);
+  createSelector(selectLanguageDomain, (substate) => substate?.languages);
 
 export default makeSelectLanguage;
 export { selectLanguageDomain };

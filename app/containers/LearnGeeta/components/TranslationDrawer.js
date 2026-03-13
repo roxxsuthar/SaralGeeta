@@ -25,6 +25,7 @@ const TranslationDrawer = ({
   currentLanguage,
   commentary,
   shloke,
+  shlokNo,
   chapterDetail,
 }) => {
   const slideAnim = React.useRef(new Animated.Value(300)).current;
@@ -39,11 +40,11 @@ const TranslationDrawer = ({
       } else {
         Orientation.lockToLandscape();
       }
-      
+
       // Wait for orientation to stabilize
       setTimeout(() => {
         setIsReady(true);
-        
+
         // Start animations together
         Animated.parallel([
           Animated.timing(slideAnim, {
@@ -92,7 +93,7 @@ const TranslationDrawer = ({
         }
       }}
     >
-      <Animated.View 
+      <Animated.View
         style={[
           styles.drawerOverlay,
           { opacity: opacityAnim } // Add fade to entire overlay
@@ -121,6 +122,7 @@ const TranslationDrawer = ({
           </View>
           <ScrollView
             style={styles.drawerContent}
+            contentContainerStyle={{ flexGrow: 1 }}
             showsVerticalScrollIndicator={false}
           >
             {chapterDetail?.name && (
@@ -149,7 +151,7 @@ const TranslationDrawer = ({
                     }}
                   >
                     {item}
-                    {idx === 3 && '||'}
+                    {idx === 3 && ` || ${shlokNo || ''} ||`}
                   </CustomText>
                   {idx < 3 && (idx === 1 ? '\n' : ' ')}
                 </React.Fragment>
@@ -173,7 +175,8 @@ TranslationDrawer.propTypes = {
   onClose: PropTypes.func.isRequired,
   translationContent: PropTypes.string,
   commentary: PropTypes.object,
-  shloke: PropTypes.string,
+  shloke: PropTypes.array,
+  shlokNo: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   chapterDetail: PropTypes.object,
   currentLanguage: PropTypes.string.isRequired,
 };

@@ -9,6 +9,7 @@ import contactUs from './app/containers/ContactUs/saga';
 import privacyPolicySaga from './app/containers/PrivacyPolicy/saga';
 import termsOfUseSaga from './app/containers/TermsOfUse/saga';
 import instructionSaga from './app/containers/Instruction/saga';
+import languageSaga from './app/containers/Language/saga';
 
 export default function* rootContainerSaga() {
   yield all([
@@ -22,5 +23,6 @@ export default function* rootContainerSaga() {
     privacyPolicySaga(),
     termsOfUseSaga(),
     instructionSaga(),
+    languageSaga(),
   ]);
 }

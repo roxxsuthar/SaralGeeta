@@ -12,6 +12,7 @@ import contactUsReducer from './app/containers/ContactUs/reducer';
 import privacyPolicyReducer from './app/containers/PrivacyPolicy/reducer';
 import termsOfUseReducer from './app/containers/TermsOfUse/reducer';
 import instructionReducer from './app/containers/Instruction/reducer';
+import languageReducer from './app/containers/Language/reducer';
 
 const appPersistConfig = {
   key: 'app',
@@ -44,6 +45,7 @@ const combinedReducers = combineReducers({
   privacyPolicy: privacyPolicyReducer,
   termsOfUse: termsOfUseReducer,
   instruction: instructionReducer,
+  language: languageReducer,
 });
 
 // Root Reducer

@@ -43,6 +43,7 @@ import Mic from '../assets/images/Mic.svg';
 import MicPlay from '../assets/images/microphone-voice-icon.svg';
 import MicToPlay from '../assets/images/microphone-line-icon.svg';
 import InfoIcon from '../assets/images/info.svg';
+import InfoWhiteIcon from '../assets/images/info_white.svg';
 
 const GeetLearn = require('../assets/images/img_geeta_learn.png');
 const KrishnaImage = require('../assets/images/img_krishna.png');
@@ -118,6 +119,7 @@ const IMAGES = {
   MicPlay,
   MicToPlay,
   InfoIcon,
+  InfoWhiteIcon,
   Splash,
 };
 export default IMAGES;

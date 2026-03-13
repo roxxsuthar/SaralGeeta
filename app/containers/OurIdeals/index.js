@@ -27,8 +27,8 @@ import { setFontFamily } from '../../utils/device';
 import CustomButton from '../../components/CustomButton';
 import strings from '../../../i18n';
 import { Navigation } from '../../constants/constants';
-import { getIdealsData } from './actions';
-import { selectIdeal, updateUserDetails } from '../App/actions';
+import { getIdealsData, saveIdealData } from './actions';
+import { selectIdeal } from '../App/actions';
 import LoadingScreen from '../../components/LoadingScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -64,13 +64,10 @@ function OurIdeals({
   );
 
   useEffect(() => {
-    if (user?.ideal && ourIdeals?.data) {
-      const savedIdeal = ourIdeals.data.find((item) => item.id === user.ideal);
-      if (savedIdeal) {
-        selectItem(savedIdeal);
-      }
+    if (user?.ideal && selectIdealData?.id) {
+      selectItem(selectIdealData);
     }
-  }, [user?.ideal, ourIdeals?.data, selectItem]);
+  }, [user?.ideal, selectIdealData, selectItem]);
 
   const getStyleOfCard = useCallback(
     (item) => {
@@ -95,7 +92,7 @@ function OurIdeals({
           resizeMode="contain"
           indicatorColor="#ffa600ff"
         />
-
+        {console.log("---test---", item)}
         <CustomText
           style={Object.assign(
             setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
@@ -118,6 +115,7 @@ function OurIdeals({
     const payload = {
       data: { ideal_id: selectCard?.id },
     };
+    console.log("---payload---111", payload)
     handleUpdateUser(payload);
     // Clear navigation stack and navigate to Home
     // This makes Home the root screen, preventing back navigation to OurIdeals
@@ -224,7 +222,7 @@ function mapDispatchToProps(dispatch) {
   return {
     getOurIdealsHandler: () => dispatch(getIdealsData()),
     selectIdealHandler: (payload) => dispatch(selectIdeal(payload)),
-    handleUpdateUser: (payload) => dispatch(updateUserDetails(payload)),
+    handleUpdateUser: (payload) => dispatch(saveIdealData(payload)),
   };
 }
 

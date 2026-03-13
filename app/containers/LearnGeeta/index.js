@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { StatusBar, TouchableOpacity, NativeModules } from 'react-native';
+import { View, StatusBar, TouchableOpacity, NativeModules, Animated, TouchableWithoutFeedback, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -54,6 +54,7 @@ function LearnGeeta({
   handleGetShloks,
   ourIdeals,
   language,
+  navigation,
 }) {
   const videoRef = useRef(null);
 
@@ -62,6 +63,36 @@ function LearnGeeta({
   const [isButton, setIsButton] = useState(false);
   const [shlokIndex, setShlokIndex] = useState();
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+
+  // Animation for iOS back button
+  const backButtonAnim = useRef(new Animated.Value(-150)).current;
+  const hideTimerRef = useRef(null);
+
+  const toggleBackButton = useCallback(() => {
+    if (Platform.OS !== 'ios') return;
+    if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+
+    Animated.spring(backButtonAnim, {
+      toValue: 0,
+      useNativeDriver: true,
+      friction: 8,
+      tension: 40,
+    }).start();
+
+    hideTimerRef.current = setTimeout(() => {
+      Animated.timing(backButtonAnim, {
+        toValue: -150,
+        duration: 400,
+        useNativeDriver: true,
+      }).start();
+    }, 4000);
+  }, [backButtonAnim]);
+
+  useEffect(() => {
+    return () => {
+      if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+    };
+  }, []);
 
   const {
     isVideoReady,
@@ -104,8 +135,6 @@ function LearnGeeta({
       };
     }, []),
   );
-
-  console.log("--------selectedIdeal------", selectedIdeal)
 
   // Effects
   useEffect(() => {
@@ -245,7 +274,6 @@ function LearnGeeta({
       setIsDrawerVisible(true);
     }, 100);
   };
-
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
@@ -254,124 +282,158 @@ function LearnGeeta({
         backgroundColor="transparent"
       />
 
-      <ImageBackground
-        source={IMAGES.MainScreenBackground}
-        style={styles.gradientBorder}
-        resizeMode="cover"
+      <View
+        style={styles.container}
+        onStartShouldSetResponder={() => true}
+        onResponderRelease={() => toggleBackButton()}
       >
-        {/* Eye Icon - Top Right */}
-        {isIntroVideoPlayed && (
-          <TouchableOpacity
-            style={styles.eyeIconButton}
-            onPress={handleOpenDrawer} // Changed this
-            activeOpacity={0.8}
-          >
-            <IMAGES.InfoIcon height={28} width={28} />
-          </TouchableOpacity>
-        )}
+        <ImageBackground
+          source={IMAGES.MainScreenBackground}
+          style={styles.gradientBorder}
+          resizeMode="cover"
+        >
+          {/* iOS Back Bar (Patti) */}
+          {Platform.OS === 'ios' && (
+            <Animated.View
+              style={[
+                styles.backButtonBar,
+                { transform: [{ translateY: backButtonAnim }] },
+              ]}
+            >
+              <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                activeOpacity={0.7}
+                style={{ flexDirection: 'row', alignItems: 'center' }}
+              >
+                <IMAGES.WhiteArrowIcon height={28} width={28} />
+                <CustomText style={styles.backButtonTitle}>
+                  श्रीमद्‍भगवद्‍गीता
+                </CustomText>
+              </TouchableOpacity>
+            </Animated.View>
+          )}
 
-        {/* Translation Drawer */}
-        <TranslationDrawer
-          visible={isDrawerVisible}
-          onClose={() => setIsDrawerVisible(false)}
-          translationContent={translationContent}
-          currentLanguage={currentLanguage}
-          commentary={learnGeeta?.data?.commentary}
-          shloke={learnGeeta?.data?.shloke_parts}
-          chapterDetail={learnGeeta?.data?.chapter}
-        />
+          {/* Eye Icon - Top Right */}
+          {isIntroVideoPlayed && (
+            <TouchableOpacity
+              style={styles.eyeIconButton}
+              onPress={handleOpenDrawer} // Changed this
+              activeOpacity={0.8}
+            >
+              {['भगवान वेद व्यास', 'Bhagwan Ved Vyas'].includes(
+                selectedIdeal?.name,
+              ) ? (
+                <IMAGES.InfoWhiteIcon height={28} width={28} />
+              ) : (
+                <IMAGES.InfoIcon height={28} width={28} />
+              )}
+            </TouchableOpacity>
+          )}
 
-        <VideoPlayer
-          videoRef={videoRef}
-          videoSource={getVideoSource()}
-          // Disable audio track when recording to prevent session conflicts
-          // Mute video when recording to prevent echo/feedback, but keep it playing
-          muted={isButton || isRecordingButton}
-          disableAudioTrack={false}
-          isVideoPaused={isVideoPaused}
-          onError={handleVideoError}
-          onLoadStart={handleVideoLoadStart}
-          onLoad={handleVideoLoad}
-          poster={poster}
-          isIntroVideoPlayed={isIntroVideoPlayed}
-          handleIntroPlay={handleIntroPlay}
-          setIsButton={setIsButton}
-          setIsVideoPlaying={setVideoPlayingState}
-          updateVideoUrl={updateVideoUrl}
-          learnGeeta={learnGeeta}
-          user={user}
-        />
-
-        {/* Skip button for intro video */}
-        {!isIntroVideoPlayed && !shouldShowIntroLoading && (
-          <TouchableOpacity
-            style={styles.skipButton}
-            onPress={handleIntroPlay}
-            activeOpacity={0.8}
-          >
-            <CustomText style={styles.skipButtonText}>Skip</CustomText>
-          </TouchableOpacity>
-        )}
-
-        {shouldShowIntroLoading && (
-          <FastImage
-            style={styles.cloudAnimationContainer}
-            source={
-              selectedIdeal?.name === 'Krishna Bhagwan'
-                ? IMAGES.PeacockFeather
-                : IMAGES.Leaf
-            }
-            resizeMode={FastImage.resizeMode.cover}
+          {/* Translation Drawer */}
+          <TranslationDrawer
+            visible={isDrawerVisible}
+            onClose={() => setIsDrawerVisible(false)}
+            translationContent={translationContent}
+            currentLanguage={currentLanguage}
+            commentary={learnGeeta?.data?.commentary}
+            shloke={learnGeeta?.data?.shloke_parts}
+            shlokNo={learnGeeta?.data?.shloke_no}
+            chapterDetail={learnGeeta?.data?.chapter}
           />
-        )}
 
-        {/* Show loading when switching videos (e.g., hls_male_path to hls_male_user) */}
-        {isButton && isLoading && (
-          <FastImage
-            style={styles.cloudAnimationContainer}
-            source={
-              selectedIdeal?.name === 'Krishna Bhagwan'
-                ? IMAGES.PeacockFeather
-                : IMAGES.Leaf
-            }
-            resizeMode={FastImage.resizeMode.cover}
+          <VideoPlayer
+            videoRef={videoRef}
+            videoSource={getVideoSource()}
+            // Disable audio track when recording to prevent session conflicts
+            // Mute video when recording to prevent echo/feedback, but keep it playing
+            muted={isButton || isRecordingButton}
+            disableAudioTrack={false}
+            isVideoPaused={isVideoPaused}
+            onError={handleVideoError}
+            onLoadStart={handleVideoLoadStart}
+            onLoad={handleVideoLoad}
+            poster={poster}
+            isIntroVideoPlayed={isIntroVideoPlayed}
+            handleIntroPlay={handleIntroPlay}
+            setIsButton={setIsButton}
+            setIsVideoPlaying={setVideoPlayingState}
+            updateVideoUrl={updateVideoUrl}
+            learnGeeta={learnGeeta}
+            user={user}
           />
-        )}
 
-        {isIntroVideoPlayed && (
-          <>
-            {shouldShowLoading ? (
-              <FastImage
-                style={styles.cloudAnimationContainer}
-                source={
-                  selectedIdeal?.name === 'Krishna Bhagwan'
-                    ? IMAGES.PeacockFeather
-                    : IMAGES.Leaf
-                }
-                resizeMode={FastImage.resizeMode.cover}
-              />
-            ) : (
-              <RecordingInterface
-                transcription={transcription}
-                learnGeeta={learnGeeta}
-                isButton={isButton}
-                isRecordingButton={isRecordingButton}
-                startRecording={startRecording}
-                stopRecording={stopRecording}
-                videoRef={videoRef}
-                setIsVideoPlaying={setVideoPlayingState}
-                ourIdeals={ourIdeals}
-                waitingForTranslation={waitingForTranslation}
-                shlokIndex={shlokIndex}
-                shloks={shloks}
-                getPreviousShlok={getPreviousShlok}
-                playAgain={playAgain}
-                getNextShlok={getNextShlok}
-              />
-            )}
-          </>
-        )}
-      </ImageBackground>
+          {/* Skip button for intro video */}
+          {!isIntroVideoPlayed && !shouldShowIntroLoading && (
+            <TouchableOpacity
+              style={styles.skipButton}
+              onPress={handleIntroPlay}
+              activeOpacity={0.8}
+            >
+              <CustomText style={styles.skipButtonText}>Skip</CustomText>
+            </TouchableOpacity>
+          )}
+
+          {shouldShowIntroLoading && (
+            <FastImage
+              style={styles.cloudAnimationContainer}
+              source={
+                selectedIdeal?.name === 'Krishna Bhagwan'
+                  ? IMAGES.PeacockFeather
+                  : IMAGES.Leaf
+              }
+              resizeMode={FastImage.resizeMode.cover}
+            />
+          )}
+
+          {/* Show loading when switching videos (e.g., hls_male_path to hls_male_user) */}
+          {isButton && isLoading && (
+            <FastImage
+              style={styles.cloudAnimationContainer}
+              source={
+                selectedIdeal?.name === 'Krishna Bhagwan'
+                  ? IMAGES.PeacockFeather
+                  : IMAGES.Leaf
+              }
+              resizeMode={FastImage.resizeMode.cover}
+            />
+          )}
+
+          {isIntroVideoPlayed && (
+            <>
+              {shouldShowLoading ? (
+                <FastImage
+                  style={styles.cloudAnimationContainer}
+                  source={
+                    selectedIdeal?.name === 'Krishna Bhagwan'
+                      ? IMAGES.PeacockFeather
+                      : IMAGES.Leaf
+                  }
+                  resizeMode={FastImage.resizeMode.cover}
+                />
+              ) : (
+                <RecordingInterface
+                  transcription={transcription}
+                  learnGeeta={learnGeeta}
+                  isButton={isButton}
+                  isRecordingButton={isRecordingButton}
+                  startRecording={startRecording}
+                  stopRecording={stopRecording}
+                  videoRef={videoRef}
+                  setIsVideoPlaying={setVideoPlayingState}
+                  ourIdeals={ourIdeals}
+                  waitingForTranslation={waitingForTranslation}
+                  shlokIndex={shlokIndex}
+                  shloks={shloks}
+                  getPreviousShlok={getPreviousShlok}
+                  playAgain={playAgain}
+                  getNextShlok={getNextShlok}
+                />
+              )}
+            </>
+          )}
+        </ImageBackground>
+      </View>
     </SafeAreaView>
   );
 }

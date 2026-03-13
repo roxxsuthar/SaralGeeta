@@ -26,20 +26,27 @@ import { makeSelectAppLanguage, makeSelectIdealDetails } from '../App/selectors'
 import strings from '../../../i18n';
 import { FONTS, IMAGES } from '../../constants';
 import { hp } from '../../utils/responsive';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Navigation } from '../../constants/constants';
-import { setLanguage } from '../App/actions';
+import { setLanguage, updateUserDetails } from '../App/actions';
+import { getLanguage } from './actions';
 import { isEqual } from 'lodash';
 
-function Language({ navigation, language, idealDetails, _handleSetLanguage }) {
+function Language({ navigation, language, languageData, idealDetails, _handleSetLanguage, _updateLanguage, _getLanguage }) {
   const { currentLanguage } = language;
   const { language: languageMessage } = strings;
   const [languageType, setLanguageType] = useState(strings.getLanguage());
 
+  useEffect(() => {
+    _getLanguage();
+  }, []);
+
   const updateLanguage = useCallback(() => {
     strings.setLanguage(languageType);
+    const selectedLanguage = languageData.find((item) => item.code === languageType);
     _handleSetLanguage(languageType);
-
+    const data = { language_id: selectedLanguage?.id }
+    _updateLanguage({ data })
     // Always navigate to Home screen after language selection
     // using the Drawer/HomeStack path to ensure proper navigation state
     navigation.navigate('DashboardNavigator', {
@@ -131,6 +138,7 @@ function Language({ navigation, language, idealDetails, _handleSetLanguage }) {
           )}
           style={styles.buttonContainer}
           onPress={updateLanguage}
+          disabled={!languageData?.[0]?.id}
         />
       </View>
     </ImageBackground>
@@ -149,6 +157,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     _handleSetLanguage: (payload) => dispatch(setLanguage(payload)),
+    _updateLanguage: (payload) => dispatch(updateUserDetails(payload)),
+    _getLanguage: () => dispatch(getLanguage()),
   };
 }
 

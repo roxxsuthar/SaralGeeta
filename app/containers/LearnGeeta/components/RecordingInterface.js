@@ -63,7 +63,7 @@ const RecordingInterface = ({
                     }}
                   >
                     {item}
-                    {idx === 3 && '||'}
+                    {idx === 3 && ` || ${learnGeeta?.data?.chapter?.serial || ''}.${learnGeeta?.data?.name || ''} ||`}
                   </CustomText>
                   {idx < 3 && (idx === 1 ? '\n' : ' ')}
                 </React.Fragment>

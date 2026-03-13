@@ -33,11 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-    // Check for presented modal (e.g. from react-native-modals or generic) to avoid "no common orientation" crash
+    let lock = OrientationModule.supportedOrientation
+    // Keep the lock if one is explicitly set (e.g. landscape in LearnGeeta)
+    if lock != .all {
+        return lock
+    }
+    // Fallback to .all for presented modals only if no explicit lock is active
     if let rootController = window?.rootViewController?.presentedViewController {
         return .all
     }
-    return OrientationModule.supportedOrientation
+    return lock
   }
 }
 

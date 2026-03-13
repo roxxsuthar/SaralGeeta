@@ -390,6 +390,10 @@
       "id": "app.container.SideBar.ideal",
       "defaultMessage": "हमारे गुरुवर"
     },
+    "setting": {
+      "id": "app.container.SideBar.setting",
+      "defaultMessage": "सेटिंग"
+    },
     "language": {
       "id": "app.container.SideBar.language",
       "defaultMessage": "भाषा बदलें"
