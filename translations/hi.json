@@ -401,6 +401,110 @@
     "signOut": {
       "id": "app.container.SideBar.signOut",
       "defaultMessage": "साइन आउट"
+    },
+    "studentGift": {
+      "id": "app.container.SideBar.studentGift",
+      "defaultMessage": "मेरा पुरस्कार"
+    },
+    "teacherGift": {
+      "id": "app.container.SideBar.teacherGift",
+      "defaultMessage": "गीता सिखाएं"
+    }
+  },
+  "studentGift": {
+    "heading": {
+      "id": "app.container.studentGift.heading",
+      "defaultMessage": "छात्र का विवरण"
+    },
+    "name": {
+      "id": "app.container.studentGift.name",
+      "defaultMessage": "छात्र का नाम"
+    },
+    "phoneNumber": {
+      "id": "app.container.studentGift.phoneNumber",
+      "defaultMessage": "फोन नंबर"
+    },
+    "address": {
+      "id": "app.container.studentGift.address",
+      "defaultMessage": "पता"
+    },
+    "chaptersLabel": {
+      "id": "app.container.studentGift.chaptersLabel",
+      "defaultMessage": "अध्याय चुनें"
+    },
+    "button": {
+      "id": "app.container.studentGift.button",
+      "defaultMessage": "आवेदन करें"
+    },
+    "placeholder": {
+      "id": "app.container.studentGift.placeholder",
+      "defaultMessage": "यहाँ टाइप करें..."
+    },
+    "placeholderName": {
+      "id": "app.container.studentGift.placeholderName",
+      "defaultMessage": "छात्र का नाम दर्ज करें"
+    },
+    "placeholderPhone": {
+      "id": "app.container.studentGift.placeholderPhone",
+      "defaultMessage": "फ़ोन नंबर दर्ज करें"
+    },
+    "placeholderAddress": {
+      "id": "app.container.studentGift.placeholderAddress",
+      "defaultMessage": "पूरा पता दर्ज करें"
+    },
+    "successMessage": {
+      "id": "app.container.studentGift.successMessage",
+      "defaultMessage": "हम आपसे शीघ्र ही संपर्क करेंगे।"
+    },
+    "okButton": {
+      "id": "app.container.studentGift.okButton",
+      "defaultMessage": "ठीक है"
+    }
+  },
+  "teacherGift": {
+    "heading": {
+      "id": "app.container.teacherGift.heading",
+      "defaultMessage": "शिक्षक विवरण"
+    },
+    "name": {
+      "id": "app.container.teacherGift.name",
+      "defaultMessage": "शिक्षक का नाम"
+    },
+    "phoneNumber": {
+      "id": "app.container.teacherGift.phoneNumber",
+      "defaultMessage": "फोन नंबर"
+    },
+    "address": {
+      "id": "app.container.teacherGift.address",
+      "defaultMessage": "पता"
+    },
+    "chaptersLabel": {
+      "id": "app.container.teacherGift.chaptersLabel",
+      "defaultMessage": "अध्याय चुनें"
+    },
+    "button": {
+      "id": "app.container.teacherGift.button",
+      "defaultMessage": "आवेदन करें"
+    },
+    "placeholderName": {
+      "id": "app.container.teacherGift.placeholderName",
+      "defaultMessage": "शिक्षक का नाम दर्ज करें"
+    },
+    "placeholderPhone": {
+      "id": "app.container.teacherGift.placeholderPhone",
+      "defaultMessage": "फ़ोन नंबर दर्ज करें"
+    },
+    "placeholderAddress": {
+      "id": "app.container.teacherGift.placeholderAddress",
+      "defaultMessage": "पूरा पता दर्ज करें"
+    },
+    "successMessage": {
+      "id": "app.container.teacherGift.successMessage",
+      "defaultMessage": "हम आपसे शीघ्र ही संपर्क करेंगे।"
+    },
+    "okButton": {
+      "id": "app.container.teacherGift.okButton",
+      "defaultMessage": "ठीक है"
     }
   }
 }

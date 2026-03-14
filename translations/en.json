@@ -401,6 +401,110 @@
     "signOut": {
       "id": "app.container.SideBar.signOut",
       "defaultMessage": "Sign Out"
+    },
+    "studentGift": {
+      "id": "app.container.SideBar.studentGift",
+      "defaultMessage": "My Prize"
+    },
+    "teacherGift": {
+      "id": "app.container.SideBar.teacherGift",
+      "defaultMessage": "Teach Gita"
+    }
+  },
+  "studentGift": {
+    "heading": {
+      "id": "app.container.studentGift.heading",
+      "defaultMessage": "Student Details"
+    },
+    "name": {
+      "id": "app.container.studentGift.name",
+      "defaultMessage": "Student Name"
+    },
+    "phoneNumber": {
+      "id": "app.container.studentGift.phoneNumber",
+      "defaultMessage": "Phone Number"
+    },
+    "address": {
+      "id": "app.container.studentGift.address",
+      "defaultMessage": "Address"
+    },
+    "chaptersLabel": {
+      "id": "app.container.studentGift.chaptersLabel",
+      "defaultMessage": "Select Chapters"
+    },
+    "button": {
+      "id": "app.container.studentGift.button",
+      "defaultMessage": "Submit"
+    },
+    "placeholder": {
+      "id": "app.container.studentGift.placeholder",
+      "defaultMessage": "Type here..."
+    },
+    "placeholderName": {
+      "id": "app.container.studentGift.placeholderName",
+      "defaultMessage": "Enter student name"
+    },
+    "placeholderPhone": {
+      "id": "app.container.studentGift.placeholderPhone",
+      "defaultMessage": "Enter phone number"
+    },
+    "placeholderAddress": {
+      "id": "app.container.studentGift.placeholderAddress",
+      "defaultMessage": "Enter full address"
+    },
+    "successMessage": {
+      "id": "app.container.studentGift.successMessage",
+      "defaultMessage": "We will connect with you shortly."
+    },
+    "okButton": {
+      "id": "app.container.studentGift.okButton",
+      "defaultMessage": "Ok"
+    }
+  },
+  "teacherGift": {
+    "heading": {
+      "id": "app.container.teacherGift.heading",
+      "defaultMessage": "Teacher Details"
+    },
+    "name": {
+      "id": "app.container.teacherGift.name",
+      "defaultMessage": "Teacher Name"
+    },
+    "phoneNumber": {
+      "id": "app.container.teacherGift.phoneNumber",
+      "defaultMessage": "Phone Number"
+    },
+    "address": {
+      "id": "app.container.teacherGift.address",
+      "defaultMessage": "Address"
+    },
+    "chaptersLabel": {
+      "id": "app.container.teacherGift.chaptersLabel",
+      "defaultMessage": "Select Chapters"
+    },
+    "button": {
+      "id": "app.container.teacherGift.button",
+      "defaultMessage": "Submit"
+    },
+    "placeholderName": {
+      "id": "app.container.teacherGift.placeholderName",
+      "defaultMessage": "Enter teacher name"
+    },
+    "placeholderPhone": {
+      "id": "app.container.teacherGift.placeholderPhone",
+      "defaultMessage": "Enter phone number"
+    },
+    "placeholderAddress": {
+      "id": "app.container.teacherGift.placeholderAddress",
+      "defaultMessage": "Enter full address"
+    },
+    "successMessage": {
+      "id": "app.container.teacherGift.successMessage",
+      "defaultMessage": "We will connect with you shortly."
+    },
+    "okButton": {
+      "id": "app.container.teacherGift.okButton",
+      "defaultMessage": "Ok"
     }
   },
   "Instruction": {

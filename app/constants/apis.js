@@ -17,6 +17,7 @@ const APIS = {
   OAUTH: '/auth/social-media',
   POLICY: '/policy',
   DEVICE_AUTH: '/auth/device',
+  JOIN_SARAL_GITA: '/type',
 };
 export const API_URL = ' https://app.saralgita.in/api';
 

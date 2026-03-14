@@ -1,0 +1,265 @@
+/**
+ *
+ * TeacherGift
+ *
+ */
+
+import React, { memo, useEffect, useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { View, StatusBar, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { DrawerActions, useNavigation, useFocusEffect } from '@react-navigation/native';
+
+import makeSelectTeacherGift from './selectors';
+import makeSelectHome from '../Home/selectors';
+import { makeSelectAppLanguage } from '../App/selectors';
+import styles from './styles';
+import { COLORS, IMAGES } from '../../constants';
+import CustomText from '../../components/CustomText';
+import strings from '../../../i18n';
+import { submitTeacherGift } from './actions';
+import { getChapters } from '../Home/actions';
+import LoadingScreen from '../../components/LoadingScreen';
+import SuccessModal from '../../components/SuccessModal';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handleSubmitForm }) {
+    const { teacherGift: teacherGiftStrings, Home: HomeMessage } = strings;
+    const navigation = useNavigation();
+    const [showModal, setShowModal] = useState(false);
+    const [formActions, setFormActions] = useState(null);
+
+    useFocusEffect(
+        useCallback(() => {
+            handleGetChapters();
+        }, [handleGetChapters, appLanguage])
+    );
+
+    useEffect(() => {
+        if (teacherGift?.success && !teacherGift?.loading) {
+            setShowModal(true);
+        }
+    }, [teacherGift?.success, teacherGift?.loading]);
+
+    const validationSchema = Yup.object().shape({
+        name: Yup.string().required('Name is required'),
+        phoneNumber: Yup.string()
+            .matches(/^[0-9]+$/, 'Must be only digits')
+            .min(10, 'Must be at least 10 digits')
+            .required('Phone number is required'),
+        address: Yup.string().required('Address is required'),
+        chapters: Yup.array().min(1, 'Please select at least one chapter'),
+    });
+
+    const chapters = home?.data || [];
+
+    return (
+        <ImageBackground
+            source={IMAGES.AppBackground}
+            style={styles.container}
+            resizeMode="cover"
+        >
+            <StatusBar
+                barStyle="light-content"
+                translucent={true}
+                backgroundColor="transparent"
+            />
+            <SafeAreaView style={styles.container}>
+                <View style={styles.header}>
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        style={styles.iconContainer}
+                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                    >
+                        <View style={styles.icon}>
+                            <IMAGES.Bars height="100%" width="100%" />
+                        </View>
+                    </TouchableOpacity>
+                    <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
+                        {teacherGiftStrings?.heading?.defaultMessage || 'Teacher Details'}
+                    </CustomText>
+                </View>
+
+                {teacherGift?.loading ? (
+                    <LoadingScreen />
+                ) : (
+                    <View style={styles.mainContainer}>
+                        <Formik
+                            initialValues={{
+                                name: '',
+                                phoneNumber: '',
+                                address: '',
+                                chapters: [],
+                            }}
+                            validationSchema={validationSchema}
+                            onSubmit={(values, action) => {
+                                setFormActions(action);
+                                handleSubmitForm(values, navigation, action);
+                            }}
+                        >
+                            {({
+                                handleChange,
+                                handleBlur,
+                                handleSubmit,
+                                setFieldValue,
+                                values,
+                                errors,
+                                touched,
+                            }) => (
+                                <>
+                                    <ScrollView
+                                        showsVerticalScrollIndicator={false}
+                                        contentContainerStyle={{ flexGrow: 1 }}
+                                    >
+                                        <View style={styles.inputContainer}>
+                                            <CustomText style={styles.label}>
+                                                {teacherGiftStrings?.name?.defaultMessage || 'Teacher Name'}
+                                            </CustomText>
+                                            <TextInput
+                                                style={styles.input}
+                                                placeholder={teacherGiftStrings?.placeholderName?.defaultMessage || 'Enter teacher name'}
+                                                placeholderTextColor={COLORS.gray}
+                                                onChangeText={handleChange('name')}
+                                                onBlur={handleBlur('name')}
+                                                value={values.name}
+                                            />
+                                            {touched.name && errors.name && (
+                                                <CustomText style={styles.errorText}>{errors.name}</CustomText>
+                                            )}
+                                        </View>
+
+                                        <View style={styles.inputContainer}>
+                                            <CustomText style={styles.label}>
+                                                {teacherGiftStrings?.phoneNumber?.defaultMessage || 'Phone Number'}
+                                            </CustomText>
+                                            <TextInput
+                                                style={styles.input}
+                                                placeholder={teacherGiftStrings?.placeholderPhone?.defaultMessage || 'Enter phone number'}
+                                                placeholderTextColor={COLORS.gray}
+                                                keyboardType="phone-pad"
+                                                onChangeText={handleChange('phoneNumber')}
+                                                onBlur={handleBlur('phoneNumber')}
+                                                value={values.phoneNumber}
+                                            />
+                                            {touched.phoneNumber && errors.phoneNumber && (
+                                                <CustomText style={styles.errorText}>{errors.phoneNumber}</CustomText>
+                                            )}
+                                        </View>
+
+                                        <View style={styles.inputContainer}>
+                                            <CustomText style={styles.label}>
+                                                {teacherGiftStrings?.address?.defaultMessage || 'Address'}
+                                            </CustomText>
+                                            <TextInput
+                                                style={styles.textarea}
+                                                placeholder={teacherGiftStrings?.placeholderAddress?.defaultMessage || 'Enter full address'}
+                                                placeholderTextColor={COLORS.gray}
+                                                multiline
+                                                onChangeText={handleChange('address')}
+                                                onBlur={handleBlur('address')}
+                                                value={values.address}
+                                            />
+                                            {touched.address && errors.address && (
+                                                <CustomText style={styles.errorText}>{errors.address}</CustomText>
+                                            )}
+                                        </View>
+
+                                        <View style={styles.chapterListContainer}>
+                                            <CustomText style={styles.label}>
+                                                {teacherGiftStrings?.chaptersLabel?.defaultMessage || 'Select Chapters'}
+                                            </CustomText>
+                                            {chapters.map((chapter) => (
+                                                <TouchableOpacity
+                                                    key={chapter.id}
+                                                    style={styles.chapterItem}
+                                                    onPress={() => {
+                                                        const currentChapters = values.chapters;
+                                                        const nextChapters = currentChapters.includes(chapter.id)
+                                                            ? currentChapters.filter((id) => id !== chapter.id)
+                                                            : [...currentChapters, chapter.id];
+                                                        setFieldValue('chapters', nextChapters);
+                                                    }}
+                                                    activeOpacity={0.7}
+                                                >
+                                                    <View style={[
+                                                        styles.checkbox,
+                                                        values.chapters.includes(chapter.id) && styles.checkboxChecked
+                                                    ]}>
+                                                        {values.chapters.includes(chapter.id) && (
+                                                            <View style={{ width: 12, height: 12, backgroundColor: 'white', borderRadius: 2 }} />
+                                                        )}
+                                                    </View>
+                                                    <CustomText style={styles.chapterName}>{chapter.name}{'  ('}
+                                                        {HomeMessage.chapter.defaultMessage} {chapter?.serial}
+                                                        {')'}</CustomText>
+                                                </TouchableOpacity>
+                                            ))}
+                                            {touched.chapters && errors.chapters && (
+                                                <CustomText style={styles.errorText}>{errors.chapters}</CustomText>
+                                            )}
+                                        </View>
+                                    </ScrollView>
+
+                                    <View style={styles.buttonContainer}>
+                                        <TouchableOpacity
+                                            style={styles.button}
+                                            onPress={handleSubmit}
+                                        >
+                                            <CustomText style={styles.buttonText}>
+                                                {teacherGiftStrings?.button?.defaultMessage || 'Submit'}
+                                            </CustomText>
+                                        </TouchableOpacity>
+                                    </View>
+                                </>
+                            )}
+                        </Formik>
+                    </View>
+                )}
+
+                <SuccessModal
+                    visible={showModal}
+                    message={teacherGiftStrings?.successMessage?.defaultMessage || 'We will connect with you shortly.'}
+                    buttonText={teacherGiftStrings?.okButton?.defaultMessage || 'Ok'}
+                    onOk={() => {
+                        setShowModal(false);
+                        if (formActions) {
+                            formActions.resetForm();
+                        }
+                        navigation.goBack();
+                    }}
+                />
+            </SafeAreaView>
+        </ImageBackground>
+    );
+}
+
+TeacherGift.propTypes = {
+    teacherGift: PropTypes.object,
+    home: PropTypes.object,
+    appLanguage: PropTypes.string,
+    handleGetChapters: PropTypes.func,
+    handleSubmitForm: PropTypes.func,
+};
+
+const mapStateToProps = createStructuredSelector({
+    teacherGift: makeSelectTeacherGift(),
+    home: makeSelectHome(),
+    appLanguage: (state) => state.app?.language?.currentLanguage,
+});
+
+function mapDispatchToProps(dispatch) {
+    return {
+        handleGetChapters: () => dispatch(getChapters()),
+        handleSubmitForm: (payload, navigation, action) =>
+            dispatch(submitTeacherGift(payload, navigation, action)),
+    };
+}
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+export default compose(withConnect, memo)(TeacherGift);

@@ -13,6 +13,8 @@ import privacyPolicyReducer from './app/containers/PrivacyPolicy/reducer';
 import termsOfUseReducer from './app/containers/TermsOfUse/reducer';
 import instructionReducer from './app/containers/Instruction/reducer';
 import languageReducer from './app/containers/Language/reducer';
+import studentGiftReducer from './app/containers/StudentGift/reducer';
+import teacherGiftReducer from './app/containers/TeachGeeta/reducer';
 
 const appPersistConfig = {
   key: 'app',
@@ -46,6 +48,8 @@ const combinedReducers = combineReducers({
   termsOfUse: termsOfUseReducer,
   instruction: instructionReducer,
   language: languageReducer,
+  studentGift: studentGiftReducer,
+  teacherGift: teacherGiftReducer,
 });
 
 // Root Reducer

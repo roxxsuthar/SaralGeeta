@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
   },
   draweritems: {
-    flex: 1,
     borderBottomWidth: 2,
     borderBottomColor: COLORS.lightGray,
   },
@@ -59,6 +58,7 @@ const styles = StyleSheet.create({
     color: COLORS.black,
     fontSize: hp(15),
     fontWeight: '500',
+    flex: 1,
   },
   drawerHeading: {
     marginVertical: hp(12),
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     fontSize: hp(15),
     fontWeight: '600',
     lineHeight: hp(21),
+    flex: 1,
   },
 });
 export default styles;

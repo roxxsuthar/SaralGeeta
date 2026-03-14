@@ -29,6 +29,8 @@ export const Navigation = {
   TermsOfUse: 'TermsOfUse',
   ContactUs: 'ContactUs',
   Instructions: 'Instructions',
+  StudentGift: 'StudentGift',
+  TeachGeeta: 'TeachGeeta',
   Splash: 'Splash',
 };
 // API Configuration

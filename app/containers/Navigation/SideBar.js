@@ -121,6 +121,30 @@ const SideBar = (props) => {
             />
           </View>
           <View style={styles.draweritems}>
+            <DrawerItem
+              label={sideBarMessage?.studentGift?.defaultMessage || 'My Prize'}
+              labelStyle={styles.label}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.Contact height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate(Navigation.StudentGift)}
+            />
+          </View>
+          <View style={styles.draweritems}>
+            <DrawerItem
+              label={sideBarMessage?.teacherGift?.defaultMessage || 'Teach Gita'}
+              labelStyle={styles.label}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.Contact height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate(Navigation.TeachGeeta)}
+            />
+          </View>
+          <View style={styles.draweritems}>
             <TouchableOpacity
               onPress={toggleSetting}
               style={[

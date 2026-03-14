@@ -9,6 +9,8 @@ import PrivacyPolicy from '../PrivacyPolicy';
 import TermsOfUse from '../TermsOfUse';
 import Instruction from '../Instruction';
 import Language from '../Language';
+import StudentGift from '../StudentGift';
+import TeacherGift from '../TeachGeeta';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,7 +20,7 @@ const DrawerNavigator = () => {
       initialRouteName="HomeStack"
       screenOptions={{
         drawerStyle: {
-          width: '75%',
+          width: '80%',
           borderTopRightRadius: 0,
           borderBottomRightRadius: 0,
         },
@@ -43,6 +45,8 @@ const DrawerNavigator = () => {
       <Drawer.Screen name={Navigation.TermsOfUse} component={TermsOfUse} />
       <Drawer.Screen name={Navigation.Instructions} component={Instruction} />
       <Drawer.Screen name={Navigation.Language} component={Language} />
+      <Drawer.Screen name={Navigation.StudentGift} component={StudentGift} />
+      <Drawer.Screen name={Navigation.TeachGeeta} component={TeacherGift} />
     </Drawer.Navigator>
   );
 };

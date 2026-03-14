@@ -29,6 +29,7 @@ const homeReducer = (state = initialState, action) =>
         break;
       case GET_CHAPTERS:
         draft.loading = true;
+        draft.data = null;
         break;
       case GET_CHAPTERS_SUCCESS:
         draft.data = action.payload;
