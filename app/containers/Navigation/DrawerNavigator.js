@@ -1,4 +1,5 @@
 import React from 'react';
+import { Dimensions } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Navigation } from '../../constants/constants';
 import HomeStackNavigator from './HomeStackNavigator';
@@ -20,7 +21,7 @@ const DrawerNavigator = () => {
       initialRouteName="HomeStack"
       screenOptions={{
         drawerStyle: {
-          width: '80%',
+          width: Dimensions.get('window').width > 600 ? 320 : '80%',
           borderTopRightRadius: 0,
           borderBottomRightRadius: 0,
         },

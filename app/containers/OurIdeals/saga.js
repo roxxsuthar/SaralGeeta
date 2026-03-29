@@ -10,6 +10,7 @@ import {
   updateUserDetailsFail,
   updateUserDetailsSuccess,
 } from '../App/actions';
+import { getRecentWatched, getChapters } from '../Home/actions';
 
 function* getOurIdealsHandler() {
   const url = Helpers.getUrl(APIS.IDEALS);
@@ -38,6 +39,8 @@ function* saveUserDetails({ payload }) {
   try {
     const res = yield call(request, options);
     yield put(updateUserDetailsSuccess(res?.data));
+    yield put(getRecentWatched());
+    yield put(getChapters());
   } catch (e) {
     yield put(updateUserDetailsFail(e));
   }
@@ -51,7 +54,6 @@ function* saveOurIdeals({ payload }) {
     url,
     data: payload?.data,
   };
-  console.log("saveUserDetails options", payload)
   try {
     const res = yield call(request, options);
     yield put(updateUserDetailsSuccess(res?.data));

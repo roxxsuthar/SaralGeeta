@@ -34,14 +34,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
     let lock = OrientationModule.supportedOrientation
-    // Keep the lock if one is explicitly set (e.g. landscape in LearnGeeta)
-    if lock != .all {
-        return lock
+
+    // If an explicit lock is set (e.g., .landscape or .portrait), it takes priority
+    // unless a modal is being presented.
+    if let rootViewController = window?.rootViewController {
+        var presentedVC = rootViewController.presentedViewController
+        
+        // If there's a presented view controller (Modal), allow all orientations
+        // to prevent UIApplicationInvalidInterfaceOrientation crashes.
+        if presentedVC != nil {
+            return .all
+        }
     }
-    // Fallback to .all for presented modals only if no explicit lock is active
-    if let rootController = window?.rootViewController?.presentedViewController {
-        return .all
-    }
+
     return lock
   }
 }

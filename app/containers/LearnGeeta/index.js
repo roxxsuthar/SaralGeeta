@@ -140,7 +140,7 @@ function LearnGeeta({
   useEffect(() => {
     StatusBar.setHidden(true);
     handleGetShloks({ chapterId: get(route, 'params.chapter.id') });
-  }, [handleGetShloks, route]);
+  }, [handleGetShloks, route, currentLanguage]);
 
   useEffect(() => {
     setShlokIndex(

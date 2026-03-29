@@ -19,6 +19,7 @@ function* getLanguage() {
   try {
     const res = yield call(request, options);
     yield put(getLanguageSuccess(res.data));
+
   } catch (e) {
     yield put(getLanguageFail(e));
   }

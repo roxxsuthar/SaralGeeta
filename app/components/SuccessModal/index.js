@@ -10,6 +10,7 @@ const SuccessModal = ({ visible, message, buttonText, onOk }) => {
             transparent
             visible={visible}
             animationType="fade"
+            supportedOrientations={['portrait', 'landscape', 'landscape-left', 'landscape-right']}
         >
             <View style={styles.overlay}>
                 <View style={styles.modalContainer}>

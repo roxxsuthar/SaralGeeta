@@ -13,6 +13,7 @@ import {
   ImageBackground,
   Platform,
   PermissionsAndroid,
+  useWindowDimensions,
 } from 'react-native';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
@@ -52,6 +53,20 @@ function Home({
   const { currentLanguage } = language;
   const recent = get(home, 'recent');
 
+  const { width: windowWidth } = useWindowDimensions();
+  const numColumns = windowWidth > 600 ? 2 : 1;
+
+  const chaptersData = filteredChapters?.filter((item) => item.id !== recent?.id) || [];
+
+  // Chunking helper for grid display
+  const chunkArray = (arr, size) =>
+    Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+      arr.slice(i * size, i * size + size),
+    );
+
+  const processedChapters =
+    numColumns > 1 ? chunkArray(chaptersData, numColumns) : chaptersData;
+
   const sections = [
     {
       title: HomeMessage.recent.defaultMessage,
@@ -59,7 +74,7 @@ function Home({
     },
     {
       title: HomeMessage.chapters.defaultMessage,
-      data: filteredChapters?.filter((item) => item.id !== recent?.id) || [],
+      data: processedChapters,
     },
   ];
 
@@ -70,7 +85,7 @@ function Home({
 
       handleGetRecent();
       handleGetChapters();
-    }, [handleGetRecent, handleGetChapters]),
+    }, [handleGetRecent, handleGetChapters, currentLanguage]),
   );
 
   useEffect(() => {
@@ -85,7 +100,7 @@ function Home({
 
       try {
         // Clean up first
-        await Voice.destroy().catch(() => {});
+        await Voice.destroy().catch(() => { });
         await Voice.removeAllListeners();
 
         // Wait a moment before setting up
@@ -99,7 +114,7 @@ function Home({
         Voice.onSpeechResults = onSpeechResults;
         Voice.onSpeechError = onSpeechError;
         Voice.onSpeechPartialResults = onSpeechResults;
-        Voice.onSpeechVolumeChanged = () => {};
+        Voice.onSpeechVolumeChanged = () => { };
       } catch {
         /* empty */
       }
@@ -114,8 +129,8 @@ function Home({
           setShowSearch(false);
           setSearchText('');
           setIsListening(false);
-          await Voice.stop().catch(() => {});
-          await Voice.destroy().catch(() => {});
+          await Voice.stop().catch(() => { });
+          await Voice.destroy().catch(() => { });
           await Voice.removeAllListeners();
         } catch {
           /* empty */
@@ -184,8 +199,8 @@ function Home({
 
     try {
       // Cleanup
-      await Voice.stop().catch(() => {});
-      await Voice.destroy().catch(() => {});
+      await Voice.stop().catch(() => { });
+      await Voice.destroy().catch(() => { });
     } catch {
       /* empty */
     }
@@ -232,7 +247,7 @@ function Home({
       setIsListening(true);
 
       // Clean up previous instance
-      await Voice.destroy().catch(() => {});
+      await Voice.destroy().catch(() => { });
       await Voice.removeAllListeners();
 
       // Check permissions first
@@ -338,63 +353,76 @@ function Home({
           </TouchableOpacity>
         );
       case HomeMessage.chapters.defaultMessage:
-        return (
-          <TouchableOpacity
-            style={styles.AudioContainer}
-            onPress={() => navigateToShloks(item?.id, item?.serial)}
-            activeOpacity={0.8}
-          >
-            <FastImage
-              style={styles.audioCardImage}
-              source={{ uri: item.image }}
-              resizeMode={FastImage.resizeMode.cover}
-            />
-            <View style={styles.audioTextContainer}>
-              <View style={{ flex: 1, flexDirection: 'row' }}>
-                <CustomText
-                  style={{
-                    ...setFontFamily(
-                      currentLanguage,
-                      FONTS.REGULAR,
-                      FONTS.HINDI,
-                    ),
-                    ...styles.audioCardTitle,
-                  }}
-                >
-                  {item.name}
-                </CustomText>
-                <CustomText
-                  style={{
-                    ...setFontFamily(
-                      currentLanguage,
-                      FONTS.REGULAR,
-                      FONTS.HINDI,
-                    ),
-                    ...styles.audioCardTitle,
-                  }}
-                >
-                  {'  ('}
-                  {HomeMessage.chapter.defaultMessage} {item?.serial}
-                  {')'}
-                </CustomText>
-              </View>
-              <CustomText
-                style={{
-                  ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                  ...styles.audioCardDescription,
-                }}
-                numberOfLines={3}
-              >
-                {item.description}
-              </CustomText>
-              <View style={styles.imageContainer}></View>
+        if (numColumns > 1) {
+          return (
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              {item.map((chapter) => (
+                <View key={chapter.id} style={{ width: '48.5%' }}>
+                  {renderChapterCard(chapter)}
+                </View>
+              ))}
             </View>
-          </TouchableOpacity>
-        );
+          );
+        }
+        return renderChapterCard(item);
       default:
         return null;
     }
   };
+
+  const renderChapterCard = (item) => (
+    <TouchableOpacity
+      style={styles.AudioContainer}
+      onPress={() => navigateToShloks(item?.id, item?.serial)}
+      activeOpacity={0.8}
+    >
+      <FastImage
+        style={styles.audioCardImage}
+        source={{ uri: item.image }}
+        resizeMode={FastImage.resizeMode.cover}
+      />
+      <View style={styles.audioTextContainer}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <CustomText
+            style={{
+              ...setFontFamily(
+                currentLanguage,
+                FONTS.REGULAR,
+                FONTS.HINDI,
+              ),
+              ...styles.audioCardTitle,
+            }}
+          >
+            {item.name}
+          </CustomText>
+          <CustomText
+            style={{
+              ...setFontFamily(
+                currentLanguage,
+                FONTS.REGULAR,
+                FONTS.HINDI,
+              ),
+              ...styles.audioCardTitle,
+            }}
+          >
+            {'  ('}
+            {HomeMessage.chapter.defaultMessage} {item?.serial}
+            {')'}
+          </CustomText>
+        </View>
+        <CustomText
+          style={{
+            ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+            ...styles.audioCardDescription,
+          }}
+          numberOfLines={3}
+        >
+          {item.description}
+        </CustomText>
+        <View style={styles.imageContainer}></View>
+      </View>
+    </TouchableOpacity>
+  );
 
   const ItemSeparator = () => <View style={styles.separator} />;
 

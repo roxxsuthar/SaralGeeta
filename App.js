@@ -7,6 +7,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { enableScreens } from 'react-native-screens';
+import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-exception-handler';
 
 import SaralGeetaApp from './app/containers/App';
 import configureStore from './configureStore';
@@ -17,6 +18,21 @@ const { store, persistor } = configureStore();
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
+
+
+  if (__DEV__) {
+    const errorHandler = (error, isFatal) => {
+      console.log('Global Error Handler:', error, isFatal);
+      // You can send this error to your analytics service
+    };
+
+    setJSExceptionHandler(errorHandler, true);
+
+    // setNativeExceptionHandler((errorString) => {
+    //   console.log('Native Error Handler:', errorString);
+    //   // You can send this error to your analytics service
+    // }, true);
+  }
 
   return (
     <SafeAreaProvider>

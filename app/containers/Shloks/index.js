@@ -41,7 +41,7 @@ function Shloks({
   useEffect(() => {
     StatusBar.setHidden(false);
     handleGetShloks({ chapterId: get(route, 'params.chapterId') });
-  }, [route]);
+  }, [route, currentLanguage]);
 
   const navigateToLearnGeeta = useCallback(
     (item) => {

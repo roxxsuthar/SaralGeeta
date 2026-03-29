@@ -20,6 +20,7 @@ function LoadingScreen({ currentLanguage }) {
       statusBarTranslucent
       animationType="none"
       testID="loading-screen-modal"
+      supportedOrientations={['portrait', 'landscape', 'landscape-left', 'landscape-right']}
     >
       <View
         style={defaultStyles.container}

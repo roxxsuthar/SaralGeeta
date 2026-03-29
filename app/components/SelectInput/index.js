@@ -58,7 +58,12 @@ function SelectInput({ label, options, onSelect, loading, value }) {
         </View>
       </TouchableOpacity>
 
-      <Modal visible={visible} transparent animationType="fade">
+      <Modal
+        visible={visible}
+        transparent
+        animationType="fade"
+        supportedOrientations={['portrait', 'landscape', 'landscape-left', 'landscape-right']}
+      >
         <TouchableOpacity
           style={defaultStyles.modalOverlay}
           activeOpacity={1}
