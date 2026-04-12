@@ -2,7 +2,8 @@
 import 'react-native-gesture-handler'; // FIRST
 import 'react-native-reanimated';
 import React from 'react';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { StatusBar, StyleSheet, useColorScheme, View, Text, TextInput } from 'react-native';
+
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -13,6 +14,23 @@ import SaralGeetaApp from './app/containers/App';
 import configureStore from './configureStore';
 
 enableScreens(true);
+
+if (Text.defaultProps) {
+  Text.defaultProps.allowFontScaling = false;
+} else {
+  Text.defaultProps = {
+    allowFontScaling: false,
+  };
+}
+
+if (TextInput.defaultProps) {
+  TextInput.defaultProps.allowFontScaling = false;
+} else {
+  TextInput.defaultProps = {
+    allowFontScaling: false,
+  };
+}
+
 
 const { store, persistor } = configureStore();
 

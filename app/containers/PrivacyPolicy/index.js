@@ -116,7 +116,9 @@ function PrivacyPolicy({ privacyPolicy, handleGetPolicy, app }) {
               showsVerticalScrollIndicator={false}
               showsHorizontalScrollIndicator={false}
               scrollEnabled={true}
+              textZoom={100}
             />
+
           )}
         </View>
       </View>

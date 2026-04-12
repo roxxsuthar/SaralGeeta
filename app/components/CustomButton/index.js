@@ -48,7 +48,8 @@ function CustomButton({
             <IMAGES.BackIcon width="100%" height="100%" color="white" />
           </View>
         )}
-        <Text style={textStyle()}>{title}</Text>
+        <Text style={textStyle()} allowFontScaling={false}>{title}</Text>
+
         {isEqual(nextNavigateIcon, true) && (
           <View testID="next-icon" style={styles.nextNavigateIcon}>
             <IMAGES.NavigateNext width="100%" height="100%" />

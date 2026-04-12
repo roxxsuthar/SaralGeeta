@@ -53,7 +53,9 @@ function SelectInput({ label, options, onSelect, loading, value }) {
             value={getLabel()}
             editable={false}
             pointerEvents="none"
+            allowFontScaling={false}
           />
+
           <IMAGES.ChevronDown style={defaultStyles.icon} />
         </View>
       </TouchableOpacity>
@@ -81,8 +83,9 @@ function SelectInput({ label, options, onSelect, loading, value }) {
             ]}
           >
             {loading ? (
-              <Text style={defaultStyles.loadingText}>Loading...</Text>
+              <Text style={defaultStyles.loadingText} allowFontScaling={false}>Loading...</Text>
             ) : (
+
               <FlatList
                 data={options}
                 keyExtractor={(item) => item.value.toString()}
@@ -91,7 +94,8 @@ function SelectInput({ label, options, onSelect, loading, value }) {
                     style={defaultStyles.option}
                     onPress={() => handleSelect(item)}
                   >
-                    <Text style={defaultStyles.optionText}>{item.label}</Text>
+                    <Text style={defaultStyles.optionText} allowFontScaling={false}>{item.label}</Text>
+
                   </TouchableOpacity>
                 )}
                 showsVerticalScrollIndicator={false}

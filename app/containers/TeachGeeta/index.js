@@ -127,7 +127,9 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                                                 onChangeText={handleChange('name')}
                                                 onBlur={handleBlur('name')}
                                                 value={values.name}
+                                                allowFontScaling={false}
                                             />
+
                                             {touched.name && errors.name && (
                                                 <CustomText style={styles.errorText}>{errors.name}</CustomText>
                                             )}
@@ -145,7 +147,9 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                                                 onChangeText={handleChange('phoneNumber')}
                                                 onBlur={handleBlur('phoneNumber')}
                                                 value={values.phoneNumber}
+                                                allowFontScaling={false}
                                             />
+
                                             {touched.phoneNumber && errors.phoneNumber && (
                                                 <CustomText style={styles.errorText}>{errors.phoneNumber}</CustomText>
                                             )}
@@ -163,7 +167,9 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                                                 onChangeText={handleChange('address')}
                                                 onBlur={handleBlur('address')}
                                                 value={values.address}
+                                                allowFontScaling={false}
                                             />
+
                                             {touched.address && errors.address && (
                                                 <CustomText style={styles.errorText}>{errors.address}</CustomText>
                                             )}

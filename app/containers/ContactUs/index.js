@@ -96,7 +96,9 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
                     onChangeText={handleChange('name')}
                     onBlur={handleBlur('name')}
                     value={values.name}
+                    allowFontScaling={false}
                   />
+
                   {touched.name && errors.name && (
                     <CustomText style={styles.errorText}>
                       {errors.name}
@@ -116,7 +118,9 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
                     value={values.email}
+                    allowFontScaling={false}
                   />
+
                   {touched.email && errors.email && (
                     <CustomText style={styles.errorText}>
                       {errors.email}
@@ -137,7 +141,9 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
                     onBlur={handleBlur('message')}
                     value={values.message}
                     multiline
+                    allowFontScaling={false}
                   />
+
                   {touched.message && errors.message && (
                     <CustomText style={styles.errorText}>
                       {errors.message}

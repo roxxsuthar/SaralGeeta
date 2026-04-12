@@ -117,7 +117,9 @@ function TermsOfUse({ termsOfUse, handleGetTerms, app }) {
               showsVerticalScrollIndicator={false}
               showsHorizontalScrollIndicator={false}
               scrollEnabled={true}
+              textZoom={100}
             />
+
           )}
         </View>
       </View>

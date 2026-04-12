@@ -492,6 +492,7 @@ function Home({
               placeholderTextColor="#ffffff"
               value={searchText}
               onChangeText={setSearchText}
+              allowFontScaling={false}
             />
             <TouchableOpacity
               activeOpacity={0.8}

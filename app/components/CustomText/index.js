@@ -16,7 +16,9 @@ function CustomText({ children, style, numberOfLines, ...props }) {
       {...props}
       style={style}
       numberOfLines={numberOfLines}
+      allowFontScaling={false}
     >
+
       {children}
     </Text>
   );
