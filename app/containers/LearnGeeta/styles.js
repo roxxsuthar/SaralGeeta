@@ -149,14 +149,14 @@ const styles = StyleSheet.create({
   },
 
   cloudAnimationContainer: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    width: '100%',
-    height: '100%',
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
     zIndex: 99,
+  },
+  chakraImage: {
+    width: hp(150),
+    height: hp(150),
   },
 
   cloudAnimation: {

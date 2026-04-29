@@ -409,6 +409,14 @@
     "teacherGift": {
       "id": "app.container.SideBar.teacherGift",
       "defaultMessage": "Teach Gita"
+    },
+    "writeGita": {
+      "id": "app.container.SideBar.writeGita",
+      "defaultMessage": "Write Gita"
+    },
+    "gitaRules": {
+      "id": "app.container.SideBar.gitaRules",
+      "defaultMessage": "Gita Rules"
     }
   },
   "studentGift": {
@@ -459,6 +467,22 @@
     "okButton": {
       "id": "app.container.studentGift.okButton",
       "defaultMessage": "Ok"
+    },
+    "alertTitle": {
+      "id": "app.container.studentGift.alertTitle",
+      "defaultMessage": "Confirmation"
+    },
+    "alertMessage": {
+      "id": "app.container.studentGift.alertMessage",
+      "defaultMessage": "Have you entered correct address?"
+    },
+    "alertNo": {
+      "id": "app.container.studentGift.alertNo",
+      "defaultMessage": "No"
+    },
+    "alertYes": {
+      "id": "app.container.studentGift.alertYes",
+      "defaultMessage": "Yes"
     }
   },
   "teacherGift": {
@@ -505,6 +529,104 @@
     "okButton": {
       "id": "app.container.teacherGift.okButton",
       "defaultMessage": "Ok"
+    },
+    "alertTitle": {
+      "id": "app.container.teacherGift.alertTitle",
+      "defaultMessage": "Confirmation"
+    },
+    "alertMessage": {
+      "id": "app.container.teacherGift.alertMessage",
+      "defaultMessage": "Have you entered correct address?"
+    },
+    "alertNo": {
+      "id": "app.container.teacherGift.alertNo",
+      "defaultMessage": "No"
+    },
+    "alertYes": {
+      "id": "app.container.teacherGift.alertYes",
+      "defaultMessage": "Yes"
+    }
+  },
+  "writeGita": {
+    "heading": {
+      "id": "app.container.writeGita.heading",
+      "defaultMessage": "Write Gita"
+    },
+    "description": {
+      "id": "app.container.writeGita.description",
+      "defaultMessage": "Write Gita is a campaign where you can prepare a handwritten scripture with your own hands. There are multiple book options to choose from: Ramcharitmanas, Gita Ji, Bhagavat, Bhakt Charitra, and others. You can select the scripture you wish to write. After your selection, we will send the original book, a register to write in, along with black and red pens to your home. It's essentially writing by copying, looking at the original text and writing it in the register. You have to write the shlokas with the red pen and the meaning in Hindi or your own regional language. You will also need to report your progress every 15 days. Upon completion of the entire scripture, we will honor you with a pictorial certificate. Moreover, whenever an exhibition is held, your handwritten scripture will be displayed in the handwritten scripture exhibition, and your name will be inscribed on the scripture."
+    },
+    "name": {
+      "id": "app.container.writeGita.name",
+      "defaultMessage": "Name"
+    },
+    "phoneNumber": {
+      "id": "app.container.writeGita.phoneNumber",
+      "defaultMessage": "Contact"
+    },
+    "address": {
+      "id": "app.container.writeGita.address",
+      "defaultMessage": "Address"
+    },
+    "button": {
+      "id": "app.container.writeGita.button",
+      "defaultMessage": "Submit"
+    },
+    "placeholderName": {
+      "id": "app.container.writeGita.placeholderName",
+      "defaultMessage": "Enter your name"
+    },
+    "placeholderPhone": {
+      "id": "app.container.writeGita.placeholderPhone",
+      "defaultMessage": "Enter your contact number"
+    },
+    "placeholderAddress": {
+      "id": "app.container.writeGita.placeholderAddress",
+      "defaultMessage": "Enter your full address"
+    },
+    "district": {
+      "id": "app.container.writeGita.district",
+      "defaultMessage": "District"
+    },
+    "placeholderDistrict": {
+      "id": "app.container.writeGita.placeholderDistrict",
+      "defaultMessage": "Enter your district"
+    },
+    "pincode": {
+      "id": "app.container.writeGita.pincode",
+      "defaultMessage": "Pin Code"
+    },
+    "placeholderPincode": {
+      "id": "app.container.writeGita.placeholderPincode",
+      "defaultMessage": "Enter your pin code"
+    },
+    "alertTitle": {
+      "id": "app.container.writeGita.alertTitle",
+      "defaultMessage": "Confirmation"
+    },
+    "alertMessage": {
+      "id": "app.container.writeGita.alertMessage",
+      "defaultMessage": "Have you entered correct address?"
+    },
+    "alertNo": {
+      "id": "app.container.writeGita.alertNo",
+      "defaultMessage": "No"
+    },
+    "alertYes": {
+      "id": "app.container.writeGita.alertYes",
+      "defaultMessage": "Yes"
+    },
+    "rulesLabel": {
+      "id": "app.container.writeGita.rulesLabel",
+      "defaultMessage": "Select Scripture"
+    },
+    "successMessage": {
+      "id": "app.container.writeGita.successMessage",
+      "defaultMessage": "We will connect with you shortly."
+    },
+    "okButton": {
+      "id": "app.container.writeGita.okButton",
+      "defaultMessage": "Ok"
     }
   },
   "Instruction": {
@@ -516,5 +638,78 @@
       "id": "app.container.TermsOfUse.termsAndCondition",
       "defaultMessage": "Terms and Condition"
     }
+  },
+  "gitaRules": {
+    "heading": {
+      "id": "app.container.gitaRules.heading",
+      "defaultMessage": "Gita Rules"
+    },
+    "subHeading": {
+      "id": "app.container.gitaRules.subHeading",
+      "defaultMessage": "Follow the path of Gita"
+    },
+    "description": {
+      "id": "app.container.gitaRules.description",
+      "defaultMessage": "By following these rules, you align yourself with the teachings of Bhagavad Gita."
+    },
+    "button": {
+      "id": "app.container.gitaRules.button",
+      "defaultMessage": "Submit"
+    },
+    "successMessage": {
+      "id": "app.container.gitaRules.successMessage",
+      "defaultMessage": "Your rules selection has been submitted successfully."
+    },
+    "okButton": {
+      "id": "app.container.gitaRules.okButton",
+      "defaultMessage": "Ok"
+    },
+    "alertTitle": {
+      "id": "app.container.gitaRules.alertTitle",
+      "defaultMessage": "Confirmation"
+    },
+    "alertMessage": {
+      "id": "app.container.gitaRules.alertMessage",
+      "defaultMessage": "Are you sure you want to submit these rules?"
+    },
+    "alertNo": {
+      "id": "app.container.gitaRules.alertNo",
+      "defaultMessage": "No"
+    },
+    "alertYes": {
+      "id": "app.container.gitaRules.alertYes",
+      "defaultMessage": "Yes"
+    },
+    "errorMinSelect": {
+      "id": "app.container.gitaRules.errorMinSelect",
+      "defaultMessage": "Please follow at least one rule"
+    },
+    "rulesLabel": {
+      "id": "app.container.gitaRules.rulesLabel",
+      "defaultMessage": "Select a Rule"
+    },
+    "inputLabel": {
+      "id": "app.container.gitaRules.inputLabel",
+      "defaultMessage": "Your Response"
+    },
+    "inputPlaceholder": {
+      "id": "app.container.gitaRules.inputPlaceholder",
+      "defaultMessage": "Enter your input here..."
+    }
+  },
+  "HomeBottomBar": {
+    "whatsapp": { "id": "app.container.HomeBottomBar.whatsapp", "defaultMessage": "WhatsApp" },
+    "facebook": { "id": "app.container.HomeBottomBar.facebook", "defaultMessage": "Facebook" },
+    "instagram": { "id": "app.container.HomeBottomBar.instagram", "defaultMessage": "Instagram" },
+    "youtube": { "id": "app.container.HomeBottomBar.youtube", "defaultMessage": "YouTube" },
+    "twitter": { "id": "app.container.HomeBottomBar.twitter", "defaultMessage": "X" },
+    "faq": { "id": "app.container.HomeBottomBar.faq", "defaultMessage": "FAQ" },
+    "language": { "id": "app.container.HomeBottomBar.language", "defaultMessage": "Language" },
+    "update": { "id": "app.container.HomeBottomBar.update", "defaultMessage": "Update" },
+    "shareApp": { "id": "app.container.HomeBottomBar.shareApp", "defaultMessage": "Share App" },
+    "rating": { "id": "app.container.HomeBottomBar.rating", "defaultMessage": "Rating" },
+    "contact": { "id": "app.container.HomeBottomBar.contact", "defaultMessage": "Contact" },
+    "help": { "id": "app.container.HomeBottomBar.help", "defaultMessage": "Help" },
+    "social": { "id": "app.container.HomeBottomBar.social", "defaultMessage": "Social" }
   }
 }

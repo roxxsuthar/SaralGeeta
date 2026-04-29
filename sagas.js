@@ -12,6 +12,8 @@ import instructionSaga from './app/containers/Instruction/saga';
 import languageSaga from './app/containers/Language/saga';
 import studentGiftSaga from './app/containers/StudentGift/saga';
 import teacherGiftSaga from './app/containers/TeachGeeta/saga';
+import writeGitaSaga from './app/containers/WriteGita/saga';
+import gitaRulesSaga from './app/containers/GitaRules/saga';
 
 export default function* rootContainerSaga() {
   yield all([
@@ -28,5 +30,7 @@ export default function* rootContainerSaga() {
     languageSaga(),
     studentGiftSaga(),
     teacherGiftSaga(),
+    writeGitaSaga(),
+    gitaRulesSaga(),
   ]);
 }

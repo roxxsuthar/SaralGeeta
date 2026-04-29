@@ -22,22 +22,29 @@ import styles from './styles';
 import { COLORS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import strings from '../../../i18n';
-import { submitTeacherGift } from './actions';
+import { submitTeacherGift, cleanUp } from './actions';
 import { getChapters } from '../Home/actions';
 import LoadingScreen from '../../components/LoadingScreen';
 import SuccessModal from '../../components/SuccessModal';
+import ConfirmModal from '../../components/ConfirmModal';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handleSubmitForm }) {
+function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handleSubmitForm, handleCleanUp }) {
+    strings.setLanguage(appLanguage);
     const { teacherGift: teacherGiftStrings, Home: HomeMessage } = strings;
     const navigation = useNavigation();
     const [showModal, setShowModal] = useState(false);
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [formActions, setFormActions] = useState(null);
+    const [tempValues, setTempValues] = useState(null);
 
     useFocusEffect(
         useCallback(() => {
-            handleGetChapters();
-        }, [handleGetChapters, appLanguage])
+            handleGetChapters(appLanguage);
+            return () => {
+                handleCleanUp();
+            };
+        }, [handleGetChapters, handleCleanUp, appLanguage])
     );
 
     useEffect(() => {
@@ -53,10 +60,21 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
             .min(10, 'Must be at least 10 digits')
             .required('Phone number is required'),
         address: Yup.string().required('Address is required'),
+        district: Yup.string().required('District is required'),
+        pincode: Yup.string()
+            .matches(/^[0-9]+$/, 'Must be only digits')
+            .length(6, 'Must be exactly 6 digits')
+            .required('Pin code is required'),
         chapters: Yup.array().min(1, 'Please select at least one chapter'),
     });
 
     const chapters = home?.data || [];
+
+    const handleSubmitPress = (values, action) => {
+        setTempValues(values);
+        setFormActions(action);
+        setShowConfirmModal(true);
+    };
 
     return (
         <ImageBackground
@@ -94,12 +112,13 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                                 name: '',
                                 phoneNumber: '',
                                 address: '',
+                                district: '',
+                                pincode: '',
                                 chapters: [],
                             }}
                             validationSchema={validationSchema}
                             onSubmit={(values, action) => {
-                                setFormActions(action);
-                                handleSubmitForm(values, navigation, action);
+                                handleSubmitPress(values, action);
                             }}
                         >
                             {({
@@ -175,6 +194,44 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                                             )}
                                         </View>
 
+                                        <View style={styles.inputContainer}>
+                                            <CustomText style={styles.label}>
+                                                {strings?.writeGita?.district?.defaultMessage || 'District'}
+                                            </CustomText>
+                                            <TextInput
+                                                style={styles.input}
+                                                placeholder={strings?.writeGita?.placeholderDistrict?.defaultMessage || "Enter your district"}
+                                                placeholderTextColor={COLORS.gray}
+                                                onChangeText={handleChange('district')}
+                                                onBlur={handleBlur('district')}
+                                                value={values.district}
+                                                allowFontScaling={false}
+                                            />
+                                            {touched.district && errors.district && (
+                                                <CustomText style={styles.errorText}>{errors.district}</CustomText>
+                                            )}
+                                        </View>
+
+                                        <View style={styles.inputContainer}>
+                                            <CustomText style={styles.label}>
+                                                {strings?.writeGita?.pincode?.defaultMessage || 'Pin Code'}
+                                            </CustomText>
+                                            <TextInput
+                                                style={styles.input}
+                                                placeholder={strings?.writeGita?.placeholderPincode?.defaultMessage || "Enter your pin code"}
+                                                placeholderTextColor={COLORS.gray}
+                                                keyboardType="numeric"
+                                                maxLength={6}
+                                                onChangeText={handleChange('pincode')}
+                                                onBlur={handleBlur('pincode')}
+                                                value={values.pincode}
+                                                allowFontScaling={false}
+                                            />
+                                            {touched.pincode && errors.pincode && (
+                                                <CustomText style={styles.errorText}>{errors.pincode}</CustomText>
+                                            )}
+                                        </View>
+
                                         <View style={styles.chapterListContainer}>
                                             <CustomText style={styles.label}>
                                                 {teacherGiftStrings?.chaptersLabel?.defaultMessage || 'Select Chapters'}
@@ -233,10 +290,23 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                     buttonText={teacherGiftStrings?.okButton?.defaultMessage || 'Ok'}
                     onOk={() => {
                         setShowModal(false);
+                        handleCleanUp();
                         if (formActions) {
                             formActions.resetForm();
                         }
                         navigation.goBack();
+                    }}
+                />
+                <ConfirmModal
+                    visible={showConfirmModal}
+                    title={teacherGiftStrings?.alertTitle?.defaultMessage || 'Confirmation'}
+                    message={teacherGiftStrings?.alertMessage?.defaultMessage || 'Have you entered correct address?'}
+                    cancelText={teacherGiftStrings?.alertNo?.defaultMessage || 'No'}
+                    confirmText={teacherGiftStrings?.alertYes?.defaultMessage || 'Yes'}
+                    onCancel={() => setShowConfirmModal(false)}
+                    onConfirm={() => {
+                        setShowConfirmModal(false);
+                        handleSubmitForm(tempValues, navigation, formActions);
                     }}
                 />
             </SafeAreaView>
@@ -250,6 +320,7 @@ TeacherGift.propTypes = {
     appLanguage: PropTypes.string,
     handleGetChapters: PropTypes.func,
     handleSubmitForm: PropTypes.func,
+    handleCleanUp: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -260,9 +331,10 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
     return {
-        handleGetChapters: () => dispatch(getChapters()),
+        handleGetChapters: (language) => dispatch(getChapters(language)),
         handleSubmitForm: (payload, navigation, action) =>
             dispatch(submitTeacherGift(payload, navigation, action)),
+        handleCleanUp: () => dispatch(cleanUp()),
     };
 }
 

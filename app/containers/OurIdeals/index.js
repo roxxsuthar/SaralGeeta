@@ -24,7 +24,6 @@ import FastImageLoading from '../../components/FastImageLoading';
 import { FONTS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import { setFontFamily } from '../../utils/device';
-import CustomButton from '../../components/CustomButton';
 import strings from '../../../i18n';
 import { Navigation } from '../../constants/constants';
 import { getIdealsData, saveIdealData } from './actions';
@@ -45,7 +44,6 @@ function OurIdeals({
   const { OurIdeals: OurIdealsMessage } = strings;
   const { currentLanguage } = language;
   const [selectCard, setSelectCard] = useState(null);
-  const [disableBtn, setDisableBtn] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,13 +52,48 @@ function OurIdeals({
     fetchData();
   }, []);
 
+  const onCardPress = useCallback(
+    (item) => {
+      setSelectCard(item);
+      selectIdealHandler(item);
+
+      const payload = {
+        data: { ideal_id: item?.id },
+      };
+      handleUpdateUser(payload);
+
+      // Clear navigation stack and navigate to Home
+      // This makes Home the root screen, preventing back navigation to OurIdeals
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [
+            {
+              name: 'Drawer',
+              state: {
+                routes: [
+                  {
+                    name: 'HomeStack',
+                    state: {
+                      routes: [{ name: Navigation.Home }],
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        }),
+      );
+    },
+    [setSelectCard, selectIdealHandler, handleUpdateUser, navigation],
+  );
+
   const selectItem = useCallback(
     (item) => {
       setSelectCard(item);
       selectIdealHandler(item);
-      setDisableBtn(false);
     },
-    [setSelectCard, selectIdealHandler, setDisableBtn],
+    [setSelectCard, selectIdealHandler],
   );
 
   useEffect(() => {
@@ -83,7 +116,7 @@ function OurIdeals({
     ({ item }) => (
       <TouchableOpacity
         style={getStyleOfCard(item)}
-        onPress={() => selectItem(item)}
+        onPress={() => onCardPress(item)}
         activeOpacity={0.8}
       >
         <FastImageLoading
@@ -111,35 +144,7 @@ function OurIdeals({
     [],
   );
 
-  const navigateToHome = useCallback(() => {
-    const payload = {
-      data: { ideal_id: selectCard?.id },
-    };
-    console.log("---payload---111", payload)
-    handleUpdateUser(payload);
-    // Clear navigation stack and navigate to Home
-    // This makes Home the root screen, preventing back navigation to OurIdeals
-    navigation.dispatch(
-      CommonActions.reset({
-        index: 0,
-        routes: [
-          {
-            name: 'Drawer',
-            state: {
-              routes: [
-                {
-                  name: 'HomeStack',
-                  state: {
-                    routes: [{ name: Navigation.Home }],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      }),
-    );
-  }, [selectCard, handleUpdateUser, navigation]);
+
 
   return (
     <ImageBackground
@@ -180,21 +185,6 @@ function OurIdeals({
             />
           </View>
         )}
-        <CustomButton
-          title={OurIdealsMessage.buttonLabel.defaultMessage}
-          labelStyle={Object.assign(
-            setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            styles.buttonLabel,
-          )}
-          style={styles.buttonContainer}
-          disabledStyle={styles.disabledButtonContainer}
-          disabledLabelStyle={Object.assign(
-            setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            styles.disableButtonLabel,
-          )}
-          onPress={navigateToHome}
-          disabled={disableBtn}
-        />
       </SafeAreaView>
     </ImageBackground>
   );

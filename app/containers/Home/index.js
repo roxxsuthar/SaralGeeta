@@ -14,6 +14,9 @@ import {
   Platform,
   PermissionsAndroid,
   useWindowDimensions,
+  Linking,
+  Share,
+  Animated,
 } from 'react-native';
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
@@ -36,6 +39,7 @@ import { Navigation } from '../../constants/constants';
 import { DrawerActions } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { hp } from '../../utils/responsive';
 
 function Home({
   language,
@@ -48,8 +52,10 @@ function Home({
   const [searchText, setSearchText] = useState('');
   const [filteredChapters, setFilteredChapters] = useState([]);
   const [isListening, setIsListening] = useState(false);
+  const [isSocialExpanded, setIsSocialExpanded] = useState(false);
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false);
 
-  const { Home: HomeMessage } = strings;
+  const { Home: HomeMessage, HomeBottomBar } = strings;
   const { currentLanguage } = language;
   const recent = get(home, 'recent');
 
@@ -84,13 +90,13 @@ function Home({
       StatusBar.setHidden(false);
 
       handleGetRecent();
-      handleGetChapters();
+      handleGetChapters(currentLanguage);
     }, [handleGetRecent, handleGetChapters, currentLanguage]),
   );
 
   useEffect(() => {
     handleGetRecent();
-    handleGetChapters();
+    handleGetChapters(currentLanguage);
 
     let mounted = true;
 
@@ -392,19 +398,9 @@ function Home({
               ),
               ...styles.audioCardTitle,
             }}
+            numberOfLines={1}
           >
             {item.name}
-          </CustomText>
-          <CustomText
-            style={{
-              ...setFontFamily(
-                currentLanguage,
-                FONTS.REGULAR,
-                FONTS.HINDI,
-              ),
-              ...styles.audioCardTitle,
-            }}
-          >
             {'  ('}
             {HomeMessage.chapter.defaultMessage} {item?.serial}
             {')'}
@@ -423,6 +419,108 @@ function Home({
       </View>
     </TouchableOpacity>
   );
+
+  const toggleSocialMenu = () => {
+    setIsSocialExpanded(!isSocialExpanded);
+    if (isMenuExpanded) setIsMenuExpanded(false);
+  };
+
+  const toggleAppMenu = () => {
+    setIsMenuExpanded(!isMenuExpanded);
+    if (isSocialExpanded) setIsSocialExpanded(false);
+  };
+
+  const openLink = async (url) => {
+    try {
+      await Linking.openURL(url);
+    } catch (e) {
+      console.log('Error opening link:', e);
+    }
+  };
+
+  const shareApp = async () => {
+    try {
+      await Share.share({
+        message: 'Download the Saral Gita App today! https://saralgita.com',
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const renderSocialMenu = () => {
+    if (!isSocialExpanded) return null;
+    return (
+      <View style={styles.expandedMenuContainer}>
+        <View style={styles.expandedMenuOverlay}>
+          <TouchableOpacity style={styles.menuItem} onPress={() => openLink('https://www.facebook.com/people/Saral-Gita/61577334227489/')}>
+            <View style={styles.menuIconWrapper}>
+              <IMAGES.FacebookIcon width={30} height={30} />
+            </View>
+            <CustomText style={styles.menuItemText}>{HomeBottomBar.facebook.defaultMessage}</CustomText>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem} onPress={() => openLink('https://www.instagram.com/saralgitaapp')}>
+            <View style={styles.menuIconWrapper}>
+              <IMAGES.InstagramIcon width={30} height={30} />
+            </View>
+            <CustomText style={styles.menuItemText}>{HomeBottomBar.instagram.defaultMessage}</CustomText>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.menuItem} onPress={() => openLink('https://twitter.com/')}>
+            <View style={styles.menuIconWrapper}>
+              <IMAGES.TwitterX width={30} height={30} />
+            </View>
+            <CustomText style={styles.menuItemText}>{HomeBottomBar.twitter.defaultMessage}</CustomText>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  };
+
+  const renderGridMenu = () => {
+    if (!isMenuExpanded) return null;
+    return (
+      <View style={styles.expandedMenuContainer}>
+        <View style={styles.gridMenuOverlay}>
+          <View style={styles.gridRow}>
+            <TouchableOpacity style={styles.gridMenuItem} onPress={() => navigation.navigate(Navigation.Instructions, { fromHome: true })}>
+              <IMAGES.FaqNew width={24} height={24} />
+              <CustomText style={styles.menuItemText}>{HomeBottomBar.faq.defaultMessage}</CustomText>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.gridMenuItem} onPress={() => navigation.navigate(Navigation.Language, { fromHome: true })}>
+              <IMAGES.LanguageNew width={24} height={24} />
+              <CustomText style={styles.menuItemText}>{HomeBottomBar.language.defaultMessage}</CustomText>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.gridMenuItem} onPress={() => openLink('https://play.google.com/store/apps/')}>
+              <IMAGES.UpdateApp width={24} height={24} />
+              <CustomText style={styles.menuItemText}>{HomeBottomBar.update.defaultMessage}</CustomText>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.gridMenuItem} onPress={shareApp}>
+              <IMAGES.ShareApp width={24} height={24} />
+              <CustomText style={styles.menuItemText}>{HomeBottomBar.shareApp.defaultMessage}</CustomText>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.gridRow}>
+            <TouchableOpacity style={styles.gridMenuItem} onPress={() => openLink('https://play.google.com/store/apps/')}>
+              <IMAGES.StarOutline width={24} height={24} />
+              <CustomText style={styles.menuItemText}>{HomeBottomBar.rating.defaultMessage}</CustomText>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.gridMenuItem} onPress={() => navigation.navigate(Navigation.ContactUs, { fromHome: true })}>
+              <IMAGES.ContactPhone width={24} height={24} />
+              <CustomText style={styles.menuItemText}>{HomeBottomBar.contact.defaultMessage}</CustomText>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.gridMenuItem} onPress={() => navigation.navigate(Navigation.Instructions, { fromHome: true })}>
+              <IMAGES.HelpSquare width={24} height={24} />
+              <CustomText style={styles.menuItemText}>{HomeBottomBar.help.defaultMessage}</CustomText>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.gridMenuItem} onPress={toggleSocialMenu}>
+              <IMAGES.SocialBubbles width={24} height={24} />
+              <CustomText style={styles.menuItemText}>{HomeBottomBar.social.defaultMessage}</CustomText>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  };
 
   const ItemSeparator = () => <View style={styles.separator} />;
 
@@ -518,6 +616,7 @@ function Home({
             sections={sections}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: hp(50) }}
             renderSectionHeader={({ section }) => (
               <>
                 {!isEmpty(section?.data) && (
@@ -536,6 +635,44 @@ function Home({
             ItemSeparatorComponent={ItemSeparator}
           />
         )}
+        
+        {/* Expanded Menus Overlay */}
+        {(isSocialExpanded || isMenuExpanded) && (
+          <TouchableOpacity
+            style={styles.fullScreenOverlay}
+            activeOpacity={1}
+            onPress={() => {
+              setIsSocialExpanded(false);
+              setIsMenuExpanded(false);
+            }}
+          />
+        )}
+        {renderSocialMenu()}
+        {renderGridMenu()}
+        
+        {/* Bottom Bar */}
+        <View style={styles.bottomBarContainer}>
+          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={() => openLink('https://play.google.com/store/apps/')}>
+            <IMAGES.StarOutline width={26} height={26} />
+          </TouchableOpacity>
+          <View style={styles.bottomBarDivider} />
+          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={() => navigation.navigate(Navigation.ContactUs, { fromHome: true })}>
+            <IMAGES.ContactPhone width={26} height={26} />
+          </TouchableOpacity>
+          <View style={styles.bottomBarDivider} />
+          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={() => navigation.navigate(Navigation.Instructions, { fromHome: true })}>
+            <IMAGES.HelpSquare width={26} height={26} />
+          </TouchableOpacity>
+          <View style={styles.bottomBarDivider} />
+          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={toggleSocialMenu}>
+            <IMAGES.SocialBubbles width={26} height={26} />
+          </TouchableOpacity>
+          <View style={styles.bottomBarDivider} />
+          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={toggleAppMenu}>
+            <IMAGES.AppsGrid width={26} height={26} />
+          </TouchableOpacity>
+        </View>
+
       </SafeAreaView>
     </ImageBackground>
   );
@@ -556,7 +693,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleGetChapters: () => dispatch(getChapters()),
+    handleGetChapters: (language) => dispatch(getChapters(language)),
     handleGetRecent: () => dispatch(getRecentWatched()),
   };
 }

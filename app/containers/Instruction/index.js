@@ -17,13 +17,16 @@ import { IMAGES, COLORS } from '../../constants';
 import { TouchableOpacity } from 'react-native';
 import CustomText from '../../components/CustomText';
 import LoadingScreen from '../../components/LoadingScreen';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { DrawerActions, useNavigation, useRoute } from '@react-navigation/native';
+import { Navigation } from '../../constants/constants';
 import strings from '../../../i18n';
 import makeSelectApp from '../App/selectors';
 
 function Instruction({ instruction, handleGetInstruction, app }) {
   const { Instruction: InstructionMessage } = strings;
   const navigation = useNavigation();
+  const route = useRoute();
+  const fromHome = route?.params?.fromHome;
 
   useEffect(() => {
     // Fetch instruction data when component mounts
@@ -95,10 +98,10 @@ function Instruction({ instruction, handleGetInstruction, app }) {
           <TouchableOpacity
             activeOpacity={0.8}
             style={styles.iconContainer}
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
           >
             <View style={styles.icon}>
-              <IMAGES.WhiteArrowIcon height="100%" width="100%" />
+              <IMAGES.Bars height="100%" width="100%" />
             </View>
           </TouchableOpacity>
           <CustomText style={styles.heading}>

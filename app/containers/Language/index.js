@@ -4,7 +4,7 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
@@ -24,18 +24,21 @@ import CustomButton from '../../components/CustomButton';
 import { setFontFamily } from '../../utils/device';
 import { makeSelectAppLanguage, makeSelectIdealDetails } from '../App/selectors';
 import strings from '../../../i18n';
-import { FONTS, IMAGES } from '../../constants';
+import { FONTS, IMAGES, COLORS } from '../../constants';
 import { hp } from '../../utils/responsive';
-import { useCallback, useEffect } from 'react';
 import { Navigation } from '../../constants/constants';
 import { setLanguage, updateUserDetails } from '../App/actions';
 import { getLanguage } from './actions';
 import { isEqual } from 'lodash';
+import { useRoute, DrawerActions } from '@react-navigation/native';
 
 function Language({ navigation, language, languageData, idealDetails, _handleSetLanguage, _updateLanguage, _getLanguage }) {
   const { currentLanguage } = language;
   const { language: languageMessage } = strings;
   const [languageType, setLanguageType] = useState(strings.getLanguage());
+
+  const route = useRoute();
+  const fromHome = route?.params?.fromHome;
 
   useEffect(() => {
     _getLanguage();
@@ -75,6 +78,13 @@ function Language({ navigation, language, languageData, idealDetails, _handleSet
         resizeMode={FastImage.resizeMode.contain}
       />
       <View style={styles.mainContainer}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={{ position: 'absolute', top: hp(-60), left: 0, zIndex: 10, width: hp(30), height: hp(30) }}
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+        >
+          <IMAGES.Bars height="100%" width="100%" />
+        </TouchableOpacity>
         <View style={styles.logo}>
           <IMAGES.Logo height="100%" width="100%" />
         </View>
@@ -90,7 +100,7 @@ function Language({ navigation, language, languageData, idealDetails, _handleSet
           >
             <View>
               <CustomText style={styles.hindiButtonFont}>हिंदी</CustomText>
-              <CustomText style={styles.hindiButtonFontSmall}>
+              <CustomText style={styles.hindiButtonFontSmall} numberOfLines={1}>
                 नमस्ते, स्वागत है
               </CustomText>
             </View>
@@ -113,7 +123,7 @@ function Language({ navigation, language, languageData, idealDetails, _handleSet
           >
             <View>
               <CustomText style={styles.englishButtonFont}>English</CustomText>
-              <CustomText style={styles.englishButtonFontSmall}>
+              <CustomText style={styles.englishButtonFontSmall} numberOfLines={1}>
                 Hi, Welcome
               </CustomText>
             </View>

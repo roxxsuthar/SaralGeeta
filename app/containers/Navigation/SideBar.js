@@ -156,10 +156,40 @@ const SideBar = (props) => {
                   <IMAGES.Contact height="100%" width="100%" />
                 </View>
               )}
-
               onPress={() => props.navigation.navigate(Navigation.TeachGeeta)}
             />
           </View>
+          <View style={styles.draweritems}>
+            <DrawerItem
+              label={({ color }) => (
+                <CustomText style={[styles.label, { color }]}>
+                  {sideBarMessage?.writeGita?.defaultMessage || 'Write Gita'}
+                </CustomText>
+              )}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.Contact height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate(Navigation.WriteGita)}
+            />
+          </View>
+          <View style={styles.draweritems}>
+            <DrawerItem
+              label={({ color }) => (
+                <CustomText style={[styles.label, { color }]}>
+                  {sideBarMessage?.gitaRules?.defaultMessage || 'Gita Rules'}
+                </CustomText>
+              )}
+              icon={() => (
+                <View style={styles.icon}>
+                  <IMAGES.Contact height="100%" width="100%" />
+                </View>
+              )}
+              onPress={() => props.navigation.navigate(Navigation.GitaRules)}
+            />
+          </View>
+{/* 
           <View style={styles.draweritems}>
             <TouchableOpacity
               onPress={toggleSetting}
@@ -207,6 +237,7 @@ const SideBar = (props) => {
               />
             )}
           </View>
+*/}
           <View style={styles.draweritems}>
             <TouchableOpacity
               onPress={toggleHelp}
@@ -237,6 +268,7 @@ const SideBar = (props) => {
 
             {isHelpExpanded && (
               <>
+{/* 
                 <DrawerItem
                   label={({ color }) => (
                     <CustomText style={[styles.label, { color }]}>
@@ -251,6 +283,7 @@ const SideBar = (props) => {
 
                   onPress={() => props.navigation.navigate(Navigation.ContactUs)}
                 />
+*/}
                 <DrawerItem
                   label={({ color }) => (
                     <CustomText style={[styles.label, { color }]}>
@@ -281,6 +314,7 @@ const SideBar = (props) => {
 
                   onPress={() => props.navigation.navigate(Navigation.TermsOfUse)}
                 />
+{/* 
                 <DrawerItem
                   label={({ color }) => (
                     <CustomText style={[styles.label, { color }]}>
@@ -297,9 +331,11 @@ const SideBar = (props) => {
                     props.navigation.navigate(Navigation.Instructions)
                   }
                 />
+*/}
               </>
             )}
           </View>
+{/* 
           <View style={styles.draweritems}>
             <TouchableOpacity
               onPress={toggleSocial}
@@ -392,6 +428,7 @@ const SideBar = (props) => {
               </>
             )}
           </View>
+*/}
         </DrawerContentScrollView>
       </View >
     </View >

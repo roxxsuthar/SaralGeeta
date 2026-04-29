@@ -409,6 +409,14 @@
     "teacherGift": {
       "id": "app.container.SideBar.teacherGift",
       "defaultMessage": "गीता सिखाएं"
+    },
+    "writeGita": {
+      "id": "app.container.SideBar.writeGita",
+      "defaultMessage": "गीता लिखें"
+    },
+    "gitaRules": {
+      "id": "app.container.SideBar.gitaRules",
+      "defaultMessage": "गीता नियम"
     }
   },
   "studentGift": {
@@ -459,6 +467,22 @@
     "okButton": {
       "id": "app.container.studentGift.okButton",
       "defaultMessage": "ठीक है"
+    },
+    "alertTitle": {
+      "id": "app.container.studentGift.alertTitle",
+      "defaultMessage": "पुष्टिकरण"
+    },
+    "alertMessage": {
+      "id": "app.container.studentGift.alertMessage",
+      "defaultMessage": "क्या आपने सही पता दर्ज किया है?"
+    },
+    "alertNo": {
+      "id": "app.container.studentGift.alertNo",
+      "defaultMessage": "नहीं"
+    },
+    "alertYes": {
+      "id": "app.container.studentGift.alertYes",
+      "defaultMessage": "हाँ"
     }
   },
   "teacherGift": {
@@ -505,6 +529,177 @@
     "okButton": {
       "id": "app.container.teacherGift.okButton",
       "defaultMessage": "ठीक है"
+    },
+    "alertTitle": {
+      "id": "app.container.teacherGift.alertTitle",
+      "defaultMessage": "पुष्टिकरण"
+    },
+    "alertMessage": {
+      "id": "app.container.teacherGift.alertMessage",
+      "defaultMessage": "क्या आपने सही पता दर्ज किया है?"
+    },
+    "alertNo": {
+      "id": "app.container.teacherGift.alertNo",
+      "defaultMessage": "नहीं"
+    },
+    "alertYes": {
+      "id": "app.container.teacherGift.alertYes",
+      "defaultMessage": "हाँ"
+    }
+  },
+  "writeGita": {
+    "heading": {
+      "id": "app.container.writeGita.heading",
+      "defaultMessage": "गीता लिखें"
+    },
+    "description": {
+      "id": "app.container.writeGita.description",
+      "defaultMessage": "गीता लिखें, एक ऐसा अभियान है जिसमें आप अपने हाथ से एक हस्तलिखित ग्रंथ को तैयार कर सकते हैं। इसमें लिखने के लिए अनेक पुस्तकों के विकल्प हैं, रामचरितमानस, गीता जी, भागवत, भक्त चरित्र, एवं अन्य। नीचे लिखे हुए ग्रंथ में जो आपको लिखना है, उसका आप चयन कर सकते हैं। आपके चयन करने के बाद हम आपको मूल पुस्तक ,लिखने के लिए रजिस्टर एवं काला पेन और लाल पेन आपके घर पर भेज देंगे। यह एक तरह से नकल करके ही लिखना है, मूल ग्रंथ को देखकर के रजिस्टर में लिखना है। आपको श्लोक लाल पेन से लिखना हे और अर्थ हिन्दी या आप अपनी क्षेत्रीय भाषा भी लिख सकते हैं और जो आप लिखेंगे, कितना लिखा है, उसका हर 15 दिन में आपको रिपोर्ट करना है। पूरा ग्रंथ लिखे जाने पर हम आपको चित्रमय प्रमाण पत्र से सम्मानित करेंगे। एवं आपके लिखे ग्रंथ को जब भी प्रदर्शनी लगेगी, तो उसमें आपके ग्रंथ को हस्तलिखित ग्रंथ की प्रदर्शनी में प्रदर्शित किया जाएगा। और ग्रंथ के ऊपर आपका नाम लिखा जाएगा।"
+    },
+    "name": {
+      "id": "app.container.writeGita.name",
+      "defaultMessage": "नाम"
+    },
+    "phoneNumber": {
+      "id": "app.container.writeGita.phoneNumber",
+      "defaultMessage": "संपर्क नंबर"
+    },
+    "address": {
+      "id": "app.container.writeGita.address",
+      "defaultMessage": "पता"
+    },
+    "button": {
+      "id": "app.container.writeGita.button",
+      "defaultMessage": "जमा करें"
+    },
+    "placeholderName": {
+      "id": "app.container.writeGita.placeholderName",
+      "defaultMessage": "अपना नाम दर्ज करें"
+    },
+    "placeholderPhone": {
+      "id": "app.container.writeGita.placeholderPhone",
+      "defaultMessage": "अपना संपर्क नंबर दर्ज करें"
+    },
+    "placeholderAddress": {
+      "id": "app.container.writeGita.placeholderAddress",
+      "defaultMessage": "अपना पूरा पता दर्ज करें"
+    },
+    "district": {
+      "id": "app.container.writeGita.district",
+      "defaultMessage": "जिला"
+    },
+    "placeholderDistrict": {
+      "id": "app.container.writeGita.placeholderDistrict",
+      "defaultMessage": "अपना जिला दर्ज करें"
+    },
+    "pincode": {
+      "id": "app.container.writeGita.pincode",
+      "defaultMessage": "पिन कोड"
+    },
+    "placeholderPincode": {
+      "id": "app.container.writeGita.placeholderPincode",
+      "defaultMessage": "अपना पिन कोड दर्ज करें"
+    },
+    "alertTitle": {
+      "id": "app.container.writeGita.alertTitle",
+      "defaultMessage": "पुष्टिकरण"
+    },
+    "alertMessage": {
+      "id": "app.container.writeGita.alertMessage",
+      "defaultMessage": "क्या आपने सही पता दर्ज किया है?"
+    },
+    "alertNo": {
+      "id": "app.container.writeGita.alertNo",
+      "defaultMessage": "नहीं"
+    },
+    "alertYes": {
+      "id": "app.container.writeGita.alertYes",
+      "defaultMessage": "हाँ"
+    },
+    "rulesLabel": {
+      "id": "app.container.writeGita.rulesLabel",
+      "defaultMessage": "ग्रंथ चुनें"
+    },
+    "successMessage": {
+      "id": "app.container.writeGita.successMessage",
+      "defaultMessage": "हम आपसे शीघ्र ही संपर्क करेंगे।"
+    },
+    "okButton": {
+      "id": "app.container.writeGita.okButton",
+      "defaultMessage": "ठीक है"
+    }
+  },
+  "HomeBottomBar": {
+    "whatsapp": { "id": "app.container.HomeBottomBar.whatsapp", "defaultMessage": "व्हाट्सएप" },
+    "facebook": { "id": "app.container.HomeBottomBar.facebook", "defaultMessage": "फेसबुक" },
+    "instagram": { "id": "app.container.HomeBottomBar.instagram", "defaultMessage": "इंस्टाग्राम" },
+    "youtube": { "id": "app.container.HomeBottomBar.youtube", "defaultMessage": "यूट्यूब" },
+    "twitter": { "id": "app.container.HomeBottomBar.twitter", "defaultMessage": "एक्स" },
+    "faq": { "id": "app.container.HomeBottomBar.faq", "defaultMessage": "सामान्य प्रश्न" },
+    "language": { "id": "app.container.HomeBottomBar.language", "defaultMessage": "भाषा" },
+    "update": { "id": "app.container.HomeBottomBar.update", "defaultMessage": "अपडेट करें" },
+    "shareApp": { "id": "app.container.HomeBottomBar.shareApp", "defaultMessage": "शेयर ऐप" },
+    "rating": { "id": "app.container.HomeBottomBar.rating", "defaultMessage": "रेटिंग" },
+    "contact": { "id": "app.container.HomeBottomBar.contact", "defaultMessage": "संपर्क" },
+    "help": { "id": "app.container.HomeBottomBar.help", "defaultMessage": "सहायता" },
+    "social": { "id": "app.container.HomeBottomBar.social", "defaultMessage": "सोशल" }
+  },
+  "gitaRules": {
+    "heading": {
+      "id": "app.container.gitaRules.heading",
+      "defaultMessage": "गीता नियम"
+    },
+    "subHeading": {
+      "id": "app.container.gitaRules.subHeading",
+      "defaultMessage": "गीता के मार्ग का अनुसरण करें"
+    },
+    "description": {
+      "id": "app.container.gitaRules.description",
+      "defaultMessage": "इन नियमों का पालन करके, आप स्वयं को श्रीमद्भगवद्गीता की शिक्षाओं के अनुरूप ढालते हैं।"
+    },
+    "button": {
+      "id": "app.container.gitaRules.button",
+      "defaultMessage": "जमा करें"
+    },
+    "successMessage": {
+      "id": "app.container.gitaRules.successMessage",
+      "defaultMessage": "नियमों का आपका चयन सफलतापूर्वक जमा कर दिया गया है।"
+    },
+    "okButton": {
+      "id": "app.container.gitaRules.okButton",
+      "defaultMessage": "ठीक है"
+    },
+    "alertTitle": {
+      "id": "app.container.gitaRules.alertTitle",
+      "defaultMessage": "पुष्टिकरण"
+    },
+    "alertMessage": {
+      "id": "app.container.gitaRules.alertMessage",
+      "defaultMessage": "क्या आप वाकई इन नियमों को जमा करना चाहते हैं?"
+    },
+    "alertNo": {
+      "id": "app.container.gitaRules.alertNo",
+      "defaultMessage": "नहीं"
+    },
+    "alertYes": {
+      "id": "app.container.gitaRules.alertYes",
+      "defaultMessage": "हाँ"
+    },
+    "errorMinSelect": {
+      "id": "app.container.gitaRules.errorMinSelect",
+      "defaultMessage": "कृपया कम से कम एक नियम का पालन करें"
+    },
+    "rulesLabel": {
+      "id": "app.container.gitaRules.rulesLabel",
+      "defaultMessage": "एक नियम चुनें"
+    },
+    "inputLabel": {
+      "id": "app.container.gitaRules.inputLabel",
+      "defaultMessage": "आपकी प्रतिक्रिया"
+    },
+    "inputPlaceholder": {
+      "id": "app.container.gitaRules.inputPlaceholder",
+      "defaultMessage": "अपनी प्रतिक्रिया यहाँ दर्ज करें..."
     }
   }
 }

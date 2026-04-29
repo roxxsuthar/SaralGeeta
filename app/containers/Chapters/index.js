@@ -13,6 +13,7 @@ import {
   FlatList,
   ImageBackground,
 } from 'react-native';
+import { DrawerActions } from '@react-navigation/native';
 // import split from 'lodash/split';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -82,15 +83,24 @@ function Chapters({ language, handleGetRecent }) {
         backgroundColor="transparent"
       />
       <View style={styles.mainContainer}>
-        <View style={styles.header}>
-          <CustomText
-            style={{
-              ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-              ...styles.headerText,
-            }}
+        <View style={[styles.header, { flexDirection: 'row', alignItems: 'center' }]}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            style={{ width: 40, height: 40, justifyContent: 'center', alignItems: 'center', position: 'absolute', left: 0, zIndex: 10 }}
           >
-            {ChaptersMessage.headerText.defaultMessage}
-          </CustomText>
+            <IMAGES.Bars height="100%" width="100%" />
+          </TouchableOpacity>
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <CustomText
+              style={{
+                ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+                ...styles.headerText,
+              }}
+            >
+              {ChaptersMessage.headerText.defaultMessage}
+            </CustomText>
+          </View>
         </View>
         <SectionList
           sections={sections}

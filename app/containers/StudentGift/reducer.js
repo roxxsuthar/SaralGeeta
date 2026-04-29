@@ -9,6 +9,7 @@ import {
     SUBMIT_STUDENT_GIFT,
     SUBMIT_STUDENT_GIFT_SUCCESS,
     SUBMIT_STUDENT_GIFT_FAIL,
+    CLEAN_UP,
 } from './constants';
 
 export const initialState = {
@@ -34,6 +35,8 @@ const studentGiftReducer = (state = initialState, action) =>
                 draft.loading = false;
                 draft.error = action.error;
                 break;
+            case CLEAN_UP:
+                return initialState;
         }
     });
 

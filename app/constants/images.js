@@ -44,6 +44,21 @@ import MicPlay from '../assets/images/microphone-voice-icon.svg';
 import MicToPlay from '../assets/images/microphone-line-icon.svg';
 import InfoIcon from '../assets/images/info.svg';
 import InfoWhiteIcon from '../assets/images/info_white.svg';
+import WhatsApp from '../assets/images/whatsapp.svg';
+import YouTube from '../assets/images/youtube.svg';
+import StarOutline from '../assets/images/star-outline.svg';
+import HelpSquare from '../assets/images/help-square.svg';
+import AppsGrid from '../assets/images/apps-grid.svg';
+import ShareApp from '../assets/images/share-app.svg';
+import UpdateApp from '../assets/images/update-app.svg';
+import ContactChat from '../assets/images/contact-chat.svg';
+import LanguageNew from '../assets/images/language-new.svg';
+import ContactPhone from '../assets/images/contact-phone.svg';
+import SocialBubbles from '../assets/images/social-bubbles.svg';
+import FaqNew from '../assets/images/faq-new.svg';
+import FacebookIcon from '../assets/images/facebook-icon.svg';
+import InstagramIcon from '../assets/images/instagram-icon.svg';
+import TwitterX from '../assets/images/x.svg';
 
 const GeetLearn = require('../assets/images/img_geeta_learn.png');
 const KrishnaImage = require('../assets/images/img_krishna.png');
@@ -121,5 +136,20 @@ const IMAGES = {
   InfoIcon,
   InfoWhiteIcon,
   Splash,
+  WhatsApp,
+  YouTube,
+  StarOutline,
+  HelpSquare,
+  AppsGrid,
+  ShareApp,
+  UpdateApp,
+  ContactChat,
+  LanguageNew,
+  ContactPhone,
+  SocialBubbles,
+  FaqNew,
+  FacebookIcon,
+  InstagramIcon,
+  TwitterX,
 };
 export default IMAGES;

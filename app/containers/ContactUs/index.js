@@ -16,7 +16,8 @@ import styles from './styles';
 import { COLORS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import { TouchableOpacity } from 'react-native';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { DrawerActions, useNavigation, useRoute } from '@react-navigation/native';
+import { Navigation } from '../../constants/constants';
 import strings from '../../../i18n';
 import { addContactUs } from './actions';
 import LoadingScreen from '../../components/LoadingScreen';
@@ -25,6 +26,8 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
   const { contactUs: contactUsMessage } = strings;
 
   const navigation = useNavigation();
+  const route = useRoute();
+  const fromHome = route?.params?.fromHome;
 
   // Validation Schema
   const validationSchema = Yup.object().shape({

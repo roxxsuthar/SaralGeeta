@@ -31,6 +31,8 @@ export const Navigation = {
   Instructions: 'Instructions',
   StudentGift: 'StudentGift',
   TeachGeeta: 'TeachGeeta',
+  WriteGita: 'WriteGita',
+  GitaRules: 'GitaRules',
   Splash: 'Splash',
 };
 // API Configuration

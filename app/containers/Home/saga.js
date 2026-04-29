@@ -11,11 +11,14 @@ import {
   getRecentWatchedSuccess,
 } from './actions';
 
-function* getChaptersHandler() {
+function* getChaptersHandler({ language }) {
   const url = Helpers.getUrl(APIS.CHAPTERS);
   const options = {
     method: 'GET',
     url,
+    headers: {
+      'Accept-Language': language === 'hi' ? 'hi' : 'en',
+    },
   };
 
   try {

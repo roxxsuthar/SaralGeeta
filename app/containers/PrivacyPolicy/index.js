@@ -95,10 +95,10 @@ function PrivacyPolicy({ privacyPolicy, handleGetPolicy, app }) {
           <TouchableOpacity
             activeOpacity={0.8}
             style={styles.iconContainer}
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
           >
             <View style={styles.icon}>
-              <IMAGES.WhiteArrowIcon height="100%" width="100%" />
+              <IMAGES.Bars height="100%" width="100%" />
             </View>
           </TouchableOpacity>
           <CustomText style={styles.heading}>

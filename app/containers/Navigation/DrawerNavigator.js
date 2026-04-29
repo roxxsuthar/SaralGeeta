@@ -12,6 +12,8 @@ import Instruction from '../Instruction';
 import Language from '../Language';
 import StudentGift from '../StudentGift';
 import TeacherGift from '../TeachGeeta';
+import WriteGita from '../WriteGita';
+import GitaRules from '../GitaRules';
 
 const Drawer = createDrawerNavigator();
 
@@ -48,6 +50,8 @@ const DrawerNavigator = () => {
       <Drawer.Screen name={Navigation.Language} component={Language} />
       <Drawer.Screen name={Navigation.StudentGift} component={StudentGift} />
       <Drawer.Screen name={Navigation.TeachGeeta} component={TeacherGift} />
+      <Drawer.Screen name={Navigation.WriteGita} component={WriteGita} />
+      <Drawer.Screen name={Navigation.GitaRules} component={GitaRules} />
     </Drawer.Navigator>
   );
 };

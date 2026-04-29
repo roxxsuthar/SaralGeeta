@@ -9,7 +9,7 @@ import { get } from 'lodash';
 import { compose } from 'redux';
 import Orientation from 'react-native-orientation-locker';
 const { OrientationModule } = NativeModules;
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, DrawerActions } from '@react-navigation/native';
 
 // Custom hooks
 import { useVideo, useRecording } from './hooks';
@@ -67,6 +67,8 @@ function LearnGeeta({
   // Animation for iOS back button
   const backButtonAnim = useRef(new Animated.Value(-150)).current;
   const hideTimerRef = useRef(null);
+
+  console.log("---------learnGeeta------", learnGeeta)
 
   const toggleBackButton = useCallback(() => {
     if (Platform.OS !== 'ios') return;
@@ -233,15 +235,13 @@ function LearnGeeta({
           backgroundColor="transparent"
         />
 
-        <FastImage
-          style={styles.cloudAnimationContainer}
-          source={
-            ourIdeals?.data[0]?.name === 'Krishna Bhagwan'
-              ? IMAGES.PeacockFeather
-              : IMAGES.Leaf
-          }
-          resizeMode={FastImage.resizeMode.cover}
-        />
+        <View style={styles.cloudAnimationContainer}>
+          <FastImage
+            style={styles.chakraImage}
+            source={IMAGES.Chakra}
+            resizeMode={FastImage.resizeMode.contain}
+          />
+        </View>
       </SafeAreaView>
     );
   }
@@ -301,11 +301,11 @@ function LearnGeeta({
               ]}
             >
               <TouchableOpacity
-                onPress={() => navigation.goBack()}
+                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
                 activeOpacity={0.7}
                 style={{ flexDirection: 'row', alignItems: 'center' }}
               >
-                <IMAGES.WhiteArrowIcon height={28} width={28} />
+                <IMAGES.Bars height={28} width={28} />
                 <CustomText style={styles.backButtonTitle}>
                   श्रीमद्‍भगवद्‍गीता
                 </CustomText>
@@ -375,42 +375,36 @@ function LearnGeeta({
           )}
 
           {shouldShowIntroLoading && (
-            <FastImage
-              style={styles.cloudAnimationContainer}
-              source={
-                selectedIdeal?.name === 'Krishna Bhagwan'
-                  ? IMAGES.PeacockFeather
-                  : IMAGES.Leaf
-              }
-              resizeMode={FastImage.resizeMode.cover}
-            />
+            <View style={styles.cloudAnimationContainer}>
+              <FastImage
+                style={styles.chakraImage}
+                source={IMAGES.Chakra}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+            </View>
           )}
 
           {/* Show loading when switching videos (e.g., hls_male_path to hls_male_user) */}
           {isButton && isLoading && (
-            <FastImage
-              style={styles.cloudAnimationContainer}
-              source={
-                selectedIdeal?.name === 'Krishna Bhagwan'
-                  ? IMAGES.PeacockFeather
-                  : IMAGES.Leaf
-              }
-              resizeMode={FastImage.resizeMode.cover}
-            />
+            <View style={styles.cloudAnimationContainer}>
+              <FastImage
+                style={styles.chakraImage}
+                source={IMAGES.Chakra}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+            </View>
           )}
 
           {isIntroVideoPlayed && (
             <>
               {shouldShowLoading ? (
-                <FastImage
-                  style={styles.cloudAnimationContainer}
-                  source={
-                    selectedIdeal?.name === 'Krishna Bhagwan'
-                      ? IMAGES.PeacockFeather
-                      : IMAGES.Leaf
-                  }
-                  resizeMode={FastImage.resizeMode.cover}
-                />
+                <View style={styles.cloudAnimationContainer}>
+                  <FastImage
+                    style={styles.chakraImage}
+                    source={IMAGES.Chakra}
+                    resizeMode={FastImage.resizeMode.contain}
+                  />
+                </View>
               ) : (
                 <RecordingInterface
                   transcription={transcription}

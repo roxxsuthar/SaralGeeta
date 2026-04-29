@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
+import { DrawerActions } from '@react-navigation/native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import get from 'lodash/get';
@@ -144,11 +145,11 @@ function Shloks({
           <View style={styles.imageContainer}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => backHandler()}
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
               style={styles.headerSubContainer}
             >
               <View style={styles.icon}>
-                <IMAGES.WhiteArrowIcon height="100%" width="100%" />
+                <IMAGES.Bars height="100%" width="100%" />
               </View>
             </TouchableOpacity>
             <FastImageLoading

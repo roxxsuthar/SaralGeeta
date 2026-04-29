@@ -20,9 +20,10 @@ export function defaultAction() {
   };
 }
 
-export function getChapters() {
+export function getChapters(language) {
   return {
     type: GET_CHAPTERS,
+    language,
   };
 }
 export function getChaptersSuccess(payload) {
