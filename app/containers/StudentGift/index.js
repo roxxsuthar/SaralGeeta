@@ -101,6 +101,7 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                     <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
                         {studentGiftStrings?.heading?.defaultMessage || 'Student Details'}
                     </CustomText>
+                    <View style={{ width: 40 }} />
                 </View>
 
                 {studentGift?.loading ? (
@@ -254,7 +255,10 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                                                             <View style={{ width: 12, height: 12, backgroundColor: 'white', borderRadius: 2 }} />
                                                         )}
                                                     </View>
-                                                    <CustomText style={styles.chapterName}>{chapter.name}{'  ('}
+                                                    <CustomText style={[
+                                                        styles.chapterName,
+                                                        values.chapters.includes(chapter.id) && { color: COLORS.orange, fontFamily: 'Outfit-Bold' }
+                                                    ]}>{chapter.name}{'  ('}
                                                         {HomeMessage.chapter.defaultMessage} {chapter?.serial}
                                                         {')'}</CustomText>
                                                 </TouchableOpacity>

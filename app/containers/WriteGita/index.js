@@ -91,6 +91,7 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                     <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
                         {writeGitaStrings?.heading?.defaultMessage || 'Write Gita'}
                     </CustomText>
+                    <View style={{ width: 40 }} />
                 </View>
 
                 {writeGita?.loading && rules.length === 0 ? (
@@ -247,7 +248,10 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                                                             <View style={{ width: 8, height: 8, backgroundColor: 'white', borderRadius: 4 }} />
                                                         )}
                                                     </View>
-                                                    <CustomText style={styles.ruleName}>{rule?.name}</CustomText>
+                                                    <CustomText style={[
+                                                        styles.ruleName,
+                                                        values.granths === rule?.id && { color: COLORS.orange, fontFamily: 'Outfit-Bold' }
+                                                    ]}>{rule?.name}</CustomText>
                                                 </TouchableOpacity>
                                             ))}
                                             {touched.granths && errors.granths && (

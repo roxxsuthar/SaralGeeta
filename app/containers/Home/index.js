@@ -86,6 +86,12 @@ function Home({
 
   useFocusEffect(
     useCallback(() => {
+      // Reset bottom bar and search states to initial
+      setIsSocialExpanded(false);
+      setIsMenuExpanded(false);
+      setShowSearch(false);
+      setSearchText('');
+
       // Ensure StatusBar is visible when Home screen is focused
       StatusBar.setHidden(false);
 
@@ -361,9 +367,9 @@ function Home({
       case HomeMessage.chapters.defaultMessage:
         if (numColumns > 1) {
           return (
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 5 }}>
               {item.map((chapter) => (
-                <View key={chapter.id} style={{ width: '48.5%' }}>
+                <View key={chapter.id} style={{ width: '47%' }}>
                   {renderChapterCard(chapter)}
                 </View>
               ))}
@@ -398,7 +404,6 @@ function Home({
               ),
               ...styles.audioCardTitle,
             }}
-            numberOfLines={1}
           >
             {item.name}
             {'  ('}
@@ -411,7 +416,6 @@ function Home({
             ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
             ...styles.audioCardDescription,
           }}
-          numberOfLines={3}
         >
           {item.description}
         </CustomText>
@@ -542,7 +546,7 @@ function Home({
         source={IMAGES.Chakra}
         resizeMode={FastImage.resizeMode.contain}
       />
-      <SafeAreaView style={styles.mainContainer}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.headerContainer}>
           <TouchableOpacity
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
@@ -555,6 +559,7 @@ function Home({
           </TouchableOpacity>
 
           <CustomText
+            numberOfLines={1}
             style={{
               ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
               ...styles.headerText,
@@ -572,16 +577,9 @@ function Home({
                 <IMAGES.SearchIcon height="100%" width="100%" />
               </View>
             </TouchableOpacity>
-            {/* <TouchableOpacity
-              activeOpacity={0.8}
-              style={styles.headerBellContainer}
-            >
-              <View style={styles.icon}>
-                <IMAGES.BellIcon height="100%" width="100%" />
-              </View>
-            </TouchableOpacity> */}
           </View>
         </View>
+
         {showSearch && (
           <View style={styles.searchContainer}>
             <TextInput
@@ -609,6 +607,8 @@ function Home({
             </TouchableOpacity>
           </View>
         )}
+
+        <View style={styles.mainContainer}>
         {home?.loading ? (
           <LoadingScreen />
         ) : (
@@ -621,7 +621,7 @@ function Home({
               <>
                 {!isEmpty(section?.data) && (
                   <View style={styles.sectionHeaderContainer}>
-                    <CustomText style={styles.sectionHeader}>
+                    <CustomText numberOfLines={1} style={styles.sectionHeader}>
                       {section.title}
                     </CustomText>
                   </View>
@@ -632,9 +632,9 @@ function Home({
               renderItemBasedOnSection(section.title, item, section)
             }
             SectionSeparatorComponent={ItemSeparator}
-            ItemSeparatorComponent={ItemSeparator}
           />
         )}
+        </View>
         
         {/* Expanded Menus Overlay */}
         {(isSocialExpanded || isMenuExpanded) && (

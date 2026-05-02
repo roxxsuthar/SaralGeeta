@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { hp, wp } from '../../utils/responsive';
 import { COLORS } from '../../constants';
 
@@ -9,32 +9,37 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    marginTop: hp(50),
+    paddingHorizontal: 20,
+    paddingTop: Platform.OS === 'ios' ? 50 : 40,
+    paddingBottom: 20,
   },
   heading: {
     fontWeight: '700',
-    fontSize: hp(17),
-    lineHeight: hp(22),
+    fontSize: 20,
     color: COLORS.white,
+    textAlign: 'center',
+    fontFamily: 'Outfit-Bold',
+    flex: 1,
   },
   icon: {
-    height: hp(24),
-    width: wp(24),
+    height: 24,
+    width: 24,
   },
   iconContainer: {
-    position: 'absolute',
-    left: hp(16),
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
   },
   mainContainer: {
-    backgroundColor: COLORS.white,
-    height: hp(722),
-    borderTopLeftRadius: wp(20),
-    borderTopRightRadius: wp(20),
+    backgroundColor: '#FEF9F5',
+    flex: 1,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
     overflow: 'hidden',
+    paddingHorizontal: 12,
+    paddingTop: 15,
   },
   scrollContainer: {
     flexGrow: 1,
@@ -49,70 +54,81 @@ const styles = StyleSheet.create({
     fontSize: hp(28),
     color: COLORS.orange,
     lineHeight: hp(40),
+    fontFamily: 'Outfit-Bold',
   },
   policyText: {
     fontWeight: '400',
     fontSize: hp(15),
     color: COLORS.black,
     lineHeight: hp(22),
+    fontFamily: 'Outfit-Regular',
   },
   section: {
     marginBottom: 20,
   },
   heading1: {
-    fontSize: 22,
+    fontSize: hp(22),
     fontWeight: 'bold',
     marginBottom: 10,
+    fontFamily: 'Outfit-Bold',
   },
   heading2: {
-    fontSize: 22,
+    fontSize: hp(22),
     fontWeight: 'bold',
     marginTop: 15,
     marginBottom: 10,
+    fontFamily: 'Outfit-Bold',
   },
   heading3: {
-    fontSize: 20,
+    fontSize: hp(20),
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 10,
+    fontFamily: 'Outfit-Bold',
   },
   subHeading: {
-    fontSize: 18,
+    fontSize: hp(18),
     fontWeight: 'bold',
     marginTop: 5,
     marginBottom: 5,
+    fontFamily: 'Outfit-Bold',
   },
   bodyText: {
-    fontSize: 18,
+    fontSize: hp(18),
     lineHeight: 25,
     marginBottom: 10,
+    fontFamily: 'Outfit-Regular',
   },
   bodyTextJustify: {
-    fontSize: 18,
+    fontSize: hp(18),
     lineHeight: 25,
     marginBottom: 10,
     textAlign: 'justify',
+    fontFamily: 'Outfit-Regular',
   },
   boldText: {
     fontWeight: 'bold',
+    fontFamily: 'Outfit-Bold',
   },
   bulletList: {
     marginLeft: 15,
     marginBottom: 10,
   },
   bulletItem: {
-    fontSize: 18,
+    fontSize: hp(18),
     lineHeight: 25,
     marginBottom: 5,
+    fontFamily: 'Outfit-Regular',
   },
   numberedList: {
     marginLeft: 15,
     marginBottom: 10,
   },
   numberedItem: {
-    fontSize: 18,
+    fontSize: hp(18),
     lineHeight: 25,
     marginBottom: 5,
+    fontFamily: 'Outfit-Regular',
   },
   webview: {
     flex: 1,
@@ -128,6 +144,7 @@ const styles = StyleSheet.create({
     marginTop: hp(15),
     fontSize: hp(16),
     color: COLORS.black,
+    fontFamily: 'Outfit-Regular',
   },
 });
 

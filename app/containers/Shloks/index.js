@@ -12,6 +12,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import { DrawerActions } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import get from 'lodash/get';
@@ -140,7 +141,7 @@ function Shloks({
         isLocal={true}
         indicatorColor="#ffa600ff"
       />
-      <View style={styles.mainContainer}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.headerContainer}>
           <View style={styles.imageContainer}>
             <TouchableOpacity
@@ -170,15 +171,6 @@ function Shloks({
           <View style={styles.headerIcons}>
             <TouchableOpacity
               activeOpacity={0.8}
-              // onPress={backHandler}
-              style={styles.headerSearchContainer}
-            >
-              {/* <View style={styles.icon}>
-                <IMAGES.SearchIcon height="100%" width="100%" />
-              </View> */}
-            </TouchableOpacity>
-            <TouchableOpacity
-              activeOpacity={0.8}
               onPress={navigateToIntroVideo}
               style={styles.headerSearchContainer}
             >
@@ -188,32 +180,26 @@ function Shloks({
             </TouchableOpacity>
           </View>
         </View>
-        {shloksData?.loading ? (
-          <LoadingScreen />
-        ) : (
-          <>
-            <CustomText
-              style={{
-                ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                ...styles.headerComponentDescription,
-              }}
-              numberOfLines={8}
-            >
-              {get(shloksData, 'data[0].chapter_details.description')}
-            </CustomText>
-            <View style={styles.flatListContainer}>
-              <View style={styles.handle} />
-              <FlatList
-                data={shloksData?.data}
-                renderItem={({ item }) => renderItem(item)}
-                keyExtractor={(item) => item.id}
-                contentContainerStyle={styles.contentContainerStyle}
-                ItemSeparatorComponent={itemSeparatorComponent}
-              />
-            </View>
-          </>
-        )}
-      </View>
+        <View style={styles.mainContainer}>
+          {shloksData?.loading ? (
+            <LoadingScreen />
+          ) : (
+            <>
+              <View style={styles.flatListContainer}>
+                <View style={styles.handle} />
+                <FlatList
+                  data={shloksData?.data}
+                  renderItem={({ item }) => renderItem(item)}
+                  keyExtractor={(item) => item.id}
+                  contentContainerStyle={styles.contentContainerStyle}
+                  ItemSeparatorComponent={itemSeparatorComponent}
+                  showsVerticalScrollIndicator={false}
+                />
+              </View>
+            </>
+          )}
+        </View>
+      </SafeAreaView>
     </ImageBackground>
   );
 }

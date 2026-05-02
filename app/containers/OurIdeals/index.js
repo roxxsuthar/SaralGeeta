@@ -164,27 +164,42 @@ function OurIdeals({
         isLocal={true}
         indicatorColor="#ffa600ff"
       />
-      <SafeAreaView style={styles.mainContainer}>
-        <CustomText
-          style={Object.assign(
-            setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            styles.heading,
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.iconContainer}
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+          >
+            <View style={styles.icon}>
+              <IMAGES.Bars height="100%" width="100%" />
+            </View>
+          </TouchableOpacity>
+          <CustomText
+            style={Object.assign(
+              setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+              styles.heading,
+            )}
+          >
+            {OurIdealsMessage.ourIdeals.defaultMessage}
+          </CustomText>
+        </View>
+
+        <View style={styles.mainContainer}>
+          {ourIdeals?.loading ? (
+            <LoadingScreen />
+          ) : (
+            <View style={styles.flatListContainer}>
+              <FlatList
+                data={ourIdeals?.data}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id}
+                ItemSeparatorComponent={itemSeparatorComponent}
+                showsVerticalScrollIndicator={false}
+              />
+            </View>
           )}
-        >
-          {OurIdealsMessage.ourIdeals.defaultMessage}
-        </CustomText>
-        {ourIdeals?.loading ? (
-          <LoadingScreen />
-        ) : (
-          <View style={styles.flatListContainer}>
-            <FlatList
-              data={ourIdeals?.data}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.id}
-              ItemSeparatorComponent={itemSeparatorComponent}
-            />
-          </View>
-        )}
+        </View>
       </SafeAreaView>
     </ImageBackground>
   );

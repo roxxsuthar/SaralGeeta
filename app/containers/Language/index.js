@@ -77,21 +77,33 @@ function Language({ navigation, language, languageData, idealDetails, _handleSet
         source={IMAGES.Chakra}
         resizeMode={FastImage.resizeMode.contain}
       />
+      {/* Header */}
+      <View style={styles.header}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.iconContainer}
+            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+          >
+            <View style={styles.icon}>
+              <IMAGES.Bars height="100%" width="100%" />
+            </View>
+          </TouchableOpacity>
+        <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
+          {languageMessage.heading?.defaultMessage || 'Select Language'}
+        </CustomText>
+        <View style={{ width: 40 }} />
+      </View>
+
+      {/* Main Sheet */}
       <View style={styles.mainContainer}>
-        <TouchableOpacity
-          activeOpacity={0.8}
-          style={{ position: 'absolute', top: hp(-60), left: 0, zIndex: 10, width: hp(30), height: hp(30) }}
-          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-        >
-          <IMAGES.Bars height="100%" width="100%" />
-        </TouchableOpacity>
         <View style={styles.logo}>
           <IMAGES.Logo height="100%" width="100%" />
         </View>
         <CustomText style={styles.englishHeadingFont}>
-          Choose {'\n'}Your Language
+          Choose Your Language
         </CustomText>
         <CustomText style={styles.hindiHeadingFont}>अपनी भाषा चुने</CustomText>
+
         <View style={styles.languageSelectContainer}>
           <TouchableOpacity
             style={styles.language}
@@ -116,8 +128,9 @@ function Language({ navigation, language, languageData, idealDetails, _handleSet
               )}
             </TouchableOpacity>
           </TouchableOpacity>
+
           <TouchableOpacity
-            style={{ ...styles.language, marginTop: hp(26) }}
+            style={styles.language}
             activeOpacity={0.8}
             onPress={() => setLanguageType('en')}
           >
@@ -140,16 +153,17 @@ function Language({ navigation, language, languageData, idealDetails, _handleSet
             </TouchableOpacity>
           </TouchableOpacity>
         </View>
-        <CustomButton
-          title={languageMessage.buttonLabel.defaultMessage}
-          labelStyle={Object.assign(
-            setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            styles.buttonLabel,
-          )}
+
+        <TouchableOpacity
           style={styles.buttonContainer}
+          activeOpacity={0.8}
           onPress={updateLanguage}
           disabled={!languageData?.[0]?.id}
-        />
+        >
+          <CustomText style={styles.buttonLabel}>
+            {languageMessage.buttonLabel.defaultMessage}
+          </CustomText>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );

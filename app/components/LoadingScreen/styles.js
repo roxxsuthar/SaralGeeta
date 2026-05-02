@@ -1,8 +1,5 @@
 import { StyleSheet } from 'react-native';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import { hp, wp } from '../../utils/responsive';
 import { COLORS } from '../../constants';
 
 const defaultStyles = StyleSheet.create({
@@ -18,16 +15,23 @@ const defaultStyles = StyleSheet.create({
   },
   loadingContainer: {
     backgroundColor: COLORS.white,
-    borderRadius: hp(0.74),
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: hp(3),
-    paddingHorizontal: wp(7),
+    paddingVertical: hp(25),
+    paddingHorizontal: wp(35),
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+    elevation: 10,
   },
   loadingText: {
-    marginTop: hp(1),
-    color: COLORS.codGray,
-    fontSize: hp(2),
+    marginTop: hp(15),
+    color: COLORS.black,
+    fontSize: hp(16),
+    fontFamily: 'Outfit-Medium',
+    textAlign: 'center',
   },
 });
 

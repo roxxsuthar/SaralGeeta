@@ -84,354 +84,182 @@ const SideBar = (props) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar hidden={true} />
-      <View style={{ height: 50 }} />
-
-      <View style={styles.container}>
-        <DrawerContentScrollView
-          {...props}
-          contentContainerStyle={{ paddingTop: 0 }}
-        >
-          <View style={styles.draweritems}>
-            <DrawerItem
-              label={({ color }) => (
-                <CustomText style={[styles.label, { color }]}>
-                  {sideBarMessage.chapters.defaultMessage}
-                </CustomText>
-              )}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.DashBoard height="100%" width="100%" />
-                </View>
-              )}
-
-              onPress={() =>
-                props.navigation.navigate('HomeStack', {
-                  screen: Navigation.Home,
-                })
-              }
+      <ImageBackground
+        source={IMAGES.AppBackground}
+        style={styles.container}
+      >
+        <View style={styles.sidebarContainer}>
+          <StatusBar hidden={false} barStyle="light-content" translucent backgroundColor="transparent" />
+          <View style={styles.header}>
+            <Image
+              source={IMAGES.AppLogo}
+              style={styles.logo}
+              resizeMode="contain"
             />
           </View>
-          <View style={styles.draweritems}>
-            <DrawerItem
-              label={({ color }) => (
-                <CustomText style={[styles.label, { color }]}>
-                  {sideBarMessage.ideal.defaultMessage}
-                </CustomText>
-              )}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.User height="100%" width="100%" />
-                </View>
-              )}
-
-              onPress={() => props.navigation.navigate(Navigation.OurIdeals)}
-            />
-          </View>
-          <View style={styles.draweritems}>
-            <DrawerItem
-              label={({ color }) => (
-                <CustomText style={[styles.label, { color }]}>
-                  {sideBarMessage?.studentGift?.defaultMessage || 'My Prize'}
-                </CustomText>
-              )}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.Contact height="100%" width="100%" />
-                </View>
-              )}
-
-              onPress={() => props.navigation.navigate(Navigation.StudentGift)}
-            />
-          </View>
-          <View style={styles.draweritems}>
-            <DrawerItem
-              label={({ color }) => (
-                <CustomText style={[styles.label, { color }]}>
-                  {sideBarMessage?.teacherGift?.defaultMessage || 'Teach Gita'}
-                </CustomText>
-              )}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.Contact height="100%" width="100%" />
-                </View>
-              )}
-              onPress={() => props.navigation.navigate(Navigation.TeachGeeta)}
-            />
-          </View>
-          <View style={styles.draweritems}>
-            <DrawerItem
-              label={({ color }) => (
-                <CustomText style={[styles.label, { color }]}>
-                  {sideBarMessage?.writeGita?.defaultMessage || 'Write Gita'}
-                </CustomText>
-              )}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.Contact height="100%" width="100%" />
-                </View>
-              )}
-              onPress={() => props.navigation.navigate(Navigation.WriteGita)}
-            />
-          </View>
-          <View style={styles.draweritems}>
-            <DrawerItem
-              label={({ color }) => (
-                <CustomText style={[styles.label, { color }]}>
-                  {sideBarMessage?.gitaRules?.defaultMessage || 'Gita Rules'}
-                </CustomText>
-              )}
-              icon={() => (
-                <View style={styles.icon}>
-                  <IMAGES.Contact height="100%" width="100%" />
-                </View>
-              )}
-              onPress={() => props.navigation.navigate(Navigation.GitaRules)}
-            />
-          </View>
-{/* 
-          <View style={styles.draweritems}>
-            <TouchableOpacity
-              onPress={toggleSetting}
-              style={[
-                styles.drawerHeader,
-                {
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  paddingRight: hp(15),
-                  paddingLeft: wp(15),
-                },
-              ]}
-            >
-              <CustomText style={[styles.drawerHeading, { marginLeft: 0 }]}>
-                {sideBarMessage.setting.defaultMessage}
-              </CustomText>
-              <View style={{ width: wp(12), height: hp(12) }}>
-                <IMAGES.ChevronDown
-                  height="100%"
-                  width="100%"
-                  style={{
-                    transform: [
-                      { rotate: isSettingExpanded ? '180deg' : '0deg' },
-                    ],
-                  }}
-                />
-              </View>
-            </TouchableOpacity>
-
-            {isSettingExpanded && (
+          <DrawerContentScrollView
+            {...props}
+            contentContainerStyle={{ paddingTop: 0 }}
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.draweritems}>
               <DrawerItem
                 label={({ color }) => (
                   <CustomText style={[styles.label, { color }]}>
-                    {sideBarMessage.language.defaultMessage}
+                    {sideBarMessage.chapters.defaultMessage}
                   </CustomText>
                 )}
                 icon={() => (
                   <View style={styles.icon}>
-                    <IMAGES.Message height="100%" width="100%" />
+                    <IMAGES.DashBoard height="100%" width="100%" />
                   </View>
                 )}
-
-                onPress={() => props.navigation.navigate(Navigation.Language)}
+                onPress={() =>
+                  props.navigation.navigate('HomeStack', {
+                    screen: Navigation.Home,
+                  })
+                }
               />
-            )}
-          </View>
-*/}
-          <View style={styles.draweritems}>
-            <TouchableOpacity
-              onPress={toggleHelp}
-              style={[
-                styles.drawerHeader,
-                {
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  paddingRight: hp(15),
-                  paddingLeft: wp(15),
-                },
-              ]}
-            >
-              <CustomText style={[styles.drawerHeading, { marginLeft: 0 }]}>
-                {sideBarMessage.helpSupport.defaultMessage}
-              </CustomText>
-              <View style={{ width: wp(12), height: hp(12) }}>
-                <IMAGES.ChevronDown
-                  height="100%"
-                  width="100%"
-                  style={{
-                    transform: [{ rotate: isHelpExpanded ? '180deg' : '0deg' }],
-                  }}
-                />
-              </View>
-            </TouchableOpacity>
+            </View>
+            <View style={styles.draweritems}>
+              <DrawerItem
+                label={({ color }) => (
+                  <CustomText style={[styles.label, { color }]}>
+                    {sideBarMessage.ideal.defaultMessage}
+                  </CustomText>
+                )}
+                icon={() => (
+                  <View style={styles.icon}>
+                    <IMAGES.User height="100%" width="100%" />
+                  </View>
+                )}
+                onPress={() => props.navigation.navigate(Navigation.OurIdeals)}
+              />
+            </View>
+            <View style={styles.draweritems}>
+              <DrawerItem
+                label={({ color }) => (
+                  <CustomText style={[styles.label, { color }]}>
+                    {sideBarMessage?.studentGift?.defaultMessage || 'My Prize'}
+                  </CustomText>
+                )}
+                icon={() => (
+                  <View style={styles.icon}>
+                    <IMAGES.Contact height="100%" width="100%" />
+                  </View>
+                )}
+                onPress={() => props.navigation.navigate(Navigation.StudentGift)}
+              />
+            </View>
+            <View style={styles.draweritems}>
+              <DrawerItem
+                label={({ color }) => (
+                  <CustomText style={[styles.label, { color }]}>
+                    {sideBarMessage?.teacherGift?.defaultMessage || 'Teach Gita'}
+                  </CustomText>
+                )}
+                icon={() => (
+                  <View style={styles.icon}>
+                    <IMAGES.Contact height="100%" width="100%" />
+                  </View>
+                )}
+                onPress={() => props.navigation.navigate(Navigation.TeachGeeta)}
+              />
+            </View>
+            <View style={styles.draweritems}>
+              <DrawerItem
+                label={({ color }) => (
+                  <CustomText style={[styles.label, { color }]}>
+                    {sideBarMessage?.writeGita?.defaultMessage || 'Write Gita'}
+                  </CustomText>
+                )}
+                icon={() => (
+                  <View style={styles.icon}>
+                    <IMAGES.Contact height="100%" width="100%" />
+                  </View>
+                )}
+                onPress={() => props.navigation.navigate(Navigation.WriteGita)}
+              />
+            </View>
+            <View style={styles.draweritems}>
+              <DrawerItem
+                label={({ color }) => (
+                  <CustomText style={[styles.label, { color }]}>
+                    {sideBarMessage?.gitaRules?.defaultMessage || 'Gita Rules'}
+                  </CustomText>
+                )}
+                icon={() => (
+                  <View style={styles.icon}>
+                    <IMAGES.Contact height="100%" width="100%" />
+                  </View>
+                )}
+                onPress={() => props.navigation.navigate(Navigation.GitaRules)}
+              />
+            </View>
 
-            {isHelpExpanded && (
-              <>
-{/* 
-                <DrawerItem
-                  label={({ color }) => (
-                    <CustomText style={[styles.label, { color }]}>
-                      {sideBarMessage.contactUs.defaultMessage}
-                    </CustomText>
-                  )}
-                  icon={() => (
-                    <View style={styles.icon}>
-                      <IMAGES.Contact height="100%" width="100%" />
-                    </View>
-                  )}
+            <View style={styles.draweritems}>
+              <TouchableOpacity
+                onPress={toggleHelp}
+                style={[
+                  styles.drawerHeader,
+                  {
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  },
+                ]}
+              >
+                <CustomText style={styles.drawerHeading}>
+                  {sideBarMessage.helpSupport.defaultMessage}
+                </CustomText>
+                <View style={{ width: 12, height: 12 }}>
+                  <IMAGES.ChevronDown
+                    height="100%"
+                    width="100%"
+                    style={{
+                      transform: [{ rotate: isHelpExpanded ? '180deg' : '0deg' }],
+                    }}
+                  />
+                </View>
+              </TouchableOpacity>
 
-                  onPress={() => props.navigation.navigate(Navigation.ContactUs)}
-                />
-*/}
-                <DrawerItem
-                  label={({ color }) => (
-                    <CustomText style={[styles.label, { color }]}>
-                      {sideBarMessage.privacyPolicy.defaultMessage}
-                    </CustomText>
-                  )}
-                  icon={() => (
-                    <View style={styles.icon}>
-                      <IMAGES.Privacy height="100%" width="100%" />
-                    </View>
-                  )}
-
-                  onPress={() =>
-                    props.navigation.navigate(Navigation.PrivacyPolicy)
-                  }
-                />
-                <DrawerItem
-                  label={({ color }) => (
-                    <CustomText style={[styles.label, { color }]}>
-                      {sideBarMessage.termOfUse.defaultMessage}
-                    </CustomText>
-                  )}
-                  icon={() => (
-                    <View style={styles.icon}>
-                      <IMAGES.TermsOfUse height="100%" width="100%" />
-                    </View>
-                  )}
-
-                  onPress={() => props.navigation.navigate(Navigation.TermsOfUse)}
-                />
-{/* 
-                <DrawerItem
-                  label={({ color }) => (
-                    <CustomText style={[styles.label, { color }]}>
-                      {sideBarMessage.instruction.defaultMessage}
-                    </CustomText>
-                  )}
-                  icon={() => (
-                    <View style={styles.icon}>
-                      <IMAGES.InfoIcon height="100%" width="100%" />
-                    </View>
-                  )}
-
-                  onPress={() =>
-                    props.navigation.navigate(Navigation.Instructions)
-                  }
-                />
-*/}
-              </>
-            )}
-          </View>
-{/* 
-          <View style={styles.draweritems}>
-            <TouchableOpacity
-              onPress={toggleSocial}
-              style={[
-                styles.drawerHeader,
-                {
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  paddingRight: hp(15),
-
-                  paddingLeft: wp(15),
-                },
-              ]}
-            >
-              <CustomText style={[styles.drawerHeading, { marginLeft: 0 }]}>
-                {sideBarMessage.social.defaultMessage}
-              </CustomText>
-              <View style={{ width: wp(12), height: hp(12) }}>
-                <IMAGES.ChevronDown
-                  height="100%"
-                  width="100%"
-                  style={{
-                    transform: [
-                      { rotate: isSocialExpanded ? '180deg' : '0deg' },
-                    ],
-                  }}
-                />
-              </View>
-            </TouchableOpacity>
-
-            {isSocialExpanded && (
-              <>
-                <DrawerItem
-                  label={({ color }) => (
-                    <CustomText style={[styles.label, { color }]}>
-                      {sideBarMessage.fb.defaultMessage}
-                    </CustomText>
-                  )}
-                  icon={() => (
-                    <View style={styles.icon}>
-                      <IMAGES.Facebook height="100%" width="100%" />
-                    </View>
-                  )}
-
-                  onPress={() => {
-                    Linking.openURL(
-                      'https://www.facebook.com/people/Saral-Gita/61577334227489/',
-                    ).catch((err) =>
-                      logger.error('Failed to open Facebook URL:', err),
-                    );
-                  }}
-                />
-                <DrawerItem
-                  label={({ color }) => (
-                    <CustomText style={[styles.label, { color }]}>
-                      {sideBarMessage.insta.defaultMessage}
-                    </CustomText>
-                  )}
-                  icon={() => (
-                    <View style={styles.icon}>
-                      <IMAGES.Instragram height="100%" width="100%" />
-                    </View>
-                  )}
-
-                  onPress={() => {
-                    Linking.openURL(
-                      'https://www.instagram.com/saralgitaapp',
-                    ).catch((err) =>
-                      logger.error('Failed to open Instagram URL:', err),
-                    );
-                  }}
-                />
-                <DrawerItem
-                  label={({ color }) => (
-                    <CustomText style={[styles.label, { color }]}>
-                      {sideBarMessage.x.defaultMessage}
-                    </CustomText>
-                  )}
-                  icon={() => (
-                    <View style={styles.icon}>
-                      <IMAGES.Twitter height="100%" width="100%" />
-                    </View>
-                  )}
-
-                  onPress={() => {
-                    logger.log('Twitter navigation not implemented');
-                  }}
-                />
-              </>
-            )}
-          </View>
-*/}
-        </DrawerContentScrollView>
-      </View >
-    </View >
+              {isHelpExpanded && (
+                <>
+                  <DrawerItem
+                    label={({ color }) => (
+                      <CustomText style={[styles.label, { color }]}>
+                        {sideBarMessage.privacyPolicy.defaultMessage}
+                      </CustomText>
+                    )}
+                    icon={() => (
+                      <View style={styles.icon}>
+                        <IMAGES.Privacy height="100%" width="100%" />
+                      </View>
+                    )}
+                    onPress={() =>
+                      props.navigation.navigate(Navigation.PrivacyPolicy)
+                    }
+                  />
+                  <DrawerItem
+                    label={({ color }) => (
+                      <CustomText style={[styles.label, { color }]}>
+                        {sideBarMessage.termOfUse.defaultMessage}
+                      </CustomText>
+                    )}
+                    icon={() => (
+                      <View style={styles.icon}>
+                        <IMAGES.TermsOfUse height="100%" width="100%" />
+                      </View>
+                    )}
+                    onPress={() => props.navigation.navigate(Navigation.TermsOfUse)}
+                  />
+                </>
+              )}
+            </View>
+          </DrawerContentScrollView>
+        </View>
+      </ImageBackground>
+    </View>
   );
 };
 

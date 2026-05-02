@@ -1,11 +1,11 @@
 const FONTS = {
-  BLACK: 'Inter-Black',
-  BOLD: 'Inter-Bold',
-  EXTRA_BOLD: 'Inter-ExtraBold',
-  EXTRA_LIGHT: 'Inter-ExtraLight',
-  MEDIUM: 'Inter-Medium',
-  REGULAR: 'Inter-Regular',
-  SEMIBOLD: 'Inter-SemiBold',
+  BLACK: 'Outfit-Black',
+  BOLD: 'Outfit-Bold',
+  EXTRA_BOLD: 'Outfit-ExtraBold',
+  EXTRA_LIGHT: 'Outfit-ExtraLight',
+  MEDIUM: 'Outfit-Medium',
+  REGULAR: 'Outfit-Regular',
+  SEMIBOLD: 'Outfit-SemiBold',
   HINDI: 'TiroDevanagariHindi-Regular',
 };
 

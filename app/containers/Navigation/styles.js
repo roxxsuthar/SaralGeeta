@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { COLORS } from '../../constants';
 import { hp, wp } from '../../utils/responsive';
 
@@ -6,68 +6,53 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  container1: {
+  sidebarContainer: {
     flex: 1,
-    backgroundColor: 'red',
-  },
-  headerBg: {
-    height: hp(120),
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    borderTopRightRadius: 30,
+    borderBottomRightRadius: 30,
     overflow: 'hidden',
   },
-  bgImage: {
-    height: hp(700),
-    marginTop: hp(-10),
-  },
   header: {
-    flex: 1,
-    flexDirection: 'row',
-    marginLeft: hp(15),
-    alignItems: 'flex-end',
-    marginBottom: hp(10),
+    height: hp(150),
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.05)',
+    paddingTop: 10,
   },
-
-  profilePic: {
-    height: hp(60),
-    width: wp(60),
-    borderRadius: hp(50),
-  },
-  profile: {
-    marginBottom: hp(10),
-    marginLeft: hp(10),
-  },
-  profileName: {
-    color: COLORS.black,
-    fontSize: hp(18),
-    fontWeight: '600',
-  },
-  viewProfileBtn: {
-    color: COLORS.black,
-    fontSize: hp(15),
-    fontWeight: '400',
+  logo: {
+    width: hp(80),
+    height: hp(80),
+    borderRadius: 20,
   },
   draweritems: {
-    borderBottomWidth: 2,
-    borderBottomColor: COLORS.lightGray,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.05)',
   },
   icon: {
-    height: hp(24),
-    width: wp(24),
-    marginRight: hp(10),
+    height: 24,
+    width: 24,
+    marginRight: 10,
   },
   label: {
     color: COLORS.black,
-    fontSize: hp(15),
-    fontWeight: '500',
-    flex: 1,
+    fontSize: 16,
+    fontWeight: '600',
+    fontFamily: 'Outfit-SemiBold',
   },
   drawerHeading: {
-    marginVertical: hp(12),
-    marginLeft: hp(15),
     color: COLORS.black,
-    fontSize: hp(15),
-    fontWeight: '600',
-    lineHeight: hp(21),
-    flex: 1,
+    fontSize: 16,
+    fontWeight: '700',
+    fontFamily: 'Outfit-Bold',
+    paddingVertical: 15,
+  },
+  drawerHeader: {
+    paddingHorizontal: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.05)',
   },
 });
+
 export default styles;

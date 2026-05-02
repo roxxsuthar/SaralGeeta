@@ -51,7 +51,7 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
     }, [gitaRules.submitSuccess, gitaRules.submitLoading]);
 
     const validationSchema = Yup.object().shape({
-        rule: Yup.string().required('Please select a rule'),
+        rule: Yup.array().min(1, 'Please select at least one rule'),
         user_input: Yup.string().required('Please enter your response'),
     });
 
@@ -88,6 +88,7 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                     <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
                         {gitaRulesStrings?.heading?.defaultMessage || 'Gita Rules'}
                     </CustomText>
+                    <View style={{ width: 40 }} />
                 </View>
 
                 {gitaRules?.loading ? (
@@ -105,7 +106,7 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
 
                         <Formik
                             initialValues={{
-                                rule: '',
+                                rule: [],
                                 user_input: '',
                             }}
                             validationSchema={validationSchema}
@@ -156,21 +157,25 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                                                 key={rule.id}
                                                 style={styles.ruleItem}
                                                 onPress={() => {
-                                                    setFieldValue('rule', rule.id);
+                                                    const currentRules = values.rule || [];
+                                                    const nextRules = currentRules.includes(rule.id)
+                                                        ? currentRules.filter((id) => id !== rule.id)
+                                                        : [...currentRules, rule.id];
+                                                    setFieldValue('rule', nextRules);
                                                 }}
                                                 activeOpacity={0.7}
                                             >
                                                 <View style={[
                                                     styles.checkbox,
-                                                    values.rule === rule.id && styles.checkboxChecked
+                                                    values.rule.includes(rule.id) && styles.checkboxChecked
                                                 ]}>
-                                                    {values.rule === rule.id && (
-                                                        <View style={{ width: 12, height: 12, backgroundColor: 'white', borderRadius: 6 }} />
+                                                    {values.rule.includes(rule.id) && (
+                                                        <View style={{ width: 12, height: 12, backgroundColor: 'white', borderRadius: 2 }} />
                                                     )}
                                                 </View>
                                                 <CustomText style={[
                                                     styles.ruleText,
-                                                    values.rule === rule.id && styles.ruleTextChecked
+                                                    values.rule.includes(rule.id) && styles.ruleTextChecked
                                                 ]}>
                                                     {rule?.title}
                                                 </CustomText>

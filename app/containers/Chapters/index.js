@@ -14,6 +14,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import { DrawerActions } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 // import split from 'lodash/split';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -75,106 +76,106 @@ function Chapters({ language, handleGetRecent }) {
     <ImageBackground
       source={IMAGES.AppBackground}
       style={styles.container}
-      resizeMode="cover" // Similar to background-size in CSS
+      resizeMode="cover"
     >
       <StatusBar
         barStyle="light-content"
         translucent={true}
         backgroundColor="transparent"
       />
-      <View style={styles.mainContainer}>
-        <View style={[styles.header, { flexDirection: 'row', alignItems: 'center' }]}>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
           <TouchableOpacity
             activeOpacity={0.8}
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            style={{ width: 40, height: 40, justifyContent: 'center', alignItems: 'center', position: 'absolute', left: 0, zIndex: 10 }}
+            onPress={() => navigation.goBack()}
+            style={styles.headerIconContainer}
           >
-            <IMAGES.Bars height="100%" width="100%" />
-          </TouchableOpacity>
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <CustomText
-              style={{
-                ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-                ...styles.headerText,
-              }}
-            >
-              {ChaptersMessage.headerText.defaultMessage}
-            </CustomText>
-          </View>
-        </View>
-        <SectionList
-          sections={sections}
-          keyExtractor={(item) => item.id.toString()}
-          renderSectionHeader={({ section }) => (
-            <View style={styles.sectionHeaderContainer}>
-              <CustomText style={styles.sectionHeader}>
-                {section.title}
-              </CustomText>
-
-              <TouchableOpacity
-                activeOpacity={0.8}
-                // onPress={() => navigateToAudio()}
-              >
-                <CustomText style={styles.sectionViewAll}>View all</CustomText>
-              </TouchableOpacity>
+            <View style={styles.icon}>
+              <IMAGES.Bars height="100%" width="100%" />
             </View>
-          )}
-          renderItem={({ item, section, index }) => {
-            // Render "Audio" using FlatList horizontally
-            if (section.title === 'Recent View' && index === 0) {
-              return (
-                <FlatList
-                  data={section.data}
-                  horizontal
-                  keyExtractor={(item) => item.id.toString()}
-                  ItemSeparatorComponent={flatListItemSeparator}
-                  renderItem={({ item }) => (
-                    <View style={styles.recentViewContainer}>
-                      <FastImage
-                        style={styles.cardImage}
-                        source={
-                          typeof item.image === 'string'
-                            ? { uri: item.image }
-                            : item.image
-                        }
-                        resizeMode={FastImage.resizeMode.contain}
-                      />
-                      <View style={styles.cardSeparator} />
-                      <View style={styles.recentTextContainer}>
-                        <TouchableOpacity
-                          activeOpacity={0.8}
-                          style={styles.iconContainer}
-                        >
-                          <IMAGES.PlayerIcon height="100%" width="100%" />
-                        </TouchableOpacity>
-                        <CustomText
-                          style={{
-                            ...setFontFamily(
-                              currentLanguage,
-                              FONTS.REGULAR,
-                              FONTS.HINDI,
-                            ),
-                            ...styles.audioCardText,
-                          }}
-                        >
-                          {item.title}
-                        </CustomText>
-                      </View>
-                    </View>
-                  )}
-                  showsHorizontalScrollIndicator={false}
-                />
-              );
-            }
+          </TouchableOpacity>
+          <CustomText
+            numberOfLines={1}
+            style={{
+              ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+              ...styles.headerText,
+            }}
+          >
+            {ChaptersMessage.headerText.defaultMessage}
+          </CustomText>
+        </View>
+        <View style={styles.mainContainer}>
+          <SectionList
+            sections={sections}
+            keyExtractor={(item) => item.id.toString()}
+            renderSectionHeader={({ section }) => (
+              <View style={styles.sectionHeaderContainer}>
+                <CustomText style={styles.sectionHeader}>
+                  {section.title}
+                </CustomText>
 
-            // For other sections like "E-Book", continue using SectionList
-            // return renderItemBasedOnSection(section.title, item);
-          }}
-          SectionSeparatorComponent={ItemSeparator}
-          ItemSeparatorComponent={ItemSeparator}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
+                <TouchableOpacity
+                  activeOpacity={0.8}
+                  // onPress={() => navigateToAudio()}
+                >
+                  <CustomText style={styles.sectionViewAll}>View all</CustomText>
+                </TouchableOpacity>
+              </View>
+            )}
+            renderItem={({ item, section, index }) => {
+              // Render "Audio" using FlatList horizontally
+              if (section.title === 'Recent View' && index === 0) {
+                return (
+                  <FlatList
+                    data={section.data}
+                    horizontal
+                    keyExtractor={(item) => item.id.toString()}
+                    ItemSeparatorComponent={flatListItemSeparator}
+                    renderItem={({ item }) => (
+                      <View style={styles.recentViewContainer}>
+                        <FastImage
+                          style={styles.cardImage}
+                          source={
+                            typeof item.image === 'string'
+                              ? { uri: item.image }
+                              : item.image
+                          }
+                          resizeMode={FastImage.resizeMode.contain}
+                        />
+                        <View style={styles.cardSeparator} />
+                        <View style={styles.recentTextContainer}>
+                          <TouchableOpacity
+                            activeOpacity={0.8}
+                            style={styles.iconContainer}
+                          >
+                            <IMAGES.PlayerIcon height="100%" width="100%" />
+                          </TouchableOpacity>
+                          <CustomText
+                            style={{
+                              ...setFontFamily(
+                                currentLanguage,
+                                FONTS.REGULAR,
+                                FONTS.HINDI,
+                              ),
+                              ...styles.audioCardText,
+                            }}
+                          >
+                            {item.title}
+                          </CustomText>
+                        </View>
+                      </View>
+                    )}
+                    showsHorizontalScrollIndicator={false}
+                  />
+                );
+              }
+            }}
+            SectionSeparatorComponent={ItemSeparator}
+            ItemSeparatorComponent={ItemSeparator}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
+      </SafeAreaView>
     </ImageBackground>
   );
 }

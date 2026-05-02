@@ -101,6 +101,7 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                     <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
                         {teacherGiftStrings?.heading?.defaultMessage || 'Teacher Details'}
                     </CustomText>
+                    <View style={{ width: 40 }} />
                 </View>
 
                 {teacherGift?.loading ? (
@@ -257,7 +258,10 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                                                             <View style={{ width: 12, height: 12, backgroundColor: 'white', borderRadius: 2 }} />
                                                         )}
                                                     </View>
-                                                    <CustomText style={styles.chapterName}>{chapter.name}{'  ('}
+                                                    <CustomText style={[
+                                                        styles.chapterName,
+                                                        values.chapters.includes(chapter.id) && { color: COLORS.orange, fontFamily: 'Outfit-Bold' }
+                                                    ]}>{chapter.name}{'  ('}
                                                         {HomeMessage.chapter.defaultMessage} {chapter?.serial}
                                                         {')'}</CustomText>
                                                 </TouchableOpacity>

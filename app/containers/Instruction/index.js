@@ -95,18 +95,19 @@ function Instruction({ instruction, handleGetInstruction, app }) {
       />
       <View style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={styles.iconContainer}
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-          >
-            <View style={styles.icon}>
-              <IMAGES.Bars height="100%" width="100%" />
-            </View>
-          </TouchableOpacity>
-          <CustomText style={styles.heading}>
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        style={styles.iconContainer}
+                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                    >
+                        <View style={styles.icon}>
+                            <IMAGES.Bars height="100%" width="100%" />
+                        </View>
+                    </TouchableOpacity>
+          <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
             {InstructionMessage.heading.defaultMessage}
           </CustomText>
+          <View style={{ width: 40 }} />
         </View>
         <View style={styles.mainContainer}>
           {loading ? (
