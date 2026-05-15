@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
   svgImageContainer1: {
     position: 'absolute',
     height: hp(120),
-    width: wp(520),
-    bottom: 0,
-    alignSelf: 'center',
+    left: '15%',
+    right: '0%',
+    bottom: hp(10),
   },
 
   // Text styles
@@ -56,8 +56,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     zIndex: 1,
     textAlign: 'center',
-    bottom: hp(30),
-    width: wp(500),
+    bottom: hp(40),
+    left: '15%',
+    right: '0%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   translationText: {
@@ -68,16 +71,19 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     zIndex: 1,
     textAlign: 'center',
-    bottom: hp(40),
-    width: wp(500),
+    bottom: hp(50),
+    left: '15%',
+    right: '0%',
+    color: '#000000',
   },
 
   // Button styles
   buttonStyle: {
     position: 'absolute',
-    bottom: hp(10),
+    bottom: hp(15),
     borderRadius: hp(40),
-    left: 170,
+    left: '17%',
+    marginLeft: wp(15),
     zIndex: 1000,
   },
 
@@ -89,46 +95,51 @@ const styles = StyleSheet.create({
   // Control buttons styles
   controlContainer: {
     position: 'absolute',
-    bottom: hp(60),
-    zIndex: 1000,
-    width: wp(550),
+    bottom: hp(15),
+    zIndex: 1005,
+    left: '15%',
+    right: '0%',
     height: hp(120),
-    paddingHorizontal: wp(24),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    pointerEvents: 'box-none',
+  },
+
+  leftControlGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  rightControlGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 
   controlButtonStyle: {
-    position: 'absolute',
-    left: wp(24),
-    top: hp(70),
     justifyContent: 'center',
     alignItems: 'center',
-    padding: hp(3),
     height: hp(48),
     width: wp(48),
+    marginRight: wp(5),
+  },
+
+  buttonStyle: {
+    borderRadius: hp(40),
+    zIndex: 1010,
   },
 
   controlButtonStyle1: {
-    position: 'absolute',
-    right: 0,
-    top: hp(60),
     justifyContent: 'center',
     alignItems: 'center',
     height: hp(48),
     width: wp(48),
+    marginLeft: wp(5),
   },
-  fixRightButton: {
-    position: 'absolute',
-    right: wp(24),
-    top: hp(70),
-    bottom: 0,
-  },
+
   controlButtonStyle2: {
-    position: 'absolute',
-    right: 0,
-    top: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: hp(3),
     height: hp(48),
     width: wp(48),
   },
@@ -141,10 +152,11 @@ const styles = StyleSheet.create({
   // Animation styles
   animation: {
     position: 'absolute',
-    left: 170,
+    left: '15%',
+    marginLeft: wp(60),
     width: wp(200),
     height: hp(50),
-    bottom: hp(-5),
+    bottom: hp(5),
     zIndex: 999,
   },
 
@@ -164,12 +176,31 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 
-  // Eye Icon styles
-  eyeIconButton: {
+  // Header Buttons styles
+  headerButtonsContainer: {
     position: 'absolute',
     top: hp(20),
-    right: wp(20),
+    right: wp(35),
+    flexDirection: 'row',
+    alignItems: 'center',
     zIndex: 1001,
+  },
+  continueButton: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    borderRadius: hp(20),
+    paddingHorizontal: wp(15),
+    paddingVertical: hp(8),
+    marginRight: wp(10),
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
+  },
+  continueButtonText: {
+    color: '#FFFFFF',
+    fontSize: hp(14),
+    fontWeight: '700',
+    fontFamily: FONTS.HINDI,
+  },
+  eyeIconButton: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     borderRadius: hp(20),
     padding: hp(8),
@@ -186,7 +217,7 @@ const styles = StyleSheet.create({
     height: hp(45),
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: wp(20),
+    paddingHorizontal: wp(35),
   },
 
   backButtonTitle: {

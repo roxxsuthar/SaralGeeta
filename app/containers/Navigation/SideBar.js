@@ -253,6 +253,19 @@ const SideBar = (props) => {
                     )}
                     onPress={() => props.navigation.navigate(Navigation.TermsOfUse)}
                   />
+                  <DrawerItem
+                    label={({ color }) => (
+                      <CustomText style={[styles.label, { color }]}>
+                        {sideBarMessage?.faq?.defaultMessage || 'FAQ'}
+                      </CustomText>
+                    )}
+                    icon={() => (
+                      <View style={styles.icon}>
+                        <IMAGES.FaqNew height="100%" width="100%" />
+                      </View>
+                    )}
+                    onPress={() => props.navigation.navigate(Navigation.FAQ)}
+                  />
                 </>
               )}
             </View>

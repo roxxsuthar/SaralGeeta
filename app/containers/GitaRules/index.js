@@ -7,7 +7,7 @@
 import React, { memo, useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StatusBar, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StatusBar, ImageBackground, TouchableOpacity, ScrollView, Modal, ActivityIndicator } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { DrawerActions, useNavigation, useFocusEffect } from '@react-navigation/native';
@@ -20,20 +20,27 @@ import styles from './styles';
 import { COLORS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import strings from '../../../i18n';
-import { getGitaRules, submitGitaRules, cleanUp } from './actions';
+import { getGitaRules, submitGitaRules, cleanUp, getRulesStats } from './actions';
 import LoadingScreen from '../../components/LoadingScreen';
 import SuccessModal from '../../components/SuccessModal';
 import ConfirmModal from '../../components/ConfirmModal';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, handleCleanUp }) {
+
+function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, handleCleanUp, handleGetRulesStats }) {
     strings.setLanguage(appLanguage);
     const { gitaRules: gitaRulesStrings } = strings;
     const navigation = useNavigation();
     const [showModal, setShowModal] = useState(false);
     const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [isStatsModalVisible, setIsStatsModalVisible] = useState(false);
     const [formActions, setFormActions] = useState(null);
     const [tempValues, setTempValues] = useState(null);
+
+    const openStatsModal = () => {
+        setIsStatsModalVisible(true);
+        handleGetRulesStats();
+    };
 
     useFocusEffect(
         useCallback(() => {
@@ -52,7 +59,6 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
 
     const validationSchema = Yup.object().shape({
         rule: Yup.array().min(1, 'Please select at least one rule'),
-        user_input: Yup.string().required('Please enter your response'),
     });
 
     const handleSubmitPress = (values, action) => {
@@ -62,6 +68,46 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
     };
 
     const rulesData = gitaRules.rules || [];
+
+    const isToday = (dateString) => {
+        if (!dateString) return false;
+        try {
+            const today = new Date().toISOString().split('T')[0];
+            const date = new Date(dateString).toISOString().split('T')[0];
+            return today === date;
+        } catch (e) {
+            return false;
+        }
+    };
+
+    const getInitialValues = () => {
+        const submittedRuleIds = (gitaRules.rules || [])
+            .filter(rule => rule.user_input === 'Yes' || rule.is_submitted_today)
+            .map(rule => rule.id);
+
+        if (submittedRuleIds.length > 0) {
+            return {
+                rule: submittedRuleIds,
+            };
+        }
+
+        const selected = gitaRules.selectedToday;
+        if (selected && isToday(selected.created_at || selected.updated_at)) {
+            let ruleIds = [];
+            if (Array.isArray(selected.rule)) {
+                ruleIds = selected.rule.map(r => typeof r === 'object' ? r.id : r);
+            } else if (selected.rule) {
+                ruleIds = [typeof selected.rule === 'object' ? selected.rule.id : selected.rule];
+            }
+
+            return {
+                rule: ruleIds,
+            };
+        }
+        return {
+            rule: [],
+        };
+    };
 
     return (
         <ImageBackground
@@ -74,24 +120,32 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                 translucent={true}
                 backgroundColor="transparent"
             />
-            <SafeAreaView style={styles.container}>
+            <SafeAreaView style={styles.container} edges={['top']}>
                 <View style={styles.header}>
                     <TouchableOpacity
                         activeOpacity={0.8}
                         style={styles.iconContainer}
-                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                        onPress={() => navigation.goBack()}
                     >
                         <View style={styles.icon}>
-                            <IMAGES.Bars height="100%" width="100%" />
+                            <IMAGES.WhiteArrowIcon height="100%" width="100%" />
                         </View>
                     </TouchableOpacity>
                     <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
                         {gitaRulesStrings?.heading?.defaultMessage || 'Gita Rules'}
                     </CustomText>
-                    <View style={{ width: 40 }} />
+                    <TouchableOpacity
+                        activeOpacity={0.8}
+                        style={styles.iconContainer}
+                        onPress={openStatsModal}
+                    >
+                        <View style={styles.icon}>
+                            <IMAGES.InfoWhiteIcon height="100%" width="100%" />
+                        </View>
+                    </TouchableOpacity>
                 </View>
 
-                {gitaRules?.loading ? (
+                {gitaRules?.loading || gitaRules?.submitLoading ? (
                     <LoadingScreen />
                 ) : (
                     <View style={styles.mainContainer}>
@@ -102,13 +156,14 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                             <CustomText style={styles.description}>
                                 {gitaRulesStrings?.description?.defaultMessage || 'By following these rules, you align yourself with the teachings of Bhagavad Gita.'}
                             </CustomText>
+                            <CustomText style={[styles.description, { marginTop: 10 }]}>
+                                {gitaRulesStrings?.instructions?.defaultMessage || 'Click on the rules you have followed today and submit. You must do this every day. You can view your report every month to see which rules you have followed and which you have missed.'}
+                            </CustomText>
                         </View>
 
                         <Formik
-                            initialValues={{
-                                rule: [],
-                                user_input: '',
-                            }}
+                            enableReinitialize
+                            initialValues={getInitialValues()}
                             validationSchema={validationSchema}
                             onSubmit={(values, action) => {
                                 handleSubmitPress(values, action);
@@ -128,24 +183,6 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                                         showsVerticalScrollIndicator={false}
                                         style={styles.rulesList}
                                     >
-                                        <View style={styles.inputContainer}>
-                                            <CustomText style={styles.label}>
-                                                {gitaRulesStrings?.inputLabel?.defaultMessage || 'Your Response'}
-                                            </CustomText>
-                                            <TextInput
-                                                style={styles.textarea}
-                                                placeholder={gitaRulesStrings?.inputPlaceholder?.defaultMessage || "Enter your input here..."}
-                                                placeholderTextColor={COLORS.gray}
-                                                multiline
-                                                onChangeText={handleChange('user_input')}
-                                                onBlur={handleBlur('user_input')}
-                                                value={values.user_input}
-                                                allowFontScaling={false}
-                                            />
-                                            {touched.user_input && errors.user_input && (
-                                                <CustomText style={styles.errorText}>{errors.user_input}</CustomText>
-                                            )}
-                                        </View>
 
                                         <View style={{ marginBottom: 15 }}>
                                             <CustomText style={styles.label}>
@@ -167,15 +204,15 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                                             >
                                                 <View style={[
                                                     styles.checkbox,
-                                                    values.rule.includes(rule.id) && styles.checkboxChecked
+                                                    values.rule?.includes(rule.id) && styles.checkboxChecked
                                                 ]}>
-                                                    {values.rule.includes(rule.id) && (
+                                                    {values.rule?.includes(rule.id) && (
                                                         <View style={{ width: 12, height: 12, backgroundColor: 'white', borderRadius: 2 }} />
                                                     )}
                                                 </View>
                                                 <CustomText style={[
                                                     styles.ruleText,
-                                                    values.rule.includes(rule.id) && styles.ruleTextChecked
+                                                    values.rule?.includes(rule.id) && styles.ruleTextChecked
                                                 ]}>
                                                     {rule?.title}
                                                 </CustomText>
@@ -228,6 +265,54 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                         handleSubmitForm(tempValues, navigation);
                     }}
                 />
+
+                <Modal
+                    transparent
+                    visible={isStatsModalVisible}
+                    animationType="fade"
+                    onRequestClose={() => setIsStatsModalVisible(false)}
+                >
+                    <View style={styles.modalOverlay}>
+                        <View style={styles.modalContent}>
+                            <CustomText style={styles.modalTitle}>
+                                {gitaRulesStrings?.statsTitle?.defaultMessage || 'Monthly Rule Follow Sheet'}
+                            </CustomText>
+                            
+                            {gitaRules?.statsLoading ? (
+                                <View style={{ paddingVertical: 40 }}>
+                                    <ActivityIndicator size="large" color={COLORS.orange} />
+                                </View>
+                            ) : (
+                                <ScrollView showsVerticalScrollIndicator={false}>
+                                    {(gitaRules?.stats || []).length > 0 ? (
+                                        gitaRules.stats.map((stat, index) => (
+                                            <View key={stat.rule_id || index} style={styles.statsItem}>
+                                                <CustomText style={styles.statsTitle}>{stat.title}</CustomText>
+                                                <View style={styles.statsCountContainer}>
+                                                    <CustomText style={styles.statsCount}>{stat.Count} Days</CustomText>
+                                                </View>
+                                            </View>
+                                        ))
+                                    ) : (
+                                        <CustomText style={{ textAlign: 'center', marginVertical: 20, color: COLORS.black }}>
+                                            {gitaRulesStrings?.noStatsData?.defaultMessage || 'No statistics available for this month.'}
+                                        </CustomText>
+                                    )}
+                                </ScrollView>
+                            )}
+                            
+                            <TouchableOpacity
+                                style={styles.closeModalButton}
+                                activeOpacity={0.8}
+                                onPress={() => setIsStatsModalVisible(false)}
+                            >
+                                <CustomText style={styles.closeModalButtonText}>
+                                    {gitaRulesStrings?.close?.defaultMessage || 'Close'}
+                                </CustomText>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
             </SafeAreaView>
         </ImageBackground>
     );
@@ -239,6 +324,7 @@ GitaRules.propTypes = {
     handleGetRules: PropTypes.func,
     handleSubmitForm: PropTypes.func,
     handleCleanUp: PropTypes.func,
+    handleGetRulesStats: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -252,6 +338,7 @@ function mapDispatchToProps(dispatch) {
         handleSubmitForm: (payload, navigation) =>
             dispatch(submitGitaRules(payload, navigation)),
         handleCleanUp: () => dispatch(cleanUp()),
+        handleGetRulesStats: () => dispatch(getRulesStats()),
     };
 }
 

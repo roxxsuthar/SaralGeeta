@@ -33,7 +33,9 @@ export const Navigation = {
   TeachGeeta: 'TeachGeeta',
   WriteGita: 'WriteGita',
   GitaRules: 'GitaRules',
+  FAQ: 'FAQ',
   Splash: 'Splash',
+  FullChapterLearn: 'FullChapterLearn',
 };
 // API Configuration
 export const GLADIA_API_KEY = 'bbebcb87-bb37-4aff-b8ba-d5bda7a96f4c';

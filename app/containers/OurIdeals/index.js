@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import { CommonActions } from '@react-navigation/native';
+import { CommonActions, DrawerActions } from '@react-navigation/native';
 import isEqual from 'lodash/isEqual';
 
 import { createStructuredSelector } from 'reselect';
@@ -164,17 +164,21 @@ function OurIdeals({
         isLocal={true}
         indicatorColor="#ffa600ff"
       />
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.container} edges={['top']}>
         <View style={styles.header}>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={styles.iconContainer}
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-          >
-            <View style={styles.icon}>
-              <IMAGES.Bars height="100%" width="100%" />
-            </View>
-          </TouchableOpacity>
+          {typeof navigation.openDrawer === 'function' ? (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={styles.iconContainer}
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+            >
+              <View style={styles.icon}>
+                <IMAGES.Bars height="100%" width="100%" />
+              </View>
+            </TouchableOpacity>
+          ) : (
+            <View style={styles.iconContainer} />
+          )}
           <CustomText
             style={Object.assign(
               setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),

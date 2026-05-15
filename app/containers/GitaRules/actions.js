@@ -11,6 +11,9 @@ import {
   SUBMIT_GITA_RULES,
   SUBMIT_GITA_RULES_SUCCESS,
   SUBMIT_GITA_RULES_FAIL,
+  GET_RULES_STATS,
+  GET_RULES_STATS_SUCCESS,
+  GET_RULES_STATS_FAIL,
   CLEAN_UP,
 } from './constants';
 
@@ -53,6 +56,26 @@ export function submitGitaRulesSuccess(response) {
 export function submitGitaRulesFail(error) {
   return {
     type: SUBMIT_GITA_RULES_FAIL,
+    error,
+  };
+}
+
+export function getRulesStats() {
+  return {
+    type: GET_RULES_STATS,
+  };
+}
+
+export function getRulesStatsSuccess(data) {
+  return {
+    type: GET_RULES_STATS_SUCCESS,
+    data,
+  };
+}
+
+export function getRulesStatsFail(error) {
+  return {
+    type: GET_RULES_STATS_FAIL,
     error,
   };
 }

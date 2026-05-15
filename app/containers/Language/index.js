@@ -13,6 +13,7 @@ import {
   StatusBar,
   ImageBackground,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import FastImage from 'react-native-fast-image';
@@ -77,15 +78,16 @@ function Language({ navigation, language, languageData, idealDetails, _handleSet
         source={IMAGES.Chakra}
         resizeMode={FastImage.resizeMode.contain}
       />
-      {/* Header */}
-      <View style={styles.header}>
+      <SafeAreaView style={styles.container} edges={['top']}>
+        {/* Header */}
+        <View style={styles.header}>
           <TouchableOpacity
             activeOpacity={0.8}
             style={styles.iconContainer}
-            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            onPress={() => navigation.goBack()}
           >
             <View style={styles.icon}>
-              <IMAGES.Bars height="100%" width="100%" />
+              <IMAGES.WhiteArrowIcon height="100%" width="100%" />
             </View>
           </TouchableOpacity>
         <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
@@ -164,7 +166,8 @@ function Language({ navigation, language, languageData, idealDetails, _handleSet
             {languageMessage.buttonLabel.defaultMessage}
           </CustomText>
         </TouchableOpacity>
-      </View>
+        </View>
+      </SafeAreaView>
     </ImageBackground>
   );
 }

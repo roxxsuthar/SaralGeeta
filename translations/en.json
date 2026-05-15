@@ -201,6 +201,10 @@
     "chapter": {
       "id": "app.containers.Home.chapter",
       "defaultMessage": "Chapter"
+    },
+    "shareMessage": {
+      "id": "app.containers.Home.shareMessage",
+      "defaultMessage": "Saral Gita App is here for you, where you can learn Gita directly from God. You can chant Gita shloks with God, understand their meaning, and receive rewards upon memorization. Through this, you can also become a Gita teacher, follow rules for daily life, and even write the Gita. Download now!"
     }
   },
   "Chapters": {
@@ -213,6 +217,12 @@
     "headerText": {
       "id": "app.containers.Shloks.headerText",
       "defaultMessage": "Shloks"
+    }
+  },
+  "learnGeeta": {
+    "continue": {
+      "id": "app.container.learnGeeta.continue",
+      "defaultMessage": "Continue"
     }
   },
   "contactUs": {
@@ -417,12 +427,20 @@
     "gitaRules": {
       "id": "app.container.SideBar.gitaRules",
       "defaultMessage": "Gita Rules"
+    },
+    "faq": {
+      "id": "app.container.SideBar.faq",
+      "defaultMessage": "FAQ"
     }
   },
   "studentGift": {
     "heading": {
       "id": "app.container.studentGift.heading",
       "defaultMessage": "Student Details"
+    },
+    "description": {
+      "id": "app.container.studentGift.description",
+      "defaultMessage": "If you have memorized any chapter of the Gita from the Saral Gita App, you can apply here for your reward. Enter your name and address, select the chapter you have memorized, and submit your application."
     },
     "name": {
       "id": "app.container.studentGift.name",
@@ -489,6 +507,10 @@
     "heading": {
       "id": "app.container.teacherGift.heading",
       "defaultMessage": "Teacher Details"
+    },
+    "description": {
+      "id": "app.container.teacherGift.description",
+      "defaultMessage": "If you want to teach Gita in your city, village, or neighborhood and want to become a Gita teacher, you can apply here. We will also provide remuneration for your teaching. You can apply by mentioning which chapter you have memorized and which chapter you wish to teach."
     },
     "name": {
       "id": "app.container.teacherGift.name",
@@ -584,22 +606,6 @@
       "id": "app.container.writeGita.placeholderAddress",
       "defaultMessage": "Enter your full address"
     },
-    "district": {
-      "id": "app.container.writeGita.district",
-      "defaultMessage": "District"
-    },
-    "placeholderDistrict": {
-      "id": "app.container.writeGita.placeholderDistrict",
-      "defaultMessage": "Enter your district"
-    },
-    "pincode": {
-      "id": "app.container.writeGita.pincode",
-      "defaultMessage": "Pin Code"
-    },
-    "placeholderPincode": {
-      "id": "app.container.writeGita.placeholderPincode",
-      "defaultMessage": "Enter your pin code"
-    },
     "alertTitle": {
       "id": "app.container.writeGita.alertTitle",
       "defaultMessage": "Confirmation"
@@ -651,6 +657,10 @@
     "description": {
       "id": "app.container.gitaRules.description",
       "defaultMessage": "By following these rules, you align yourself with the teachings of Bhagavad Gita."
+    },
+    "instructions": {
+      "id": "app.container.gitaRules.instructions",
+      "defaultMessage": "Click on the rules you have followed today and submit. You must do this every day. You can view your report every month to see which rules you have followed and which you have missed."
     },
     "button": {
       "id": "app.container.gitaRules.button",
@@ -711,5 +721,111 @@
     "contact": { "id": "app.container.HomeBottomBar.contact", "defaultMessage": "Contact" },
     "help": { "id": "app.container.HomeBottomBar.help", "defaultMessage": "Help" },
     "social": { "id": "app.container.HomeBottomBar.social", "defaultMessage": "Social" }
+  },
+  "faq": {
+    "heading": {
+      "id": "app.container.faq.heading",
+      "defaultMessage": "FAQ"
+    },
+    "subHeading": {
+      "id": "app.container.faq.subHeading",
+      "defaultMessage": "Frequently Asked Questions about Saral Gita App"
+    },
+    "q1_question": {
+      "id": "app.container.faq.q1_question",
+      "defaultMessage": "What is the Saral Gita App?"
+    },
+    "q1_answer": {
+      "id": "app.container.faq.q1_answer",
+      "defaultMessage": "Saral Gita App is a digital platform where those who wish to learn the Gita can learn it directly from God himself."
+    },
+    "q2_question": {
+      "id": "app.container.faq.q2_question",
+      "defaultMessage": "Who is the teacher in the Saral Gita App?"
+    },
+    "q2_answer": {
+      "id": "app.container.faq.q2_answer",
+      "defaultMessage": "In the Saral Gita App, God himself is the Guru. We have Lord Vishnu, Lord Ganesha, and Lord Vedvyas. You can learn the Gita from any one of these three."
+    },
+    "q3_question": {
+      "id": "app.container.faq.q3_question",
+      "defaultMessage": "What is the method of learning the Gita in the Saral Gita App?"
+    },
+    "q3_answer": {
+      "id": "app.container.faq.q3_answer",
+      "defaultMessage": "You have to select any one God as your Guru. Upon selecting, all 18 chapters of the Gita will appear before you. Whichever chapter you wish to learn, all its shlokas will be displayed. Click on the shloka you want to learn, and God will recite it slowly. The shloka will also be written below. Look at the written shloka and pronounce it along with God. Repeat the same shloka with God until you can pronounce it correctly. This way, you can memorize shlokas one by one."
+    },
+    "q4_question": {
+      "id": "app.container.faq.q4_question",
+      "defaultMessage": "Can we also learn the meaning of shlokas in the Saral Gita App?"
+    },
+    "q4_answer": {
+      "id": "app.container.faq.q4_answer",
+      "defaultMessage": "Yes, we can also learn the meaning. When God recites a shloka, an 'i' (info) dot appears on the side. Clicking on it will show you the shloka along with its meaning."
+    },
+    "q5_question": {
+      "id": "app.container.faq.q5_question",
+      "defaultMessage": "Is the Saral Gita App available in only one language?"
+    },
+    "q5_answer": {
+      "id": "app.container.faq.q5_answer",
+      "defaultMessage": "No, the Saral Gita App is available in 10 languages, such as Hindi, English, Marathi, Gujarati, and other languages."
+    },
+    "q6_question": {
+      "id": "app.container.faq.q6_question",
+      "defaultMessage": "How can we test what we have memorized in the Saral Gita App?"
+    },
+    "q6_answer": {
+      "id": "app.container.faq.q6_answer",
+      "defaultMessage": "After God recites a shloka and goes silent, a microphone button appears on the screen. Click it, recite the entire shloka, then press the mic button again. The screen will show what percentage you spoke correctly. If it is 80% or more, it means you have learned the pronunciation of that shloka and you can move on to the next one."
+    },
+    "q7_question": {
+      "id": "app.container.faq.q7_question",
+      "defaultMessage": "What happens when you memorize a full chapter from the Saral Gita App?"
+    },
+    "q7_answer": {
+      "id": "app.container.faq.q7_answer",
+      "defaultMessage": "If you memorize any one chapter of the Gita using the Saral Gita App, you can register for a reward in the Gita Award section for that memorized chapter. Upon confirmation, we will courier the prize to your provided address."
+    },
+    "q8_question": {
+      "id": "app.container.faq.q8_question",
+      "defaultMessage": "What are Gita Rules in the Saral Gita App?"
+    },
+    "q8_answer": {
+      "id": "app.container.faq.q8_answer",
+      "defaultMessage": "The Saral Gita App has 9 rules useful for daily life. Click on the rule you have followed that day and submit it. This way, a monthly summary of your followed rules is prepared, letting you know which rules you followed and which you missed throughout the month."
+    },
+    "q9_question": {
+      "id": "app.container.faq.q9_question",
+      "defaultMessage": "What is the Gita Teacher feature in the Saral Gita App?"
+    },
+    "q9_answer": {
+      "id": "app.container.faq.q9_answer",
+      "defaultMessage": "If you know the Gita, even just one chapter, you can register through the Gita Teacher feature to become a Gita teacher. You can mention how many chapters you have memorized. We will make full arrangements for you to teach wherever you wish, provide remuneration for your teaching, and if you need training to become a Gita teacher, we will also provide that."
+    },
+    "q10_question": {
+      "id": "app.container.faq.q10_question",
+      "defaultMessage": "What is Gita Abhyas (Practice) in the Saral Gita App?"
+    },
+    "q10_answer": {
+      "id": "app.container.faq.q10_answer",
+      "defaultMessage": "Gita Abhyas is a feature that allows you to revise the chapters you have memorized. God is present before you, and you tell God which chapters you remember. God will then ask you shlokas from those chapters along with their numbers, allowing you to revise your memorized chapters."
+    },
+    "q11_question": {
+      "id": "app.container.faq.q11_question",
+      "defaultMessage": "Can we recite a full chapter at once in the Saral Gita App?"
+    },
+    "q11_answer": {
+      "id": "app.container.faq.q11_answer",
+      "defaultMessage": "Yes! If you want to recite an entire chapter at once, open the chapter and shloka, then click the 'Continue' button at the top of the screen. God will recite the entire chapter continuously. There is also a speed button beside it, so you can recite faster if you wish."
+    },
+    "q12_question": {
+      "id": "app.container.faq.q12_question",
+      "defaultMessage": "What is the 'Write Gita' feature in the Saral Gita App?"
+    },
+    "q12_answer": {
+      "id": "app.container.faq.q12_answer",
+      "defaultMessage": "'Write Gita' is a campaign where you can handwrite scriptures such as the Gita, Ramayana, Bhagavata, and many others that are available. We courier the register, original book, and pens to your address. Select the scripture you wish to write and submit it with your name and address. We will then send you all the materials needed for writing. You will need to report how much of the scripture you have completed every 15 days. Upon completion of the entire scripture, you will be honored with a pictorial certificate."
+    }
   }
 }

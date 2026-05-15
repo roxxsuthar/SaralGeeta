@@ -48,6 +48,10 @@ const styles = StyleSheet.create({
     left: hp(16),
     zIndex: 10,
   },
+  icon: {
+    height: hp(24),
+    width: hp(24),
+  },
   contentContainerStyle: {
     paddingBottom: hp(24),
   },

@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react';
-import { View, StatusBar, ImageBackground, TouchableOpacity, ScrollView, Alert } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { View, StatusBar, ImageBackground, TouchableOpacity, Alert } from 'react-native';
+import { TextInput, ScrollView } from 'react-native-gesture-handler';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
@@ -13,6 +13,7 @@ import strings from '../../../i18n';
 import styles from './styles';
 import { COLORS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
+import { hp } from '../../utils/responsive';
 import { Navigation } from '../../constants/constants';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import makeSelectWriteGita from './selectors';
@@ -50,11 +51,6 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
             .min(10, 'Must be at least 10 digits')
             .required('Phone number is required'),
         address: Yup.string().required('Address is required'),
-        district: Yup.string().required('District is required'),
-        pincode: Yup.string()
-            .matches(/^[0-9]+$/, 'Must be only digits')
-            .length(6, 'Must be exactly 6 digits')
-            .required('Pin code is required'),
         granths: Yup.string().required('Please select at least one rule'),
     });
 
@@ -77,15 +73,15 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                 translucent={true}
                 backgroundColor="transparent"
             />
-            <SafeAreaView style={styles.container}>
+            <SafeAreaView style={styles.container} edges={['top']}>
                 <View style={styles.header}>
                     <TouchableOpacity
                         activeOpacity={0.8}
                         style={styles.iconContainer}
-                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                        onPress={() => navigation.goBack()}
                     >
                         <View style={styles.icon}>
-                            <IMAGES.Bars height="100%" width="100%" />
+                            <IMAGES.WhiteArrowIcon height="100%" width="100%" />
                         </View>
                     </TouchableOpacity>
                     <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
@@ -94,7 +90,7 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                     <View style={{ width: 40 }} />
                 </View>
 
-                {writeGita?.loading && rules.length === 0 ? (
+                {writeGita?.loading ? (
                     <LoadingScreen />
                 ) : (
                     <View style={styles.mainContainer}>
@@ -103,8 +99,6 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                                 name: '',
                                 phoneNumber: '',
                                 address: '',
-                                district: '',
-                                pincode: '',
                                 granths: '',
                             }}
                             validationSchema={validationSchema}
@@ -125,10 +119,11 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                                 <>
                                     <ScrollView
                                         showsVerticalScrollIndicator={false}
-                                        contentContainerStyle={{ flexGrow: 1 }}
+                                        contentContainerStyle={{ flexGrow: 1, paddingBottom: hp(40) }}
+                                        keyboardShouldPersistTaps="handled"
                                     >
-                                        <View style={styles.descriptionContainer}>
-                                            <CustomText style={styles.descriptionText}>
+                                        <View style={styles.introContainer}>
+                                            <CustomText style={styles.description}>
                                                 {writeGitaStrings?.description?.defaultMessage || 'Write Gita Campaign Description'}
                                             </CustomText>
                                         </View>
@@ -189,43 +184,6 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                                             )}
                                         </View>
 
-                                        <View style={styles.inputContainer}>
-                                            <CustomText style={styles.label}>
-                                                {writeGitaStrings?.district?.defaultMessage || 'District'}
-                                            </CustomText>
-                                            <TextInput
-                                                style={styles.input}
-                                                placeholder={writeGitaStrings?.placeholderDistrict?.defaultMessage || "Enter your district"}
-                                                placeholderTextColor={COLORS.gray}
-                                                onChangeText={handleChange('district')}
-                                                onBlur={handleBlur('district')}
-                                                value={values.district}
-                                                allowFontScaling={false}
-                                            />
-                                            {touched.district && errors.district && (
-                                                <CustomText style={styles.errorText}>{errors.district}</CustomText>
-                                            )}
-                                        </View>
-
-                                        <View style={styles.inputContainer}>
-                                            <CustomText style={styles.label}>
-                                                {writeGitaStrings?.pincode?.defaultMessage || 'Pin Code'}
-                                            </CustomText>
-                                            <TextInput
-                                                style={styles.input}
-                                                placeholder={writeGitaStrings?.placeholderPincode?.defaultMessage || "Enter your pin code"}
-                                                placeholderTextColor={COLORS.gray}
-                                                keyboardType="numeric"
-                                                maxLength={6}
-                                                onChangeText={handleChange('pincode')}
-                                                onBlur={handleBlur('pincode')}
-                                                value={values.pincode}
-                                                allowFontScaling={false}
-                                            />
-                                            {touched.pincode && errors.pincode && (
-                                                <CustomText style={styles.errorText}>{errors.pincode}</CustomText>
-                                            )}
-                                        </View>
 
                                         <View style={styles.rulesListContainer}>
                                             <CustomText style={styles.label}>

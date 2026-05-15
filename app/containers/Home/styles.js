@@ -186,10 +186,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 44,
     height: 44,
-    position: 'absolute',
-    left: 20,
-    top: 20,
-    bottom: 0,
     zIndex: 10,
   },
   icon: {
@@ -204,9 +200,9 @@ const styles = StyleSheet.create({
   headerContainer: {
     paddingHorizontal: 20,
     paddingTop: 10,
-    paddingBottom: 0,
-    height: hp(75),
-    justifyContent: 'center',
+    paddingBottom: 10,
+    height: hp(70),
+    justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -217,11 +213,10 @@ const styles = StyleSheet.create({
     height: 44,
   },
   rightIconContainer: {
-    position: 'absolute',
-    right: 20,
-    top: 10,
-    bottom: 0,
+    width: 44,
+    height: 44,
     justifyContent: 'center',
+    alignItems: 'center',
     zIndex: 10,
   },
   headerBellContainer: {

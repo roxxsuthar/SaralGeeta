@@ -9,10 +9,12 @@ import {
   CONTACT_US_ACTION_FAIL,
   CONTACT_US_ACTION_SUCCESS,
   DEFAULT_ACTION,
+  CLEAN_UP,
 } from './constants';
 
 export const initialState = {
   loading: false,
+  success: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -25,11 +27,17 @@ const contactUsReducer = (state = initialState, action) =>
       case CONTACT_US_ACTION:
         draft.loading = true;
         break;
-      case CONTACT_US_ACTION_SUCCESS:
+    case CONTACT_US_ACTION_SUCCESS:
         draft.loading = false;
+        draft.success = true;
         break;
       case CONTACT_US_ACTION_FAIL:
         draft.loading = false;
+        draft.success = false;
+        break;
+      case CLEAN_UP:
+        draft.loading = false;
+        draft.success = false;
         break;
     }
   });

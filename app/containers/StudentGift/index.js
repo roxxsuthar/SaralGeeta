@@ -7,8 +7,8 @@
 import React, { memo, useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StatusBar, ImageBackground, TouchableOpacity, ScrollView } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { View, StatusBar, ImageBackground, TouchableOpacity } from 'react-native';
+import { TextInput, ScrollView } from 'react-native-gesture-handler';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Formik } from 'formik';
@@ -21,6 +21,7 @@ import { makeSelectAppLanguage } from '../App/selectors';
 import styles from './styles';
 import { COLORS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
+import { hp } from '../../utils/responsive';
 import strings from '../../../i18n';
 import { submitStudentGift, cleanUp } from './actions';
 import { getChapters } from '../Home/actions';
@@ -60,11 +61,6 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
             .min(10, 'Must be at least 10 digits')
             .required('Phone number is required'),
         address: Yup.string().required('Address is required'),
-        district: Yup.string().required('District is required'),
-        pincode: Yup.string()
-            .matches(/^[0-9]+$/, 'Must be only digits')
-            .length(6, 'Must be exactly 6 digits')
-            .required('Pin code is required'),
         chapters: Yup.array().min(1, 'Please select at least one chapter'),
     });
 
@@ -87,15 +83,15 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                 translucent={true}
                 backgroundColor="transparent"
             />
-            <SafeAreaView style={styles.container}>
+            <SafeAreaView style={styles.container} edges={['top']}>
                 <View style={styles.header}>
                     <TouchableOpacity
                         activeOpacity={0.8}
                         style={styles.iconContainer}
-                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                        onPress={() => navigation.goBack()}
                     >
                         <View style={styles.icon}>
-                            <IMAGES.Bars height="100%" width="100%" />
+                            <IMAGES.WhiteArrowIcon height="100%" width="100%" />
                         </View>
                     </TouchableOpacity>
                     <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
@@ -113,8 +109,6 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                                 name: '',
                                 phoneNumber: '',
                                 address: '',
-                                district: '',
-                                pincode: '',
                                 chapters: [],
                             }}
                             validationSchema={validationSchema}
@@ -134,8 +128,15 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                                 <>
                                     <ScrollView
                                         showsVerticalScrollIndicator={false}
-                                        contentContainerStyle={{ flexGrow: 1 }}
+                                        contentContainerStyle={{ flexGrow: 1, paddingBottom: hp(40) }}
+                                        keyboardShouldPersistTaps="handled"
                                     >
+                                        <View style={styles.introContainer}>
+                                            <CustomText style={styles.description}>
+                                                {studentGiftStrings?.description?.defaultMessage || 'Apply here for your reward if you have memorized a chapter.'}
+                                            </CustomText>
+                                        </View>
+
                                         <View style={styles.inputContainer}>
                                             <CustomText style={styles.label}>
                                                 {studentGiftStrings?.name?.defaultMessage || 'Student Name'}
@@ -192,43 +193,6 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                                             )}
                                         </View>
 
-                                        <View style={styles.inputContainer}>
-                                            <CustomText style={styles.label}>
-                                                {strings?.writeGita?.district?.defaultMessage || 'District'}
-                                            </CustomText>
-                                            <TextInput
-                                                style={styles.input}
-                                                placeholder={strings?.writeGita?.placeholderDistrict?.defaultMessage || "Enter your district"}
-                                                placeholderTextColor={COLORS.gray}
-                                                onChangeText={handleChange('district')}
-                                                onBlur={handleBlur('district')}
-                                                value={values.district}
-                                                allowFontScaling={false}
-                                            />
-                                            {touched.district && errors.district && (
-                                                <CustomText style={styles.errorText}>{errors.district}</CustomText>
-                                            )}
-                                        </View>
-
-                                        <View style={styles.inputContainer}>
-                                            <CustomText style={styles.label}>
-                                                {strings?.writeGita?.pincode?.defaultMessage || 'Pin Code'}
-                                            </CustomText>
-                                            <TextInput
-                                                style={styles.input}
-                                                placeholder={strings?.writeGita?.placeholderPincode?.defaultMessage || "Enter your pin code"}
-                                                placeholderTextColor={COLORS.gray}
-                                                keyboardType="numeric"
-                                                maxLength={6}
-                                                onChangeText={handleChange('pincode')}
-                                                onBlur={handleBlur('pincode')}
-                                                value={values.pincode}
-                                                allowFontScaling={false}
-                                            />
-                                            {touched.pincode && errors.pincode && (
-                                                <CustomText style={styles.errorText}>{errors.pincode}</CustomText>
-                                            )}
-                                        </View>
 
                                         <View style={styles.chapterListContainer}>
                                             <CustomText style={styles.label}>

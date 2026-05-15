@@ -12,7 +12,6 @@ export function defaultAction() {
   };
 }
 export function getLanguage() {
-  console.log("-----")
   return {
     type: GET_LANGUAGE,
   };

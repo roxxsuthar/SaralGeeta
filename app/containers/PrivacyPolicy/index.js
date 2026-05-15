@@ -17,7 +17,8 @@ import { IMAGES, COLORS } from '../../constants';
 import { TouchableOpacity } from 'react-native';
 import CustomText from '../../components/CustomText';
 import LoadingScreen from '../../components/LoadingScreen';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import strings from '../../../i18n';
 import makeSelectApp from '../App/selectors';
 
@@ -90,16 +91,17 @@ function PrivacyPolicy({ privacyPolicy, handleGetPolicy, app }) {
         translucent={true}
         backgroundColor="transparent"
       />
-      <View style={styles.header}>
-                    <TouchableOpacity
-                        activeOpacity={0.8}
-                        style={styles.iconContainer}
-                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-                    >
-                        <View style={styles.icon}>
-                            <IMAGES.Bars height="100%" width="100%" />
-                        </View>
-                    </TouchableOpacity>
+      <SafeAreaView style={{ flex: 1 }} edges={['top']}>
+        <View style={styles.header}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.iconContainer}
+            onPress={() => navigation.goBack()}
+          >
+            <View style={styles.icon}>
+              <IMAGES.WhiteArrowIcon height="100%" width="100%" />
+            </View>
+          </TouchableOpacity>
           <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
             {PrivacyPolicyMessage.heading.defaultMessage}
           </CustomText>
@@ -120,6 +122,7 @@ function PrivacyPolicy({ privacyPolicy, handleGetPolicy, app }) {
             />
           )}
         </View>
+      </SafeAreaView>
     </ImageBackground>
   );
 }

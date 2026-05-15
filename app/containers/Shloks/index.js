@@ -10,8 +10,12 @@ import {
   FlatList,
   TouchableOpacity,
   ImageBackground,
+  Platform,
+  NativeModules,
 } from 'react-native';
-import { DrawerActions } from '@react-navigation/native';
+import Orientation from 'react-native-orientation-locker';
+const { OrientationModule } = NativeModules;
+import { DrawerActions, useFocusEffect } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -39,6 +43,16 @@ function Shloks({
   handleResetIntroVideo,
 }) {
   const { currentLanguage } = language;
+
+  useFocusEffect(
+    useCallback(() => {
+      if (Platform.OS === 'ios') {
+        OrientationModule.lockToPortrait();
+      } else {
+        Orientation.lockToPortrait();
+      }
+    }, []),
+  );
 
   useEffect(() => {
     StatusBar.setHidden(false);
@@ -146,11 +160,11 @@ function Shloks({
           <View style={styles.imageContainer}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+              onPress={backHandler}
               style={styles.headerSubContainer}
             >
               <View style={styles.icon}>
-                <IMAGES.Bars height="100%" width="100%" />
+                <IMAGES.WhiteArrowIcon height="100%" width="100%" />
               </View>
             </TouchableOpacity>
             <FastImageLoading

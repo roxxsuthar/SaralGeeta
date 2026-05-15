@@ -18,11 +18,12 @@ const APIS = {
   POLICY: '/policy',
   DEVICE_AUTH: '/auth/device',
   JOIN_SARAL_GITA: '/type',
-  RULES: '/rules',
+  RULES: '/rules/input',
   SUBMIT_RULES: '/rules/input',
   GRANTH: '/granths',
   SUBMIT_GRANTH: '/granths/submit',
   FULL_GEETA: '/full-geeta',
+  RULES_STATS: '/rules/stats',
 };
 export const API_URL = ' https://app.saralgita.in/api';
 

@@ -17,10 +17,12 @@ import { COLORS, IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import { TouchableOpacity } from 'react-native';
 import { DrawerActions, useNavigation, useRoute } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Navigation } from '../../constants/constants';
 import strings from '../../../i18n';
-import { addContactUs } from './actions';
+import { addContactUs, cleanUp } from './actions';
 import LoadingScreen from '../../components/LoadingScreen';
+import SuccessModal from '../../components/SuccessModal';
 
 function ContactUs({ handleSaveContactFormDetail, contactUs }) {
   const { contactUs: contactUsMessage } = strings;
@@ -28,6 +30,20 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
   const navigation = useNavigation();
   const route = useRoute();
   const fromHome = route?.params?.fromHome;
+  const [showModal, setShowModal] = React.useState(false);
+  const [formActions, setFormActions] = React.useState(null);
+
+  React.useEffect(() => {
+    return () => {
+      handleCleanUp();
+    };
+  }, []);
+
+  React.useEffect(() => {
+    if (contactUs?.success && !contactUs?.loading) {
+      setShowModal(true);
+    }
+  }, [contactUs?.success, contactUs?.loading]);
 
   // Validation Schema
   const validationSchema = Yup.object().shape({
@@ -49,15 +65,15 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
         translucent={true}
         backgroundColor="transparent"
       />
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container} edges={['top']}>
         <View style={styles.header}>
                     <TouchableOpacity
                         activeOpacity={0.8}
                         style={styles.iconContainer}
-                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                        onPress={() => navigation.goBack()}
                     >
                         <View style={styles.icon}>
-                            <IMAGES.Bars height="100%" width="100%" />
+                            <IMAGES.WhiteArrowIcon height="100%" width="100%" />
                         </View>
                     </TouchableOpacity>
           <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
@@ -76,6 +92,7 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
             }}
             validationSchema={validationSchema}
             onSubmit={(values, action) => {
+              setFormActions(action);
               handleSaveContactFormDetail(values, navigation, action);
             }}
           >
@@ -171,7 +188,20 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
             )}
           </Formik>
         )}
-      </View>
+        <SuccessModal
+          visible={showModal}
+          message={contactUsMessage?.successMessage?.defaultMessage || 'Message sent! We\'ll be in touch soon.'}
+          buttonText={contactUsMessage?.okButton?.defaultMessage || 'Ok'}
+          onOk={() => {
+            setShowModal(false);
+            handleCleanUp();
+            if (formActions) {
+              formActions.resetForm();
+            }
+            navigation.goBack();
+          }}
+        />
+      </SafeAreaView>
     </ImageBackground>
   );
 }
@@ -180,6 +210,7 @@ ContactUs.propTypes = {
   dispatch: PropTypes.func.isRequired,
   handleSaveContactFormDetail: PropTypes.func,
   contactUs: PropTypes.object,
+  handleCleanUp: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -190,6 +221,7 @@ function mapDispatchToProps(dispatch) {
   return {
     handleSaveContactFormDetail: (payload, navigation, action) =>
       dispatch(addContactUs(payload, navigation, action)),
+    handleCleanUp: () => dispatch(cleanUp()),
   };
 }
 

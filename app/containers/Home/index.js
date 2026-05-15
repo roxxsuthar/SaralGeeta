@@ -17,7 +17,10 @@ import {
   Linking,
   Share,
   Animated,
+  NativeModules,
 } from 'react-native';
+import Orientation from 'react-native-orientation-locker';
+const { OrientationModule } = NativeModules;
 import isEmpty from 'lodash/isEmpty';
 import get from 'lodash/get';
 import { createStructuredSelector } from 'reselect';
@@ -38,7 +41,7 @@ import { getChapters, getRecentWatched } from './actions';
 import { Navigation } from '../../constants/constants';
 import { DrawerActions } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { hp } from '../../utils/responsive';
 
 function Home({
@@ -54,6 +57,7 @@ function Home({
   const [isListening, setIsListening] = useState(false);
   const [isSocialExpanded, setIsSocialExpanded] = useState(false);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+  const insets = useSafeAreaInsets();
 
   const { Home: HomeMessage, HomeBottomBar } = strings;
   const { currentLanguage } = language;
@@ -94,6 +98,13 @@ function Home({
 
       // Ensure StatusBar is visible when Home screen is focused
       StatusBar.setHidden(false);
+
+      // Ensure orientation is locked to portrait
+      if (Platform.OS === 'ios') {
+        OrientationModule.lockToPortrait();
+      } else {
+        Orientation.lockToPortrait();
+      }
 
       handleGetRecent();
       handleGetChapters(currentLanguage);
@@ -444,8 +455,10 @@ function Home({
 
   const shareApp = async () => {
     try {
+      const smartLink = 'https://app.saralgita.in/share';
+
       await Share.share({
-        message: 'Download the Saral Gita App today! https://saralgita.com',
+        message: `${HomeMessage.shareMessage.defaultMessage} \n${smartLink}`,
       });
     } catch (error) {
       console.log(error.message);
@@ -486,7 +499,7 @@ function Home({
       <View style={styles.expandedMenuContainer}>
         <View style={styles.gridMenuOverlay}>
           <View style={styles.gridRow}>
-            <TouchableOpacity style={styles.gridMenuItem} onPress={() => navigation.navigate(Navigation.Instructions, { fromHome: true })}>
+            <TouchableOpacity style={styles.gridMenuItem} onPress={() => navigation.navigate(Navigation.FAQ, { fromHome: true })}>
               <IMAGES.FaqNew width={24} height={24} />
               <CustomText style={styles.menuItemText}>{HomeBottomBar.faq.defaultMessage}</CustomText>
             </TouchableOpacity>
@@ -494,7 +507,16 @@ function Home({
               <IMAGES.LanguageNew width={24} height={24} />
               <CustomText style={styles.menuItemText}>{HomeBottomBar.language.defaultMessage}</CustomText>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.gridMenuItem} onPress={() => openLink('https://play.google.com/store/apps/')}>
+            <TouchableOpacity
+              style={styles.gridMenuItem}
+              onPress={() =>
+                openLink(
+                  Platform.OS === 'android'
+                    ? 'https://play.google.com/store/apps/details?id=com.saralgita'
+                    : 'https://apps.apple.com/kz/app/saral-gita/id6754391932'
+                )
+              }
+            >
               <IMAGES.UpdateApp width={24} height={24} />
               <CustomText style={styles.menuItemText}>{HomeBottomBar.update.defaultMessage}</CustomText>
             </TouchableOpacity>
@@ -504,7 +526,16 @@ function Home({
             </TouchableOpacity>
           </View>
           <View style={styles.gridRow}>
-            <TouchableOpacity style={styles.gridMenuItem} onPress={() => openLink('https://play.google.com/store/apps/')}>
+            <TouchableOpacity
+              style={styles.gridMenuItem}
+              onPress={() =>
+                openLink(
+                  Platform.OS === 'android'
+                    ? 'https://play.google.com/store/apps/details?id=com.saralgita'
+                    : 'https://apps.apple.com/kz/app/saral-gita/id6754391932'
+                )
+              }
+            >
               <IMAGES.StarOutline width={24} height={24} />
               <CustomText style={styles.menuItemText}>{HomeBottomBar.rating.defaultMessage}</CustomText>
             </TouchableOpacity>
@@ -609,33 +640,33 @@ function Home({
         )}
 
         <View style={styles.mainContainer}>
-        {home?.loading ? (
-          <LoadingScreen />
-        ) : (
-          <SectionList
-            sections={sections}
-            keyExtractor={(item) => item.id}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: hp(50) }}
-            renderSectionHeader={({ section }) => (
-              <>
-                {!isEmpty(section?.data) && (
-                  <View style={styles.sectionHeaderContainer}>
-                    <CustomText numberOfLines={1} style={styles.sectionHeader}>
-                      {section.title}
-                    </CustomText>
-                  </View>
-                )}
-              </>
-            )}
-            renderItem={({ item, section }) =>
-              renderItemBasedOnSection(section.title, item, section)
-            }
-            SectionSeparatorComponent={ItemSeparator}
-          />
-        )}
+          {home?.loading ? (
+            <LoadingScreen />
+          ) : (
+            <SectionList
+              sections={sections}
+              keyExtractor={(item) => item.id}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ paddingBottom: hp(50) }}
+              renderSectionHeader={({ section }) => (
+                <>
+                  {!isEmpty(section?.data) && (
+                    <View style={styles.sectionHeaderContainer}>
+                      <CustomText numberOfLines={1} style={styles.sectionHeader}>
+                        {section.title}
+                      </CustomText>
+                    </View>
+                  )}
+                </>
+              )}
+              renderItem={({ item, section }) =>
+                renderItemBasedOnSection(section.title, item, section)
+              }
+              SectionSeparatorComponent={ItemSeparator}
+            />
+          )}
         </View>
-        
+
         {/* Expanded Menus Overlay */}
         {(isSocialExpanded || isMenuExpanded) && (
           <TouchableOpacity
@@ -649,10 +680,19 @@ function Home({
         )}
         {renderSocialMenu()}
         {renderGridMenu()}
-        
+
         {/* Bottom Bar */}
-        <View style={styles.bottomBarContainer}>
-          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={() => openLink('https://play.google.com/store/apps/')}>
+        <View style={[styles.bottomBarContainer, { bottom: hp(20) + insets.bottom }]}>
+          <TouchableOpacity
+            style={styles.bottomBarIconContainer}
+            onPress={() =>
+              openLink(
+                Platform.OS === 'android'
+                  ? 'https://play.google.com/store/apps/details?id=com.saralgita'
+                  : 'https://apps.apple.com/kz/app/saral-gita/id6754391932'
+              )
+            }
+          >
             <IMAGES.StarOutline width={26} height={26} />
           </TouchableOpacity>
           <View style={styles.bottomBarDivider} />
@@ -660,8 +700,8 @@ function Home({
             <IMAGES.ContactPhone width={26} height={26} />
           </TouchableOpacity>
           <View style={styles.bottomBarDivider} />
-          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={() => navigation.navigate(Navigation.Instructions, { fromHome: true })}>
-            <IMAGES.HelpSquare width={26} height={26} />
+          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={() => navigation.navigate(Navigation.FAQ, { fromHome: true })}>
+            <IMAGES.FaqNew width={26} height={26} />
           </TouchableOpacity>
           <View style={styles.bottomBarDivider} />
           <TouchableOpacity style={styles.bottomBarIconContainer} onPress={toggleSocialMenu}>

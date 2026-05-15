@@ -26,6 +26,8 @@ const VideoPlayer = ({
   user,
   muted = false,
   disableAudioTrack = false,
+  onEnd,
+  rate = 1.0,
 }) => {
   const handleVideoEnd = () => {
     if (isIntroVideoPlayed) {
@@ -101,6 +103,7 @@ const VideoPlayer = ({
         style={styles.backgroundVideo}
         resizeMode="cover"
         paused={pausedState}
+        rate={rate}
         volume={1.0}
         audioFocus={false}
         muted={muted}
@@ -115,7 +118,7 @@ const VideoPlayer = ({
         onError={onError}
         onLoadStart={onLoadStart}
         onLoad={onLoad}
-        onEnd={handleVideoEnd}
+        onEnd={onEnd || handleVideoEnd}
         bufferConfig={VIDEO_BUFFER_CONFIG}
         controls={false}
         progressUpdateInterval={VIDEO_PROGRESS_UPDATE_INTERVAL}
@@ -145,6 +148,7 @@ VideoPlayer.propTypes = {
   user: PropTypes.object,
   muted: PropTypes.bool,
   disableAudioTrack: PropTypes.bool,
+  rate: PropTypes.number,
 };
 
 export default VideoPlayer;

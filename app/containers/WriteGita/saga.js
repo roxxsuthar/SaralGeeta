@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put, select } from 'redux-saga/effects';
 import { GET_RULES, SUBMIT_WRITE_GITA } from './constants';
 import {
   getRulesSuccess,
@@ -9,6 +9,7 @@ import {
 import request from '../../utils/request';
 import Helpers from '../../utils/helpers';
 import { APIS } from '../../constants';
+import { makeSelectAppLanguage } from '../App/selectors';
 
 function* getRulesSaga({ language }) {
   const url = Helpers.getUrl(APIS.GRANTH);
@@ -29,12 +30,17 @@ function* getRulesSaga({ language }) {
 
 function* submitWriteGitaSaga({ payload, navigation, action }) {
   const url = Helpers.getUrl(APIS.SUBMIT_GRANTH);
+  const languageState = yield select(makeSelectAppLanguage());
+  const currentLanguage = languageState?.currentLanguage || 'hi';
 
   try {
     const options = {
       method: 'POST',
       url,
       data: payload,
+      headers: {
+        'Accept-Language': currentLanguage,
+      },
     };
     const response = yield call(request, options);
     yield put(submitWriteGitaSuccess(response.data));

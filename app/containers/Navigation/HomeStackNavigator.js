@@ -5,6 +5,7 @@ import Home from '../Home';
 import Chapters from '../Chapters';
 import Shloks from '../Shloks';
 import LearnGeeta from '../LearnGeeta';
+import FullChapterLearn from '../FullChapterLearn/index';
 
 const HomeStack = createStackNavigator();
 
@@ -40,6 +41,16 @@ const HomeStackNavigator = () => {
           animation: 'fade',
           animationDuration: 200,
           fullScreenGestureEnabled: true,
+        }}
+      />
+      <HomeStack.Screen
+        name={Navigation.FullChapterLearn}
+        component={FullChapterLearn}
+        options={{
+          gestureEnabled: true,
+          animationEnabled: true,
+          animation: 'fade',
+          animationDuration: 200,
         }}
       />
     </HomeStack.Navigator>

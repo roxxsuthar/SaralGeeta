@@ -201,6 +201,10 @@
     "chapter": {
       "id": "app.containers.Home.chapter",
       "defaultMessage": "अध्याय"
+    },
+    "shareMessage": {
+      "id": "app.containers.Home.shareMessage",
+      "defaultMessage": "सरल गीता ऐप आपके सामने है, जिसमें आप सीधे भगवान से ही गीता जी सीख सकते हैं। भगवान के साथ गीता जी के श्लोकों का उच्चारण कर सकते हैं, उनका अर्थ जान सकते हैं, और याद होने पर अपना पुरस्कार प्राप्त कर सकते हैं। इसके माध्यम से आप गीता अध्यापक बनकर गीता पढ़ा भी सकते हैं, अपने दैनिक जीवन में काम आने वाले नियमों का पालन कर सकते हैं, गीता लिख सकते हैं, डाउनलोड करिए।"
     }
   },
   "Chapters": {
@@ -213,6 +217,12 @@
     "headerText": {
       "id": "app.containers.Shloks.headerText",
       "defaultMessage": "श्लोक"
+    }
+  },
+  "learnGeeta": {
+    "continue": {
+      "id": "app.container.learnGeeta.continue",
+      "defaultMessage": "जारी रखें"
     }
   },
   "contactUs": {
@@ -417,12 +427,20 @@
     "gitaRules": {
       "id": "app.container.SideBar.gitaRules",
       "defaultMessage": "गीता नियम"
+    },
+    "faq": {
+      "id": "app.container.SideBar.faq",
+      "defaultMessage": "सामान्य प्रश्न"
     }
   },
   "studentGift": {
     "heading": {
       "id": "app.container.studentGift.heading",
       "defaultMessage": "छात्र का विवरण"
+    },
+    "description": {
+      "id": "app.container.studentGift.description",
+      "defaultMessage": "अगर सरल गीता ऐप से आपने गीता जी का कोई भी एक अध्याय याद कर लिया है, तो आप अपने पुरस्कार के लिए यहाँ पर आवेदन कर सकते हैं। आप अपना नाम, पता लिखिए, और आपने कौन सा अध्याय याद किया है, उसका चयन करिए और आवेदन करिए।"
     },
     "name": {
       "id": "app.container.studentGift.name",
@@ -489,6 +507,10 @@
     "heading": {
       "id": "app.container.teacherGift.heading",
       "defaultMessage": "शिक्षक विवरण"
+    },
+    "description": {
+      "id": "app.container.teacherGift.description",
+      "defaultMessage": "अगर आप अपने शहर में गांव में मोहल्ले में कहीं पर भी गीता पढ़ाना चाहते हैं और गीता अध्यापक बनना चाहते हैं तो आप यहां पर आवेदन कर सकते हैं। उसके पढ़ाने के लिए हम आपको आपका परिश्रमिक भी देंगे, आपको कौन सा अध्याय याद है, आप कौन सा अध्याय पढ़ाना चाहते हैं, वह अंकित करके आप आवेदन कर सकते हैं।"
     },
     "name": {
       "id": "app.container.teacherGift.name",
@@ -584,22 +606,6 @@
       "id": "app.container.writeGita.placeholderAddress",
       "defaultMessage": "अपना पूरा पता दर्ज करें"
     },
-    "district": {
-      "id": "app.container.writeGita.district",
-      "defaultMessage": "जिला"
-    },
-    "placeholderDistrict": {
-      "id": "app.container.writeGita.placeholderDistrict",
-      "defaultMessage": "अपना जिला दर्ज करें"
-    },
-    "pincode": {
-      "id": "app.container.writeGita.pincode",
-      "defaultMessage": "पिन कोड"
-    },
-    "placeholderPincode": {
-      "id": "app.container.writeGita.placeholderPincode",
-      "defaultMessage": "अपना पिन कोड दर्ज करें"
-    },
     "alertTitle": {
       "id": "app.container.writeGita.alertTitle",
       "defaultMessage": "पुष्टिकरण"
@@ -657,6 +663,10 @@
       "id": "app.container.gitaRules.description",
       "defaultMessage": "इन नियमों का पालन करके, आप स्वयं को श्रीमद्भगवद्गीता की शिक्षाओं के अनुरूप ढालते हैं।"
     },
+    "instructions": {
+      "id": "app.container.gitaRules.instructions",
+      "defaultMessage": "नीचे लिखे नियमों में जो-जो नियम आप प्रतिदिन पालन कर लिए हैं, उसके ऊपर आप क्लिक करिए और फिर जमा करिए। ऐसा आपको प्रतिदिन करना है । प्रत्येक महीने की आप रिपोर्ट देख सकते हैं, कि पूरे महीने में आपने कौन-कौन से नियम पालन किए हैं और कौन से नियम आपके पालन नहीं हुए हैं।"
+    },
     "button": {
       "id": "app.container.gitaRules.button",
       "defaultMessage": "जमा करें"
@@ -700,6 +710,112 @@
     "inputPlaceholder": {
       "id": "app.container.gitaRules.inputPlaceholder",
       "defaultMessage": "अपनी प्रतिक्रिया यहाँ दर्ज करें..."
+    }
+  },
+  "faq": {
+    "heading": {
+      "id": "app.container.faq.heading",
+      "defaultMessage": "सामान्य प्रश्न"
+    },
+    "subHeading": {
+      "id": "app.container.faq.subHeading",
+      "defaultMessage": "सरल गीता ऐप के बारे में अक्सर पूछे जाने वाले प्रश्न"
+    },
+    "q1_question": {
+      "id": "app.container.faq.q1_question",
+      "defaultMessage": "सरल गीता ऐप क्या है?"
+    },
+    "q1_answer": {
+      "id": "app.container.faq.q1_answer",
+      "defaultMessage": "सरल गीता ऐप एक ऐसी डिजिटल व्यवस्था है जहाँ गीता सीखने के इच्छुक सीधे भगवान से ही गीता सीख सकते हैं।"
+    },
+    "q2_question": {
+      "id": "app.container.faq.q2_question",
+      "defaultMessage": "सरल गीता ऐप में कौन है सिखाने वाला?"
+    },
+    "q2_answer": {
+      "id": "app.container.faq.q2_answer",
+      "defaultMessage": "सरल गीता ऐप में गुरु रूप में भगवान ही हैं — भगवान विष्णु, भगवान गणेश जी, भगवान वेदव्यास जी। तीनों में किसी से भी गीता जी सीख सकते हैं।"
+    },
+    "q3_question": {
+      "id": "app.container.faq.q3_question",
+      "defaultMessage": "सरल गीता ऐप में गीता सीखने का क्या तरीका है?"
+    },
+    "q3_answer": {
+      "id": "app.container.faq.q3_answer",
+      "defaultMessage": "आपको गुरु रूप में किसी भी एक भगवान का चयन करना है। उनका चयन करते ही गीता जी के 18 अध्याय आ जाएंगे। जो भी अध्याय आपको सीखना है उसके सारे श्लोक आपके सामने होंगे। आप जो श्लोक सीखना चाहते हैं उसे क्लिक करें, तो भगवान वह श्लोक धीरे-धीरे बोलेंगे और श्लोक नीचे लिखा हुआ भी रहेगा। नीचे लिखे श्लोक को देखिए और भगवान के साथ उच्चारण करिए। जब तक उच्चारण आपको आए नहीं, तब तक बार-बार उसी श्लोक को भगवान के साथ दोहराइए। इस तरह एक-एक करके श्लोक याद हो सकते हैं।"
+    },
+    "q4_question": {
+      "id": "app.container.faq.q4_question",
+      "defaultMessage": "क्या सरल गीता ऐप में हम गीता जी के श्लोकों का अर्थ भी जान सकते हैं?"
+    },
+    "q4_answer": {
+      "id": "app.container.faq.q4_answer",
+      "defaultMessage": "हाँ, हम अर्थ भी जान सकते हैं। जैसे भगवान श्लोक बोलते हैं तो किनारे पर एक 'i' का बिंदु आता है, उस 'i' को क्लिक करने पर आपको श्लोक और उसका अर्थ भी मालूम हो जाएगा।"
+    },
+    "q5_question": {
+      "id": "app.container.faq.q5_question",
+      "defaultMessage": "सरल गीता ऐप क्या एक ही भाषा में उपलब्ध है?"
+    },
+    "q5_answer": {
+      "id": "app.container.faq.q5_answer",
+      "defaultMessage": "नहीं, सरल गीता ऐप 10 भाषाओं में उपलब्ध है — जैसे हिंदी, अंग्रेजी, मराठी, गुजराती एवं इत्यादि अन्य भाषाएँ।"
+    },
+    "q6_question": {
+      "id": "app.container.faq.q6_question",
+      "defaultMessage": "सरल गीता ऐप में हमने याद कर लिया, इसकी परीक्षा कैसे की जा सकती है?"
+    },
+    "q6_answer": {
+      "id": "app.container.faq.q6_answer",
+      "defaultMessage": "जैसे भगवान एक श्लोक बोलकर के चुप होते हैं, उसके बाद स्क्रीन पर एक माइक का बटन आता है। वह माइक का बटन क्लिक करके जैसे ही सीखने वाला उस पूरे श्लोक को बोलता है और फिर माइक के बटन को दोबारा दबाता है, तो स्क्रीन पर सीखने वाले ने कितना प्रतिशत सही बोला है, यह आ जाता है। अगर 80% या उससे ज्यादा है, तो इसका मतलब है कि आपको वह श्लोक का उच्चारण आ गया है और आप अगले श्लोक का उच्चारण सीख सकते हैं।"
+    },
+    "q7_question": {
+      "id": "app.container.faq.q7_question",
+      "defaultMessage": "सरल गीता ऐप से एक अध्याय याद करने पर क्या होता है?"
+    },
+    "q7_answer": {
+      "id": "app.container.faq.q7_answer",
+      "defaultMessage": "सरल गीता ऐप से अगर गीता जी का कोई भी एक अध्याय आप याद करते हैं, तो गीता पुरस्कार में आप अपने याद किए हुए अध्याय के लिए एक पुरस्कार प्रविष्टि दे सकते हैं। उसकी पुष्टि होने पर हम पुरस्कार आपके दिए हुए पते पर कोरियर कर देंगे।"
+    },
+    "q8_question": {
+      "id": "app.container.faq.q8_question",
+      "defaultMessage": "सरल गीता ऐप में गीता नियम क्या हैं?"
+    },
+    "q8_answer": {
+      "id": "app.container.faq.q8_answer",
+      "defaultMessage": "सरल गीता ऐप में प्रतिदिन के जीवन में काम आने वाले 9 नियम दिए हुए हैं। जो नियम आपने प्रतिदिन पालन किया है, उस पर क्लिक करिए और जमा कर सकते हैं। इस तरह आपके पालन किए हुए नियमों का प्रत्येक महीने का एक संक्षिप्त विवरण तैयार होगा, जिससे आपको मालूम होगा कि आपने पूरे महीने में किन नियमों का पालन किया और किन नियमों का पालन नहीं किया।"
+    },
+    "q9_question": {
+      "id": "app.container.faq.q9_question",
+      "defaultMessage": "सरल गीता ऐप में गीता अध्यापक क्या है?"
+    },
+    "q9_answer": {
+      "id": "app.container.faq.q9_answer",
+      "defaultMessage": "आप अगर गीता जी जानते हैं, एक अध्याय भी जानते हैं, तो आप सरल गीता ऐप में गीता अध्यापक के द्वारा अपना गीता अध्यापक बनने के लिए नामांकन कर सकते हैं। इसमें आप बता सकते हैं कि आपको कितने अध्याय याद हैं। हम जहाँ भी आप गीता पढ़ाना चाहेंगे उसकी पूर्ण व्यवस्था करेंगे, आपको पारिश्रमिक भी देंगे और अगर ट्रेनिंग चाहिए तो वह भी उपलब्ध करवाएंगे।"
+    },
+    "q10_question": {
+      "id": "app.container.faq.q10_question",
+      "defaultMessage": "सरल गीता ऐप में गीता अभ्यास क्या है?"
+    },
+    "q10_answer": {
+      "id": "app.container.faq.q10_answer",
+      "defaultMessage": "गीता अभ्यास एक ऐसी व्यवस्था है जिससे आप अपने याद किए हुए अध्याय की पुनरावृत्ति कर सकते हैं। इसमें भगवान आपके सामने हैं, और आप भगवान को बताएंगे कि आपको कौन से अध्याय याद हैं। भगवान उसमें श्लोक आपको संख्या सहित पूछेंगे। इस तरह से आप अपने याद किए हुए अध्याय की पुनरावृत्ति कर सकते हैं।"
+    },
+    "q11_question": {
+      "id": "app.container.faq.q11_question",
+      "defaultMessage": "सरल गीता ऐप में अगर मुझे पूरे अध्याय का पाठ करना हो तो क्या व्यवस्था है?"
+    },
+    "q11_answer": {
+      "id": "app.container.faq.q11_answer",
+      "defaultMessage": "सरल गीता ऐप में अगर आप पूरे अध्याय का एक साथ पाठ करना चाहते हैं, तो जो भी अध्याय और श्लोक आप खोलेंगे उसके ऊपर स्क्रीन में 'जारी रखें' बटन को क्लिक करिए। भगवान पूरे अध्याय को एक साथ लगातार बोलेंगे। उसके किनारे पर स्पीड का बटन भी है, आप चाहें तो जल्दी-जल्दी पाठ भी कर सकते हैं।"
+    },
+    "q12_question": {
+      "id": "app.container.faq.q12_question",
+      "defaultMessage": "सरल गीता ऐप में गीता लिखें। क्या है?"
+    },
+    "q12_answer": {
+      "id": "app.container.faq.q12_answer",
+      "defaultMessage": "गीता लिखें एक ऐसा अभियान है जिसमें आप अपने हाथ से गीता जी, रामायण, भागवत अन्य कई तरह के ग्रंथ जो उपलब्ध हैं उनको लिख सकते हैं। इसमें हम आपको रजिस्टर ,मूल पुस्तक ,पेन आपके पते पर कोरियर कर देते हैं। जो ग्रंथ आप लिखना चाहें उसको आप चयन करें और अपने नाम और पते के साथ जमा करिए। तो हम आपको सब सामग्री, लिखने के लिए भेज देंगे। और आपको हर 15 दिन में बताना होगा कि आपने कितना ग्रंथ लिख लिया है। पूरा ग्रंथ लिखने के बाद में आपको चित्र प्रमाण पत्र से सम्मानित किया जाएगा।"
     }
   }
 }

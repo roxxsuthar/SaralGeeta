@@ -1,9 +1,8 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { View, StatusBar, TouchableOpacity, NativeModules, Animated, TouchableWithoutFeedback, Platform } from 'react-native';
+import { View, StatusBar, TouchableOpacity, NativeModules, Animated, TouchableWithoutFeedback, Platform, StyleSheet, ImageBackground } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { ImageBackground } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createStructuredSelector } from 'reselect';
 import { get } from 'lodash';
 import { compose } from 'redux';
@@ -21,6 +20,7 @@ import {
   TranslationDrawer,
 } from './components';
 import CustomText from '../../components/CustomText';
+import strings from '../../../i18n';
 
 // Redux
 import makeSelectLearnGeeta from './selectors';
@@ -37,6 +37,7 @@ import { getShloks } from '../Shloks/actions';
 
 // Constants and styles
 import { IMAGES } from '../../constants';
+import { Navigation } from '../../constants/constants';
 import styles from './styles';
 import makeSelectOurIdeals from '../OurIdeals/selectors';
 import FastImage from 'react-native-fast-image';
@@ -56,6 +57,7 @@ function LearnGeeta({
   language,
   navigation,
 }) {
+  const insets = useSafeAreaInsets();
   const videoRef = useRef(null);
 
   const { currentLanguage } = language;
@@ -68,10 +70,7 @@ function LearnGeeta({
   const backButtonAnim = useRef(new Animated.Value(-150)).current;
   const hideTimerRef = useRef(null);
 
-  console.log("---------learnGeeta------", learnGeeta)
-
   const toggleBackButton = useCallback(() => {
-    if (Platform.OS !== 'ios') return;
     if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
 
     Animated.spring(backButtonAnim, {
@@ -125,16 +124,6 @@ function LearnGeeta({
       } else {
         Orientation.lockToLandscape();
       }
-
-      return () => {
-        setTimeout(() => {
-          if (Platform.OS === 'ios') {
-            OrientationModule.lockToPortrait();
-          } else {
-            Orientation.lockToPortrait();
-          }
-        }, 500);
-      };
     }, []),
   );
 
@@ -228,7 +217,7 @@ function LearnGeeta({
   // Render loading state
   if (get(learnGeeta, 'loading')) {
     return (
-      <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <StatusBar
           barStyle="light-content"
           translucent
@@ -242,7 +231,7 @@ function LearnGeeta({
             resizeMode={FastImage.resizeMode.contain}
           />
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 
@@ -275,160 +264,183 @@ function LearnGeeta({
     }, 100);
   };
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <StatusBar
         barStyle="light-content"
         translucent={true}
         backgroundColor="transparent"
       />
 
-      <View
-        style={styles.container}
-        onStartShouldSetResponder={() => true}
-        onResponderRelease={() => toggleBackButton()}
+      <ImageBackground
+        source={IMAGES.MainScreenBackground}
+        style={styles.gradientBorder}
+        resizeMode="cover"
       >
-        <ImageBackground
-          source={IMAGES.MainScreenBackground}
-          style={styles.gradientBorder}
-          resizeMode="cover"
-        >
-          {/* iOS Back Bar (Patti) */}
-          {Platform.OS === 'ios' && (
+        {/* Background Video - Full Screen */}
+        <VideoPlayer
+          videoRef={videoRef}
+          videoSource={getVideoSource()}
+          // Disable audio track when recording to prevent session conflicts
+          // Mute video when recording to prevent echo/feedback, but keep it playing
+          muted={isButton || isRecordingButton}
+          disableAudioTrack={false}
+          isVideoPaused={isVideoPaused}
+          onError={handleVideoError}
+          onLoadStart={handleVideoLoadStart}
+          onLoad={handleVideoLoad}
+          poster={poster}
+          isIntroVideoPlayed={isIntroVideoPlayed}
+          handleIntroPlay={handleIntroPlay}
+          setIsButton={setIsButton}
+          setIsVideoPlaying={setVideoPlayingState}
+          updateVideoUrl={updateVideoUrl}
+          learnGeeta={learnGeeta}
+          user={user}
+        />
+
+        {/* Safe Area Wrapper for UI Elements */}
+        <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
+          <View
+            style={{ flex: 1 }}
+            pointerEvents="box-none"
+            onStartShouldSetResponder={() => true}
+            onResponderRelease={() => toggleBackButton()}
+          >
+            {/* Back Bar (Patti) */}
             <Animated.View
               style={[
                 styles.backButtonBar,
-                { transform: [{ translateY: backButtonAnim }] },
+                {
+                  top: insets.top,
+                  transform: [{ translateY: backButtonAnim }]
+                },
               ]}
             >
               <TouchableOpacity
-                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                onPress={() => navigation.goBack()}
                 activeOpacity={0.7}
                 style={{ flexDirection: 'row', alignItems: 'center' }}
               >
-                <IMAGES.Bars height={28} width={28} />
+                <IMAGES.WhiteArrowIcon height={28} width={28} />
                 <CustomText style={styles.backButtonTitle}>
                   श्रीमद्‍भगवद्‍गीता
                 </CustomText>
               </TouchableOpacity>
             </Animated.View>
-          )}
 
-          {/* Eye Icon - Top Right */}
-          {isIntroVideoPlayed && (
-            <TouchableOpacity
-              style={styles.eyeIconButton}
-              onPress={handleOpenDrawer} // Changed this
-              activeOpacity={0.8}
-            >
-              {['भगवान वेद व्यास', 'Bhagwan Ved Vyas'].includes(
-                selectedIdeal?.name,
-              ) ? (
-                <IMAGES.InfoWhiteIcon height={28} width={28} />
-              ) : (
-                <IMAGES.InfoIcon height={28} width={28} />
-              )}
-            </TouchableOpacity>
-          )}
+            {/* Header Buttons - Top Right */}
+            {isIntroVideoPlayed && (
+              <View style={[styles.headerButtonsContainer, { top: insets.top + 20, right: insets.right + 35 }]}>
+                <TouchableOpacity
+                  style={styles.continueButton}
+                  onPress={() =>
+                    navigation.navigate(Navigation.FullChapterLearn, {
+                      chapterId: get(route, 'params.chapter.id'),
+                      serialNumber: get(route, 'params.chapter.serial'),
+                    })
+                  }
+                  activeOpacity={0.8}
+                >
+                  <CustomText style={styles.continueButtonText}>
+                    {strings.learnGeeta.continue.defaultMessage || 'Continue'}
+                  </CustomText>
+                </TouchableOpacity>
 
-          {/* Translation Drawer */}
-          <TranslationDrawer
-            visible={isDrawerVisible}
-            onClose={() => setIsDrawerVisible(false)}
-            translationContent={translationContent}
-            currentLanguage={currentLanguage}
-            commentary={learnGeeta?.data?.commentary}
-            shloke={learnGeeta?.data?.shloke_parts}
-            shlokNo={learnGeeta?.data?.shloke_no}
-            chapterDetail={learnGeeta?.data?.chapter}
-          />
+                <TouchableOpacity
+                  style={styles.eyeIconButton}
+                  onPress={handleOpenDrawer}
+                  activeOpacity={0.8}
+                >
+                  {['भगवान वेद व्यास', 'Bhagwan Ved Vyas'].includes(
+                    selectedIdeal?.name,
+                  ) ? (
+                    <IMAGES.InfoWhiteIcon height={28} width={28} />
+                  ) : (
+                    <IMAGES.InfoIcon height={28} width={28} />
+                  )}
+                </TouchableOpacity>
+              </View>
+            )}
 
-          <VideoPlayer
-            videoRef={videoRef}
-            videoSource={getVideoSource()}
-            // Disable audio track when recording to prevent session conflicts
-            // Mute video when recording to prevent echo/feedback, but keep it playing
-            muted={isButton || isRecordingButton}
-            disableAudioTrack={false}
-            isVideoPaused={isVideoPaused}
-            onError={handleVideoError}
-            onLoadStart={handleVideoLoadStart}
-            onLoad={handleVideoLoad}
-            poster={poster}
-            isIntroVideoPlayed={isIntroVideoPlayed}
-            handleIntroPlay={handleIntroPlay}
-            setIsButton={setIsButton}
-            setIsVideoPlaying={setVideoPlayingState}
-            updateVideoUrl={updateVideoUrl}
-            learnGeeta={learnGeeta}
-            user={user}
-          />
+            {/* Translation Drawer */}
+            <TranslationDrawer
+              visible={isDrawerVisible}
+              onClose={() => setIsDrawerVisible(false)}
+              translationContent={translationContent}
+              currentLanguage={currentLanguage}
+              commentary={learnGeeta?.data?.commentary}
+              shloke={learnGeeta?.data?.shloke_parts}
+              shlokNo={learnGeeta?.data?.shloke_no}
+              chapterDetail={learnGeeta?.data?.chapter}
+            />
 
-          {/* Skip button for intro video */}
-          {!isIntroVideoPlayed && !shouldShowIntroLoading && (
-            <TouchableOpacity
-              style={styles.skipButton}
-              onPress={handleIntroPlay}
-              activeOpacity={0.8}
-            >
-              <CustomText style={styles.skipButtonText}>Skip</CustomText>
-            </TouchableOpacity>
-          )}
+            {/* Skip button for intro video */}
+            {!isIntroVideoPlayed && !shouldShowIntroLoading && (
+              <TouchableOpacity
+                style={[styles.skipButton, { top: insets.top + 20, right: insets.right + 20 }]}
+                onPress={handleIntroPlay}
+                activeOpacity={0.8}
+              >
+                <CustomText style={styles.skipButtonText}>Skip</CustomText>
+              </TouchableOpacity>
+            )}
 
-          {shouldShowIntroLoading && (
-            <View style={styles.cloudAnimationContainer}>
-              <FastImage
-                style={styles.chakraImage}
-                source={IMAGES.Chakra}
-                resizeMode={FastImage.resizeMode.contain}
-              />
-            </View>
-          )}
-
-          {/* Show loading when switching videos (e.g., hls_male_path to hls_male_user) */}
-          {isButton && isLoading && (
-            <View style={styles.cloudAnimationContainer}>
-              <FastImage
-                style={styles.chakraImage}
-                source={IMAGES.Chakra}
-                resizeMode={FastImage.resizeMode.contain}
-              />
-            </View>
-          )}
-
-          {isIntroVideoPlayed && (
-            <>
-              {shouldShowLoading ? (
-                <View style={styles.cloudAnimationContainer}>
-                  <FastImage
-                    style={styles.chakraImage}
-                    source={IMAGES.Chakra}
-                    resizeMode={FastImage.resizeMode.contain}
-                  />
-                </View>
-              ) : (
-                <RecordingInterface
-                  transcription={transcription}
-                  learnGeeta={learnGeeta}
-                  isButton={isButton}
-                  isRecordingButton={isRecordingButton}
-                  startRecording={startRecording}
-                  stopRecording={stopRecording}
-                  videoRef={videoRef}
-                  setIsVideoPlaying={setVideoPlayingState}
-                  ourIdeals={ourIdeals}
-                  waitingForTranslation={waitingForTranslation}
-                  shlokIndex={shlokIndex}
-                  shloks={shloks}
-                  getPreviousShlok={getPreviousShlok}
-                  playAgain={playAgain}
-                  getNextShlok={getNextShlok}
+            {shouldShowIntroLoading && (
+              <View style={styles.cloudAnimationContainer}>
+                <FastImage
+                  style={styles.chakraImage}
+                  source={IMAGES.Chakra}
+                  resizeMode={FastImage.resizeMode.contain}
                 />
-              )}
-            </>
-          )}
-        </ImageBackground>
-      </View>
-    </SafeAreaView>
+              </View>
+            )}
+
+            {/* Show loading when switching videos (e.g., hls_male_path to hls_male_user) */}
+            {isButton && isLoading && (
+              <View style={styles.cloudAnimationContainer}>
+                <FastImage
+                  style={styles.chakraImage}
+                  source={IMAGES.Chakra}
+                  resizeMode={FastImage.resizeMode.contain}
+                />
+              </View>
+            )}
+
+            {isIntroVideoPlayed && (
+              <View style={{ flex: 1, paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right }} pointerEvents="box-none">
+                {shouldShowLoading ? (
+                  <View style={styles.cloudAnimationContainer}>
+                    <FastImage
+                      style={styles.chakraImage}
+                      source={IMAGES.Chakra}
+                      resizeMode={FastImage.resizeMode.contain}
+                    />
+                  </View>
+                ) : (
+                  <RecordingInterface
+                    transcription={transcription}
+                    learnGeeta={learnGeeta}
+                    isButton={isButton}
+                    isRecordingButton={isRecordingButton}
+                    startRecording={startRecording}
+                    stopRecording={stopRecording}
+                    videoRef={videoRef}
+                    setIsVideoPlaying={setVideoPlayingState}
+                    ourIdeals={ourIdeals}
+                    waitingForTranslation={waitingForTranslation}
+                    shlokIndex={shlokIndex}
+                    shloks={shloks}
+                    getPreviousShlok={getPreviousShlok}
+                    playAgain={playAgain}
+                    getNextShlok={getNextShlok}
+                  />
+                )}
+              </View>
+            )}
+          </View>
+        </View>
+      </ImageBackground>
+    </View>
   );
 }
 

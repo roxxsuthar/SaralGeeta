@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    overflow: 'hidden',
   },
   header: {
     flexDirection: 'row',
@@ -40,6 +39,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 10,
+  },
+  introContainer: {
+    backgroundColor: 'rgba(255, 165, 0, 0.1)',
+    padding: 15,
+    borderRadius: 15,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 165, 0, 0.2)',
+  },
+  description: {
+    fontSize: hp(15),
+    color: COLORS.black,
+    lineHeight: hp(22),
+    textAlign: 'center',
+    fontFamily: 'Outfit-Regular',
   },
   inputContainer: {
     marginBottom: hp(10),

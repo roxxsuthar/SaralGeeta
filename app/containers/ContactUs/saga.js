@@ -17,8 +17,6 @@ function* addContact({ payload, action }) {
   try {
     yield call(request, options);
     yield put(addContactUsSuccess());
-    action?.resetForm();
-    handleError({ message: "Message sent! We'll be in touch soon." });
   } catch (e) {
     yield put(addContactUsFails(e));
   }

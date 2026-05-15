@@ -17,6 +17,7 @@ import studentGiftReducer from './app/containers/StudentGift/reducer';
 import teacherGiftReducer from './app/containers/TeachGeeta/reducer';
 import writeGitaReducer from './app/containers/WriteGita/reducer';
 import gitaRulesReducer from './app/containers/GitaRules/reducer';
+import fullChapterLearnReducer from './app/containers/FullChapterLearn/reducer';
 
 const appPersistConfig = {
   key: 'app',
@@ -54,6 +55,7 @@ const combinedReducers = combineReducers({
   teacherGift: teacherGiftReducer,
   writeGita: writeGitaReducer,
   gitaRules: gitaRulesReducer,
+  fullChapterLearn: fullChapterLearnReducer,
 });
 
 // Root Reducer

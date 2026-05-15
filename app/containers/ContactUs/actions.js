@@ -8,8 +8,15 @@ import {
   CONTACT_US_ACTION,
   CONTACT_US_ACTION_FAIL,
   CONTACT_US_ACTION_SUCCESS,
+  CLEAN_UP,
   DEFAULT_ACTION,
 } from './constants';
+
+export function cleanUp() {
+  return {
+    type: CLEAN_UP,
+  };
+}
 
 export function defaultAction() {
   return {

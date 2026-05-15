@@ -2,15 +2,10 @@
 // All IMAGES constants here.
 import DashBoard from '../assets/images/dashborad.svg';
 import Contact from '../assets/images/contact-us.svg';
-import Bell from '../assets/images/bell.svg';
 import Privacy from '../assets/images/privacy-policy.svg';
 import TermsOfUse from '../assets/images/terms-of-use.svg';
-import Instragram from '../assets/images/instagram.svg';
-import Twitter from '../assets/images/x.svg';
-import SignOut from '../assets/images/signout.svg';
 import CircleCheck from '../assets/images/circle-check.svg';
 import Circle from '../assets/images/circle.svg';
-import Facebook from '../assets/images/facebook.svg';
 import Google from '../assets/images/google.svg';
 import Apple from '../assets/images/apple.svg';
 import CloseIcon from '../assets/images/CloseIcon.svg';
@@ -28,7 +23,6 @@ import Left from '../assets/images/left.svg';
 import Refresh from '../assets/images/refresh.svg';
 import ThreeBars from '../assets/images/bars-3.svg';
 import SearchIcon from '../assets/images/tabler-icon-search.svg';
-import BellIcon from '../assets/images/tabler-icon-bell.svg';
 import WhiteArrowIcon from '../assets/images/tabler-icon-chevron-left.svg';
 import WhiteLeftArrowIcon from '../assets/images/chevron-left-solid.svg';
 import WhiteRightArrowIcon from '../assets/images/chevron-right-solid.svg';
@@ -39,13 +33,10 @@ import User from '../assets/images/user.svg';
 import Lock from '../assets/images/lock.svg';
 import ChevronDown from '../assets/images/chevron-down.svg';
 import Message from '../assets/images/message.svg';
-import Mic from '../assets/images/Mic.svg';
 import MicPlay from '../assets/images/microphone-voice-icon.svg';
 import MicToPlay from '../assets/images/microphone-line-icon.svg';
 import InfoIcon from '../assets/images/info.svg';
 import InfoWhiteIcon from '../assets/images/info_white.svg';
-import WhatsApp from '../assets/images/whatsapp.svg';
-import YouTube from '../assets/images/youtube.svg';
 import StarOutline from '../assets/images/star-outline.svg';
 import HelpSquare from '../assets/images/help-square.svg';
 import AppsGrid from '../assets/images/apps-grid.svg';
@@ -63,13 +54,7 @@ import TwitterX from '../assets/images/x.svg';
 const GeetLearn = require('../assets/images/img_geeta_learn.png');
 const KrishnaImage = require('../assets/images/img_krishna.png');
 const Chakra = require('../assets/images/geeta_learn_animation.gif');
-const Leaf = require('../assets/images/leaf.gif');
-const PeacockFeather = require('../assets/images/peacock_feather.gif');
 const Frame = require('../assets/images/frame.png');
-const Rath = require('../assets/images/img_john_fitness.png');
-const Trainer = require('../assets/images/trainer_photo.png');
-const Krishna = require('../assets/images/krishna.png');
-const Cartoon_cloud = require('../assets/images/cartoon_cloud.png');
 const AppBackground = require('../assets/images/app_background.png');
 const Splash = require('../assets/images/splash_screen.png');
 const MainScreenBackground = require('../assets/images/main_screen_background.png');
@@ -79,12 +64,8 @@ const TranslationAnimation = require('../assets/images/translationAnimation.json
 const IMAGES = {
   DashBoard,
   Contact,
-  Bell,
   Privacy,
   TermsOfUse,
-  Instragram,
-  Twitter,
-  SignOut,
   ChevronLeftSolid,
   User,
   Lock,
@@ -95,7 +76,6 @@ const IMAGES = {
   ChevronDown,
   Message,
   Circle,
-  Facebook,
   Google,
   Apple,
   CloseIcon,
@@ -106,10 +86,6 @@ const IMAGES = {
   PlayerIcon,
   Heart,
   Frame,
-  Rath,
-  Trainer,
-  Krishna,
-  Cartoon_cloud,
   ShlokBackground,
   MicIcon,
   PauseIcon,
@@ -122,22 +98,16 @@ const IMAGES = {
   MainScreenBackground,
   ThreeBars,
   SearchIcon,
-  BellIcon,
   WhiteArrowIcon,
   WhiteLeftArrowIcon,
   WhiteRightArrowIcon,
   WhitePlayIcon,
   ReplayButton,
-  Leaf,
-  PeacockFeather,
-  Mic,
   MicPlay,
   MicToPlay,
   InfoIcon,
   InfoWhiteIcon,
   Splash,
-  WhatsApp,
-  YouTube,
   StarOutline,
   HelpSquare,
   AppsGrid,

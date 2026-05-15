@@ -1,6 +1,6 @@
 /**
  *
- * Asynchronously loads the component for ChatFiles
+ * Asynchronously loads the component for FAQ
  *
  */
 

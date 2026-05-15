@@ -9,6 +9,8 @@ import styles from '../styles';
 import { COLOR_ARRAY } from '../../../constants/constants';
 import { hp } from '../../../utils/responsive';
 
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 const RecordingInterface = ({
   transcription,
   learnGeeta,
@@ -25,6 +27,8 @@ const RecordingInterface = ({
   playAgain,
   getNextShlok,
 }) => {
+  const insets = useSafeAreaInsets();
+
   const handleStartRecording = () => {
     startRecording(videoRef, setIsVideoPlaying);
   };
@@ -34,7 +38,7 @@ const RecordingInterface = ({
   };
 
   return (
-    <View style={styles.overlay}>
+    <View style={[styles.overlay, { bottom: insets.bottom }]}>
       {/* Background image placed at the bottom */}
       <FastImage
         style={styles.svgImageContainer1}
@@ -59,7 +63,6 @@ const RecordingInterface = ({
                       fontFamily: FONTS.HINDI,
                       fontWeight: '700',
                       color: COLOR_ARRAY[idx],
-                      ...(!isButton ? { bottom: hp(35) } : {}),
                     }}
                   >
                     {item}
@@ -75,10 +78,10 @@ const RecordingInterface = ({
 
       {/* Buttons and animation on top */}
       {isButton && !waitingForTranslation && (
-        <>
-          {/* Control buttons - Previous, Play Again, Next */}
-          <View style={styles.controlContainer}>
-            {/* Left arrow - top left */}
+        <View style={styles.controlContainer}>
+          {/* Left side container for left arrow and mic button */}
+          <View style={styles.leftControlGroup}>
+            {/* Left arrow */}
             {shlokIndex > 0 && (
               <TouchableOpacity
                 style={styles.controlButtonStyle}
@@ -91,24 +94,36 @@ const RecordingInterface = ({
               </TouchableOpacity>
             )}
 
-            {/* Right side container for right arrow and replay button */}
-            <View style={styles.fixRightButton}>
-              {/* Right arrow - top right */}
-              {shlokIndex + 1 < (shloks?.data?.length || 0) && (
-                <TouchableOpacity
-                  style={styles.controlButtonStyle2}
-                  onPress={getNextShlok}
-                  activeOpacity={0.8}
-                >
-                  <View style={styles.controlIconStyle}>
-                    <IMAGES.WhiteRightArrowIcon height="100%" width="100%" />
-                  </View>
-                </TouchableOpacity>
-              )}
-
-              {/* Replay button - bottom right */}
+            {/* Mic/Pause button */}
+            {isRecordingButton ? (
               <TouchableOpacity
-                style={styles.controlButtonStyle1}
+                style={styles.buttonStyle}
+                onPress={handleStopRecording}
+                activeOpacity={0.8}
+              >
+                <View style={styles.buttonIconStyle}>
+                  <IMAGES.PauseIcon height="100%" width="100%" />
+                </View>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity
+                style={styles.buttonStyle}
+                onPress={handleStartRecording}
+                activeOpacity={0.8}
+              >
+                <View style={styles.buttonIconStyle}>
+                  <IMAGES.MicIcon height="100%" width="100%" />
+                </View>
+              </TouchableOpacity>
+            )}
+          </View>
+
+          {/* Right side container for right arrow and replay button */}
+          <View style={styles.rightControlGroup}>
+            {/* Right arrow */}
+            {shlokIndex + 1 < (shloks?.data?.length || 0) && (
+              <TouchableOpacity
+                style={styles.controlButtonStyle2}
                 onPress={playAgain}
                 activeOpacity={0.8}
               >
@@ -116,41 +131,31 @@ const RecordingInterface = ({
                   <IMAGES.ReplayButton height="100%" width="100%" />
                 </View>
               </TouchableOpacity>
-            </View>
-          </View>
+            )}
 
-          {/* Mic/Pause button */}
-          {isRecordingButton ? (
+            {/* Replay button */}
             <TouchableOpacity
-              style={styles.buttonStyle}
-              onPress={handleStopRecording}
+              style={styles.controlButtonStyle1}
+
+              onPress={getNextShlok}
               activeOpacity={0.8}
             >
-              <View style={styles.buttonIconStyle}>
-                <IMAGES.PauseIcon height="100%" width="100%" />
+
+              <View style={styles.controlIconStyle}>
+                <IMAGES.WhiteRightArrowIcon height="100%" width="100%" />
               </View>
             </TouchableOpacity>
-          ) : (
-            <TouchableOpacity
-              style={styles.buttonStyle}
-              onPress={handleStartRecording}
-              activeOpacity={0.8}
-            >
-              <View style={styles.buttonIconStyle}>
-                <IMAGES.MicIcon height="100%" width="100%" />
-              </View>
-            </TouchableOpacity>
-          )}
+          </View>
 
           {isRecordingButton && (
             <Lottie
               source={IMAGES.PlayerLottie}
               autoPlay
               loop
-              style={styles.animation}
+              style={[styles.animation, { position: 'absolute', left: '0%', bottom: -2 }]}
             />
           )}
-        </>
+        </View>
       )}
     </View>
   );
