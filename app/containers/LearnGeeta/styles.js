@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
 
   svgImageContainer1: {
     position: 'absolute',
-    height: hp(100),
+    height: hp(120),
     left: '15%',
     right: '7%',
-    bottom: hp(10),
+    bottom: hp(0),
   },
 
   // Text styles
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     zIndex: 1,
     textAlign: 'center',
-    bottom: hp(30),
+    bottom: hp(20),
     left: '15%',
     right: '7%',
     justifyContent: 'center',
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     zIndex: 1005,
     left: '15%',
     right: '7%',
-    height: hp(100),
+    height: hp(130),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
 
   topLeftControl: {
     position: 'absolute',
-    top: '5%',
+    top: hp(8),
     left: wp(5),
     justifyContent: 'center',
     alignItems: 'center',
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
 
   bottomLeftControl: {
     position: 'absolute',
-    bottom: '5%',
+    bottom: hp(8),
     left: wp(5),
     justifyContent: 'center',
     alignItems: 'center',
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
 
   topRightControl: {
     position: 'absolute',
-    top: '5%',
+    top: hp(8),
     right: wp(5),
     justifyContent: 'center',
     alignItems: 'center',
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
 
   bottomRightControl: {
     position: 'absolute',
-    bottom: '5%',
+    bottom: hp(8),
     right: wp(5),
     justifyContent: 'center',
     alignItems: 'center',
