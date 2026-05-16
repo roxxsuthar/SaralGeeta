@@ -1,6 +1,6 @@
 import { StyleSheet, Platform } from 'react-native';
 import { hp, wp } from '../../utils/responsive';
-import { FONTS } from '../../constants';
+import { FONTS, COLORS } from '../../constants';
 
 const styles = StyleSheet.create({
   // Container styles
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   // Video styles
   videoWrapper: {
     width: '100%',
+    height: '100%',
     overflow: 'hidden',
   },
 
@@ -41,24 +42,24 @@ const styles = StyleSheet.create({
 
   svgImageContainer1: {
     position: 'absolute',
-    height: hp(120),
+    height: hp(100),
     left: '15%',
-    right: '0%',
+    right: '7%',
     bottom: hp(10),
   },
 
   // Text styles
   overlayText: {
     position: 'absolute',
-    fontSize: hp(24),
-    lineHeight: hp(35),
+    fontSize: hp(20),
+    lineHeight: hp(30),
     fontFamily: FONTS.HINDI,
     fontWeight: '700',
     zIndex: 1,
     textAlign: 'center',
-    bottom: hp(40),
+    bottom: hp(30),
     left: '15%',
-    right: '0%',
+    right: '7%',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     bottom: hp(50),
     left: '15%',
-    right: '0%',
+    right: '7%',
     color: '#000000',
   },
 
@@ -95,47 +96,61 @@ const styles = StyleSheet.create({
   // Control buttons styles
   controlContainer: {
     position: 'absolute',
-    bottom: hp(15),
+    bottom: hp(0),
     zIndex: 1005,
     left: '15%',
-    right: '0%',
-    height: hp(120),
+    right: '7%',
+    height: hp(100),
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     pointerEvents: 'box-none',
+    paddingHorizontal: wp(10),
   },
 
-  leftControlGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  rightControlGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  controlButtonStyle: {
+  topLeftControl: {
+    position: 'absolute',
+    top: '5%',
+    left: wp(5),
     justifyContent: 'center',
     alignItems: 'center',
     height: hp(48),
     width: wp(48),
-    marginRight: wp(5),
+  },
+
+  bottomLeftControl: {
+    position: 'absolute',
+    bottom: '5%',
+    left: wp(5),
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: hp(48),
+    width: wp(48),
+  },
+
+  topRightControl: {
+    position: 'absolute',
+    top: '5%',
+    right: wp(5),
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: hp(48),
+    width: wp(48),
+  },
+
+  bottomRightControl: {
+    position: 'absolute',
+    bottom: '5%',
+    right: wp(5),
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: hp(48),
+    width: wp(48),
   },
 
   buttonStyle: {
     borderRadius: hp(40),
     zIndex: 1010,
-    marginLeft: wp(10)
-  },
-
-  controlButtonStyle1: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: hp(48),
-    width: wp(48),
-    marginLeft: wp(5),
   },
 
   controlButtonStyle2: {
@@ -157,7 +172,7 @@ const styles = StyleSheet.create({
     marginLeft: wp(60),
     width: wp(200),
     height: hp(50),
-    bottom: hp(5),
+    bottom: hp(-5),
     zIndex: 999,
   },
 

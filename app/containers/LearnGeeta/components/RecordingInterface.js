@@ -3,7 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import Lottie from 'lottie-react-native';
 import FastImage from 'react-native-fast-image';
-import { IMAGES, FONTS } from '../../../constants';
+import { IMAGES, FONTS, COLORS } from '../../../constants';
 import CustomText from '../../../components/CustomText';
 import styles from '../styles';
 import { COLOR_ARRAY } from '../../../constants/constants';
@@ -19,6 +19,7 @@ const RecordingInterface = ({
   startRecording,
   stopRecording,
   videoRef,
+  isVideoPlaying,
   setIsVideoPlaying,
   waitingForTranslation,
   shlokIndex,
@@ -79,22 +80,23 @@ const RecordingInterface = ({
       {/* Buttons and animation on top */}
       {isButton && !waitingForTranslation && (
         <View style={styles.controlContainer}>
-          {/* Left side container for left arrow and mic button */}
-          <View style={styles.leftControlGroup}>
-            {/* Left arrow */}
-            {shlokIndex > 0 && (
-              <TouchableOpacity
-                style={styles.controlButtonStyle}
-                onPress={getPreviousShlok}
-                activeOpacity={0.8}
-              >
-                <View style={styles.controlIconStyle}>
-                  <IMAGES.WhiteLeftArrowIcon height="100%" width="100%" />
-                </View>
-              </TouchableOpacity>
-            )}
+          {/* Navigation and Interaction Controls (Corner Positioned) */}
+          
+          {/* Top Left: Previous Shlok */}
+          {shlokIndex > 0 && (
+            <TouchableOpacity
+              style={styles.topLeftControl}
+              onPress={getPreviousShlok}
+              activeOpacity={0.8}
+            >
+              <View style={styles.controlIconStyle}>
+                <IMAGES.WhiteLeftArrowIcon height="100%" width="100%" />
+              </View>
+            </TouchableOpacity>
+          )}
 
-            {/* Mic/Pause button */}
+          {/* Bottom Left: Mic/Recording */}
+          <View style={styles.bottomLeftControl}>
             {isRecordingButton ? (
               <TouchableOpacity
                 style={styles.buttonStyle}
@@ -118,43 +120,40 @@ const RecordingInterface = ({
             )}
           </View>
 
-          {/* Right side container for right arrow and replay button */}
-          <View style={styles.rightControlGroup}>
-            {/* Right arrow */}
-            {shlokIndex + 1 < (shloks?.data?.length || 0) && (
-              <TouchableOpacity
-                style={styles.controlButtonStyle2}
-                onPress={playAgain}
-                activeOpacity={0.8}
-              >
-                <View style={styles.controlIconStyle}>
-                  <IMAGES.ReplayButton height="100%" width="100%" />
-                </View>
-              </TouchableOpacity>
-            )}
-
-            {/* Replay button */}
+          {/* Top Right: Next Shlok */}
+          {shlokIndex + 1 < (shloks?.data?.length || 0) && (
             <TouchableOpacity
-              style={styles.controlButtonStyle1}
-
+              style={styles.topRightControl}
               onPress={getNextShlok}
               activeOpacity={0.8}
             >
-
               <View style={styles.controlIconStyle}>
                 <IMAGES.WhiteRightArrowIcon height="100%" width="100%" />
               </View>
             </TouchableOpacity>
-          </View>
-
-          {isRecordingButton && (
-            <Lottie
-              source={IMAGES.PlayerLottie}
-              autoPlay
-              loop
-              style={[styles.animation, { position: 'absolute', left: '0%', bottom: -2 }]}
-            />
           )}
+
+          {/* Bottom Right: Replay */}
+          <TouchableOpacity
+            style={styles.bottomRightControl}
+            onPress={playAgain}
+            activeOpacity={0.8}
+          >
+            <View style={styles.controlIconStyle}>
+              <IMAGES.ReplayButton height="100%" width="100%" />
+            </View>
+          </TouchableOpacity>
+        </View>
+      )}
+
+      {isRecordingButton && (
+        <View style={styles.controlContainer} pointerEvents="none">
+          <Lottie
+            source={IMAGES.PlayerLottie}
+            autoPlay
+            loop
+            style={styles.animation}
+          />
         </View>
       )}
     </View>
@@ -170,6 +169,7 @@ RecordingInterface.propTypes = {
   stopRecording: PropTypes.func,
   videoRef: PropTypes.object,
   setIsVideoPlaying: PropTypes.func,
+  isVideoPlaying: PropTypes.bool,
   waitingForTranslation: PropTypes.bool,
   shlokIndex: PropTypes.number,
   shloks: PropTypes.object,

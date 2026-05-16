@@ -99,6 +99,7 @@ function LearnGeeta({
   }, []);
 
   const {
+    isVideoPlaying,
     isVideoReady,
     isLoading,
     updateVideoUrl,
@@ -475,6 +476,7 @@ function LearnGeeta({
                     startRecording={startRecording}
                     stopRecording={stopRecording}
                     videoRef={videoRef}
+                    isVideoPlaying={isVideoPlaying}
                     setIsVideoPlaying={setVideoPlayingState}
                     ourIdeals={ourIdeals}
                     waitingForTranslation={waitingForTranslation}

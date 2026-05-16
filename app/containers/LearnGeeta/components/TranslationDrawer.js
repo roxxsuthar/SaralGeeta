@@ -85,6 +85,7 @@ const TranslationDrawer = ({
       onRequestClose={onClose}
       supportedOrientations={['landscape', 'landscape-left', 'landscape-right']}
       presentationStyle="overFullScreen"
+      statusBarTranslucent={true}
       onShow={() => {
         if (Platform.OS === 'ios') {
           OrientationModule.lockToLandscape();
