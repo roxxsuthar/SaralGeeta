@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
-    paddingTop: 15,
+    paddingTop: 25,
   },
   introContainer: {
     backgroundColor: 'rgba(255, 165, 0, 0.1)',
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderRadius: 15,
-    marginBottom: 8,
+    marginBottom: 12,
     marginHorizontal: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },

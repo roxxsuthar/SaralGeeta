@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
   buttonStyle: {
     borderRadius: hp(40),
     zIndex: 1010,
+    marginLeft: wp(10)
   },
 
   controlButtonStyle1: {

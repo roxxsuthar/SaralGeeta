@@ -14,6 +14,7 @@ import { DrawerActions, useNavigation, useFocusEffect } from '@react-navigation/
 import { Formik } from 'formik';
 import { TextInput } from 'react-native-gesture-handler';
 import * as Yup from 'yup';
+import moment from 'moment';
 
 import makeSelectGitaRules from './selectors';
 import styles from './styles';
@@ -184,9 +185,12 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                                         style={styles.rulesList}
                                     >
 
-                                        <View style={{ marginBottom: 15 }}>
+                                        <View style={{ marginBottom: 20, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                                             <CustomText style={styles.label}>
                                                 {gitaRulesStrings?.rulesLabel?.defaultMessage || 'Select a Rule'}
+                                            </CustomText>
+                                            <CustomText style={[styles.label, { color: COLORS.orange }]}>
+                                                {moment().format('DD MMM YYYY')}
                                             </CustomText>
                                         </View>
                                         {rulesData.map((rule) => (

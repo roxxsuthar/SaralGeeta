@@ -95,7 +95,7 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                         </View>
                     </TouchableOpacity>
                     <CustomText style={styles.heading} numberOfLines={1} ellipsizeMode="tail">
-                        {studentGiftStrings?.heading?.defaultMessage || 'Student Details'}
+                        {studentGiftStrings?.heading?.defaultMessage || 'Gita Student'}
                     </CustomText>
                     <View style={{ width: 40 }} />
                 </View>
@@ -139,11 +139,11 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
 
                                         <View style={styles.inputContainer}>
                                             <CustomText style={styles.label}>
-                                                {studentGiftStrings?.name?.defaultMessage || 'Student Name'}
+                                                {studentGiftStrings?.name?.defaultMessage || 'Gita Student Name'}
                                             </CustomText>
                                             <TextInput
                                                 style={styles.input}
-                                                placeholder={studentGiftStrings?.placeholderName?.defaultMessage || 'Enter student name'}
+                                                placeholder={studentGiftStrings?.placeholderName?.defaultMessage || 'Enter gita student name'}
                                                 placeholderTextColor={COLORS.gray}
                                                 onChangeText={handleChange('name')}
                                                 onBlur={handleBlur('name')}

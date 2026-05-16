@@ -436,7 +436,7 @@
   "studentGift": {
     "heading": {
       "id": "app.container.studentGift.heading",
-      "defaultMessage": "Student Details"
+      "defaultMessage": "Gita Student"
     },
     "description": {
       "id": "app.container.studentGift.description",
@@ -444,7 +444,7 @@
     },
     "name": {
       "id": "app.container.studentGift.name",
-      "defaultMessage": "Student Name"
+      "defaultMessage": "Gita Student Name"
     },
     "phoneNumber": {
       "id": "app.container.studentGift.phoneNumber",
@@ -468,7 +468,7 @@
     },
     "placeholderName": {
       "id": "app.container.studentGift.placeholderName",
-      "defaultMessage": "Enter student name"
+      "defaultMessage": "Enter gita student name"
     },
     "placeholderPhone": {
       "id": "app.container.studentGift.placeholderPhone",

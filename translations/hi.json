@@ -436,7 +436,7 @@
   "studentGift": {
     "heading": {
       "id": "app.container.studentGift.heading",
-      "defaultMessage": "छात्र का विवरण"
+      "defaultMessage": "गीता विद्यार्थी"
     },
     "description": {
       "id": "app.container.studentGift.description",
@@ -444,7 +444,7 @@
     },
     "name": {
       "id": "app.container.studentGift.name",
-      "defaultMessage": "छात्र का नाम"
+      "defaultMessage": "गीता विद्यार्थी का नाम"
     },
     "phoneNumber": {
       "id": "app.container.studentGift.phoneNumber",
@@ -468,7 +468,7 @@
     },
     "placeholderName": {
       "id": "app.container.studentGift.placeholderName",
-      "defaultMessage": "छात्र का नाम दर्ज करें"
+      "defaultMessage": "गीता विद्यार्थी का नाम दर्ज करें"
     },
     "placeholderPhone": {
       "id": "app.container.studentGift.placeholderPhone",

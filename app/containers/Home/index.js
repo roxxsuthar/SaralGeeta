@@ -2,7 +2,7 @@
 Home
 * */
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
@@ -18,6 +18,7 @@ import {
   Share,
   Animated,
   NativeModules,
+  ActivityIndicator,
 } from 'react-native';
 import Orientation from 'react-native-orientation-locker';
 const { OrientationModule } = NativeModules;
@@ -26,15 +27,16 @@ import get from 'lodash/get';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import FastImage from 'react-native-fast-image';
-import Voice from '@react-native-voice/voice';
+import Voice from '@dev-amirzubair/react-native-voice';
 import { useFocusEffect } from '@react-navigation/native';
+import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions';
 
 import makeSelectHome from './selectors';
 import styles from './styles';
 import CustomText from '../../components/CustomText';
 import LoadingScreen from '../../components/LoadingScreen';
 import { setFontFamily } from '../../utils/device';
-import { FONTS, IMAGES } from '../../constants';
+import { FONTS, IMAGES, COLORS } from '../../constants';
 import strings from '../../../i18n';
 import { makeSelectAppLanguage } from '../App/selectors';
 import { getChapters, getRecentWatched } from './actions';
@@ -58,6 +60,36 @@ function Home({
   const [isSocialExpanded, setIsSocialExpanded] = useState(false);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const insets = useSafeAreaInsets();
+  const pulseAnim = useRef(new Animated.Value(1)).current;
+  const listeningTimerRef = useRef(null);
+
+  const clearListeningTimer = () => {
+    if (listeningTimerRef.current) {
+      clearTimeout(listeningTimerRef.current);
+      listeningTimerRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    if (isListening) {
+      Animated.loop(
+        Animated.sequence([
+          Animated.timing(pulseAnim, {
+            toValue: 1.2,
+            duration: 800,
+            useNativeDriver: true,
+          }),
+          Animated.timing(pulseAnim, {
+            toValue: 1,
+            duration: 800,
+            useNativeDriver: true,
+          }),
+        ])
+      ).start();
+    } else {
+      pulseAnim.setValue(1);
+    }
+  }, [isListening, pulseAnim]);
 
   const { Home: HomeMessage, HomeBottomBar } = strings;
   const { currentLanguage } = language;
@@ -90,15 +122,6 @@ function Home({
 
   useFocusEffect(
     useCallback(() => {
-      // Reset bottom bar and search states to initial
-      setIsSocialExpanded(false);
-      setIsMenuExpanded(false);
-      setShowSearch(false);
-      setSearchText('');
-
-      // Ensure StatusBar is visible when Home screen is focused
-      StatusBar.setHidden(false);
-
       // Ensure orientation is locked to portrait
       if (Platform.OS === 'ios') {
         OrientationModule.lockToPortrait();
@@ -108,6 +131,14 @@ function Home({
 
       handleGetRecent();
       handleGetChapters(currentLanguage);
+
+      return () => {
+        // Only clear states when leaving the screen
+        setIsSocialExpanded(false);
+        setIsMenuExpanded(false);
+        setShowSearch(false);
+        setSearchText('');
+      };
     }, [handleGetRecent, handleGetChapters, currentLanguage]),
   );
 
@@ -136,7 +167,7 @@ function Home({
         Voice.onSpeechEnd = onSpeechEnd;
         Voice.onSpeechResults = onSpeechResults;
         Voice.onSpeechError = onSpeechError;
-        Voice.onSpeechPartialResults = onSpeechResults;
+        Voice.onSpeechPartialResults = onSpeechPartialResults;
         Voice.onSpeechVolumeChanged = () => { };
       } catch {
         /* empty */
@@ -164,18 +195,27 @@ function Home({
   }, []);
 
   useEffect(() => {
-    if (home?.data) {
+    if (home?.data && searchText.trim() === '') {
       setFilteredChapters(home.data);
     }
-  }, [home?.data]);
+  }, [home?.data, searchText]);
 
   useEffect(() => {
+    if (!home?.data) return;
+
     if (searchText.trim() === '') {
-      setFilteredChapters(home?.data || []);
+      setFilteredChapters(home.data);
     } else {
-      const filtered = home?.data?.filter((item) =>
-        item.name?.toLowerCase().includes(searchText.toLowerCase()),
-      );
+      const query = searchText.toLowerCase().trim();
+      const filtered = home.data.filter((item) => {
+        const nameMatch = item.name?.toLowerCase().includes(query);
+        const descMatch = item.description?.toLowerCase().includes(query);
+        const serialMatch = item.serial?.toString() === query ||
+          (query.startsWith('chapter') && item.serial?.toString() === query.replace('chapter', '').trim()) ||
+          (query.startsWith('अध्याय') && item.serial?.toString() === query.replace('अध्याय', '').trim());
+
+        return nameMatch || descMatch || serialMatch;
+      });
       setFilteredChapters(filtered);
     }
   }, [searchText, home?.data]);
@@ -185,113 +225,121 @@ function Home({
   };
 
   const onSpeechEnd = () => {
-    // Just update the state, don't try to stop again
-    setIsListening(false);
+    // onSpeechEnd can fire before results on some devices. 
+    // We let onSpeechResults or onSpeechError handle the state reset for a smoother UI.
   };
 
   const onSpeechResults = (e) => {
     if (e.value && e.value.length > 0) {
       const recognizedText = e.value[0].trim();
       setSearchText(recognizedText);
-
-      // Filter chapters based on the recognized text
-      if (home?.data) {
-        const filtered = home.data.filter((item) =>
-          item.name?.toLowerCase().includes(recognizedText.toLowerCase()),
-        );
-        setFilteredChapters(filtered);
-      }
+      // If we got a final result, we can stop listening
+      clearListeningTimer();
+      setIsListening(false);
     }
+  };
 
-    setIsListening(false);
-    // Automatically stop voice recognition after getting results
-    Voice.stop().catch();
+  const onSpeechPartialResults = (e) => {
+    if (e.value && e.value.length > 0) {
+      setSearchText(e.value[0].trim());
+      
+      // Reset the silence timer every time user speaks
+      clearListeningTimer();
+      listeningTimerRef.current = setTimeout(() => {
+        setIsListening(false);
+        Voice.stop().catch(() => {});
+      }, 5000);
+    }
   };
 
   const onSpeechError = async (e) => {
-    setIsListening(false);
-
-    // Don't show alerts for common cases
-    if (
-      e.error?.code === '7' || // no match
-      e.error?.code === '0' || // cancelled
-      e.error?.message?.includes('cancelled')
-    ) {
+    // Only reset state if it's a real error that stops the session
+    console.log('Voice Search Error: ', e);
+    
+    // Code 7 is "No match", which can happen if the user is silent briefly.
+    // We ignore this and let our 10s timer or final results handle the state.
+    if (e.error?.code === '7' || e.error?.code === '8' || e.error?.code === '9') {
       return;
     }
 
-    try {
-      // Cleanup
-      await Voice.stop().catch(() => { });
-      await Voice.destroy().catch(() => { });
-    } catch {
-      /* empty */
-    }
+    clearListeningTimer();
+    setIsListening(false);
   };
 
   const requestMicrophonePermission = async () => {
     try {
       if (Platform.OS === 'android') {
-        const granted = await PermissionsAndroid.request(
-          PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
-          {
-            title: 'Microphone Permission',
-            message:
-              'This app needs access to your microphone for voice search',
-            buttonNeutral: 'Ask Me Later',
-            buttonNegative: 'Cancel',
-            buttonPositive: 'OK',
-          },
-        );
-        return granted === PermissionsAndroid.RESULTS.GRANTED;
-      } else if (Platform.OS === 'ios') {
-        // For iOS, we need to check microphone permission
-        try {
-          await Voice.isAvailable();
+        const result = await check(PERMISSIONS.ANDROID.RECORD_AUDIO);
+        if (result === RESULTS.GRANTED) {
           return true;
-        } catch {
-          return false;
         }
+        const requestResult = await request(PERMISSIONS.ANDROID.RECORD_AUDIO);
+        return requestResult === RESULTS.GRANTED;
+      } else if (Platform.OS === 'ios') {
+        const result = await check(PERMISSIONS.IOS.MICROPHONE);
+        if (result === RESULTS.GRANTED) {
+          return true;
+        }
+        const requestResult = await request(PERMISSIONS.IOS.MICROPHONE);
+        return requestResult === RESULTS.GRANTED;
       }
       return false;
-    } catch {
+    } catch (error) {
+      console.log('Permission Error: ', error);
       return false;
     }
   };
 
   const startVoiceSearch = async () => {
     if (isListening) {
-      await stopVoiceSearch();
+      stopVoiceSearch();
       return;
     }
 
     try {
-      setSearchText(''); // Clear existing search text
-      setIsListening(true);
-
-      // Clean up previous instance
-      await Voice.destroy().catch(() => { });
-      await Voice.removeAllListeners();
-
-      // Check permissions first
+      // 1. Check/Request permissions FIRST
       const hasPermission = await requestMicrophonePermission();
       if (!hasPermission) {
-        setIsListening(false);
+        if (Platform.OS === 'android' || Platform.OS === 'ios') {
+           alert(currentLanguage === 'hindi' ? 'कृपया माइक्रोफ़ोन अनुमति सक्षम करें' : 'Please enable microphone permission in settings');
+        }
         return;
       }
 
-      // Set up event listeners
-      Voice.onSpeechStart = onSpeechStart;
-      Voice.onSpeechEnd = onSpeechEnd;
-      Voice.onSpeechResults = onSpeechResults;
-      Voice.onSpeechError = onSpeechError;
-      Voice.onSpeechPartialResults = onSpeechResults;
+      // 2. If granted, then set UI states
+      setIsListening(true);
+      setSearchText('');
+
+      // Ensure we don't stay listening forever, but give at least 10 seconds
+      clearListeningTimer();
+      listeningTimerRef.current = setTimeout(() => {
+        setIsListening(false);
+      }, 10000);
 
       const languageCode = currentLanguage === 'hindi' ? 'hi-IN' : 'en-US';
 
-      // Start recognition
-      await Voice.start(languageCode);
-    } catch {
+      // Advanced cleanup before starting a new session to prevent fluctuation
+      try {
+        await Voice.stop().catch(() => {});
+        await Voice.destroy().catch(() => {});
+      } catch (e) { /* ignore */ }
+
+      // Small delay to let the native engine reset fully
+      setTimeout(async () => {
+        try {
+          await Voice.start(languageCode, {
+            EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS: 10000,
+            EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS: 5000,
+            EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS: 5000,
+          });
+        } catch (error) {
+          console.log('Voice Start Error: ', error);
+          setIsListening(false);
+        }
+      }, 250);
+
+    } catch (error) {
+      console.log('Voice Search Error: ', error);
       setIsListening(false);
     }
   };
@@ -613,28 +661,43 @@ function Home({
 
         {showSearch && (
           <View style={styles.searchContainer}>
+            <View style={styles.icon}>
+              <IMAGES.SearchIcon height="100%" width="100%" fill="#fff" />
+            </View>
             <TextInput
               style={styles.searchInput}
-              placeholder="Search Chapters..."
-              placeholderTextColor="#ffffff"
-              value={searchText}
+              placeholder={isListening
+                ? (currentLanguage === 'hindi' ? 'बोलिए...' : 'Listening...')
+                : (currentLanguage === 'hindi' ? 'अध्याय खोजें...' : 'Search Chapters...')
+              }
+              placeholderTextColor="rgba(255, 255, 255, 0.7)"
+              value={isListening ? (searchText || '') : searchText}
               onChangeText={setSearchText}
               allowFontScaling={false}
+              autoFocus
             />
+            {searchText !== '' && (
+              <TouchableOpacity
+                onPress={() => setSearchText('')}
+                style={{ padding: 5, justifyContent: 'center', alignItems: 'center' }}
+              >
+                <View style={{ width: 20, height: 20, justifyContent: 'center', alignItems: 'center' }}>
+                  <CustomText style={{ color: '#fff', fontSize: 14, fontWeight: 'bold', lineHeight: 20 }}>✕</CustomText>
+                </View>
+              </TouchableOpacity>
+            )}
             <TouchableOpacity
               activeOpacity={0.8}
               onPress={isListening ? stopVoiceSearch : startVoiceSearch}
-              style={styles.voiceButton}
+              style={[styles.voiceButton, isListening && { backgroundColor: 'rgba(228, 134, 22, 0.4)' }]}
             >
-              {isListening ? (
-                <View style={styles.iconPlay}>
-                  <IMAGES.MicPlay height="100%" width="100%" />
-                </View>
-              ) : (
-                <View style={styles.iconPlay}>
+              <Animated.View style={[styles.iconPlay, { transform: [{ scale: pulseAnim }] }]}>
+                {isListening ? (
+                  <ActivityIndicator size="small" color="#ffffff" />
+                ) : (
                   <IMAGES.MicToPlay height="100%" width="100%" />
-                </View>
-              )}
+                )}
+              </Animated.View>
             </TouchableOpacity>
           </View>
         )}
@@ -642,12 +705,23 @@ function Home({
         <View style={styles.mainContainer}>
           {home?.loading ? (
             <LoadingScreen />
+          ) : filteredChapters.length === 0 && searchText.length > 0 ? (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingTop: 100 }}>
+              <CustomText style={{ color: COLORS.gray, fontSize: 18, fontFamily: 'Outfit-Medium' }}>
+                {currentLanguage === 'hindi' ? 'कोई परिणाम नहीं मिला' : 'No results found'}
+              </CustomText>
+              <TouchableOpacity onPress={() => setSearchText('')} style={{ marginTop: 10 }}>
+                <CustomText style={{ color: COLORS.orange, fontSize: 14, fontFamily: 'Outfit-Bold' }}>
+                  {currentLanguage === 'hindi' ? 'खोज साफ़ करें' : 'Clear Search'}
+                </CustomText>
+              </TouchableOpacity>
+            </View>
           ) : (
             <SectionList
               sections={sections}
               keyExtractor={(item) => item.id}
               showsVerticalScrollIndicator={false}
-              contentContainerStyle={{ paddingBottom: hp(50) }}
+              contentContainerStyle={{ paddingBottom: hp(100) }}
               renderSectionHeader={({ section }) => (
                 <>
                   {!isEmpty(section?.data) && (

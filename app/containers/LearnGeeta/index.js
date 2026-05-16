@@ -9,6 +9,7 @@ import { compose } from 'redux';
 import Orientation from 'react-native-orientation-locker';
 const { OrientationModule } = NativeModules;
 import { useFocusEffect, DrawerActions } from '@react-navigation/native';
+import Video from 'react-native-video';
 
 // Custom hooks
 import { useVideo, useRecording } from './hooks';
@@ -65,10 +66,12 @@ function LearnGeeta({
   const [isButton, setIsButton] = useState(false);
   const [shlokIndex, setShlokIndex] = useState();
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
+  const [isCommentaryPlaying, setIsCommentaryPlaying] = useState(false);
 
   // Animation for iOS back button
   const backButtonAnim = useRef(new Animated.Value(-150)).current;
   const hideTimerRef = useRef(null);
+  const lastCommentaryPlayedId = useRef(null);
 
   const toggleBackButton = useCallback(() => {
     if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
@@ -137,7 +140,23 @@ function LearnGeeta({
     setShlokIndex(
       shloks?.data?.findIndex((item) => item.id === learnGeeta?.data?.id),
     );
-  }, [shloks, learnGeeta]);
+
+    // Play commentary audio if available when shlok changes
+    const shlokId = get(learnGeeta, 'data.id');
+    const commentaryAudio = get(learnGeeta, 'data.commentary.audio');
+    
+    if (isIntroVideoPlayed && commentaryAudio && shlokId !== lastCommentaryPlayedId.current) {
+      setIsCommentaryPlaying(true);
+      setVideoPlayingState(true); // In this hook, true means paused
+      lastCommentaryPlayedId.current = shlokId;
+    } else if (!commentaryAudio || !isIntroVideoPlayed) {
+      setIsCommentaryPlaying(false);
+      // If we're not playing commentary, ensure video is not force-paused
+      if (shlokId !== lastCommentaryPlayedId.current) {
+        setVideoPlayingState(false);
+      }
+    }
+  }, [shloks, learnGeeta, isIntroVideoPlayed, setVideoPlayingState]);
 
   useEffect(() => {
     if (!isIntroVideoPlayed) {
@@ -284,7 +303,7 @@ function LearnGeeta({
           // Mute video when recording to prevent echo/feedback, but keep it playing
           muted={isButton || isRecordingButton}
           disableAudioTrack={false}
-          isVideoPaused={isVideoPaused}
+          isVideoPaused={() => isCommentaryPlaying || isVideoPaused()}
           onError={handleVideoError}
           onLoadStart={handleVideoLoadStart}
           onLoad={handleVideoLoad}
@@ -297,6 +316,37 @@ function LearnGeeta({
           learnGeeta={learnGeeta}
           user={user}
         />
+
+        {/* Commentary Audio Player */}
+        {isCommentaryPlaying && get(learnGeeta, 'data.commentary.audio') && (
+          <Video
+            source={{ uri: get(learnGeeta, 'data.commentary.audio') }}
+            paused={false}
+            playInBackground={true}
+            playWhenInactive={true}
+            ignoreSilentSwitch="ignore"
+            mixWithOthers="mix"
+            progressUpdateInterval={50}
+            onProgress={(data) => {
+              // Pre-trigger video unpause 1.2 seconds before audio ends
+              if (data.currentTime > 0.5 && data.seekableDuration > 0 && data.currentTime > data.seekableDuration - 1.2) {
+                setIsCommentaryPlaying(false);
+                setVideoPlayingState(false);
+              }
+            }}
+            onEnd={() => {
+              if (isCommentaryPlaying) {
+                setIsCommentaryPlaying(false);
+                setVideoPlayingState(false);
+              }
+            }}
+            onError={() => {
+              setIsCommentaryPlaying(false);
+              setVideoPlayingState(false);
+            }}
+            style={{ width: 0, height: 0, position: 'absolute' }}
+          />
+        )}
 
         {/* Safe Area Wrapper for UI Elements */}
         <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
