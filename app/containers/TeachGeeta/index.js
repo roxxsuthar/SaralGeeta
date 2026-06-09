@@ -50,7 +50,9 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
 
     useEffect(() => {
         if (teacherGift?.success && !teacherGift?.loading) {
-            setShowModal(true);
+            setTimeout(() => {
+                setShowModal(true);
+            }, 500);
         }
     }, [teacherGift?.success, teacherGift?.loading]);
 
@@ -100,9 +102,7 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                     <View style={{ width: 40 }} />
                 </View>
 
-                {teacherGift?.loading ? (
-                    <LoadingScreen />
-                ) : (
+                {teacherGift?.loading === false && (
                     <View style={styles.mainContainer}>
                         <Formik
                             initialValues={{
@@ -251,6 +251,7 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                         </Formik>
                     </View>
                 )}
+                {teacherGift?.loading && <LoadingScreen />}
 
                 <SuccessModal
                     visible={showModal}
@@ -258,11 +259,13 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                     buttonText={teacherGiftStrings?.okButton?.defaultMessage || 'Ok'}
                     onOk={() => {
                         setShowModal(false);
-                        handleCleanUp();
-                        if (formActions) {
-                            formActions.resetForm();
-                        }
-                        navigation.goBack();
+                        setTimeout(() => {
+                            handleCleanUp();
+                            if (formActions) {
+                                formActions.resetForm();
+                            }
+                            navigation.goBack();
+                        }, 500);
                     }}
                 />
                 <ConfirmModal
@@ -274,7 +277,9 @@ function TeacherGift({ teacherGift, home, appLanguage, handleGetChapters, handle
                     onCancel={() => setShowConfirmModal(false)}
                     onConfirm={() => {
                         setShowConfirmModal(false);
-                        handleSubmitForm(tempValues, navigation, formActions);
+                        setTimeout(() => {
+                            handleSubmitForm(tempValues, navigation, formActions);
+                        }, 500);
                     }}
                 />
             </SafeAreaView>

@@ -1,7 +1,6 @@
-import React, { useRef, useState, useCallback, memo } from 'react';
-import { View, StatusBar, TouchableOpacity, ImageBackground, NativeModules, StyleSheet, BackHandler } from 'react-native';
+import React, { useRef, useState, useCallback } from 'react';
+import { View, StatusBar, TouchableOpacity, ImageBackground, StyleSheet, BackHandler } from 'react-native';
 import Orientation from 'react-native-orientation-locker';
-const { OrientationModule } = NativeModules;
 import { useNavigation, useFocusEffect, CommonActions } from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -12,9 +11,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
-import { IMAGES, COLORS, FONTS } from '../../constants';
+import { IMAGES, FONTS } from '../../constants';
 import CustomText from '../../components/CustomText';
-import LoadingScreen from '../../components/LoadingScreen';
 import { COLOR_ARRAY, Navigation } from '../../constants/constants';
 import { hp } from '../../utils/responsive';
 import { VideoPlayer } from '../LearnGeeta/components';
@@ -37,6 +35,8 @@ function FullChapterLearn({
   const [playbackRate, setPlaybackRate] = useState(1.0);
   const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
   const [currentShlokIndex, setCurrentShlokIndex] = useState(0);
+
+
 
   const togglePlaybackRate = () => {
     const rates = [1.0, 1.5, 2.0];
@@ -74,7 +74,7 @@ function FullChapterLearn({
         ],
       })
     );
-  }, [navigation, route, Navigation]);
+  }, [navigation, route]);
 
   useFocusEffect(
     useCallback(() => {
@@ -133,6 +133,61 @@ function FullChapterLearn({
     uri: currentShlok?.media?.hls_male_path || 'https://d4ofvs63sipze.cloudfront.net/final/vedvyas/ADHYA 1.1/index.m3u8',
   };
 
+  const renderShlokLines = () => {
+    const parts = shlokeParts;
+    if (!parts?.length) return null;
+    const chapterNum = currentChapter && currentShlok ? `${currentChapter.serial}.${currentShlok.name} ॥` : '';
+
+    return (
+      <>
+        {parts.length > 0 && (
+          <View style={styles.shlokPill}>
+            <CustomText style={styles.shlokText}>
+              {parts.map((item, idx) => {
+                if (idx < 2) {
+                  const isLast = idx === parts.length - 1;
+                  return (
+                    <CustomText key={idx} style={{ color: COLOR_ARRAY[idx] || '#000' }}>
+                      {item}{idx === 0 ? ' ' : (isLast ? ' ॥' : ' ।')}
+                    </CustomText>
+                  );
+                }
+                return null;
+              })}
+              {parts.length <= 2 && chapterNum ? (
+                <CustomText style={{ color: '#F06225', fontSize: hp(16), fontFamily: FONTS.HINDI, fontWeight: '700' }}>
+                  {' '}{chapterNum}
+                </CustomText>
+              ) : null}
+            </CustomText>
+          </View>
+        )}
+        {parts.length > 2 && (
+          <View style={styles.shlokPill}>
+            <CustomText style={styles.shlokText}>
+              {parts.map((item, idx) => {
+                if (idx >= 2) {
+                  const isLast = idx === parts.length - 1;
+                  return (
+                    <CustomText key={idx} style={{ color: COLOR_ARRAY[idx] || '#000' }}>
+                      {item}{idx === 2 ? ' ' : (isLast ? ' ॥' : ' ।')}
+                    </CustomText>
+                  );
+                }
+                return null;
+              })}
+              {chapterNum ? (
+                <CustomText style={{ color: '#F06225', fontSize: hp(16), fontFamily: FONTS.HINDI, fontWeight: '700' }}>
+                  {' '}{chapterNum}
+                </CustomText>
+              ) : null}
+            </CustomText>
+          </View>
+        )}
+      </>
+    );
+  };
+
   if (loading || !data) {
     return (
       <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
@@ -175,84 +230,57 @@ function FullChapterLearn({
           rate={playbackRate}
         />
 
-        {/* UI Overlays with dynamic safe area handling */}
         <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
-          {/* Floating Back Button */}
-          <View style={[styles.headerButtonsContainer, { top: insets.top + 20, left: insets.left + 20 }]}>
-            <TouchableOpacity
-              style={styles.backButton}
-              onPress={handleBack}
-              activeOpacity={0.8}
-            >
-              <IMAGES.WhiteArrowIcon height={28} width={28} />
-            </TouchableOpacity>
-          </View>
-
-          {/* Shlok Card Overlay - Moved lower towards bottom edge */}
-          <View style={[styles.overlay, { bottom: insets.bottom + 5 }]}>
-            <FastImage
-              style={styles.svgImageContainer}
-              source={IMAGES.ShlokBackground}
-              resizeMode={FastImage.resizeMode.stretch}
-            />
-
-            <View style={styles.shlokTextContainer}>
-              <CustomText style={{ textAlign: 'center', lineHeight: hp(35) }} numberOfLines={2}>
-                {shlokeParts.map((item, idx) => (
-                  <React.Fragment key={idx}>
-                    <CustomText
-                      style={{
-                        fontSize: hp(22),
-                        fontFamily: FONTS.HINDI,
-                        fontWeight: '700',
-                        color: COLOR_ARRAY[idx] || COLORS.black,
-                      }}
-                      numberOfLines={1}
-                    >
-                      {item}
-                      {idx === 3 && currentChapter && currentShlok && (
-                        ` || ${currentChapter.serial}.${currentShlok.name} ||`
-                      )}
-                    </CustomText>
-                    {idx === 1 ? '\n' : idx < 3 ? ' ' : ''}
-                  </React.Fragment>
-                ))}
-              </CustomText>
+          <View style={{ flex: 1 }} pointerEvents="box-none">
+            {/* Floating Back Button */}
+            <View style={[styles.headerButtonsContainer, { top: insets.top + 20, left: insets.left + 20 }]}>
+              <TouchableOpacity
+                style={styles.backButton}
+                onPress={handleBack}
+                activeOpacity={0.8}
+              >
+                <IMAGES.ChevronLeft width={28} height={28} fill="black" />
+              </TouchableOpacity>
             </View>
-          </View>
 
-          {/* Bottom Controls Banner - Shifted from right safe edge */}
-          <View style={[styles.bottomControlsContainer, { right: insets.right + 20 }]}>
-            {/* Play/Pause Button */}
-            <TouchableOpacity
-              style={styles.controlButton}
-              onPress={() => setIsVideoPlaying(!isVideoPlaying)}
-              activeOpacity={0.7}
-            >
-              {isVideoPlaying ? (
-                <IMAGES.PauseIcon width={24} height={24} fill={COLORS.white} />
-              ) : (
-                <IMAGES.PlayerIcon width={24} height={24} fill={COLORS.white} />
-              )}
-            </TouchableOpacity>
+            {/* Shlok Center Content */}
+            <View style={styles.centerContent} pointerEvents="none">
+              {renderShlokLines()}
+            </View>
 
-            {/* Restart Button */}
-            <TouchableOpacity
-              style={styles.controlButton}
-              onPress={handleRestart}
-              activeOpacity={0.7}
-            >
-              <IMAGES.ReplayButton width={24} height={24} fill={COLORS.white} />
-            </TouchableOpacity>
+            {/* Bottom Controls Banner - Shifted from right safe edge */}
+            <View style={[styles.bottomControlsContainer, { right: insets.right + 20 }]}>
+              {/* Play/Pause Button */}
+              <TouchableOpacity
+                style={styles.controlButton}
+                onPress={() => setIsVideoPlaying(!isVideoPlaying)}
+                activeOpacity={0.7}
+              >
+                {isVideoPlaying ? (
+                  <IMAGES.PauseIcon width={24} height={24} fill={'black'} />
+                ) : (
+                  <IMAGES.PlayerIcon width={24} height={24} fill={'black'} />
+                )}
+              </TouchableOpacity>
 
-            {/* Speed Control */}
-            <TouchableOpacity
-              style={styles.controlButton}
-              onPress={togglePlaybackRate}
-              activeOpacity={0.7}
-            >
-              <CustomText style={styles.speedButtonText}>{playbackRate}x</CustomText>
-            </TouchableOpacity>
+              {/* Restart Button */}
+              <TouchableOpacity
+                style={styles.controlButton}
+                onPress={handleRestart}
+                activeOpacity={0.7}
+              >
+                <IMAGES.ReplayButton width={24} height={24} fill={'black'} />
+              </TouchableOpacity>
+
+              {/* Speed Control */}
+              <TouchableOpacity
+                style={styles.controlButton}
+                onPress={togglePlaybackRate}
+                activeOpacity={0.7}
+              >
+                <CustomText style={styles.speedButtonText}>{playbackRate}x</CustomText>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </ImageBackground>

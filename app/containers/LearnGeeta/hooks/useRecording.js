@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { Platform, Alert, NativeModules } from 'react-native';
 import RNFS from 'react-native-fs';
 import SoundRecorder, {
@@ -13,7 +13,7 @@ import {
   RESULTS,
   openSettings,
 } from 'react-native-permissions';
-import stringSimilarity from 'string-similarity';
+// stringSimilarity removed — comparison is now done via Gladia audio_to_llm
 import { get } from 'lodash';
 import {
   GLADIA_API_KEY,
@@ -99,7 +99,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
         const fileName = getTimestampedFileName();
 
         if (Platform.OS === 'android') {
-           const audioSet = {
+          const audioSet = {
             AudioSamplingRate: 44100,
             AudioChannels: 2,
             AudioQuality: 'high',
@@ -111,7 +111,7 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
         } else {
           // --- iOS Native AudioRecorderModule ---
           // Start (includes atomic session configuration)
-           await NativeModules.AudioRecorderModule.startRecording(fileName);
+          await NativeModules.AudioRecorderModule.startRecording(fileName);
         }
       } catch (e) {
         setIsRecordingButton(false);
@@ -134,11 +134,11 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
         let filePath;
 
         if (Platform.OS === 'android') {
-            const result = await SoundRecorder.stopRecorder();
-            if (!result || typeof result !== 'string') throw new Error('Invalid recorder output');
-            filePath = result.startsWith('file://') ? result.replace('file://', '') : result;
+          const result = await SoundRecorder.stopRecorder();
+          if (!result || typeof result !== 'string') throw new Error('Invalid recorder output');
+          filePath = result.startsWith('file://') ? result.replace('file://', '') : result;
         } else {
-            // iOS Native Module returns path directly
+          // iOS Native Module returns path directly
           filePath = await NativeModules.AudioRecorderModule.stopRecording();
         }
 
@@ -149,10 +149,10 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
 
         const uploadResult = await uploadAudioToGladia(filePath);
         await startTranscription(uploadResult?.audio_url);
-        
+
       } catch (e) {
-        
-        
+
+
       } finally {
         setIsRecordingButton(false);
       }
@@ -165,10 +165,13 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
   const uploadAudioToGladia = useCallback(async (filePath) => {
     const fileUri = Platform.OS === 'android' ? `file://${filePath}` : filePath;
 
+    // ✅ Gladia accepts audio/mp4 for both .m4a and .mp4 containers
+    const mimeType = Platform.OS === 'android' ? 'audio/mp4' : 'audio/x-m4a';
+
     const formData = new FormData();
     formData.append('audio', {
       uri: fileUri,
-      type: `audio/${AUDIO_FILE_EXTENSION}`,
+      type: mimeType,
       name: filePath.split('/').pop(),
     });
 
@@ -193,53 +196,108 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
     async (url) => {
       setWaitingForTranslation(true);
 
-      const response = await fetch(GLADIA_TRANSCRIPTION_URL, {
-        method: 'POST',
-        headers: {
-          'x-gladia-key': GLADIA_API_KEY,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          audio_url: url,
-          audio_to_llm: true,
-          language: 'sa',
-          detect_language: false,
-          audio_to_llm_config: {
-            prompts: [`${get(learnGeeta, 'data.shloke')}`],
-          },
-        }),
-      }).then((r) => r.json());
+      // Build the reference shlok text from shloke_parts or fallback to shloke
+      const shlokeParts = get(learnGeeta, 'data.shloke_parts', []);
+      const referenceShlok = shlokeParts.length
+        ? shlokeParts.join(' ')
+        : get(learnGeeta, 'data.shloke', '');
 
-      if (response?.result_url) {
-        await pollForResult(response.result_url);
+      try {
+        const response = await fetch(GLADIA_TRANSCRIPTION_URL, {
+          method: 'POST',
+          headers: {
+            'x-gladia-key': GLADIA_API_KEY,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            audio_url: url,
+            // ✅ Correct Gladia v2 language format
+            language_config: {
+              languages: ['sa'],
+            },
+            // ✅ Let Gladia's LLM do the comparison instead of manual string similarity
+            audio_to_llm: true,
+            audio_to_llm_config: {
+              prompts: [
+                `You are a Sanskrit recitation evaluator. The user recited a shlok. Compare what they said with this reference shlok text: "${referenceShlok}". Return ONLY a valid JSON object with a single key "score" — a number from 0 to 100 representing how accurately the speech matches the reference. 100 means perfect match, 0 means completely wrong. Consider phonetic similarity for Sanskrit pronunciation. Example: {"score": 87}`,
+              ],
+            },
+          }),
+        }).then((r) => r.json());
+
+        if (response?.result_url) {
+          // Use ref to avoid stale closure of pollForResult
+          await (pollForResultRef.current || pollForResult)(response.result_url);
+        } else {
+          // ✅ Safety: reset spinner if Gladia didn't return a result_url
+          setWaitingForTranslation(false);
+        }
+      } catch (err) {
+        setWaitingForTranslation(false);
       }
     },
-    [learnGeeta],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [learnGeeta], // pollForResult accessed via ref to avoid stale closure
   );
+
+  // Use a ref so startTranscription always calls the latest pollForResult (fixes stale closure)
+  const pollForResultRef = useRef(null);
 
   const pollForResult = useCallback(
     async (url) => {
-      const MAX_RETRIES = 30; // ~20 * interval = total wait time
+      const MAX_RETRIES = 30;
       let attempts = 0;
-      let isActive = true;
 
       try {
-        while (isActive && attempts < MAX_RETRIES) {
+        while (attempts < MAX_RETRIES) {
           const res = await fetch(url, {
             headers: { 'x-gladia-key': GLADIA_API_KEY },
           }).then((r) => r.json());
 
+          // ✅ Handle Gladia error status immediately (previously ignored!)
+          if (res?.status === 'error') {
+            const errMsg = res?.error_message || res?.message || JSON.stringify(res);
+            setWaitingForTranslation(false);
+            return;
+          }
+
           if (res?.status === 'done') {
             setWaitingForTranslation(false);
 
-            const original =
-              res?.result?.audio_to_llm?.results?.[0]?.results?.prompt || '';
-            const spoken =
-              res?.result?.audio_to_llm?.results?.[0]?.results?.response || '';
+            // ✅ Debug: show exactly what Gladia returned
+            const audioToLlm = res?.result?.audio_to_llm;
 
-            const score = (
-              stringSimilarity.compareTwoStrings(original, spoken) * 100
-            ).toFixed(2);
+            // ✅ Extract the LLM comparison result from Gladia V2
+            let llmRaw = '';
+            // Gladia API sometimes uses 'results' instead of 'result' inside the array object!
+            const llmResultObj = audioToLlm?.results?.[0]?.result || audioToLlm?.results?.[0]?.results;
+
+            if (typeof llmResultObj === 'string') {
+              llmRaw = llmResultObj;
+            } else if (llmResultObj?.response) {
+              // Gladia V2 wraps response in { response: "..." }
+              llmRaw = llmResultObj.response;
+            } else if (llmResultObj) {
+              llmRaw = JSON.stringify(llmResultObj);
+            }
+
+
+            let score = '0.00';
+            try {
+              const cleaned = String(llmRaw)
+                .replace(/```json/gi, '')
+                .replace(/```/g, '')
+                .trim();
+              const parsed = JSON.parse(cleaned);
+              const rawScore = Number(parsed?.score ?? 0);
+              score = Math.min(100, Math.max(0, rawScore)).toFixed(2);
+            } catch {
+              // Regex fallback: extract any number from the response
+              const match = String(llmRaw).match(/(\d+(\.\d+)?)/);
+              if (match) {
+                score = Math.min(100, Math.max(0, parseFloat(match[1]))).toFixed(2);
+              }
+            }
 
             setTranscription(score);
             handleSaveResult({
@@ -247,20 +305,26 @@ export const useRecording = (learnGeeta, handleSaveResult) => {
               media: get(learnGeeta, 'data.media.id', ''),
             });
 
-            return; // ✅ Exit cleanly
+            return;
           }
 
+          // Status is 'queued' or 'processing' — keep polling
           attempts += 1;
           await new Promise((r) => setTimeout(r, TRANSCRIPTION_POLL_INTERVAL));
         }
 
-        throw new Error('Transcription timeout');
+        throw new Error('Transcription timed out after 30 seconds');
       } catch (err) {
         setWaitingForTranslation(false);
       }
     },
-    [learnGeeta, handleSaveResult],
+    [handleSaveResult, learnGeeta],
   );
+
+  // Keep ref in sync so startTranscription always uses latest version
+  useEffect(() => {
+    pollForResultRef.current = pollForResult;
+  }, [pollForResult]);
 
   return {
     isRecordingButton,

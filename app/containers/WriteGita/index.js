@@ -40,7 +40,9 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
 
     useEffect(() => {
         if (writeGita?.success && !writeGita?.loading) {
-            setShowModal(true);
+            setTimeout(() => {
+                setShowModal(true);
+            }, 500);
         }
     }, [writeGita?.success, writeGita?.loading]);
 
@@ -90,9 +92,7 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                     <View style={{ width: 40 }} />
                 </View>
 
-                {writeGita?.loading ? (
-                    <LoadingScreen />
-                ) : (
+                {writeGita?.loading === false && (
                     <View style={styles.mainContainer}>
                         <Formik
                             initialValues={{
@@ -234,17 +234,20 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                         </Formik>
                     </View>
                 )}
+                {writeGita?.loading && <LoadingScreen />}
                 <SuccessModal
                     visible={showModal}
                     message={writeGitaStrings?.successMessage?.defaultMessage || 'We will connect with you shortly.'}
                     buttonText={writeGitaStrings?.okButton?.defaultMessage || 'Ok'}
                     onOk={() => {
                         setShowModal(false);
-                        handleCleanUp();
-                        if (formActions) {
-                            formActions.resetForm();
-                        }
-                        navigation.goBack();
+                        setTimeout(() => {
+                            handleCleanUp();
+                            if (formActions) {
+                                formActions.resetForm();
+                            }
+                            navigation.goBack();
+                        }, 500);
                     }}
                 />
                 <ConfirmModal
@@ -256,7 +259,9 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                     onCancel={() => setShowConfirmModal(false)}
                     onConfirm={() => {
                         setShowConfirmModal(false);
-                        handleSubmitForm(tempValues, navigation, formActions);
+                        setTimeout(() => {
+                            handleSubmitForm(tempValues, navigation, formActions);
+                        }, 500);
                     }}
                 />
             </SafeAreaView>

@@ -50,6 +50,7 @@ import FaqNew from '../assets/images/faq-new.svg';
 import FacebookIcon from '../assets/images/facebook-icon.svg';
 import InstagramIcon from '../assets/images/instagram-icon.svg';
 import TwitterX from '../assets/images/x.svg';
+import OrangeWaveform from '../assets/images/orange_waveform.svg';
 
 const GeetLearn = require('../assets/images/img_geeta_learn.png');
 const KrishnaImage = require('../assets/images/img_krishna.png');
@@ -121,5 +122,6 @@ const IMAGES = {
   FacebookIcon,
   InstagramIcon,
   TwitterX,
+  OrangeWaveform,
 };
 export default IMAGES;

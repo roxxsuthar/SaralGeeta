@@ -38,7 +38,7 @@ export const Navigation = {
   FullChapterLearn: 'FullChapterLearn',
 };
 // API Configuration
-export const GLADIA_API_KEY = 'bbebcb87-bb37-4aff-b8ba-d5bda7a96f4c';
+export const GLADIA_API_KEY = '3e79dde7-f64b-466e-ba9a-d8cf7dd1c89c';
 export const GLADIA_UPLOAD_URL = 'https://api.gladia.io/v2/upload';
 export const GLADIA_TRANSCRIPTION_URL =
   'https://api.gladia.io/v2/pre-recorded/';

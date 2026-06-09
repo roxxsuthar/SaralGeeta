@@ -41,7 +41,9 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
 
   React.useEffect(() => {
     if (contactUs?.success && !contactUs?.loading) {
-      setShowModal(true);
+      setTimeout(() => {
+        setShowModal(true);
+      }, 500);
     }
   }, [contactUs?.success, contactUs?.loading]);
 
@@ -81,9 +83,7 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
           </CustomText>
           <View style={{ width: 40 }} />
         </View>
-        {contactUs?.loading ? (
-          <LoadingScreen />
-        ) : (
+        {contactUs?.loading === false && (
           <Formik
             initialValues={{
               name: '',
@@ -188,17 +188,20 @@ function ContactUs({ handleSaveContactFormDetail, contactUs }) {
             )}
           </Formik>
         )}
+        {contactUs?.loading && <LoadingScreen />}
         <SuccessModal
           visible={showModal}
           message={contactUsMessage?.successMessage?.defaultMessage || 'Message sent! We\'ll be in touch soon.'}
           buttonText={contactUsMessage?.okButton?.defaultMessage || 'Ok'}
           onOk={() => {
             setShowModal(false);
-            handleCleanUp();
-            if (formActions) {
-              formActions.resetForm();
-            }
-            navigation.goBack();
+            setTimeout(() => {
+              handleCleanUp();
+              if (formActions) {
+                formActions.resetForm();
+              }
+              navigation.goBack();
+            }, 500);
           }}
         />
       </SafeAreaView>

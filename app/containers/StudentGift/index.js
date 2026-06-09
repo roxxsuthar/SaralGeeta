@@ -50,7 +50,9 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
 
     useEffect(() => {
         if (studentGift.success && !studentGift.loading) {
-            setShowModal(true);
+            setTimeout(() => {
+                setShowModal(true);
+            }, 500);
         }
     }, [studentGift.success, studentGift.loading]);
 
@@ -100,9 +102,7 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                     <View style={{ width: 40 }} />
                 </View>
 
-                {studentGift?.loading ? (
-                    <LoadingScreen />
-                ) : (
+                {studentGift?.loading === false && (
                     <View style={styles.mainContainer}>
                         <Formik
                             initialValues={{
@@ -248,6 +248,7 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                         </Formik>
                     </View>
                 )}
+                {studentGift?.loading && <LoadingScreen />}
 
                 <SuccessModal
                     visible={showModal}
@@ -255,11 +256,13 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                     buttonText={studentGiftStrings?.okButton?.defaultMessage || 'Ok'}
                     onOk={() => {
                         setShowModal(false);
-                        handleCleanUp();
-                        if (formActions) {
-                            formActions.resetForm();
-                        }
-                        navigation.goBack();
+                        setTimeout(() => {
+                            handleCleanUp();
+                            if (formActions) {
+                                formActions.resetForm();
+                            }
+                            navigation.goBack();
+                        }, 500);
                     }}
                 />
                 <ConfirmModal
@@ -271,7 +274,9 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                     onCancel={() => setShowConfirmModal(false)}
                     onConfirm={() => {
                         setShowConfirmModal(false);
-                        handleSubmitForm(tempValues, navigation, formActions);
+                        setTimeout(() => {
+                            handleSubmitForm(tempValues, navigation, formActions);
+                        }, 500);
                     }}
                 />
             </SafeAreaView>

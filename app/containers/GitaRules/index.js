@@ -54,7 +54,9 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
 
     useEffect(() => {
         if (gitaRules.submitSuccess && !gitaRules.submitLoading) {
-            setShowModal(true);
+            setTimeout(() => {
+                setShowModal(true);
+            }, 500);
         }
     }, [gitaRules.submitSuccess, gitaRules.submitLoading]);
 
@@ -146,7 +148,7 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                     </TouchableOpacity>
                 </View>
 
-                {gitaRules?.loading || gitaRules?.submitLoading ? (
+                {gitaRules?.loading ? (
                     <LoadingScreen />
                 ) : (
                     <View style={styles.mainContainer}>
@@ -243,6 +245,7 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                         </Formik>
                     </View>
                 )}
+                {gitaRules?.submitLoading && <LoadingScreen />}
 
                 <SuccessModal
                     visible={showModal}
@@ -250,11 +253,13 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                     buttonText={gitaRulesStrings?.okButton?.defaultMessage || 'Ok'}
                     onOk={() => {
                         setShowModal(false);
-                        handleCleanUp();
-                        if (formActions) {
-                            formActions.resetForm();
-                        }
-                        navigation.goBack();
+                        setTimeout(() => {
+                            handleCleanUp();
+                            if (formActions) {
+                                formActions.resetForm();
+                            }
+                            navigation.goBack();
+                        }, 500);
                     }}
                 />
                 <ConfirmModal
@@ -266,7 +271,9 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                     onCancel={() => setShowConfirmModal(false)}
                     onConfirm={() => {
                         setShowConfirmModal(false);
-                        handleSubmitForm(tempValues, navigation);
+                        setTimeout(() => {
+                            handleSubmitForm(tempValues, navigation);
+                        }, 500);
                     }}
                 />
 

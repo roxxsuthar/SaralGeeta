@@ -72,7 +72,7 @@ function LearnGeeta({
   const backButtonAnim = useRef(new Animated.Value(-150)).current;
   const hideTimerRef = useRef(null);
   const lastCommentaryPlayedId = useRef(null);
-
+  console.log("lastCommentaryPlayedId----------------", learnGeeta)
   const toggleBackButton = useCallback(() => {
     if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
 
@@ -145,7 +145,7 @@ function LearnGeeta({
     // Play commentary audio if available when shlok changes
     const shlokId = get(learnGeeta, 'data.id');
     const commentaryAudio = get(learnGeeta, 'data.commentary.audio');
-    
+
     if (isIntroVideoPlayed && commentaryAudio && shlokId !== lastCommentaryPlayedId.current) {
       setIsCommentaryPlaying(true);
       setVideoPlayingState(true); // In this hook, true means paused
@@ -233,6 +233,14 @@ function LearnGeeta({
     updateVideoUrl,
     resetVideoState,
   ]);
+
+  const onContinuePress = useCallback(() => {
+    setVideoPlayingState(true);
+    navigation.navigate(Navigation.FullChapterLearn, {
+      chapterId: get(route, 'params.chapter.id'),
+      serialNumber: get(route, 'params.chapter.serial'),
+    });
+  }, [navigation, route, setVideoPlayingState]);
 
   // Render loading state
   if (get(learnGeeta, 'loading')) {
@@ -379,40 +387,6 @@ function LearnGeeta({
               </TouchableOpacity>
             </Animated.View>
 
-            {/* Header Buttons - Top Right */}
-            {isIntroVideoPlayed && (
-              <View style={[styles.headerButtonsContainer, { top: insets.top + 20, right: insets.right + 35 }]}>
-                <TouchableOpacity
-                  style={styles.continueButton}
-                  onPress={() =>
-                    navigation.navigate(Navigation.FullChapterLearn, {
-                      chapterId: get(route, 'params.chapter.id'),
-                      serialNumber: get(route, 'params.chapter.serial'),
-                    })
-                  }
-                  activeOpacity={0.8}
-                >
-                  <CustomText style={styles.continueButtonText}>
-                    {strings.learnGeeta.continue.defaultMessage || 'Continue'}
-                  </CustomText>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  style={styles.eyeIconButton}
-                  onPress={handleOpenDrawer}
-                  activeOpacity={0.8}
-                >
-                  {['भगवान वेद व्यास', 'Bhagwan Ved Vyas'].includes(
-                    selectedIdeal?.name,
-                  ) ? (
-                    <IMAGES.InfoWhiteIcon height={28} width={28} />
-                  ) : (
-                    <IMAGES.InfoIcon height={28} width={28} />
-                  )}
-                </TouchableOpacity>
-              </View>
-            )}
-
             {/* Translation Drawer */}
             <TranslationDrawer
               visible={isDrawerVisible}
@@ -485,6 +459,8 @@ function LearnGeeta({
                     getPreviousShlok={getPreviousShlok}
                     playAgain={playAgain}
                     getNextShlok={getNextShlok}
+                    onContinuePress={onContinuePress}
+                    onShowPress={handleOpenDrawer}
                   />
                 )}
               </View>
