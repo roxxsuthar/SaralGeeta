@@ -7,15 +7,15 @@ import { connect } from 'react-redux';
 import {
   View,
   StatusBar,
-  FlatList,
   TouchableOpacity,
   ImageBackground,
   Platform,
   NativeModules,
 } from 'react-native';
+import { FlashList } from '@shopify/flash-list';
 import Orientation from 'react-native-orientation-locker';
 const { OrientationModule } = NativeModules;
-import { DrawerActions, useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -78,8 +78,8 @@ function Shloks({
     }
   }, [shloksData, navigation, handleResetIntroVideo]);
 
-  const renderItem = useCallback(
-    (item) => {
+  const renderListItem = useCallback(
+    ({ item }) => {
       return (
         <TouchableOpacity
           activeOpacity={0.8}
@@ -201,13 +201,14 @@ function Shloks({
             <>
               <View style={styles.flatListContainer}>
                 <View style={styles.handle} />
-                <FlatList
+                <FlashList
                   data={shloksData?.data}
-                  renderItem={({ item }) => renderItem(item)}
+                  renderItem={renderListItem}
                   keyExtractor={(item) => item.id}
                   contentContainerStyle={styles.contentContainerStyle}
                   ItemSeparatorComponent={itemSeparatorComponent}
                   showsVerticalScrollIndicator={false}
+                  estimatedItemSize={150}
                 />
               </View>
             </>

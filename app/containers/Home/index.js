@@ -16,10 +16,18 @@ import {
   useWindowDimensions,
   Linking,
   Share,
-  Animated,
   NativeModules,
   ActivityIndicator,
 } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withRepeat,
+  withSequence,
+  withTiming,
+  cancelAnimation,
+} from 'react-native-reanimated';
+import { FlashList } from '@shopify/flash-list';
 import Orientation from 'react-native-orientation-locker';
 const { OrientationModule } = NativeModules;
 import isEmpty from 'lodash/isEmpty';
@@ -60,7 +68,7 @@ function Home({
   const [isSocialExpanded, setIsSocialExpanded] = useState(false);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const insets = useSafeAreaInsets();
-  const pulseAnim = useRef(new Animated.Value(1)).current;
+  const pulseScale = useSharedValue(1);
   const listeningTimerRef = useRef(null);
 
   const clearListeningTimer = () => {
@@ -70,26 +78,25 @@ function Home({
     }
   };
 
+  const pulseAnimStyle = useAnimatedStyle(() => ({
+    transform: [{ scale: pulseScale.value }],
+  }));
+
   useEffect(() => {
     if (isListening) {
-      Animated.loop(
-        Animated.sequence([
-          Animated.timing(pulseAnim, {
-            toValue: 1.2,
-            duration: 800,
-            useNativeDriver: true,
-          }),
-          Animated.timing(pulseAnim, {
-            toValue: 1,
-            duration: 800,
-            useNativeDriver: true,
-          }),
-        ])
-      ).start();
+      pulseScale.value = withRepeat(
+        withSequence(
+          withTiming(1.2, { duration: 800 }),
+          withTiming(1, { duration: 800 }),
+        ),
+        -1,
+        false,
+      );
     } else {
-      pulseAnim.setValue(1);
+      cancelAnimation(pulseScale);
+      pulseScale.value = withTiming(1, { duration: 200 });
     }
-  }, [isListening, pulseAnim]);
+  }, [isListening]);
 
   const { Home: HomeMessage, HomeBottomBar } = strings;
   const { currentLanguage } = language;
@@ -98,7 +105,9 @@ function Home({
   const { width: windowWidth } = useWindowDimensions();
   const numColumns = windowWidth > 600 ? 2 : 1;
 
-  const chaptersData = filteredChapters?.filter((item) => item.id !== recent?.id) || [];
+  const chaptersData = React.useMemo(() => {
+    return filteredChapters?.filter((item) => item.id !== recent?.id) || [];
+  }, [filteredChapters, recent]);
 
   // Chunking helper for grid display
   const chunkArray = (arr, size) =>
@@ -106,19 +115,24 @@ function Home({
       arr.slice(i * size, i * size + size),
     );
 
-  const processedChapters =
-    numColumns > 1 ? chunkArray(chaptersData, numColumns) : chaptersData;
+  const processedChapters = React.useMemo(() => {
+    return numColumns > 1 ? chunkArray(chaptersData, numColumns) : chaptersData;
+  }, [chaptersData, numColumns]);
 
-  const sections = [
-    {
-      title: HomeMessage.recent.defaultMessage,
-      data: !recent ? [] : [recent],
-    },
-    {
-      title: HomeMessage.chapters.defaultMessage,
-      data: processedChapters,
-    },
-  ];
+  const listData = React.useMemo(() => {
+    const data = [];
+    if (recent) {
+      data.push({ type: 'header', title: HomeMessage.recent.defaultMessage });
+      data.push({ type: 'recent', item: recent });
+    }
+    if (processedChapters && processedChapters.length > 0) {
+      data.push({ type: 'header', title: HomeMessage.chapters.defaultMessage });
+      processedChapters.forEach((chunk) => {
+        data.push({ type: 'chapterRow', item: chunk });
+      });
+    }
+    return data;
+  }, [recent, processedChapters, HomeMessage]);
 
   useFocusEffect(
     useCallback(() => {
@@ -370,7 +384,49 @@ function Home({
     navigation.navigate(Navigation.LearnGeeta, item);
   };
 
-  const renderItemBasedOnSection = (title, item) => {
+  const renderChapterCard = useCallback((item) => (
+    <TouchableOpacity
+      style={styles.AudioContainer}
+      onPress={() => navigateToShloks(item?.id, item?.serial)}
+      activeOpacity={0.8}
+    >
+      <FastImage
+        style={styles.audioCardImage}
+        source={{ uri: item.image }}
+        resizeMode={FastImage.resizeMode.cover}
+      />
+      <View style={styles.audioTextContainer}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <CustomText
+            style={{
+              ...setFontFamily(
+                currentLanguage,
+                FONTS.REGULAR,
+                FONTS.HINDI,
+              ),
+              ...styles.audioCardTitle,
+            }}
+          >
+            {item.name}
+            {'  ('}
+            {HomeMessage.chapter.defaultMessage} {item?.serial}
+            {')'}
+          </CustomText>
+        </View>
+        <CustomText
+          style={{
+            ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
+            ...styles.audioCardDescription,
+          }}
+        >
+          {item.description}
+        </CustomText>
+        <View style={styles.imageContainer}></View>
+      </View>
+    </TouchableOpacity>
+  ), [currentLanguage, HomeMessage, navigateToShloks]);
+
+  const renderItemBasedOnSection = useCallback((title, item) => {
     switch (title) {
       case HomeMessage.recent.defaultMessage:
         return (
@@ -439,49 +495,24 @@ function Home({
       default:
         return null;
     }
-  };
+  }, [HomeMessage, currentLanguage, navigateToLearnShlock, numColumns, renderChapterCard]);
 
-  const renderChapterCard = (item) => (
-    <TouchableOpacity
-      style={styles.AudioContainer}
-      onPress={() => navigateToShloks(item?.id, item?.serial)}
-      activeOpacity={0.8}
-    >
-      <FastImage
-        style={styles.audioCardImage}
-        source={{ uri: item.image }}
-        resizeMode={FastImage.resizeMode.cover}
-      />
-      <View style={styles.audioTextContainer}>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
-          <CustomText
-            style={{
-              ...setFontFamily(
-                currentLanguage,
-                FONTS.REGULAR,
-                FONTS.HINDI,
-              ),
-              ...styles.audioCardTitle,
-            }}
-          >
-            {item.name}
-            {'  ('}
-            {HomeMessage.chapter.defaultMessage} {item?.serial}
-            {')'}
+  const renderListItem = useCallback(({ item }) => {
+    if (item.type === 'header') {
+      return (
+        <View style={styles.sectionHeaderContainer}>
+          <CustomText numberOfLines={1} style={styles.sectionHeader}>
+            {item.title}
           </CustomText>
         </View>
-        <CustomText
-          style={{
-            ...setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
-            ...styles.audioCardDescription,
-          }}
-        >
-          {item.description}
-        </CustomText>
-        <View style={styles.imageContainer}></View>
-      </View>
-    </TouchableOpacity>
-  );
+      );
+    } else if (item.type === 'recent') {
+      return renderItemBasedOnSection(HomeMessage.recent.defaultMessage, item.item);
+    } else if (item.type === 'chapterRow') {
+      return renderItemBasedOnSection(HomeMessage.chapters.defaultMessage, item.item);
+    }
+    return null;
+  }, [renderItemBasedOnSection, HomeMessage]);
 
   const toggleSocialMenu = () => {
     setIsSocialExpanded(!isSocialExpanded);
@@ -691,7 +722,7 @@ function Home({
               onPress={isListening ? stopVoiceSearch : startVoiceSearch}
               style={[styles.voiceButton, isListening && { backgroundColor: 'rgba(228, 134, 22, 0.4)' }]}
             >
-              <Animated.View style={[styles.iconPlay, { transform: [{ scale: pulseAnim }] }]}>
+              <Animated.View style={[styles.iconPlay, pulseAnimStyle]}>
                 {isListening ? (
                   <ActivityIndicator size="small" color="#ffffff" />
                 ) : (
@@ -717,26 +748,14 @@ function Home({
               </TouchableOpacity>
             </View>
           ) : (
-            <SectionList
-              sections={sections}
-              keyExtractor={(item) => item.id}
+            <FlashList
+              data={listData}
+              keyExtractor={(item, index) => item.type === 'header' ? `header-${index}` : (item.item?.id || index.toString())}
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{ paddingBottom: hp(100) }}
-              renderSectionHeader={({ section }) => (
-                <>
-                  {!isEmpty(section?.data) && (
-                    <View style={styles.sectionHeaderContainer}>
-                      <CustomText numberOfLines={1} style={styles.sectionHeader}>
-                        {section.title}
-                      </CustomText>
-                    </View>
-                  )}
-                </>
-              )}
-              renderItem={({ item, section }) =>
-                renderItemBasedOnSection(section.title, item, section)
-              }
-              SectionSeparatorComponent={ItemSeparator}
+              estimatedItemSize={200}
+              renderItem={renderListItem}
+              ItemSeparatorComponent={ItemSeparator}
             />
           )}
         </View>

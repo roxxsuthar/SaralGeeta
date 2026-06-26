@@ -8,10 +8,10 @@ import { connect } from 'react-redux';
 import {
   View,
   StatusBar,
-  FlatList,
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
+import { FlashList } from '@shopify/flash-list';
 import { CommonActions, DrawerActions } from '@react-navigation/native';
 import isEqual from 'lodash/isEqual';
 
@@ -125,7 +125,6 @@ function OurIdeals({
           resizeMode="contain"
           indicatorColor="#ffa600ff"
         />
-        {console.log("---test---", item)}
         <CustomText
           style={Object.assign(
             setFontFamily(currentLanguage, FONTS.REGULAR, FONTS.HINDI),
@@ -136,7 +135,7 @@ function OurIdeals({
         </CustomText>
       </TouchableOpacity>
     ),
-    [currentLanguage, getStyleOfCard],
+    [currentLanguage, getStyleOfCard, onCardPress],
   );
 
   const itemSeparatorComponent = useCallback(
@@ -194,12 +193,13 @@ function OurIdeals({
             <LoadingScreen />
           ) : (
             <View style={styles.flatListContainer}>
-              <FlatList
+              <FlashList
                 data={ourIdeals?.data}
                 renderItem={renderItem}
                 keyExtractor={(item) => item.id}
                 ItemSeparatorComponent={itemSeparatorComponent}
                 showsVerticalScrollIndicator={false}
+                estimatedItemSize={100}
               />
             </View>
           )}

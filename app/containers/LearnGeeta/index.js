@@ -1,5 +1,12 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { View, StatusBar, TouchableOpacity, NativeModules, Animated, TouchableWithoutFeedback, Platform, StyleSheet, ImageBackground } from 'react-native';
+import { View, StatusBar, TouchableOpacity, NativeModules, TouchableWithoutFeedback, Platform, StyleSheet, ImageBackground } from 'react-native';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+  withTiming,
+  cancelAnimation,
+} from 'react-native-reanimated';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -8,7 +15,7 @@ import { get } from 'lodash';
 import { compose } from 'redux';
 import Orientation from 'react-native-orientation-locker';
 const { OrientationModule } = NativeModules;
-import { useFocusEffect, DrawerActions } from '@react-navigation/native';
+import { useFocusEffect, DrawerActions, useIsFocused } from '@react-navigation/native';
 import Video from 'react-native-video';
 
 // Custom hooks
@@ -60,6 +67,7 @@ function LearnGeeta({
 }) {
   const insets = useSafeAreaInsets();
   const videoRef = useRef(null);
+  const isFocused = useIsFocused();
 
   const { currentLanguage } = language;
   // Local state
@@ -69,32 +77,31 @@ function LearnGeeta({
   const [isCommentaryPlaying, setIsCommentaryPlaying] = useState(false);
 
   // Animation for iOS back button
-  const backButtonAnim = useRef(new Animated.Value(-150)).current;
+  const backButtonTranslateY = useSharedValue(-150);
   const hideTimerRef = useRef(null);
   const lastCommentaryPlayedId = useRef(null);
-  console.log("lastCommentaryPlayedId----------------", learnGeeta)
+
+  const backButtonAnimStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: backButtonTranslateY.value }],
+  }));
+
   const toggleBackButton = useCallback(() => {
     if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
 
-    Animated.spring(backButtonAnim, {
-      toValue: 0,
-      useNativeDriver: true,
-      friction: 8,
-      tension: 40,
-    }).start();
+    backButtonTranslateY.value = withSpring(0, {
+      damping: 8,
+      stiffness: 40,
+    });
 
     hideTimerRef.current = setTimeout(() => {
-      Animated.timing(backButtonAnim, {
-        toValue: -150,
-        duration: 400,
-        useNativeDriver: true,
-      }).start();
+      backButtonTranslateY.value = withTiming(-150, { duration: 400 });
     }, 4000);
-  }, [backButtonAnim]);
+  }, [backButtonTranslateY]);
 
   useEffect(() => {
     return () => {
       if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
+      cancelAnimation(backButtonTranslateY);
     };
   }, []);
 
@@ -120,7 +127,7 @@ function LearnGeeta({
     resetTranscription,
   } = useRecording(learnGeeta, handleSaveResult);
 
-  // Setup orientation and back handler
+  // Setup orientation and back handler. Pause video when screen loses focus.
   useFocusEffect(
     useCallback(() => {
       if (Platform.OS === 'ios') {
@@ -128,7 +135,13 @@ function LearnGeeta({
       } else {
         Orientation.lockToLandscape();
       }
-    }, []),
+
+      return () => {
+        // Pause the video and commentary when navigating away to free resources
+        setVideoPlayingState(true); // paused = true in the hook
+        setIsCommentaryPlaying(false);
+      };
+    }, [setVideoPlayingState]),
   );
 
   // Effects
@@ -312,7 +325,7 @@ function LearnGeeta({
           // Mute video when recording to prevent echo/feedback, but keep it playing
           muted={isButton || isRecordingButton}
           disableAudioTrack={false}
-          isVideoPaused={() => isCommentaryPlaying || isVideoPaused()}
+          isVideoPaused={() => isCommentaryPlaying || isVideoPaused() || !isFocused}
           onError={handleVideoError}
           onLoadStart={handleVideoLoadStart}
           onLoad={handleVideoLoad}
@@ -330,7 +343,7 @@ function LearnGeeta({
         {isCommentaryPlaying && get(learnGeeta, 'data.commentary.audio') && (
           <Video
             source={{ uri: get(learnGeeta, 'data.commentary.audio') }}
-            paused={false}
+            paused={!isFocused}
             playInBackground={true}
             playWhenInactive={true}
             ignoreSilentSwitch="ignore"
@@ -371,8 +384,8 @@ function LearnGeeta({
                 styles.backButtonBar,
                 {
                   top: insets.top,
-                  transform: [{ translateY: backButtonAnim }]
                 },
+                backButtonAnimStyle,
               ]}
             >
               <TouchableOpacity

@@ -1,8 +1,11 @@
 /* eslint-disable no-undef */
 import 'react-native-gesture-handler'; // FIRST
 import 'react-native-reanimated';
-import React from 'react';
-import { StatusBar, StyleSheet, useColorScheme, View, Text, TextInput } from 'react-native';
+import React, { useEffect } from 'react';
+import { StatusBar, StyleSheet, useColorScheme, View, Text, TextInput, Platform, Alert, Linking } from 'react-native';
+import SpInAppUpdates, {
+  IAUUpdateKind,
+} from 'sp-react-native-in-app-updates';
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
@@ -65,6 +68,47 @@ function App() {
 }
 
 function AppContent() {
+  useEffect(() => {
+    const inAppUpdates = new SpInAppUpdates(
+      false // isDebug
+    );
+
+    inAppUpdates.checkNeedsUpdate().then((result) => {
+      if (result.shouldUpdate) {
+        if (Platform.OS === 'android') {
+          inAppUpdates.startUpdate({
+            updateType: IAUUpdateKind.FLEXIBLE,
+          });
+        } else if (Platform.OS === 'ios') {
+          Alert.alert(
+            'Update Available',
+            'There is a new version of the app available on the App Store. Please update to the latest version.',
+            [
+              { text: 'Cancel', style: 'cancel' },
+              {
+                text: 'Upgrade',
+                onPress: () => {
+                  // Attempt to open the store URL if provided by the check
+                  if (result.storeUrl) {
+                    Linking.openURL(result.storeUrl).catch((err) => {
+                    });
+                  } else {
+                    // Fallback to a generic App Store search or specific app ID if known
+                    // Since we may not know the exact App ID if it's not live, we try the bundle ID
+                    // or you can replace 'idYOUR_APP_ID' with your actual Apple ID.
+                    console.log('No store URL returned, app might not be live yet');
+                  }
+                },
+              },
+            ]
+          );
+        }
+      }
+    }).catch(err => {
+      console.log('Error checking for app updates', err);
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       <SaralGeetaApp />
