@@ -431,6 +431,10 @@
     "faq": {
       "id": "app.container.SideBar.faq",
       "defaultMessage": "सामान्य प्रश्न"
+    },
+    "askBhagwan": {
+      "id": "app.container.SideBar.askBhagwan",
+      "defaultMessage": "भगवान से पूछें"
     }
   },
   "studentGift": {
@@ -816,6 +820,68 @@
     "q12_answer": {
       "id": "app.container.faq.q12_answer",
       "defaultMessage": "गीता लिखें एक ऐसा अभियान है जिसमें आप अपने हाथ से गीता जी, रामायण, भागवत अन्य कई तरह के ग्रंथ जो उपलब्ध हैं उनको लिख सकते हैं। इसमें हम आपको रजिस्टर ,मूल पुस्तक ,पेन आपके पते पर कोरियर कर देते हैं। जो ग्रंथ आप लिखना चाहें उसको आप चयन करें और अपने नाम और पते के साथ जमा करिए। तो हम आपको सब सामग्री, लिखने के लिए भेज देंगे। और आपको हर 15 दिन में बताना होगा कि आपने कितना ग्रंथ लिख लिया है। पूरा ग्रंथ लिखने के बाद में आपको चित्र प्रमाण पत्र से सम्मानित किया जाएगा।"
+    }
+  },
+  "bhagwanQuestions": {
+    "placeholder": {
+      "id": "app.container.bhagwanQuestions.placeholder",
+      "defaultMessage": "अपना उत्तर लिखें..."
+    },
+    "successTitle": {
+      "id": "app.container.bhagwanQuestions.successTitle",
+      "defaultMessage": "🙏 धन्यवाद"
+    },
+    "successMessage": {
+      "id": "app.container.bhagwanQuestions.successMessage",
+      "defaultMessage": "आपके उत्तर प्राप्त हो गए हैं। आपकी बुद्धि और बढ़े!"
+    },
+    "errorTitle": {
+      "id": "app.container.bhagwanQuestions.errorTitle",
+      "defaultMessage": "त्रुटि"
+    },
+    "errorMessage": {
+      "id": "app.container.bhagwanQuestions.errorMessage",
+      "defaultMessage": "जमा करने में विफल। कृपया पुन: प्रयास करें।"
+    },
+    "questionCounter": {
+      "id": "app.container.bhagwanQuestions.questionCounter",
+      "defaultMessage": "प्रश्न {currentIndex} का {total}"
+    },
+    "prevBtn": {
+      "id": "app.container.bhagwanQuestions.prevBtn",
+      "defaultMessage": "← पिछला"
+    },
+    "nextBtn": {
+      "id": "app.container.bhagwanQuestions.nextBtn",
+      "defaultMessage": "आगे"
+    },
+    "submitBtn": {
+      "id": "app.container.bhagwanQuestions.submitBtn",
+      "defaultMessage": "जमा करें"
+    },
+    "noQuestions": {
+      "id": "app.container.bhagwanQuestions.noQuestions",
+      "defaultMessage": "वर्तमान में कोई प्रश्न उपलब्ध नहीं हैं।"
+    },
+    "mockQuestion1": {
+      "id": "app.container.bhagwanQuestions.mockQuestion1",
+      "defaultMessage": "मेरे बच्चे, आज तुम्हारे जीवन में धर्म का सच्चा अर्थ क्या है?"
+    },
+    "mockQuestion2": {
+      "id": "app.container.bhagwanQuestions.mockQuestion2",
+      "defaultMessage": "आप अपने कर्मों के परिणामों से अनासक्ति का अभ्यास कैसे करते हैं?"
+    },
+    "mockQuestion3": {
+      "id": "app.container.bhagwanQuestions.mockQuestion3",
+      "defaultMessage": "अपने मन को शांत करने और आंतरिक शांति पाने के लिए आप क्या कदम उठा रहे हैं?"
+    },
+    "errorMinAnswer": {
+      "id": "app.container.bhagwanQuestions.errorMinAnswer",
+      "defaultMessage": "कृपया कम से कम एक प्रश्न का उत्तर दें।"
+    },
+    "errorEmptyAnswer": {
+      "id": "app.container.bhagwanQuestions.errorEmptyAnswer",
+      "defaultMessage": "कृपया आगे बढ़ने से पहले अपना उत्तर लिखें।"
     }
   }
 }

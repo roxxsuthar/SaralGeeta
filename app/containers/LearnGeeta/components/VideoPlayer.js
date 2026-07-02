@@ -28,6 +28,10 @@ const VideoPlayer = ({
   disableAudioTrack = false,
   onEnd,
   rate = 1.0,
+  // 'mix' lets our commentary AVPlayer share the session at full volume.
+  // 'duck' (old default) was lowering the commentary volume even while the
+  // video was paused — that was the bug. Always use 'mix'.
+  mixWithOthers = 'mix',
 }) => {
   const handleVideoEnd = () => {
     if (isIntroVideoPlayed) {
@@ -107,14 +111,16 @@ const VideoPlayer = ({
         volume={1.0}
         audioFocus={false}
         muted={muted}
-        selectedAudioTrack={disableAudioTrack ? { type: 'disabled' } : undefined}
+        selectedAudioTrack={
+          disableAudioTrack || muted
+            ? { type: 'disabled' }
+            : undefined
+        }
         ignoreSilentSwitch="ignore"
-        mixWithOthers="mix"
+        mixWithOthers={mixWithOthers}
         playInBackground={true}
         playWhenInactive={true}
         setFullScreen={true}
-        audioSessionCategory="PlayAndRecord"
-        audioSessionMode="VideoRecording"
         onError={onError}
         onLoadStart={onLoadStart}
         onLoad={onLoad}
@@ -149,6 +155,7 @@ VideoPlayer.propTypes = {
   muted: PropTypes.bool,
   disableAudioTrack: PropTypes.bool,
   rate: PropTypes.number,
+  mixWithOthers: PropTypes.string,
 };
 
 export default VideoPlayer;

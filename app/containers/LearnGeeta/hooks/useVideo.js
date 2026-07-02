@@ -6,30 +6,34 @@ export const useVideo = (learnGeeta, selectedIdeal, isIntroVideoPlayed) => {
     get(learnGeeta, 'data.media.hls_male_path') || null,
   );
   const [isVideoReady, setIsVideoReady] = useState(false);
+  // isVideoPlaying=true means "the video is in paused/stopped state"
+  // (confusing name kept for backward compat — true = paused)
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const updateVideoUrl = (newUrl) => {
+  // Stable references — these must be useCallback so their identity doesn't
+  // change on every render (prevents infinite useEffect loops in the parent).
+  const updateVideoUrl = useCallback((newUrl) => {
     setVideoUrl(newUrl);
-  };
+  }, []);
 
-  const setVideoReady = (ready) => {
+  const setVideoReady = useCallback((ready) => {
     setIsVideoReady(ready);
-  };
+  }, []);
 
-  const setVideoLoading = (loading) => {
+  const setVideoLoading = useCallback((loading) => {
     setIsLoading(loading);
-  };
+  }, []);
 
-  const setVideoPlayingState = (playing) => {
+  const setVideoPlayingState = useCallback((playing) => {
     setIsVideoPlaying(playing);
-  };
+  }, []);
 
-  const resetVideoState = () => {
+  const resetVideoState = useCallback(() => {
     setIsVideoReady(false);
     setIsVideoPlaying(false);
     setIsLoading(false);
-  };
+  }, []);
 
   useEffect(() => {
     if (isIntroVideoPlayed) {
@@ -41,6 +45,11 @@ export const useVideo = (learnGeeta, selectedIdeal, isIntroVideoPlayed) => {
       }
     }
   }, [isIntroVideoPlayed, learnGeeta]);
+
+  // Reset ready state whenever the video URL changes to ensure correct sequencing
+  useEffect(() => {
+    setIsVideoReady(false);
+  }, [videoUrl]);
 
   const getVideoSource = useCallback(() => {
     if (!isIntroVideoPlayed) {
@@ -70,12 +79,13 @@ export const useVideo = (learnGeeta, selectedIdeal, isIntroVideoPlayed) => {
     };
   }, [isIntroVideoPlayed, selectedIdeal, videoUrl]);
 
+  // isVideoPaused() → true means the <Video> paused prop should be true.
+  // isVideoPlaying=true means "we want it paused" (legacy naming).
   const isVideoPaused = useCallback(() => {
     if (isVideoPlaying) {
-      return isVideoPlaying;
-    } else {
-      return !isVideoReady;
+      return true; // explicitly paused
     }
+    return !isVideoReady; // paused while buffering
   }, [isVideoPlaying, isVideoReady]);
 
   return {

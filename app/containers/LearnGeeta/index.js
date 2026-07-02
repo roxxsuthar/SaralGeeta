@@ -1,5 +1,14 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { View, StatusBar, TouchableOpacity, NativeModules, TouchableWithoutFeedback, Platform, StyleSheet, ImageBackground } from 'react-native';
+import {
+  View,
+  StatusBar,
+  TouchableOpacity,
+  NativeModules,
+  NativeEventEmitter,
+  Platform,
+  StyleSheet,
+  ImageBackground,
+} from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -9,13 +18,13 @@ import Animated, {
 } from 'react-native-reanimated';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createStructuredSelector } from 'reselect';
 import { get } from 'lodash';
 import { compose } from 'redux';
 import Orientation from 'react-native-orientation-locker';
 const { OrientationModule } = NativeModules;
-import { useFocusEffect, DrawerActions, useIsFocused } from '@react-navigation/native';
+import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 import Video from 'react-native-video';
 
 // Custom hooks
@@ -28,7 +37,6 @@ import {
   TranslationDrawer,
 } from './components';
 import CustomText from '../../components/CustomText';
-import strings from '../../../i18n';
 
 // Redux
 import makeSelectLearnGeeta from './selectors';
@@ -70,16 +78,28 @@ function LearnGeeta({
   const isFocused = useIsFocused();
 
   const { currentLanguage } = language;
-  // Local state
+
+  // ─── Local state ──────────────────────────────────────────────────────────
   const [isButton, setIsButton] = useState(false);
   const [shlokIndex, setShlokIndex] = useState();
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const [isCommentaryPlaying, setIsCommentaryPlaying] = useState(false);
 
-  // Animation for iOS back button
+  // Track which shlok we last played commentary for (so we don't replay)
+  const lastCommentaryPlayedId = useRef(null);
+  // Pending commentary URL: set when data is ready but video hasn't loaded yet
+  const pendingCommentaryUrl = useRef(null);
+
+  // iOS native event emitter for audioPlaybackFinished
+  const audioEmitter = useRef(
+    Platform.OS === 'ios'
+      ? new NativeEventEmitter(NativeModules.AudioRecorderModule)
+      : null
+  );
+
+  // ─── Animation ────────────────────────────────────────────────────────────
   const backButtonTranslateY = useSharedValue(-150);
   const hideTimerRef = useRef(null);
-  const lastCommentaryPlayedId = useRef(null);
 
   const backButtonAnimStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: backButtonTranslateY.value }],
@@ -87,12 +107,7 @@ function LearnGeeta({
 
   const toggleBackButton = useCallback(() => {
     if (hideTimerRef.current) clearTimeout(hideTimerRef.current);
-
-    backButtonTranslateY.value = withSpring(0, {
-      damping: 8,
-      stiffness: 40,
-    });
-
+    backButtonTranslateY.value = withSpring(0, { damping: 8, stiffness: 40 });
     hideTimerRef.current = setTimeout(() => {
       backButtonTranslateY.value = withTiming(-150, { duration: 400 });
     }, 4000);
@@ -105,6 +120,7 @@ function LearnGeeta({
     };
   }, []);
 
+  // ─── Video hook ───────────────────────────────────────────────────────────
   const {
     isVideoPlaying,
     isVideoReady,
@@ -118,6 +134,7 @@ function LearnGeeta({
     isVideoPaused,
   } = useVideo(learnGeeta, selectedIdeal, isIntroVideoPlayed);
 
+  // ─── Recording hook ───────────────────────────────────────────────────────
   const {
     isRecordingButton,
     transcription,
@@ -127,7 +144,30 @@ function LearnGeeta({
     resetTranscription,
   } = useRecording(learnGeeta, handleSaveResult);
 
-  // Setup orientation and back handler. Pause video when screen loses focus.
+  // ─── Helper: start commentary audio ───────────────────────────────────────
+  // Called only after the shlok video is confirmed ready (isVideoReady = true).
+  const startCommentary = useCallback((commentaryUrl) => {
+    setIsCommentaryPlaying(true);
+    setVideoPlayingState(true); // Pause the shlok video while commentary plays
+
+    if (Platform.OS === 'ios') {
+      // iOS: play via native AVPlayer which takes exclusive AVAudioSession
+      // ownership so react-native-video cannot duck or interfere.
+      NativeModules.AudioRecorderModule.playAudio(commentaryUrl)
+        .then(() => {
+          // Resolved means audio is ReadyToPlay and has started.
+        })
+        .catch((err) => {
+          // Playback failed — resume video immediately so user isn't stuck.
+          console.warn('[Commentary] playAudio failed:', err);
+          setIsCommentaryPlaying(false);
+          setVideoPlayingState(false);
+        });
+    }
+    // Android: the hidden <Video> component below handles playback.
+  }, [setVideoPlayingState]);
+
+  // ─── Orientation + screen-blur cleanup ────────────────────────────────────
   useFocusEffect(
     useCallback(() => {
       if (Platform.OS === 'ios') {
@@ -137,54 +177,100 @@ function LearnGeeta({
       }
 
       return () => {
-        // Pause the video and commentary when navigating away to free resources
-        setVideoPlayingState(true); // paused = true in the hook
+        setVideoPlayingState(true);
         setIsCommentaryPlaying(false);
+        pendingCommentaryUrl.current = null;
+        if (Platform.OS === 'ios') {
+          NativeModules.AudioRecorderModule.stopAudio().catch(() => {});
+        }
       };
-    }, [setVideoPlayingState]),
+    }, [setVideoPlayingState])
   );
 
-  // Effects
+  // ─── Fetch shlok list ─────────────────────────────────────────────────────
   useEffect(() => {
     StatusBar.setHidden(true);
     handleGetShloks({ chapterId: get(route, 'params.chapter.id') });
   }, [handleGetShloks, route, currentLanguage]);
 
+  // ─── Shlok data changed ───────────────────────────────────────────────────
+  // When learnGeeta data arrives for a new shlok, remember the pending commentary
+  // URL but don't start it yet — wait for the video to be ready (isVideoReady).
   useEffect(() => {
     setShlokIndex(
-      shloks?.data?.findIndex((item) => item.id === learnGeeta?.data?.id),
+      shloks?.data?.findIndex((item) => item.id === learnGeeta?.data?.id)
     );
 
-    // Play commentary audio if available when shlok changes
     const shlokId = get(learnGeeta, 'data.id');
     const commentaryAudio = get(learnGeeta, 'data.commentary.audio');
 
+
     if (isIntroVideoPlayed && commentaryAudio && shlokId !== lastCommentaryPlayedId.current) {
-      setIsCommentaryPlaying(true);
-      setVideoPlayingState(true); // In this hook, true means paused
+      // Mark as pending; will be triggered once the video is ready (see effect below).
+      pendingCommentaryUrl.current = commentaryAudio;
       lastCommentaryPlayedId.current = shlokId;
+
+      // Ensure video is paused until we've played commentary
+      setVideoPlayingState(true);
     } else if (!commentaryAudio || !isIntroVideoPlayed) {
+      pendingCommentaryUrl.current = null;
       setIsCommentaryPlaying(false);
-      // If we're not playing commentary, ensure video is not force-paused
       if (shlokId !== lastCommentaryPlayedId.current) {
         setVideoPlayingState(false);
       }
     }
   }, [shloks, learnGeeta, isIntroVideoPlayed, setVideoPlayingState]);
 
+  // ─── Video ready → trigger pending commentary ─────────────────────────────
+  // Correct sequence: video buffers (isVideoReady=true) → commentary plays
+  // → audioPlaybackFinished event → video resumes.
+  //
+  // IMPORTANT: startCommentary is intentionally NOT in the deps array.
+  // It is called inside the effect via a ref to avoid re-running the effect
+  // every time startCommentary's identity changes (it changes each render
+  // after setVideoPlayingState is called). The ref always points to the
+  // latest version of the function so there's no stale closure risk.
+  const startCommentaryRef = useRef(startCommentary);
+  useEffect(() => {
+    startCommentaryRef.current = startCommentary;
+  });
+
+  useEffect(() => {
+    if (isVideoReady && !isLoading && pendingCommentaryUrl.current && isIntroVideoPlayed) {
+      const url = pendingCommentaryUrl.current;
+      pendingCommentaryUrl.current = null; // Clear before calling to prevent re-entry
+      startCommentaryRef.current(url);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVideoReady, isLoading, isIntroVideoPlayed]);
+
+
+  // ─── iOS: listen for native audioPlaybackFinished event ───────────────────
+  useEffect(() => {
+    if (Platform.OS !== 'ios') return;
+    const sub = audioEmitter.current.addListener('audioPlaybackFinished', () => {
+      setIsCommentaryPlaying(false);
+      setVideoPlayingState(false); // Resume shlok video
+    });
+    return () => {
+      sub.remove();
+    };
+  }, [setVideoPlayingState]);
+
+  // ─── Seek to start when video is ready ────────────────────────────────────
   useEffect(() => {
     if (!isIntroVideoPlayed) {
       videoRef.current?.seek(0);
-    } else if (isVideoReady && !isLoading && !isButton) {
+    } else if (isVideoReady && !isLoading && !isButton && !isCommentaryPlaying) {
       videoRef.current?.seek(0);
     }
-  }, [isVideoReady, isLoading, isButton, isIntroVideoPlayed]);
+  }, [isVideoReady, isLoading, isButton, isIntroVideoPlayed, isCommentaryPlaying]);
 
   useEffect(() => {
     handleGetShloksDetail({ shlok: get(route, 'params') });
   }, [handleGetShloksDetail, route]);
 
-  // Event handlers
+  // ─── Event handlers ────────────────────────────────────────────────────────
   const handleIntroPlay = useCallback(() => {
     handleIntroVideo();
   }, [handleIntroVideo]);
@@ -206,46 +292,31 @@ function LearnGeeta({
   const getPreviousShlok = useCallback(() => {
     setIsButton(false);
     resetTranscription();
+    setIsCommentaryPlaying(false);
+    pendingCommentaryUrl.current = null;
     setVideoPlayingState(false);
     handleGetShloksDetail({ shlok: { id: shloks?.data[shlokIndex - 1]?.id } });
-  }, [
-    shloks,
-    shlokIndex,
-    resetTranscription,
-    setVideoPlayingState,
-    handleGetShloksDetail,
-  ]);
+  }, [shloks, shlokIndex, resetTranscription, setVideoPlayingState, handleGetShloksDetail]);
 
   const getNextShlok = useCallback(() => {
     setIsButton(false);
     resetTranscription();
+    setIsCommentaryPlaying(false);
+    pendingCommentaryUrl.current = null;
     setVideoPlayingState(false);
     handleGetShloksDetail({ shlok: { id: shloks?.data[shlokIndex + 1]?.id } });
-  }, [
-    shloks,
-    shlokIndex,
-    resetTranscription,
-    setVideoPlayingState,
-    handleGetShloksDetail,
-  ]);
+  }, [shloks, shlokIndex, resetTranscription, setVideoPlayingState, handleGetShloksDetail]);
 
   const playAgain = useCallback(() => {
     setIsButton(false);
     resetTranscription();
     setVideoPlayingState(false);
-
     const videoPath = get(learnGeeta, 'data.media.hls_male_path');
     if (videoPath) {
       updateVideoUrl(videoPath);
       resetVideoState();
     }
-  }, [
-    learnGeeta,
-    resetTranscription,
-    setVideoPlayingState,
-    updateVideoUrl,
-    resetVideoState,
-  ]);
+  }, [learnGeeta, resetTranscription, setVideoPlayingState, updateVideoUrl, resetVideoState]);
 
   const onContinuePress = useCallback(() => {
     setVideoPlayingState(true);
@@ -255,16 +326,11 @@ function LearnGeeta({
     });
   }, [navigation, route, setVideoPlayingState]);
 
-  // Render loading state
+  // ─── Render loading state ──────────────────────────────────────────────────
   if (get(learnGeeta, 'loading')) {
     return (
       <View style={styles.container}>
-        <StatusBar
-          barStyle="light-content"
-          translucent
-          backgroundColor="transparent"
-        />
-
+        <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
         <View style={styles.cloudAnimationContainer}>
           <FastImage
             style={styles.chakraImage}
@@ -276,54 +342,48 @@ function LearnGeeta({
     );
   }
 
-  const poster =
-    get(learnGeeta, 'data.image') || get(learnGeeta, 'data.cover_image');
-
+  const poster = get(learnGeeta, 'data.image') || get(learnGeeta, 'data.cover_image');
   const hasVideoUrl = isIntroVideoPlayed
     ? get(learnGeeta, 'data.media.hls_male_path')
     : selectedIdeal?.hls_male_path;
 
-  // Show loading animation for intro video
-  const shouldShowIntroLoading =
-    !isIntroVideoPlayed && (isLoading || !isVideoReady);
-
-  // Show loading animation after intro video
+  const shouldShowIntroLoading = !isIntroVideoPlayed && (isLoading || !isVideoReady);
   const shouldShowLoading = isIntroVideoPlayed && (isLoading || !hasVideoUrl);
 
   const translationContent = learnGeeta?.data?.translation?.translation || '';
+
   const handleOpenDrawer = () => {
-    // Lock orientation FIRST
     if (Platform.OS === 'ios') {
       OrientationModule.lockToLandscape();
     } else {
       Orientation.lockToLandscape();
     }
-
-    // Small delay to ensure orientation is locked before modal opens
-    setTimeout(() => {
-      setIsDrawerVisible(true);
-    }, 100);
+    setTimeout(() => setIsDrawerVisible(true), 100);
   };
+
+  const commentaryAudioUrl = get(learnGeeta, 'data.commentary.audio');
+
   return (
     <View style={styles.container}>
-      <StatusBar
-        barStyle="light-content"
-        translucent={true}
-        backgroundColor="transparent"
-      />
+      <StatusBar barStyle="light-content" translucent={true} backgroundColor="transparent" />
 
       <ImageBackground
         source={IMAGES.MainScreenBackground}
         style={styles.gradientBorder}
         resizeMode="cover"
       >
-        {/* Background Video - Full Screen */}
+        {/*
+          Main shlok video — ALWAYS uses the shlok video source (never switches to commentary).
+          It loads while paused, so it's buffered and ready to play the moment commentary ends.
+          Paused whenever: commentary is playing, video not ready, or user hasn't acted.
+        */}
         <VideoPlayer
           videoRef={videoRef}
           videoSource={getVideoSource()}
-          // Disable audio track when recording to prevent session conflicts
-          // Mute video when recording to prevent echo/feedback, but keep it playing
-          muted={isButton || isRecordingButton}
+          // On iOS: mute the video while commentary is playing to prevent
+          // react-native-video from re-competing for the AVAudioSession.
+          // On Android: rely on the existing mute flags.
+          muted={isCommentaryPlaying || isButton || isRecordingButton}
           disableAudioTrack={false}
           isVideoPaused={() => isCommentaryPlaying || isVideoPaused() || !isFocused}
           onError={handleVideoError}
@@ -339,10 +399,15 @@ function LearnGeeta({
           user={user}
         />
 
-        {/* Commentary Audio Player */}
-        {isCommentaryPlaying && get(learnGeeta, 'data.commentary.audio') && (
+        {/*
+          Commentary Audio Player (Android only).
+          iOS commentary is handled natively by AudioRecorderModule.playAudio().
+          On Android, this hidden <Video> plays the commentary audio while the main
+          video is paused. When it ends, the main video is unpaused.
+        */}
+        {Platform.OS !== 'ios' && isCommentaryPlaying && commentaryAudioUrl && (
           <Video
-            source={{ uri: get(learnGeeta, 'data.commentary.audio') }}
+            source={{ uri: commentaryAudioUrl }}
             paused={!isFocused}
             playInBackground={true}
             playWhenInactive={true}
@@ -350,23 +415,25 @@ function LearnGeeta({
             mixWithOthers="mix"
             progressUpdateInterval={50}
             onProgress={(data) => {
-              // Pre-trigger video unpause 1.2 seconds before audio ends
-              if (data.currentTime > 0.5 && data.seekableDuration > 0 && data.currentTime > data.seekableDuration - 1.2) {
+              // Pre-trigger 1.2 s before end for seamless transition
+              if (
+                data.currentTime > 0.5 &&
+                data.seekableDuration > 0 &&
+                data.currentTime > data.seekableDuration - 1.2
+              ) {
                 setIsCommentaryPlaying(false);
                 setVideoPlayingState(false);
               }
             }}
             onEnd={() => {
-              if (isCommentaryPlaying) {
-                setIsCommentaryPlaying(false);
-                setVideoPlayingState(false);
-              }
+              setIsCommentaryPlaying(false);
+              setVideoPlayingState(false);
             }}
             onError={() => {
               setIsCommentaryPlaying(false);
               setVideoPlayingState(false);
             }}
-            style={{ width: 0, height: 0, position: 'absolute' }}
+            style={{ position: 'absolute', width: 1, height: 1, top: 0, left: 0, opacity: 0 }}
           />
         )}
 
@@ -376,29 +443,26 @@ function LearnGeeta({
             style={{ flex: 1 }}
             pointerEvents="box-none"
             onStartShouldSetResponder={() => true}
-            onResponderRelease={() => toggleBackButton()}
+            onResponderRelease={() => {}}
           >
-            {/* Back Bar (Patti) */}
-            <Animated.View
+            {/* Static Back Button */}
+            <View
               style={[
-                styles.backButtonBar,
-                {
-                  top: insets.top,
-                },
-                backButtonAnimStyle,
+                styles.iosBackButton,
+                { top: insets.top + 10, left: insets.left + 16 },
               ]}
             >
               <TouchableOpacity
                 onPress={() => navigation.goBack()}
                 activeOpacity={0.7}
-                style={{ flexDirection: 'row', alignItems: 'center' }}
+                style={styles.iosBackButtonInner}
               >
-                <IMAGES.WhiteArrowIcon height={28} width={28} />
-                <CustomText style={styles.backButtonTitle}>
+                <IMAGES.WhiteArrowIcon height={24} width={24} />
+                <CustomText style={styles.iosBackButtonText}>
                   श्रीमद्‍भगवद्‍गीता
                 </CustomText>
               </TouchableOpacity>
-            </Animated.View>
+            </View>
 
             {/* Translation Drawer */}
             <TranslationDrawer
@@ -433,7 +497,6 @@ function LearnGeeta({
               </View>
             )}
 
-            {/* Show loading when switching videos (e.g., hls_male_path to hls_male_user) */}
             {isButton && isLoading && (
               <View style={styles.cloudAnimationContainer}>
                 <FastImage
@@ -445,7 +508,10 @@ function LearnGeeta({
             )}
 
             {isIntroVideoPlayed && (
-              <View style={{ flex: 1, paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right }} pointerEvents="box-none">
+              <View
+                style={{ flex: 1, paddingBottom: insets.bottom, paddingLeft: insets.left, paddingRight: insets.right }}
+                pointerEvents="box-none"
+              >
                 {shouldShowLoading ? (
                   <View style={styles.cloudAnimationContainer}>
                     <FastImage
@@ -520,5 +586,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
-
 export default compose(withConnect)(LearnGeeta);

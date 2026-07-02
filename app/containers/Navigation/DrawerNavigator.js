@@ -15,6 +15,7 @@ import TeacherGift from '../TeachGeeta';
 import WriteGita from '../WriteGita';
 import GitaRules from '../GitaRules';
 import FAQ from '../FAQ';
+import BhagwanQuestions from '../BhagwanQuestions';
 
 const Drawer = createDrawerNavigator();
 
@@ -54,6 +55,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen name={Navigation.WriteGita} component={WriteGita} />
       <Drawer.Screen name={Navigation.GitaRules} component={GitaRules} />
       <Drawer.Screen name={Navigation.FAQ} component={FAQ} />
+      <Drawer.Screen name={Navigation.BhagwanQuestions} component={BhagwanQuestions} />
     </Drawer.Navigator>
   );
 };

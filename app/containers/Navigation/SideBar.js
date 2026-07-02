@@ -196,6 +196,21 @@ const SideBar = (props) => {
                 onPress={() => props.navigation.navigate(Navigation.GitaRules)}
               />
             </View>
+            {/* <View style={styles.draweritems}>
+              <DrawerItem
+                label={({ color }) => (
+                  <CustomText style={[styles.label, { color }]}>
+                    {sideBarMessage?.askBhagwan?.defaultMessage || 'Ask Bhagwan'}
+                  </CustomText>
+                )}
+                icon={() => (
+                  <View style={styles.icon}>
+                    <IMAGES.Contact height="100%" width="100%" />
+                  </View>
+                )}
+                onPress={() => props.navigation.navigate(Navigation.BhagwanQuestions)}
+              />
+            </View> */}
 
             <View style={styles.draweritems}>
               <TouchableOpacity

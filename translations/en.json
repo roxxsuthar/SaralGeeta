@@ -431,6 +431,10 @@
     "faq": {
       "id": "app.container.SideBar.faq",
       "defaultMessage": "FAQ"
+    },
+    "askBhagwan": {
+      "id": "app.container.SideBar.askBhagwan",
+      "defaultMessage": "Ask Bhagwan"
     }
   },
   "studentGift": {
@@ -826,6 +830,68 @@
     "q12_answer": {
       "id": "app.container.faq.q12_answer",
       "defaultMessage": "'Write Gita' is a campaign where you can handwrite scriptures such as the Gita, Ramayana, Bhagavata, and many others that are available. We courier the register, original book, and pens to your address. Select the scripture you wish to write and submit it with your name and address. We will then send you all the materials needed for writing. You will need to report how much of the scripture you have completed every 15 days. Upon completion of the entire scripture, you will be honored with a pictorial certificate."
+    }
+  },
+  "bhagwanQuestions": {
+    "placeholder": {
+      "id": "app.container.bhagwanQuestions.placeholder",
+      "defaultMessage": "Write your answer here..."
+    },
+    "successTitle": {
+      "id": "app.container.bhagwanQuestions.successTitle",
+      "defaultMessage": "🙏 Thank You"
+    },
+    "successMessage": {
+      "id": "app.container.bhagwanQuestions.successMessage",
+      "defaultMessage": "Your answers have been received. May your wisdom grow!"
+    },
+    "errorTitle": {
+      "id": "app.container.bhagwanQuestions.errorTitle",
+      "defaultMessage": "Error"
+    },
+    "errorMessage": {
+      "id": "app.container.bhagwanQuestions.errorMessage",
+      "defaultMessage": "Failed to submit. Please try again."
+    },
+    "questionCounter": {
+      "id": "app.container.bhagwanQuestions.questionCounter",
+      "defaultMessage": "Question {currentIndex} of {total}"
+    },
+    "prevBtn": {
+      "id": "app.container.bhagwanQuestions.prevBtn",
+      "defaultMessage": "← Prev"
+    },
+    "nextBtn": {
+      "id": "app.container.bhagwanQuestions.nextBtn",
+      "defaultMessage": "Next"
+    },
+    "submitBtn": {
+      "id": "app.container.bhagwanQuestions.submitBtn",
+      "defaultMessage": "Submit"
+    },
+    "noQuestions": {
+      "id": "app.container.bhagwanQuestions.noQuestions",
+      "defaultMessage": "No questions available at the moment."
+    },
+    "mockQuestion1": {
+      "id": "app.container.bhagwanQuestions.mockQuestion1",
+      "defaultMessage": "My child, what is the true meaning of Dharma in your life today?"
+    },
+    "mockQuestion2": {
+      "id": "app.container.bhagwanQuestions.mockQuestion2",
+      "defaultMessage": "How do you practice detachment from the results of your actions?"
+    },
+    "mockQuestion3": {
+      "id": "app.container.bhagwanQuestions.mockQuestion3",
+      "defaultMessage": "What steps are you taking to calm your mind and find inner peace?"
+    },
+    "errorMinAnswer": {
+      "id": "app.container.bhagwanQuestions.errorMinAnswer",
+      "defaultMessage": "Please answer at least one question."
+    },
+    "errorEmptyAnswer": {
+      "id": "app.container.bhagwanQuestions.errorEmptyAnswer",
+      "defaultMessage": "Please write your answer before proceeding."
     }
   }
 }

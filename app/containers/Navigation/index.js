@@ -14,6 +14,7 @@ import { compose } from 'redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { navigationRef, isReadyRef } from './RootNavigator';
 import MainNavigatorWithBackAndAppState from './MainNavigator';
+import ForceUpdateModal from '../../components/ForceUpdateModal';
 import {
   makeSelectAppLanguage,
   makeSelectOnboardingVisited,
@@ -76,6 +77,8 @@ export function Navigation({
         user={user}
         idealDetails={idealDetails}
       />
+      {/* Force-update modal sits above all screens and cannot be dismissed */}
+      <ForceUpdateModal />
     </NavigationContainer>
   );
 }

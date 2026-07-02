@@ -342,6 +342,27 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 
+  // iOS Static Back Button (always visible)
+  iosBackButton: {
+    position: 'absolute',
+    zIndex: 1002,
+  },
+  iosBackButtonInner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.55)',
+    borderRadius: hp(20),
+    paddingHorizontal: wp(14),
+    paddingVertical: hp(7),
+  },
+  iosBackButtonText: {
+    fontSize: hp(16),
+    color: '#FFFFFF',
+    fontFamily: FONTS.HINDI,
+    marginLeft: wp(8),
+    fontWeight: '700',
+  },
+
   // ═══════════════════════════════════════
   // Skip Button (used by index.js)
   // ═══════════════════════════════════════

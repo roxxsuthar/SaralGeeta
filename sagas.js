@@ -15,6 +15,7 @@ import teacherGiftSaga from './app/containers/TeachGeeta/saga';
 import writeGitaSaga from './app/containers/WriteGita/saga';
 import gitaRulesSaga from './app/containers/GitaRules/saga';
 import FullChapterLearnSaga from './app/containers/FullChapterLearn/saga';
+import BhagwanQuestionsSaga from './app/containers/BhagwanQuestions/saga';
 
 export default function* rootContainerSaga() {
   yield all([
@@ -34,5 +35,6 @@ export default function* rootContainerSaga() {
     writeGitaSaga(),
     gitaRulesSaga(),
     FullChapterLearnSaga(),
+    BhagwanQuestionsSaga(),
   ]);
 }

@@ -61,6 +61,9 @@ const Splash = require('../assets/images/splash_screen.png');
 const MainScreenBackground = require('../assets/images/main_screen_background.png');
 const PlayerLottie = require('../assets/images/playerLottie.json');
 const TranslationAnimation = require('../assets/images/translationAnimation.json');
+const BhagwanQuestionsBg = require('../assets/images/bhagwan_questions_bg.png');
+const CloudContainer = require('../assets/images/cloud_container.png');
+const CloudQuestionMark = require('../assets/images/cloud_question_mark.png');
 
 const IMAGES = {
   DashBoard,
@@ -73,6 +76,9 @@ const IMAGES = {
   Bars,
   GeetLearn,
   KrishnaImage,
+  BhagwanQuestionsBg,
+  CloudContainer,
+  CloudQuestionMark,
   CircleCheck,
   ChevronDown,
   Message,
