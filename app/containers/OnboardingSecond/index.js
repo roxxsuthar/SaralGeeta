@@ -6,7 +6,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { View, Image, StatusBar, SafeAreaView } from 'react-native';
+import { View, Image, StatusBar } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import strings from '../../../i18n';
@@ -19,6 +19,7 @@ import { Navigation } from '../../constants/constants';
 import { setFontFamily } from '../../utils/device';
 import { makeSelectAppLanguage, makeSelectToken, makeSelectIdealDetails } from '../App/selectors';
 import { setOnboardingVisited } from '../App/actions';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function OnboardingSecond({
   navigation,

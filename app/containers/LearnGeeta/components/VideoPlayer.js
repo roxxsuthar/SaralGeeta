@@ -112,7 +112,7 @@ const VideoPlayer = ({
         audioFocus={false}
         muted={muted}
         selectedAudioTrack={
-          disableAudioTrack || muted
+          disableAudioTrack
             ? { type: 'disabled' }
             : undefined
         }

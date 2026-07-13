@@ -78,7 +78,7 @@ function Language({ navigation, language, languageData, idealDetails, _handleSet
         source={IMAGES.Chakra}
         resizeMode={FastImage.resizeMode.contain}
       />
-      <SafeAreaView style={styles.container} edges={['top']}>
+      <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity

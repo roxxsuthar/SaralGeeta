@@ -2,7 +2,7 @@
 import 'react-native-gesture-handler'; // FIRST
 import 'react-native-reanimated';
 import React, { useEffect } from 'react';
-import { StatusBar, StyleSheet, useColorScheme, View, Text, TextInput, Platform, Alert, Linking } from 'react-native';
+import { StatusBar, StyleSheet, useColorScheme, View, Text, TextInput, Platform, Alert, Linking, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
@@ -66,9 +66,11 @@ function App() {
 
 function AppContent() {
   return (
-    <View style={styles.container}>
-      <SaralGeetaApp />
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+        <SaralGeetaApp />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 

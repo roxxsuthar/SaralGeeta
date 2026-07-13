@@ -24,7 +24,9 @@ const shloksReducer = (state = initialState, action) =>
       case DEFAULT_ACTION:
         break;
       case GET_SHLOKS:
-        draft.loading = true;
+        if (!draft.data) {
+          draft.loading = true;
+        }
         break;
       case GET_SHLOKS_SUCCESS:
         draft.data = action.payload;

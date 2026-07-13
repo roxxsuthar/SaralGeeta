@@ -7,9 +7,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, Image, StatusBar, SafeAreaView } from 'react-native';
+import { View, Image, StatusBar } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import { createStructuredSelector } from 'reselect';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { compose } from 'redux';
 import strings from '../../../i18n';
 import makeSelectOnboardingOne from './selectors';
@@ -38,7 +39,6 @@ function OnboardingOne({ navigation, language, handleDeviceAuth }) {
     const getDeviceId = async () => {
       try {
         const deviceId = await DeviceInfo.getUniqueId();
-        console.log('deviceId', deviceId);
         handleDeviceAuth({ device_id: deviceId });
       } catch (error) {
         // console.error('Error getting device ID:', error);

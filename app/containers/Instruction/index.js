@@ -94,7 +94,7 @@ function Instruction({ instruction, handleGetInstruction, app }) {
         translucent={true}
         backgroundColor="transparent"
       />
-      <SafeAreaView style={styles.container} edges={['top']}>
+      <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
         <View style={styles.header}>
                     <TouchableOpacity
                         activeOpacity={0.8}

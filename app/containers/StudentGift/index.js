@@ -7,13 +7,12 @@
 import React, { memo, useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StatusBar, ImageBackground, TouchableOpacity } from 'react-native';
-import { TextInput, ScrollView } from 'react-native-gesture-handler';
+import { View, StatusBar, ImageBackground, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { DrawerActions, useNavigation, useFocusEffect } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 import makeSelectStudentGift from './selectors';
 import makeSelectHome from '../Home/selectors';
@@ -85,7 +84,7 @@ function StudentGift({ studentGift, home, appLanguage, handleGetChapters, handle
                 translucent={true}
                 backgroundColor="transparent"
             />
-            <SafeAreaView style={styles.container} edges={['top']}>
+            <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
                 <View style={styles.header}>
                     <TouchableOpacity
                         activeOpacity={0.8}

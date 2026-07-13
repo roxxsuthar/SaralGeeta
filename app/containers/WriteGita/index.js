@@ -1,6 +1,5 @@
 import React, { memo, useEffect } from 'react';
-import { View, StatusBar, ImageBackground, TouchableOpacity, Alert } from 'react-native';
-import { TextInput, ScrollView } from 'react-native-gesture-handler';
+import { View, StatusBar, ImageBackground, TouchableOpacity, Alert, TextInput, ScrollView } from 'react-native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
@@ -75,7 +74,7 @@ function WriteGita({ writeGita, appLanguage, handleGetRules, handleSubmitForm, h
                 translucent={true}
                 backgroundColor="transparent"
             />
-            <SafeAreaView style={styles.container} edges={['top']}>
+            <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
                 <View style={styles.header}>
                     <TouchableOpacity
                         activeOpacity={0.8}

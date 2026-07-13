@@ -163,7 +163,7 @@ function OurIdeals({
         isLocal={true}
         indicatorColor="#ffa600ff"
       />
-      <SafeAreaView style={styles.container} edges={['top']}>
+      <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
         <View style={styles.header}>
           {typeof navigation.openDrawer === 'function' ? (
             <TouchableOpacity

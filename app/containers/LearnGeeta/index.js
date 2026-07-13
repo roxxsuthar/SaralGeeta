@@ -122,6 +122,7 @@ function LearnGeeta({
 
   // ─── Video hook ───────────────────────────────────────────────────────────
   const {
+    videoUrl,
     isVideoPlaying,
     isVideoReady,
     isLoading,
@@ -310,13 +311,46 @@ function LearnGeeta({
   const playAgain = useCallback(() => {
     setIsButton(false);
     resetTranscription();
-    setVideoPlayingState(false);
+
+    // Reset commentary tracking to allow replay of the same shlok
+    lastCommentaryPlayedId.current = null;
+    setIsCommentaryPlaying(false);
+
+    const commentaryAudio = get(learnGeeta, 'data.commentary.audio');
     const videoPath = get(learnGeeta, 'data.media.hls_male_path');
-    if (videoPath) {
+
+    // Seek the main video back to the beginning
+    videoRef.current?.seek(0);
+
+    if (commentaryAudio) {
+      if (isVideoReady && !isLoading) {
+        // Video is already loaded and ready, play commentary immediately
+        startCommentary(commentaryAudio);
+      } else {
+        // Video is not ready yet, set as pending to play when ready
+        pendingCommentaryUrl.current = commentaryAudio;
+        setVideoPlayingState(true);
+      }
+    } else {
+      pendingCommentaryUrl.current = null;
+      setVideoPlayingState(false);
+    }
+
+    if (videoPath && videoPath !== videoUrl) {
       updateVideoUrl(videoPath);
       resetVideoState();
     }
-  }, [learnGeeta, resetTranscription, setVideoPlayingState, updateVideoUrl, resetVideoState]);
+  }, [
+    learnGeeta,
+    videoUrl,
+    isVideoReady,
+    isLoading,
+    startCommentary,
+    resetTranscription,
+    setVideoPlayingState,
+    updateVideoUrl,
+    resetVideoState,
+  ]);
 
   const onContinuePress = useCallback(() => {
     setVideoPlayingState(true);

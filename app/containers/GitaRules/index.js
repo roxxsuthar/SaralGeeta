@@ -7,12 +7,11 @@
 import React, { memo, useEffect, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, StatusBar, ImageBackground, TouchableOpacity, ScrollView, Modal, ActivityIndicator } from 'react-native';
+import { View, StatusBar, ImageBackground, TouchableOpacity, ScrollView, Modal, ActivityIndicator, TextInput } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { DrawerActions, useNavigation, useFocusEffect } from '@react-navigation/native';
 import { Formik } from 'formik';
-import { TextInput } from 'react-native-gesture-handler';
 import * as Yup from 'yup';
 import moment from 'moment';
 
@@ -123,7 +122,7 @@ function GitaRules({ gitaRules, appLanguage, handleGetRules, handleSubmitForm, h
                 translucent={true}
                 backgroundColor="transparent"
             />
-            <SafeAreaView style={styles.container} edges={['top']}>
+            <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
                 <View style={styles.header}>
                     <TouchableOpacity
                         activeOpacity={0.8}

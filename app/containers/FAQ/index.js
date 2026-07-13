@@ -115,7 +115,7 @@ function FAQ() {
         translucent={true}
         backgroundColor="transparent"
       />
-      <SafeAreaView style={{ flex: 1 }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         {/* Header */}
         <View style={styles.header}>
           <TouchableOpacity

@@ -18,6 +18,7 @@ import {
   Share,
   NativeModules,
   ActivityIndicator,
+  TextInput,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -50,7 +51,6 @@ import { makeSelectAppLanguage } from '../App/selectors';
 import { getChapters, getRecentWatched } from './actions';
 import { Navigation } from '../../constants/constants';
 import { DrawerActions } from '@react-navigation/native';
-import { TextInput } from 'react-native-gesture-handler';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { hp } from '../../utils/responsive';
 
@@ -441,7 +441,7 @@ function Home({
               resizeMode={FastImage.resizeMode.cover}
             />
             <View style={styles.cardSeparator} />
-            <TouchableOpacity activeOpacity={0.8} style={styles.iconContainer}>
+            <TouchableOpacity activeOpacity={0.8} style={styles.iconContainer} onPress={() => navigateToLearnShlock(item)}>
               <IMAGES.PlayerIcon height="100%" width="100%" />
             </TouchableOpacity>
             <View style={styles.recentTextContainer}>

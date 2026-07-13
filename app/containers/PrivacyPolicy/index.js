@@ -91,7 +91,7 @@ function PrivacyPolicy({ privacyPolicy, handleGetPolicy, app }) {
         translucent={true}
         backgroundColor="transparent"
       />
-      <SafeAreaView style={{ flex: 1 }} edges={['top']}>
+      <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <View style={styles.header}>
           <TouchableOpacity
             activeOpacity={0.8}
