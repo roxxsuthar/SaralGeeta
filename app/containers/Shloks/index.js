@@ -2,7 +2,7 @@
 Shloks
 * */
 
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import {
   View,
@@ -20,8 +20,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import get from 'lodash/get';
+import PropTypes from 'prop-types';
 
 import makeSelectShloks from './selectors';
+import strings from '../../../i18n';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CopilotProvider, CopilotStep, walkthroughable, useCopilot } from 'react-native-copilot';
+
+const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
 import styles from './styles';
 import FastImageLoading from '../../components/FastImageLoading';
 import CustomText from '../../components/CustomText';
@@ -43,6 +49,46 @@ function Shloks({
   handleResetIntroVideo,
 }) {
   const { currentLanguage } = language;
+
+  const { start, copilotEvents } = useCopilot();
+  const hasStartedGuide = useRef(false);
+  const startRef = useRef(start);
+  const copilotEventsRef = useRef(copilotEvents);
+
+  startRef.current = start;
+  copilotEventsRef.current = copilotEvents;
+
+  useEffect(() => {
+    const checkTutorial = async () => {
+      if (hasStartedGuide.current) return;
+      if (shloksData?.data && shloksData.data.length > 0) {
+        try {
+          await AsyncStorage.removeItem('HAS_SEEN_HOME_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_SHLOKS_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_LEARNGEETA_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_BHAGWAN_TUTORIAL');
+        const hasSeen = await AsyncStorage.getItem('HAS_SEEN_SHLOKS_TUTORIAL');
+          if (!hasSeen) {
+            hasStartedGuide.current = true;
+            setTimeout(() => {
+              startRef.current();
+            }, 1500);
+          }
+        } catch (e) {}
+      }
+    };
+    checkTutorial();
+  }, [shloksData]);
+
+  useEffect(() => {
+    const handleStop = () => {
+      AsyncStorage.setItem('HAS_SEEN_SHLOKS_TUTORIAL', 'true').catch(() => {});
+    };
+    copilotEventsRef.current.on('stop', handleStop);
+    return () => {
+      copilotEventsRef.current.off('stop', handleStop);
+    };
+  }, []);
 
   useFocusEffect(
     useCallback(() => {
@@ -79,9 +125,15 @@ function Shloks({
   }, [shloksData, navigation, handleResetIntroVideo]);
 
   const renderListItem = useCallback(
-    ({ item }) => {
+    ({ item, index }) => {
       return (
-        <TouchableOpacity
+      <CopilotStep
+        text={strings.Copilot.shloksFirstShlok.defaultMessage}
+        order={3}
+        name="firstShlok"
+        active={index === 0}
+      >
+        <CopilotTouchableOpacity
           activeOpacity={0.8}
           style={styles.cardContainer}
           onPress={() => navigateToLearnGeeta(item)}
@@ -124,7 +176,8 @@ function Shloks({
               {'  '}
             </CustomText>
           </View>
-        </TouchableOpacity>
+        </CopilotTouchableOpacity>
+      </CopilotStep>
       );
     },
     [currentLanguage],
@@ -158,15 +211,21 @@ function Shloks({
       <SafeAreaView style={styles.container}>
         <View style={styles.headerContainer}>
           <View style={styles.imageContainer}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={backHandler}
-              style={styles.headerSubContainer}
+            <CopilotStep
+              text={strings.Copilot.shloksBackBtn.defaultMessage}
+              order={1}
+              name="backBtn"
             >
-              <View style={styles.icon}>
-                <IMAGES.WhiteArrowIcon height="100%" width="100%" />
-              </View>
-            </TouchableOpacity>
+              <CopilotTouchableOpacity
+                activeOpacity={0.8}
+                onPress={backHandler}
+                style={styles.headerSubContainer}
+              >
+                <View style={styles.icon}>
+                  <IMAGES.WhiteArrowIcon height="100%" width="100%" />
+                </View>
+              </CopilotTouchableOpacity>
+            </CopilotStep>
             <FastImageLoading
               styles={styles.chapterImage}
               imageUrl={get(shloksData, 'data[0].image', '')}
@@ -183,15 +242,21 @@ function Shloks({
             {get(shloksData, 'data[0].chapter.name', 'Shloks')}
           </CustomText>
           <View style={styles.headerIcons}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={navigateToIntroVideo}
-              style={styles.headerSearchContainer}
+            <CopilotStep
+              text={strings.Copilot.shloksPlayIntroBtn.defaultMessage}
+              order={2}
+              name="playIntroBtn"
             >
-              <View style={styles.icon}>
-                <IMAGES.WhitePlayIcon height="100%" width="100%" />
-              </View>
-            </TouchableOpacity>
+              <CopilotTouchableOpacity
+                activeOpacity={0.8}
+                onPress={navigateToIntroVideo}
+                style={styles.headerSearchContainer}
+              >
+                <View style={styles.icon}>
+                  <IMAGES.WhitePlayIcon height="100%" width="100%" />
+                </View>
+              </CopilotTouchableOpacity>
+            </CopilotStep>
           </View>
         </View>
         <View style={styles.mainContainer}>
@@ -219,7 +284,14 @@ function Shloks({
   );
 }
 
-Shloks.propTypes = { ...Shloks };
+Shloks.propTypes = {
+  language: PropTypes.object,
+  handleGetShloks: PropTypes.func,
+  route: PropTypes.object,
+  shloksData: PropTypes.object,
+  navigation: PropTypes.object,
+  handleResetIntroVideo: PropTypes.func,
+};
 
 const mapStateToProps = createStructuredSelector({
   shloksData: makeSelectShloks(),
@@ -235,4 +307,30 @@ function mapDispatchToProps(dispatch) {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default compose(withConnect)(Shloks);
+const MemoizedShloks = React.memo(Shloks);
+
+function ShloksWrapper(props) {
+
+  const labels = {
+    previous: strings.Copilot.previous.defaultMessage,
+    next: strings.Copilot.next.defaultMessage,
+    skip: strings.Copilot.skip.defaultMessage,
+    finish: strings.Copilot.finish.defaultMessage,
+  };
+  global.copilotSupportedOrientations = ['portrait'];
+  return (
+    <CopilotProvider
+      verticalOffset={0}
+      backdropColor="rgba(0, 0, 0, 0.7)"
+      labels={labels}
+    >
+      <MemoizedShloks {...props} />
+    </CopilotProvider>
+  );
+}
+
+ShloksWrapper.propTypes = {
+  language: PropTypes.object,
+};
+
+export default compose(withConnect)(ShloksWrapper);

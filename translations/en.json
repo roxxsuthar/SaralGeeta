@@ -712,19 +712,58 @@
     }
   },
   "HomeBottomBar": {
-    "whatsapp": { "id": "app.container.HomeBottomBar.whatsapp", "defaultMessage": "WhatsApp" },
-    "facebook": { "id": "app.container.HomeBottomBar.facebook", "defaultMessage": "Facebook" },
-    "instagram": { "id": "app.container.HomeBottomBar.instagram", "defaultMessage": "Instagram" },
-    "youtube": { "id": "app.container.HomeBottomBar.youtube", "defaultMessage": "YouTube" },
-    "twitter": { "id": "app.container.HomeBottomBar.twitter", "defaultMessage": "X" },
-    "faq": { "id": "app.container.HomeBottomBar.faq", "defaultMessage": "FAQ" },
-    "language": { "id": "app.container.HomeBottomBar.language", "defaultMessage": "Language" },
-    "update": { "id": "app.container.HomeBottomBar.update", "defaultMessage": "Update" },
-    "shareApp": { "id": "app.container.HomeBottomBar.shareApp", "defaultMessage": "Share App" },
-    "rating": { "id": "app.container.HomeBottomBar.rating", "defaultMessage": "Rating" },
-    "contact": { "id": "app.container.HomeBottomBar.contact", "defaultMessage": "Contact" },
-    "help": { "id": "app.container.HomeBottomBar.help", "defaultMessage": "Help" },
-    "social": { "id": "app.container.HomeBottomBar.social", "defaultMessage": "Social" }
+    "whatsapp": {
+      "id": "app.container.HomeBottomBar.whatsapp",
+      "defaultMessage": "WhatsApp"
+    },
+    "facebook": {
+      "id": "app.container.HomeBottomBar.facebook",
+      "defaultMessage": "Facebook"
+    },
+    "instagram": {
+      "id": "app.container.HomeBottomBar.instagram",
+      "defaultMessage": "Instagram"
+    },
+    "youtube": {
+      "id": "app.container.HomeBottomBar.youtube",
+      "defaultMessage": "YouTube"
+    },
+    "twitter": {
+      "id": "app.container.HomeBottomBar.twitter",
+      "defaultMessage": "X"
+    },
+    "faq": {
+      "id": "app.container.HomeBottomBar.faq",
+      "defaultMessage": "FAQ"
+    },
+    "language": {
+      "id": "app.container.HomeBottomBar.language",
+      "defaultMessage": "Language"
+    },
+    "update": {
+      "id": "app.container.HomeBottomBar.update",
+      "defaultMessage": "Update"
+    },
+    "shareApp": {
+      "id": "app.container.HomeBottomBar.shareApp",
+      "defaultMessage": "Share App"
+    },
+    "rating": {
+      "id": "app.container.HomeBottomBar.rating",
+      "defaultMessage": "Rating"
+    },
+    "contact": {
+      "id": "app.container.HomeBottomBar.contact",
+      "defaultMessage": "Contact"
+    },
+    "help": {
+      "id": "app.container.HomeBottomBar.help",
+      "defaultMessage": "Help"
+    },
+    "social": {
+      "id": "app.container.HomeBottomBar.social",
+      "defaultMessage": "Social"
+    }
   },
   "faq": {
     "heading": {
@@ -892,6 +931,80 @@
     "errorEmptyAnswer": {
       "id": "app.container.bhagwanQuestions.errorEmptyAnswer",
       "defaultMessage": "Please write your answer before proceeding."
+    }
+  },
+  "Copilot": {
+    "previous": {
+      "id": "copilot.previous",
+      "defaultMessage": "Previous"
+    },
+    "next": {
+      "id": "copilot.next",
+      "defaultMessage": "Next"
+    },
+    "skip": {
+      "id": "copilot.skip",
+      "defaultMessage": "Skip"
+    },
+    "finish": {
+      "id": "copilot.finish",
+      "defaultMessage": "Finish"
+    },
+    "homeFirstChapter": {
+      "id": "copilot.homeFirstChapter",
+      "defaultMessage": "Tap on any chapter in the list to start learning and reading the shloks."
+    },
+    "homeSearchBar": {
+      "id": "copilot.homeSearchBar",
+      "defaultMessage": "Search here to quickly find your favorite chapter."
+    },
+    "shloksFirstShlok": {
+      "id": "copilot.shloksFirstShlok",
+      "defaultMessage": "Tap on any shlok card to open the practice and pronunciation player."
+    },
+    "learnGeetaSkipBtn": {
+      "id": "copilot.learnGeetaSkipBtn",
+      "defaultMessage": "Tap here to skip the video and go back to the previous screen."
+    },
+    "learnGeetaBackBtn": {
+      "id": "copilot.learnGeetaBackBtn",
+      "defaultMessage": "Tap here to go back to the previous screen."
+    },
+    "learnGeetaShowBtn": {
+      "id": "copilot.learnGeetaShowBtn",
+      "defaultMessage": "Tap here to view the translation and detailed meaning of the shlok."
+    },
+    "learnGeetaContinueBtn": {
+      "id": "copilot.learnGeetaContinueBtn",
+      "defaultMessage": "Tap here to save your results and continue to the next shlok."
+    },
+    "bhagwanAnswerInput": {
+      "id": "copilot.bhagwanAnswerInput",
+      "defaultMessage": "Type your answer or question here."
+    },
+    "homeDrawerBtn": {
+      "id": "copilot.homeDrawerBtn",
+      "defaultMessage": "Tap here to open the side menu and access your profile, settings, and other resources."
+    },
+    "homeBottomBar": {
+      "id": "copilot.homeBottomBar",
+      "defaultMessage": "Use these shortcuts to access student gifts, settings, sharing, and other features."
+    },
+    "shloksBackBtn": {
+      "id": "copilot.shloksBackBtn",
+      "defaultMessage": "Tap here to go back to the chapters list."
+    },
+    "shloksPlayIntroBtn": {
+      "id": "copilot.shloksPlayIntroBtn",
+      "defaultMessage": "Tap here to watch the introductory video for this chapter."
+    },
+    "bhagwanPrevBtn": {
+      "id": "copilot.bhagwanPrevBtn",
+      "defaultMessage": "Tap here to go back to the previous question."
+    },
+    "bhagwanSubmitBtn": {
+      "id": "copilot.bhagwanSubmitBtn",
+      "defaultMessage": "Tap here to submit your answer and proceed."
     }
   }
 }

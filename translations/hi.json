@@ -640,19 +640,58 @@
     }
   },
   "HomeBottomBar": {
-    "whatsapp": { "id": "app.container.HomeBottomBar.whatsapp", "defaultMessage": "व्हाट्सएप" },
-    "facebook": { "id": "app.container.HomeBottomBar.facebook", "defaultMessage": "फेसबुक" },
-    "instagram": { "id": "app.container.HomeBottomBar.instagram", "defaultMessage": "इंस्टाग्राम" },
-    "youtube": { "id": "app.container.HomeBottomBar.youtube", "defaultMessage": "यूट्यूब" },
-    "twitter": { "id": "app.container.HomeBottomBar.twitter", "defaultMessage": "एक्स" },
-    "faq": { "id": "app.container.HomeBottomBar.faq", "defaultMessage": "सामान्य प्रश्न" },
-    "language": { "id": "app.container.HomeBottomBar.language", "defaultMessage": "भाषा" },
-    "update": { "id": "app.container.HomeBottomBar.update", "defaultMessage": "अपडेट करें" },
-    "shareApp": { "id": "app.container.HomeBottomBar.shareApp", "defaultMessage": "शेयर ऐप" },
-    "rating": { "id": "app.container.HomeBottomBar.rating", "defaultMessage": "रेटिंग" },
-    "contact": { "id": "app.container.HomeBottomBar.contact", "defaultMessage": "संपर्क" },
-    "help": { "id": "app.container.HomeBottomBar.help", "defaultMessage": "सहायता" },
-    "social": { "id": "app.container.HomeBottomBar.social", "defaultMessage": "सोशल" }
+    "whatsapp": {
+      "id": "app.container.HomeBottomBar.whatsapp",
+      "defaultMessage": "व्हाट्सएप"
+    },
+    "facebook": {
+      "id": "app.container.HomeBottomBar.facebook",
+      "defaultMessage": "फेसबुक"
+    },
+    "instagram": {
+      "id": "app.container.HomeBottomBar.instagram",
+      "defaultMessage": "इंस्टाग्राम"
+    },
+    "youtube": {
+      "id": "app.container.HomeBottomBar.youtube",
+      "defaultMessage": "यूट्यूब"
+    },
+    "twitter": {
+      "id": "app.container.HomeBottomBar.twitter",
+      "defaultMessage": "एक्स"
+    },
+    "faq": {
+      "id": "app.container.HomeBottomBar.faq",
+      "defaultMessage": "सामान्य प्रश्न"
+    },
+    "language": {
+      "id": "app.container.HomeBottomBar.language",
+      "defaultMessage": "भाषा"
+    },
+    "update": {
+      "id": "app.container.HomeBottomBar.update",
+      "defaultMessage": "अपडेट करें"
+    },
+    "shareApp": {
+      "id": "app.container.HomeBottomBar.shareApp",
+      "defaultMessage": "शेयर ऐप"
+    },
+    "rating": {
+      "id": "app.container.HomeBottomBar.rating",
+      "defaultMessage": "रेटिंग"
+    },
+    "contact": {
+      "id": "app.container.HomeBottomBar.contact",
+      "defaultMessage": "संपर्क"
+    },
+    "help": {
+      "id": "app.container.HomeBottomBar.help",
+      "defaultMessage": "सहायता"
+    },
+    "social": {
+      "id": "app.container.HomeBottomBar.social",
+      "defaultMessage": "सोशल"
+    }
   },
   "gitaRules": {
     "heading": {
@@ -882,6 +921,80 @@
     "errorEmptyAnswer": {
       "id": "app.container.bhagwanQuestions.errorEmptyAnswer",
       "defaultMessage": "कृपया आगे बढ़ने से पहले अपना उत्तर लिखें।"
+    }
+  },
+  "Copilot": {
+    "previous": {
+      "id": "copilot.previous",
+      "defaultMessage": "पिछला"
+    },
+    "next": {
+      "id": "copilot.next",
+      "defaultMessage": "अगला"
+    },
+    "skip": {
+      "id": "copilot.skip",
+      "defaultMessage": "छोड़ें"
+    },
+    "finish": {
+      "id": "copilot.finish",
+      "defaultMessage": "समाप्त"
+    },
+    "homeFirstChapter": {
+      "id": "copilot.homeFirstChapter",
+      "defaultMessage": "श्लोक सीखना और पढ़ना शुरू करने के लिए सूची में किसी भी अध्याय पर टैप करें।"
+    },
+    "homeSearchBar": {
+      "id": "copilot.homeSearchBar",
+      "defaultMessage": "अपना पसंदीदा अध्याय तुरंत खोजने के लिए यहाँ खोजें।"
+    },
+    "shloksFirstShlok": {
+      "id": "copilot.shloksFirstShlok",
+      "defaultMessage": "अभ्यास और उच्चारण प्लेयर खोलने के लिए किसी भी श्लोक कार्ड पर टैप करें।"
+    },
+    "learnGeetaSkipBtn": {
+      "id": "copilot.learnGeetaSkipBtn",
+      "defaultMessage": "वीडियो छोड़ने और पिछली स्क्रीन पर वापस जाने के लिए यहाँ टैप करें।"
+    },
+    "learnGeetaBackBtn": {
+      "id": "copilot.learnGeetaBackBtn",
+      "defaultMessage": "पिछली स्क्रीन पर वापस जाने के लिए यहाँ टैप करें।"
+    },
+    "learnGeetaShowBtn": {
+      "id": "copilot.learnGeetaShowBtn",
+      "defaultMessage": "श्लोक का अनुवाद और विस्तृत अर्थ देखने के लिए यहाँ टैप करें।"
+    },
+    "learnGeetaContinueBtn": {
+      "id": "copilot.learnGeetaContinueBtn",
+      "defaultMessage": "अपने परिणाम सहेजने और अगले श्लोक पर जाने के लिए यहाँ टैप करें।"
+    },
+    "bhagwanAnswerInput": {
+      "id": "copilot.bhagwanAnswerInput",
+      "defaultMessage": "यहाँ अपना उत्तर या प्रश्न लिखें।"
+    },
+    "homeDrawerBtn": {
+      "id": "copilot.homeDrawerBtn",
+      "defaultMessage": "साइड मेनू खोलने और अपनी प्रोफ़ाइल, सेटिंग्स और अन्य संसाधनों तक पहुँचने के लिए यहाँ टैप करें।"
+    },
+    "homeBottomBar": {
+      "id": "copilot.homeBottomBar",
+      "defaultMessage": "छात्र उपहार, सेटिंग्स, साझाकरण और अन्य सुविधाओं तक पहुँचने के लिए इन शॉर्टकट का उपयोग करें।"
+    },
+    "shloksBackBtn": {
+      "id": "copilot.shloksBackBtn",
+      "defaultMessage": "अध्यायों की सूची में वापस जाने के लिए यहाँ टैप करें।"
+    },
+    "shloksPlayIntroBtn": {
+      "id": "copilot.shloksPlayIntroBtn",
+      "defaultMessage": "इस अध्याय का परिचयात्मक वीडियो देखने के लिए यहाँ टैप करें।"
+    },
+    "bhagwanPrevBtn": {
+      "id": "copilot.bhagwanPrevBtn",
+      "defaultMessage": "पिछले प्रश्न पर वापस जाने के लिए यहाँ टैप करें।"
+    },
+    "bhagwanSubmitBtn": {
+      "id": "copilot.bhagwanSubmitBtn",
+      "defaultMessage": "अपना उत्तर सबमिट करने और आगे बढ़ने के लिए यहाँ टैप करें।"
     }
   }
 }

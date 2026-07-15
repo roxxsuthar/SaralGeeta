@@ -47,6 +47,10 @@ import LoadingScreen from '../../components/LoadingScreen';
 import { setFontFamily } from '../../utils/device';
 import { FONTS, IMAGES, COLORS } from '../../constants';
 import strings from '../../../i18n';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CopilotProvider, CopilotStep, walkthroughable, useCopilot } from 'react-native-copilot';
+
+const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
 import { makeSelectAppLanguage } from '../App/selectors';
 import { getChapters, getRecentWatched } from './actions';
 import { Navigation } from '../../constants/constants';
@@ -67,6 +71,48 @@ function Home({
   const [isListening, setIsListening] = useState(false);
   const [isSocialExpanded, setIsSocialExpanded] = useState(false);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+  
+
+  const { start, copilotEvents } = useCopilot();
+  const hasStartedGuide = useRef(false);
+  const startRef = useRef(start);
+  const copilotEventsRef = useRef(copilotEvents);
+
+  startRef.current = start;
+  copilotEventsRef.current = copilotEvents;
+
+  useEffect(() => {
+    const checkTutorial = async () => {
+      if (hasStartedGuide.current) return;
+      if (filteredChapters && filteredChapters.length > 0) {
+        try {
+          await AsyncStorage.removeItem('HAS_SEEN_HOME_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_SHLOKS_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_LEARNGEETA_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_BHAGWAN_TUTORIAL');
+        const hasSeen = await AsyncStorage.getItem('HAS_SEEN_HOME_TUTORIAL');
+          if (!hasSeen) {
+            hasStartedGuide.current = true;
+            setTimeout(() => {
+              startRef.current();
+            }, 1500);
+          }
+        } catch (e) {}
+      }
+    };
+    checkTutorial();
+  }, [filteredChapters]);
+
+  useEffect(() => {
+    const handleStop = () => {
+      AsyncStorage.setItem('HAS_SEEN_HOME_TUTORIAL', 'true').catch(() => {});
+    };
+    copilotEventsRef.current.on('stop', handleStop);
+    return () => {
+      copilotEventsRef.current.off('stop', handleStop);
+    };
+  }, []);
+
   const insets = useSafeAreaInsets();
   const pulseScale = useSharedValue(1);
   const listeningTimerRef = useRef(null);
@@ -385,11 +431,17 @@ function Home({
   };
 
   const renderChapterCard = useCallback((item) => (
-    <TouchableOpacity
-      style={styles.AudioContainer}
-      onPress={() => navigateToShloks(item?.id, item?.serial)}
-      activeOpacity={0.8}
+    <CopilotStep
+      text={strings.Copilot.homeFirstChapter.defaultMessage}
+      order={3}
+      name="firstChapter"
+      active={item.serial === 1}
     >
+      <CopilotTouchableOpacity
+        style={styles.AudioContainer}
+        onPress={() => navigateToShloks(item?.id, item?.serial)}
+        activeOpacity={0.8}
+      >
       <FastImage
         style={styles.audioCardImage}
         source={{ uri: item.image }}
@@ -423,7 +475,8 @@ function Home({
         </CustomText>
         <View style={styles.imageContainer}></View>
       </View>
-    </TouchableOpacity>
+      </CopilotTouchableOpacity>
+    </CopilotStep>
   ), [currentLanguage, HomeMessage, navigateToShloks]);
 
   const renderItemBasedOnSection = useCallback((title, item) => {
@@ -658,15 +711,21 @@ function Home({
       />
       <SafeAreaView style={styles.container}>
         <View style={styles.headerContainer}>
-          <TouchableOpacity
-            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
-            activeOpacity={0.8}
-            style={styles.headerSubContainer}
+          <CopilotStep
+            text={strings.Copilot.homeDrawerBtn.defaultMessage}
+            order={1}
+            name="drawerBtn"
           >
-            <View style={styles.icon}>
-              <IMAGES.ThreeBars height="100%" width="100%" />
-            </View>
-          </TouchableOpacity>
+            <CopilotTouchableOpacity
+              onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+              activeOpacity={0.8}
+              style={styles.headerSubContainer}
+            >
+              <View style={styles.icon}>
+                <IMAGES.ThreeBars height="100%" width="100%" />
+              </View>
+            </CopilotTouchableOpacity>
+          </CopilotStep>
 
           <CustomText
             numberOfLines={1}
@@ -678,15 +737,21 @@ function Home({
             {HomeMessage.headerText.defaultMessage}
           </CustomText>
           <View style={styles.rightIconContainer}>
-            <TouchableOpacity
-              activeOpacity={0.8}
-              onPress={() => setShowSearch((prev) => !prev)}
-              style={styles.headerSearchContainer}
+            <CopilotStep
+              text={strings.Copilot.homeSearchBar.defaultMessage}
+              order={2}
+              name="searchBtn"
             >
-              <View style={styles.icon}>
-                <IMAGES.SearchIcon height="100%" width="100%" />
-              </View>
-            </TouchableOpacity>
+              <CopilotTouchableOpacity
+                activeOpacity={0.8}
+                onPress={() => setShowSearch((prev) => !prev)}
+                style={styles.headerSearchContainer}
+              >
+                <View style={styles.icon}>
+                  <IMAGES.SearchIcon height="100%" width="100%" />
+                </View>
+              </CopilotTouchableOpacity>
+            </CopilotStep>
           </View>
         </View>
 
@@ -801,9 +866,15 @@ function Home({
             <IMAGES.SocialBubbles width={26} height={26} />
           </TouchableOpacity>
           <View style={styles.bottomBarDivider} />
-          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={toggleAppMenu}>
-            <IMAGES.AppsGrid width={26} height={26} />
-          </TouchableOpacity>
+          <CopilotStep
+            text={strings.Copilot.homeBottomBar.defaultMessage}
+            order={4}
+            name="bottomBar"
+          >
+            <CopilotTouchableOpacity style={styles.bottomBarIconContainer} onPress={toggleAppMenu}>
+              <IMAGES.AppsGrid width={26} height={26} />
+            </CopilotTouchableOpacity>
+          </CopilotStep>
         </View>
 
       </SafeAreaView>
@@ -833,4 +904,30 @@ function mapDispatchToProps(dispatch) {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default compose(withConnect)(Home);
+const MemoizedHome = React.memo(Home);
+
+function HomeWrapper(props) {
+  const currentLanguage = props.language?.currentLanguage;
+  const labels = {
+    previous: strings.Copilot.previous.defaultMessage,
+    next: strings.Copilot.next.defaultMessage,
+    skip: strings.Copilot.skip.defaultMessage,
+    finish: strings.Copilot.finish.defaultMessage,
+  };
+  global.copilotSupportedOrientations = ['portrait'];
+  return (
+    <CopilotProvider
+      verticalOffset={0}
+      backdropColor="rgba(0, 0, 0, 0.7)"
+      labels={labels}
+    >
+      <MemoizedHome {...props} />
+    </CopilotProvider>
+  );
+}
+
+HomeWrapper.propTypes = {
+  language: PropTypes.object,
+};
+
+export default compose(withConnect)(HomeWrapper);

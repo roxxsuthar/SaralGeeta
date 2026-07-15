@@ -1,0 +1,42 @@
+diff --git a/node_modules/react-native-copilot/dist/index.js b/node_modules/react-native-copilot/dist/index.js
+index 3aff2e2..c3712b7 100644
+--- a/node_modules/react-native-copilot/dist/index.js
++++ b/node_modules/react-native-copilot/dist/index.js
+@@ -679,6 +679,16 @@ var CopilotModal = (0, import_react5.forwardRef)(
+     if (!modalVisible) {
+       return null;
+     }
++    if (global.copilotSupportedOrientations && global.copilotSupportedOrientations[0] === 'landscape') {
++      return /* @__PURE__ */ import_react5.default.createElement(
++        import_react_native6.View,
++        {
++          style: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, zIndex: 99999, elevation: 99999 },
++          pointerEvents: "box-none"
++        },
++        /* @__PURE__ */ import_react5.default.createElement(import_react_native6.View, { style: styles.container, onLayout: handleLayoutChange }, contentVisible && renderMask(), contentVisible && renderTooltip())
++      );
++    }
+     return /* @__PURE__ */ import_react5.default.createElement(
+       import_react_native6.Modal,
+       {
+diff --git a/node_modules/react-native-copilot/dist/index.mjs b/node_modules/react-native-copilot/dist/index.mjs
+index 5a1e0a8..ea4d671 100644
+--- a/node_modules/react-native-copilot/dist/index.mjs
++++ b/node_modules/react-native-copilot/dist/index.mjs
+@@ -687,6 +687,16 @@ var CopilotModal = forwardRef(
+     if (!modalVisible) {
+       return null;
+     }
++    if (global.copilotSupportedOrientations && global.copilotSupportedOrientations[0] === 'landscape') {
++      return /* @__PURE__ */ React5.createElement(
++        View5,
++        {
++          style: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, zIndex: 99999, elevation: 99999 },
++          pointerEvents: "box-none"
++        },
++        /* @__PURE__ */ React5.createElement(View5, { style: styles.container, onLayout: handleLayoutChange }, contentVisible && renderMask(), contentVisible && renderTooltip())
++      );
++    }
+     return /* @__PURE__ */ React5.createElement(
+       Modal,
+       {

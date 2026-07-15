@@ -1,4 +1,7 @@
 import React from 'react';
+import strings from '../../../../i18n';
+import { CopilotStep, walkthroughable } from 'react-native-copilot';
+const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import Lottie from 'lottie-react-native';
@@ -214,16 +217,28 @@ const RecordingInterface = ({
 
             {/* Show */}
             {onShowPress && (
-              <TouchableOpacity style={styles.actionPill} onPress={onShowPress} activeOpacity={0.8}>
-                <IMAGES.InfoWhiteIcon height={hp(15)} width={wp(15)} />
-                <CustomText style={styles.actionPillText}>Show</CustomText>
-              </TouchableOpacity>
+              <CopilotStep
+                text={strings.Copilot.learnGeetaShowBtn.defaultMessage}
+                order={2}
+                name="showBtn"
+              >
+                <CopilotTouchableOpacity style={styles.actionPill} onPress={onShowPress} activeOpacity={0.8}>
+                  <IMAGES.InfoWhiteIcon height={hp(15)} width={wp(15)} />
+                  <CustomText style={styles.actionPillText}>Show</CustomText>
+                </CopilotTouchableOpacity>
+              </CopilotStep>
             )}
             {/* Continue */}
             {onContinuePress && (
-              <TouchableOpacity style={[styles.actionPill, { marginTop: hp(6) }]} onPress={onContinuePress} activeOpacity={0.8}>
-                <CustomText style={[styles.actionPillText, { marginLeft: 0 }]}>Continue</CustomText>
-              </TouchableOpacity>
+              <CopilotStep
+                text={strings.Copilot.learnGeetaContinueBtn.defaultMessage}
+                order={3}
+                name="continueBtn"
+              >
+                <CopilotTouchableOpacity style={[styles.actionPill, { marginTop: hp(6) }]} onPress={onContinuePress} activeOpacity={0.8}>
+                  <CustomText style={[styles.actionPillText, { marginLeft: 0 }]}>Continue</CustomText>
+                </CopilotTouchableOpacity>
+              </CopilotStep>
             )}
           </View>
         </View>

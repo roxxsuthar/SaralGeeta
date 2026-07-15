@@ -1,4 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CopilotProvider, CopilotStep, walkthroughable, useCopilot } from 'react-native-copilot';
+
+const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
+const CopilotTextInput = walkthroughable(TextInput);
+
 import {
   View,
   StatusBar,
@@ -34,6 +40,43 @@ function BhagwanQuestions({ bhagwanQuestions, appLanguage, handleGetQuestions, h
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [currentAnswer, setCurrentAnswer] = useState('');
+  const { start, copilotEvents } = useCopilot();
+  const hasStartedGuide = useRef(false);
+  const startRef = useRef(start);
+  const copilotEventsRef = useRef(copilotEvents);
+
+  startRef.current = start;
+  copilotEventsRef.current = copilotEvents;
+
+  useEffect(() => {
+    const checkTutorial = async () => {
+      if (hasStartedGuide.current) return;
+      try {
+        await AsyncStorage.removeItem('HAS_SEEN_HOME_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_SHLOKS_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_LEARNGEETA_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_BHAGWAN_TUTORIAL');
+        const hasSeen = await AsyncStorage.getItem('HAS_SEEN_BHAGWAN_TUTORIAL');
+        if (!hasSeen) {
+          hasStartedGuide.current = true;
+          setTimeout(() => {
+            startRef.current();
+          }, 1500);
+        }
+      } catch (e) {}
+    };
+    checkTutorial();
+  }, []);
+
+  useEffect(() => {
+    const handleStop = () => {
+      AsyncStorage.setItem('HAS_SEEN_BHAGWAN_TUTORIAL', 'true').catch(() => {});
+    };
+    copilotEventsRef.current.on('stop', handleStop);
+    return () => {
+      copilotEventsRef.current.off('stop', handleStop);
+    };
+  }, []);
 
   useEffect(() => {
     if (appLanguage) {
@@ -202,61 +245,85 @@ function BhagwanQuestions({ bhagwanQuestions, appLanguage, handleGetQuestions, h
           {/* Answer input */}
           <View style={styles.inputRow}>
             <CustomText style={styles.pencil}>✏️</CustomText>
-            <TextInput
-              style={styles.input}
-              multiline
-              placeholder={strings.bhagwanQuestions.placeholder.defaultMessage}
-              placeholderTextColor="rgba(255,255,255,0.38)"
-              value={currentAnswer}
-              onChangeText={setCurrentAnswer}
-            />
+            <CopilotStep
+              text={strings.Copilot.bhagwanAnswerInput.defaultMessage}
+              order={1}
+              name="answerInput"
+            >
+              <CopilotTextInput
+                style={styles.input}
+                multiline
+                placeholder={strings.bhagwanQuestions.placeholder.defaultMessage}
+                placeholderTextColor="rgba(255,255,255,0.38)"
+                value={currentAnswer}
+                onChangeText={setCurrentAnswer}
+              />
+            </CopilotStep>
           </View>
 
           {/* Navigation row: Prev ←  →  Submit/Next */}
           <View style={styles.navRow}>
             {/* Prev button — always visible, grayed if on first question */}
-            <TouchableOpacity
-              style={[styles.navBtn, !hasPrev && styles.navBtnDisabled]}
-              onPress={handleBack}
-              disabled={!hasPrev}
-              activeOpacity={0.8}
+            <CopilotStep
+              text={strings.Copilot.bhagwanPrevBtn.defaultMessage}
+              order={2}
+              name="prevBtn"
             >
-              <CustomText style={styles.navBtnTxt}>
-                {strings.bhagwanQuestions.prevBtn.defaultMessage}
-              </CustomText>
-            </TouchableOpacity>
+              <CopilotTouchableOpacity
+                style={[styles.navBtn, !hasPrev && styles.navBtnDisabled]}
+                onPress={handleBack}
+                disabled={!hasPrev}
+                activeOpacity={0.8}
+              >
+                <CustomText style={styles.navBtnTxt}>
+                  {strings.bhagwanQuestions.prevBtn.defaultMessage}
+                </CustomText>
+              </CopilotTouchableOpacity>
+            </CopilotStep>
 
             {/* Submit / Next button */}
             {isLast ? (
-              <TouchableOpacity
-                style={[styles.submitBtn, (!hasAnswer || submitting) && styles.navBtnDisabled]}
-                onPress={handleNext}
-                disabled={!hasAnswer || submitting}
-                activeOpacity={0.85}
+              <CopilotStep
+                text={strings.Copilot.bhagwanSubmitBtn.defaultMessage}
+                order={3}
+                name="submitBtn"
               >
-                {submitting ? (
-                  <ActivityIndicator color="#fff" />
-                ) : (
-                  <>
-                    <CustomText style={styles.submitTxt}>
-                      {strings.bhagwanQuestions.submitBtn.defaultMessage}
-                    </CustomText>
-                    <CustomText style={styles.arrowTxt}> →</CustomText>
-                  </>
-                )}
-              </TouchableOpacity>
+                <CopilotTouchableOpacity
+                  style={[styles.submitBtn, (!hasAnswer || submitting) && styles.navBtnDisabled]}
+                  onPress={handleNext}
+                  disabled={!hasAnswer || submitting}
+                  activeOpacity={0.85}
+                >
+                  {submitting ? (
+                    <ActivityIndicator color="#fff" />
+                  ) : (
+                    <>
+                      <CustomText style={styles.submitTxt}>
+                        {strings.bhagwanQuestions.submitBtn.defaultMessage}
+                      </CustomText>
+                      <CustomText style={styles.arrowTxt}> →</CustomText>
+                    </>
+                  )}
+                </CopilotTouchableOpacity>
+              </CopilotStep>
             ) : (
-              <TouchableOpacity
-                style={[styles.submitBtn, !hasAnswer && styles.navBtnDisabled]}
-                onPress={handleNextNav}
-                disabled={!hasAnswer}
-                activeOpacity={0.85}
+              <CopilotStep
+                text={strings.Copilot.bhagwanSubmitBtn.defaultMessage}
+                order={3}
+                name="submitBtn"
               >
-                <CustomText style={styles.submitTxt}>
-                  {strings.bhagwanQuestions.nextBtn.defaultMessage}
-                </CustomText>
-                <CustomText style={styles.arrowTxt}> →</CustomText>
-              </TouchableOpacity>
+                <CopilotTouchableOpacity
+                  style={[styles.submitBtn, !hasAnswer && styles.navBtnDisabled]}
+                  onPress={handleNextNav}
+                  disabled={!hasAnswer}
+                  activeOpacity={0.85}
+                >
+                  <CustomText style={styles.submitTxt}>
+                    {strings.bhagwanQuestions.nextBtn.defaultMessage}
+                  </CustomText>
+                  <CustomText style={styles.arrowTxt}> →</CustomText>
+                </CopilotTouchableOpacity>
+              </CopilotStep>
             )}
           </View>
         </View>
@@ -285,4 +352,30 @@ function mapDispatchToProps(dispatch) {
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
-export default compose(withConnect)(BhagwanQuestions);
+const MemoizedBhagwanQuestions = React.memo(BhagwanQuestions);
+
+function BhagwanQuestionsWrapper(props) {
+  const currentLanguage = props.appLanguage;
+  const labels = {
+    previous: strings.Copilot.previous.defaultMessage,
+    next: strings.Copilot.next.defaultMessage,
+    skip: strings.Copilot.skip.defaultMessage,
+    finish: strings.Copilot.finish.defaultMessage,
+  };
+  global.copilotSupportedOrientations = ['portrait'];
+  return (
+    <CopilotProvider
+      verticalOffset={0}
+      backdropColor="rgba(0, 0, 0, 0.7)"
+      labels={labels}
+    >
+      <MemoizedBhagwanQuestions {...props} />
+    </CopilotProvider>
+  );
+}
+
+BhagwanQuestionsWrapper.propTypes = {
+  appLanguage: PropTypes.string,
+};
+
+export default compose(withConnect)(BhagwanQuestionsWrapper);

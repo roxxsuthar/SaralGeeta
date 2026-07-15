@@ -1,4 +1,9 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
+import strings from '../../../i18n';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CopilotProvider, CopilotStep, walkthroughable, useCopilot } from 'react-native-copilot';
+
+const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
 import {
   View,
   StatusBar,
@@ -78,6 +83,44 @@ function LearnGeeta({
   const isFocused = useIsFocused();
 
   const { currentLanguage } = language;
+
+  const { start, copilotEvents } = useCopilot();
+  const hasStartedGuide = useRef(false);
+  const startRef = useRef(start);
+  const copilotEventsRef = useRef(copilotEvents);
+
+  startRef.current = start;
+  copilotEventsRef.current = copilotEvents;
+
+  useEffect(() => {
+    const checkTutorial = async () => {
+      if (hasStartedGuide.current) return;
+      try {
+        await AsyncStorage.removeItem('HAS_SEEN_HOME_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_SHLOKS_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_LEARNGEETA_TUTORIAL');
+        await AsyncStorage.removeItem('HAS_SEEN_BHAGWAN_TUTORIAL');
+        const hasSeen = await AsyncStorage.getItem('HAS_SEEN_LEARNGEETA_TUTORIAL');
+        if (!hasSeen) {
+          hasStartedGuide.current = true;
+          setTimeout(() => {
+            startRef.current();
+          }, 1500);
+        }
+      } catch (e) {}
+    };
+    checkTutorial();
+  }, []);
+
+  useEffect(() => {
+    const handleStop = () => {
+      AsyncStorage.setItem('HAS_SEEN_LEARNGEETA_TUTORIAL', 'true').catch(() => {});
+    };
+    copilotEventsRef.current.on('stop', handleStop);
+    return () => {
+      copilotEventsRef.current.off('stop', handleStop);
+    };
+  }, []);
 
   // ─── Local state ──────────────────────────────────────────────────────────
   const [isButton, setIsButton] = useState(false);
@@ -486,16 +529,22 @@ function LearnGeeta({
                 { top: insets.top + 10, left: insets.left + 16 },
               ]}
             >
-              <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                activeOpacity={0.7}
-                style={styles.iosBackButtonInner}
+              <CopilotStep
+                text={strings.Copilot.learnGeetaBackBtn.defaultMessage}
+                order={1}
+                name="backBtn"
               >
-                <IMAGES.WhiteArrowIcon height={24} width={24} />
-                <CustomText style={styles.iosBackButtonText}>
-                  श्रीमद्‍भगवद्‍गीता
-                </CustomText>
-              </TouchableOpacity>
+                <CopilotTouchableOpacity
+                  onPress={() => navigation.goBack()}
+                  activeOpacity={0.7}
+                  style={styles.iosBackButtonInner}
+                >
+                  <IMAGES.WhiteArrowIcon height={24} width={24} />
+                  <CustomText style={styles.iosBackButtonText}>
+                    श्रीमद्‍भगवद्‍गीता
+                  </CustomText>
+                </CopilotTouchableOpacity>
+              </CopilotStep>
             </View>
 
             {/* Translation Drawer */}
@@ -620,4 +669,30 @@ function mapDispatchToProps(dispatch) {
 }
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
-export default compose(withConnect)(LearnGeeta);
+const MemoizedLearnGeeta = React.memo(LearnGeeta);
+
+function LearnGeetaWrapper(props) {
+
+  const labels = {
+    previous: strings.Copilot.previous.defaultMessage,
+    next: strings.Copilot.next.defaultMessage,
+    skip: strings.Copilot.skip.defaultMessage,
+    finish: strings.Copilot.finish.defaultMessage,
+  };
+  global.copilotSupportedOrientations = ['landscape', 'landscape-left', 'landscape-right'];
+  return (
+    <CopilotProvider
+      verticalOffset={Platform.OS === 'android' ? StatusBar.currentHeight || 0 : 0}
+      backdropColor="rgba(0, 0, 0, 0.7)"
+      labels={labels}
+    >
+      <MemoizedLearnGeeta {...props} />
+    </CopilotProvider>
+  );
+}
+
+LearnGeetaWrapper.propTypes = {
+  language: PropTypes.object,
+};
+
+export default compose(withConnect)(LearnGeetaWrapper);
