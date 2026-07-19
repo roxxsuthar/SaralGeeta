@@ -64,14 +64,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   cloudImgContent: {
-    width: '65%',
+    width: '75%',
     alignItems: 'center',
     justifyContent: 'center',
-    // cloudHeight = (W * 0.9) / 1.383
-    // ? badge circle occupies top ~35% of cloud height
-    // ornamental divider starts at ~80% → text box ends before that
-    marginTop: (W * 0.9 / 1.383) * 0.44,
-    maxHeight: (W * 0.9 / 1.383) * 0.35,
+    // increased marginTop to create space from the badge
+    marginTop: (W * 0.9 / 1.383) * 0.48,
+    // explicitly use height so justifyContent center works effectively
+    height: (W * 0.9 / 1.383) * 0.32,
     overflow: 'hidden',
   },
   questionText: {
@@ -103,8 +102,8 @@ const styles = StyleSheet.create({
     marginBottom: hp(10),
   },
 
-  /* Input row */
-  inputRow: {
+  /* Recording container */
+  recordingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     width: '100%',
@@ -116,20 +115,32 @@ const styles = StyleSheet.create({
     paddingVertical: hp(12),
     marginBottom: hp(16),
   },
-  pencil: {
-    fontSize: wp(16),
-    marginRight: wp(10),
-    color: '#c9a84c',
-    alignSelf: 'center',
+  micButton: {
+    width: wp(48),
+    height: wp(48),
+    borderRadius: wp(24),
+    backgroundColor: 'rgba(201,168,76,0.3)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#c9a84c',
   },
-  input: {
+  micButtonActive: {
+    backgroundColor: 'rgba(231,76,60,0.3)',
+    borderColor: '#e74c3c',
+  },
+  recordingStatusText: {
     flex: 1,
-    fontSize: hp(15),
+    fontSize: hp(14),
     color: '#fff',
     fontFamily: FONTS.POPPINS_REGULAR,
-    minHeight: hp(36),
-    maxHeight: hp(90),
-    textAlignVertical: 'center',
+    marginLeft: wp(12),
+  },
+  clearBtn: {
+    padding: wp(8),
+  },
+  clearBtnTxt: {
+    fontSize: wp(18),
   },
 
   /* Submit / Next button */

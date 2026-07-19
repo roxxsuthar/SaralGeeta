@@ -1,0 +1,1010 @@
+{
+  "App": {
+    "header": {
+      "id": "container.App.header",
+      "defaultMessage": "हे ॲप कंटेनर आहे!"
+    },
+    "languageUpdated": {
+      "id": "container.App.languageUpdated",
+      "defaultMessage": "ॲप भाषा अद्यतनित केली गेली आहे!"
+    }
+  },
+  "Root": {
+    "header": {
+      "id": "container.Root.header",
+      "defaultMessage": "हा रूट कंटेनर आहे!"
+    }
+  },
+  "Language": {
+    "header": {
+      "id": "container.Language.header",
+      "defaultMessage": "हा भाषा कंटेनर आहे!"
+    }
+  },
+  "OnboardingOne": {
+    "header": {
+      "id": "container.OnboardingOne.header",
+      "defaultMessage": "हा ऑनबोर्डिंग कंटेनर आहे!"
+    },
+    "heading": {
+      "id": "container.OnboardingOne.heading",
+      "defaultMessage": "सरल गीता मध्ये आपले स्वागत आहे"
+    },
+    "description": {
+      "id": "container.OnboardingOne.description",
+      "defaultMessage": "भगवद्गीता सोप्या आणि संवादी पद्धतीने शिका आणि समजून घ्या. उच्चारणाचा सराव करा आणि भगवान कृष्णाच्या शिकवणी एक्सप्लोर करा."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingOne.buttonLabel",
+      "defaultMessage": "पुढे"
+    }
+  },
+  "OnboardingSecond": {
+    "header": {
+      "id": "container.OnboardingSecond.header",
+      "defaultMessage": "हा ऑनबोर्डिंग कंटेनर आहे!"
+    },
+    "heading": {
+      "id": "container.OnboardingSecond.heading",
+      "defaultMessage": "तुमच्या आदर्शाने शिका"
+    },
+    "description": {
+      "id": "container.OnboardingSecond.description",
+      "defaultMessage": "तुमचा अध्यात्मिक मार्गदर्शक निवडा आणि भगवद्गीतेच्या माध्यमातून वैयक्तिक प्रवासाला सुरुवात करा. ऑडिओ, व्हिडिओ आणि परस्परसंवादी धड्यांसह सराव करा."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingSecond.buttonLabel",
+      "defaultMessage": "प्रारंभ करा"
+    }
+  },
+  "language": {
+    "header": {
+      "id": "container.language.header",
+      "defaultMessage": "हा भाषा कंटेनर आहे!"
+    },
+    "buttonLabel": {
+      "id": "container.language.buttonLabel",
+      "defaultMessage": "चालू ठेवा"
+    }
+  },
+  "login": {
+    "heading": {
+      "id": "container.login.header",
+      "defaultMessage": "परत स्वागत आहे!"
+    },
+    "subHeading": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "कृपया साइन इन करण्यासाठी तुमची क्रेडेन्शियल एंटर करा!"
+    },
+    "number": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "मोबाईल नंबर"
+    },
+    "typeHere": {
+      "id": "container.login.typeHere",
+      "defaultMessage": "येथे टाइप करा..."
+    },
+    "login": {
+      "id": "container.login.login",
+      "defaultMessage": "लॉगिन करा"
+    },
+    "continue": {
+      "id": "container.login.continue",
+      "defaultMessage": "किंवा पुढे सुरू ठेवा"
+    },
+    "facebook": {
+      "id": "container.login.facebook",
+      "defaultMessage": "फेसबुक"
+    },
+    "google": {
+      "id": "container.login.google",
+      "defaultMessage": "Google"
+    },
+    "apple": {
+      "id": "container.login.apple",
+      "defaultMessage": "सफरचंद"
+    },
+    "buttonLabel": {
+      "id": "container.login.buttonLabel",
+      "defaultMessage": "चालू ठेवा"
+    },
+    "dont": {
+      "id": "container.login.dont",
+      "defaultMessage": "खाते नाही?"
+    },
+    "create": {
+      "id": "container.login.dont",
+      "defaultMessage": "आता तयार करा"
+    },
+    "bottomSheetHeading": {
+      "id": "containers.login.bottomSheetHeading",
+      "defaultMessage": "तुमचा देश निवडा"
+    },
+    "countryPlaceholder": {
+      "id": "containers.login.warningOtherHalf",
+      "defaultMessage": "देशाच्या नावाने शोधा"
+    },
+    "placeholder": {
+      "id": "containers.login.placeholder",
+      "defaultMessage": "फोन नंबर"
+    }
+  },
+  "otpScreen": {
+    "heading": {
+      "id": "container.otpScreen.header",
+      "defaultMessage": "परत स्वागत आहे"
+    },
+    "subHeading": {
+      "id": "container.otpScreen.subHeading",
+      "defaultMessage": "कृपया तुमच्या नोंदणीकृत मोबाईल नंबरवर पाठवलेला OTP एंटर करा."
+    },
+    "submit": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "सबमिट करा"
+    },
+    "enterOtp": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "येथे OTP टाका"
+    },
+    "dont": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "कोड मिळाला नाही?"
+    },
+    "create": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "पुन्हा पाठवा"
+    },
+    "minute": {
+      "id": "app.containers.otpScreen.minute",
+      "defaultMessage": "मिनिट"
+    },
+    "second": {
+      "id": "app.containers.otpScreen.second",
+      "defaultMessage": "दुसरा डावीकडे"
+    },
+    "minutes": {
+      "id": "app.containers.otpScreen.minutes",
+      "defaultMessage": "मिनिटे"
+    },
+    "seconds": {
+      "id": "app.containers.otpScreen.seconds",
+      "defaultMessage": "सेकंद बाकी"
+    },
+    "timeElapsed": {
+      "id": "app.containers.otpScreen.timeElapsed",
+      "defaultMessage": "वेळ निघून गेली"
+    }
+  },
+  "OurIdeals": {
+    "buttonLabel": {
+      "id": "app.containers.OurIdeals.buttonLabel",
+      "defaultMessage": "चालू ठेवा"
+    },
+    "ourIdeals": {
+      "id": "app.containers.OurIdeals.ourIdeals",
+      "defaultMessage": "आमचे आदर्श"
+    }
+  },
+  "Home": {
+    "headerText": {
+      "id": "app.containers.Home.headerText",
+      "defaultMessage": "अध्याय"
+    },
+    "chapters": {
+      "id": "app.containers.Home.chapters",
+      "defaultMessage": "अध्याय"
+    },
+    "recent": {
+      "id": "app.containers.Home.recent",
+      "defaultMessage": "अलीकडील"
+    },
+    "chapter": {
+      "id": "app.containers.Home.chapter",
+      "defaultMessage": "धडा"
+    },
+    "shareMessage": {
+      "id": "app.containers.Home.shareMessage",
+      "defaultMessage": "सरल गीता ॲप तुमच्यासाठी येथे आहे, जिथे तुम्ही थेट देवाकडून गीता शिकू शकता. तुम्ही देवासोबत गीता श्लोक जप करू शकता, त्यांचा अर्थ समजून घेऊ शकता आणि स्मरण केल्यावर बक्षिसे मिळवू शकता. याद्वारे तुम्ही गीता शिक्षक देखील बनू शकता, दैनंदिन जीवनातील नियमांचे पालन करू शकता आणि गीता लिहू शकता. आता डाउनलोड करा!"
+    }
+  },
+  "Chapters": {
+    "headerText": {
+      "id": "app.containers.Chapters.headerText",
+      "defaultMessage": "अध्याय"
+    }
+  },
+  "Shloks": {
+    "headerText": {
+      "id": "app.containers.Shloks.headerText",
+      "defaultMessage": "श्लोक"
+    }
+  },
+  "learnGeeta": {
+    "continue": {
+      "id": "app.container.learnGeeta.continue",
+      "defaultMessage": "चालू ठेवा"
+    }
+  },
+  "contactUs": {
+    "heading": {
+      "id": "app.container.Contactus.heading",
+      "defaultMessage": "आमच्याशी संपर्क साधा"
+    },
+    "serviceType": {
+      "id": "app.container.Contactus.serviceType",
+      "defaultMessage": "सेवा प्रकार"
+    },
+    "name": {
+      "id": "app.container.Contactus.name",
+      "defaultMessage": "नाव"
+    },
+    "email": {
+      "id": "app.container.Contactus.email",
+      "defaultMessage": "ईमेल"
+    },
+    "message": {
+      "id": "app.container.Contactus.message",
+      "defaultMessage": "संदेश"
+    },
+    "placeholder": {
+      "id": "app.container.Contactus.placeholder",
+      "defaultMessage": "येथे टाइप करा..."
+    },
+    "button": {
+      "id": "app.container.Contactus.button",
+      "defaultMessage": "संदेश पाठवा"
+    }
+  },
+  "Profile": {
+    "heading": {
+      "id": "app.container.Profile.heading",
+      "defaultMessage": "प्रोफाइल"
+    },
+    "name": {
+      "id": "app.container.Profile.name",
+      "defaultMessage": "नाव"
+    },
+    "email": {
+      "id": "app.container.Profile.email",
+      "defaultMessage": "ईमेल"
+    },
+    "mobile": {
+      "id": "app.container.Profile.mobile",
+      "defaultMessage": "मोबाईल"
+    },
+    "gender": {
+      "id": "app.container.Profile.gender",
+      "defaultMessage": "लिंग"
+    },
+    "voice": {
+      "id": "app.container.Profile.voice",
+      "defaultMessage": "आवाज"
+    },
+    "shlokSpeed": {
+      "id": "app.container.Profile.shlokSpeed",
+      "defaultMessage": "श्लोक गती"
+    },
+    "updateProfile": {
+      "id": "app.container.Profile.updateProfile",
+      "defaultMessage": "प्रोफाइल अपडेट करा"
+    },
+    "changePassword": {
+      "id": "app.container.Profile.changePassword",
+      "defaultMessage": "पासवर्ड बदला"
+    },
+    "language": {
+      "id": "app.container.Profile.language",
+      "defaultMessage": "भाषा"
+    }
+  },
+  "EditProfile": {
+    "heading": {
+      "id": "app.container.EditProfile.heading",
+      "defaultMessage": "प्रोफाइल"
+    },
+    "name": {
+      "id": "app.container.EditProfile.name",
+      "defaultMessage": "नाव"
+    },
+    "lastName": {
+      "id": "app.container.EditProfile.lastName",
+      "defaultMessage": "आडनाव"
+    },
+    "email": {
+      "id": "app.container.EditProfile.email",
+      "defaultMessage": "ईमेल"
+    },
+    "mobile": {
+      "id": "app.container.EditProfile.mobile",
+      "defaultMessage": "फोन नंबर"
+    },
+    "gender": {
+      "id": "app.container.EditProfile.gender",
+      "defaultMessage": "लिंग"
+    },
+    "language": {
+      "id": "app.container.EditProfile.language",
+      "defaultMessage": "भाषा"
+    },
+    "shlokSpeed": {
+      "id": "app.container.EditProfile.shlokSpeed",
+      "defaultMessage": "श्लोक गती"
+    },
+    "update": {
+      "id": "app.container.EditProfile.updateProfile",
+      "defaultMessage": "अपडेट करा"
+    }
+  },
+  "PrivacyPolicy": {
+    "heading": {
+      "id": "app.container.PrivacyPolicy.heading",
+      "defaultMessage": "गोपनीयता धोरण"
+    }
+  },
+  "TermsOfUse": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "वापराच्या अटी"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "नियम आणि अटी"
+    }
+  },
+  "SideBar": {
+    "viewAll": {
+      "id": "app.container.SideBar.viewAll",
+      "defaultMessage": "प्रोफाइल पहा"
+    },
+    "chapters": {
+      "id": "app.container.SideBar.chapters",
+      "defaultMessage": "अध्याय"
+    },
+    "ideal": {
+      "id": "app.container.SideBar.ideal",
+      "defaultMessage": "आदर्श"
+    },
+    "setting": {
+      "id": "app.container.SideBar.setting",
+      "defaultMessage": "सेटिंग"
+    },
+    "language": {
+      "id": "app.container.SideBar.language",
+      "defaultMessage": "भाषा बदला"
+    },
+    "helpSupport": {
+      "id": "app.container.SideBar.helpSupport",
+      "defaultMessage": "मदत आणि समर्थन"
+    },
+    "contactUs": {
+      "id": "app.container.SideBar.contactUs",
+      "defaultMessage": "सूचना बॉक्स"
+    },
+    "privacyPolicy": {
+      "id": "app.container.SideBar.privacyPolicy",
+      "defaultMessage": "गोपनीयता धोरण"
+    },
+    "instruction": {
+      "id": "app.container.SideBar.instruction",
+      "defaultMessage": "वापरण्याची पद्धत"
+    },
+    "termOfUse": {
+      "id": "app.container.SideBar.termOfUse",
+      "defaultMessage": "वापराच्या अटी"
+    },
+    "social": {
+      "id": "app.container.SideBar.social",
+      "defaultMessage": "सोशल मीडिया लिंक्स"
+    },
+    "fb": {
+      "id": "app.container.SideBar.fb",
+      "defaultMessage": "फेसबुक"
+    },
+    "insta": {
+      "id": "app.container.SideBar.insta",
+      "defaultMessage": "इंस्टाग्राम"
+    },
+    "x": {
+      "id": "app.container.SideBar.x",
+      "defaultMessage": "एक्स"
+    },
+    "signOut": {
+      "id": "app.container.SideBar.signOut",
+      "defaultMessage": "साइन आउट करा"
+    },
+    "studentGift": {
+      "id": "app.container.SideBar.studentGift",
+      "defaultMessage": "माझे बक्षीस"
+    },
+    "teacherGift": {
+      "id": "app.container.SideBar.teacherGift",
+      "defaultMessage": "गीता शिकवा"
+    },
+    "writeGita": {
+      "id": "app.container.SideBar.writeGita",
+      "defaultMessage": "गीता लिहा"
+    },
+    "gitaRules": {
+      "id": "app.container.SideBar.gitaRules",
+      "defaultMessage": "गीता नियम"
+    },
+    "faq": {
+      "id": "app.container.SideBar.faq",
+      "defaultMessage": "वारंवार विचारले जाणारे प्रश्न"
+    },
+    "askBhagwan": {
+      "id": "app.container.SideBar.askBhagwan",
+      "defaultMessage": "देवाला विचारा"
+    }
+  },
+  "studentGift": {
+    "heading": {
+      "id": "app.container.studentGift.heading",
+      "defaultMessage": "गीता विद्यार्थिनी"
+    },
+    "description": {
+      "id": "app.container.studentGift.description",
+      "defaultMessage": "तुम्ही सरल गीता ॲपवरून गीतेचा कोणताही अध्याय लक्षात ठेवला असल्यास, तुम्ही तुमच्या पुरस्कारासाठी येथे अर्ज करू शकता. आपले नाव आणि पत्ता प्रविष्ट करा, आपण लक्षात ठेवलेला अध्याय निवडा आणि आपला अर्ज सबमिट करा."
+    },
+    "name": {
+      "id": "app.container.studentGift.name",
+      "defaultMessage": "गीता विद्यार्थ्याचे नाव"
+    },
+    "phoneNumber": {
+      "id": "app.container.studentGift.phoneNumber",
+      "defaultMessage": "फोन नंबर"
+    },
+    "address": {
+      "id": "app.container.studentGift.address",
+      "defaultMessage": "पत्ता"
+    },
+    "chaptersLabel": {
+      "id": "app.container.studentGift.chaptersLabel",
+      "defaultMessage": "अध्याय निवडा"
+    },
+    "button": {
+      "id": "app.container.studentGift.button",
+      "defaultMessage": "सबमिट करा"
+    },
+    "placeholder": {
+      "id": "app.container.studentGift.placeholder",
+      "defaultMessage": "येथे टाइप करा..."
+    },
+    "placeholderName": {
+      "id": "app.container.studentGift.placeholderName",
+      "defaultMessage": "गीता विद्यार्थ्याचे नाव टाका"
+    },
+    "placeholderPhone": {
+      "id": "app.container.studentGift.placeholderPhone",
+      "defaultMessage": "फोन नंबर प्रविष्ट करा"
+    },
+    "placeholderAddress": {
+      "id": "app.container.studentGift.placeholderAddress",
+      "defaultMessage": "पूर्ण पत्ता प्रविष्ट करा"
+    },
+    "successMessage": {
+      "id": "app.container.studentGift.successMessage",
+      "defaultMessage": "आम्ही लवकरच तुमच्याशी कनेक्ट होऊ."
+    },
+    "okButton": {
+      "id": "app.container.studentGift.okButton",
+      "defaultMessage": "ठीक आहे"
+    },
+    "alertTitle": {
+      "id": "app.container.studentGift.alertTitle",
+      "defaultMessage": "पुष्टीकरण"
+    },
+    "alertMessage": {
+      "id": "app.container.studentGift.alertMessage",
+      "defaultMessage": "तुम्ही योग्य पत्ता टाकला आहे का?"
+    },
+    "alertNo": {
+      "id": "app.container.studentGift.alertNo",
+      "defaultMessage": "नाही"
+    },
+    "alertYes": {
+      "id": "app.container.studentGift.alertYes",
+      "defaultMessage": "होय"
+    }
+  },
+  "teacherGift": {
+    "heading": {
+      "id": "app.container.teacherGift.heading",
+      "defaultMessage": "शिक्षक तपशील"
+    },
+    "description": {
+      "id": "app.container.teacherGift.description",
+      "defaultMessage": "तुम्हाला तुमच्या शहरात, गावात किंवा परिसरात गीता शिकवायची असेल आणि तुम्हाला गीता शिक्षक व्हायचे असेल तर तुम्ही येथे अर्ज करू शकता. आम्ही तुमच्या शिकवणीसाठी मोबदला देखील देऊ. तुम्हाला कोणता धडा आठवला आहे आणि कोणता धडा शिकवायचा आहे हे नमूद करून तुम्ही अर्ज करू शकता."
+    },
+    "name": {
+      "id": "app.container.teacherGift.name",
+      "defaultMessage": "शिक्षकाचे नाव"
+    },
+    "phoneNumber": {
+      "id": "app.container.teacherGift.phoneNumber",
+      "defaultMessage": "फोन नंबर"
+    },
+    "address": {
+      "id": "app.container.teacherGift.address",
+      "defaultMessage": "पत्ता"
+    },
+    "chaptersLabel": {
+      "id": "app.container.teacherGift.chaptersLabel",
+      "defaultMessage": "अध्याय निवडा"
+    },
+    "button": {
+      "id": "app.container.teacherGift.button",
+      "defaultMessage": "सबमिट करा"
+    },
+    "placeholderName": {
+      "id": "app.container.teacherGift.placeholderName",
+      "defaultMessage": "शिक्षकाचे नाव प्रविष्ट करा"
+    },
+    "placeholderPhone": {
+      "id": "app.container.teacherGift.placeholderPhone",
+      "defaultMessage": "फोन नंबर प्रविष्ट करा"
+    },
+    "placeholderAddress": {
+      "id": "app.container.teacherGift.placeholderAddress",
+      "defaultMessage": "पूर्ण पत्ता प्रविष्ट करा"
+    },
+    "successMessage": {
+      "id": "app.container.teacherGift.successMessage",
+      "defaultMessage": "आम्ही लवकरच तुमच्याशी कनेक्ट होऊ."
+    },
+    "okButton": {
+      "id": "app.container.teacherGift.okButton",
+      "defaultMessage": "ठीक आहे"
+    },
+    "alertTitle": {
+      "id": "app.container.teacherGift.alertTitle",
+      "defaultMessage": "पुष्टीकरण"
+    },
+    "alertMessage": {
+      "id": "app.container.teacherGift.alertMessage",
+      "defaultMessage": "तुम्ही योग्य पत्ता टाकला आहे का?"
+    },
+    "alertNo": {
+      "id": "app.container.teacherGift.alertNo",
+      "defaultMessage": "नाही"
+    },
+    "alertYes": {
+      "id": "app.container.teacherGift.alertYes",
+      "defaultMessage": "होय"
+    }
+  },
+  "writeGita": {
+    "heading": {
+      "id": "app.container.writeGita.heading",
+      "defaultMessage": "गीता लिहा"
+    },
+    "description": {
+      "id": "app.container.writeGita.description",
+      "defaultMessage": "गीता लिहा ही एक मोहीम आहे जिथे तुम्ही स्वतःच्या हातांनी हस्तलिखित शास्त्र तयार करू शकता. निवडण्यासाठी अनेक पुस्तक पर्याय आहेत: रामचरितमानस, गीता जी, भागवत, भक्त चरित्र आणि इतर. तुम्हाला जे शास्त्र लिहायचे आहे ते तुम्ही निवडू शकता. तुमच्या निवडीनंतर, आम्ही मूळ पुस्तक, लिहिण्यासाठी एक रजिस्टर, काळ्या आणि लाल पेनसह तुमच्या घरी पाठवू. हे मूलत: कॉपी करून, मूळ मजकूर पाहून आणि रजिस्टरमध्ये लिहून लिहिणे आहे. तुम्हाला लाल पेनाने श्लोक आणि अर्थ हिंदी किंवा तुमच्या स्वतःच्या प्रादेशिक भाषेत लिहावा लागेल. तुम्हाला दर 15 दिवसांनी तुमच्या प्रगतीचा अहवाल द्यावा लागेल. संपूर्ण शास्त्र पूर्ण झाल्यावर, आम्ही तुम्हाला सचित्र प्रमाणपत्र देऊन सन्मानित करू. शिवाय, जेव्हा जेव्हा प्रदर्शन भरवले जाते तेव्हा हस्तलिखित शास्त्र प्रदर्शनात तुमचे हस्तलिखित शास्त्र प्रदर्शित केले जाईल आणि शास्त्रावर तुमचे नाव कोरले जाईल."
+    },
+    "name": {
+      "id": "app.container.writeGita.name",
+      "defaultMessage": "नाव"
+    },
+    "phoneNumber": {
+      "id": "app.container.writeGita.phoneNumber",
+      "defaultMessage": "संपर्क करा"
+    },
+    "address": {
+      "id": "app.container.writeGita.address",
+      "defaultMessage": "पत्ता"
+    },
+    "button": {
+      "id": "app.container.writeGita.button",
+      "defaultMessage": "सबमिट करा"
+    },
+    "placeholderName": {
+      "id": "app.container.writeGita.placeholderName",
+      "defaultMessage": "तुमचे नाव टाका"
+    },
+    "placeholderPhone": {
+      "id": "app.container.writeGita.placeholderPhone",
+      "defaultMessage": "तुमचा संपर्क क्रमांक प्रविष्ट करा"
+    },
+    "placeholderAddress": {
+      "id": "app.container.writeGita.placeholderAddress",
+      "defaultMessage": "तुमचा पूर्ण पत्ता प्रविष्ट करा"
+    },
+    "alertTitle": {
+      "id": "app.container.writeGita.alertTitle",
+      "defaultMessage": "पुष्टीकरण"
+    },
+    "alertMessage": {
+      "id": "app.container.writeGita.alertMessage",
+      "defaultMessage": "तुम्ही योग्य पत्ता टाकला आहे का?"
+    },
+    "alertNo": {
+      "id": "app.container.writeGita.alertNo",
+      "defaultMessage": "नाही"
+    },
+    "alertYes": {
+      "id": "app.container.writeGita.alertYes",
+      "defaultMessage": "होय"
+    },
+    "rulesLabel": {
+      "id": "app.container.writeGita.rulesLabel",
+      "defaultMessage": "पवित्र शास्त्र निवडा"
+    },
+    "successMessage": {
+      "id": "app.container.writeGita.successMessage",
+      "defaultMessage": "आम्ही लवकरच तुमच्याशी कनेक्ट होऊ."
+    },
+    "okButton": {
+      "id": "app.container.writeGita.okButton",
+      "defaultMessage": "ठीक आहे"
+    }
+  },
+  "Instruction": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "वापरण्याची पद्धत"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "नियम आणि अटी"
+    }
+  },
+  "gitaRules": {
+    "heading": {
+      "id": "app.container.gitaRules.heading",
+      "defaultMessage": "गीता नियम"
+    },
+    "subHeading": {
+      "id": "app.container.gitaRules.subHeading",
+      "defaultMessage": "गीतेचा मार्ग अवलंबावा"
+    },
+    "description": {
+      "id": "app.container.gitaRules.description",
+      "defaultMessage": "या नियमांचे पालन करून, तुम्ही स्वतःला भगवद्गीतेच्या शिकवणींशी संरेखित करता."
+    },
+    "instructions": {
+      "id": "app.container.gitaRules.instructions",
+      "defaultMessage": "आज तुम्ही पाळलेल्या नियमांवर क्लिक करा आणि सबमिट करा. आपण हे दररोज केले पाहिजे. तुम्ही कोणत्या नियमांचे पालन केले आहे आणि कोणते चुकले आहे हे पाहण्यासाठी तुम्ही तुमचा अहवाल दर महिन्याला पाहू शकता."
+    },
+    "button": {
+      "id": "app.container.gitaRules.button",
+      "defaultMessage": "सबमिट करा"
+    },
+    "successMessage": {
+      "id": "app.container.gitaRules.successMessage",
+      "defaultMessage": "तुमची नियम निवड यशस्वीरित्या सबमिट केली गेली आहे."
+    },
+    "okButton": {
+      "id": "app.container.gitaRules.okButton",
+      "defaultMessage": "ठीक आहे"
+    },
+    "alertTitle": {
+      "id": "app.container.gitaRules.alertTitle",
+      "defaultMessage": "पुष्टीकरण"
+    },
+    "alertMessage": {
+      "id": "app.container.gitaRules.alertMessage",
+      "defaultMessage": "तुमची खात्री आहे की तुम्ही हे नियम सबमिट करू इच्छिता?"
+    },
+    "alertNo": {
+      "id": "app.container.gitaRules.alertNo",
+      "defaultMessage": "नाही"
+    },
+    "alertYes": {
+      "id": "app.container.gitaRules.alertYes",
+      "defaultMessage": "होय"
+    },
+    "errorMinSelect": {
+      "id": "app.container.gitaRules.errorMinSelect",
+      "defaultMessage": "कृपया किमान एक नियम पाळा"
+    },
+    "rulesLabel": {
+      "id": "app.container.gitaRules.rulesLabel",
+      "defaultMessage": "एक नियम निवडा"
+    },
+    "inputLabel": {
+      "id": "app.container.gitaRules.inputLabel",
+      "defaultMessage": "तुमचा प्रतिसाद"
+    },
+    "inputPlaceholder": {
+      "id": "app.container.gitaRules.inputPlaceholder",
+      "defaultMessage": "तुमचे इनपुट येथे एंटर करा..."
+    }
+  },
+  "HomeBottomBar": {
+    "whatsapp": {
+      "id": "app.container.HomeBottomBar.whatsapp",
+      "defaultMessage": "WhatsApp"
+    },
+    "facebook": {
+      "id": "app.container.HomeBottomBar.facebook",
+      "defaultMessage": "फेसबुक"
+    },
+    "instagram": {
+      "id": "app.container.HomeBottomBar.instagram",
+      "defaultMessage": "इंस्टाग्राम"
+    },
+    "youtube": {
+      "id": "app.container.HomeBottomBar.youtube",
+      "defaultMessage": "YouTube"
+    },
+    "twitter": {
+      "id": "app.container.HomeBottomBar.twitter",
+      "defaultMessage": "एक्स"
+    },
+    "faq": {
+      "id": "app.container.HomeBottomBar.faq",
+      "defaultMessage": "वारंवार विचारले जाणारे प्रश्न"
+    },
+    "language": {
+      "id": "app.container.HomeBottomBar.language",
+      "defaultMessage": "भाषा"
+    },
+    "update": {
+      "id": "app.container.HomeBottomBar.update",
+      "defaultMessage": "अपडेट करा"
+    },
+    "shareApp": {
+      "id": "app.container.HomeBottomBar.shareApp",
+      "defaultMessage": "ॲप शेअर करा"
+    },
+    "rating": {
+      "id": "app.container.HomeBottomBar.rating",
+      "defaultMessage": "रेटिंग"
+    },
+    "contact": {
+      "id": "app.container.HomeBottomBar.contact",
+      "defaultMessage": "संपर्क करा"
+    },
+    "help": {
+      "id": "app.container.HomeBottomBar.help",
+      "defaultMessage": "मदत करा"
+    },
+    "social": {
+      "id": "app.container.HomeBottomBar.social",
+      "defaultMessage": "सामाजिक"
+    }
+  },
+  "faq": {
+    "heading": {
+      "id": "app.container.faq.heading",
+      "defaultMessage": "वारंवार विचारले जाणारे प्रश्न"
+    },
+    "subHeading": {
+      "id": "app.container.faq.subHeading",
+      "defaultMessage": "सरल गीता ॲपबद्दल वारंवार विचारले जाणारे प्रश्न"
+    },
+    "q1_question": {
+      "id": "app.container.faq.q1_question",
+      "defaultMessage": "सरल गीता ॲप काय आहे?"
+    },
+    "q1_answer": {
+      "id": "app.container.faq.q1_answer",
+      "defaultMessage": "सरल गीता ॲप हे एक डिजिटल प्लॅटफॉर्म आहे जिथे गीता शिकू इच्छिणारे ते थेट देवाकडूनच शिकू शकतात."
+    },
+    "q2_question": {
+      "id": "app.container.faq.q2_question",
+      "defaultMessage": "सरल गीता ॲपमधील शिक्षक कोण आहे?"
+    },
+    "q2_answer": {
+      "id": "app.container.faq.q2_answer",
+      "defaultMessage": "सरल गीता ऍपमध्ये देव स्वतःच गुरू आहेत. आपल्याकडे भगवान विष्णू, भगवान गणेश आणि भगवान वेदव्यास आहेत. या तिन्हीपैकी कोणत्याही एकाकडून तुम्ही गीता शिकू शकता."
+    },
+    "q3_question": {
+      "id": "app.container.faq.q3_question",
+      "defaultMessage": "सरल गीता ॲपमध्ये गीता शिकण्याची पद्धत काय आहे?"
+    },
+    "q3_answer": {
+      "id": "app.container.faq.q3_answer",
+      "defaultMessage": "तुम्हाला कोणत्याही एका देवाची गुरु म्हणून निवड करावी लागेल. निवड केल्यावर, गीतेचे सर्व 18 अध्याय तुमच्यासमोर येतील. तुम्हाला कोणता अध्याय शिकायचा असेल, त्यातील सर्व श्लोक प्रदर्शित केले जातील. तुम्हाला शिकायच्या असलेल्या श्लोकावर क्लिक करा आणि देव हळू हळू पाठ करेल. खाली श्लोकही लिहिला जाईल. लिहिलेले श्लोक पहा आणि त्याचा उच्चार देवासोबत करा. तोच श्लोक जोपर्यंत तुम्ही बरोबर उच्चारत नाही तोपर्यंत तोच श्लोक पुन्हा करा. अशा प्रकारे, तुम्ही एक एक करून श्लोक लक्षात ठेवू शकता."
+    },
+    "q4_question": {
+      "id": "app.container.faq.q4_question",
+      "defaultMessage": "सरल गीता ॲपमध्ये श्लोकांचा अर्थही शिकता येईल का?"
+    },
+    "q4_answer": {
+      "id": "app.container.faq.q4_answer",
+      "defaultMessage": "होय, आपण अर्थ देखील शिकू शकतो. देव जेव्हा श्लोक पाठ करतो तेव्हा बाजूला एक 'i' (माहिती) बिंदू दिसतो. त्यावर क्लिक केल्यास तुम्हाला श्लोक त्याच्या अर्थासह दिसेल."
+    },
+    "q5_question": {
+      "id": "app.container.faq.q5_question",
+      "defaultMessage": "सरल गीता ॲप फक्त एकाच भाषेत उपलब्ध आहे का?"
+    },
+    "q5_answer": {
+      "id": "app.container.faq.q5_answer",
+      "defaultMessage": "नाही, सरल गीता ॲप 10 भाषांमध्ये उपलब्ध आहे, जसे की हिंदी, इंग्रजी, मराठी, गुजराती आणि इतर भाषा."
+    },
+    "q6_question": {
+      "id": "app.container.faq.q6_question",
+      "defaultMessage": "सरल गीता ॲपमध्ये आपण जे लक्षात ठेवले आहे ते आपण कसे तपासू शकतो?"
+    },
+    "q6_answer": {
+      "id": "app.container.faq.q6_answer",
+      "defaultMessage": "देवाने श्लोक पाठ केल्यानंतर आणि शांत झाल्यावर स्क्रीनवर मायक्रोफोनचे बटण दिसते. त्यावर क्लिक करा, संपूर्ण श्लोक पाठ करा, नंतर माइक बटण पुन्हा दाबा. तुम्ही किती टक्के बरोबर बोललात ते स्क्रीन दाखवेल. जर ते 80% किंवा त्याहून अधिक असेल तर याचा अर्थ तुम्ही त्या श्लोकाचा उच्चार शिकलात आणि तुम्ही पुढील श्लोकावर जाऊ शकता."
+    },
+    "q7_question": {
+      "id": "app.container.faq.q7_question",
+      "defaultMessage": "जेव्हा तुम्ही सरल गीता ॲप वरून पूर्ण अध्याय लक्षात ठेवता तेव्हा काय होते?"
+    },
+    "q7_answer": {
+      "id": "app.container.faq.q7_answer",
+      "defaultMessage": "सरल गीता ॲप वापरून तुम्ही गीतेचा कोणताही एक अध्याय लक्षात ठेवल्यास, तुम्ही त्या आठवणीत अध्यायासाठी गीता पुरस्कार विभागात पुरस्कारासाठी नोंदणी करू शकता. पुष्टी केल्यावर, आम्ही तुमच्या दिलेल्या पत्त्यावर बक्षीस कुरियर करू."
+    },
+    "q8_question": {
+      "id": "app.container.faq.q8_question",
+      "defaultMessage": "सरल गीता ॲपमध्ये गीता नियम काय आहेत?"
+    },
+    "q8_answer": {
+      "id": "app.container.faq.q8_answer",
+      "defaultMessage": "सरल गीता ॲपमध्ये दैनंदिन जीवनासाठी उपयुक्त 9 नियम आहेत. त्या दिवशी तुम्ही फॉलो केलेल्या नियमावर क्लिक करा आणि सबमिट करा. अशाप्रकारे, तुम्ही पाळलेल्या नियमांचा मासिक सारांश तयार केला जातो, ज्याद्वारे तुम्ही कोणत्या नियमांचे पालन केले आणि कोणत्या नियमांचे तुम्ही महिनाभर चुकले."
+    },
+    "q9_question": {
+      "id": "app.container.faq.q9_question",
+      "defaultMessage": "सरल गीता ॲपमध्ये गीता शिक्षक वैशिष्ट्य काय आहे?"
+    },
+    "q9_answer": {
+      "id": "app.container.faq.q9_answer",
+      "defaultMessage": "तुम्हाला गीता माहित असल्यास, अगदी एक अध्याय, तुम्ही गीता शिक्षक बनण्यासाठी गीता शिक्षक वैशिष्ट्याद्वारे नोंदणी करू शकता. तुम्ही किती अध्याय लक्षात ठेवले आहेत ते तुम्ही नमूद करू शकता. तुमची इच्छा असेल तिथे आम्ही तुम्हाला शिकवण्याची पूर्ण व्यवस्था करू, तुमच्या शिकवणीसाठी मोबदला देऊ आणि तुम्हाला गीता शिक्षक होण्यासाठी प्रशिक्षण हवे असेल तर तेही आम्ही देऊ."
+    },
+    "q10_question": {
+      "id": "app.container.faq.q10_question",
+      "defaultMessage": "सरल गीता ॲपमध्ये गीता अभ्यास (सराव) म्हणजे काय?"
+    },
+    "q10_answer": {
+      "id": "app.container.faq.q10_answer",
+      "defaultMessage": "गीता अभ्यास हे एक वैशिष्ट्य आहे जे तुम्हाला तुम्ही लक्षात ठेवलेल्या अध्यायांची उजळणी करण्यास अनुमती देते. देव तुमच्यासमोर उपस्थित आहे आणि तुम्ही देवाला सांगा की तुम्हाला कोणते अध्याय आठवतात. त्यानंतर देव तुम्हाला त्या अध्यायांमधील श्लोक त्यांच्या संख्येसह विचारेल, तुम्हाला तुमच्या लक्षात ठेवलेल्या अध्यायांची उजळणी करण्याची परवानगी देईल."
+    },
+    "q11_question": {
+      "id": "app.container.faq.q11_question",
+      "defaultMessage": "सरल गीता ॲपमध्ये आपण एकाच वेळी पूर्ण अध्याय पाठ करू शकतो का?"
+    },
+    "q11_answer": {
+      "id": "app.container.faq.q11_answer",
+      "defaultMessage": "होय! तुम्हाला एक संपूर्ण अध्याय एकाच वेळी पाठ करायचा असल्यास, अध्याय आणि श्लोक उघडा, नंतर स्क्रीनच्या शीर्षस्थानी 'सुरू ठेवा' बटणावर क्लिक करा. देव संपूर्ण अध्याय सतत पाठ करील. त्याच्या बाजूला एक स्पीड बटण देखील आहे, ज्यामुळे तुमची इच्छा असल्यास तुम्ही जलद पाठ करू शकता."
+    },
+    "q12_question": {
+      "id": "app.container.faq.q12_question",
+      "defaultMessage": "सरल गीता ॲपमध्ये 'गीता लिहा' वैशिष्ट्य काय आहे?"
+    },
+    "q12_answer": {
+      "id": "app.container.faq.q12_answer",
+      "defaultMessage": "'गीता लिहा' ही एक मोहीम आहे जिथे तुम्ही गीता, रामायण, भागवत आणि इतर अनेक शास्त्रे हस्तलिखित करू शकता जे उपलब्ध आहेत. आम्ही तुमच्या पत्त्यावर रजिस्टर, मूळ पुस्तक आणि पेन कुरिअर करतो. तुम्हाला जे शास्त्रवचन लिहायचे आहे ते निवडा आणि ते तुमच्या नाव आणि पत्त्यासह सबमिट करा. त्यानंतर आम्ही तुम्हाला लेखनासाठी लागणारे सर्व साहित्य पाठवू. तुम्ही दर 15 दिवसांनी किती शास्त्रवचन पूर्ण केले आहे याचा अहवाल द्यावा लागेल. संपूर्ण शास्त्र पूर्ण झाल्यावर, तुम्हाला सचित्र प्रमाणपत्र देऊन सन्मानित केले जाईल."
+    }
+  },
+  "bhagwanQuestions": {
+    "placeholder": {
+      "id": "app.container.bhagwanQuestions.placeholder",
+      "defaultMessage": "तुमचे उत्तर इथे लिहा..."
+    },
+    "successTitle": {
+      "id": "app.container.bhagwanQuestions.successTitle",
+      "defaultMessage": "🙏 धन्यवाद"
+    },
+    "successMessage": {
+      "id": "app.container.bhagwanQuestions.successMessage",
+      "defaultMessage": "तुमची उत्तरे मिळाली आहेत. तुमची बुद्धी वाढू दे!"
+    },
+    "errorTitle": {
+      "id": "app.container.bhagwanQuestions.errorTitle",
+      "defaultMessage": "त्रुटी"
+    },
+    "errorMessage": {
+      "id": "app.container.bhagwanQuestions.errorMessage",
+      "defaultMessage": "सबमिट करण्यात अयशस्वी. कृपया पुन्हा प्रयत्न करा."
+    },
+    "questionCounter": {
+      "id": "app.container.bhagwanQuestions.questionCounter",
+      "defaultMessage": "{total} पैकी {currentIndex} प्रश्न"
+    },
+    "prevBtn": {
+      "id": "app.container.bhagwanQuestions.prevBtn",
+      "defaultMessage": "← मागील"
+    },
+    "nextBtn": {
+      "id": "app.container.bhagwanQuestions.nextBtn",
+      "defaultMessage": "पुढे"
+    },
+    "submitBtn": {
+      "id": "app.container.bhagwanQuestions.submitBtn",
+      "defaultMessage": "सबमिट करा"
+    },
+    "noQuestions": {
+      "id": "app.container.bhagwanQuestions.noQuestions",
+      "defaultMessage": "याक्षणी कोणतेही प्रश्न उपलब्ध नाहीत."
+    },
+    "mockQuestion1": {
+      "id": "app.container.bhagwanQuestions.mockQuestion1",
+      "defaultMessage": "माझ्या मुला, आज तुझ्या जीवनात धर्माचा खरा अर्थ काय आहे?"
+    },
+    "mockQuestion2": {
+      "id": "app.container.bhagwanQuestions.mockQuestion2",
+      "defaultMessage": "तुमच्या कृतींच्या परिणामांपासून तुम्ही अलिप्ततेचा सराव कसा करता?"
+    },
+    "mockQuestion3": {
+      "id": "app.container.bhagwanQuestions.mockQuestion3",
+      "defaultMessage": "तुमचे मन शांत करण्यासाठी आणि आंतरिक शांती मिळविण्यासाठी तुम्ही कोणती पावले उचलत आहात?"
+    },
+    "errorMinAnswer": {
+      "id": "app.container.bhagwanQuestions.errorMinAnswer",
+      "defaultMessage": "कृपया किमान एका प्रश्नाचे उत्तर द्या."
+    },
+    "errorEmptyAnswer": {
+      "id": "app.container.bhagwanQuestions.errorEmptyAnswer",
+      "defaultMessage": "कृपया पुढे जाण्यापूर्वी तुमचे उत्तर लिहा."
+    }
+  },
+  "Copilot": {
+    "previous": {
+      "id": "copilot.previous",
+      "defaultMessage": "मागील"
+    },
+    "next": {
+      "id": "copilot.next",
+      "defaultMessage": "पुढे"
+    },
+    "skip": {
+      "id": "copilot.skip",
+      "defaultMessage": "वगळा"
+    },
+    "finish": {
+      "id": "copilot.finish",
+      "defaultMessage": "समाप्त करा"
+    },
+    "homeFirstChapter": {
+      "id": "copilot.homeFirstChapter",
+      "defaultMessage": "श्लोक शिकणे आणि वाचणे सुरू करण्यासाठी सूचीतील कोणत्याही अध्यायावर टॅप करा."
+    },
+    "homeSearchBar": {
+      "id": "copilot.homeSearchBar",
+      "defaultMessage": "तुमचा आवडता अध्याय पटकन शोधण्यासाठी येथे शोधा."
+    },
+    "shloksFirstShlok": {
+      "id": "copilot.shloksFirstShlok",
+      "defaultMessage": "सराव आणि उच्चारण प्लेयर उघडण्यासाठी कोणत्याही श्लोक कार्डवर टॅप करा."
+    },
+    "learnGeetaSkipBtn": {
+      "id": "copilot.learnGeetaSkipBtn",
+      "defaultMessage": "व्हिडिओ वगळण्यासाठी येथे टॅप करा आणि मागील स्क्रीनवर परत जा."
+    },
+    "learnGeetaBackBtn": {
+      "id": "copilot.learnGeetaBackBtn",
+      "defaultMessage": "मागील स्क्रीनवर परत जाण्यासाठी येथे टॅप करा."
+    },
+    "learnGeetaShowBtn": {
+      "id": "copilot.learnGeetaShowBtn",
+      "defaultMessage": "श्लोकचे भाषांतर आणि तपशीलवार अर्थ पाहण्यासाठी येथे टॅप करा."
+    },
+    "learnGeetaContinueBtn": {
+      "id": "copilot.learnGeetaContinueBtn",
+      "defaultMessage": "तुमचे निकाल सेव्ह करण्यासाठी येथे टॅप करा आणि पुढील श्लोक सुरू ठेवा."
+    },
+    "bhagwanAnswerInput": {
+      "id": "copilot.bhagwanAnswerInput",
+      "defaultMessage": "तुमचे उत्तर किंवा प्रश्न येथे टाइप करा."
+    },
+    "homeDrawerBtn": {
+      "id": "copilot.homeDrawerBtn",
+      "defaultMessage": "साइड मेनू उघडण्यासाठी आणि तुमचे प्रोफाइल, सेटिंग्ज आणि इतर संसाधनांमध्ये प्रवेश करण्यासाठी येथे टॅप करा."
+    },
+    "homeBottomBar": {
+      "id": "copilot.homeBottomBar",
+      "defaultMessage": "विद्यार्थी भेटवस्तू, सेटिंग्ज, शेअरिंग आणि इतर वैशिष्ट्यांमध्ये प्रवेश करण्यासाठी हे शॉर्टकट वापरा."
+    },
+    "shloksBackBtn": {
+      "id": "copilot.shloksBackBtn",
+      "defaultMessage": "अध्याय सूचीवर परत जाण्यासाठी येथे टॅप करा."
+    },
+    "shloksPlayIntroBtn": {
+      "id": "copilot.shloksPlayIntroBtn",
+      "defaultMessage": "या प्रकरणाचा परिचयात्मक व्हिडिओ पाहण्यासाठी येथे टॅप करा."
+    },
+    "bhagwanPrevBtn": {
+      "id": "copilot.bhagwanPrevBtn",
+      "defaultMessage": "मागील प्रश्नावर परत जाण्यासाठी येथे टॅप करा."
+    },
+    "bhagwanSubmitBtn": {
+      "id": "copilot.bhagwanSubmitBtn",
+      "defaultMessage": "तुमचे उत्तर सबमिट करण्यासाठी येथे टॅप करा आणि पुढे जा."
+    }
+  }
+}

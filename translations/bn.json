@@ -1,0 +1,1010 @@
+{
+  "App": {
+    "header": {
+      "id": "container.App.header",
+      "defaultMessage": "এই অ্যাপ কন্টেইনার!"
+    },
+    "languageUpdated": {
+      "id": "container.App.languageUpdated",
+      "defaultMessage": "অ্যাপের ভাষা আপডেট করা হয়েছে!"
+    }
+  },
+  "Root": {
+    "header": {
+      "id": "container.Root.header",
+      "defaultMessage": "এই রুট ধারক!"
+    }
+  },
+  "Language": {
+    "header": {
+      "id": "container.Language.header",
+      "defaultMessage": "এই ভাষা ধারক!"
+    }
+  },
+  "OnboardingOne": {
+    "header": {
+      "id": "container.OnboardingOne.header",
+      "defaultMessage": "এই অনবোর্ডিং কন্টেইনার!"
+    },
+    "heading": {
+      "id": "container.OnboardingOne.heading",
+      "defaultMessage": "সরল গীতায় স্বাগতম"
+    },
+    "description": {
+      "id": "container.OnboardingOne.description",
+      "defaultMessage": "একটি সহজ এবং ইন্টারেক্টিভ উপায়ে ভগবদ গীতা শিখুন এবং বুঝুন। উচ্চারণ অনুশীলন করুন এবং ভগবান কৃষ্ণের শিক্ষাগুলি অন্বেষণ করুন।"
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingOne.buttonLabel",
+      "defaultMessage": "পরবর্তী"
+    }
+  },
+  "OnboardingSecond": {
+    "header": {
+      "id": "container.OnboardingSecond.header",
+      "defaultMessage": "এই অনবোর্ডিং কন্টেইনার!"
+    },
+    "heading": {
+      "id": "container.OnboardingSecond.heading",
+      "defaultMessage": "আপনার আদর্শের সাথে শিখুন"
+    },
+    "description": {
+      "id": "container.OnboardingSecond.description",
+      "defaultMessage": "আপনার আধ্যাত্মিক গাইড চয়ন করুন এবং ভগবদ্গীতার মাধ্যমে একটি ব্যক্তিগতকৃত যাত্রা শুরু করুন। অডিও, ভিডিও এবং ইন্টারেক্টিভ পাঠের সাথে অনুশীলন করুন।"
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingSecond.buttonLabel",
+      "defaultMessage": "শুরু করুন"
+    }
+  },
+  "language": {
+    "header": {
+      "id": "container.language.header",
+      "defaultMessage": "এই ভাষা ধারক!"
+    },
+    "buttonLabel": {
+      "id": "container.language.buttonLabel",
+      "defaultMessage": "চালিয়ে যান"
+    }
+  },
+  "login": {
+    "heading": {
+      "id": "container.login.header",
+      "defaultMessage": "আবার স্বাগতম!"
+    },
+    "subHeading": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "সাইন ইন করতে আপনার শংসাপত্র লিখুন দয়া করে!"
+    },
+    "number": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "মোবাইল নম্বর"
+    },
+    "typeHere": {
+      "id": "container.login.typeHere",
+      "defaultMessage": "এখানে টাইপ করুন..."
+    },
+    "login": {
+      "id": "container.login.login",
+      "defaultMessage": "লগইন করুন"
+    },
+    "continue": {
+      "id": "container.login.continue",
+      "defaultMessage": "অথবা এর সাথে চালিয়ে যান"
+    },
+    "facebook": {
+      "id": "container.login.facebook",
+      "defaultMessage": "ফেসবুক"
+    },
+    "google": {
+      "id": "container.login.google",
+      "defaultMessage": "গুগল"
+    },
+    "apple": {
+      "id": "container.login.apple",
+      "defaultMessage": "আপেল"
+    },
+    "buttonLabel": {
+      "id": "container.login.buttonLabel",
+      "defaultMessage": "চালিয়ে যান"
+    },
+    "dont": {
+      "id": "container.login.dont",
+      "defaultMessage": "অ্যাকাউন্ট নেই?"
+    },
+    "create": {
+      "id": "container.login.dont",
+      "defaultMessage": "এখনই তৈরি করুন"
+    },
+    "bottomSheetHeading": {
+      "id": "containers.login.bottomSheetHeading",
+      "defaultMessage": "আপনার দেশ নির্বাচন করুন"
+    },
+    "countryPlaceholder": {
+      "id": "containers.login.warningOtherHalf",
+      "defaultMessage": "দেশের নাম অনুসারে অনুসন্ধান করুন"
+    },
+    "placeholder": {
+      "id": "containers.login.placeholder",
+      "defaultMessage": "ফোন নম্বর"
+    }
+  },
+  "otpScreen": {
+    "heading": {
+      "id": "container.otpScreen.header",
+      "defaultMessage": "আবার স্বাগতম"
+    },
+    "subHeading": {
+      "id": "container.otpScreen.subHeading",
+      "defaultMessage": "আপনার নিবন্ধিত মোবাইল নম্বরে পাঠানো OTP লিখুন।"
+    },
+    "submit": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "জমা দিন"
+    },
+    "enterOtp": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "এখানে OTP লিখুন"
+    },
+    "dont": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "কোডটি পাননি?"
+    },
+    "create": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "আবার পাঠান"
+    },
+    "minute": {
+      "id": "app.containers.otpScreen.minute",
+      "defaultMessage": "মিনিট"
+    },
+    "second": {
+      "id": "app.containers.otpScreen.second",
+      "defaultMessage": "দ্বিতীয় বাম"
+    },
+    "minutes": {
+      "id": "app.containers.otpScreen.minutes",
+      "defaultMessage": "মিনিট"
+    },
+    "seconds": {
+      "id": "app.containers.otpScreen.seconds",
+      "defaultMessage": "সেকেন্ড বাকি"
+    },
+    "timeElapsed": {
+      "id": "app.containers.otpScreen.timeElapsed",
+      "defaultMessage": "সময় অতিবাহিত"
+    }
+  },
+  "OurIdeals": {
+    "buttonLabel": {
+      "id": "app.containers.OurIdeals.buttonLabel",
+      "defaultMessage": "চালিয়ে যান"
+    },
+    "ourIdeals": {
+      "id": "app.containers.OurIdeals.ourIdeals",
+      "defaultMessage": "আমাদের আদর্শ"
+    }
+  },
+  "Home": {
+    "headerText": {
+      "id": "app.containers.Home.headerText",
+      "defaultMessage": "অধ্যায়"
+    },
+    "chapters": {
+      "id": "app.containers.Home.chapters",
+      "defaultMessage": "অধ্যায়"
+    },
+    "recent": {
+      "id": "app.containers.Home.recent",
+      "defaultMessage": "সাম্প্রতিক"
+    },
+    "chapter": {
+      "id": "app.containers.Home.chapter",
+      "defaultMessage": "অধ্যায়"
+    },
+    "shareMessage": {
+      "id": "app.containers.Home.shareMessage",
+      "defaultMessage": "সরল গীতা অ্যাপ এখানে আপনার জন্য, যেখানে আপনি সরাসরি ঈশ্বরের কাছ থেকে গীতা শিখতে পারেন। আপনি ঈশ্বরের সাথে গীতা শ্লোকগুলি উচ্চারণ করতে পারেন, তাদের অর্থ বুঝতে পারেন এবং মুখস্থ করার পরে পুরষ্কার পেতে পারেন। এর মাধ্যমে আপনি একজন গীতা শিক্ষকও হতে পারেন, দৈনন্দিন জীবনের নিয়ম মেনে চলতে পারেন, এমনকি গীতাও লিখতে পারেন। এখন ডাউনলোড করুন!"
+    }
+  },
+  "Chapters": {
+    "headerText": {
+      "id": "app.containers.Chapters.headerText",
+      "defaultMessage": "অধ্যায়"
+    }
+  },
+  "Shloks": {
+    "headerText": {
+      "id": "app.containers.Shloks.headerText",
+      "defaultMessage": "আয়াত"
+    }
+  },
+  "learnGeeta": {
+    "continue": {
+      "id": "app.container.learnGeeta.continue",
+      "defaultMessage": "চালিয়ে যান"
+    }
+  },
+  "contactUs": {
+    "heading": {
+      "id": "app.container.Contactus.heading",
+      "defaultMessage": "আমাদের সাথে যোগাযোগ করুন"
+    },
+    "serviceType": {
+      "id": "app.container.Contactus.serviceType",
+      "defaultMessage": "পরিষেবার ধরন"
+    },
+    "name": {
+      "id": "app.container.Contactus.name",
+      "defaultMessage": "নাম"
+    },
+    "email": {
+      "id": "app.container.Contactus.email",
+      "defaultMessage": "ইমেইল"
+    },
+    "message": {
+      "id": "app.container.Contactus.message",
+      "defaultMessage": "বার্তা"
+    },
+    "placeholder": {
+      "id": "app.container.Contactus.placeholder",
+      "defaultMessage": "এখানে টাইপ করুন..."
+    },
+    "button": {
+      "id": "app.container.Contactus.button",
+      "defaultMessage": "বার্তা পাঠান"
+    }
+  },
+  "Profile": {
+    "heading": {
+      "id": "app.container.Profile.heading",
+      "defaultMessage": "প্রোফাইল"
+    },
+    "name": {
+      "id": "app.container.Profile.name",
+      "defaultMessage": "নাম"
+    },
+    "email": {
+      "id": "app.container.Profile.email",
+      "defaultMessage": "ইমেইল"
+    },
+    "mobile": {
+      "id": "app.container.Profile.mobile",
+      "defaultMessage": "মোবাইল"
+    },
+    "gender": {
+      "id": "app.container.Profile.gender",
+      "defaultMessage": "লিঙ্গ"
+    },
+    "voice": {
+      "id": "app.container.Profile.voice",
+      "defaultMessage": "ভয়েস"
+    },
+    "shlokSpeed": {
+      "id": "app.container.Profile.shlokSpeed",
+      "defaultMessage": "শ্লোক গতি"
+    },
+    "updateProfile": {
+      "id": "app.container.Profile.updateProfile",
+      "defaultMessage": "প্রোফাইল আপডেট করুন"
+    },
+    "changePassword": {
+      "id": "app.container.Profile.changePassword",
+      "defaultMessage": "পাসওয়ার্ড পরিবর্তন করুন"
+    },
+    "language": {
+      "id": "app.container.Profile.language",
+      "defaultMessage": "ভাষা"
+    }
+  },
+  "EditProfile": {
+    "heading": {
+      "id": "app.container.EditProfile.heading",
+      "defaultMessage": "প্রোফাইল"
+    },
+    "name": {
+      "id": "app.container.EditProfile.name",
+      "defaultMessage": "প্রথম নাম"
+    },
+    "lastName": {
+      "id": "app.container.EditProfile.lastName",
+      "defaultMessage": "পদবি"
+    },
+    "email": {
+      "id": "app.container.EditProfile.email",
+      "defaultMessage": "ইমেইল"
+    },
+    "mobile": {
+      "id": "app.container.EditProfile.mobile",
+      "defaultMessage": "ফোন নম্বর"
+    },
+    "gender": {
+      "id": "app.container.EditProfile.gender",
+      "defaultMessage": "লিঙ্গ"
+    },
+    "language": {
+      "id": "app.container.EditProfile.language",
+      "defaultMessage": "ভাষা"
+    },
+    "shlokSpeed": {
+      "id": "app.container.EditProfile.shlokSpeed",
+      "defaultMessage": "শ্লোক গতি"
+    },
+    "update": {
+      "id": "app.container.EditProfile.updateProfile",
+      "defaultMessage": "আপডেট"
+    }
+  },
+  "PrivacyPolicy": {
+    "heading": {
+      "id": "app.container.PrivacyPolicy.heading",
+      "defaultMessage": "গোপনীয়তা নীতি"
+    }
+  },
+  "TermsOfUse": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "ব্যবহারের শর্তাবলী"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "শর্তাবলী"
+    }
+  },
+  "SideBar": {
+    "viewAll": {
+      "id": "app.container.SideBar.viewAll",
+      "defaultMessage": "প্রোফাইল দেখুন"
+    },
+    "chapters": {
+      "id": "app.container.SideBar.chapters",
+      "defaultMessage": "অধ্যায়"
+    },
+    "ideal": {
+      "id": "app.container.SideBar.ideal",
+      "defaultMessage": "আদর্শ"
+    },
+    "setting": {
+      "id": "app.container.SideBar.setting",
+      "defaultMessage": "সেটিং"
+    },
+    "language": {
+      "id": "app.container.SideBar.language",
+      "defaultMessage": "ভাষা পরিবর্তন করুন"
+    },
+    "helpSupport": {
+      "id": "app.container.SideBar.helpSupport",
+      "defaultMessage": "সাহায্য এবং সমর্থন"
+    },
+    "contactUs": {
+      "id": "app.container.SideBar.contactUs",
+      "defaultMessage": "সাজেশন বক্স"
+    },
+    "privacyPolicy": {
+      "id": "app.container.SideBar.privacyPolicy",
+      "defaultMessage": "গোপনীয়তা নীতি"
+    },
+    "instruction": {
+      "id": "app.container.SideBar.instruction",
+      "defaultMessage": "ব্যবহারের পদ্ধতি"
+    },
+    "termOfUse": {
+      "id": "app.container.SideBar.termOfUse",
+      "defaultMessage": "ব্যবহারের শর্তাবলী"
+    },
+    "social": {
+      "id": "app.container.SideBar.social",
+      "defaultMessage": "সোশ্যাল মিডিয়া লিংক"
+    },
+    "fb": {
+      "id": "app.container.SideBar.fb",
+      "defaultMessage": "ফেসবুক"
+    },
+    "insta": {
+      "id": "app.container.SideBar.insta",
+      "defaultMessage": "ইনস্টাগ্রাম"
+    },
+    "x": {
+      "id": "app.container.SideBar.x",
+      "defaultMessage": "এক্স"
+    },
+    "signOut": {
+      "id": "app.container.SideBar.signOut",
+      "defaultMessage": "সাইন আউট"
+    },
+    "studentGift": {
+      "id": "app.container.SideBar.studentGift",
+      "defaultMessage": "আমার পুরস্কার"
+    },
+    "teacherGift": {
+      "id": "app.container.SideBar.teacherGift",
+      "defaultMessage": "গীতা শেখান"
+    },
+    "writeGita": {
+      "id": "app.container.SideBar.writeGita",
+      "defaultMessage": "গীতা লিখুন"
+    },
+    "gitaRules": {
+      "id": "app.container.SideBar.gitaRules",
+      "defaultMessage": "গীতার নিয়ম"
+    },
+    "faq": {
+      "id": "app.container.SideBar.faq",
+      "defaultMessage": "FAQ"
+    },
+    "askBhagwan": {
+      "id": "app.container.SideBar.askBhagwan",
+      "defaultMessage": "ঈশ্বরকে জিজ্ঞাসা করুন"
+    }
+  },
+  "studentGift": {
+    "heading": {
+      "id": "app.container.studentGift.heading",
+      "defaultMessage": "গীতা ছাত্র"
+    },
+    "description": {
+      "id": "app.container.studentGift.description",
+      "defaultMessage": "আপনি যদি সরল গীতা অ্যাপ থেকে গীতার কোনো অধ্যায় মুখস্থ করে থাকেন, তাহলে আপনি আপনার পুরস্কারের জন্য এখানে আবেদন করতে পারেন। আপনার নাম এবং ঠিকানা লিখুন, আপনার মুখস্থ অধ্যায় নির্বাচন করুন, এবং আপনার আবেদন জমা দিন।"
+    },
+    "name": {
+      "id": "app.container.studentGift.name",
+      "defaultMessage": "গীতা ছাত্রের নাম"
+    },
+    "phoneNumber": {
+      "id": "app.container.studentGift.phoneNumber",
+      "defaultMessage": "ফোন নম্বর"
+    },
+    "address": {
+      "id": "app.container.studentGift.address",
+      "defaultMessage": "ঠিকানা"
+    },
+    "chaptersLabel": {
+      "id": "app.container.studentGift.chaptersLabel",
+      "defaultMessage": "অধ্যায় নির্বাচন করুন"
+    },
+    "button": {
+      "id": "app.container.studentGift.button",
+      "defaultMessage": "জমা দিন"
+    },
+    "placeholder": {
+      "id": "app.container.studentGift.placeholder",
+      "defaultMessage": "এখানে টাইপ করুন..."
+    },
+    "placeholderName": {
+      "id": "app.container.studentGift.placeholderName",
+      "defaultMessage": "গীতা ছাত্রের নাম লিখুন"
+    },
+    "placeholderPhone": {
+      "id": "app.container.studentGift.placeholderPhone",
+      "defaultMessage": "ফোন নম্বর লিখুন"
+    },
+    "placeholderAddress": {
+      "id": "app.container.studentGift.placeholderAddress",
+      "defaultMessage": "সম্পূর্ণ ঠিকানা লিখুন"
+    },
+    "successMessage": {
+      "id": "app.container.studentGift.successMessage",
+      "defaultMessage": "আমরা শীঘ্রই আপনার সাথে সংযুক্ত হবে."
+    },
+    "okButton": {
+      "id": "app.container.studentGift.okButton",
+      "defaultMessage": "ঠিক আছে"
+    },
+    "alertTitle": {
+      "id": "app.container.studentGift.alertTitle",
+      "defaultMessage": "নিশ্চিতকরণ"
+    },
+    "alertMessage": {
+      "id": "app.container.studentGift.alertMessage",
+      "defaultMessage": "আপনি কি সঠিক ঠিকানা দিয়েছেন?"
+    },
+    "alertNo": {
+      "id": "app.container.studentGift.alertNo",
+      "defaultMessage": "না"
+    },
+    "alertYes": {
+      "id": "app.container.studentGift.alertYes",
+      "defaultMessage": "হ্যাঁ"
+    }
+  },
+  "teacherGift": {
+    "heading": {
+      "id": "app.container.teacherGift.heading",
+      "defaultMessage": "শিক্ষকের বিবরণ"
+    },
+    "description": {
+      "id": "app.container.teacherGift.description",
+      "defaultMessage": "আপনি যদি আপনার শহর, গ্রামে বা পাড়ায় গীতা শেখাতে চান এবং গীতা শিক্ষক হতে চান তবে আপনি এখানে আবেদন করতে পারেন। আমরা আপনার শিক্ষার জন্য পারিশ্রমিক প্রদান করব। আপনি কোন অধ্যায়টি মুখস্থ করেছেন এবং কোন অধ্যায়টি পড়াতে চান তা উল্লেখ করে আবেদন করতে পারেন।"
+    },
+    "name": {
+      "id": "app.container.teacherGift.name",
+      "defaultMessage": "শিক্ষকের নাম"
+    },
+    "phoneNumber": {
+      "id": "app.container.teacherGift.phoneNumber",
+      "defaultMessage": "ফোন নম্বর"
+    },
+    "address": {
+      "id": "app.container.teacherGift.address",
+      "defaultMessage": "ঠিকানা"
+    },
+    "chaptersLabel": {
+      "id": "app.container.teacherGift.chaptersLabel",
+      "defaultMessage": "অধ্যায় নির্বাচন করুন"
+    },
+    "button": {
+      "id": "app.container.teacherGift.button",
+      "defaultMessage": "জমা দিন"
+    },
+    "placeholderName": {
+      "id": "app.container.teacherGift.placeholderName",
+      "defaultMessage": "শিক্ষকের নাম লিখুন"
+    },
+    "placeholderPhone": {
+      "id": "app.container.teacherGift.placeholderPhone",
+      "defaultMessage": "ফোন নম্বর লিখুন"
+    },
+    "placeholderAddress": {
+      "id": "app.container.teacherGift.placeholderAddress",
+      "defaultMessage": "সম্পূর্ণ ঠিকানা লিখুন"
+    },
+    "successMessage": {
+      "id": "app.container.teacherGift.successMessage",
+      "defaultMessage": "আমরা শীঘ্রই আপনার সাথে সংযুক্ত হবে."
+    },
+    "okButton": {
+      "id": "app.container.teacherGift.okButton",
+      "defaultMessage": "ঠিক আছে"
+    },
+    "alertTitle": {
+      "id": "app.container.teacherGift.alertTitle",
+      "defaultMessage": "নিশ্চিতকরণ"
+    },
+    "alertMessage": {
+      "id": "app.container.teacherGift.alertMessage",
+      "defaultMessage": "আপনি কি সঠিক ঠিকানা দিয়েছেন?"
+    },
+    "alertNo": {
+      "id": "app.container.teacherGift.alertNo",
+      "defaultMessage": "না"
+    },
+    "alertYes": {
+      "id": "app.container.teacherGift.alertYes",
+      "defaultMessage": "হ্যাঁ"
+    }
+  },
+  "writeGita": {
+    "heading": {
+      "id": "app.container.writeGita.heading",
+      "defaultMessage": "গীতা লিখুন"
+    },
+    "description": {
+      "id": "app.container.writeGita.description",
+      "defaultMessage": "গীতা লিখুন একটি প্রচারাভিযান যেখানে আপনি নিজের হাতে একটি হস্তলিখিত ধর্মগ্রন্থ প্রস্তুত করতে পারেন। বেছে নেওয়ার জন্য একাধিক বইয়ের বিকল্প রয়েছে: রামচরিতমানস, গীতা জি, ভাগবত, ভক্তচরিত্র এবং অন্যান্য। আপনি যে শাস্ত্র লিখতে চান তা নির্বাচন করতে পারেন। আপনার নির্বাচনের পরে, আমরা আপনার বাড়িতে কালো এবং লাল কলম সহ আসল বই, লেখার জন্য একটি রেজিস্টার পাঠাব। এটি মূলত অনুলিপি করে লেখা, মূল পাঠ্যটি দেখে এবং রেজিস্টারে লেখা। আপনাকে লাল কলম দিয়ে শ্লোকগুলি লিখতে হবে এবং হিন্দি বা আপনার নিজের আঞ্চলিক ভাষায় অর্থ লিখতে হবে। এছাড়াও আপনাকে প্রতি 15 দিনে আপনার অগ্রগতির প্রতিবেদন করতে হবে। সম্পূর্ণ শাস্ত্রের সমাপ্তির পরে, আমরা আপনাকে একটি সচিত্র শংসাপত্র দিয়ে সম্মানিত করব। তাছাড়া যখনই কোনো প্রদর্শনী অনুষ্ঠিত হবে, তখনই আপনার হাতে লেখা ধর্মগ্রন্থ প্রদর্শনীতে প্রদর্শিত হবে এবং ধর্মগ্রন্থে আপনার নাম লেখা থাকবে।"
+    },
+    "name": {
+      "id": "app.container.writeGita.name",
+      "defaultMessage": "নাম"
+    },
+    "phoneNumber": {
+      "id": "app.container.writeGita.phoneNumber",
+      "defaultMessage": "যোগাযোগ"
+    },
+    "address": {
+      "id": "app.container.writeGita.address",
+      "defaultMessage": "ঠিকানা"
+    },
+    "button": {
+      "id": "app.container.writeGita.button",
+      "defaultMessage": "জমা দিন"
+    },
+    "placeholderName": {
+      "id": "app.container.writeGita.placeholderName",
+      "defaultMessage": "আপনার নাম লিখুন"
+    },
+    "placeholderPhone": {
+      "id": "app.container.writeGita.placeholderPhone",
+      "defaultMessage": "আপনার যোগাযোগ নম্বর লিখুন"
+    },
+    "placeholderAddress": {
+      "id": "app.container.writeGita.placeholderAddress",
+      "defaultMessage": "আপনার সম্পূর্ণ ঠিকানা লিখুন"
+    },
+    "alertTitle": {
+      "id": "app.container.writeGita.alertTitle",
+      "defaultMessage": "নিশ্চিতকরণ"
+    },
+    "alertMessage": {
+      "id": "app.container.writeGita.alertMessage",
+      "defaultMessage": "আপনি কি সঠিক ঠিকানা দিয়েছেন?"
+    },
+    "alertNo": {
+      "id": "app.container.writeGita.alertNo",
+      "defaultMessage": "না"
+    },
+    "alertYes": {
+      "id": "app.container.writeGita.alertYes",
+      "defaultMessage": "হ্যাঁ"
+    },
+    "rulesLabel": {
+      "id": "app.container.writeGita.rulesLabel",
+      "defaultMessage": "শাস্ত্র নির্বাচন করুন"
+    },
+    "successMessage": {
+      "id": "app.container.writeGita.successMessage",
+      "defaultMessage": "আমরা শীঘ্রই আপনার সাথে সংযুক্ত হবে."
+    },
+    "okButton": {
+      "id": "app.container.writeGita.okButton",
+      "defaultMessage": "ঠিক আছে"
+    }
+  },
+  "Instruction": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "ব্যবহারের পদ্ধতি"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "শর্তাবলী"
+    }
+  },
+  "gitaRules": {
+    "heading": {
+      "id": "app.container.gitaRules.heading",
+      "defaultMessage": "গীতার নিয়ম"
+    },
+    "subHeading": {
+      "id": "app.container.gitaRules.subHeading",
+      "defaultMessage": "গীতার পথে চল"
+    },
+    "description": {
+      "id": "app.container.gitaRules.description",
+      "defaultMessage": "এই নিয়মগুলি অনুসরণ করে, আপনি নিজেকে ভগবদ্গীতার শিক্ষার সাথে সারিবদ্ধ করেন।"
+    },
+    "instructions": {
+      "id": "app.container.gitaRules.instructions",
+      "defaultMessage": "আজ আপনি যে নিয়মগুলি অনুসরণ করেছেন তাতে ক্লিক করুন এবং জমা দিন। আপনাকে প্রতিদিন এটি করতে হবে। আপনি কোন নিয়মগুলি অনুসরণ করেছেন এবং কোনটি মিস করেছেন তা দেখতে আপনি প্রতি মাসে আপনার প্রতিবেদনটি দেখতে পারেন।"
+    },
+    "button": {
+      "id": "app.container.gitaRules.button",
+      "defaultMessage": "জমা দিন"
+    },
+    "successMessage": {
+      "id": "app.container.gitaRules.successMessage",
+      "defaultMessage": "আপনার নিয়ম নির্বাচন সফলভাবে জমা দেওয়া হয়েছে."
+    },
+    "okButton": {
+      "id": "app.container.gitaRules.okButton",
+      "defaultMessage": "ঠিক আছে"
+    },
+    "alertTitle": {
+      "id": "app.container.gitaRules.alertTitle",
+      "defaultMessage": "নিশ্চিতকরণ"
+    },
+    "alertMessage": {
+      "id": "app.container.gitaRules.alertMessage",
+      "defaultMessage": "আপনি কি এই নিয়মগুলি জমা দেওয়ার বিষয়ে নিশ্চিত?"
+    },
+    "alertNo": {
+      "id": "app.container.gitaRules.alertNo",
+      "defaultMessage": "না"
+    },
+    "alertYes": {
+      "id": "app.container.gitaRules.alertYes",
+      "defaultMessage": "হ্যাঁ"
+    },
+    "errorMinSelect": {
+      "id": "app.container.gitaRules.errorMinSelect",
+      "defaultMessage": "অন্তত একটি নিয়ম অনুসরণ করুন"
+    },
+    "rulesLabel": {
+      "id": "app.container.gitaRules.rulesLabel",
+      "defaultMessage": "একটি নিয়ম নির্বাচন করুন"
+    },
+    "inputLabel": {
+      "id": "app.container.gitaRules.inputLabel",
+      "defaultMessage": "আপনার প্রতিক্রিয়া"
+    },
+    "inputPlaceholder": {
+      "id": "app.container.gitaRules.inputPlaceholder",
+      "defaultMessage": "এখানে আপনার ইনপুট লিখুন..."
+    }
+  },
+  "HomeBottomBar": {
+    "whatsapp": {
+      "id": "app.container.HomeBottomBar.whatsapp",
+      "defaultMessage": "হোয়াটসঅ্যাপ"
+    },
+    "facebook": {
+      "id": "app.container.HomeBottomBar.facebook",
+      "defaultMessage": "ফেসবুক"
+    },
+    "instagram": {
+      "id": "app.container.HomeBottomBar.instagram",
+      "defaultMessage": "ইনস্টাগ্রাম"
+    },
+    "youtube": {
+      "id": "app.container.HomeBottomBar.youtube",
+      "defaultMessage": "YouTube"
+    },
+    "twitter": {
+      "id": "app.container.HomeBottomBar.twitter",
+      "defaultMessage": "এক্স"
+    },
+    "faq": {
+      "id": "app.container.HomeBottomBar.faq",
+      "defaultMessage": "FAQ"
+    },
+    "language": {
+      "id": "app.container.HomeBottomBar.language",
+      "defaultMessage": "ভাষা"
+    },
+    "update": {
+      "id": "app.container.HomeBottomBar.update",
+      "defaultMessage": "আপডেট"
+    },
+    "shareApp": {
+      "id": "app.container.HomeBottomBar.shareApp",
+      "defaultMessage": "অ্যাপ শেয়ার করুন"
+    },
+    "rating": {
+      "id": "app.container.HomeBottomBar.rating",
+      "defaultMessage": "রেটিং"
+    },
+    "contact": {
+      "id": "app.container.HomeBottomBar.contact",
+      "defaultMessage": "যোগাযোগ"
+    },
+    "help": {
+      "id": "app.container.HomeBottomBar.help",
+      "defaultMessage": "সাহায্য"
+    },
+    "social": {
+      "id": "app.container.HomeBottomBar.social",
+      "defaultMessage": "সামাজিক"
+    }
+  },
+  "faq": {
+    "heading": {
+      "id": "app.container.faq.heading",
+      "defaultMessage": "FAQ"
+    },
+    "subHeading": {
+      "id": "app.container.faq.subHeading",
+      "defaultMessage": "সরল গীতা অ্যাপ সম্পর্কিত প্রায়শ জিজ্ঞাসিত প্রশ্নাবলী"
+    },
+    "q1_question": {
+      "id": "app.container.faq.q1_question",
+      "defaultMessage": "সরল গীতা অ্যাপ কি?"
+    },
+    "q1_answer": {
+      "id": "app.container.faq.q1_answer",
+      "defaultMessage": "সরল গীতা অ্যাপ হল একটি ডিজিটাল প্ল্যাটফর্ম যেখানে যারা গীতা শিখতে চান তারা সরাসরি ঈশ্বরের কাছ থেকে শিখতে পারেন।"
+    },
+    "q2_question": {
+      "id": "app.container.faq.q2_question",
+      "defaultMessage": "সরল গীতা অ্যাপে শিক্ষক কে?"
+    },
+    "q2_answer": {
+      "id": "app.container.faq.q2_answer",
+      "defaultMessage": "সরল গীতা অ্যাপে, ঈশ্বর স্বয়ং গুরু। আমাদের আছে ভগবান বিষ্ণু, ভগবান গণেশ এবং ভগবান বেদব্যাস। আপনি এই তিনটির যেকোনো একটি থেকে গীতা শিখতে পারেন।"
+    },
+    "q3_question": {
+      "id": "app.container.faq.q3_question",
+      "defaultMessage": "সরল গীতা অ্যাপে গীতা শেখার পদ্ধতি কী?"
+    },
+    "q3_answer": {
+      "id": "app.container.faq.q3_answer",
+      "defaultMessage": "যেকোন একজন ঈশ্বরকে আপনার গুরু হিসেবে বেছে নিতে হবে। নির্বাচন করার পরে, গীতার সমস্ত 18 টি অধ্যায় আপনার সামনে উপস্থিত হবে। যে অধ্যায় আপনি শিখতে চান, তার সমস্ত শ্লোক প্রদর্শিত হবে। আপনি যে শ্লোকটি শিখতে চান তাতে ক্লিক করুন, এবং ঈশ্বর ধীরে ধীরে এটি পাঠ করবেন। নিচে শ্লোকও লেখা থাকবে। লিখিত শ্লোক দেখুন এবং এটি ঈশ্বরের সাথে উচ্চারণ করুন। ঈশ্বরের সাথে একই শ্লোক পুনরাবৃত্তি করুন যতক্ষণ না আপনি এটি সঠিকভাবে উচ্চারণ করতে পারেন। এইভাবে, আপনি একের পর এক শ্লোক মুখস্ত করতে পারেন।"
+    },
+    "q4_question": {
+      "id": "app.container.faq.q4_question",
+      "defaultMessage": "আমরা কি সরল গীতা অ্যাপে শ্লোকের অর্থও শিখতে পারি?"
+    },
+    "q4_answer": {
+      "id": "app.container.faq.q4_answer",
+      "defaultMessage": "হ্যাঁ, আমরা অর্থও শিখতে পারি। ঈশ্বর যখন একটি শ্লোক পাঠ করেন, তখন পাশে একটি 'i' (তথ্য) বিন্দু উপস্থিত হয়। এটিতে ক্লিক করলে আপনাকে এর অর্থ সহ শ্লোক দেখাবে।"
+    },
+    "q5_question": {
+      "id": "app.container.faq.q5_question",
+      "defaultMessage": "সরল গীতা অ্যাপ কি শুধুমাত্র একটি ভাষায় পাওয়া যায়?"
+    },
+    "q5_answer": {
+      "id": "app.container.faq.q5_answer",
+      "defaultMessage": "না, সরল গীতা অ্যাপটি হিন্দি, ইংরেজি, মারাঠি, গুজরাটি এবং অন্যান্য ভাষায় 10টি ভাষায় উপলব্ধ।"
+    },
+    "q6_question": {
+      "id": "app.container.faq.q6_question",
+      "defaultMessage": "সরল গীতা অ্যাপে আমরা কী মুখস্ত করেছি তা কীভাবে পরীক্ষা করতে পারি?"
+    },
+    "q6_answer": {
+      "id": "app.container.faq.q6_answer",
+      "defaultMessage": "ঈশ্বর একটি শ্লোক পাঠ করার পরে এবং নীরব হয়ে গেলে, পর্দায় একটি মাইক্রোফোন বোতাম উপস্থিত হয়। এটিতে ক্লিক করুন, সম্পূর্ণ শ্লোকটি আবৃত্তি করুন, তারপর আবার মাইক বোতাম টিপুন। স্ক্রীনটি দেখাবে আপনি কত শতাংশ সঠিকভাবে বলেছেন। যদি এটি 80% বা তার বেশি হয়, তাহলে এর অর্থ হল আপনি সেই শ্লোকের উচ্চারণ শিখেছেন এবং আপনি পরবর্তীটিতে যেতে পারেন।"
+    },
+    "q7_question": {
+      "id": "app.container.faq.q7_question",
+      "defaultMessage": "আপনি সরল গীতা অ্যাপ থেকে একটি সম্পূর্ণ অধ্যায় মুখস্থ করলে কী হয়?"
+    },
+    "q7_answer": {
+      "id": "app.container.faq.q7_answer",
+      "defaultMessage": "আপনি যদি সরল গীতা অ্যাপ ব্যবহার করে গীতার যে কোনো একটি অধ্যায় মুখস্থ করে থাকেন, তাহলে আপনি সেই মুখস্ত অধ্যায়ের জন্য গীতা পুরস্কার বিভাগে পুরস্কারের জন্য নিবন্ধন করতে পারেন। নিশ্চিত হওয়ার পরে, আমরা আপনার প্রদত্ত ঠিকানায় পুরস্কারটি কুরিয়ার করব।"
+    },
+    "q8_question": {
+      "id": "app.container.faq.q8_question",
+      "defaultMessage": "সরল গীতা অ্যাপে গীতার নিয়মগুলি কী কী?"
+    },
+    "q8_answer": {
+      "id": "app.container.faq.q8_answer",
+      "defaultMessage": "সরল গীতা অ্যাপটিতে দৈনন্দিন জীবনের জন্য দরকারী 9টি নিয়ম রয়েছে। আপনি সেদিন যে নিয়মটি অনুসরণ করেছেন তাতে ক্লিক করুন এবং এটি জমা দিন। এইভাবে, আপনার অনুসরণ করা নিয়মগুলির একটি মাসিক সারাংশ প্রস্তুত করা হয়, যা আপনাকে জানিয়ে দেয় যে আপনি কোন নিয়মগুলি অনুসরণ করেছেন এবং আপনি সারা মাস জুড়ে কোনটি মিস করেছেন৷"
+    },
+    "q9_question": {
+      "id": "app.container.faq.q9_question",
+      "defaultMessage": "সরল গীতা অ্যাপে গীতা শিক্ষক বৈশিষ্ট্যটি কী?"
+    },
+    "q9_answer": {
+      "id": "app.container.faq.q9_answer",
+      "defaultMessage": "আপনি যদি গীতা জানেন, এমনকি শুধুমাত্র একটি অধ্যায়, আপনি গীতা শিক্ষক হওয়ার জন্য গীতা শিক্ষক বৈশিষ্ট্যের মাধ্যমে নিবন্ধন করতে পারেন। আপনি কয়টি অধ্যায় মুখস্থ করেছেন তা উল্লেখ করতে পারেন। আমরা আপনার জন্য যেখানে খুশি সেখানে শিক্ষা দেওয়ার সম্পূর্ণ ব্যবস্থা করব, আপনার শিক্ষার জন্য পারিশ্রমিক প্রদান করব, এবং আপনার যদি গীতা শিক্ষক হওয়ার জন্য প্রশিক্ষণের প্রয়োজন হয় তবে আমরা তাও দেব।"
+    },
+    "q10_question": {
+      "id": "app.container.faq.q10_question",
+      "defaultMessage": "সরল গীতা অ্যাপে গীতা অনুশীলন (অভ্যাস) কী?"
+    },
+    "q10_answer": {
+      "id": "app.container.faq.q10_answer",
+      "defaultMessage": "গীতা অনুশীলন এমন একটি বৈশিষ্ট্য যা আপনাকে আপনার মুখস্থ করা অধ্যায়গুলিকে সংশোধন করতে দেয়। ঈশ্বর আপনার সামনে উপস্থিত, এবং আপনি ঈশ্বরকে বলুন যে আপনি কোন অধ্যায় মনে রাখবেন। তারপর ঈশ্বর আপনাকে সেই অধ্যায়গুলির সংখ্যা সহ শ্লোকগুলি জিজ্ঞাসা করবেন, আপনাকে আপনার মুখস্থ অধ্যায়গুলিকে সংশোধন করার অনুমতি দেবে।"
+    },
+    "q11_question": {
+      "id": "app.container.faq.q11_question",
+      "defaultMessage": "আমরা কি সরল গীতা অ্যাপে একবারে একটি সম্পূর্ণ অধ্যায় আবৃত্তি করতে পারি?"
+    },
+    "q11_answer": {
+      "id": "app.container.faq.q11_answer",
+      "defaultMessage": "হ্যাঁ! আপনি যদি একবারে একটি সম্পূর্ণ অধ্যায় আবৃত্তি করতে চান, অধ্যায় ও শ্লোকটি খুলুন, তারপর স্ক্রিনের শীর্ষে 'চালিয়ে যান' বোতামে ক্লিক করুন। ঈশ্বর একটানা সমগ্র অধ্যায় তিলাওয়াত করবেন. এর পাশে একটি স্পিড বোতামও রয়েছে, যাতে আপনি ইচ্ছা করলে দ্রুত আবৃত্তি করতে পারেন।"
+    },
+    "q12_question": {
+      "id": "app.container.faq.q12_question",
+      "defaultMessage": "সরল গীতা অ্যাপে 'গীতা লিখুন' বৈশিষ্ট্যটি কী?"
+    },
+    "q12_answer": {
+      "id": "app.container.faq.q12_answer",
+      "defaultMessage": "'গীতা লিখুন' হল এমন একটি প্রচারাভিযান যেখানে আপনি গীতা, রামায়ণ, ভাগবত এবং আরও অনেক কিছুর মতো ধর্মগ্রন্থ হাতে লিখতে পারেন। আমরা আপনার ঠিকানায় রেজিস্টার, আসল বই এবং কলম কুরিয়ার করি। আপনি যে শাস্ত্রটি লিখতে চান তা নির্বাচন করুন এবং আপনার নাম এবং ঠিকানা সহ জমা দিন। তারপর আমরা আপনাকে লেখার জন্য প্রয়োজনীয় সমস্ত উপকরণ পাঠাব। প্রতি 15 দিনে আপনি কতটা শাস্ত্র সম্পূর্ণ করেছেন তা আপনাকে রিপোর্ট করতে হবে। সম্পূর্ণ শাস্ত্রের সমাপ্তির পরে, আপনাকে একটি সচিত্র শংসাপত্র দিয়ে সম্মানিত করা হবে।"
+    }
+  },
+  "bhagwanQuestions": {
+    "placeholder": {
+      "id": "app.container.bhagwanQuestions.placeholder",
+      "defaultMessage": "আপনার উত্তর এখানে লিখুন..."
+    },
+    "successTitle": {
+      "id": "app.container.bhagwanQuestions.successTitle",
+      "defaultMessage": "🙏 ধন্যবাদ"
+    },
+    "successMessage": {
+      "id": "app.container.bhagwanQuestions.successMessage",
+      "defaultMessage": "আপনার উত্তর গৃহীত হয়েছে. আপনার জ্ঞান বৃদ্ধি হোক!"
+    },
+    "errorTitle": {
+      "id": "app.container.bhagwanQuestions.errorTitle",
+      "defaultMessage": "ত্রুটি"
+    },
+    "errorMessage": {
+      "id": "app.container.bhagwanQuestions.errorMessage",
+      "defaultMessage": "জমা দিতে ব্যর্থ হয়েছে. আবার চেষ্টা করুন."
+    },
+    "questionCounter": {
+      "id": "app.container.bhagwanQuestions.questionCounter",
+      "defaultMessage": "{total} এর {currentIndex} প্রশ্ন"
+    },
+    "prevBtn": {
+      "id": "app.container.bhagwanQuestions.prevBtn",
+      "defaultMessage": "← পূর্ববর্তী"
+    },
+    "nextBtn": {
+      "id": "app.container.bhagwanQuestions.nextBtn",
+      "defaultMessage": "পরবর্তী"
+    },
+    "submitBtn": {
+      "id": "app.container.bhagwanQuestions.submitBtn",
+      "defaultMessage": "জমা দিন"
+    },
+    "noQuestions": {
+      "id": "app.container.bhagwanQuestions.noQuestions",
+      "defaultMessage": "এই মুহূর্তে কোন প্রশ্ন উপলব্ধ নেই."
+    },
+    "mockQuestion1": {
+      "id": "app.container.bhagwanQuestions.mockQuestion1",
+      "defaultMessage": "আমার সন্তান, আজ তোমার জীবনে ধর্মের প্রকৃত অর্থ কী?"
+    },
+    "mockQuestion2": {
+      "id": "app.container.bhagwanQuestions.mockQuestion2",
+      "defaultMessage": "আপনি কিভাবে আপনার কর্মের ফলাফল থেকে বিচ্ছিন্নতা অনুশীলন করবেন?"
+    },
+    "mockQuestion3": {
+      "id": "app.container.bhagwanQuestions.mockQuestion3",
+      "defaultMessage": "আপনার মনকে শান্ত করতে এবং অভ্যন্তরীণ শান্তি পেতে আপনি কী পদক্ষেপ নিচ্ছেন?"
+    },
+    "errorMinAnswer": {
+      "id": "app.container.bhagwanQuestions.errorMinAnswer",
+      "defaultMessage": "অন্তত একটি প্রশ্নের উত্তর দয়া করে."
+    },
+    "errorEmptyAnswer": {
+      "id": "app.container.bhagwanQuestions.errorEmptyAnswer",
+      "defaultMessage": "এগিয়ে যাওয়ার আগে আপনার উত্তর লিখুন."
+    }
+  },
+  "Copilot": {
+    "previous": {
+      "id": "copilot.previous",
+      "defaultMessage": "আগের"
+    },
+    "next": {
+      "id": "copilot.next",
+      "defaultMessage": "পরবর্তী"
+    },
+    "skip": {
+      "id": "copilot.skip",
+      "defaultMessage": "এড়িয়ে যান"
+    },
+    "finish": {
+      "id": "copilot.finish",
+      "defaultMessage": "শেষ করুন"
+    },
+    "homeFirstChapter": {
+      "id": "copilot.homeFirstChapter",
+      "defaultMessage": "শ্লোকগুলি শেখা এবং পড়া শুরু করতে তালিকার যেকোনো অধ্যায়ে আলতো চাপুন।"
+    },
+    "homeSearchBar": {
+      "id": "copilot.homeSearchBar",
+      "defaultMessage": "আপনার প্রিয় অধ্যায় দ্রুত খুঁজে পেতে এখানে অনুসন্ধান করুন."
+    },
+    "shloksFirstShlok": {
+      "id": "copilot.shloksFirstShlok",
+      "defaultMessage": "অনুশীলন এবং উচ্চারণ প্লেয়ার খুলতে যেকোনো শ্লোক কার্ডে আলতো চাপুন।"
+    },
+    "learnGeetaSkipBtn": {
+      "id": "copilot.learnGeetaSkipBtn",
+      "defaultMessage": "ভিডিওটি এড়িয়ে যেতে এবং আগের স্ক্রিনে ফিরে যেতে এখানে আলতো চাপুন৷"
+    },
+    "learnGeetaBackBtn": {
+      "id": "copilot.learnGeetaBackBtn",
+      "defaultMessage": "আগের স্ক্রিনে ফিরে যেতে এখানে আলতো চাপুন।"
+    },
+    "learnGeetaShowBtn": {
+      "id": "copilot.learnGeetaShowBtn",
+      "defaultMessage": "শ্লোকের অনুবাদ এবং বিস্তারিত অর্থ দেখতে এখানে আলতো চাপুন।"
+    },
+    "learnGeetaContinueBtn": {
+      "id": "copilot.learnGeetaContinueBtn",
+      "defaultMessage": "আপনার ফলাফল সংরক্ষণ করতে এখানে আলতো চাপুন এবং পরবর্তী শ্লোকে চালিয়ে যান।"
+    },
+    "bhagwanAnswerInput": {
+      "id": "copilot.bhagwanAnswerInput",
+      "defaultMessage": "এখানে আপনার উত্তর বা প্রশ্ন টাইপ করুন."
+    },
+    "homeDrawerBtn": {
+      "id": "copilot.homeDrawerBtn",
+      "defaultMessage": "পাশের মেনু খুলতে এবং আপনার প্রোফাইল, সেটিংস এবং অন্যান্য সংস্থানগুলি অ্যাক্সেস করতে এখানে আলতো চাপুন৷"
+    },
+    "homeBottomBar": {
+      "id": "copilot.homeBottomBar",
+      "defaultMessage": "শিক্ষার্থীদের উপহার, সেটিংস, ভাগ করে নেওয়া এবং অন্যান্য বৈশিষ্ট্যগুলি অ্যাক্সেস করতে এই শর্টকাটগুলি ব্যবহার করুন৷"
+    },
+    "shloksBackBtn": {
+      "id": "copilot.shloksBackBtn",
+      "defaultMessage": "অধ্যায় তালিকায় ফিরে যেতে এখানে আলতো চাপুন।"
+    },
+    "shloksPlayIntroBtn": {
+      "id": "copilot.shloksPlayIntroBtn",
+      "defaultMessage": "এই অধ্যায়ের জন্য সূচনা ভিডিও দেখতে এখানে আলতো চাপুন."
+    },
+    "bhagwanPrevBtn": {
+      "id": "copilot.bhagwanPrevBtn",
+      "defaultMessage": "আগের প্রশ্নে ফিরে যেতে এখানে আলতো চাপুন।"
+    },
+    "bhagwanSubmitBtn": {
+      "id": "copilot.bhagwanSubmitBtn",
+      "defaultMessage": "আপনার উত্তর জমা দিতে এখানে আলতো চাপুন এবং এগিয়ে যান।"
+    }
+  }
+}

@@ -5,6 +5,7 @@ import {
   SUBMIT_ANSWERS,
   SUBMIT_ANSWERS_SUCCESS,
   SUBMIT_ANSWERS_FAIL,
+  RESET_SUBMIT,
 } from './constants';
 
 export function getQuestions() {
@@ -44,5 +45,11 @@ export function submitAnswersFail(error) {
   return {
     type: SUBMIT_ANSWERS_FAIL,
     error,
+  };
+}
+
+export function resetSubmit() {
+  return {
+    type: RESET_SUBMIT,
   };
 }

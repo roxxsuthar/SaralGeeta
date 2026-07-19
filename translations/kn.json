@@ -1,0 +1,1010 @@
+{
+  "App": {
+    "header": {
+      "id": "container.App.header",
+      "defaultMessage": "ಇದು ಅಪ್ಲಿಕೇಶನ್ ಕಂಟೇನರ್ ಆಗಿದೆ!"
+    },
+    "languageUpdated": {
+      "id": "container.App.languageUpdated",
+      "defaultMessage": "ಅಪ್ಲಿಕೇಶನ್ ಭಾಷೆಯನ್ನು ನವೀಕರಿಸಲಾಗಿದೆ!"
+    }
+  },
+  "Root": {
+    "header": {
+      "id": "container.Root.header",
+      "defaultMessage": "ಇದು ರೂಟ್ ಕಂಟೇನರ್!"
+    }
+  },
+  "Language": {
+    "header": {
+      "id": "container.Language.header",
+      "defaultMessage": "ಇದು ಭಾಷಾ ಧಾರಕ!"
+    }
+  },
+  "OnboardingOne": {
+    "header": {
+      "id": "container.OnboardingOne.header",
+      "defaultMessage": "ಇದು ಆನ್‌ಬೋರ್ಡಿಂಗ್ ಕಂಟೇನರ್!"
+    },
+    "heading": {
+      "id": "container.OnboardingOne.heading",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅವರಿಗೆ ಸ್ವಾಗತ"
+    },
+    "description": {
+      "id": "container.OnboardingOne.description",
+      "defaultMessage": "ಭಗವದ್ಗೀತೆಯನ್ನು ಸರಳ ಮತ್ತು ಸಂವಾದಾತ್ಮಕ ರೀತಿಯಲ್ಲಿ ಕಲಿಯಿರಿ ಮತ್ತು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ. ಉಚ್ಚಾರಣೆಯನ್ನು ಅಭ್ಯಾಸ ಮಾಡಿ ಮತ್ತು ಭಗವಾನ್ ಕೃಷ್ಣನ ಬೋಧನೆಗಳನ್ನು ಅನ್ವೇಷಿಸಿ."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingOne.buttonLabel",
+      "defaultMessage": "ಮುಂದೆ"
+    }
+  },
+  "OnboardingSecond": {
+    "header": {
+      "id": "container.OnboardingSecond.header",
+      "defaultMessage": "ಇದು ಆನ್‌ಬೋರ್ಡಿಂಗ್ ಕಂಟೇನರ್!"
+    },
+    "heading": {
+      "id": "container.OnboardingSecond.heading",
+      "defaultMessage": "ನಿಮ್ಮ ಆದರ್ಶದೊಂದಿಗೆ ಕಲಿಯಿರಿ"
+    },
+    "description": {
+      "id": "container.OnboardingSecond.description",
+      "defaultMessage": "ನಿಮ್ಮ ಆಧ್ಯಾತ್ಮಿಕ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಆರಿಸಿ ಮತ್ತು ಭಗವದ್ಗೀತೆಯ ಮೂಲಕ ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಪ್ರಯಾಣವನ್ನು ಪ್ರಾರಂಭಿಸಿ. ಆಡಿಯೋ, ವಿಡಿಯೋ ಮತ್ತು ಸಂವಾದಾತ್ಮಕ ಪಾಠಗಳೊಂದಿಗೆ ಅಭ್ಯಾಸ ಮಾಡಿ."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingSecond.buttonLabel",
+      "defaultMessage": "ಪ್ರಾರಂಭಿಸಿ"
+    }
+  },
+  "language": {
+    "header": {
+      "id": "container.language.header",
+      "defaultMessage": "ಇದು ಭಾಷಾ ಧಾರಕ!"
+    },
+    "buttonLabel": {
+      "id": "container.language.buttonLabel",
+      "defaultMessage": "ಮುಂದುವರಿಸಿ"
+    }
+  },
+  "login": {
+    "heading": {
+      "id": "container.login.header",
+      "defaultMessage": "ಮರಳಿ ಸ್ವಾಗತ!"
+    },
+    "subHeading": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "ಸೈನ್ ಇನ್ ಮಾಡಲು ದಯವಿಟ್ಟು ನಿಮ್ಮ ರುಜುವಾತುಗಳನ್ನು ನಮೂದಿಸಿ!"
+    },
+    "number": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "ಮೊಬೈಲ್ ಸಂಖ್ಯೆ"
+    },
+    "typeHere": {
+      "id": "container.login.typeHere",
+      "defaultMessage": "ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ..."
+    },
+    "login": {
+      "id": "container.login.login",
+      "defaultMessage": "ಲಾಗಿನ್ ಮಾಡಿ"
+    },
+    "continue": {
+      "id": "container.login.continue",
+      "defaultMessage": "ಅಥವಾ ಇದರೊಂದಿಗೆ ಮುಂದುವರಿಯಿರಿ"
+    },
+    "facebook": {
+      "id": "container.login.facebook",
+      "defaultMessage": "ಫೇಸ್ಬುಕ್"
+    },
+    "google": {
+      "id": "container.login.google",
+      "defaultMessage": "ಗೂಗಲ್"
+    },
+    "apple": {
+      "id": "container.login.apple",
+      "defaultMessage": "ಆಪಲ್"
+    },
+    "buttonLabel": {
+      "id": "container.login.buttonLabel",
+      "defaultMessage": "ಮುಂದುವರಿಸಿ"
+    },
+    "dont": {
+      "id": "container.login.dont",
+      "defaultMessage": "ಖಾತೆ ಇಲ್ಲವೇ?"
+    },
+    "create": {
+      "id": "container.login.dont",
+      "defaultMessage": "ಈಗ ರಚಿಸಿ"
+    },
+    "bottomSheetHeading": {
+      "id": "containers.login.bottomSheetHeading",
+      "defaultMessage": "ನಿಮ್ಮ ದೇಶವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "countryPlaceholder": {
+      "id": "containers.login.warningOtherHalf",
+      "defaultMessage": "ದೇಶದ ಹೆಸರಿನ ಮೂಲಕ ಹುಡುಕಿ"
+    },
+    "placeholder": {
+      "id": "containers.login.placeholder",
+      "defaultMessage": "ದೂರವಾಣಿ ಸಂಖ್ಯೆ"
+    }
+  },
+  "otpScreen": {
+    "heading": {
+      "id": "container.otpScreen.header",
+      "defaultMessage": "ಮರಳಿ ಸ್ವಾಗತ"
+    },
+    "subHeading": {
+      "id": "container.otpScreen.subHeading",
+      "defaultMessage": "ದಯವಿಟ್ಟು ನಿಮ್ಮ ನೋಂದಾಯಿತ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಗೆ ಕಳುಹಿಸಿದ OTP ಅನ್ನು ನಮೂದಿಸಿ."
+    },
+    "submit": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "ಸಲ್ಲಿಸಿ"
+    },
+    "enterOtp": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "ಇಲ್ಲಿ OTP ನಮೂದಿಸಿ"
+    },
+    "dont": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "ಕೋಡ್ ಸ್ವೀಕರಿಸಲಿಲ್ಲವೇ?"
+    },
+    "create": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "ಮರುಕಳುಹಿಸಿ"
+    },
+    "minute": {
+      "id": "app.containers.otpScreen.minute",
+      "defaultMessage": "ನಿಮಿಷ"
+    },
+    "second": {
+      "id": "app.containers.otpScreen.second",
+      "defaultMessage": "ಎರಡನೇ ಉಳಿದಿದೆ"
+    },
+    "minutes": {
+      "id": "app.containers.otpScreen.minutes",
+      "defaultMessage": "ನಿಮಿಷಗಳು"
+    },
+    "seconds": {
+      "id": "app.containers.otpScreen.seconds",
+      "defaultMessage": "ಸೆಕೆಂಡುಗಳು ಉಳಿದಿವೆ"
+    },
+    "timeElapsed": {
+      "id": "app.containers.otpScreen.timeElapsed",
+      "defaultMessage": "ಸಮಯ ಕಳೆದಿದೆ"
+    }
+  },
+  "OurIdeals": {
+    "buttonLabel": {
+      "id": "app.containers.OurIdeals.buttonLabel",
+      "defaultMessage": "ಮುಂದುವರಿಸಿ"
+    },
+    "ourIdeals": {
+      "id": "app.containers.OurIdeals.ourIdeals",
+      "defaultMessage": "ನಮ್ಮ ಆದರ್ಶಗಳು"
+    }
+  },
+  "Home": {
+    "headerText": {
+      "id": "app.containers.Home.headerText",
+      "defaultMessage": "ಅಧ್ಯಾಯಗಳು"
+    },
+    "chapters": {
+      "id": "app.containers.Home.chapters",
+      "defaultMessage": "ಅಧ್ಯಾಯಗಳು"
+    },
+    "recent": {
+      "id": "app.containers.Home.recent",
+      "defaultMessage": "ಇತ್ತೀಚಿನ"
+    },
+    "chapter": {
+      "id": "app.containers.Home.chapter",
+      "defaultMessage": "ಅಧ್ಯಾಯ"
+    },
+    "shareMessage": {
+      "id": "app.containers.Home.shareMessage",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್ ನಿಮಗಾಗಿ ಇಲ್ಲಿದೆ, ಅಲ್ಲಿ ನೀವು ದೇವರಿಂದ ನೇರವಾಗಿ ಗೀತೆಯನ್ನು ಕಲಿಯಬಹುದು. ನೀವು ದೇವರೊಂದಿಗೆ ಗೀತಾ ಶ್ಲೋಕಗಳನ್ನು ಪಠಿಸಬಹುದು, ಅವುಗಳ ಅರ್ಥವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಬಹುದು ಮತ್ತು ಕಂಠಪಾಠದ ಮೇಲೆ ಪ್ರತಿಫಲವನ್ನು ಪಡೆಯಬಹುದು. ಇದರ ಮೂಲಕ, ನೀವು ಗೀತಾ ಶಿಕ್ಷಕರಾಗಬಹುದು, ದೈನಂದಿನ ಜೀವನಕ್ಕಾಗಿ ನಿಯಮಗಳನ್ನು ಅನುಸರಿಸಬಹುದು ಮತ್ತು ಗೀತೆಯನ್ನು ಬರೆಯಬಹುದು. ಈಗ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ!"
+    }
+  },
+  "Chapters": {
+    "headerText": {
+      "id": "app.containers.Chapters.headerText",
+      "defaultMessage": "ಅಧ್ಯಾಯಗಳು"
+    }
+  },
+  "Shloks": {
+    "headerText": {
+      "id": "app.containers.Shloks.headerText",
+      "defaultMessage": "ಪದ್ಯಗಳು"
+    }
+  },
+  "learnGeeta": {
+    "continue": {
+      "id": "app.container.learnGeeta.continue",
+      "defaultMessage": "ಮುಂದುವರಿಸಿ"
+    }
+  },
+  "contactUs": {
+    "heading": {
+      "id": "app.container.Contactus.heading",
+      "defaultMessage": "ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ"
+    },
+    "serviceType": {
+      "id": "app.container.Contactus.serviceType",
+      "defaultMessage": "ಸೇವೆಯ ಪ್ರಕಾರ"
+    },
+    "name": {
+      "id": "app.container.Contactus.name",
+      "defaultMessage": "ಹೆಸರು"
+    },
+    "email": {
+      "id": "app.container.Contactus.email",
+      "defaultMessage": "ಇಮೇಲ್"
+    },
+    "message": {
+      "id": "app.container.Contactus.message",
+      "defaultMessage": "ಸಂದೇಶ"
+    },
+    "placeholder": {
+      "id": "app.container.Contactus.placeholder",
+      "defaultMessage": "ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ..."
+    },
+    "button": {
+      "id": "app.container.Contactus.button",
+      "defaultMessage": "ಸಂದೇಶ ಕಳುಹಿಸಿ"
+    }
+  },
+  "Profile": {
+    "heading": {
+      "id": "app.container.Profile.heading",
+      "defaultMessage": "ಪ್ರೊಫೈಲ್"
+    },
+    "name": {
+      "id": "app.container.Profile.name",
+      "defaultMessage": "ಹೆಸರು"
+    },
+    "email": {
+      "id": "app.container.Profile.email",
+      "defaultMessage": "ಇಮೇಲ್"
+    },
+    "mobile": {
+      "id": "app.container.Profile.mobile",
+      "defaultMessage": "ಮೊಬೈಲ್"
+    },
+    "gender": {
+      "id": "app.container.Profile.gender",
+      "defaultMessage": "ಲಿಂಗ"
+    },
+    "voice": {
+      "id": "app.container.Profile.voice",
+      "defaultMessage": "ಧ್ವನಿ"
+    },
+    "shlokSpeed": {
+      "id": "app.container.Profile.shlokSpeed",
+      "defaultMessage": "ಶ್ಲೋಕ್ ವೇಗ"
+    },
+    "updateProfile": {
+      "id": "app.container.Profile.updateProfile",
+      "defaultMessage": "ಪ್ರೊಫೈಲ್ ಅನ್ನು ನವೀಕರಿಸಿ"
+    },
+    "changePassword": {
+      "id": "app.container.Profile.changePassword",
+      "defaultMessage": "ಪಾಸ್ವರ್ಡ್ ಬದಲಾಯಿಸಿ"
+    },
+    "language": {
+      "id": "app.container.Profile.language",
+      "defaultMessage": "ಭಾಷೆ"
+    }
+  },
+  "EditProfile": {
+    "heading": {
+      "id": "app.container.EditProfile.heading",
+      "defaultMessage": "ಪ್ರೊಫೈಲ್"
+    },
+    "name": {
+      "id": "app.container.EditProfile.name",
+      "defaultMessage": "ಮೊದಲ ಹೆಸರು"
+    },
+    "lastName": {
+      "id": "app.container.EditProfile.lastName",
+      "defaultMessage": "ಕೊನೆಯ ಹೆಸರು"
+    },
+    "email": {
+      "id": "app.container.EditProfile.email",
+      "defaultMessage": "ಇಮೇಲ್"
+    },
+    "mobile": {
+      "id": "app.container.EditProfile.mobile",
+      "defaultMessage": "ದೂರವಾಣಿ ಸಂಖ್ಯೆ"
+    },
+    "gender": {
+      "id": "app.container.EditProfile.gender",
+      "defaultMessage": "ಲಿಂಗ"
+    },
+    "language": {
+      "id": "app.container.EditProfile.language",
+      "defaultMessage": "ಭಾಷೆ"
+    },
+    "shlokSpeed": {
+      "id": "app.container.EditProfile.shlokSpeed",
+      "defaultMessage": "ಶ್ಲೋಕ್ ವೇಗ"
+    },
+    "update": {
+      "id": "app.container.EditProfile.updateProfile",
+      "defaultMessage": "ನವೀಕರಿಸಿ"
+    }
+  },
+  "PrivacyPolicy": {
+    "heading": {
+      "id": "app.container.PrivacyPolicy.heading",
+      "defaultMessage": "ಗೌಪ್ಯತೆ ನೀತಿ"
+    }
+  },
+  "TermsOfUse": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "ಬಳಕೆಯ ನಿಯಮಗಳು"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತು"
+    }
+  },
+  "SideBar": {
+    "viewAll": {
+      "id": "app.container.SideBar.viewAll",
+      "defaultMessage": "ಪ್ರೊಫೈಲ್ ವೀಕ್ಷಿಸಿ"
+    },
+    "chapters": {
+      "id": "app.container.SideBar.chapters",
+      "defaultMessage": "ಅಧ್ಯಾಯಗಳು"
+    },
+    "ideal": {
+      "id": "app.container.SideBar.ideal",
+      "defaultMessage": "ಆದರ್ಶಗಳು"
+    },
+    "setting": {
+      "id": "app.container.SideBar.setting",
+      "defaultMessage": "ಸೆಟ್ಟಿಂಗ್"
+    },
+    "language": {
+      "id": "app.container.SideBar.language",
+      "defaultMessage": "ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಿ"
+    },
+    "helpSupport": {
+      "id": "app.container.SideBar.helpSupport",
+      "defaultMessage": "ಸಹಾಯ ಮತ್ತು ಬೆಂಬಲ"
+    },
+    "contactUs": {
+      "id": "app.container.SideBar.contactUs",
+      "defaultMessage": "ಸಲಹೆ ಪೆಟ್ಟಿಗೆ"
+    },
+    "privacyPolicy": {
+      "id": "app.container.SideBar.privacyPolicy",
+      "defaultMessage": "ಗೌಪ್ಯತೆ ನೀತಿ"
+    },
+    "instruction": {
+      "id": "app.container.SideBar.instruction",
+      "defaultMessage": "ಬಳಕೆಯ ವಿಧಾನ"
+    },
+    "termOfUse": {
+      "id": "app.container.SideBar.termOfUse",
+      "defaultMessage": "ಬಳಕೆಯ ನಿಯಮಗಳು"
+    },
+    "social": {
+      "id": "app.container.SideBar.social",
+      "defaultMessage": "ಸಾಮಾಜಿಕ ಮಾಧ್ಯಮ ಲಿಂಕ್‌ಗಳು"
+    },
+    "fb": {
+      "id": "app.container.SideBar.fb",
+      "defaultMessage": "ಫೇಸ್ಬುಕ್"
+    },
+    "insta": {
+      "id": "app.container.SideBar.insta",
+      "defaultMessage": "Instagram"
+    },
+    "x": {
+      "id": "app.container.SideBar.x",
+      "defaultMessage": "X"
+    },
+    "signOut": {
+      "id": "app.container.SideBar.signOut",
+      "defaultMessage": "ಸೈನ್ ಔಟ್ ಮಾಡಿ"
+    },
+    "studentGift": {
+      "id": "app.container.SideBar.studentGift",
+      "defaultMessage": "ನನ್ನ ಬಹುಮಾನ"
+    },
+    "teacherGift": {
+      "id": "app.container.SideBar.teacherGift",
+      "defaultMessage": "ಗೀತಾ ಕಲಿಸು"
+    },
+    "writeGita": {
+      "id": "app.container.SideBar.writeGita",
+      "defaultMessage": "ಗೀತಾ ಬರೆಯಿರಿ"
+    },
+    "gitaRules": {
+      "id": "app.container.SideBar.gitaRules",
+      "defaultMessage": "ಗೀತಾ ನಿಯಮಗಳು"
+    },
+    "faq": {
+      "id": "app.container.SideBar.faq",
+      "defaultMessage": "FAQ"
+    },
+    "askBhagwan": {
+      "id": "app.container.SideBar.askBhagwan",
+      "defaultMessage": "ದೇವರನ್ನು ಕೇಳು"
+    }
+  },
+  "studentGift": {
+    "heading": {
+      "id": "app.container.studentGift.heading",
+      "defaultMessage": "ಗೀತಾ ವಿದ್ಯಾರ್ಥಿನಿ"
+    },
+    "description": {
+      "id": "app.container.studentGift.description",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ನೀವು ಗೀತೆಯ ಯಾವುದೇ ಅಧ್ಯಾಯವನ್ನು ಕಂಠಪಾಠ ಮಾಡಿದ್ದರೆ, ನಿಮ್ಮ ಬಹುಮಾನಕ್ಕಾಗಿ ನೀವು ಇಲ್ಲಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಬಹುದು. ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ, ನೀವು ಕಂಠಪಾಠ ಮಾಡಿದ ಅಧ್ಯಾಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ ಮತ್ತು ನಿಮ್ಮ ಅರ್ಜಿಯನ್ನು ಸಲ್ಲಿಸಿ."
+    },
+    "name": {
+      "id": "app.container.studentGift.name",
+      "defaultMessage": "ಗೀತಾ ವಿದ್ಯಾರ್ಥಿಯ ಹೆಸರು"
+    },
+    "phoneNumber": {
+      "id": "app.container.studentGift.phoneNumber",
+      "defaultMessage": "ದೂರವಾಣಿ ಸಂಖ್ಯೆ"
+    },
+    "address": {
+      "id": "app.container.studentGift.address",
+      "defaultMessage": "ವಿಳಾಸ"
+    },
+    "chaptersLabel": {
+      "id": "app.container.studentGift.chaptersLabel",
+      "defaultMessage": "ಅಧ್ಯಾಯಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "button": {
+      "id": "app.container.studentGift.button",
+      "defaultMessage": "ಸಲ್ಲಿಸಿ"
+    },
+    "placeholder": {
+      "id": "app.container.studentGift.placeholder",
+      "defaultMessage": "ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ..."
+    },
+    "placeholderName": {
+      "id": "app.container.studentGift.placeholderName",
+      "defaultMessage": "ಗೀತಾ ವಿದ್ಯಾರ್ಥಿಯ ಹೆಸರನ್ನು ನಮೂದಿಸಿ"
+    },
+    "placeholderPhone": {
+      "id": "app.container.studentGift.placeholderPhone",
+      "defaultMessage": "ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ"
+    },
+    "placeholderAddress": {
+      "id": "app.container.studentGift.placeholderAddress",
+      "defaultMessage": "ಪೂರ್ಣ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ"
+    },
+    "successMessage": {
+      "id": "app.container.studentGift.successMessage",
+      "defaultMessage": "ನಾವು ಶೀಘ್ರದಲ್ಲೇ ನಿಮ್ಮೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸುತ್ತೇವೆ."
+    },
+    "okButton": {
+      "id": "app.container.studentGift.okButton",
+      "defaultMessage": "ಸರಿ"
+    },
+    "alertTitle": {
+      "id": "app.container.studentGift.alertTitle",
+      "defaultMessage": "ದೃಢೀಕರಣ"
+    },
+    "alertMessage": {
+      "id": "app.container.studentGift.alertMessage",
+      "defaultMessage": "ನೀವು ಸರಿಯಾದ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿದ್ದೀರಾ?"
+    },
+    "alertNo": {
+      "id": "app.container.studentGift.alertNo",
+      "defaultMessage": "ಸಂ"
+    },
+    "alertYes": {
+      "id": "app.container.studentGift.alertYes",
+      "defaultMessage": "ಹೌದು"
+    }
+  },
+  "teacherGift": {
+    "heading": {
+      "id": "app.container.teacherGift.heading",
+      "defaultMessage": "ಶಿಕ್ಷಕರ ವಿವರಗಳು"
+    },
+    "description": {
+      "id": "app.container.teacherGift.description",
+      "defaultMessage": "ನಿಮ್ಮ ನಗರ, ಗ್ರಾಮ ಅಥವಾ ನೆರೆಹೊರೆಯಲ್ಲಿ ನೀವು ಗೀತಾವನ್ನು ಕಲಿಸಲು ಬಯಸಿದರೆ ಮತ್ತು ಗೀತಾ ಶಿಕ್ಷಕರಾಗಲು ಬಯಸಿದರೆ, ನೀವು ಇಲ್ಲಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಬಹುದು. ನಿಮ್ಮ ಬೋಧನೆಗೆ ಸಂಭಾವನೆಯನ್ನೂ ನೀಡುತ್ತೇವೆ. ನೀವು ಯಾವ ಅಧ್ಯಾಯವನ್ನು ಕಂಠಪಾಠ ಮಾಡಿದ್ದೀರಿ ಮತ್ತು ನೀವು ಕಲಿಸಲು ಬಯಸುವ ಅಧ್ಯಾಯವನ್ನು ನಮೂದಿಸುವ ಮೂಲಕ ನೀವು ಅರ್ಜಿ ಸಲ್ಲಿಸಬಹುದು."
+    },
+    "name": {
+      "id": "app.container.teacherGift.name",
+      "defaultMessage": "ಶಿಕ್ಷಕರ ಹೆಸರು"
+    },
+    "phoneNumber": {
+      "id": "app.container.teacherGift.phoneNumber",
+      "defaultMessage": "ದೂರವಾಣಿ ಸಂಖ್ಯೆ"
+    },
+    "address": {
+      "id": "app.container.teacherGift.address",
+      "defaultMessage": "ವಿಳಾಸ"
+    },
+    "chaptersLabel": {
+      "id": "app.container.teacherGift.chaptersLabel",
+      "defaultMessage": "ಅಧ್ಯಾಯಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "button": {
+      "id": "app.container.teacherGift.button",
+      "defaultMessage": "ಸಲ್ಲಿಸಿ"
+    },
+    "placeholderName": {
+      "id": "app.container.teacherGift.placeholderName",
+      "defaultMessage": "ಶಿಕ್ಷಕರ ಹೆಸರನ್ನು ನಮೂದಿಸಿ"
+    },
+    "placeholderPhone": {
+      "id": "app.container.teacherGift.placeholderPhone",
+      "defaultMessage": "ಫೋನ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ"
+    },
+    "placeholderAddress": {
+      "id": "app.container.teacherGift.placeholderAddress",
+      "defaultMessage": "ಪೂರ್ಣ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ"
+    },
+    "successMessage": {
+      "id": "app.container.teacherGift.successMessage",
+      "defaultMessage": "ನಾವು ಶೀಘ್ರದಲ್ಲೇ ನಿಮ್ಮೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸುತ್ತೇವೆ."
+    },
+    "okButton": {
+      "id": "app.container.teacherGift.okButton",
+      "defaultMessage": "ಸರಿ"
+    },
+    "alertTitle": {
+      "id": "app.container.teacherGift.alertTitle",
+      "defaultMessage": "ದೃಢೀಕರಣ"
+    },
+    "alertMessage": {
+      "id": "app.container.teacherGift.alertMessage",
+      "defaultMessage": "ನೀವು ಸರಿಯಾದ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿದ್ದೀರಾ?"
+    },
+    "alertNo": {
+      "id": "app.container.teacherGift.alertNo",
+      "defaultMessage": "ಸಂ"
+    },
+    "alertYes": {
+      "id": "app.container.teacherGift.alertYes",
+      "defaultMessage": "ಹೌದು"
+    }
+  },
+  "writeGita": {
+    "heading": {
+      "id": "app.container.writeGita.heading",
+      "defaultMessage": "ಗೀತಾ ಬರೆಯಿರಿ"
+    },
+    "description": {
+      "id": "app.container.writeGita.description",
+      "defaultMessage": "ಗೀತಾ ಬರೆಯಿರಿ ಎಂಬುದು ನಿಮ್ಮ ಸ್ವಂತ ಕೈಗಳಿಂದ ಕೈಬರಹದ ಗ್ರಂಥವನ್ನು ಸಿದ್ಧಪಡಿಸುವ ಅಭಿಯಾನವಾಗಿದೆ. ಆಯ್ಕೆ ಮಾಡಲು ಹಲವಾರು ಪುಸ್ತಕ ಆಯ್ಕೆಗಳಿವೆ: ರಾಮಚರಿತಮಾನಸ್, ಗೀತಾ ಜೀ, ಭಾಗವತ್, ಭಕ್ತ ಚಾರಿತ್ರ, ಮತ್ತು ಇತರರು. ನೀವು ಬರೆಯಲು ಬಯಸುವ ಗ್ರಂಥವನ್ನು ನೀವು ಆಯ್ಕೆ ಮಾಡಬಹುದು. ನಿಮ್ಮ ಆಯ್ಕೆಯ ನಂತರ, ನಾವು ನಿಮ್ಮ ಮನೆಗೆ ಕಪ್ಪು ಮತ್ತು ಕೆಂಪು ಪೆನ್ನುಗಳೊಂದಿಗೆ ಮೂಲ ಪುಸ್ತಕ, ಬರೆಯಲು ರಿಜಿಸ್ಟರ್ ಅನ್ನು ಕಳುಹಿಸುತ್ತೇವೆ. ಇದು ಮೂಲಭೂತವಾಗಿ ನಕಲು ಮಾಡುವ ಮೂಲಕ ಬರೆಯುವುದು, ಮೂಲ ಪಠ್ಯವನ್ನು ನೋಡುವುದು ಮತ್ತು ಅದನ್ನು ರಿಜಿಸ್ಟರ್‌ನಲ್ಲಿ ಬರೆಯುವುದು. ನೀವು ಶ್ಲೋಕಗಳನ್ನು ಕೆಂಪು ಪೆನ್ ಮತ್ತು ಅರ್ಥವನ್ನು ಹಿಂದಿಯಲ್ಲಿ ಅಥವಾ ನಿಮ್ಮ ಸ್ವಂತ ಪ್ರಾದೇಶಿಕ ಭಾಷೆಯಲ್ಲಿ ಬರೆಯಬೇಕು. ಪ್ರತಿ 15 ದಿನಗಳಿಗೊಮ್ಮೆ ನಿಮ್ಮ ಪ್ರಗತಿಯನ್ನು ಸಹ ನೀವು ವರದಿ ಮಾಡಬೇಕಾಗುತ್ತದೆ. ಸಂಪೂರ್ಣ ಗ್ರಂಥವನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದ ನಂತರ, ನಾವು ನಿಮಗೆ ಚಿತ್ರಾತ್ಮಕ ಪ್ರಮಾಣಪತ್ರದೊಂದಿಗೆ ಗೌರವಿಸುತ್ತೇವೆ. ಇದಲ್ಲದೆ, ಪ್ರದರ್ಶನವನ್ನು ನಡೆಸಿದಾಗ, ನಿಮ್ಮ ಕೈಬರಹದ ಗ್ರಂಥವನ್ನು ಕೈಬರಹದ ಗ್ರಂಥ ಪ್ರದರ್ಶನದಲ್ಲಿ ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ ಮತ್ತು ನಿಮ್ಮ ಹೆಸರನ್ನು ಗ್ರಂಥದ ಮೇಲೆ ಕೆತ್ತಲಾಗುತ್ತದೆ."
+    },
+    "name": {
+      "id": "app.container.writeGita.name",
+      "defaultMessage": "ಹೆಸರು"
+    },
+    "phoneNumber": {
+      "id": "app.container.writeGita.phoneNumber",
+      "defaultMessage": "ಸಂಪರ್ಕಿಸಿ"
+    },
+    "address": {
+      "id": "app.container.writeGita.address",
+      "defaultMessage": "ವಿಳಾಸ"
+    },
+    "button": {
+      "id": "app.container.writeGita.button",
+      "defaultMessage": "ಸಲ್ಲಿಸಿ"
+    },
+    "placeholderName": {
+      "id": "app.container.writeGita.placeholderName",
+      "defaultMessage": "ನಿಮ್ಮ ಹೆಸರನ್ನು ನಮೂದಿಸಿ"
+    },
+    "placeholderPhone": {
+      "id": "app.container.writeGita.placeholderPhone",
+      "defaultMessage": "ನಿಮ್ಮ ಸಂಪರ್ಕ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ"
+    },
+    "placeholderAddress": {
+      "id": "app.container.writeGita.placeholderAddress",
+      "defaultMessage": "ನಿಮ್ಮ ಪೂರ್ಣ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿ"
+    },
+    "alertTitle": {
+      "id": "app.container.writeGita.alertTitle",
+      "defaultMessage": "ದೃಢೀಕರಣ"
+    },
+    "alertMessage": {
+      "id": "app.container.writeGita.alertMessage",
+      "defaultMessage": "ನೀವು ಸರಿಯಾದ ವಿಳಾಸವನ್ನು ನಮೂದಿಸಿದ್ದೀರಾ?"
+    },
+    "alertNo": {
+      "id": "app.container.writeGita.alertNo",
+      "defaultMessage": "ಸಂ"
+    },
+    "alertYes": {
+      "id": "app.container.writeGita.alertYes",
+      "defaultMessage": "ಹೌದು"
+    },
+    "rulesLabel": {
+      "id": "app.container.writeGita.rulesLabel",
+      "defaultMessage": "ಸ್ಕ್ರಿಪ್ಚರ್ ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "successMessage": {
+      "id": "app.container.writeGita.successMessage",
+      "defaultMessage": "ನಾವು ಶೀಘ್ರದಲ್ಲೇ ನಿಮ್ಮೊಂದಿಗೆ ಸಂಪರ್ಕ ಸಾಧಿಸುತ್ತೇವೆ."
+    },
+    "okButton": {
+      "id": "app.container.writeGita.okButton",
+      "defaultMessage": "ಸರಿ"
+    }
+  },
+  "Instruction": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "ಬಳಕೆಯ ವಿಧಾನ"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತು"
+    }
+  },
+  "gitaRules": {
+    "heading": {
+      "id": "app.container.gitaRules.heading",
+      "defaultMessage": "ಗೀತಾ ನಿಯಮಗಳು"
+    },
+    "subHeading": {
+      "id": "app.container.gitaRules.subHeading",
+      "defaultMessage": "ಗೀತಾ ಮಾರ್ಗವನ್ನು ಅನುಸರಿಸಿ"
+    },
+    "description": {
+      "id": "app.container.gitaRules.description",
+      "defaultMessage": "ಈ ನಿಯಮಗಳನ್ನು ಅನುಸರಿಸುವ ಮೂಲಕ, ನೀವು ಭಗವದ್ಗೀತೆಯ ಬೋಧನೆಗಳೊಂದಿಗೆ ನಿಮ್ಮನ್ನು ಹೊಂದಿಸಿಕೊಳ್ಳುತ್ತೀರಿ."
+    },
+    "instructions": {
+      "id": "app.container.gitaRules.instructions",
+      "defaultMessage": "ನೀವು ಇಂದು ಅನುಸರಿಸಿದ ನಿಯಮಗಳ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ಸಲ್ಲಿಸಿ. ನೀವು ಇದನ್ನು ಪ್ರತಿದಿನ ಮಾಡಬೇಕು. ನೀವು ಯಾವ ನಿಯಮಗಳನ್ನು ಅನುಸರಿಸಿದ್ದೀರಿ ಮತ್ತು ನೀವು ತಪ್ಪಿಸಿಕೊಂಡಿರಿ ಎಂಬುದನ್ನು ನೋಡಲು ಪ್ರತಿ ತಿಂಗಳು ನಿಮ್ಮ ವರದಿಯನ್ನು ನೀವು ವೀಕ್ಷಿಸಬಹುದು."
+    },
+    "button": {
+      "id": "app.container.gitaRules.button",
+      "defaultMessage": "ಸಲ್ಲಿಸಿ"
+    },
+    "successMessage": {
+      "id": "app.container.gitaRules.successMessage",
+      "defaultMessage": "ನಿಮ್ಮ ನಿಯಮಗಳ ಆಯ್ಕೆಯನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಸಲ್ಲಿಸಲಾಗಿದೆ."
+    },
+    "okButton": {
+      "id": "app.container.gitaRules.okButton",
+      "defaultMessage": "ಸರಿ"
+    },
+    "alertTitle": {
+      "id": "app.container.gitaRules.alertTitle",
+      "defaultMessage": "ದೃಢೀಕರಣ"
+    },
+    "alertMessage": {
+      "id": "app.container.gitaRules.alertMessage",
+      "defaultMessage": "ಈ ನಿಯಮಗಳನ್ನು ಸಲ್ಲಿಸಲು ನೀವು ಖಚಿತವಾಗಿ ಬಯಸುವಿರಾ?"
+    },
+    "alertNo": {
+      "id": "app.container.gitaRules.alertNo",
+      "defaultMessage": "ಸಂ"
+    },
+    "alertYes": {
+      "id": "app.container.gitaRules.alertYes",
+      "defaultMessage": "ಹೌದು"
+    },
+    "errorMinSelect": {
+      "id": "app.container.gitaRules.errorMinSelect",
+      "defaultMessage": "ದಯವಿಟ್ಟು ಕನಿಷ್ಠ ಒಂದು ನಿಯಮವನ್ನು ಅನುಸರಿಸಿ"
+    },
+    "rulesLabel": {
+      "id": "app.container.gitaRules.rulesLabel",
+      "defaultMessage": "ನಿಯಮವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "inputLabel": {
+      "id": "app.container.gitaRules.inputLabel",
+      "defaultMessage": "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆ"
+    },
+    "inputPlaceholder": {
+      "id": "app.container.gitaRules.inputPlaceholder",
+      "defaultMessage": "ನಿಮ್ಮ ಇನ್‌ಪುಟ್ ಅನ್ನು ಇಲ್ಲಿ ನಮೂದಿಸಿ..."
+    }
+  },
+  "HomeBottomBar": {
+    "whatsapp": {
+      "id": "app.container.HomeBottomBar.whatsapp",
+      "defaultMessage": "WhatsApp"
+    },
+    "facebook": {
+      "id": "app.container.HomeBottomBar.facebook",
+      "defaultMessage": "ಫೇಸ್ಬುಕ್"
+    },
+    "instagram": {
+      "id": "app.container.HomeBottomBar.instagram",
+      "defaultMessage": "Instagram"
+    },
+    "youtube": {
+      "id": "app.container.HomeBottomBar.youtube",
+      "defaultMessage": "YouTube"
+    },
+    "twitter": {
+      "id": "app.container.HomeBottomBar.twitter",
+      "defaultMessage": "X"
+    },
+    "faq": {
+      "id": "app.container.HomeBottomBar.faq",
+      "defaultMessage": "FAQ"
+    },
+    "language": {
+      "id": "app.container.HomeBottomBar.language",
+      "defaultMessage": "ಭಾಷೆ"
+    },
+    "update": {
+      "id": "app.container.HomeBottomBar.update",
+      "defaultMessage": "ನವೀಕರಿಸಿ"
+    },
+    "shareApp": {
+      "id": "app.container.HomeBottomBar.shareApp",
+      "defaultMessage": "ಅಪ್ಲಿಕೇಶನ್ ಹಂಚಿಕೊಳ್ಳಿ"
+    },
+    "rating": {
+      "id": "app.container.HomeBottomBar.rating",
+      "defaultMessage": "ರೇಟಿಂಗ್"
+    },
+    "contact": {
+      "id": "app.container.HomeBottomBar.contact",
+      "defaultMessage": "ಸಂಪರ್ಕಿಸಿ"
+    },
+    "help": {
+      "id": "app.container.HomeBottomBar.help",
+      "defaultMessage": "ಸಹಾಯ"
+    },
+    "social": {
+      "id": "app.container.HomeBottomBar.social",
+      "defaultMessage": "ಸಾಮಾಜಿಕ"
+    }
+  },
+  "faq": {
+    "heading": {
+      "id": "app.container.faq.heading",
+      "defaultMessage": "FAQ"
+    },
+    "subHeading": {
+      "id": "app.container.faq.subHeading",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್ ಬಗ್ಗೆ ಪದೇ ಪದೇ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು"
+    },
+    "q1_question": {
+      "id": "app.container.faq.q1_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಆಪ್ ಎಂದರೇನು?"
+    },
+    "q1_answer": {
+      "id": "app.container.faq.q1_answer",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್ ಡಿಜಿಟಲ್ ವೇದಿಕೆಯಾಗಿದ್ದು, ಗೀತೆಯನ್ನು ಕಲಿಯಲು ಬಯಸುವವರು ಅದನ್ನು ನೇರವಾಗಿ ದೇವರಿಂದಲೇ ಕಲಿಯಬಹುದು."
+    },
+    "q2_question": {
+      "id": "app.container.faq.q2_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಆ್ಯಪ್‌ನಲ್ಲಿರುವ ಶಿಕ್ಷಕರು ಯಾರು?"
+    },
+    "q2_answer": {
+      "id": "app.container.faq.q2_answer",
+      "defaultMessage": "ಸರಳಗೀತೆ ಆಪ್‌ನಲ್ಲಿ ದೇವರೇ ಗುರು. ನಮ್ಮಲ್ಲಿ ವಿಷ್ಣು, ಗಣೇಶ ಮತ್ತು ವೇದವ್ಯಾಸರು ಇದ್ದಾರೆ. ಈ ಮೂರರಲ್ಲಿ ಯಾವುದಾದರೂ ಒಂದರಿಂದ ನೀವು ಗೀತೆಯನ್ನು ಕಲಿಯಬಹುದು."
+    },
+    "q3_question": {
+      "id": "app.container.faq.q3_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಆಪ್‌ನಲ್ಲಿ ಗೀತೆಯನ್ನು ಕಲಿಯುವ ವಿಧಾನ ಯಾವುದು?"
+    },
+    "q3_answer": {
+      "id": "app.container.faq.q3_answer",
+      "defaultMessage": "ನೀವು ಯಾವುದಾದರೂ ಒಂದು ದೇವರನ್ನು ನಿಮ್ಮ ಗುರುವಾಗಿ ಆರಿಸಿಕೊಳ್ಳಬೇಕು. ಆಯ್ಕೆ ಮಾಡಿದ ನಂತರ, ಗೀತೆಯ ಎಲ್ಲಾ 18 ಅಧ್ಯಾಯಗಳು ನಿಮ್ಮ ಮುಂದೆ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ. ನೀವು ಯಾವ ಅಧ್ಯಾಯವನ್ನು ಕಲಿಯಲು ಬಯಸುತ್ತೀರೋ, ಅದರ ಎಲ್ಲಾ ಶ್ಲೋಕಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ. ನೀವು ಕಲಿಯಲು ಬಯಸುವ ಶ್ಲೋಕವನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ದೇವರು ಅದನ್ನು ನಿಧಾನವಾಗಿ ಪಠಿಸುತ್ತಾನೆ. ಶ್ಲೋಕವನ್ನು ಸಹ ಕೆಳಗೆ ಬರೆಯಲಾಗುವುದು. ಬರೆದ ಶ್ಲೋಕವನ್ನು ನೋಡಿ ಮತ್ತು ಅದನ್ನು ದೇವರೊಂದಿಗೆ ಉಚ್ಚರಿಸಿ. ನೀವು ಅದನ್ನು ಸರಿಯಾಗಿ ಉಚ್ಚರಿಸುವವರೆಗೆ ಅದೇ ಶ್ಲೋಕವನ್ನು ದೇವರೊಂದಿಗೆ ಪುನರಾವರ್ತಿಸಿ. ಈ ರೀತಿಯಾಗಿ, ನೀವು ಶ್ಲೋಕಗಳನ್ನು ಒಂದೊಂದಾಗಿ ನೆನಪಿಸಿಕೊಳ್ಳಬಹುದು."
+    },
+    "q4_question": {
+      "id": "app.container.faq.q4_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ನಾವು ಶ್ಲೋಕಗಳ ಅರ್ಥವನ್ನು ಸಹ ಕಲಿಯಬಹುದೇ?"
+    },
+    "q4_answer": {
+      "id": "app.container.faq.q4_answer",
+      "defaultMessage": "ಹೌದು, ನಾವು ಅರ್ಥವನ್ನು ಸಹ ಕಲಿಯಬಹುದು. ದೇವರು ಶ್ಲೋಕವನ್ನು ಹೇಳಿದಾಗ, ಬದಿಯಲ್ಲಿ 'i' (ಮಾಹಿತಿ) ಚುಕ್ಕೆ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ. ಅದರ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡುವುದರಿಂದ ಶ್ಲೋಕವನ್ನು ಅದರ ಅರ್ಥದೊಂದಿಗೆ ತೋರಿಸುತ್ತದೆ."
+    },
+    "q5_question": {
+      "id": "app.container.faq.q5_question",
+      "defaultMessage": "ಸರಳಗೀತೆ ಅಪ್ಲಿಕೇಶನ್ ಒಂದೇ ಭಾಷೆಯಲ್ಲಿ ಲಭ್ಯವಿದೆಯೇ?"
+    },
+    "q5_answer": {
+      "id": "app.container.faq.q5_answer",
+      "defaultMessage": "ಇಲ್ಲ, ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್ ಹಿಂದಿ, ಇಂಗ್ಲಿಷ್, ಮರಾಠಿ, ಗುಜರಾತಿ ಮತ್ತು ಇತರ ಭಾಷೆಗಳಂತಹ 10 ಭಾಷೆಗಳಲ್ಲಿ ಲಭ್ಯವಿದೆ."
+    },
+    "q6_question": {
+      "id": "app.container.faq.q6_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಆ್ಯಪ್‌ನಲ್ಲಿ ನಾವು ಕಂಠಪಾಠ ಮಾಡಿದ್ದನ್ನು ಹೇಗೆ ಪರೀಕ್ಷಿಸಬಹುದು?"
+    },
+    "q6_answer": {
+      "id": "app.container.faq.q6_answer",
+      "defaultMessage": "ದೇವರು ಶ್ಲೋಕವನ್ನು ಪಠಿಸಿದ ನಂತರ ಮತ್ತು ಮೌನವಾದ ನಂತರ, ಪರದೆಯ ಮೇಲೆ ಮೈಕ್ರೋಫೋನ್ ಬಟನ್ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತದೆ. ಅದನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ, ಸಂಪೂರ್ಣ ಶ್ಲೋಕವನ್ನು ಪಠಿಸಿ, ನಂತರ ಮತ್ತೊಮ್ಮೆ ಮೈಕ್ ಬಟನ್ ಒತ್ತಿರಿ. ನೀವು ಎಷ್ಟು ಶೇಕಡಾವನ್ನು ಸರಿಯಾಗಿ ಮಾತನಾಡಿದ್ದೀರಿ ಎಂಬುದನ್ನು ಪರದೆಯು ತೋರಿಸುತ್ತದೆ. ಅದು 80% ಅಥವಾ ಅದಕ್ಕಿಂತ ಹೆಚ್ಚು ಇದ್ದರೆ, ನೀವು ಆ ಶ್ಲೋಕದ ಉಚ್ಚಾರಣೆಯನ್ನು ಕಲಿತಿದ್ದೀರಿ ಮತ್ತು ನೀವು ಮುಂದಿನದಕ್ಕೆ ಹೋಗಬಹುದು ಎಂದರ್ಥ."
+    },
+    "q7_question": {
+      "id": "app.container.faq.q7_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್‌ನಿಂದ ನೀವು ಪೂರ್ಣ ಅಧ್ಯಾಯವನ್ನು ನೆನಪಿಸಿಕೊಂಡಾಗ ಏನಾಗುತ್ತದೆ?"
+    },
+    "q7_answer": {
+      "id": "app.container.faq.q7_answer",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಬಳಸಿಕೊಂಡು ನೀವು ಗೀತೆಯ ಯಾವುದೇ ಒಂದು ಅಧ್ಯಾಯವನ್ನು ಕಂಠಪಾಠ ಮಾಡಿದರೆ, ಆ ಕಂಠಪಾಠದ ಅಧ್ಯಾಯಕ್ಕಾಗಿ ನೀವು ಗೀತಾ ಪ್ರಶಸ್ತಿ ವಿಭಾಗದಲ್ಲಿ ಬಹುಮಾನಕ್ಕಾಗಿ ನೋಂದಾಯಿಸಿಕೊಳ್ಳಬಹುದು. ದೃಢೀಕರಣದ ನಂತರ, ನಾವು ನೀವು ಒದಗಿಸಿದ ವಿಳಾಸಕ್ಕೆ ಬಹುಮಾನವನ್ನು ಕೊರಿಯರ್ ಮಾಡುತ್ತೇವೆ."
+    },
+    "q8_question": {
+      "id": "app.container.faq.q8_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಗೀತಾ ನಿಯಮಗಳು ಯಾವುವು?"
+    },
+    "q8_answer": {
+      "id": "app.container.faq.q8_answer",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್ ದೈನಂದಿನ ಜೀವನಕ್ಕೆ ಉಪಯುಕ್ತವಾದ 9 ನಿಯಮಗಳನ್ನು ಹೊಂದಿದೆ. ಆ ದಿನ ನೀವು ಅನುಸರಿಸಿದ ನಿಯಮವನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ ಮತ್ತು ಅದನ್ನು ಸಲ್ಲಿಸಿ. ಈ ರೀತಿಯಾಗಿ, ನೀವು ಅನುಸರಿಸಿದ ನಿಯಮಗಳ ಮಾಸಿಕ ಸಾರಾಂಶವನ್ನು ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತದೆ, ನೀವು ಯಾವ ನಿಯಮಗಳನ್ನು ಅನುಸರಿಸಿದ್ದೀರಿ ಮತ್ತು ತಿಂಗಳಾದ್ಯಂತ ನೀವು ತಪ್ಪಿಸಿಕೊಂಡಿರಿ ಎಂಬುದನ್ನು ತಿಳಿಸುತ್ತದೆ."
+    },
+    "q9_question": {
+      "id": "app.container.faq.q9_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಗೀತಾ ಶಿಕ್ಷಕರ ವೈಶಿಷ್ಟ್ಯವೇನು?"
+    },
+    "q9_answer": {
+      "id": "app.container.faq.q9_answer",
+      "defaultMessage": "ನೀವು ಗೀತೆಯನ್ನು ತಿಳಿದಿದ್ದರೆ, ಕೇವಲ ಒಂದು ಅಧ್ಯಾಯವಾದರೂ, ನೀವು ಗೀತಾ ಶಿಕ್ಷಕರಾಗಲು ಗೀತಾ ಶಿಕ್ಷಕರ ವೈಶಿಷ್ಟ್ಯದ ಮೂಲಕ ನೋಂದಾಯಿಸಿಕೊಳ್ಳಬಹುದು. ನೀವು ಎಷ್ಟು ಅಧ್ಯಾಯಗಳನ್ನು ಕಂಠಪಾಠ ಮಾಡಿದ್ದೀರಿ ಎಂದು ನೀವು ನಮೂದಿಸಬಹುದು. ನೀವು ಎಲ್ಲಿ ಬೇಕಾದರೂ ಕಲಿಸಲು ನಾವು ಸಂಪೂರ್ಣ ವ್ಯವಸ್ಥೆ ಮಾಡುತ್ತೇವೆ, ನಿಮ್ಮ ಬೋಧನೆಗೆ ಸಂಭಾವನೆ ನೀಡುತ್ತೇವೆ ಮತ್ತು ಗೀತಾ ಶಿಕ್ಷಕರಾಗಲು ನಿಮಗೆ ತರಬೇತಿ ಬೇಕಾದರೆ, ನಾವು ಅದನ್ನು ಸಹ ಒದಗಿಸುತ್ತೇವೆ."
+    },
+    "q10_question": {
+      "id": "app.container.faq.q10_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಗೀತಾ ಅಭ್ಯಾಸ (ಅಭ್ಯಾಸ) ಎಂದರೇನು?"
+    },
+    "q10_answer": {
+      "id": "app.container.faq.q10_answer",
+      "defaultMessage": "ಗೀತಾ ಅಭ್ಯಾಸವು ನೀವು ಕಂಠಪಾಠ ಮಾಡಿದ ಅಧ್ಯಾಯಗಳನ್ನು ಪರಿಷ್ಕರಿಸಲು ಅನುವು ಮಾಡಿಕೊಡುವ ವೈಶಿಷ್ಟ್ಯವಾಗಿದೆ. ದೇವರು ನಿಮ್ಮ ಮುಂದೆ ಇದ್ದಾನೆ ಮತ್ತು ನೀವು ಯಾವ ಅಧ್ಯಾಯಗಳನ್ನು ನೆನಪಿಸಿಕೊಳ್ಳುತ್ತೀರಿ ಎಂದು ದೇವರಿಗೆ ಹೇಳುತ್ತೀರಿ. ದೇವರು ಆ ಅಧ್ಯಾಯಗಳಿಂದ ಅವುಗಳ ಸಂಖ್ಯೆಗಳೊಂದಿಗೆ ಶ್ಲೋಕಗಳನ್ನು ಕೇಳುತ್ತಾನೆ, ನಿಮ್ಮ ಕಂಠಪಾಠ ಮಾಡಿದ ಅಧ್ಯಾಯಗಳನ್ನು ಪರಿಷ್ಕರಿಸಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ."
+    },
+    "q11_question": {
+      "id": "app.container.faq.q11_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ನಾವು ಪೂರ್ಣ ಅಧ್ಯಾಯವನ್ನು ಒಮ್ಮೆ ಓದಬಹುದೇ?"
+    },
+    "q11_answer": {
+      "id": "app.container.faq.q11_answer",
+      "defaultMessage": "ಹೌದು! ನೀವು ಸಂಪೂರ್ಣ ಅಧ್ಯಾಯವನ್ನು ಒಂದೇ ಬಾರಿಗೆ ಪಠಿಸಲು ಬಯಸಿದರೆ, ಅಧ್ಯಾಯ ಮತ್ತು ಶ್ಲೋಕವನ್ನು ತೆರೆಯಿರಿ, ನಂತರ ಪರದೆಯ ಮೇಲ್ಭಾಗದಲ್ಲಿರುವ 'ಮುಂದುವರಿಸಿ' ಬಟನ್ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ. ದೇವರು ಸಂಪೂರ್ಣ ಅಧ್ಯಾಯವನ್ನು ನಿರಂತರವಾಗಿ ಪಠಿಸುತ್ತಾನೆ. ಅದರ ಪಕ್ಕದಲ್ಲಿ ವೇಗ ಬಟನ್ ಕೂಡ ಇದೆ, ಆದ್ದರಿಂದ ನೀವು ಬಯಸಿದರೆ ನೀವು ವೇಗವಾಗಿ ಪಠಿಸಬಹುದು."
+    },
+    "q12_question": {
+      "id": "app.container.faq.q12_question",
+      "defaultMessage": "ಸರಳ ಗೀತಾ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ 'ಗೀತಾ ಬರೆಯಿರಿ' ವೈಶಿಷ್ಟ್ಯವೇನು?"
+    },
+    "q12_answer": {
+      "id": "app.container.faq.q12_answer",
+      "defaultMessage": "'ಗೀತಾ ಬರೆಯಿರಿ' ಎಂಬುದು ಗೀತಾ, ರಾಮಾಯಣ, ಭಾಗವತ ಮತ್ತು ಲಭ್ಯವಿರುವ ಇತರ ಅನೇಕ ಗ್ರಂಥಗಳನ್ನು ನೀವು ಕೈಬರಹದಲ್ಲಿ ಬರೆಯಬಹುದಾದ ಅಭಿಯಾನವಾಗಿದೆ. ನಾವು ರಿಜಿಸ್ಟರ್, ಮೂಲ ಪುಸ್ತಕ ಮತ್ತು ಪೆನ್ನುಗಳನ್ನು ನಿಮ್ಮ ವಿಳಾಸಕ್ಕೆ ಕೊರಿಯರ್ ಮಾಡುತ್ತೇವೆ. ನೀವು ಬರೆಯಲು ಬಯಸುವ ಗ್ರಂಥವನ್ನು ಆಯ್ಕೆಮಾಡಿ ಮತ್ತು ಅದನ್ನು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ವಿಳಾಸದೊಂದಿಗೆ ಸಲ್ಲಿಸಿ. ನಂತರ ನಾವು ನಿಮಗೆ ಬರೆಯಲು ಬೇಕಾದ ಎಲ್ಲಾ ಸಾಮಗ್ರಿಗಳನ್ನು ಕಳುಹಿಸುತ್ತೇವೆ. ಪ್ರತಿ 15 ದಿನಗಳಿಗೊಮ್ಮೆ ನೀವು ಎಷ್ಟು ಗ್ರಂಥವನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದ್ದೀರಿ ಎಂದು ನೀವು ವರದಿ ಮಾಡಬೇಕಾಗುತ್ತದೆ. ಸಂಪೂರ್ಣ ಗ್ರಂಥವನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದ ನಂತರ, ನೀವು ಚಿತ್ರಾತ್ಮಕ ಪ್ರಮಾಣಪತ್ರದೊಂದಿಗೆ ಗೌರವಿಸಲ್ಪಡುತ್ತೀರಿ."
+    }
+  },
+  "bhagwanQuestions": {
+    "placeholder": {
+      "id": "app.container.bhagwanQuestions.placeholder",
+      "defaultMessage": "ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ..."
+    },
+    "successTitle": {
+      "id": "app.container.bhagwanQuestions.successTitle",
+      "defaultMessage": "🙏 ಧನ್ಯವಾದಗಳು"
+    },
+    "successMessage": {
+      "id": "app.container.bhagwanQuestions.successMessage",
+      "defaultMessage": "ನಿಮ್ಮ ಉತ್ತರಗಳನ್ನು ಸ್ವೀಕರಿಸಲಾಗಿದೆ. ನಿಮ್ಮ ಬುದ್ಧಿವಂತಿಕೆ ಬೆಳೆಯಲಿ!"
+    },
+    "errorTitle": {
+      "id": "app.container.bhagwanQuestions.errorTitle",
+      "defaultMessage": "ದೋಷ"
+    },
+    "errorMessage": {
+      "id": "app.container.bhagwanQuestions.errorMessage",
+      "defaultMessage": "ಸಲ್ಲಿಸಲು ವಿಫಲವಾಗಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+    },
+    "questionCounter": {
+      "id": "app.container.bhagwanQuestions.questionCounter",
+      "defaultMessage": "{total} ರಲ್ಲಿ ಪ್ರಶ್ನೆ {currentIndex}"
+    },
+    "prevBtn": {
+      "id": "app.container.bhagwanQuestions.prevBtn",
+      "defaultMessage": "← ಹಿಂದಿನ"
+    },
+    "nextBtn": {
+      "id": "app.container.bhagwanQuestions.nextBtn",
+      "defaultMessage": "ಮುಂದೆ"
+    },
+    "submitBtn": {
+      "id": "app.container.bhagwanQuestions.submitBtn",
+      "defaultMessage": "ಸಲ್ಲಿಸಿ"
+    },
+    "noQuestions": {
+      "id": "app.container.bhagwanQuestions.noQuestions",
+      "defaultMessage": "ಸದ್ಯಕ್ಕೆ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳು ಲಭ್ಯವಿಲ್ಲ."
+    },
+    "mockQuestion1": {
+      "id": "app.container.bhagwanQuestions.mockQuestion1",
+      "defaultMessage": "ನನ್ನ ಮಗು, ಇಂದು ನಿನ್ನ ಜೀವನದಲ್ಲಿ ಧರ್ಮದ ನಿಜವಾದ ಅರ್ಥವೇನು?"
+    },
+    "mockQuestion2": {
+      "id": "app.container.bhagwanQuestions.mockQuestion2",
+      "defaultMessage": "ನಿಮ್ಮ ಕ್ರಿಯೆಗಳ ಫಲಿತಾಂಶಗಳಿಂದ ಬೇರ್ಪಡುವಿಕೆಯನ್ನು ನೀವು ಹೇಗೆ ಅಭ್ಯಾಸ ಮಾಡುತ್ತೀರಿ?"
+    },
+    "mockQuestion3": {
+      "id": "app.container.bhagwanQuestions.mockQuestion3",
+      "defaultMessage": "ನಿಮ್ಮ ಮನಸ್ಸನ್ನು ಶಾಂತಗೊಳಿಸಲು ಮತ್ತು ಆಂತರಿಕ ಶಾಂತಿಯನ್ನು ಕಂಡುಕೊಳ್ಳಲು ನೀವು ಯಾವ ಕ್ರಮಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತಿರುವಿರಿ?"
+    },
+    "errorMinAnswer": {
+      "id": "app.container.bhagwanQuestions.errorMinAnswer",
+      "defaultMessage": "ದಯವಿಟ್ಟು ಕನಿಷ್ಠ ಒಂದು ಪ್ರಶ್ನೆಗೆ ಉತ್ತರಿಸಿ."
+    },
+    "errorEmptyAnswer": {
+      "id": "app.container.bhagwanQuestions.errorEmptyAnswer",
+      "defaultMessage": "ಮುಂದುವರಿಯುವ ಮೊದಲು ದಯವಿಟ್ಟು ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಬರೆಯಿರಿ."
+    }
+  },
+  "Copilot": {
+    "previous": {
+      "id": "copilot.previous",
+      "defaultMessage": "ಹಿಂದಿನ"
+    },
+    "next": {
+      "id": "copilot.next",
+      "defaultMessage": "ಮುಂದೆ"
+    },
+    "skip": {
+      "id": "copilot.skip",
+      "defaultMessage": "ಬಿಟ್ಟುಬಿಡಿ"
+    },
+    "finish": {
+      "id": "copilot.finish",
+      "defaultMessage": "ಮುಗಿಸು"
+    },
+    "homeFirstChapter": {
+      "id": "copilot.homeFirstChapter",
+      "defaultMessage": "ಶ್ಲೋಕ್‌ಗಳನ್ನು ಕಲಿಯಲು ಮತ್ತು ಓದಲು ಪ್ರಾರಂಭಿಸಲು ಪಟ್ಟಿಯಲ್ಲಿರುವ ಯಾವುದೇ ಅಧ್ಯಾಯದ ಮೇಲೆ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "homeSearchBar": {
+      "id": "copilot.homeSearchBar",
+      "defaultMessage": "ನಿಮ್ಮ ಮೆಚ್ಚಿನ ಅಧ್ಯಾಯವನ್ನು ತ್ವರಿತವಾಗಿ ಹುಡುಕಲು ಇಲ್ಲಿ ಹುಡುಕಿ."
+    },
+    "shloksFirstShlok": {
+      "id": "copilot.shloksFirstShlok",
+      "defaultMessage": "ಅಭ್ಯಾಸ ಮತ್ತು ಉಚ್ಚಾರಣಾ ಪ್ಲೇಯರ್ ಅನ್ನು ತೆರೆಯಲು ಯಾವುದೇ ಶ್ಲೋಕ್ ಕಾರ್ಡ್ ಅನ್ನು ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "learnGeetaSkipBtn": {
+      "id": "copilot.learnGeetaSkipBtn",
+      "defaultMessage": "ವೀಡಿಯೊವನ್ನು ಸ್ಕಿಪ್ ಮಾಡಲು ಮತ್ತು ಹಿಂದಿನ ಪರದೆಗೆ ಹಿಂತಿರುಗಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "learnGeetaBackBtn": {
+      "id": "copilot.learnGeetaBackBtn",
+      "defaultMessage": "ಹಿಂದಿನ ಪರದೆಗೆ ಹಿಂತಿರುಗಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "learnGeetaShowBtn": {
+      "id": "copilot.learnGeetaShowBtn",
+      "defaultMessage": "ಶ್ಲೋಕದ ಅನುವಾದ ಮತ್ತು ವಿವರವಾದ ಅರ್ಥವನ್ನು ವೀಕ್ಷಿಸಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "learnGeetaContinueBtn": {
+      "id": "copilot.learnGeetaContinueBtn",
+      "defaultMessage": "ನಿಮ್ಮ ಫಲಿತಾಂಶಗಳನ್ನು ಉಳಿಸಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತು ಮುಂದಿನ ಶ್ಲೋಕಕ್ಕೆ ಮುಂದುವರಿಯಿರಿ."
+    },
+    "bhagwanAnswerInput": {
+      "id": "copilot.bhagwanAnswerInput",
+      "defaultMessage": "ನಿಮ್ಮ ಉತ್ತರ ಅಥವಾ ಪ್ರಶ್ನೆಯನ್ನು ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ."
+    },
+    "homeDrawerBtn": {
+      "id": "copilot.homeDrawerBtn",
+      "defaultMessage": "ಸೈಡ್ ಮೆನು ತೆರೆಯಲು ಮತ್ತು ನಿಮ್ಮ ಪ್ರೊಫೈಲ್, ಸೆಟ್ಟಿಂಗ್‌ಗಳು ಮತ್ತು ಇತರ ಸಂಪನ್ಮೂಲಗಳನ್ನು ಪ್ರವೇಶಿಸಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "homeBottomBar": {
+      "id": "copilot.homeBottomBar",
+      "defaultMessage": "ವಿದ್ಯಾರ್ಥಿಗಳ ಉಡುಗೊರೆಗಳು, ಸೆಟ್ಟಿಂಗ್‌ಗಳು, ಹಂಚಿಕೆ ಮತ್ತು ಇತರ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಪ್ರವೇಶಿಸಲು ಈ ಶಾರ್ಟ್‌ಕಟ್‌ಗಳನ್ನು ಬಳಸಿ."
+    },
+    "shloksBackBtn": {
+      "id": "copilot.shloksBackBtn",
+      "defaultMessage": "ಅಧ್ಯಾಯಗಳ ಪಟ್ಟಿಗೆ ಹಿಂತಿರುಗಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "shloksPlayIntroBtn": {
+      "id": "copilot.shloksPlayIntroBtn",
+      "defaultMessage": "ಈ ಅಧ್ಯಾಯದ ಪರಿಚಯಾತ್ಮಕ ವೀಡಿಯೊವನ್ನು ವೀಕ್ಷಿಸಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "bhagwanPrevBtn": {
+      "id": "copilot.bhagwanPrevBtn",
+      "defaultMessage": "ಹಿಂದಿನ ಪ್ರಶ್ನೆಗೆ ಹಿಂತಿರುಗಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "bhagwanSubmitBtn": {
+      "id": "copilot.bhagwanSubmitBtn",
+      "defaultMessage": "ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಸಲ್ಲಿಸಲು ಮತ್ತು ಮುಂದುವರಿಯಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    }
+  }
+}

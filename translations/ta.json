@@ -1,0 +1,1010 @@
+{
+  "App": {
+    "header": {
+      "id": "container.App.header",
+      "defaultMessage": "இது ஆப் கண்டெய்னர்!"
+    },
+    "languageUpdated": {
+      "id": "container.App.languageUpdated",
+      "defaultMessage": "பயன்பாட்டு மொழி புதுப்பிக்கப்பட்டது!"
+    }
+  },
+  "Root": {
+    "header": {
+      "id": "container.Root.header",
+      "defaultMessage": "இது ரூட் கொள்கலன்!"
+    }
+  },
+  "Language": {
+    "header": {
+      "id": "container.Language.header",
+      "defaultMessage": "இது மொழி கொள்கலன்!"
+    }
+  },
+  "OnboardingOne": {
+    "header": {
+      "id": "container.OnboardingOne.header",
+      "defaultMessage": "இது ஆன்போர்டிங் கொள்கலன்!"
+    },
+    "heading": {
+      "id": "container.OnboardingOne.heading",
+      "defaultMessage": "சாரல் கீதாவை வரவேற்கிறோம்"
+    },
+    "description": {
+      "id": "container.OnboardingOne.description",
+      "defaultMessage": "பகவத் கீதையை எளிமையான மற்றும் ஊடாடும் வகையில் கற்றுக் கொள்ளுங்கள். உச்சரிப்பைப் பயிற்சி செய்து, பகவான் கிருஷ்ணரின் போதனைகளை ஆராயுங்கள்."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingOne.buttonLabel",
+      "defaultMessage": "அடுத்து"
+    }
+  },
+  "OnboardingSecond": {
+    "header": {
+      "id": "container.OnboardingSecond.header",
+      "defaultMessage": "இது ஆன்போர்டிங் கொள்கலன்!"
+    },
+    "heading": {
+      "id": "container.OnboardingSecond.heading",
+      "defaultMessage": "உங்கள் இலட்சியத்துடன் கற்றுக்கொள்ளுங்கள்"
+    },
+    "description": {
+      "id": "container.OnboardingSecond.description",
+      "defaultMessage": "உங்கள் ஆன்மீக வழிகாட்டியைத் தேர்ந்தெடுத்து, பகவத் கீதையின் மூலம் தனிப்பயனாக்கப்பட்ட பயணத்தைத் தொடங்குங்கள். ஆடியோ, வீடியோ மற்றும் ஊடாடும் பாடங்களுடன் பயிற்சி செய்யுங்கள்."
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingSecond.buttonLabel",
+      "defaultMessage": "தொடங்குங்கள்"
+    }
+  },
+  "language": {
+    "header": {
+      "id": "container.language.header",
+      "defaultMessage": "இது மொழி கொள்கலன்!"
+    },
+    "buttonLabel": {
+      "id": "container.language.buttonLabel",
+      "defaultMessage": "தொடரவும்"
+    }
+  },
+  "login": {
+    "heading": {
+      "id": "container.login.header",
+      "defaultMessage": "மீண்டும் வருக!"
+    },
+    "subHeading": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "உள்நுழைய உங்கள் சான்றுகளை உள்ளிடவும்!"
+    },
+    "number": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "மொபைல் எண்"
+    },
+    "typeHere": {
+      "id": "container.login.typeHere",
+      "defaultMessage": "இங்கே தட்டச்சு செய்யவும்..."
+    },
+    "login": {
+      "id": "container.login.login",
+      "defaultMessage": "உள்நுழைக"
+    },
+    "continue": {
+      "id": "container.login.continue",
+      "defaultMessage": "அல்லது தொடரவும்"
+    },
+    "facebook": {
+      "id": "container.login.facebook",
+      "defaultMessage": "Facebook"
+    },
+    "google": {
+      "id": "container.login.google",
+      "defaultMessage": "கூகுள்"
+    },
+    "apple": {
+      "id": "container.login.apple",
+      "defaultMessage": "ஆப்பிள்"
+    },
+    "buttonLabel": {
+      "id": "container.login.buttonLabel",
+      "defaultMessage": "தொடரவும்"
+    },
+    "dont": {
+      "id": "container.login.dont",
+      "defaultMessage": "கணக்கு இல்லையா?"
+    },
+    "create": {
+      "id": "container.login.dont",
+      "defaultMessage": "இப்போது உருவாக்கவும்"
+    },
+    "bottomSheetHeading": {
+      "id": "containers.login.bottomSheetHeading",
+      "defaultMessage": "உங்கள் நாட்டைத் தேர்ந்தெடுக்கவும்"
+    },
+    "countryPlaceholder": {
+      "id": "containers.login.warningOtherHalf",
+      "defaultMessage": "நாட்டின் பெயரால் தேடுங்கள்"
+    },
+    "placeholder": {
+      "id": "containers.login.placeholder",
+      "defaultMessage": "தொலைபேசி எண்"
+    }
+  },
+  "otpScreen": {
+    "heading": {
+      "id": "container.otpScreen.header",
+      "defaultMessage": "மீண்டும் வரவேற்கிறோம்"
+    },
+    "subHeading": {
+      "id": "container.otpScreen.subHeading",
+      "defaultMessage": "உங்கள் பதிவு செய்யப்பட்ட மொபைல் எண்ணுக்கு அனுப்பப்பட்ட OTP ஐ உள்ளிடவும்."
+    },
+    "submit": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "சமர்ப்பிக்கவும்"
+    },
+    "enterOtp": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "இங்கே OTP ஐ உள்ளிடவும்"
+    },
+    "dont": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "குறியீட்டைப் பெறவில்லையா?"
+    },
+    "create": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "மீண்டும் அனுப்பு"
+    },
+    "minute": {
+      "id": "app.containers.otpScreen.minute",
+      "defaultMessage": "நிமிடம்"
+    },
+    "second": {
+      "id": "app.containers.otpScreen.second",
+      "defaultMessage": "இரண்டாவது விட்டு"
+    },
+    "minutes": {
+      "id": "app.containers.otpScreen.minutes",
+      "defaultMessage": "நிமிடங்கள்"
+    },
+    "seconds": {
+      "id": "app.containers.otpScreen.seconds",
+      "defaultMessage": "வினாடிகள் உள்ளன"
+    },
+    "timeElapsed": {
+      "id": "app.containers.otpScreen.timeElapsed",
+      "defaultMessage": "நேரம் கழிந்தது"
+    }
+  },
+  "OurIdeals": {
+    "buttonLabel": {
+      "id": "app.containers.OurIdeals.buttonLabel",
+      "defaultMessage": "தொடரவும்"
+    },
+    "ourIdeals": {
+      "id": "app.containers.OurIdeals.ourIdeals",
+      "defaultMessage": "எங்கள் இலட்சியங்கள்"
+    }
+  },
+  "Home": {
+    "headerText": {
+      "id": "app.containers.Home.headerText",
+      "defaultMessage": "அத்தியாயங்கள்"
+    },
+    "chapters": {
+      "id": "app.containers.Home.chapters",
+      "defaultMessage": "அத்தியாயங்கள்"
+    },
+    "recent": {
+      "id": "app.containers.Home.recent",
+      "defaultMessage": "சமீபத்திய"
+    },
+    "chapter": {
+      "id": "app.containers.Home.chapter",
+      "defaultMessage": "அத்தியாயம்"
+    },
+    "shareMessage": {
+      "id": "app.containers.Home.shareMessage",
+      "defaultMessage": "சாரல் கீதா ஆப் உங்களுக்காக இங்கே உள்ளது, அங்கு நீங்கள் கடவுளிடமிருந்து நேரடியாக கீதையை கற்றுக்கொள்ளலாம். நீங்கள் கடவுளுடன் கீதா ஸ்லோகங்களை உச்சரிக்கலாம், அவற்றின் அர்த்தத்தை புரிந்து கொள்ளலாம் மற்றும் மனப்பாடம் செய்யும் போது வெகுமதிகளைப் பெறலாம். இதன் மூலம், நீங்கள் கீதை ஆசிரியர் ஆகலாம், அன்றாட வாழ்க்கைக்கான விதிகளைப் பின்பற்றலாம் மற்றும் கீதையை எழுதலாம். இப்போது பதிவிறக்கவும்!"
+    }
+  },
+  "Chapters": {
+    "headerText": {
+      "id": "app.containers.Chapters.headerText",
+      "defaultMessage": "அத்தியாயங்கள்"
+    }
+  },
+  "Shloks": {
+    "headerText": {
+      "id": "app.containers.Shloks.headerText",
+      "defaultMessage": "வசனங்கள்"
+    }
+  },
+  "learnGeeta": {
+    "continue": {
+      "id": "app.container.learnGeeta.continue",
+      "defaultMessage": "தொடரவும்"
+    }
+  },
+  "contactUs": {
+    "heading": {
+      "id": "app.container.Contactus.heading",
+      "defaultMessage": "எங்களை தொடர்பு கொள்ளவும்"
+    },
+    "serviceType": {
+      "id": "app.container.Contactus.serviceType",
+      "defaultMessage": "சேவை வகை"
+    },
+    "name": {
+      "id": "app.container.Contactus.name",
+      "defaultMessage": "பெயர்"
+    },
+    "email": {
+      "id": "app.container.Contactus.email",
+      "defaultMessage": "மின்னஞ்சல்"
+    },
+    "message": {
+      "id": "app.container.Contactus.message",
+      "defaultMessage": "செய்தி"
+    },
+    "placeholder": {
+      "id": "app.container.Contactus.placeholder",
+      "defaultMessage": "இங்கே தட்டச்சு செய்யவும்..."
+    },
+    "button": {
+      "id": "app.container.Contactus.button",
+      "defaultMessage": "செய்தி அனுப்பு"
+    }
+  },
+  "Profile": {
+    "heading": {
+      "id": "app.container.Profile.heading",
+      "defaultMessage": "சுயவிவரம்"
+    },
+    "name": {
+      "id": "app.container.Profile.name",
+      "defaultMessage": "பெயர்"
+    },
+    "email": {
+      "id": "app.container.Profile.email",
+      "defaultMessage": "மின்னஞ்சல்"
+    },
+    "mobile": {
+      "id": "app.container.Profile.mobile",
+      "defaultMessage": "மொபைல்"
+    },
+    "gender": {
+      "id": "app.container.Profile.gender",
+      "defaultMessage": "பாலினம்"
+    },
+    "voice": {
+      "id": "app.container.Profile.voice",
+      "defaultMessage": "குரல்"
+    },
+    "shlokSpeed": {
+      "id": "app.container.Profile.shlokSpeed",
+      "defaultMessage": "ஸ்லோக் வேகம்"
+    },
+    "updateProfile": {
+      "id": "app.container.Profile.updateProfile",
+      "defaultMessage": "சுயவிவரத்தைப் புதுப்பிக்கவும்"
+    },
+    "changePassword": {
+      "id": "app.container.Profile.changePassword",
+      "defaultMessage": "கடவுச்சொல்லை மாற்றவும்"
+    },
+    "language": {
+      "id": "app.container.Profile.language",
+      "defaultMessage": "மொழி"
+    }
+  },
+  "EditProfile": {
+    "heading": {
+      "id": "app.container.EditProfile.heading",
+      "defaultMessage": "சுயவிவரம்"
+    },
+    "name": {
+      "id": "app.container.EditProfile.name",
+      "defaultMessage": "முதல் பெயர்"
+    },
+    "lastName": {
+      "id": "app.container.EditProfile.lastName",
+      "defaultMessage": "கடைசி பெயர்"
+    },
+    "email": {
+      "id": "app.container.EditProfile.email",
+      "defaultMessage": "மின்னஞ்சல்"
+    },
+    "mobile": {
+      "id": "app.container.EditProfile.mobile",
+      "defaultMessage": "தொலைபேசி எண்"
+    },
+    "gender": {
+      "id": "app.container.EditProfile.gender",
+      "defaultMessage": "பாலினம்"
+    },
+    "language": {
+      "id": "app.container.EditProfile.language",
+      "defaultMessage": "மொழி"
+    },
+    "shlokSpeed": {
+      "id": "app.container.EditProfile.shlokSpeed",
+      "defaultMessage": "ஸ்லோக் வேகம்"
+    },
+    "update": {
+      "id": "app.container.EditProfile.updateProfile",
+      "defaultMessage": "புதுப்பிக்கவும்"
+    }
+  },
+  "PrivacyPolicy": {
+    "heading": {
+      "id": "app.container.PrivacyPolicy.heading",
+      "defaultMessage": "தனியுரிமைக் கொள்கை"
+    }
+  },
+  "TermsOfUse": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "பயன்பாட்டு விதிமுறைகள்"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "விதிமுறைகள் மற்றும் நிபந்தனைகள்"
+    }
+  },
+  "SideBar": {
+    "viewAll": {
+      "id": "app.container.SideBar.viewAll",
+      "defaultMessage": "சுயவிவரத்தைக் காண்க"
+    },
+    "chapters": {
+      "id": "app.container.SideBar.chapters",
+      "defaultMessage": "அத்தியாயங்கள்"
+    },
+    "ideal": {
+      "id": "app.container.SideBar.ideal",
+      "defaultMessage": "இலட்சியங்கள்"
+    },
+    "setting": {
+      "id": "app.container.SideBar.setting",
+      "defaultMessage": "அமைத்தல்"
+    },
+    "language": {
+      "id": "app.container.SideBar.language",
+      "defaultMessage": "மொழியை மாற்றவும்"
+    },
+    "helpSupport": {
+      "id": "app.container.SideBar.helpSupport",
+      "defaultMessage": "உதவி & ஆதரவு"
+    },
+    "contactUs": {
+      "id": "app.container.SideBar.contactUs",
+      "defaultMessage": "பரிந்துரை பெட்டி"
+    },
+    "privacyPolicy": {
+      "id": "app.container.SideBar.privacyPolicy",
+      "defaultMessage": "தனியுரிமைக் கொள்கை"
+    },
+    "instruction": {
+      "id": "app.container.SideBar.instruction",
+      "defaultMessage": "பயன்படுத்தும் முறை"
+    },
+    "termOfUse": {
+      "id": "app.container.SideBar.termOfUse",
+      "defaultMessage": "பயன்பாட்டு விதிமுறைகள்"
+    },
+    "social": {
+      "id": "app.container.SideBar.social",
+      "defaultMessage": "சமூக ஊடக இணைப்புகள்"
+    },
+    "fb": {
+      "id": "app.container.SideBar.fb",
+      "defaultMessage": "Facebook"
+    },
+    "insta": {
+      "id": "app.container.SideBar.insta",
+      "defaultMessage": "Instagram"
+    },
+    "x": {
+      "id": "app.container.SideBar.x",
+      "defaultMessage": "எக்ஸ்"
+    },
+    "signOut": {
+      "id": "app.container.SideBar.signOut",
+      "defaultMessage": "வெளியேறு"
+    },
+    "studentGift": {
+      "id": "app.container.SideBar.studentGift",
+      "defaultMessage": "என் பரிசு"
+    },
+    "teacherGift": {
+      "id": "app.container.SideBar.teacherGift",
+      "defaultMessage": "கீதையை கற்றுக்கொடுங்கள்"
+    },
+    "writeGita": {
+      "id": "app.container.SideBar.writeGita",
+      "defaultMessage": "கீதை எழுது"
+    },
+    "gitaRules": {
+      "id": "app.container.SideBar.gitaRules",
+      "defaultMessage": "கீதை விதிகள்"
+    },
+    "faq": {
+      "id": "app.container.SideBar.faq",
+      "defaultMessage": "அடிக்கடி கேட்கப்படும் கேள்விகள்"
+    },
+    "askBhagwan": {
+      "id": "app.container.SideBar.askBhagwan",
+      "defaultMessage": "கடவுளிடம் கேளுங்கள்"
+    }
+  },
+  "studentGift": {
+    "heading": {
+      "id": "app.container.studentGift.heading",
+      "defaultMessage": "கீதா மாணவி"
+    },
+    "description": {
+      "id": "app.container.studentGift.description",
+      "defaultMessage": "சாரல் கீதா ஆப் மூலம் கீதையின் ஏதேனும் அத்தியாயத்தை நீங்கள் மனப்பாடம் செய்திருந்தால், உங்கள் வெகுமதிக்காக இங்கே விண்ணப்பிக்கலாம். உங்கள் பெயர் மற்றும் முகவரியை உள்ளிட்டு, நீங்கள் மனப்பாடம் செய்த அத்தியாயத்தைத் தேர்ந்தெடுத்து, உங்கள் விண்ணப்பத்தைச் சமர்ப்பிக்கவும்."
+    },
+    "name": {
+      "id": "app.container.studentGift.name",
+      "defaultMessage": "கீதா மாணவியின் பெயர்"
+    },
+    "phoneNumber": {
+      "id": "app.container.studentGift.phoneNumber",
+      "defaultMessage": "தொலைபேசி எண்"
+    },
+    "address": {
+      "id": "app.container.studentGift.address",
+      "defaultMessage": "முகவரி"
+    },
+    "chaptersLabel": {
+      "id": "app.container.studentGift.chaptersLabel",
+      "defaultMessage": "அத்தியாயங்களைத் தேர்ந்தெடுக்கவும்"
+    },
+    "button": {
+      "id": "app.container.studentGift.button",
+      "defaultMessage": "சமர்ப்பிக்கவும்"
+    },
+    "placeholder": {
+      "id": "app.container.studentGift.placeholder",
+      "defaultMessage": "இங்கே தட்டச்சு செய்யவும்..."
+    },
+    "placeholderName": {
+      "id": "app.container.studentGift.placeholderName",
+      "defaultMessage": "கீதா மாணவர் பெயரை உள்ளிடவும்"
+    },
+    "placeholderPhone": {
+      "id": "app.container.studentGift.placeholderPhone",
+      "defaultMessage": "தொலைபேசி எண்ணை உள்ளிடவும்"
+    },
+    "placeholderAddress": {
+      "id": "app.container.studentGift.placeholderAddress",
+      "defaultMessage": "முழு முகவரியை உள்ளிடவும்"
+    },
+    "successMessage": {
+      "id": "app.container.studentGift.successMessage",
+      "defaultMessage": "விரைவில் உங்களுடன் இணைவோம்."
+    },
+    "okButton": {
+      "id": "app.container.studentGift.okButton",
+      "defaultMessage": "சரி"
+    },
+    "alertTitle": {
+      "id": "app.container.studentGift.alertTitle",
+      "defaultMessage": "உறுதிப்படுத்தல்"
+    },
+    "alertMessage": {
+      "id": "app.container.studentGift.alertMessage",
+      "defaultMessage": "நீங்கள் சரியான முகவரியை உள்ளிட்டீர்களா?"
+    },
+    "alertNo": {
+      "id": "app.container.studentGift.alertNo",
+      "defaultMessage": "இல்லை"
+    },
+    "alertYes": {
+      "id": "app.container.studentGift.alertYes",
+      "defaultMessage": "ஆம்"
+    }
+  },
+  "teacherGift": {
+    "heading": {
+      "id": "app.container.teacherGift.heading",
+      "defaultMessage": "ஆசிரியர் விவரங்கள்"
+    },
+    "description": {
+      "id": "app.container.teacherGift.description",
+      "defaultMessage": "உங்கள் நகரத்திலோ, கிராமத்திலோ அல்லது சுற்றுப்புறத்திலோ கீதையை கற்பிக்க விரும்பினால், கீதை ஆசிரியர் ஆக விரும்பினால், நீங்கள் இங்கே விண்ணப்பிக்கலாம். உங்கள் கற்பித்தலுக்கான ஊதியத்தையும் நாங்கள் வழங்குவோம். நீங்கள் எந்த அத்தியாயத்தை மனப்பாடம் செய்தீர்கள், எந்த அத்தியாயத்தை கற்பிக்க விரும்புகிறீர்கள் என்பதைக் குறிப்பிட்டு விண்ணப்பிக்கலாம்."
+    },
+    "name": {
+      "id": "app.container.teacherGift.name",
+      "defaultMessage": "ஆசிரியர் பெயர்"
+    },
+    "phoneNumber": {
+      "id": "app.container.teacherGift.phoneNumber",
+      "defaultMessage": "தொலைபேசி எண்"
+    },
+    "address": {
+      "id": "app.container.teacherGift.address",
+      "defaultMessage": "முகவரி"
+    },
+    "chaptersLabel": {
+      "id": "app.container.teacherGift.chaptersLabel",
+      "defaultMessage": "அத்தியாயங்களைத் தேர்ந்தெடுக்கவும்"
+    },
+    "button": {
+      "id": "app.container.teacherGift.button",
+      "defaultMessage": "சமர்ப்பிக்கவும்"
+    },
+    "placeholderName": {
+      "id": "app.container.teacherGift.placeholderName",
+      "defaultMessage": "ஆசிரியரின் பெயரை உள்ளிடவும்"
+    },
+    "placeholderPhone": {
+      "id": "app.container.teacherGift.placeholderPhone",
+      "defaultMessage": "தொலைபேசி எண்ணை உள்ளிடவும்"
+    },
+    "placeholderAddress": {
+      "id": "app.container.teacherGift.placeholderAddress",
+      "defaultMessage": "முழு முகவரியை உள்ளிடவும்"
+    },
+    "successMessage": {
+      "id": "app.container.teacherGift.successMessage",
+      "defaultMessage": "விரைவில் உங்களுடன் இணைவோம்."
+    },
+    "okButton": {
+      "id": "app.container.teacherGift.okButton",
+      "defaultMessage": "சரி"
+    },
+    "alertTitle": {
+      "id": "app.container.teacherGift.alertTitle",
+      "defaultMessage": "உறுதிப்படுத்தல்"
+    },
+    "alertMessage": {
+      "id": "app.container.teacherGift.alertMessage",
+      "defaultMessage": "நீங்கள் சரியான முகவரியை உள்ளிட்டீர்களா?"
+    },
+    "alertNo": {
+      "id": "app.container.teacherGift.alertNo",
+      "defaultMessage": "இல்லை"
+    },
+    "alertYes": {
+      "id": "app.container.teacherGift.alertYes",
+      "defaultMessage": "ஆம்"
+    }
+  },
+  "writeGita": {
+    "heading": {
+      "id": "app.container.writeGita.heading",
+      "defaultMessage": "கீதை எழுது"
+    },
+    "description": {
+      "id": "app.container.writeGita.description",
+      "defaultMessage": "கீதையை எழுது என்பது ஒரு பிரச்சாரமாகும், அங்கு நீங்கள் உங்கள் சொந்த கைகளால் கையால் எழுதப்பட்ட வேதத்தை தயார் செய்யலாம். தேர்வு செய்ய பல புத்தக விருப்பங்கள் உள்ளன: ராம்சரித்மனாஸ், கீதா ஜி, பகவத், பக்த சரித்ரா மற்றும் பிற. நீங்கள் எழுத விரும்பும் வேதத்தை நீங்கள் தேர்ந்தெடுக்கலாம். நீங்கள் தேர்ந்தெடுத்த பிறகு, அசல் புத்தகம், கருப்பு மற்றும் சிவப்பு பேனாவுடன் எழுதுவதற்கு ஒரு பதிவேடு உங்கள் வீட்டிற்கு அனுப்புவோம். இது அடிப்படையில் நகலெடுப்பதன் மூலம் எழுதுவது, அசல் உரையைப் பார்த்து பதிவேட்டில் எழுதுவது. நீங்கள் சிவப்பு பேனாவால் ஸ்லோகங்களை எழுத வேண்டும் மற்றும் இந்தி அல்லது உங்கள் சொந்த பிராந்திய மொழியில் அர்த்தத்தை எழுத வேண்டும். ஒவ்வொரு 15 நாட்களுக்கும் உங்கள் முன்னேற்றத்தைப் புகாரளிக்க வேண்டும். முழு வேதமும் முடிந்ததும், நாங்கள் உங்களுக்கு ஒரு சித்திர சான்றிதழைக் கொடுத்து கௌரவிப்போம். மேலும், ஒரு கண்காட்சி நடைபெறும் போதெல்லாம், கையால் எழுதப்பட்ட வேதக் கண்காட்சியில் உங்கள் கையால் எழுதப்பட்ட வேதம் காண்பிக்கப்படும், மேலும் உங்கள் பெயர் வேதத்தில் பொறிக்கப்படும்."
+    },
+    "name": {
+      "id": "app.container.writeGita.name",
+      "defaultMessage": "பெயர்"
+    },
+    "phoneNumber": {
+      "id": "app.container.writeGita.phoneNumber",
+      "defaultMessage": "தொடர்பு கொள்ளவும்"
+    },
+    "address": {
+      "id": "app.container.writeGita.address",
+      "defaultMessage": "முகவரி"
+    },
+    "button": {
+      "id": "app.container.writeGita.button",
+      "defaultMessage": "சமர்ப்பிக்கவும்"
+    },
+    "placeholderName": {
+      "id": "app.container.writeGita.placeholderName",
+      "defaultMessage": "உங்கள் பெயரை உள்ளிடவும்"
+    },
+    "placeholderPhone": {
+      "id": "app.container.writeGita.placeholderPhone",
+      "defaultMessage": "உங்கள் தொடர்பு எண்ணை உள்ளிடவும்"
+    },
+    "placeholderAddress": {
+      "id": "app.container.writeGita.placeholderAddress",
+      "defaultMessage": "உங்கள் முழு முகவரியை உள்ளிடவும்"
+    },
+    "alertTitle": {
+      "id": "app.container.writeGita.alertTitle",
+      "defaultMessage": "உறுதிப்படுத்தல்"
+    },
+    "alertMessage": {
+      "id": "app.container.writeGita.alertMessage",
+      "defaultMessage": "நீங்கள் சரியான முகவரியை உள்ளிட்டீர்களா?"
+    },
+    "alertNo": {
+      "id": "app.container.writeGita.alertNo",
+      "defaultMessage": "இல்லை"
+    },
+    "alertYes": {
+      "id": "app.container.writeGita.alertYes",
+      "defaultMessage": "ஆம்"
+    },
+    "rulesLabel": {
+      "id": "app.container.writeGita.rulesLabel",
+      "defaultMessage": "வேதாகமத்தைத் தேர்ந்தெடுக்கவும்"
+    },
+    "successMessage": {
+      "id": "app.container.writeGita.successMessage",
+      "defaultMessage": "விரைவில் உங்களுடன் இணைவோம்."
+    },
+    "okButton": {
+      "id": "app.container.writeGita.okButton",
+      "defaultMessage": "சரி"
+    }
+  },
+  "Instruction": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "பயன்படுத்தும் முறை"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "விதிமுறைகள் மற்றும் நிபந்தனைகள்"
+    }
+  },
+  "gitaRules": {
+    "heading": {
+      "id": "app.container.gitaRules.heading",
+      "defaultMessage": "கீதை விதிகள்"
+    },
+    "subHeading": {
+      "id": "app.container.gitaRules.subHeading",
+      "defaultMessage": "கீதையின் வழியைப் பின்பற்றுங்கள்"
+    },
+    "description": {
+      "id": "app.container.gitaRules.description",
+      "defaultMessage": "இந்த விதிகளைப் பின்பற்றுவதன் மூலம், நீங்கள் பகவத் கீதையின் போதனைகளுடன் உங்களை இணைத்துக் கொள்கிறீர்கள்."
+    },
+    "instructions": {
+      "id": "app.container.gitaRules.instructions",
+      "defaultMessage": "இன்று நீங்கள் பின்பற்றிய விதிகளைக் கிளிக் செய்து சமர்ப்பிக்கவும். இதை தினமும் செய்ய வேண்டும். நீங்கள் எந்த விதிகளைப் பின்பற்றினீர்கள், எதைத் தவறவிட்டீர்கள் என்பதைப் பார்க்க ஒவ்வொரு மாதமும் உங்கள் அறிக்கையைப் பார்க்கலாம்."
+    },
+    "button": {
+      "id": "app.container.gitaRules.button",
+      "defaultMessage": "சமர்ப்பிக்கவும்"
+    },
+    "successMessage": {
+      "id": "app.container.gitaRules.successMessage",
+      "defaultMessage": "உங்கள் விதிகள் தேர்வு வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது."
+    },
+    "okButton": {
+      "id": "app.container.gitaRules.okButton",
+      "defaultMessage": "சரி"
+    },
+    "alertTitle": {
+      "id": "app.container.gitaRules.alertTitle",
+      "defaultMessage": "உறுதிப்படுத்தல்"
+    },
+    "alertMessage": {
+      "id": "app.container.gitaRules.alertMessage",
+      "defaultMessage": "இந்த விதிகளை நிச்சயமாகச் சமர்ப்பிக்க விரும்புகிறீர்களா?"
+    },
+    "alertNo": {
+      "id": "app.container.gitaRules.alertNo",
+      "defaultMessage": "இல்லை"
+    },
+    "alertYes": {
+      "id": "app.container.gitaRules.alertYes",
+      "defaultMessage": "ஆம்"
+    },
+    "errorMinSelect": {
+      "id": "app.container.gitaRules.errorMinSelect",
+      "defaultMessage": "குறைந்தது ஒரு விதியையாவது பின்பற்றவும்"
+    },
+    "rulesLabel": {
+      "id": "app.container.gitaRules.rulesLabel",
+      "defaultMessage": "ஒரு விதியைத் தேர்ந்தெடுக்கவும்"
+    },
+    "inputLabel": {
+      "id": "app.container.gitaRules.inputLabel",
+      "defaultMessage": "உங்கள் பதில்"
+    },
+    "inputPlaceholder": {
+      "id": "app.container.gitaRules.inputPlaceholder",
+      "defaultMessage": "உங்கள் உள்ளீட்டை இங்கே உள்ளிடவும்..."
+    }
+  },
+  "HomeBottomBar": {
+    "whatsapp": {
+      "id": "app.container.HomeBottomBar.whatsapp",
+      "defaultMessage": "வாட்ஸ்அப்"
+    },
+    "facebook": {
+      "id": "app.container.HomeBottomBar.facebook",
+      "defaultMessage": "Facebook"
+    },
+    "instagram": {
+      "id": "app.container.HomeBottomBar.instagram",
+      "defaultMessage": "Instagram"
+    },
+    "youtube": {
+      "id": "app.container.HomeBottomBar.youtube",
+      "defaultMessage": "YouTube"
+    },
+    "twitter": {
+      "id": "app.container.HomeBottomBar.twitter",
+      "defaultMessage": "எக்ஸ்"
+    },
+    "faq": {
+      "id": "app.container.HomeBottomBar.faq",
+      "defaultMessage": "அடிக்கடி கேட்கப்படும் கேள்விகள்"
+    },
+    "language": {
+      "id": "app.container.HomeBottomBar.language",
+      "defaultMessage": "மொழி"
+    },
+    "update": {
+      "id": "app.container.HomeBottomBar.update",
+      "defaultMessage": "புதுப்பிக்கவும்"
+    },
+    "shareApp": {
+      "id": "app.container.HomeBottomBar.shareApp",
+      "defaultMessage": "ஆப்ஸைப் பகிரவும்"
+    },
+    "rating": {
+      "id": "app.container.HomeBottomBar.rating",
+      "defaultMessage": "மதிப்பீடு"
+    },
+    "contact": {
+      "id": "app.container.HomeBottomBar.contact",
+      "defaultMessage": "தொடர்பு கொள்ளவும்"
+    },
+    "help": {
+      "id": "app.container.HomeBottomBar.help",
+      "defaultMessage": "உதவி"
+    },
+    "social": {
+      "id": "app.container.HomeBottomBar.social",
+      "defaultMessage": "சமூக"
+    }
+  },
+  "faq": {
+    "heading": {
+      "id": "app.container.faq.heading",
+      "defaultMessage": "அடிக்கடி கேட்கப்படும் கேள்விகள்"
+    },
+    "subHeading": {
+      "id": "app.container.faq.subHeading",
+      "defaultMessage": "சரல் கீதா ஆப் பற்றி அடிக்கடி கேட்கப்படும் கேள்விகள்"
+    },
+    "q1_question": {
+      "id": "app.container.faq.q1_question",
+      "defaultMessage": "சரல் கீதா ஆப் என்றால் என்ன?"
+    },
+    "q1_answer": {
+      "id": "app.container.faq.q1_answer",
+      "defaultMessage": "சரல் கீதா ஆப் என்பது ஒரு டிஜிட்டல் தளமாகும், அங்கு கீதையைக் கற்றுக்கொள்ள விரும்புவோர் அதை கடவுளிடமிருந்தே நேரடியாகக் கற்றுக்கொள்ளலாம்."
+    },
+    "q2_question": {
+      "id": "app.container.faq.q2_question",
+      "defaultMessage": "சரல் கீதா செயலியில் உள்ள ஆசிரியர் யார்?"
+    },
+    "q2_answer": {
+      "id": "app.container.faq.q2_answer",
+      "defaultMessage": "சரல் கீதா பயன்பாட்டில், கடவுளே குரு. நம்மிடம் விஷ்ணு, விநாயகர், வேத்வியர்கள் உள்ளனர். இந்த மூன்றில் ஏதாவது ஒருவரிடம் இருந்து கீதையைக் கற்றுக்கொள்ளலாம்."
+    },
+    "q3_question": {
+      "id": "app.container.faq.q3_question",
+      "defaultMessage": "சாரல் கீதா செயலியில் கீதை கற்கும் முறை என்ன?"
+    },
+    "q3_answer": {
+      "id": "app.container.faq.q3_answer",
+      "defaultMessage": "எந்த ஒரு கடவுளையாவது குருவாக தேர்ந்தெடுக்க வேண்டும். தேர்ந்தெடுத்தவுடன், கீதையின் 18 அத்தியாயங்களும் உங்கள் முன் தோன்றும். நீங்கள் எந்த அத்தியாயத்தைக் கற்றுக்கொள்ள விரும்புகிறீர்களோ, அதன் அனைத்து ஸ்லோகங்களும் காட்டப்படும். நீங்கள் கற்றுக்கொள்ள விரும்பும் ஸ்லோகத்தை சொடுக்கவும், கடவுள் அதை மெதுவாக ஓதுவார். ஸ்லோகமும் கீழே எழுதப்படும். எழுதப்பட்ட ஸ்லோகத்தைப் பார்த்து, கடவுளுடன் சேர்த்து உச்சரிக்கவும். நீங்கள் அதை சரியாக உச்சரிக்கும் வரை அதே ஸ்லோகத்தை கடவுளுடன் மீண்டும் செய்யவும். இந்த வழியில், நீங்கள் ஸ்லோகங்களை ஒவ்வொன்றாக மனப்பாடம் செய்யலாம்."
+    },
+    "q4_question": {
+      "id": "app.container.faq.q4_question",
+      "defaultMessage": "சரல் கீதா செயலியில் ஸ்லோகங்களின் அர்த்தத்தையும் அறிய முடியுமா?"
+    },
+    "q4_answer": {
+      "id": "app.container.faq.q4_answer",
+      "defaultMessage": "ஆம், நாம் அர்த்தத்தையும் கற்றுக்கொள்ளலாம். கடவுள் ஒரு ஸ்லோகத்தை சொல்லும் போது, ​​பக்கத்தில் ஒரு 'i' (தகவல்) புள்ளி தோன்றும். அதைக் கிளிக் செய்தால் ஸ்லோகம் அதன் அர்த்தத்துடன் காண்பிக்கப்படும்."
+    },
+    "q5_question": {
+      "id": "app.container.faq.q5_question",
+      "defaultMessage": "சரல் கீதா ஆப் ஒரு மொழியில் மட்டும் கிடைக்குமா?"
+    },
+    "q5_answer": {
+      "id": "app.container.faq.q5_answer",
+      "defaultMessage": "இல்லை, சரல் கீதா ஆப் இந்தி, ஆங்கிலம், மராத்தி, குஜராத்தி மற்றும் பிற மொழிகள் போன்ற 10 மொழிகளில் கிடைக்கிறது."
+    },
+    "q6_question": {
+      "id": "app.container.faq.q6_question",
+      "defaultMessage": "சரல் கீதா செயலியில் நாம் மனப்பாடம் செய்ததை எவ்வாறு சோதிப்பது?"
+    },
+    "q6_answer": {
+      "id": "app.container.faq.q6_answer",
+      "defaultMessage": "கடவுள் ஒரு ஸ்லோகத்தைச் சொல்லிவிட்டு அமைதியாகச் சென்ற பிறகு, மைக்ரோஃபோன் பொத்தான் திரையில் தோன்றும். அதைக் கிளிக் செய்து, முழு ஸ்லோகத்தையும் சொல்லி, மீண்டும் மைக் பட்டனை அழுத்தவும். நீங்கள் எவ்வளவு சதவீதம் சரியாகப் பேசுகிறீர்கள் என்பதைத் திரை காண்பிக்கும். இது 80% அல்லது அதற்கும் அதிகமாக இருந்தால், அந்த ஸ்லோகத்தின் உச்சரிப்பை நீங்கள் கற்றுக்கொண்டீர்கள் என்று அர்த்தம், அடுத்ததற்கு நீங்கள் செல்லலாம்."
+    },
+    "q7_question": {
+      "id": "app.container.faq.q7_question",
+      "defaultMessage": "சாரல் கீதா செயலியில் இருந்து முழு அத்தியாயத்தையும் மனப்பாடம் செய்தால் என்ன நடக்கும்?"
+    },
+    "q7_answer": {
+      "id": "app.container.faq.q7_answer",
+      "defaultMessage": "சாரல் கீதா செயலியைப் பயன்படுத்தி கீதையின் ஏதேனும் ஒரு அத்தியாயத்தை நீங்கள் மனப்பாடம் செய்தால், அந்த மனப்பாடம் செய்யப்பட்ட அத்தியாயத்திற்கான கீதை விருதுப் பிரிவில் வெகுமதிக்காகப் பதிவு செய்யலாம். உறுதிசெய்யப்பட்டவுடன், நீங்கள் வழங்கிய முகவரிக்கு நாங்கள் பரிசை அனுப்புவோம்."
+    },
+    "q8_question": {
+      "id": "app.container.faq.q8_question",
+      "defaultMessage": "சரல் கீதா பயன்பாட்டில் உள்ள கீதை விதிகள் என்ன?"
+    },
+    "q8_answer": {
+      "id": "app.container.faq.q8_answer",
+      "defaultMessage": "சரல் கீதா பயன்பாட்டில் தினசரி வாழ்க்கைக்கு பயனுள்ள 9 விதிகள் உள்ளன. அன்று நீங்கள் பின்பற்றிய விதியைக் கிளிக் செய்து சமர்ப்பிக்கவும். இதன் மூலம், நீங்கள் பின்பற்றிய விதிகளின் மாதாந்திரச் சுருக்கம் தயாரிக்கப்பட்டு, மாதம் முழுவதும் நீங்கள் எந்த விதிகளைப் பின்பற்றினீர்கள், எதைத் தவறவிட்டீர்கள் என்பதை உங்களுக்குத் தெரிவிக்கும்."
+    },
+    "q9_question": {
+      "id": "app.container.faq.q9_question",
+      "defaultMessage": "சரல் கீதா செயலியில் கீதா டீச்சர் அம்சம் என்ன?"
+    },
+    "q9_answer": {
+      "id": "app.container.faq.q9_answer",
+      "defaultMessage": "உங்களுக்கு கீதை தெரிந்திருந்தால், ஒரு அத்தியாயம் கூட, கீதை ஆசிரியர் அம்சத்தின் மூலம் கீதை ஆசிரியராக பதிவு செய்யலாம். நீங்கள் எத்தனை அத்தியாயங்களை மனப்பாடம் செய்திருக்கிறீர்கள் என்பதைக் குறிப்பிடலாம். நீங்கள் எங்கு வேண்டுமானாலும் பாடம் நடத்துவதற்கு முழு ஏற்பாடுகளைச் செய்வோம், உங்கள் போதனைக்கான ஊதியம் வழங்குவோம், மேலும் கீதை ஆசிரியராக ஆவதற்கு பயிற்சி தேவைப்பட்டால், நாங்கள் அதையும் வழங்குவோம்."
+    },
+    "q10_question": {
+      "id": "app.container.faq.q10_question",
+      "defaultMessage": "சரல் கீதா பயன்பாட்டில் கீதா அபியாஸ் (பயிற்சி) என்றால் என்ன?"
+    },
+    "q10_answer": {
+      "id": "app.container.faq.q10_answer",
+      "defaultMessage": "கீதா அபியாஸ் என்பது நீங்கள் மனப்பாடம் செய்த அத்தியாயங்களை மறுபரிசீலனை செய்ய அனுமதிக்கும் அம்சமாகும். கடவுள் உங்கள் முன் இருக்கிறார், நீங்கள் எந்த அத்தியாயங்களை நினைவில் வைத்திருக்கிறீர்கள் என்பதை கடவுளிடம் சொல்லுங்கள். கடவுள் அந்த அத்தியாயங்களிலிருந்து அவற்றின் எண்களுடன் ஸ்லோகங்களைக் கேட்பார், உங்கள் மனப்பாடம் செய்யப்பட்ட அத்தியாயங்களைத் திருத்த அனுமதிக்கிறார்."
+    },
+    "q11_question": {
+      "id": "app.container.faq.q11_question",
+      "defaultMessage": "சரல் கீதா செயலியில் ஒரு முழு அத்தியாயத்தையும் ஒரே நேரத்தில் சொல்ல முடியுமா?"
+    },
+    "q11_answer": {
+      "id": "app.container.faq.q11_answer",
+      "defaultMessage": "ஆம்! நீங்கள் ஒரு முழு அத்தியாயத்தையும் ஒரே நேரத்தில் படிக்க விரும்பினால், அத்தியாயத்தையும் ஸ்லோகத்தையும் திறந்து, திரையின் மேற்புறத்தில் உள்ள 'தொடரவும்' பொத்தானைக் கிளிக் செய்யவும். கடவுள் முழு அத்தியாயத்தையும் தொடர்ந்து ஓதுவார். அதன் அருகில் வேக பட்டனும் உள்ளது, எனவே நீங்கள் விரும்பினால் வேகமாகப் படிக்கலாம்."
+    },
+    "q12_question": {
+      "id": "app.container.faq.q12_question",
+      "defaultMessage": "சாரல் கீதா செயலியில் உள்ள 'கீதாவை எழுது' அம்சம் என்ன?"
+    },
+    "q12_answer": {
+      "id": "app.container.faq.q12_answer",
+      "defaultMessage": "'கீதையை எழுது' என்பது கீதை, ராமாயணம், பாகவதம் மற்றும் கிடைக்கக்கூடிய பல நூல்களை கையால் எழுதக்கூடிய ஒரு பிரச்சாரமாகும். உங்கள் முகவரிக்கு பதிவு, அசல் புத்தகம் மற்றும் பேனாக்களை நாங்கள் கூரியர் செய்கிறோம். நீங்கள் எழுத விரும்பும் வசனத்தைத் தேர்ந்தெடுத்து உங்கள் பெயர் மற்றும் முகவரியுடன் சமர்ப்பிக்கவும். எழுதுவதற்கு தேவையான அனைத்து பொருட்களையும் நாங்கள் உங்களுக்கு அனுப்புவோம். ஒவ்வொரு 15 நாட்களுக்கும் நீங்கள் எவ்வளவு வேதத்தை முடித்தீர்கள் என்பதை நீங்கள் தெரிவிக்க வேண்டும். முழு வேதத்தையும் முடித்தவுடன், நீங்கள் ஒரு சித்திர சான்றிதழுடன் கௌரவிக்கப்படுவீர்கள்."
+    }
+  },
+  "bhagwanQuestions": {
+    "placeholder": {
+      "id": "app.container.bhagwanQuestions.placeholder",
+      "defaultMessage": "உங்கள் பதிலை இங்கே எழுதுங்கள்..."
+    },
+    "successTitle": {
+      "id": "app.container.bhagwanQuestions.successTitle",
+      "defaultMessage": "🙏 நன்றி"
+    },
+    "successMessage": {
+      "id": "app.container.bhagwanQuestions.successMessage",
+      "defaultMessage": "உங்கள் பதில்கள் பெறப்பட்டன. உங்கள் ஞானம் வளரட்டும்!"
+    },
+    "errorTitle": {
+      "id": "app.container.bhagwanQuestions.errorTitle",
+      "defaultMessage": "பிழை"
+    },
+    "errorMessage": {
+      "id": "app.container.bhagwanQuestions.errorMessage",
+      "defaultMessage": "சமர்ப்பிக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்."
+    },
+    "questionCounter": {
+      "id": "app.container.bhagwanQuestions.questionCounter",
+      "defaultMessage": "கேள்வி {currentIndex} இன் {total}"
+    },
+    "prevBtn": {
+      "id": "app.container.bhagwanQuestions.prevBtn",
+      "defaultMessage": "← முந்தைய"
+    },
+    "nextBtn": {
+      "id": "app.container.bhagwanQuestions.nextBtn",
+      "defaultMessage": "அடுத்து"
+    },
+    "submitBtn": {
+      "id": "app.container.bhagwanQuestions.submitBtn",
+      "defaultMessage": "சமர்ப்பிக்கவும்"
+    },
+    "noQuestions": {
+      "id": "app.container.bhagwanQuestions.noQuestions",
+      "defaultMessage": "தற்போது கேள்விகள் எதுவும் இல்லை."
+    },
+    "mockQuestion1": {
+      "id": "app.container.bhagwanQuestions.mockQuestion1",
+      "defaultMessage": "என் குழந்தையே, இன்று உன் வாழ்க்கையில் தர்மத்தின் உண்மையான அர்த்தம் என்ன?"
+    },
+    "mockQuestion2": {
+      "id": "app.container.bhagwanQuestions.mockQuestion2",
+      "defaultMessage": "உங்கள் செயல்களின் முடிவுகளிலிருந்து பற்றின்மையை எவ்வாறு கடைப்பிடிப்பது?"
+    },
+    "mockQuestion3": {
+      "id": "app.container.bhagwanQuestions.mockQuestion3",
+      "defaultMessage": "உங்கள் மனதை அமைதிப்படுத்தவும், உள் அமைதியைக் காணவும் நீங்கள் என்ன நடவடிக்கைகளை எடுக்கிறீர்கள்?"
+    },
+    "errorMinAnswer": {
+      "id": "app.container.bhagwanQuestions.errorMinAnswer",
+      "defaultMessage": "குறைந்தது ஒரு கேள்விக்கு பதிலளிக்கவும்."
+    },
+    "errorEmptyAnswer": {
+      "id": "app.container.bhagwanQuestions.errorEmptyAnswer",
+      "defaultMessage": "தொடர்வதற்கு முன் உங்கள் பதிலை எழுதவும்."
+    }
+  },
+  "Copilot": {
+    "previous": {
+      "id": "copilot.previous",
+      "defaultMessage": "முந்தைய"
+    },
+    "next": {
+      "id": "copilot.next",
+      "defaultMessage": "அடுத்து"
+    },
+    "skip": {
+      "id": "copilot.skip",
+      "defaultMessage": "தவிர்க்கவும்"
+    },
+    "finish": {
+      "id": "copilot.finish",
+      "defaultMessage": "முடிக்கவும்"
+    },
+    "homeFirstChapter": {
+      "id": "copilot.homeFirstChapter",
+      "defaultMessage": "ஸ்லோகங்களைக் கற்கவும் படிக்கவும் தொடங்க, பட்டியலில் உள்ள எந்த அத்தியாயத்தையும் தட்டவும்."
+    },
+    "homeSearchBar": {
+      "id": "copilot.homeSearchBar",
+      "defaultMessage": "உங்களுக்குப் பிடித்த அத்தியாயத்தை விரைவாகக் கண்டுபிடிக்க இங்கே தேடவும்."
+    },
+    "shloksFirstShlok": {
+      "id": "copilot.shloksFirstShlok",
+      "defaultMessage": "பயிற்சி மற்றும் உச்சரிப்பு பிளேயரைத் திறக்க ஏதேனும் ஸ்லோக் கார்டைத் தட்டவும்."
+    },
+    "learnGeetaSkipBtn": {
+      "id": "copilot.learnGeetaSkipBtn",
+      "defaultMessage": "வீடியோவைத் தவிர்த்து, முந்தைய திரைக்குத் திரும்ப இங்கே தட்டவும்."
+    },
+    "learnGeetaBackBtn": {
+      "id": "copilot.learnGeetaBackBtn",
+      "defaultMessage": "முந்தைய திரைக்கு செல்ல இங்கே தட்டவும்."
+    },
+    "learnGeetaShowBtn": {
+      "id": "copilot.learnGeetaShowBtn",
+      "defaultMessage": "ஸ்லோகத்தின் மொழிபெயர்ப்பு மற்றும் விரிவான அர்த்தத்தைக் காண இங்கே தட்டவும்."
+    },
+    "learnGeetaContinueBtn": {
+      "id": "copilot.learnGeetaContinueBtn",
+      "defaultMessage": "உங்கள் முடிவுகளைச் சேமித்து அடுத்த ஸ்லோக்கிற்குச் செல்ல இங்கே தட்டவும்."
+    },
+    "bhagwanAnswerInput": {
+      "id": "copilot.bhagwanAnswerInput",
+      "defaultMessage": "உங்கள் பதில் அல்லது கேள்வியை இங்கே தட்டச்சு செய்யவும்."
+    },
+    "homeDrawerBtn": {
+      "id": "copilot.homeDrawerBtn",
+      "defaultMessage": "பக்க மெனுவைத் திறந்து உங்கள் சுயவிவரம், அமைப்புகள் மற்றும் பிற ஆதாரங்களை அணுக இங்கே தட்டவும்."
+    },
+    "homeBottomBar": {
+      "id": "copilot.homeBottomBar",
+      "defaultMessage": "மாணவர் பரிசுகள், அமைப்புகள், பகிர்தல் மற்றும் பிற அம்சங்களை அணுக இந்த குறுக்குவழிகளைப் பயன்படுத்தவும்."
+    },
+    "shloksBackBtn": {
+      "id": "copilot.shloksBackBtn",
+      "defaultMessage": "அத்தியாயங்களின் பட்டியலுக்குச் செல்ல இங்கே தட்டவும்."
+    },
+    "shloksPlayIntroBtn": {
+      "id": "copilot.shloksPlayIntroBtn",
+      "defaultMessage": "இந்த அத்தியாயத்திற்கான அறிமுக வீடியோவைப் பார்க்க இங்கே தட்டவும்."
+    },
+    "bhagwanPrevBtn": {
+      "id": "copilot.bhagwanPrevBtn",
+      "defaultMessage": "முந்தைய கேள்விக்கு செல்ல இங்கே தட்டவும்."
+    },
+    "bhagwanSubmitBtn": {
+      "id": "copilot.bhagwanSubmitBtn",
+      "defaultMessage": "உங்கள் பதிலைச் சமர்ப்பித்து தொடர இங்கே தட்டவும்."
+    }
+  }
+}

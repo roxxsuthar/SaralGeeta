@@ -6,6 +6,7 @@ import {
   SUBMIT_ANSWERS,
   SUBMIT_ANSWERS_SUCCESS,
   SUBMIT_ANSWERS_FAIL,
+  RESET_SUBMIT,
 } from './constants';
 
 export const initialState = {
@@ -45,6 +46,11 @@ const bhagwanQuestionsReducer = (state = initialState, action) =>
       case SUBMIT_ANSWERS_FAIL:
         draft.submitting = false;
         draft.submitError = action.error;
+        break;
+      case RESET_SUBMIT:
+        draft.submitting = false;
+        draft.submitError = false;
+        draft.submitSuccess = false;
         break;
     }
   });

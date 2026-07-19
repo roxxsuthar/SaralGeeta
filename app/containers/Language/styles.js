@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   },
   languageSelectContainer: {
     marginTop: hp(10),
+    flex: 1, // let the list expand to fill space
   },
   language: {
     backgroundColor: COLORS.white,
@@ -124,27 +125,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(0,0,0,0.05)',
   },
-  hindiButtonFont: {
+  languageTitleFont: {
     fontFamily: FONTS.HINDI,
     fontWeight: '500',
     fontSize: hp(18),
     color: COLORS.black,
   },
-  hindiButtonFontSmall: {
+  languageSubtitleFont: {
     fontFamily: FONTS.HINDI,
-    fontWeight: '400',
-    fontSize: hp(13),
-    color: '#888',
-    marginTop: hp(2),
-  },
-  englishButtonFont: {
-    fontFamily: FONTS.REGULAR,
-    fontWeight: '500',
-    fontSize: hp(18),
-    color: COLORS.black,
-  },
-  englishButtonFontSmall: {
-    fontFamily: FONTS.REGULAR,
     fontWeight: '400',
     fontSize: hp(13),
     color: '#888',

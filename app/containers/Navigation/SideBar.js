@@ -196,7 +196,7 @@ const SideBar = (props) => {
                 onPress={() => props.navigation.navigate(Navigation.GitaRules)}
               />
             </View>
-            {/* <View style={styles.draweritems}>
+            <View style={styles.draweritems}>
               <DrawerItem
                 label={({ color }) => (
                   <CustomText style={[styles.label, { color }]}>
@@ -210,7 +210,7 @@ const SideBar = (props) => {
                 )}
                 onPress={() => props.navigation.navigate(Navigation.BhagwanQuestions)}
               />
-            </View> */}
+            </View>
 
             <View style={styles.draweritems}>
               <TouchableOpacity

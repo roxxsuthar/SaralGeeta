@@ -1,0 +1,1010 @@
+{
+  "App": {
+    "header": {
+      "id": "container.App.header",
+      "defaultMessage": "ଏହା ହେଉଛି ଆପ୍ ପାତ୍ର!"
+    },
+    "languageUpdated": {
+      "id": "container.App.languageUpdated",
+      "defaultMessage": "ଆପ୍ ଭାଷା ଅପଡେଟ୍ ହୋଇଛି!"
+    }
+  },
+  "Root": {
+    "header": {
+      "id": "container.Root.header",
+      "defaultMessage": "ଏହା ହେଉଛି ମୂଳ ପାତ୍ର!"
+    }
+  },
+  "Language": {
+    "header": {
+      "id": "container.Language.header",
+      "defaultMessage": "ଏହା ହେଉଛି ଭାଷା ପାତ୍ର!"
+    }
+  },
+  "OnboardingOne": {
+    "header": {
+      "id": "container.OnboardingOne.header",
+      "defaultMessage": "ଏହା ହେଉଛି ଅନବୋର୍ଡିଂ ପାତ୍ର!"
+    },
+    "heading": {
+      "id": "container.OnboardingOne.heading",
+      "defaultMessage": "ସାରଲ ଗୀତାଙ୍କୁ ସ୍ୱାଗତ |"
+    },
+    "description": {
+      "id": "container.OnboardingOne.description",
+      "defaultMessage": "ଏକ ସରଳ ଏବଂ ପାରସ୍ପରିକ in ଙ୍ଗରେ ଭଗବଦ୍ ଗୀତା ଶିଖ ଏବଂ ବୁ understand | ଉଚ୍ଚାରଣ ଅଭ୍ୟାସ କର ଏବଂ ଭଗବାନ କୃଷ୍ଣଙ୍କ ଶିକ୍ଷା ଅନୁସନ୍ଧାନ କର |"
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingOne.buttonLabel",
+      "defaultMessage": "ପରବର୍ତ୍ତୀ"
+    }
+  },
+  "OnboardingSecond": {
+    "header": {
+      "id": "container.OnboardingSecond.header",
+      "defaultMessage": "ଏହା ହେଉଛି ଅନବୋର୍ଡିଂ ପାତ୍ର!"
+    },
+    "heading": {
+      "id": "container.OnboardingSecond.heading",
+      "defaultMessage": "ତୁମର ଆଦର୍ଶ ସହିତ ଶିଖ |"
+    },
+    "description": {
+      "id": "container.OnboardingSecond.description",
+      "defaultMessage": "ତୁମର ଆଧ୍ୟାତ୍ମିକ ମାର୍ଗଦର୍ଶକ ବାଛ ଏବଂ ଭଗବଦ୍ ଗୀତା ମାଧ୍ୟମରେ ଏକ ବ୍ୟକ୍ତିଗତ ଯାତ୍ରା ଆରମ୍ଭ କର | ଅଡିଓ, ଭିଡିଓ ଏବଂ ଇଣ୍ଟରାକ୍ଟିଭ୍ ପାଠ୍ୟ ସହିତ ଅଭ୍ୟାସ କର |"
+    },
+    "buttonLabel": {
+      "id": "container.OnboardingSecond.buttonLabel",
+      "defaultMessage": "ଆରମ୍ଭ କର |"
+    }
+  },
+  "language": {
+    "header": {
+      "id": "container.language.header",
+      "defaultMessage": "ଏହା ହେଉଛି ଭାଷା ପାତ୍ର!"
+    },
+    "buttonLabel": {
+      "id": "container.language.buttonLabel",
+      "defaultMessage": "ଜାରି ରଖ |"
+    }
+  },
+  "login": {
+    "heading": {
+      "id": "container.login.header",
+      "defaultMessage": "ସ୍ Welcome ାଗତ!"
+    },
+    "subHeading": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "ସାଇନ୍ ଇନ୍ କରିବାକୁ ଦୟାକରି ଆପଣଙ୍କର ପରିଚୟପତ୍ର ପ୍ରବେଶ କରନ୍ତୁ!"
+    },
+    "number": {
+      "id": "container.login.subHeading",
+      "defaultMessage": "ମୋବାଇଲ୍ ନମ୍ବର |"
+    },
+    "typeHere": {
+      "id": "container.login.typeHere",
+      "defaultMessage": "ଏଠାରେ ଟାଇପ୍ କରନ୍ତୁ ..."
+    },
+    "login": {
+      "id": "container.login.login",
+      "defaultMessage": "ଲଗଇନ୍ କରନ୍ତୁ |"
+    },
+    "continue": {
+      "id": "container.login.continue",
+      "defaultMessage": "କିମ୍ବା ସହିତ ଜାରି ରଖନ୍ତୁ |"
+    },
+    "facebook": {
+      "id": "container.login.facebook",
+      "defaultMessage": "ଫେସବୁକ୍"
+    },
+    "google": {
+      "id": "container.login.google",
+      "defaultMessage": "ଗୁଗୁଲ୍"
+    },
+    "apple": {
+      "id": "container.login.apple",
+      "defaultMessage": "ଆପଲ୍ |"
+    },
+    "buttonLabel": {
+      "id": "container.login.buttonLabel",
+      "defaultMessage": "ଜାରି ରଖ |"
+    },
+    "dont": {
+      "id": "container.login.dont",
+      "defaultMessage": "ଖାତା ନାହିଁ କି?"
+    },
+    "create": {
+      "id": "container.login.dont",
+      "defaultMessage": "ବର୍ତ୍ତମାନ ସୃଷ୍ଟି କରନ୍ତୁ |"
+    },
+    "bottomSheetHeading": {
+      "id": "containers.login.bottomSheetHeading",
+      "defaultMessage": "ଆପଣଙ୍କ ଦେଶ ଚୟନ କରନ୍ତୁ |"
+    },
+    "countryPlaceholder": {
+      "id": "containers.login.warningOtherHalf",
+      "defaultMessage": "ଦେଶ ନାମ ଦ୍ୱାରା ସନ୍ଧାନ କରନ୍ତୁ |"
+    },
+    "placeholder": {
+      "id": "containers.login.placeholder",
+      "defaultMessage": "ଫୋନ୍ ନମ୍ବର |"
+    }
+  },
+  "otpScreen": {
+    "heading": {
+      "id": "container.otpScreen.header",
+      "defaultMessage": "ସ୍ Welcome ାଗତ"
+    },
+    "subHeading": {
+      "id": "container.otpScreen.subHeading",
+      "defaultMessage": "ଦୟାକରି ଆପଣଙ୍କର ପଞ୍ଜୀକୃତ ମୋବାଇଲ୍ ନମ୍ବରକୁ ପଠାଯାଇଥିବା OTP ପ୍ରବେଶ କରନ୍ତୁ |"
+    },
+    "submit": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "ଦାଖଲ କରନ୍ତୁ |"
+    },
+    "enterOtp": {
+      "id": "container.otpScreen.login",
+      "defaultMessage": "ଏଠାରେ OTP ପ୍ରବେଶ କରନ୍ତୁ |"
+    },
+    "dont": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "କୋଡ୍ ଗ୍ରହଣ କରି ନାହାଁନ୍ତି କି?"
+    },
+    "create": {
+      "id": "container.otpScreen.dont",
+      "defaultMessage": "ପଠାନ୍ତୁ"
+    },
+    "minute": {
+      "id": "app.containers.otpScreen.minute",
+      "defaultMessage": "ମିନିଟ୍"
+    },
+    "second": {
+      "id": "app.containers.otpScreen.second",
+      "defaultMessage": "ଦ୍ୱିତୀୟ ବାମ"
+    },
+    "minutes": {
+      "id": "app.containers.otpScreen.minutes",
+      "defaultMessage": "ମିନିଟ୍ |"
+    },
+    "seconds": {
+      "id": "app.containers.otpScreen.seconds",
+      "defaultMessage": "ସେକେଣ୍ଡ ବାକି ଅଛି |"
+    },
+    "timeElapsed": {
+      "id": "app.containers.otpScreen.timeElapsed",
+      "defaultMessage": "ସମୟ ଅତିବାହିତ ହେଲା |"
+    }
+  },
+  "OurIdeals": {
+    "buttonLabel": {
+      "id": "app.containers.OurIdeals.buttonLabel",
+      "defaultMessage": "ଜାରି ରଖ |"
+    },
+    "ourIdeals": {
+      "id": "app.containers.OurIdeals.ourIdeals",
+      "defaultMessage": "ଆମର ଆଦର୍ଶ |"
+    }
+  },
+  "Home": {
+    "headerText": {
+      "id": "app.containers.Home.headerText",
+      "defaultMessage": "ଅଧ୍ୟାୟଗୁଡ଼ିକ"
+    },
+    "chapters": {
+      "id": "app.containers.Home.chapters",
+      "defaultMessage": "ଅଧ୍ୟାୟଗୁଡ଼ିକ"
+    },
+    "recent": {
+      "id": "app.containers.Home.recent",
+      "defaultMessage": "ସମ୍ପ୍ରତି"
+    },
+    "chapter": {
+      "id": "app.containers.Home.chapter",
+      "defaultMessage": "ଅଧ୍ୟାୟ"
+    },
+    "shareMessage": {
+      "id": "app.containers.Home.shareMessage",
+      "defaultMessage": "ସରାଲ ଗୀତା ଆପ୍ ଆପଣଙ୍କ ପାଇଁ ଏଠାରେ ଅଛି, ଯେଉଁଠାରେ ଆପଣ ଗୀତାଙ୍କୁ ସିଧାସଳଖ ଭଗବାନଙ୍କଠାରୁ ଶିଖିପାରିବେ | ତୁମେ ଭଗବାନଙ୍କ ସହ ଗୀତା ଶ୍ଲକ୍ ଜପ କରିପାରିବ, ସେମାନଙ୍କର ଅର୍ଥ ବୁ understand ି ପାରିବ ଏବଂ ସ୍ମରଣ କରିବା ପରେ ପୁରସ୍କାର ଗ୍ରହଣ କରିପାରିବ | ଏହା ମାଧ୍ୟମରେ, ଆପଣ ମଧ୍ୟ ଜଣେ ଗୀତା ଶିକ୍ଷକ ହୋଇପାରିବେ, ଦ daily ନନ୍ଦିନ ଜୀବନ ପାଇଁ ନିୟମ ଅନୁସରଣ କରିପାରିବେ, ଏବଂ ଗୀତା ମଧ୍ୟ ଲେଖିପାରିବେ | ବର୍ତ୍ତମାନ ଡାଉନଲୋଡ୍ କରନ୍ତୁ!"
+    }
+  },
+  "Chapters": {
+    "headerText": {
+      "id": "app.containers.Chapters.headerText",
+      "defaultMessage": "ଅଧ୍ୟାୟଗୁଡ଼ିକ"
+    }
+  },
+  "Shloks": {
+    "headerText": {
+      "id": "app.containers.Shloks.headerText",
+      "defaultMessage": "ପଦଗୁଡ଼ିକ |"
+    }
+  },
+  "learnGeeta": {
+    "continue": {
+      "id": "app.container.learnGeeta.continue",
+      "defaultMessage": "ଜାରି ରଖ |"
+    }
+  },
+  "contactUs": {
+    "heading": {
+      "id": "app.container.Contactus.heading",
+      "defaultMessage": "ଆମ ସହିତ ଯୋଗାଯୋଗ କରନ୍ତୁ |"
+    },
+    "serviceType": {
+      "id": "app.container.Contactus.serviceType",
+      "defaultMessage": "ସେବା ପ୍ରକାର"
+    },
+    "name": {
+      "id": "app.container.Contactus.name",
+      "defaultMessage": "ନାମ"
+    },
+    "email": {
+      "id": "app.container.Contactus.email",
+      "defaultMessage": "ଇମେଲ୍ କରନ୍ତୁ |"
+    },
+    "message": {
+      "id": "app.container.Contactus.message",
+      "defaultMessage": "ବାର୍ତ୍ତା |"
+    },
+    "placeholder": {
+      "id": "app.container.Contactus.placeholder",
+      "defaultMessage": "ଏଠାରେ ଟାଇପ୍ କରନ୍ତୁ ..."
+    },
+    "button": {
+      "id": "app.container.Contactus.button",
+      "defaultMessage": "ବାର୍ତ୍ତା ପଠାନ୍ତୁ |"
+    }
+  },
+  "Profile": {
+    "heading": {
+      "id": "app.container.Profile.heading",
+      "defaultMessage": "ପ୍ରୋଫାଇଲ୍"
+    },
+    "name": {
+      "id": "app.container.Profile.name",
+      "defaultMessage": "ନାମ"
+    },
+    "email": {
+      "id": "app.container.Profile.email",
+      "defaultMessage": "ଇମେଲ୍ କରନ୍ତୁ |"
+    },
+    "mobile": {
+      "id": "app.container.Profile.mobile",
+      "defaultMessage": "ମୋବାଇଲ୍ |"
+    },
+    "gender": {
+      "id": "app.container.Profile.gender",
+      "defaultMessage": "ଲିଙ୍ଗ"
+    },
+    "voice": {
+      "id": "app.container.Profile.voice",
+      "defaultMessage": "ସ୍ୱର"
+    },
+    "shlokSpeed": {
+      "id": "app.container.Profile.shlokSpeed",
+      "defaultMessage": "ଶ୍ଲୋକ ଗତି |"
+    },
+    "updateProfile": {
+      "id": "app.container.Profile.updateProfile",
+      "defaultMessage": "ପ୍ରୋଫାଇଲ୍ ଅଦ୍ୟତନ କରନ୍ତୁ |"
+    },
+    "changePassword": {
+      "id": "app.container.Profile.changePassword",
+      "defaultMessage": "ପାସୱାର୍ଡ ପରିବର୍ତ୍ତନ କରନ୍ତୁ |"
+    },
+    "language": {
+      "id": "app.container.Profile.language",
+      "defaultMessage": "ଭାଷା"
+    }
+  },
+  "EditProfile": {
+    "heading": {
+      "id": "app.container.EditProfile.heading",
+      "defaultMessage": "ପ୍ରୋଫାଇଲ୍"
+    },
+    "name": {
+      "id": "app.container.EditProfile.name",
+      "defaultMessage": "ପ୍ରଥମ ନାମ"
+    },
+    "lastName": {
+      "id": "app.container.EditProfile.lastName",
+      "defaultMessage": "ଶେଷ ନାମ"
+    },
+    "email": {
+      "id": "app.container.EditProfile.email",
+      "defaultMessage": "ଇମେଲ୍ କରନ୍ତୁ |"
+    },
+    "mobile": {
+      "id": "app.container.EditProfile.mobile",
+      "defaultMessage": "ଫୋନ୍ ନମ୍ବର |"
+    },
+    "gender": {
+      "id": "app.container.EditProfile.gender",
+      "defaultMessage": "ଲିଙ୍ଗ"
+    },
+    "language": {
+      "id": "app.container.EditProfile.language",
+      "defaultMessage": "ଭାଷା"
+    },
+    "shlokSpeed": {
+      "id": "app.container.EditProfile.shlokSpeed",
+      "defaultMessage": "ଶ୍ଲୋକ ଗତି |"
+    },
+    "update": {
+      "id": "app.container.EditProfile.updateProfile",
+      "defaultMessage": "ଅଦ୍ୟତନ କରନ୍ତୁ |"
+    }
+  },
+  "PrivacyPolicy": {
+    "heading": {
+      "id": "app.container.PrivacyPolicy.heading",
+      "defaultMessage": "ଗୋପନୀୟତା ନୀତି"
+    }
+  },
+  "TermsOfUse": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "ବ୍ୟବହାର ସର୍ତ୍ତାବଳୀ"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "ସର୍ତ୍ତ ଏବଂ ସର୍ତ୍ତ"
+    }
+  },
+  "SideBar": {
+    "viewAll": {
+      "id": "app.container.SideBar.viewAll",
+      "defaultMessage": "ପ୍ରୋଫାଇଲ୍ ଦେଖନ୍ତୁ |"
+    },
+    "chapters": {
+      "id": "app.container.SideBar.chapters",
+      "defaultMessage": "ଅଧ୍ୟାୟଗୁଡ଼ିକ"
+    },
+    "ideal": {
+      "id": "app.container.SideBar.ideal",
+      "defaultMessage": "ଆଦର୍ଶ"
+    },
+    "setting": {
+      "id": "app.container.SideBar.setting",
+      "defaultMessage": "ସେଟିଂ"
+    },
+    "language": {
+      "id": "app.container.SideBar.language",
+      "defaultMessage": "ଭାଷା ପରିବର୍ତ୍ତନ କରନ୍ତୁ |"
+    },
+    "helpSupport": {
+      "id": "app.container.SideBar.helpSupport",
+      "defaultMessage": "ସହାୟତା ଏବଂ ସମର୍ଥନ"
+    },
+    "contactUs": {
+      "id": "app.container.SideBar.contactUs",
+      "defaultMessage": "ପରାମର୍ଶ ବାକ୍ସ"
+    },
+    "privacyPolicy": {
+      "id": "app.container.SideBar.privacyPolicy",
+      "defaultMessage": "ଗୋପନୀୟତା ନୀତି"
+    },
+    "instruction": {
+      "id": "app.container.SideBar.instruction",
+      "defaultMessage": "ବ୍ୟବହାର ପଦ୍ଧତି |"
+    },
+    "termOfUse": {
+      "id": "app.container.SideBar.termOfUse",
+      "defaultMessage": "ବ୍ୟବହାର ସର୍ତ୍ତାବଳୀ"
+    },
+    "social": {
+      "id": "app.container.SideBar.social",
+      "defaultMessage": "ସୋସିଆଲ୍ ମିଡିଆ ଲିଙ୍କ୍ |"
+    },
+    "fb": {
+      "id": "app.container.SideBar.fb",
+      "defaultMessage": "ଫେସବୁକ୍"
+    },
+    "insta": {
+      "id": "app.container.SideBar.insta",
+      "defaultMessage": "ଇନଷ୍ଟାଗ୍ରାମ |"
+    },
+    "x": {
+      "id": "app.container.SideBar.x",
+      "defaultMessage": "X"
+    },
+    "signOut": {
+      "id": "app.container.SideBar.signOut",
+      "defaultMessage": "ସାଇନ୍ ଆଉଟ୍ କରନ୍ତୁ |"
+    },
+    "studentGift": {
+      "id": "app.container.SideBar.studentGift",
+      "defaultMessage": "ମୋର ପୁରସ୍କାର"
+    },
+    "teacherGift": {
+      "id": "app.container.SideBar.teacherGift",
+      "defaultMessage": "ଗୀତା ଶିଖ |"
+    },
+    "writeGita": {
+      "id": "app.container.SideBar.writeGita",
+      "defaultMessage": "ଗୀତା ଲେଖ |"
+    },
+    "gitaRules": {
+      "id": "app.container.SideBar.gitaRules",
+      "defaultMessage": "ଗୀତା ନିୟମ |"
+    },
+    "faq": {
+      "id": "app.container.SideBar.faq",
+      "defaultMessage": "FAQ"
+    },
+    "askBhagwan": {
+      "id": "app.container.SideBar.askBhagwan",
+      "defaultMessage": "ଭଗବାନଙ୍କୁ ପଚାର |"
+    }
+  },
+  "studentGift": {
+    "heading": {
+      "id": "app.container.studentGift.heading",
+      "defaultMessage": "ଗୀତା ଛାତ୍ର |"
+    },
+    "description": {
+      "id": "app.container.studentGift.description",
+      "defaultMessage": "ଯଦି ଆପଣ ସାରଲ ଗୀତା ଆପରୁ ଗୀତାଙ୍କର କ chapter ଣସି ଅଧ୍ୟାୟକୁ ସ୍ମରଣ କରିସାରିଛନ୍ତି, ତେବେ ତୁମର ପୁରସ୍କାର ପାଇଁ ଆପଣ ଏଠାରେ ଆବେଦନ କରିପାରିବେ | ଆପଣଙ୍କର ନାମ ଏବଂ ଠିକଣା ପ୍ରବିଷ୍ଟ କରନ୍ତୁ, ଆପଣ ସ୍ମରଣ କରିଥିବା ଅଧ୍ୟାୟ ଚୟନ କରନ୍ତୁ ଏବଂ ଆପଣଙ୍କର ଆବେଦନ ଦାଖଲ କରନ୍ତୁ |"
+    },
+    "name": {
+      "id": "app.container.studentGift.name",
+      "defaultMessage": "ଗୀତା ଛାତ୍ର ନାମ |"
+    },
+    "phoneNumber": {
+      "id": "app.container.studentGift.phoneNumber",
+      "defaultMessage": "ଫୋନ୍ ନମ୍ବର |"
+    },
+    "address": {
+      "id": "app.container.studentGift.address",
+      "defaultMessage": "ଠିକଣା"
+    },
+    "chaptersLabel": {
+      "id": "app.container.studentGift.chaptersLabel",
+      "defaultMessage": "ଅଧ୍ୟାୟ ଚୟନ କରନ୍ତୁ |"
+    },
+    "button": {
+      "id": "app.container.studentGift.button",
+      "defaultMessage": "ଦାଖଲ କରନ୍ତୁ |"
+    },
+    "placeholder": {
+      "id": "app.container.studentGift.placeholder",
+      "defaultMessage": "ଏଠାରେ ଟାଇପ୍ କରନ୍ତୁ ..."
+    },
+    "placeholderName": {
+      "id": "app.container.studentGift.placeholderName",
+      "defaultMessage": "ଗୀତା ଛାତ୍ର ନାମ ପ୍ରବେଶ କରନ୍ତୁ |"
+    },
+    "placeholderPhone": {
+      "id": "app.container.studentGift.placeholderPhone",
+      "defaultMessage": "ଫୋନ୍ ନମ୍ବର ପ୍ରବେଶ କରନ୍ତୁ |"
+    },
+    "placeholderAddress": {
+      "id": "app.container.studentGift.placeholderAddress",
+      "defaultMessage": "ପୂର୍ଣ୍ଣ ଠିକଣା ପ୍ରବେଶ କରନ୍ତୁ |"
+    },
+    "successMessage": {
+      "id": "app.container.studentGift.successMessage",
+      "defaultMessage": "ଆମେ ଶୀଘ୍ର ତୁମ ସହିତ ସଂଯୋଗ କରିବୁ |"
+    },
+    "okButton": {
+      "id": "app.container.studentGift.okButton",
+      "defaultMessage": "ଠିକ ଅଛି |"
+    },
+    "alertTitle": {
+      "id": "app.container.studentGift.alertTitle",
+      "defaultMessage": "ନିଶ୍ଚିତକରଣ"
+    },
+    "alertMessage": {
+      "id": "app.container.studentGift.alertMessage",
+      "defaultMessage": "ଆପଣ ସଠିକ୍ ଠିକଣା ପ୍ରବେଶ କରିଛନ୍ତି କି?"
+    },
+    "alertNo": {
+      "id": "app.container.studentGift.alertNo",
+      "defaultMessage": "ନା"
+    },
+    "alertYes": {
+      "id": "app.container.studentGift.alertYes",
+      "defaultMessage": "ହଁ"
+    }
+  },
+  "teacherGift": {
+    "heading": {
+      "id": "app.container.teacherGift.heading",
+      "defaultMessage": "ଶିକ୍ଷକ ବିବରଣୀ"
+    },
+    "description": {
+      "id": "app.container.teacherGift.description",
+      "defaultMessage": "ଯଦି ତୁମେ ତୁମର ସହର, ଗାଁ, କିମ୍ବା ପଡ଼ୋଶୀରେ ଗୀତା ଶିକ୍ଷା ଦେବାକୁ ଚାହୁଁଛ ଏବଂ ଗୀତା ଶିକ୍ଷକ ହେବାକୁ ଚାହୁଁଛ, ତୁମେ ଏଠାରେ ଆବେଦନ କରିପାରିବ | ଆମେ ମଧ୍ୟ ତୁମର ଶିକ୍ଷାଦାନ ପାଇଁ ପାରିଶ୍ରମିକ ପ୍ରଦାନ କରିବୁ | ଆପଣ କେଉଁ ଅଧ୍ୟାୟକୁ ସ୍ମରଣ କରିଛନ୍ତି ଏବଂ କେଉଁ ଅଧ୍ୟାୟକୁ ଆପଣ ଶିକ୍ଷା ଦେବାକୁ ଚାହୁଁଛନ୍ତି ତାହା ଉଲ୍ଲେଖ କରି ଆପଣ ଆବେଦନ କରିପାରିବେ |"
+    },
+    "name": {
+      "id": "app.container.teacherGift.name",
+      "defaultMessage": "ଶିକ୍ଷକ ନାମ"
+    },
+    "phoneNumber": {
+      "id": "app.container.teacherGift.phoneNumber",
+      "defaultMessage": "ଫୋନ୍ ନମ୍ବର |"
+    },
+    "address": {
+      "id": "app.container.teacherGift.address",
+      "defaultMessage": "ଠିକଣା"
+    },
+    "chaptersLabel": {
+      "id": "app.container.teacherGift.chaptersLabel",
+      "defaultMessage": "ଅଧ୍ୟାୟ ଚୟନ କରନ୍ତୁ |"
+    },
+    "button": {
+      "id": "app.container.teacherGift.button",
+      "defaultMessage": "ଦାଖଲ କରନ୍ତୁ |"
+    },
+    "placeholderName": {
+      "id": "app.container.teacherGift.placeholderName",
+      "defaultMessage": "ଶିକ୍ଷକ ନାମ ପ୍ରବେଶ କରନ୍ତୁ |"
+    },
+    "placeholderPhone": {
+      "id": "app.container.teacherGift.placeholderPhone",
+      "defaultMessage": "ଫୋନ୍ ନମ୍ବର ପ୍ରବେଶ କରନ୍ତୁ |"
+    },
+    "placeholderAddress": {
+      "id": "app.container.teacherGift.placeholderAddress",
+      "defaultMessage": "ପୂର୍ଣ୍ଣ ଠିକଣା ପ୍ରବେଶ କରନ୍ତୁ |"
+    },
+    "successMessage": {
+      "id": "app.container.teacherGift.successMessage",
+      "defaultMessage": "ଆମେ ଶୀଘ୍ର ତୁମ ସହିତ ସଂଯୋଗ କରିବୁ |"
+    },
+    "okButton": {
+      "id": "app.container.teacherGift.okButton",
+      "defaultMessage": "ଠିକ ଅଛି |"
+    },
+    "alertTitle": {
+      "id": "app.container.teacherGift.alertTitle",
+      "defaultMessage": "ନିଶ୍ଚିତକରଣ"
+    },
+    "alertMessage": {
+      "id": "app.container.teacherGift.alertMessage",
+      "defaultMessage": "ଆପଣ ସଠିକ୍ ଠିକଣା ପ୍ରବେଶ କରିଛନ୍ତି କି?"
+    },
+    "alertNo": {
+      "id": "app.container.teacherGift.alertNo",
+      "defaultMessage": "ନା"
+    },
+    "alertYes": {
+      "id": "app.container.teacherGift.alertYes",
+      "defaultMessage": "ହଁ"
+    }
+  },
+  "writeGita": {
+    "heading": {
+      "id": "app.container.writeGita.heading",
+      "defaultMessage": "ଗୀତା ଲେଖ |"
+    },
+    "description": {
+      "id": "app.container.writeGita.description",
+      "defaultMessage": "ଗୀତା ଲେଖନ୍ତୁ ଏକ ଅଭିଯାନ ଯେଉଁଠାରେ ଆପଣ ନିଜ ହାତରେ ଏକ ହସ୍ତଲିଖନ ଶାସ୍ତ୍ର ପ୍ରସ୍ତୁତ କରିପାରିବେ | ଏଥିରୁ ବାଛିବା ପାଇଁ ଏକାଧିକ ପୁସ୍ତକ ବିକଳ୍ପ ଅଛି: ରାମଚରିତମାନ, ଗୀତା ଜୀ, ଭଗବତ, ଭକ୍ତ ଚରିତ୍ର, ଏବଂ ଅନ୍ୟମାନେ | ଆପଣ ଲେଖିବାକୁ ଚାହୁଁଥିବା ଶାସ୍ତ୍ର ଚୟନ କରିପାରିବେ | ତୁମର ଚୟନ ପରେ, ଆମେ ତୁମ ଘରକୁ କଳା ଏବଂ ନାଲି କଲମ ସହିତ ମୂଳ ପୁସ୍ତକ, ଲେଖିବା ପାଇଁ ଏକ ରେଜିଷ୍ଟର ପଠାଇବୁ | ଏହା ମୂଳତ cop କପି କରି, ମୂଳ ପାଠକୁ ଦେଖିବା ଏବଂ ଏହାକୁ ରେଜିଷ୍ଟରରେ ଲେଖିବା | ଆପଣଙ୍କୁ ଲାଲ୍ କଲମ ଏବଂ ହିନ୍ଦୀ କିମ୍ବା ନିଜସ୍ୱ ଆଞ୍ଚଳିକ ଭାଷାରେ ଶ୍ଲୋକା ଲେଖିବାକୁ ପଡିବ | ଆପଣଙ୍କୁ ପ୍ରତି 15 ଦିନରେ ଆପଣଙ୍କର ଅଗ୍ରଗତି ରିପୋର୍ଟ କରିବାକୁ ମଧ୍ୟ ପଡିବ | ସମଗ୍ର ଶାସ୍ତ୍ର ସମାପ୍ତ ହେବା ପରେ, ଆମେ ଆପଣଙ୍କୁ ଏକ ଚିତ୍ରକଳା ପ୍ରମାଣପତ୍ର ସହିତ ସମ୍ମାନିତ କରିବୁ | ଅଧିକନ୍ତୁ, ଯେତେବେଳେ ବି ଏକ ପ୍ରଦର୍ଶନୀ ଅନୁଷ୍ଠିତ ହୁଏ, ତୁମର ହସ୍ତଲିଖନ ଶାସ୍ତ୍ର ହସ୍ତଲିଖନ ଶାସ୍ତ୍ର ପ୍ରଦର୍ଶନୀରେ ପ୍ରଦର୍ଶିତ ହେବ ଏବଂ ଶାସ୍ତ୍ରରେ ତୁମର ନାମ ଲେଖାଯିବ |"
+    },
+    "name": {
+      "id": "app.container.writeGita.name",
+      "defaultMessage": "ନାମ"
+    },
+    "phoneNumber": {
+      "id": "app.container.writeGita.phoneNumber",
+      "defaultMessage": "ଯୋଗାଯୋଗ କରନ୍ତୁ |"
+    },
+    "address": {
+      "id": "app.container.writeGita.address",
+      "defaultMessage": "ଠିକଣା"
+    },
+    "button": {
+      "id": "app.container.writeGita.button",
+      "defaultMessage": "ଦାଖଲ କରନ୍ତୁ |"
+    },
+    "placeholderName": {
+      "id": "app.container.writeGita.placeholderName",
+      "defaultMessage": "ତୁମର ନାମ ପ୍ରବେଶ କର |"
+    },
+    "placeholderPhone": {
+      "id": "app.container.writeGita.placeholderPhone",
+      "defaultMessage": "ଆପଣଙ୍କର ଯୋଗାଯୋଗ ନମ୍ବର ପ୍ରବେଶ କରନ୍ତୁ |"
+    },
+    "placeholderAddress": {
+      "id": "app.container.writeGita.placeholderAddress",
+      "defaultMessage": "ଆପଣଙ୍କର ସମ୍ପୂର୍ଣ୍ଣ ଠିକଣା ପ୍ରବେଶ କରନ୍ତୁ |"
+    },
+    "alertTitle": {
+      "id": "app.container.writeGita.alertTitle",
+      "defaultMessage": "ନିଶ୍ଚିତକରଣ"
+    },
+    "alertMessage": {
+      "id": "app.container.writeGita.alertMessage",
+      "defaultMessage": "ଆପଣ ସଠିକ୍ ଠିକଣା ପ୍ରବେଶ କରିଛନ୍ତି କି?"
+    },
+    "alertNo": {
+      "id": "app.container.writeGita.alertNo",
+      "defaultMessage": "ନା"
+    },
+    "alertYes": {
+      "id": "app.container.writeGita.alertYes",
+      "defaultMessage": "ହଁ"
+    },
+    "rulesLabel": {
+      "id": "app.container.writeGita.rulesLabel",
+      "defaultMessage": "ଶାସ୍ତ୍ର ଚୟନ କରନ୍ତୁ |"
+    },
+    "successMessage": {
+      "id": "app.container.writeGita.successMessage",
+      "defaultMessage": "ଆମେ ଶୀଘ୍ର ତୁମ ସହିତ ସଂଯୋଗ କରିବୁ |"
+    },
+    "okButton": {
+      "id": "app.container.writeGita.okButton",
+      "defaultMessage": "ଠିକ ଅଛି |"
+    }
+  },
+  "Instruction": {
+    "heading": {
+      "id": "app.container.TermsOfUse.heading",
+      "defaultMessage": "ବ୍ୟବହାର ପଦ୍ଧତି |"
+    },
+    "termsAndCondition": {
+      "id": "app.container.TermsOfUse.termsAndCondition",
+      "defaultMessage": "ସର୍ତ୍ତ ଏବଂ ସର୍ତ୍ତ"
+    }
+  },
+  "gitaRules": {
+    "heading": {
+      "id": "app.container.gitaRules.heading",
+      "defaultMessage": "ଗୀତା ନିୟମ |"
+    },
+    "subHeading": {
+      "id": "app.container.gitaRules.subHeading",
+      "defaultMessage": "ଗୀତାଙ୍କ ପଥ ଅନୁସରଣ କର |"
+    },
+    "description": {
+      "id": "app.container.gitaRules.description",
+      "defaultMessage": "ଏହି ନିୟମଗୁଡିକ ଅନୁସରଣ କରି, ତୁମେ ନିଜକୁ ଭଗବଦ୍ ଗୀତାଙ୍କ ଶିକ୍ଷା ସହିତ ସମାନ କର |"
+    },
+    "instructions": {
+      "id": "app.container.gitaRules.instructions",
+      "defaultMessage": "ଆଜି ଆପଣ ଅନୁସରଣ କରିଥିବା ନିୟମ ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ ଏବଂ ଦାଖଲ କରନ୍ତୁ | ଆପଣ ପ୍ରତିଦିନ ଏହା କରିବା ଜରୁରୀ | ଆପଣ କେଉଁ ନିୟମ ଅନୁସରଣ କରିଛନ୍ତି ଏବଂ କେଉଁଟି ଆପଣ ହରାଇଛନ୍ତି ତାହା ଦେଖିବା ପାଇଁ ଆପଣ ପ୍ରତି ମାସରେ ଆପଣଙ୍କର ରିପୋର୍ଟ ଦେଖିପାରିବେ |"
+    },
+    "button": {
+      "id": "app.container.gitaRules.button",
+      "defaultMessage": "ଦାଖଲ କରନ୍ତୁ |"
+    },
+    "successMessage": {
+      "id": "app.container.gitaRules.successMessage",
+      "defaultMessage": "ଆପଣଙ୍କର ନିୟମ ଚୟନ ସଫଳତାର ସହିତ ଉପସ୍ଥାପିତ ହୋଇଛି |"
+    },
+    "okButton": {
+      "id": "app.container.gitaRules.okButton",
+      "defaultMessage": "ଠିକ ଅଛି |"
+    },
+    "alertTitle": {
+      "id": "app.container.gitaRules.alertTitle",
+      "defaultMessage": "ନିଶ୍ଚିତକରଣ"
+    },
+    "alertMessage": {
+      "id": "app.container.gitaRules.alertMessage",
+      "defaultMessage": "ଆପଣ ନିଶ୍ଚିତ କି ଆପଣ ଏହି ନିୟମ ଦାଖଲ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?"
+    },
+    "alertNo": {
+      "id": "app.container.gitaRules.alertNo",
+      "defaultMessage": "ନା"
+    },
+    "alertYes": {
+      "id": "app.container.gitaRules.alertYes",
+      "defaultMessage": "ହଁ"
+    },
+    "errorMinSelect": {
+      "id": "app.container.gitaRules.errorMinSelect",
+      "defaultMessage": "ଦୟାକରି ଅତିକମରେ ଗୋଟିଏ ନିୟମ ଅନୁସରଣ କରନ୍ତୁ |"
+    },
+    "rulesLabel": {
+      "id": "app.container.gitaRules.rulesLabel",
+      "defaultMessage": "ଏକ ନିୟମ ଚୟନ କରନ୍ତୁ |"
+    },
+    "inputLabel": {
+      "id": "app.container.gitaRules.inputLabel",
+      "defaultMessage": "ତୁମର ପ୍ରତିକ୍ରିୟା"
+    },
+    "inputPlaceholder": {
+      "id": "app.container.gitaRules.inputPlaceholder",
+      "defaultMessage": "ଏଠାରେ ଆପଣଙ୍କର ଇନପୁଟ୍ ପ୍ରବେଶ କରନ୍ତୁ ..."
+    }
+  },
+  "HomeBottomBar": {
+    "whatsapp": {
+      "id": "app.container.HomeBottomBar.whatsapp",
+      "defaultMessage": "ହ୍ ats ାଟସ୍ ଆପ୍"
+    },
+    "facebook": {
+      "id": "app.container.HomeBottomBar.facebook",
+      "defaultMessage": "ଫେସବୁକ୍"
+    },
+    "instagram": {
+      "id": "app.container.HomeBottomBar.instagram",
+      "defaultMessage": "ଇନଷ୍ଟାଗ୍ରାମ |"
+    },
+    "youtube": {
+      "id": "app.container.HomeBottomBar.youtube",
+      "defaultMessage": "ୟୁଟ୍ୟୁବ୍"
+    },
+    "twitter": {
+      "id": "app.container.HomeBottomBar.twitter",
+      "defaultMessage": "X"
+    },
+    "faq": {
+      "id": "app.container.HomeBottomBar.faq",
+      "defaultMessage": "FAQ"
+    },
+    "language": {
+      "id": "app.container.HomeBottomBar.language",
+      "defaultMessage": "ଭାଷା"
+    },
+    "update": {
+      "id": "app.container.HomeBottomBar.update",
+      "defaultMessage": "ଅଦ୍ୟତନ କରନ୍ତୁ |"
+    },
+    "shareApp": {
+      "id": "app.container.HomeBottomBar.shareApp",
+      "defaultMessage": "ଆପ୍ ଅଂଶୀଦାର କରନ୍ତୁ |"
+    },
+    "rating": {
+      "id": "app.container.HomeBottomBar.rating",
+      "defaultMessage": "ମୂଲ୍ୟାୟନ"
+    },
+    "contact": {
+      "id": "app.container.HomeBottomBar.contact",
+      "defaultMessage": "ଯୋଗାଯୋଗ କରନ୍ତୁ |"
+    },
+    "help": {
+      "id": "app.container.HomeBottomBar.help",
+      "defaultMessage": "ସାହାଯ୍ୟ"
+    },
+    "social": {
+      "id": "app.container.HomeBottomBar.social",
+      "defaultMessage": "ସାମାଜିକ |"
+    }
+  },
+  "faq": {
+    "heading": {
+      "id": "app.container.faq.heading",
+      "defaultMessage": "FAQ"
+    },
+    "subHeading": {
+      "id": "app.container.faq.subHeading",
+      "defaultMessage": "ସାରଲ ଗୀତା ଆପ ବିଷୟରେ ବାରମ୍ବାର ପଚରାଯାଉଥିବା ପ୍ରଶ୍ନ |"
+    },
+    "q1_question": {
+      "id": "app.container.faq.q1_question",
+      "defaultMessage": "ସରଲ ଗୀତା ଆପ୍ କ’ଣ?"
+    },
+    "q1_answer": {
+      "id": "app.container.faq.q1_answer",
+      "defaultMessage": "ସାରଲ ଗୀତା ଆପ୍ ହେଉଛି ଏକ ଡିଜିଟାଲ୍ ପ୍ଲାଟଫର୍ମ ଯେଉଁଠାରେ ଯେଉଁମାନେ ଗୀତା ଶିଖିବାକୁ ଇଚ୍ଛା କରନ୍ତି ସେମାନେ ଏହାକୁ ସିଧାସଳଖ ଭଗବାନଙ୍କଠାରୁ ଶିଖିପାରିବେ |"
+    },
+    "q2_question": {
+      "id": "app.container.faq.q2_question",
+      "defaultMessage": "ସରଲ ଗୀତା ଆପରେ ଶିକ୍ଷକ କିଏ?"
+    },
+    "q2_answer": {
+      "id": "app.container.faq.q2_answer",
+      "defaultMessage": "ସାରଲ ଗୀତା ଆପରେ ଭଗବାନ ନିଜେ ଗୁରୁ ଅଟନ୍ତି। ଆମର ଭଗବାନ ବିଷ୍ଣୁ, ଭଗବାନ ଗଣେଶ ଏବଂ ଭଗବାନ ବେଦଭ୍ୟା ଅଛନ୍ତି। ଆପଣ ଏହି ତିନୋଟି ମଧ୍ୟରୁ ଯେକ one ଣସି ଗୋଟିଏରୁ ଗୀତା ଶିଖିପାରିବେ |"
+    },
+    "q3_question": {
+      "id": "app.container.faq.q3_question",
+      "defaultMessage": "ସାରଲ ଗୀତା ଆପରେ ଗୀତା ଶିଖିବାର ପଦ୍ଧତି କ’ଣ?"
+    },
+    "q3_answer": {
+      "id": "app.container.faq.q3_answer",
+      "defaultMessage": "ତୁମ ଗୁରୁ ଭାବରେ ତୁମେ ଯେକ God ଣସି ଭଗବାନଙ୍କୁ ବାଛିବାକୁ ପଡିବ | ଚୟନ କରିବା ପରେ, ଗୀତା ର ସମସ୍ତ 18 ଅଧ୍ୟାୟ ଆପଣଙ୍କ ସମ୍ମୁଖରେ ଦେଖାଯିବ | ଆପଣ କେଉଁ ଅଧ୍ୟାୟ ଶିଖିବାକୁ ଚାହାଁନ୍ତି, ଏହାର ସମସ୍ତ ଶ୍ଲୋକା ପ୍ରଦର୍ଶିତ ହେବ | ଆପଣ ଶିଖିବାକୁ ଚାହୁଁଥିବା ଶ୍ଲୋକା ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ, ଏବଂ ଭଗବାନ ଏହାକୁ ଧୀରେ ଧୀରେ ପାଠ କରିବେ | ଶ୍ଲୋକା ମଧ୍ୟ ନିମ୍ନରେ ଲେଖାଯିବ | ଲିଖିତ ଶ୍ଲୋକାକୁ ଦେଖ ଏବଂ ଏହାକୁ ଭଗବାନଙ୍କ ସହିତ ଉଚ୍ଚାରଣ କର | ଭଗବାନଙ୍କ ସହିତ ସମାନ ଶ୍ଲୋକା ପୁନରାବୃତ୍ତି କରନ୍ତୁ ଯେପର୍ଯ୍ୟନ୍ତ ଆପଣ ଏହାକୁ ସଠିକ୍ ଭାବରେ ଉଚ୍ଚାରଣ କରିପାରିବେ ନାହିଁ | ଏହି ଉପାୟରେ, ଆପଣ ଗୋଟିଏ ପରେ ଗୋଟିଏ ଶ୍ଲୋକାକୁ ସ୍ମରଣ କରିପାରିବେ |"
+    },
+    "q4_question": {
+      "id": "app.container.faq.q4_question",
+      "defaultMessage": "ଆମେ ମଧ୍ୟ ସରଲ ଗୀତା ଆପରେ ଶ୍ଲୋକାସର ଅର୍ଥ ଶିଖିପାରିବା କି?"
+    },
+    "q4_answer": {
+      "id": "app.container.faq.q4_answer",
+      "defaultMessage": "ହଁ, ଆମେ ମଧ୍ୟ ଏହାର ଅର୍ଥ ଶିଖିବା | ଯେତେବେଳେ ଭଗବାନ ଏକ ଶ୍ଲୋକା ପ rec ନ୍ତି, ପାର୍ଶ୍ୱରେ ଏକ 'i' (ସୂଚନା) ବିନ୍ଦୁ ଦେଖାଯାଏ | ଏଥିରେ କ୍ଲିକ୍ କରିବା ଦ୍ୱାରା ଏହାର ଅର୍ଥ ସହିତ ଶ୍ଲୋକା ଦେଖାଯିବ |"
+    },
+    "q5_question": {
+      "id": "app.container.faq.q5_question",
+      "defaultMessage": "ସରଲ ଗୀତା ଆପ୍ କେବଳ ଗୋଟିଏ ଭାଷାରେ ଉପଲବ୍ଧ କି?"
+    },
+    "q5_answer": {
+      "id": "app.container.faq.q5_answer",
+      "defaultMessage": "ନା, ସାରଲ ଗୀତା ଆପ୍ ହିନ୍ଦୀ, ଇଂରାଜୀ, ମରାଠୀ, ଗୁଜରାଟୀ ଏବଂ ଅନ୍ୟାନ୍ୟ ଭାଷାରେ 10 ଟି ଭାଷାରେ ଉପଲବ୍ଧ |"
+    },
+    "q6_question": {
+      "id": "app.container.faq.q6_question",
+      "defaultMessage": "ଆମେ ସରଲ ଗୀତା ଆପରେ ଯାହା ସ୍ମରଣ କରିଛୁ ତାହା କିପରି ପରୀକ୍ଷା କରିପାରିବା?"
+    },
+    "q6_answer": {
+      "id": "app.container.faq.q6_answer",
+      "defaultMessage": "ଭଗବାନ ଏକ ଶ୍ଲୋକା ପାଠ କରି ଚୁପ୍ ରହିବା ପରେ ପରଦାରେ ଏକ ମାଇକ୍ରୋଫୋନ୍ ବଟନ୍ ଦେଖାଯାଏ | ଏହାକୁ କ୍ଲିକ୍ କର, ସମଗ୍ର ଶ୍ଲୋକା ପ ite, ତାପରେ ମାଇକ୍ ବଟନ୍ କୁ ପୁଣି ଦବ | ଆପଣ କେଉଁ ଶତକଡା ସଠିକ୍ ଭାବରେ କଥା ହୋଇଛନ୍ତି ସ୍କ୍ରିନ୍ ଦର୍ଶାଇବ | ଯଦି ଏହା 80% କିମ୍ବା ତା’ଠାରୁ ଅଧିକ, ଏହାର ଅର୍ଥ ଆପଣ ସେହି ଶ୍ଲୋକାର ଉଚ୍ଚାରଣ ଶିଖିଛନ୍ତି ଏବଂ ଆପଣ ପରବର୍ତ୍ତୀକୁ ଯାଇପାରିବେ |"
+    },
+    "q7_question": {
+      "id": "app.container.faq.q7_question",
+      "defaultMessage": "ଯେତେବେଳେ ଆପଣ ସାରଲ ଗୀତା ଆପରୁ ସମ୍ପୂର୍ଣ୍ଣ ଅଧ୍ୟାୟକୁ ସ୍ମରଣ କରନ୍ତି, ସେତେବେଳେ କ’ଣ ହୁଏ?"
+    },
+    "q7_answer": {
+      "id": "app.container.faq.q7_answer",
+      "defaultMessage": "ଯଦି ଆପଣ ସାରଲ ଗୀତା ଆପ୍ ବ୍ୟବହାର କରି ଗୀତା ର କ chapter ଣସି ଅଧ୍ୟାୟକୁ ସ୍ମରଣ କରନ୍ତି, ତେବେ ସେହି ସ୍ମରଣୀୟ ଅଧ୍ୟାୟ ପାଇଁ ଆପଣ ଗୀତା ପୁରସ୍କାର ବିଭାଗରେ ପୁରସ୍କାର ପାଇଁ ପଞ୍ଜୀକୃତ ହୋଇପାରିବେ | ନିଶ୍ଚିତକରଣ ପରେ, ଆମେ ପ୍ରଦାନ କରାଯାଇଥିବା ଠିକଣାକୁ ପୁରସ୍କାର ପଠାଇବୁ |"
+    },
+    "q8_question": {
+      "id": "app.container.faq.q8_question",
+      "defaultMessage": "ସାରଲ ଗୀତା ଆପରେ ଗୀତା ନିୟମ କ’ଣ?"
+    },
+    "q8_answer": {
+      "id": "app.container.faq.q8_answer",
+      "defaultMessage": "ସରଲ ଗୀତା ଆପରେ ଦ daily ନନ୍ଦିନ ଜୀବନ ପାଇଁ ଉପଯୋଗୀ 9 ଟି ନିୟମ ଅଛି | ଆପଣ ସେହି ଦିନ ଅନୁସରଣ କରିଥିବା ନିୟମ ଉପରେ କ୍ଲିକ୍ କରନ୍ତୁ ଏବଂ ଏହାକୁ ଦାଖଲ କରନ୍ତୁ | ଏହି ଉପାୟରେ, ତୁମର ଅନୁସରଣ କରାଯାଇଥିବା ନିୟମଗୁଡ଼ିକର ଏକ ମାସିକ ସାରାଂଶ ପ୍ରସ୍ତୁତ ହୁଏ, ଯାହା ଆପଣଙ୍କୁ ଜଣାଇଥାଏ ଯେ ଆପଣ କେଉଁ ନିୟମ ଅନୁସରଣ କରିଛନ୍ତି ଏବଂ କେଉଁ ମାସରେ ଆପଣ କେଉଁଟି ହରାଇଛନ୍ତି |"
+    },
+    "q9_question": {
+      "id": "app.container.faq.q9_question",
+      "defaultMessage": "ସରଲ ଗୀତା ଆପରେ ଗୀତା ଶିକ୍ଷକ ବ feature ଶିଷ୍ଟ୍ୟ କ’ଣ?"
+    },
+    "q9_answer": {
+      "id": "app.container.faq.q9_answer",
+      "defaultMessage": "ଯଦି ତୁମେ ଗୀତା ଜାଣିଛ, କେବଳ ଗୋଟିଏ ଅଧ୍ୟାୟ, ତୁମେ ଗୀତା ଶିକ୍ଷକ ହେବା ପାଇଁ ଗୀତା ଶିକ୍ଷକ ବ feature ଶିଷ୍ଟ୍ୟ ମାଧ୍ୟମରେ ପଞ୍ଜୀକୃତ ହୋଇପାରିବ | ଆପଣ କେତେ ଅଧ୍ୟାୟ ସ୍ମରଣ କରିଛନ୍ତି ତାହା ଆପଣ ଉଲ୍ଲେଖ କରିପାରିବେ | ଆପଣ ଯେଉଁଠାରେ ଚାହିଁବେ ଶିକ୍ଷାଦାନ କରିବା, ଆପଣଙ୍କ ଶିକ୍ଷାଦାନ ପାଇଁ ପାରିଶ୍ରମିକ ପ୍ରଦାନ କରିବା ଏବଂ ଯଦି ଆପଣ ଗୀତା ଶିକ୍ଷକ ହେବା ପାଇଁ ତାଲିମ ଆବଶ୍ୟକ କରନ୍ତି, ତେବେ ଆମେ ମଧ୍ୟ ତାହା ପ୍ରଦାନ କରିବୁ |"
+    },
+    "q10_question": {
+      "id": "app.container.faq.q10_question",
+      "defaultMessage": "ସାରଲ ଗୀତା ଆପରେ ଗୀତା ଅଭ୍ୟାସ୍ (ଅଭ୍ୟାସ) କ’ଣ?"
+    },
+    "q10_answer": {
+      "id": "app.container.faq.q10_answer",
+      "defaultMessage": "ଗୀତା ଅଭ୍ୟାସ୍ ହେଉଛି ଏକ ବ feature ଶିଷ୍ଟ୍ୟ ଯାହା ତୁମେ ସ୍ମରଣ କରିଥିବା ଅଧ୍ୟାୟଗୁଡ଼ିକୁ ସଂଶୋଧନ କରିବାକୁ ଅନୁମତି ଦିଏ | ଭଗବାନ ତୁମ ସମ୍ମୁଖରେ ଉପସ୍ଥିତ, ଏବଂ ତୁମେ କେଉଁ ଅଧ୍ୟାୟଗୁଡ଼ିକୁ ମନେ ରଖିଛ ତୁମେ ଭଗବାନଙ୍କୁ କୁହ | Then ଶ୍ବର ତାପରେ ତୁମର ଅଧ୍ୟାୟ ସହିତ ସେହି ଅଧ୍ୟାୟଗୁଡ଼ିକରୁ ଶ୍ଲୋକାଙ୍କୁ ପଚାରିବେ, ତୁମର ସ୍ମରଣୀୟ ଅଧ୍ୟାୟଗୁଡ଼ିକୁ ପୁନ ise ବିଚାର କରିବାକୁ ଅନୁମତି ଦେବ |"
+    },
+    "q11_question": {
+      "id": "app.container.faq.q11_question",
+      "defaultMessage": "ଆମେ ସାରଲ ଗୀତା ଆପରେ ଥରେ ଏକ ସମ୍ପୂର୍ଣ୍ଣ ଅଧ୍ୟାୟ ପ rec ଼ିବା କି?"
+    },
+    "q11_answer": {
+      "id": "app.container.faq.q11_answer",
+      "defaultMessage": "ହଁ! ଯଦି ତୁମେ ଏକାଥରେ ଏକ ସମ୍ପୂର୍ଣ୍ଣ ଅଧ୍ୟାୟ ପ to ିବାକୁ ଚାହୁଁଛ, ଅଧ୍ୟାୟ ଏବଂ ଶ୍ଲୋକା ଖୋଲ, ତାପରେ ସ୍କ୍ରିନ୍ ଉପରେ ଥିବା 'ଜାରି' ବଟନ୍ କ୍ଲିକ୍ କର | ଭଗବାନ ସମ୍ପୂର୍ଣ୍ଣ ଅଧ୍ୟାୟକୁ କ୍ରମାଗତ ଭାବରେ ପାଠ କରିବେ | ଏହା ପାଖରେ ଏକ ସ୍ପିଡ୍ ବଟନ୍ ମଧ୍ୟ ଅଛି, ତେଣୁ ଆପଣ ଚାହିଁଲେ ଶୀଘ୍ର ପ rec ିପାରିବେ |"
+    },
+    "q12_question": {
+      "id": "app.container.faq.q12_question",
+      "defaultMessage": "ସାରଲ ଗୀତା ଆପରେ 'ଗୀତା ଲେଖ' ବ feature ଶିଷ୍ଟ୍ୟ କ’ଣ?"
+    },
+    "q12_answer": {
+      "id": "app.container.faq.q12_answer",
+      "defaultMessage": "'ଗୀତା ଲେଖ' ହେଉଛି ଏକ ଅଭିଯାନ ଯେଉଁଠାରେ ଆପଣ ଗୀତା, ରାମାୟଣ, ଭଗବତ ଏବଂ ଅନ୍ୟାନ୍ୟ ଅନେକ ଶାସ୍ତ୍ର ହସ୍ତଲିଖନ କରିପାରିବେ | ଆମେ ରେଜିଷ୍ଟର, ମୂଳ ପୁସ୍ତକ, ଏବଂ କଲମକୁ ଆପଣଙ୍କ ଠିକଣାକୁ ପଠାଉ | ଆପଣ ଲେଖିବାକୁ ଚାହୁଁଥିବା ଶାସ୍ତ୍ର ଚୟନ କରନ୍ତୁ ଏବଂ ଏହାକୁ ଆପଣଙ୍କର ନାମ ଏବଂ ଠିକଣା ସହିତ ଦାଖଲ କରନ୍ତୁ | ଏହା ପରେ ଆମେ ଆପଣଙ୍କୁ ଲେଖିବା ପାଇଁ ଆବଶ୍ୟକ ସମସ୍ତ ସାମଗ୍ରୀ ପଠାଇବୁ | ଆପଣ ପ୍ରତି 15 ଦିନରେ କେତେ ଶାସ୍ତ୍ର ପୂରଣ କରିଛନ୍ତି ତାହା ଆପଣଙ୍କୁ ଜଣାଇବାକୁ ପଡିବ | ପୁରା ଶାସ୍ତ୍ର ସମାପ୍ତ ହେବା ପରେ, ତୁମେ ଏକ ଚିତ୍ରକଳା ପ୍ରମାଣପତ୍ର ସହିତ ସମ୍ମାନିତ ହେବ |"
+    }
+  },
+  "bhagwanQuestions": {
+    "placeholder": {
+      "id": "app.container.bhagwanQuestions.placeholder",
+      "defaultMessage": "ତୁମର ଉତ୍ତର ଏଠାରେ ଲେଖ ..."
+    },
+    "successTitle": {
+      "id": "app.container.bhagwanQuestions.successTitle",
+      "defaultMessage": "🙏 ଧନ୍ୟବାଦ"
+    },
+    "successMessage": {
+      "id": "app.container.bhagwanQuestions.successMessage",
+      "defaultMessage": "ତୁମର ଉତ୍ତର ଗ୍ରହଣ କରାଯାଇଛି ତୁମର ଜ୍ଞାନ ବୃଦ୍ଧି ହେଉ!"
+    },
+    "errorTitle": {
+      "id": "app.container.bhagwanQuestions.errorTitle",
+      "defaultMessage": "ତ୍ରୁଟି |"
+    },
+    "errorMessage": {
+      "id": "app.container.bhagwanQuestions.errorMessage",
+      "defaultMessage": "ଦାଖଲ କରିବାରେ ବିଫଳ ଦୟାକରି ପୁନର୍ବାର ଚେଷ୍ଟା କରନ୍ତୁ |"
+    },
+    "questionCounter": {
+      "id": "app.container.bhagwanQuestions.questionCounter",
+      "defaultMessage": "{ସମୁଦାୟ} ର ପ୍ରଶ୍ନ {କରେଣ୍ଟ ଇଣ୍ଡେକ୍ସ} |"
+    },
+    "prevBtn": {
+      "id": "app.container.bhagwanQuestions.prevBtn",
+      "defaultMessage": "V ପୂର୍ବ"
+    },
+    "nextBtn": {
+      "id": "app.container.bhagwanQuestions.nextBtn",
+      "defaultMessage": "ପରବର୍ତ୍ତୀ"
+    },
+    "submitBtn": {
+      "id": "app.container.bhagwanQuestions.submitBtn",
+      "defaultMessage": "ଦାଖଲ କରନ୍ତୁ |"
+    },
+    "noQuestions": {
+      "id": "app.container.bhagwanQuestions.noQuestions",
+      "defaultMessage": "ବର୍ତ୍ତମାନ ସମୟରେ କ questions ଣସି ପ୍ରଶ୍ନ ଉପଲବ୍ଧ ନାହିଁ |"
+    },
+    "mockQuestion1": {
+      "id": "app.container.bhagwanQuestions.mockQuestion1",
+      "defaultMessage": "ମୋ ପିଲା, ଆଜି ତୁମର ଜୀବନରେ ଧର୍ମର ପ୍ରକୃତ ଅର୍ଥ କ’ଣ?"
+    },
+    "mockQuestion2": {
+      "id": "app.container.bhagwanQuestions.mockQuestion2",
+      "defaultMessage": "ତୁମର କାର୍ଯ୍ୟର ଫଳାଫଳରୁ ତୁମେ କିପରି ବିଚ୍ଛିନ୍ନତା ଅଭ୍ୟାସ କରିବ?"
+    },
+    "mockQuestion3": {
+      "id": "app.container.bhagwanQuestions.mockQuestion3",
+      "defaultMessage": "ତୁମର ମନକୁ ଶାନ୍ତ କରିବା ଏବଂ ଭିତରର ଶାନ୍ତି ପାଇବା ପାଇଁ ଆପଣ କେଉଁ ପଦକ୍ଷେପ ନେଉଛନ୍ତି?"
+    },
+    "errorMinAnswer": {
+      "id": "app.container.bhagwanQuestions.errorMinAnswer",
+      "defaultMessage": "ଦୟାକରି ଅତିକମରେ ଗୋଟିଏ ପ୍ରଶ୍ନର ଉତ୍ତର ଦିଅ |"
+    },
+    "errorEmptyAnswer": {
+      "id": "app.container.bhagwanQuestions.errorEmptyAnswer",
+      "defaultMessage": "ଆଗକୁ ବ before ିବା ପୂର୍ବରୁ ଦୟାକରି ଆପଣଙ୍କର ଉତ୍ତର ଲେଖନ୍ତୁ |"
+    }
+  },
+  "Copilot": {
+    "previous": {
+      "id": "copilot.previous",
+      "defaultMessage": "ପୂର୍ବ"
+    },
+    "next": {
+      "id": "copilot.next",
+      "defaultMessage": "ପରବର୍ତ୍ତୀ"
+    },
+    "skip": {
+      "id": "copilot.skip",
+      "defaultMessage": "ଛାଡିଦିଅ |"
+    },
+    "finish": {
+      "id": "copilot.finish",
+      "defaultMessage": "ସମାପ୍ତ"
+    },
+    "homeFirstChapter": {
+      "id": "copilot.homeFirstChapter",
+      "defaultMessage": "ଶିଖିବା ଏବଂ ପ reading ିବା ଆରମ୍ଭ କରିବାକୁ ତାଲିକାର ଯେକ chapter ଣସି ଅଧ୍ୟାୟ ଉପରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "homeSearchBar": {
+      "id": "copilot.homeSearchBar",
+      "defaultMessage": "ତୁମର ପ୍ରିୟ ଅଧ୍ୟାୟ ଶୀଘ୍ର ଖୋଜିବା ପାଇଁ ଏଠାରେ ଖୋଜ |"
+    },
+    "shloksFirstShlok": {
+      "id": "copilot.shloksFirstShlok",
+      "defaultMessage": "ଅଭ୍ୟାସ ଏବଂ ଉଚ୍ଚାରଣ ପ୍ଲେୟାର ଖୋଲିବାକୁ ଯେକ any ଣସି ଶ୍ଲୋକ କାର୍ଡ ଉପରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "learnGeetaSkipBtn": {
+      "id": "copilot.learnGeetaSkipBtn",
+      "defaultMessage": "ଭିଡିଓକୁ ଏଡ଼ାଇ ପୂର୍ବ ପରଦାକୁ ଫେରିବା ପାଇଁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "learnGeetaBackBtn": {
+      "id": "copilot.learnGeetaBackBtn",
+      "defaultMessage": "ପୂର୍ବ ପରଦାକୁ ଫେରିବା ପାଇଁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "learnGeetaShowBtn": {
+      "id": "copilot.learnGeetaShowBtn",
+      "defaultMessage": "Shlok ର ଅନୁବାଦ ଏବଂ ବିସ୍ତୃତ ଅର୍ଥ ଦେଖିବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "learnGeetaContinueBtn": {
+      "id": "copilot.learnGeetaContinueBtn",
+      "defaultMessage": "ଆପଣଙ୍କର ଫଳାଫଳ ସଞ୍ଚୟ କରିବାକୁ ଏବଂ ପରବର୍ତ୍ତୀ ଶ୍ଲୋକକୁ ଜାରି ରଖିବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "bhagwanAnswerInput": {
+      "id": "copilot.bhagwanAnswerInput",
+      "defaultMessage": "ଏଠାରେ ଆପଣଙ୍କର ଉତ୍ତର କିମ୍ବା ପ୍ରଶ୍ନ ଟାଇପ୍ କରନ୍ତୁ |"
+    },
+    "homeDrawerBtn": {
+      "id": "copilot.homeDrawerBtn",
+      "defaultMessage": "ପାର୍ଶ୍ୱ ମେନୁ ଖୋଲିବାକୁ ଏବଂ ଆପଣଙ୍କର ପ୍ରୋଫାଇଲ୍, ସେଟିଂସମୂହ ଏବଂ ଅନ୍ୟାନ୍ୟ ଉତ୍ସଗୁଡିକୁ ପ୍ରବେଶ କରିବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "homeBottomBar": {
+      "id": "copilot.homeBottomBar",
+      "defaultMessage": "ଛାତ୍ର ଉପହାର, ସେଟିଂସମୂହ, ଅଂଶୀଦାର ଏବଂ ଅନ୍ୟାନ୍ୟ ବ features ଶିଷ୍ଟ୍ୟଗୁଡିକୁ ପ୍ରବେଶ କରିବାକୁ ଏହି ସର୍ଟକଟ୍ ବ୍ୟବହାର କରନ୍ତୁ |"
+    },
+    "shloksBackBtn": {
+      "id": "copilot.shloksBackBtn",
+      "defaultMessage": "ଅଧ୍ୟାୟ ତାଲିକାକୁ ଫେରିବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "shloksPlayIntroBtn": {
+      "id": "copilot.shloksPlayIntroBtn",
+      "defaultMessage": "ଏହି ଅଧ୍ୟାୟ ପାଇଁ ପ୍ରାରମ୍ଭିକ ଭିଡିଓ ଦେଖିବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "bhagwanPrevBtn": {
+      "id": "copilot.bhagwanPrevBtn",
+      "defaultMessage": "ପୂର୍ବ ପ୍ରଶ୍ନକୁ ଫେରିବା ପାଇଁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "bhagwanSubmitBtn": {
+      "id": "copilot.bhagwanSubmitBtn",
+      "defaultMessage": "ଆପଣଙ୍କର ଉତ୍ତର ଦାଖଲ କରିବାକୁ ଏବଂ ଅଗ୍ରଗତି କରିବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    }
+  }
+}

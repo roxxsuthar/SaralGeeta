@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
+import { Platform } from 'react-native';
 
 import request from '../../utils/request';
 import Helpers from '../../utils/helpers';
@@ -31,21 +32,38 @@ export function* getQuestionsHandler() {
 }
 
 export function* submitAnswersHandler({ payload }) {
-  // payload: [{ questionId, answer, questionText }]
-  // We use POST /questions (AllowAny) since POST /questions/<id>/answer is Admin only.
-  // Each user response is submitted as a question to Bhagwan with context.
+  // payload: [{ questionId, answer }]
+  // Each user response is submitted as an audio question to Bhagwan.
   try {
     for (const item of payload) {
-      // Skip empty answers
-      if (!item.answer || item.answer.trim() === '') continue;
+      if (!item.answer) continue;
 
       const url = Helpers.getUrl('/questions');
+      const formData = new FormData();
+      
+      const fileUri = Platform.OS === 'android' ? `file://${item.answer}` : item.answer;
+      const mimeType = Platform.OS === 'android' ? 'audio/mp4' : 'audio/x-m4a';
+      const fileName = item.answer.split('/').pop();
+
+      formData.append('question', {
+        uri: fileUri,
+        type: mimeType,
+        name: fileName,
+      });
+
+      formData.append('audio', {
+        uri: fileUri,
+        type: mimeType,
+        name: fileName,
+      });
+
       const options = {
         method: 'POST',
         url,
-        data: {
-          question: item.answer.trim(),
+        headers: {
+          'Content-Type': 'multipart/form-data',
         },
+        data: formData,
       };
       yield call(request, options);
     }

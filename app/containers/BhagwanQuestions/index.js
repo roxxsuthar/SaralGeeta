@@ -2,22 +2,23 @@ import React, { useEffect, useState, useRef } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CopilotProvider, CopilotStep, walkthroughable, useCopilot } from 'react-native-copilot';
 
-const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
-const CopilotTextInput = walkthroughable(TextInput);
-
 import {
   View,
   StatusBar,
   TouchableOpacity,
   Image,
   ImageBackground,
-  TextInput,
   ActivityIndicator,
   Alert,
   KeyboardAvoidingView,
   Platform,
+  TextInput,
 } from 'react-native';
+
+const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
+const CopilotTextInput = walkthroughable(TextInput);
 import LinearGradient from 'react-native-linear-gradient';
+import Lottie from 'lottie-react-native';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -29,10 +30,17 @@ import { IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import styles from './styles';
 import makeSelectBhagwanQuestions from './selectors';
-import { getQuestions, submitAnswers } from './actions';
+import { getQuestions, submitAnswers, resetSubmit } from './actions';
+import { useBhagwanRecording } from './hooks/useBhagwanRecording';
 import strings from '../../../i18n';
 
-function BhagwanQuestions({ bhagwanQuestions, appLanguage, handleGetQuestions, handleSubmitAnswers }) {
+function BhagwanQuestions({
+  bhagwanQuestions,
+  appLanguage,
+  handleGetQuestions,
+  handleSubmitAnswers,
+  handleResetSubmit,
+}) {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
   const { data, loading, submitting, submitSuccess, submitError } = bhagwanQuestions;
@@ -63,20 +71,29 @@ function BhagwanQuestions({ bhagwanQuestions, appLanguage, handleGetQuestions, h
             startRef.current();
           }, 1500);
         }
-      } catch (e) {}
+      } catch (e) { }
     };
     checkTutorial();
   }, []);
 
   useEffect(() => {
     const handleStop = () => {
-      AsyncStorage.setItem('HAS_SEEN_BHAGWAN_TUTORIAL', 'true').catch(() => {});
+      AsyncStorage.setItem('HAS_SEEN_BHAGWAN_TUTORIAL', 'true').catch(() => { });
     };
     copilotEventsRef.current.on('stop', handleStop);
     return () => {
       copilotEventsRef.current.off('stop', handleStop);
     };
   }, []);
+
+  const {
+    isRecording,
+    audioPath,
+    startRecording,
+    stopRecording,
+    clearAudio,
+    setAudioPath,
+  } = useBhagwanRecording();
 
   useEffect(() => {
     if (appLanguage) {
@@ -92,72 +109,38 @@ function BhagwanQuestions({ bhagwanQuestions, appLanguage, handleGetQuestions, h
 
   useEffect(() => {
     if (submitSuccess) {
-      Alert.alert(
-        strings.bhagwanQuestions.successTitle.defaultMessage,
-        strings.bhagwanQuestions.successMessage.defaultMessage,
-        [{ text: 'OK', onPress: () => navigation.goBack() }],
-      );
+      if (currentIndex < data.length - 1) {
+        const nextIndex = currentIndex + 1;
+        setCurrentIndex(nextIndex);
+        setAudioPath(answers[data[nextIndex].id] || null);
+        handleResetSubmit();
+      } else {
+        Alert.alert(
+          strings.bhagwanQuestions.successTitle.defaultMessage,
+          strings.bhagwanQuestions.successMessage.defaultMessage,
+          [{
+            text: 'OK', onPress: () => {
+              handleResetSubmit();
+              navigation.goBack();
+            }
+          }],
+        );
+      }
     }
     if (submitError) {
       Alert.alert(
         strings.bhagwanQuestions.errorTitle.defaultMessage,
         strings.bhagwanQuestions.errorMessage.defaultMessage,
+        [{ text: 'OK', onPress: () => handleResetSubmit() }],
       );
     }
-  }, [submitSuccess, submitError, navigation]);
+  }, [submitSuccess, submitError, currentIndex, data, answers, handleResetSubmit, navigation, setAudioPath]);
 
-  const saveCurrentAnswer = () => {
-    if (!data || data.length === 0) return {};
-    const current = data[currentIndex];
-    return { ...answers, [current.id]: currentAnswer };
-  };
-
-  const handleNext = () => {
-    if (!data || data.length === 0) return;
-    if (!currentAnswer || currentAnswer.trim() === '') return;
-
-    const newAnswers = saveCurrentAnswer();
-    setAnswers(newAnswers);
-
-    if (currentIndex < data.length - 1) {
-      const nextQ = data[currentIndex + 1];
-      setCurrentIndex(currentIndex + 1);
-      setCurrentAnswer(newAnswers[nextQ.id] || '');
-    } else {
-      const payload = Object.keys(newAnswers).map(qId => ({
-        questionId: qId,
-        answer: newAnswers[qId],
-      }));
-      handleSubmitAnswers(payload);
-    }
-  };
-
-  const handleBack = () => {
-    if (currentIndex > 0) {
-      const newAnswers = saveCurrentAnswer();
-      setAnswers(newAnswers);
-      const prevQ = data[currentIndex - 1];
-      setCurrentIndex(currentIndex - 1);
-      // Restore previously typed answer for that question
-      setCurrentAnswer(newAnswers[prevQ.id] || '');
-    } else {
-      navigation.goBack();
-    }
-  };
-
-  const handleNextNav = () => {
-    if (!data || data.length === 0) return;
-    if (!currentAnswer || currentAnswer.trim() === '') return;
-
-    const newAnswers = saveCurrentAnswer();
-    setAnswers(newAnswers);
-    if (currentIndex < data.length - 1) {
-      const nextQ = data[currentIndex + 1];
-      setCurrentIndex(currentIndex + 1);
-      // Restore previously typed answer for that question
-      setCurrentAnswer(newAnswers[nextQ.id] || '');
-    }
-  };
+  useEffect(() => {
+    return () => {
+      handleResetSubmit();
+    };
+  }, [handleResetSubmit]);
 
   if (loading) {
     return (
@@ -170,8 +153,50 @@ function BhagwanQuestions({ bhagwanQuestions, appLanguage, handleGetQuestions, h
   const currentQuestion = data && data.length > 0 ? data[currentIndex] : null;
   const isLast = data && currentIndex === data.length - 1;
   const hasPrev = currentIndex > 0;
-  // Disable Next/Submit whenever the current answer field is empty
-  const hasAnswer = !!(currentAnswer && currentAnswer.trim() !== '');
+  const hasAnswer = !!audioPath;
+
+  const handleStopRecording = async () => {
+    const filePath = await stopRecording();
+    if (filePath && currentQuestion) {
+      setAnswers((prev) => ({ ...prev, [currentQuestion.id]: filePath }));
+    }
+  };
+
+  const handleClearAudio = () => {
+    clearAudio();
+    if (currentQuestion) {
+      setAnswers((prev) => {
+        const next = { ...prev };
+        delete next[currentQuestion.id];
+        return next;
+      });
+    }
+  };
+
+  const handleBack = () => {
+    if (currentIndex > 0) {
+      const prevIndex = currentIndex - 1;
+      setCurrentIndex(prevIndex);
+      setAudioPath(answers[data[prevIndex].id] || null);
+    } else {
+      navigation.goBack();
+    }
+  };
+
+  const handleNext = () => {
+    if (!data || data.length === 0) return;
+    if (!audioPath) {
+      Alert.alert('Info', 'Please record your answer first');
+      return;
+    }
+
+    handleSubmitAnswers([
+      {
+        questionId: currentQuestion.id,
+        answer: audioPath,
+      },
+    ]);
+  };
 
   const getQuestionText = (item) => {
     if (!item) return strings.bhagwanQuestions.noQuestions.defaultMessage;
@@ -242,24 +267,50 @@ function BhagwanQuestions({ bhagwanQuestions, appLanguage, handleGetQuestions, h
             </CustomText>
           )}
 
-          {/* Answer input */}
-          <View style={styles.inputRow}>
-            <CustomText style={styles.pencil}>✏️</CustomText>
-            <CopilotStep
-              text={strings.Copilot.bhagwanAnswerInput.defaultMessage}
-              order={1}
-              name="answerInput"
-            >
-              <CopilotTextInput
-                style={styles.input}
-                multiline
-                placeholder={strings.bhagwanQuestions.placeholder.defaultMessage}
-                placeholderTextColor="rgba(255,255,255,0.38)"
-                value={currentAnswer}
-                onChangeText={setCurrentAnswer}
-              />
-            </CopilotStep>
-          </View>
+
+          {/* Answer recording interface */}
+          {isRecording ? (
+            <View style={styles.recordingContainer}>
+              <TouchableOpacity
+                style={[styles.micButton, styles.micButtonActive]}
+                onPress={handleStopRecording}
+                activeOpacity={0.8}
+              >
+                <IMAGES.PauseIcon height={28} width={28} />
+              </TouchableOpacity>
+              <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+                <Lottie
+                  source={IMAGES.PlayerLottie}
+                  autoPlay
+                  loop
+                  style={{ width: 80, height: 30 }}
+                />
+                <CustomText style={[styles.recordingStatusText, { marginLeft: 4 }]}>
+                  Recording...
+                </CustomText>
+              </View>
+            </View>
+          ) : (
+            <View style={styles.recordingContainer}>
+              <TouchableOpacity
+                style={styles.micButton}
+                onPress={startRecording}
+                activeOpacity={0.8}
+              >
+                <IMAGES.MicIcon height={30} width={30} />
+              </TouchableOpacity>
+              <CustomText style={styles.recordingStatusText}>
+                {audioPath
+                  ? 'Answer Recorded Successfully'
+                  : 'Tap microphone to record answer'}
+              </CustomText>
+              {!!audioPath && (
+                <TouchableOpacity onPress={handleClearAudio} style={styles.clearBtn}>
+                  <CustomText style={styles.clearBtnTxt}>🗑️</CustomText>
+                </TouchableOpacity>
+              )}
+            </View>
+          )}
 
           {/* Navigation row: Prev ←  →  Submit/Next */}
           <View style={styles.navRow}>
@@ -313,15 +364,21 @@ function BhagwanQuestions({ bhagwanQuestions, appLanguage, handleGetQuestions, h
                 name="submitBtn"
               >
                 <CopilotTouchableOpacity
-                  style={[styles.submitBtn, !hasAnswer && styles.navBtnDisabled]}
-                  onPress={handleNextNav}
-                  disabled={!hasAnswer}
+                  style={[styles.submitBtn, (!hasAnswer || submitting) && styles.navBtnDisabled]}
+                  onPress={handleNext}
+                  disabled={!hasAnswer || submitting}
                   activeOpacity={0.85}
                 >
-                  <CustomText style={styles.submitTxt}>
-                    {strings.bhagwanQuestions.nextBtn.defaultMessage}
-                  </CustomText>
-                  <CustomText style={styles.arrowTxt}> →</CustomText>
+                  {submitting ? (
+                    <ActivityIndicator color="#fff" />
+                  ) : (
+                    <>
+                      <CustomText style={styles.submitTxt}>
+                        {strings.bhagwanQuestions.nextBtn.defaultMessage}
+                      </CustomText>
+                      <CustomText style={styles.arrowTxt}> →</CustomText>
+                    </>
+                  )}
                 </CopilotTouchableOpacity>
               </CopilotStep>
             )}
@@ -337,6 +394,7 @@ BhagwanQuestions.propTypes = {
   appLanguage: PropTypes.string,
   handleGetQuestions: PropTypes.func.isRequired,
   handleSubmitAnswers: PropTypes.func.isRequired,
+  handleResetSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -347,7 +405,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     handleGetQuestions: () => dispatch(getQuestions()),
-    handleSubmitAnswers: payload => dispatch(submitAnswers(payload)),
+    handleSubmitAnswers: (payload) => dispatch(submitAnswers(payload)),
+    handleResetSubmit: () => dispatch(resetSubmit()),
   };
 }
 
