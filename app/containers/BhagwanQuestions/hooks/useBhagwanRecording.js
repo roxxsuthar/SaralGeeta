@@ -19,6 +19,7 @@ import {
 
 export const useBhagwanRecording = () => {
   const [isRecording, setIsRecording] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [audioPath, setAudioPath] = useState(null);
   const recordingStartedAt = useRef(0);
 
@@ -106,6 +107,7 @@ export const useBhagwanRecording = () => {
 
     try {
       setIsRecording(false);
+      setIsProcessing(true);
       let filePath;
 
       if (Platform.OS === 'android') {
@@ -116,15 +118,20 @@ export const useBhagwanRecording = () => {
         filePath = await NativeModules.AudioRecorderModule.stopRecording();
       }
 
+      // Add artificial delay to allow OS to completely flush large audio files to disk
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
       const exists = await RNFS.exists(filePath);
       if (!exists) {
         throw new Error('Recorded file not found');
       }
 
       setAudioPath(filePath);
+      setIsProcessing(false);
       return filePath;
     } catch (e) {
       setIsRecording(false);
+      setIsProcessing(false);
       return null;
     }
   }, [isRecording]);
@@ -135,6 +142,7 @@ export const useBhagwanRecording = () => {
 
   return {
     isRecording,
+    isProcessing,
     audioPath,
     startRecording,
     stopRecording,

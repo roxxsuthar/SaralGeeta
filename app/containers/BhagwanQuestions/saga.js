@@ -33,7 +33,6 @@ export function* getQuestionsHandler() {
 
 export function* submitAnswersHandler({ payload }) {
   // payload: [{ questionId, answer }]
-  // Each user response is submitted as an audio question to Bhagwan.
   try {
     for (const item of payload) {
       if (!item.answer) continue;
@@ -69,7 +68,17 @@ export function* submitAnswersHandler({ payload }) {
     }
     yield put(submitAnswersSuccess());
   } catch (e) {
-    console.log('BhagwanQuestions Submit Error:', e?.response?.data || e.message);
+    console.log('================ API CALL ERROR ================');
+    console.log('Error Message:', e.message);
+    console.log('Error Response Data:', e.response?.data);
+    console.log('Error Response Status:', e.response?.status);
+    console.log('Error Request Config (URL):', e.config?.url);
+    console.log('Error Request Config (Headers):', e.config?.headers);
+    if (e.config?.data && e.config.data._parts) {
+      console.log('FormData payload parts:', e.config.data._parts);
+    }
+    console.log('Full Error Object:', e);
+    console.log('================================================');
     yield put(submitAnswersFail(e));
   }
 }

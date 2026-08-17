@@ -60,13 +60,11 @@ function BhagwanQuestions({
     const checkTutorial = async () => {
       if (hasStartedGuide.current) return;
       try {
-        await AsyncStorage.removeItem('HAS_SEEN_HOME_TUTORIAL');
-        await AsyncStorage.removeItem('HAS_SEEN_SHLOKS_TUTORIAL');
-        await AsyncStorage.removeItem('HAS_SEEN_LEARNGEETA_TUTORIAL');
-        await AsyncStorage.removeItem('HAS_SEEN_BHAGWAN_TUTORIAL');
         const hasSeen = await AsyncStorage.getItem('HAS_SEEN_BHAGWAN_TUTORIAL');
         if (!hasSeen) {
           hasStartedGuide.current = true;
+          // Set it immediately so it never triggers again, even if they exit the screen early
+          AsyncStorage.setItem('HAS_SEEN_BHAGWAN_TUTORIAL', 'true').catch(() => {});
           setTimeout(() => {
             startRef.current();
           }, 1500);
@@ -88,6 +86,7 @@ function BhagwanQuestions({
 
   const {
     isRecording,
+    isProcessing,
     audioPath,
     startRecording,
     stopRecording,
@@ -300,7 +299,9 @@ function BhagwanQuestions({
                 <IMAGES.MicIcon height={30} width={30} />
               </TouchableOpacity>
               <CustomText style={styles.recordingStatusText}>
-                {audioPath
+                {isProcessing
+                  ? 'Processing audio...'
+                  : audioPath
                   ? 'Answer Recorded Successfully'
                   : 'Tap microphone to record answer'}
               </CustomText>
@@ -340,9 +341,9 @@ function BhagwanQuestions({
                 name="submitBtn"
               >
                 <CopilotTouchableOpacity
-                  style={[styles.submitBtn, (!hasAnswer || submitting) && styles.navBtnDisabled]}
+                  style={[styles.submitBtn, (!hasAnswer || submitting || isProcessing) && styles.navBtnDisabled]}
                   onPress={handleNext}
-                  disabled={!hasAnswer || submitting}
+                  disabled={!hasAnswer || submitting || isProcessing}
                   activeOpacity={0.85}
                 >
                   {submitting ? (
@@ -364,9 +365,9 @@ function BhagwanQuestions({
                 name="submitBtn"
               >
                 <CopilotTouchableOpacity
-                  style={[styles.submitBtn, (!hasAnswer || submitting) && styles.navBtnDisabled]}
+                  style={[styles.submitBtn, (!hasAnswer || submitting || isProcessing) && styles.navBtnDisabled]}
                   onPress={handleNext}
-                  disabled={!hasAnswer || submitting}
+                  disabled={!hasAnswer || submitting || isProcessing}
                   activeOpacity={0.85}
                 >
                   {submitting ? (

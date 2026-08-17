@@ -86,13 +86,11 @@ function Home({
       if (hasStartedGuide.current) return;
       if (filteredChapters && filteredChapters.length > 0) {
         try {
-          await AsyncStorage.removeItem('HAS_SEEN_HOME_TUTORIAL');
-        await AsyncStorage.removeItem('HAS_SEEN_SHLOKS_TUTORIAL');
-        await AsyncStorage.removeItem('HAS_SEEN_LEARNGEETA_TUTORIAL');
-        await AsyncStorage.removeItem('HAS_SEEN_BHAGWAN_TUTORIAL');
+
         const hasSeen = await AsyncStorage.getItem('HAS_SEEN_HOME_TUTORIAL');
           if (!hasSeen) {
             hasStartedGuide.current = true;
+            AsyncStorage.setItem('HAS_SEEN_HOME_TUTORIAL', 'true').catch(() => {});
             setTimeout(() => {
               startRef.current();
             }, 1500);

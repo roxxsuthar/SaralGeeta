@@ -20,6 +20,11 @@ import { IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import strings from '../../../i18n';
 import styles from './styles';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import { makeSelectAppLanguage } from '../App/selectors';
 
 if (
   Platform.OS === 'android' &&
@@ -94,7 +99,7 @@ const FAQItem = ({ question, answer, index }) => {
   );
 };
 
-function FAQ() {
+function FAQ({ language }) {
   const { faq: faqStrings } = strings;
   const navigation = useNavigation();
 
@@ -157,4 +162,14 @@ function FAQ() {
   );
 }
 
-export default memo(FAQ);
+FAQ.propTypes = {
+  language: PropTypes.object,
+};
+
+const mapStateToProps = createStructuredSelector({
+  language: makeSelectAppLanguage(),
+});
+
+const withConnect = connect(mapStateToProps, null);
+
+export default compose(withConnect, memo)(FAQ);

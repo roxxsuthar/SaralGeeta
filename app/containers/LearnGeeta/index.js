@@ -95,14 +95,13 @@ function LearnGeeta({
   useEffect(() => {
     const checkTutorial = async () => {
       if (hasStartedGuide.current) return;
+      if (!isIntroVideoPlayed) return;
+
       try {
-        await AsyncStorage.removeItem('HAS_SEEN_HOME_TUTORIAL');
-        await AsyncStorage.removeItem('HAS_SEEN_SHLOKS_TUTORIAL');
-        await AsyncStorage.removeItem('HAS_SEEN_LEARNGEETA_TUTORIAL');
-        await AsyncStorage.removeItem('HAS_SEEN_BHAGWAN_TUTORIAL');
         const hasSeen = await AsyncStorage.getItem('HAS_SEEN_LEARNGEETA_TUTORIAL');
         if (!hasSeen) {
           hasStartedGuide.current = true;
+          AsyncStorage.setItem('HAS_SEEN_LEARNGEETA_TUTORIAL', 'true').catch(() => {});
           setTimeout(() => {
             startRef.current();
           }, 1500);
@@ -110,7 +109,7 @@ function LearnGeeta({
       } catch (e) {}
     };
     checkTutorial();
-  }, []);
+  }, [isIntroVideoPlayed]);
 
   useEffect(() => {
     const handleStop = () => {
