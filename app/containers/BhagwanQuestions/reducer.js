@@ -12,7 +12,7 @@ import {
 export const initialState = {
   loading: false,
   error: false,
-  data: [],
+  data: undefined,
   submitting: false,
   submitError: false,
   submitSuccess: false,

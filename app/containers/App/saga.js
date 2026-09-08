@@ -37,8 +37,9 @@ function* deviceAuth({ payload, callback }) {
   };
 
   try {
-    const res = yield call(request, options);
-    yield put(deviceAuthSuccessAction(res.data));
+    const response = yield call(request, options);
+    const authData = response?.data || response;
+    yield put(deviceAuthSuccessAction(authData));
     callback?.();
   } catch (e) {
     yield put(deviceAuthFailAction(e));

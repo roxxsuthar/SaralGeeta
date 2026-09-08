@@ -876,6 +876,22 @@
       "id": "app.container.bhagwanQuestions.placeholder",
       "defaultMessage": "Write your answer here..."
     },
+    "chapterShlokeQuestion": {
+      "id": "app.container.bhagwanQuestions.chapterShlokeQuestion",
+      "defaultMessage": "What is shlok {shloke} of chapter {chapter}?"
+    },
+    "validateBtn": {
+      "id": "app.container.bhagwanQuestions.validateBtn",
+      "defaultMessage": "Show answer"
+    },
+    "expectedAnswer": {
+      "id": "app.container.bhagwanQuestions.expectedAnswer",
+      "defaultMessage": "Answer from Bhagwan"
+    },
+    "noExpectedAnswer": {
+      "id": "app.container.bhagwanQuestions.noExpectedAnswer",
+      "defaultMessage": "No answer was provided."
+    },
     "successTitle": {
       "id": "app.container.bhagwanQuestions.successTitle",
       "defaultMessage": "🙏 Thank You"
@@ -898,7 +914,7 @@
     },
     "prevBtn": {
       "id": "app.container.bhagwanQuestions.prevBtn",
-      "defaultMessage": "← Prev"
+      "defaultMessage": "Prev"
     },
     "nextBtn": {
       "id": "app.container.bhagwanQuestions.nextBtn",

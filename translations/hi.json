@@ -866,6 +866,22 @@
       "id": "app.container.bhagwanQuestions.placeholder",
       "defaultMessage": "अपना उत्तर लिखें..."
     },
+    "chapterShlokeQuestion": {
+      "id": "app.container.bhagwanQuestions.chapterShlokeQuestion",
+      "defaultMessage": "अध्याय {chapter} के श्लोक {shloke} का अर्थ क्या है?"
+    },
+    "validateBtn": {
+      "id": "app.container.bhagwanQuestions.validateBtn",
+      "defaultMessage": "उत्तर दिखाएँ"
+    },
+    "expectedAnswer": {
+      "id": "app.container.bhagwanQuestions.expectedAnswer",
+      "defaultMessage": "भगवान का उत्तर"
+    },
+    "noExpectedAnswer": {
+      "id": "app.container.bhagwanQuestions.noExpectedAnswer",
+      "defaultMessage": "कोई उत्तर उपलब्ध नहीं है।"
+    },
     "successTitle": {
       "id": "app.container.bhagwanQuestions.successTitle",
       "defaultMessage": "🙏 धन्यवाद"
@@ -888,7 +904,7 @@
     },
     "prevBtn": {
       "id": "app.container.bhagwanQuestions.prevBtn",
-      "defaultMessage": "← पिछला"
+      "defaultMessage": "पिछला"
     },
     "nextBtn": {
       "id": "app.container.bhagwanQuestions.nextBtn",

@@ -876,6 +876,14 @@
       "id": "app.container.bhagwanQuestions.placeholder",
       "defaultMessage": "உங்கள் பதிலை இங்கே எழுதுங்கள்..."
     },
+    "chapterShlokeQuestion": {
+      "id": "app.container.bhagwanQuestions.chapterShlokeQuestion",
+      "defaultMessage": "அத்தியாயம் {chapter} இன் ஸ்லோகம் {shloke} என்ன?"
+    },
+    "validateBtn": {
+      "id": "app.container.bhagwanQuestions.validateBtn",
+      "defaultMessage": "பதிலைக் காட்டு"
+    },
     "successTitle": {
       "id": "app.container.bhagwanQuestions.successTitle",
       "defaultMessage": "🙏 நன்றி"

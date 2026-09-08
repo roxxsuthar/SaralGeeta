@@ -876,6 +876,14 @@
       "id": "app.container.bhagwanQuestions.placeholder",
       "defaultMessage": "ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಇಲ್ಲಿ ಬರೆಯಿರಿ..."
     },
+    "chapterShlokeQuestion": {
+      "id": "app.container.bhagwanQuestions.chapterShlokeQuestion",
+      "defaultMessage": "ಅಧ್ಯಾಯ {chapter} ರ ಶ್ಲೋಕ {shloke} ಏನು?"
+    },
+    "validateBtn": {
+      "id": "app.container.bhagwanQuestions.validateBtn",
+      "defaultMessage": "ಉತ್ತರ ತೋರಿಸಿ"
+    },
     "successTitle": {
       "id": "app.container.bhagwanQuestions.successTitle",
       "defaultMessage": "🙏 ಧನ್ಯವಾದಗಳು"

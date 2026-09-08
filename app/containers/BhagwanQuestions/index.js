@@ -7,19 +7,15 @@ import {
   StatusBar,
   TouchableOpacity,
   Image,
-  ImageBackground,
   ActivityIndicator,
   Alert,
   KeyboardAvoidingView,
   Platform,
-  TextInput,
 } from 'react-native';
 
 const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
-const CopilotTextInput = walkthroughable(TextInput);
 import LinearGradient from 'react-native-linear-gradient';
-import Lottie from 'lottie-react-native';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -30,24 +26,21 @@ import { IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
 import styles from './styles';
 import makeSelectBhagwanQuestions from './selectors';
-import { getQuestions, submitAnswers, resetSubmit } from './actions';
-import { useBhagwanRecording } from './hooks/useBhagwanRecording';
+import { getQuestions, resetSubmit } from './actions';
 import strings from '../../../i18n';
 
 function BhagwanQuestions({
   bhagwanQuestions,
   appLanguage,
   handleGetQuestions,
-  handleSubmitAnswers,
   handleResetSubmit,
 }) {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
-  const { data, loading, submitting, submitSuccess, submitError } = bhagwanQuestions;
+  const { data, loading, error } = bhagwanQuestions;
+  const accessToken = useSelector((state) => state.app?.accessToken);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [currentAnswer, setCurrentAnswer] = useState('');
+  const [showAnswer, setShowAnswer] = useState(false);
   const { start, copilotEvents } = useCopilot();
   const hasStartedGuide = useRef(false);
   const startRef = useRef(start);
@@ -69,7 +62,9 @@ function BhagwanQuestions({
             startRef.current();
           }, 1500);
         }
-      } catch (e) { }
+      } catch (e) {
+        return;
+      }
     };
     checkTutorial();
   }, []);
@@ -84,16 +79,6 @@ function BhagwanQuestions({
     };
   }, []);
 
-  const {
-    isRecording,
-    isProcessing,
-    audioPath,
-    startRecording,
-    stopRecording,
-    clearAudio,
-    setAudioPath,
-  } = useBhagwanRecording();
-
   useEffect(() => {
     if (appLanguage) {
       strings.setLanguage(appLanguage);
@@ -103,37 +88,54 @@ function BhagwanQuestions({
   useEffect(() => {
     StatusBar.setHidden(false);
     StatusBar.setBarStyle('light-content');
-    handleGetQuestions();
-  }, [handleGetQuestions]);
+    handleGetQuestions(accessToken);
+  }, [handleGetQuestions, accessToken]);
 
   useEffect(() => {
-    if (submitSuccess) {
-      if (currentIndex < data.length - 1) {
-        const nextIndex = currentIndex + 1;
-        setCurrentIndex(nextIndex);
-        setAudioPath(answers[data[nextIndex].id] || null);
-        handleResetSubmit();
-      } else {
-        Alert.alert(
-          strings.bhagwanQuestions.successTitle.defaultMessage,
-          strings.bhagwanQuestions.successMessage.defaultMessage,
-          [{
-            text: 'OK', onPress: () => {
-              handleResetSubmit();
-              navigation.goBack();
-            }
-          }],
-        );
-      }
-    }
-    if (submitError) {
+    if (error) {
       Alert.alert(
         strings.bhagwanQuestions.errorTitle.defaultMessage,
-        strings.bhagwanQuestions.errorMessage.defaultMessage,
-        [{ text: 'OK', onPress: () => handleResetSubmit() }],
+        error.response?.data?.message || strings.bhagwanQuestions.errorMessage.defaultMessage,
       );
     }
-  }, [submitSuccess, submitError, currentIndex, data, answers, handleResetSubmit, navigation, setAudioPath]);
+  }, [error]);
+
+  useEffect(() => {
+    if (data === null) {
+      Alert.alert(
+        strings.bhagwanQuestions.successTitle.defaultMessage,
+        strings.bhagwanQuestions.successMessage.defaultMessage,
+        [{ text: 'OK', onPress: () => navigation.goBack() }],
+      );
+    }
+  }, [data, navigation]);
+
+  useEffect(() => {
+    return () => {
+      handleResetSubmit();
+    };
+  }, [handleResetSubmit]);
+
+  const loadNextQuestion = () => {
+    setShowAnswer(false);
+    handleGetQuestions(accessToken);
+  };
+
+  const handleBack = () => navigation.goBack();
+
+  const handleShowAnswer = () => setShowAnswer(true);
+
+  const getQuestionText = (item) => {
+    if (!item?.question) {
+      return strings.bhagwanQuestions.noQuestions.defaultMessage;
+    }
+    if (typeof item.question === 'object') {
+      return strings.bhagwanQuestions.chapterShlokeQuestion.defaultMessage
+        .replace('{chapter}', String(item.question.chapter))
+        .replace('{shloke}', String(item.question.shloke));
+    }
+    return item.question;
+  };
 
   useEffect(() => {
     return () => {
@@ -149,69 +151,23 @@ function BhagwanQuestions({
     );
   }
 
-  const currentQuestion = data && data.length > 0 ? data[currentIndex] : null;
-  const isLast = data && currentIndex === data.length - 1;
-  const hasPrev = currentIndex > 0;
-  const hasAnswer = !!audioPath;
-
-  const handleStopRecording = async () => {
-    const filePath = await stopRecording();
-    if (filePath && currentQuestion) {
-      setAnswers((prev) => ({ ...prev, [currentQuestion.id]: filePath }));
-    }
-  };
-
-  const handleClearAudio = () => {
-    clearAudio();
-    if (currentQuestion) {
-      setAnswers((prev) => {
-        const next = { ...prev };
-        delete next[currentQuestion.id];
-        return next;
-      });
-    }
-  };
-
-  const handleBack = () => {
-    if (currentIndex > 0) {
-      const prevIndex = currentIndex - 1;
-      setCurrentIndex(prevIndex);
-      setAudioPath(answers[data[prevIndex].id] || null);
-    } else {
-      navigation.goBack();
-    }
-  };
-
-  const handleNext = () => {
-    if (!data || data.length === 0) return;
-    if (!audioPath) {
-      Alert.alert('Info', 'Please record your answer first');
-      return;
-    }
-
-    handleSubmitAnswers([
-      {
-        questionId: currentQuestion.id,
-        answer: audioPath,
-      },
-    ]);
-  };
-
-  const getQuestionText = (item) => {
-    if (!item) return strings.bhagwanQuestions.noQuestions.defaultMessage;
-    if (item.id === 'mock-1') return strings.bhagwanQuestions.mockQuestion1.defaultMessage;
-    if (item.id === 'mock-2') return strings.bhagwanQuestions.mockQuestion2.defaultMessage;
-    if (item.id === 'mock-3') return strings.bhagwanQuestions.mockQuestion3.defaultMessage;
-    return item.question;
-  };
+  const currentQuestion = data?.data;
+  const answerText = Array.isArray(currentQuestion?.answer)
+    ? [
+        currentQuestion.answer.slice(0, Math.ceil(currentQuestion.answer.length / 2)).join(' '),
+        currentQuestion.answer.slice(Math.ceil(currentQuestion.answer.length / 2)).join(' '),
+      ]
+        .filter(Boolean)
+        .join('\n')
+    : currentQuestion?.answer || '';
 
   return (
     <View style={styles.root}>
       <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
-      {/* ── Full-screen Krishna background ── */}
+      {/* ── Full-screen background ── */}
       <Image
-        source={IMAGES.BhagwanQuestionsBg}
+        source={IMAGES.BhagwanNewBg}
         style={styles.bgImage}
         resizeMode="cover"
       />
@@ -239,150 +195,74 @@ function BhagwanQuestions({
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={0}
       >
-        {/* Cloud bubble — uses the actual cloud image */}
-        <View style={styles.cloudOuter}>
-          <ImageBackground
-            source={IMAGES.CloudContainer}
-            style={styles.cloudImgBg}
-            resizeMode="contain"
-          >
-            <View style={styles.cloudImgContent}>
-              {/* Question text overlaid in the center of the cloud */}
-              <CustomText style={styles.questionText}>
-                {getQuestionText(currentQuestion)}
-              </CustomText>
-            </View>
-          </ImageBackground>
-        </View>
+
 
         {/* ── Dark bottom panel ── */}
         <View style={[styles.bottomPanel, { paddingBottom: insets.bottom + 20 }]}>
-          {/* Counter */}
-          {data && data.length > 0 && (
-            <CustomText style={styles.counter}>
-              {strings.bhagwanQuestions.questionCounter.defaultMessage
-                .replace('{currentIndex}', currentIndex + 1)
-                .replace('{total}', data.length)}
-            </CustomText>
-          )}
 
+          {/* Question text */}
+          <CustomText style={styles.questionTextPanel}>
+            {getQuestionText(currentQuestion)}
+          </CustomText>
+          <View style={styles.questionDivider} />
 
-          {/* Answer recording interface */}
-          {isRecording ? (
-            <View style={styles.recordingContainer}>
-              <TouchableOpacity
-                style={[styles.micButton, styles.micButtonActive]}
-                onPress={handleStopRecording}
-                activeOpacity={0.8}
-              >
-                <IMAGES.PauseIcon height={28} width={28} />
-              </TouchableOpacity>
-              <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                <Lottie
-                  source={IMAGES.PlayerLottie}
-                  autoPlay
-                  loop
-                  style={{ width: 80, height: 30 }}
-                />
-                <CustomText style={[styles.recordingStatusText, { marginLeft: 4 }]}>
-                  Recording...
-                </CustomText>
-              </View>
-            </View>
-          ) : (
-            <View style={styles.recordingContainer}>
-              <TouchableOpacity
-                style={styles.micButton}
-                onPress={startRecording}
-                activeOpacity={0.8}
-              >
-                <IMAGES.MicIcon height={30} width={30} />
-              </TouchableOpacity>
-              <CustomText style={styles.recordingStatusText}>
-                {isProcessing
-                  ? 'Processing audio...'
-                  : audioPath
-                  ? 'Answer Recorded Successfully'
-                  : 'Tap microphone to record answer'}
+          {showAnswer && (
+            <View style={styles.validatedAnswerContainer}>
+              <CustomText style={styles.validatedAnswerLabel}>
+                {strings.bhagwanQuestions.expectedAnswer.defaultMessage}
               </CustomText>
-              {!!audioPath && (
-                <TouchableOpacity onPress={handleClearAudio} style={styles.clearBtn}>
-                  <CustomText style={styles.clearBtnTxt}>🗑️</CustomText>
-                </TouchableOpacity>
-              )}
+              <CustomText
+                style={styles.validatedAnswerText}
+                numberOfLines={2}
+                ellipsizeMode="tail"
+              >
+                {answerText || strings.bhagwanQuestions.noExpectedAnswer.defaultMessage}
+              </CustomText>
             </View>
           )}
 
-          {/* Navigation row: Prev ←  →  Submit/Next */}
+          <TouchableOpacity
+            style={styles.validateBtn}
+            onPress={handleShowAnswer}
+            activeOpacity={0.85}
+          >
+            <CustomText style={styles.submitTxt}>
+              {strings.bhagwanQuestions.validateBtn.defaultMessage}
+            </CustomText>
+          </TouchableOpacity>
+
           <View style={styles.navRow}>
-            {/* Prev button — always visible, grayed if on first question */}
+            <TouchableOpacity
+              style={styles.navBtn}
+              onPress={handleBack}
+              activeOpacity={0.8}
+            >
+              <IMAGES.WhiteArrowIcon height={18} width={18} />
+              <CustomText style={styles.navBtnTxt}>
+                {strings.bhagwanQuestions.prevBtn.defaultMessage}
+              </CustomText>
+            </TouchableOpacity>
+
             <CopilotStep
-              text={strings.Copilot.bhagwanPrevBtn.defaultMessage}
-              order={2}
-              name="prevBtn"
+              text={strings.Copilot.bhagwanSubmitBtn.defaultMessage}
+              order={3}
+              name="submitBtn"
             >
               <CopilotTouchableOpacity
-                style={[styles.navBtn, !hasPrev && styles.navBtnDisabled]}
-                onPress={handleBack}
-                disabled={!hasPrev}
-                activeOpacity={0.8}
+                style={styles.submitBtn}
+                onPress={loadNextQuestion}
+                activeOpacity={0.85}
               >
-                <CustomText style={styles.navBtnTxt}>
-                  {strings.bhagwanQuestions.prevBtn.defaultMessage}
+                <CustomText style={styles.submitTxt}>
+                  {strings.bhagwanQuestions.nextBtn.defaultMessage}
                 </CustomText>
+                <IMAGES.WhiteArrowIcon
+                  height={18}
+                  width={18}
+                  style={{ transform: [{ rotate: '180deg' }] }}
+                />
               </CopilotTouchableOpacity>
             </CopilotStep>
-
-            {/* Submit / Next button */}
-            {isLast ? (
-              <CopilotStep
-                text={strings.Copilot.bhagwanSubmitBtn.defaultMessage}
-                order={3}
-                name="submitBtn"
-              >
-                <CopilotTouchableOpacity
-                  style={[styles.submitBtn, (!hasAnswer || submitting || isProcessing) && styles.navBtnDisabled]}
-                  onPress={handleNext}
-                  disabled={!hasAnswer || submitting || isProcessing}
-                  activeOpacity={0.85}
-                >
-                  {submitting ? (
-                    <ActivityIndicator color="#fff" />
-                  ) : (
-                    <>
-                      <CustomText style={styles.submitTxt}>
-                        {strings.bhagwanQuestions.submitBtn.defaultMessage}
-                      </CustomText>
-                      <CustomText style={styles.arrowTxt}> →</CustomText>
-                    </>
-                  )}
-                </CopilotTouchableOpacity>
-              </CopilotStep>
-            ) : (
-              <CopilotStep
-                text={strings.Copilot.bhagwanSubmitBtn.defaultMessage}
-                order={3}
-                name="submitBtn"
-              >
-                <CopilotTouchableOpacity
-                  style={[styles.submitBtn, (!hasAnswer || submitting || isProcessing) && styles.navBtnDisabled]}
-                  onPress={handleNext}
-                  disabled={!hasAnswer || submitting || isProcessing}
-                  activeOpacity={0.85}
-                >
-                  {submitting ? (
-                    <ActivityIndicator color="#fff" />
-                  ) : (
-                    <>
-                      <CustomText style={styles.submitTxt}>
-                        {strings.bhagwanQuestions.nextBtn.defaultMessage}
-                      </CustomText>
-                      <CustomText style={styles.arrowTxt}> →</CustomText>
-                    </>
-                  )}
-                </CopilotTouchableOpacity>
-              </CopilotStep>
-            )}
           </View>
         </View>
       </KeyboardAvoidingView>
@@ -405,8 +285,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleGetQuestions: () => dispatch(getQuestions()),
-    handleSubmitAnswers: (payload) => dispatch(submitAnswers(payload)),
+    handleGetQuestions: (accessToken) => dispatch(getQuestions(accessToken)),
     handleResetSubmit: () => dispatch(resetSubmit()),
   };
 }
@@ -415,14 +294,13 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const MemoizedBhagwanQuestions = React.memo(BhagwanQuestions);
 
 function BhagwanQuestionsWrapper(props) {
-  const currentLanguage = props.appLanguage;
   const labels = {
     previous: strings.Copilot.previous.defaultMessage,
     next: strings.Copilot.next.defaultMessage,
     skip: strings.Copilot.skip.defaultMessage,
     finish: strings.Copilot.finish.defaultMessage,
   };
-  global.copilotSupportedOrientations = ['portrait'];
+  globalThis.copilotSupportedOrientations = ['portrait'];
   return (
     <CopilotProvider
       verticalOffset={0}

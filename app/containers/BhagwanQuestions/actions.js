@@ -8,9 +8,10 @@ import {
   RESET_SUBMIT,
 } from './constants';
 
-export function getQuestions() {
+export function getQuestions(accessToken) {
   return {
     type: GET_QUESTIONS,
+    accessToken,
   };
 }
 
@@ -28,10 +29,11 @@ export function getQuestionsFail(error) {
   };
 }
 
-export function submitAnswers(payload) {
+export function submitAnswers(payload, accessToken) {
   return {
     type: SUBMIT_ANSWERS,
     payload,
+    accessToken,
   };
 }
 

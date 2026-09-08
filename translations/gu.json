@@ -876,6 +876,14 @@
       "id": "app.container.bhagwanQuestions.placeholder",
       "defaultMessage": "તમારો જવાબ અહીં લખો..."
     },
+    "chapterShlokeQuestion": {
+      "id": "app.container.bhagwanQuestions.chapterShlokeQuestion",
+      "defaultMessage": "પ્રકરણ {chapter} ના શ્લોક {shloke} નો અર્થ શું છે?"
+    },
+    "validateBtn": {
+      "id": "app.container.bhagwanQuestions.validateBtn",
+      "defaultMessage": "જવાબ બતાવો"
+    },
     "successTitle": {
       "id": "app.container.bhagwanQuestions.successTitle",
       "defaultMessage": "🙏 આભાર"

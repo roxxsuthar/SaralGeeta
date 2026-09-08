@@ -876,6 +876,14 @@
       "id": "app.container.bhagwanQuestions.placeholder",
       "defaultMessage": "আপনার উত্তর এখানে লিখুন..."
     },
+    "chapterShlokeQuestion": {
+      "id": "app.container.bhagwanQuestions.chapterShlokeQuestion",
+      "defaultMessage": "অধ্যায় {chapter}-এর শ্লোক {shloke} কী?"
+    },
+    "validateBtn": {
+      "id": "app.container.bhagwanQuestions.validateBtn",
+      "defaultMessage": "উত্তর দেখান"
+    },
     "successTitle": {
       "id": "app.container.bhagwanQuestions.successTitle",
       "defaultMessage": "🙏 ধন্যবাদ"

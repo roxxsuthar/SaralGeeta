@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
     height: H,
   },
 
-  /* Dark gradient overlay sitting on the lower half */
+  /* Dark gradient overlay — taller now that cloud is removed */
   overlay: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    height: H * 0.52,
+    height: H * 0.45,
     backgroundColor: 'transparent',
   },
 
@@ -50,55 +50,44 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
 
-  /* ─── Cloud shape (ImageBackground) ──────────────────── */
-  cloudOuter: {
-    width: W * 0.9,
-    alignSelf: 'center',
-    marginBottom: hp(8),
-    zIndex: 5,
-  },
-  cloudImgBg: {
+  /* ─── Question text inside bottom panel ─────────────── */
+  questionTextPanel: {
     width: '100%',
-    aspectRatio: 1.383, // merged PNG: 956/691
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    fontSize: hp(15),
+    color: '#ffffff',
+    fontFamily: FONTS.SEMIBOLD,
+    lineHeight: hp(22),
+    marginBottom: hp(10),
   },
-  cloudImgContent: {
-    width: '75%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    // increased marginTop to create space from the badge
-    marginTop: (W * 0.9 / 1.383) * 0.48,
-    // explicitly use height so justifyContent center works effectively
-    height: (W * 0.9 / 1.383) * 0.32,
-    overflow: 'hidden',
-  },
-  questionText: {
-    fontSize: hp(14),
-    color: '#1a2b5e',
-    textAlign: 'center',
-    lineHeight: hp(21),
-    fontFamily: FONTS.POPPINS_MEDIUM,
-    letterSpacing: 0.2,
+  questionDivider: {
+    width: '100%',
+    height: 1,
+    backgroundColor: 'rgba(201,168,76,0.4)',
+    marginBottom: hp(12),
   },
 
   /* ─── Bottom dark panel ──────────────────────────────── */
   bottomPanel: {
-    backgroundColor: '#102046',
-    paddingTop: hp(28),
+    backgroundColor: '#0d1b3e',
+    paddingTop: hp(20),
     paddingHorizontal: wp(22),
     paddingBottom: hp(26),
     alignItems: 'center',
-    borderTopLeftRadius: 0,
-    borderTopRightRadius: 0,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.35,
+    shadowRadius: 12,
+    elevation: 12,
   },
 
-  /* Counter pill */
+  /* Counter */
   counter: {
     alignSelf: 'flex-start',
-    color: 'rgba(255,255,255,0.45)',
+    color: 'rgba(255,255,255,0.5)',
     fontSize: hp(12),
-    fontFamily: FONTS.POPPINS_REGULAR,
+    fontFamily: FONTS.REGULAR,
     marginBottom: hp(10),
   },
 
@@ -133,7 +122,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: hp(14),
     color: '#fff',
-    fontFamily: FONTS.POPPINS_REGULAR,
+    fontFamily: FONTS.REGULAR,
     marginLeft: wp(12),
   },
   clearBtn: {
@@ -143,35 +132,81 @@ const styles = StyleSheet.create({
     fontSize: wp(18),
   },
 
+  /* Answer input */
+  answerInput: {
+    width: '100%',
+    minHeight: hp(90),
+    color: '#fff',
+    fontSize: hp(14),
+    fontFamily: FONTS.REGULAR,
+    backgroundColor: 'rgba(255,255,255,0.07)',
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.15)',
+    paddingHorizontal: wp(16),
+    paddingVertical: hp(12),
+    marginBottom: hp(12),
+  },
+  validateBtn: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    backgroundColor: '#c9a84c',
+    borderRadius: 50,
+    paddingVertical: hp(14),
+    marginBottom: hp(12),
+    shadowColor: '#c9a84c',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.45,
+    shadowRadius: 10,
+    elevation: 10,
+  },
+  validatedAnswerContainer: {
+    width: '100%',
+    backgroundColor: 'rgba(26,46,88,0.9)',
+    borderRadius: 12,
+    paddingHorizontal: wp(14),
+    paddingVertical: hp(10),
+    marginBottom: hp(12),
+    overflow: 'hidden',
+  },
+  validatedAnswerLabel: {
+    color: '#c9a84c',
+    fontSize: hp(11),
+    fontFamily: FONTS.SEMIBOLD,
+    marginBottom: hp(2),
+  },
+  validatedAnswerText: {
+    color: '#fff',
+    fontSize: hp(13),
+    lineHeight: hp(20),
+    fontFamily: FONTS.REGULAR,
+    maxHeight: hp(40),   // exactly 2 lines (2 × lineHeight 20)
+    overflow: 'hidden',
+  },
+
   /* Submit / Next button */
   submitBtn: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#1a3360',
-    borderRadius: 30,
+    borderRadius: 50,
     borderWidth: 1.5,
     borderColor: '#c9a84c',
     paddingVertical: hp(14),
-    paddingHorizontal: wp(50),
     shadowColor: '#c9a84c',
     shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.22,
+    shadowOpacity: 0.25,
     shadowRadius: 8,
     elevation: 8,
   },
   submitTxt: {
     color: '#fff',
-    fontSize: hp(18),
-    fontFamily: FONTS.POPPINS_SEMI_BOLD,
-    marginRight: wp(10),
+    fontSize: hp(16),
+    fontFamily: FONTS.SEMIBOLD,
   },
-  arrowTxt: {
-    color: '#fff',
-    fontSize: hp(18),
-    fontFamily: FONTS.POPPINS_MEDIUM,
-  },
-
   /* Loading */
   loadingContainer: {
     flex: 1,
@@ -187,17 +222,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     marginTop: hp(4),
+    gap: wp(12),
   },
   navBtn: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255,255,255,0.12)',
-    borderRadius: 30,
+    backgroundColor: 'rgba(255,255,255,0.08)',
+    borderRadius: 50,
     borderWidth: 1.2,
-    borderColor: 'rgba(201,168,76,0.45)',
-    paddingVertical: hp(13),
-    paddingHorizontal: wp(22),
+    borderColor: 'rgba(201,168,76,0.4)',
+    paddingVertical: hp(14),
   },
   navBtnDisabled: {
     opacity: 0.3,
@@ -205,7 +241,7 @@ const styles = StyleSheet.create({
   navBtnTxt: {
     color: '#fff',
     fontSize: hp(16),
-    fontFamily: FONTS.POPPINS_MEDIUM,
+    fontFamily: FONTS.MEDIUM,
   },
 });
 

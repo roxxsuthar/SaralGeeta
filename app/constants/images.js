@@ -62,6 +62,7 @@ const MainScreenBackground = require('../assets/images/main_screen_background.pn
 const PlayerLottie = require('../assets/images/playerLottie.json');
 const TranslationAnimation = require('../assets/images/translationAnimation.json');
 const BhagwanQuestionsBg = require('../assets/images/bhagwan_questions_bg.png');
+const BhagwanNewBg = require('../assets/images/bhagwan_new_bg.jpg');
 const CloudContainer = require('../assets/images/cloud_container.png');
 const CloudQuestionMark = require('../assets/images/cloud_question_mark.png');
 
@@ -77,6 +78,7 @@ const IMAGES = {
   GeetLearn,
   KrishnaImage,
   BhagwanQuestionsBg,
+  BhagwanNewBg,
   CloudContainer,
   CloudQuestionMark,
   CircleCheck,
