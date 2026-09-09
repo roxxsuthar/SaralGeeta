@@ -1,1 +1,2 @@
 - Prefers pixel-accurate visual alignment in UI, especially ensuring icons are optically centered with adjacent text rather than relying only on nominal flex or line-height centering. Confidence: 0.86
+- Prefers white icons rather than black icons for this button UI, favoring strong contrast and a consistent light-on-dark appearance. Confidence: 0.8

@@ -884,6 +884,10 @@
       "id": "app.container.bhagwanQuestions.validateBtn",
       "defaultMessage": "Show answer"
     },
+    "hideAnswer": {
+      "id": "app.container.bhagwanQuestions.hideAnswer",
+      "defaultMessage": "Hide answer"
+    },
     "expectedAnswer": {
       "id": "app.container.bhagwanQuestions.expectedAnswer",
       "defaultMessage": "Answer from Bhagwan"

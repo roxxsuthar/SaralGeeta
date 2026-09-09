@@ -874,6 +874,10 @@
       "id": "app.container.bhagwanQuestions.validateBtn",
       "defaultMessage": "उत्तर दिखाएँ"
     },
+    "hideAnswer": {
+      "id": "app.container.bhagwanQuestions.hideAnswer",
+      "defaultMessage": "उत्तर छिपाएँ"
+    },
     "expectedAnswer": {
       "id": "app.container.bhagwanQuestions.expectedAnswer",
       "defaultMessage": "भगवान का उत्तर"

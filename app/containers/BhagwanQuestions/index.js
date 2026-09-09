@@ -123,7 +123,7 @@ function BhagwanQuestions({
 
   const handleBack = () => navigation.goBack();
 
-  const handleShowAnswer = () => setShowAnswer(true);
+  const handleToggleAnswer = () => setShowAnswer((visible) => !visible);
 
   const getQuestionText = (item) => {
     if (!item?.question) {
@@ -223,11 +223,13 @@ function BhagwanQuestions({
 
           <TouchableOpacity
             style={styles.validateBtn}
-            onPress={handleShowAnswer}
+            onPress={handleToggleAnswer}
             activeOpacity={0.85}
           >
             <CustomText style={styles.submitTxt}>
-              {strings.bhagwanQuestions.validateBtn.defaultMessage}
+              {showAnswer
+                ? strings.bhagwanQuestions.hideAnswer.defaultMessage
+                : strings.bhagwanQuestions.validateBtn.defaultMessage}
             </CustomText>
           </TouchableOpacity>
 

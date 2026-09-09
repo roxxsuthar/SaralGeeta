@@ -884,6 +884,10 @@
       "id": "app.container.bhagwanQuestions.validateBtn",
       "defaultMessage": "উত্তর দেখান"
     },
+    "hideAnswer": {
+      "id": "app.container.bhagwanQuestions.hideAnswer",
+      "defaultMessage": "উত্তর লুকান"
+    },
     "successTitle": {
       "id": "app.container.bhagwanQuestions.successTitle",
       "defaultMessage": "🙏 ধন্যবাদ"

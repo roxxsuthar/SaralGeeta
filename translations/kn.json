@@ -884,6 +884,10 @@
       "id": "app.container.bhagwanQuestions.validateBtn",
       "defaultMessage": "ಉತ್ತರ ತೋರಿಸಿ"
     },
+    "hideAnswer": {
+      "id": "app.container.bhagwanQuestions.hideAnswer",
+      "defaultMessage": "ಉತ್ತರವನ್ನು ಮರೆಮಾಡಿ"
+    },
     "successTitle": {
       "id": "app.container.bhagwanQuestions.successTitle",
       "defaultMessage": "🙏 ಧನ್ಯವಾದಗಳು"
