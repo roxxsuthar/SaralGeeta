@@ -172,13 +172,13 @@ const styles = StyleSheet.create({
   },
   validatedAnswerLabel: {
     color: '#c9a84c',
-    fontSize: hp(11),
+    fontSize: hp(13),
     fontFamily: FONTS.SEMIBOLD,
     marginBottom: hp(2),
   },
   validatedAnswerText: {
     color: '#fff',
-    fontSize: hp(13),
+    fontSize: hp(15),
     lineHeight: hp(20),
     fontFamily: FONTS.REGULAR,
     maxHeight: hp(40),   // exactly 2 lines (2 × lineHeight 20)

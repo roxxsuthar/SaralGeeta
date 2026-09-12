@@ -868,7 +868,7 @@
     },
     "chapterShlokeQuestion": {
       "id": "app.container.bhagwanQuestions.chapterShlokeQuestion",
-      "defaultMessage": "अध्याय {chapter} के श्लोक {shloke} का अर्थ क्या है?"
+      "defaultMessage": "अध्याय {chapter} का श्लोक {shloke} क्या है?"
     },
     "validateBtn": {
       "id": "app.container.bhagwanQuestions.validateBtn",
