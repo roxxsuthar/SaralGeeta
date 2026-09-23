@@ -7,3 +7,5 @@
 - Prefers API debugging support that prints each outgoing request as an equivalent cURL command, including method, URL, query parameters, and headers, while avoiding authorization-token logging in production. Confidence: 0.86
 - Prefers interactive button guides/tutorials to appear every time the app or relevant screen is opened, rather than being shown only once or persisted as already seen. Confidence: 0.96
 - Requires all user-visible screen copy to respect the selected app language, including dynamic labels, placeholders, empty-state instructions, dropdown option text, and tutorial guidance; avoid hardcoded English. Confidence: 0.98
+- Prefers the app’s primary bottom navigation/action bar to remain consistently available on related screens, including the Ideal screen, rather than being limited to Home. Confidence: 0.9
+- Prefers navigation-stack issues to be verified against the actual navigator hierarchy and registered routes before changing navigation logic, rather than relying on assumptions about the active stack. Confidence: 0.86

@@ -1,5 +1,5 @@
-import { StyleSheet, Platform } from 'react-native';
-import { hp, wp } from '../../utils/responsive';
+import { StyleSheet } from 'react-native';
+import { hp } from '../../utils/responsive';
 import { COLORS } from '../../constants';
 
 const styles = StyleSheet.create({
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     width: hp(24),
   },
   contentContainerStyle: {
-    paddingBottom: hp(24),
+    paddingBottom: hp(100),
   },
   cardContainer: {
     flex: 1,

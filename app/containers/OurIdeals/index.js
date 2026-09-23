@@ -29,7 +29,8 @@ import { Navigation } from '../../constants/constants';
 import { getIdealsData, saveIdealData } from './actions';
 import { selectIdeal } from '../App/actions';
 import LoadingScreen from '../../components/LoadingScreen';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import HomeBottomBar from '../../components/HomeBottomBar';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 function OurIdeals({
   navigation,
@@ -43,6 +44,7 @@ function OurIdeals({
 }) {
   const { OurIdeals: OurIdealsMessage } = strings;
   const { currentLanguage } = language;
+  const insets = useSafeAreaInsets();
   const [selectCard, setSelectCard] = useState(null);
 
   useEffect(() => {
@@ -143,7 +145,23 @@ function OurIdeals({
     [],
   );
 
+  const navigateToDrawerScreen = useCallback(
+    (screen) => {
+      const parent = navigation.getParent?.();
+      const parentRoutes = parent?.getState?.()?.routes || [];
 
+      if (parentRoutes.some((route) => route.name === screen)) {
+        parent.navigate(screen, { fromHome: true });
+        return;
+      }
+
+      navigation.navigate('Drawer', {
+        screen,
+        params: { fromHome: true },
+      });
+    },
+    [navigation],
+  );
 
   return (
     <ImageBackground
@@ -200,10 +218,16 @@ function OurIdeals({
                 ItemSeparatorComponent={itemSeparatorComponent}
                 showsVerticalScrollIndicator={false}
                 estimatedItemSize={100}
+                contentContainerStyle={styles.contentContainerStyle}
               />
             </View>
           )}
         </View>
+        <HomeBottomBar
+          bottomInset={insets.bottom}
+          showGuide={false}
+          onNavigateToDrawerScreen={navigateToDrawerScreen}
+        />
       </SafeAreaView>
     </ImageBackground>
   );

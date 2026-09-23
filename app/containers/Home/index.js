@@ -8,14 +8,10 @@ import { connect } from 'react-redux';
 import {
   View,
   StatusBar,
-  SectionList,
   TouchableOpacity,
   ImageBackground,
   Platform,
-  PermissionsAndroid,
   useWindowDimensions,
-  Linking,
-  Share,
   NativeModules,
   ActivityIndicator,
   TextInput,
@@ -31,7 +27,9 @@ import Animated, {
 import { FlashList } from '@shopify/flash-list';
 import Orientation from 'react-native-orientation-locker';
 const { OrientationModule } = NativeModules;
-import isEmpty from 'lodash/isEmpty';
+
+const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
+
 import get from 'lodash/get';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
@@ -44,12 +42,11 @@ import makeSelectHome from './selectors';
 import styles from './styles';
 import CustomText from '../../components/CustomText';
 import LoadingScreen from '../../components/LoadingScreen';
+import HomeBottomBar from '../../components/HomeBottomBar';
 import { setFontFamily } from '../../utils/device';
 import { FONTS, IMAGES, COLORS } from '../../constants';
 import strings from '../../../i18n';
 import { CopilotProvider, CopilotStep, walkthroughable, useCopilot } from 'react-native-copilot';
-
-const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
 import { makeSelectAppLanguage } from '../App/selectors';
 import { getChapters, getRecentWatched } from './actions';
 import { Navigation } from '../../constants/constants';
@@ -68,9 +65,6 @@ function Home({
   const [searchText, setSearchText] = useState('');
   const [filteredChapters, setFilteredChapters] = useState([]);
   const [isListening, setIsListening] = useState(false);
-  const [isSocialExpanded, setIsSocialExpanded] = useState(false);
-  const [isMenuExpanded, setIsMenuExpanded] = useState(false);
-  
 
   const { start } = useCopilot();
   const startRef = useRef(start);
@@ -120,7 +114,7 @@ function Home({
     }
   }, [isListening]);
 
-  const { Home: HomeMessage, HomeBottomBar } = strings;
+  const { Home: HomeMessage } = strings;
   const { currentLanguage } = language;
   const recent = get(home, 'recent');
 
@@ -170,8 +164,6 @@ function Home({
 
       return () => {
         // Only clear states when leaving the screen
-        setIsSocialExpanded(false);
-        setIsMenuExpanded(false);
         setShowSearch(false);
         setSearchText('');
       };
@@ -543,128 +535,6 @@ function Home({
     return null;
   }, [renderItemBasedOnSection, HomeMessage]);
 
-  const toggleSocialMenu = () => {
-    setIsSocialExpanded(!isSocialExpanded);
-    if (isMenuExpanded) setIsMenuExpanded(false);
-  };
-
-  const toggleAppMenu = () => {
-    setIsMenuExpanded(!isMenuExpanded);
-    if (isSocialExpanded) setIsSocialExpanded(false);
-  };
-
-  const openLink = async (url) => {
-    try {
-      await Linking.openURL(url);
-    } catch (e) {
-      console.log('Error opening link:', e);
-    }
-  };
-
-  const shareApp = async () => {
-    try {
-      const smartLink = 'https://app.saralgita.in/share';
-
-      await Share.share({
-        message: `${HomeMessage.shareMessage.defaultMessage} \n${smartLink}`,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  const renderSocialMenu = () => {
-    if (!isSocialExpanded) return null;
-    return (
-      <View style={styles.expandedMenuContainer}>
-        <View style={styles.expandedMenuOverlay}>
-          <TouchableOpacity style={styles.menuItem} onPress={() => openLink('https://www.facebook.com/people/Saral-Gita/61577334227489/')}>
-            <View style={styles.menuIconWrapper}>
-              <IMAGES.FacebookIcon width={30} height={30} />
-            </View>
-            <CustomText style={styles.menuItemText}>{HomeBottomBar.facebook.defaultMessage}</CustomText>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem} onPress={() => openLink('https://www.instagram.com/saralgitaapp')}>
-            <View style={styles.menuIconWrapper}>
-              <IMAGES.InstagramIcon width={30} height={30} />
-            </View>
-            <CustomText style={styles.menuItemText}>{HomeBottomBar.instagram.defaultMessage}</CustomText>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem} onPress={() => openLink('https://twitter.com/')}>
-            <View style={styles.menuIconWrapper}>
-              <IMAGES.TwitterX width={30} height={30} />
-            </View>
-            <CustomText style={styles.menuItemText}>{HomeBottomBar.twitter.defaultMessage}</CustomText>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  };
-
-  const renderGridMenu = () => {
-    if (!isMenuExpanded) return null;
-    return (
-      <View style={styles.expandedMenuContainer}>
-        <View style={styles.gridMenuOverlay}>
-          <View style={styles.gridRow}>
-            <TouchableOpacity style={styles.gridMenuItem} onPress={() => navigation.navigate(Navigation.FAQ, { fromHome: true })}>
-              <IMAGES.FaqNew width={24} height={24} />
-              <CustomText style={styles.menuItemText}>{HomeBottomBar.faq.defaultMessage}</CustomText>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.gridMenuItem} onPress={() => navigation.navigate(Navigation.Language, { fromHome: true })}>
-              <IMAGES.LanguageNew width={24} height={24} />
-              <CustomText style={styles.menuItemText}>{HomeBottomBar.language.defaultMessage}</CustomText>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.gridMenuItem}
-              onPress={() =>
-                openLink(
-                  Platform.OS === 'android'
-                    ? 'https://play.google.com/store/apps/details?id=com.saralgita'
-                    : 'https://apps.apple.com/kz/app/saral-gita/id6754391932'
-                )
-              }
-            >
-              <IMAGES.UpdateApp width={24} height={24} />
-              <CustomText style={styles.menuItemText}>{HomeBottomBar.update.defaultMessage}</CustomText>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.gridMenuItem} onPress={shareApp}>
-              <IMAGES.ShareApp width={24} height={24} />
-              <CustomText style={styles.menuItemText}>{HomeBottomBar.shareApp.defaultMessage}</CustomText>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.gridRow}>
-            <TouchableOpacity
-              style={styles.gridMenuItem}
-              onPress={() =>
-                openLink(
-                  Platform.OS === 'android'
-                    ? 'https://play.google.com/store/apps/details?id=com.saralgita'
-                    : 'https://apps.apple.com/kz/app/saral-gita/id6754391932'
-                )
-              }
-            >
-              <IMAGES.StarOutline width={24} height={24} />
-              <CustomText style={styles.menuItemText}>{HomeBottomBar.rating.defaultMessage}</CustomText>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.gridMenuItem} onPress={() => navigation.navigate(Navigation.ContactUs, { fromHome: true })}>
-              <IMAGES.ContactPhone width={24} height={24} />
-              <CustomText style={styles.menuItemText}>{HomeBottomBar.contact.defaultMessage}</CustomText>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.gridMenuItem} onPress={() => navigation.navigate(Navigation.Instructions, { fromHome: true })}>
-              <IMAGES.HelpSquare width={24} height={24} />
-              <CustomText style={styles.menuItemText}>{HomeBottomBar.help.defaultMessage}</CustomText>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.gridMenuItem} onPress={toggleSocialMenu}>
-              <IMAGES.SocialBubbles width={24} height={24} />
-              <CustomText style={styles.menuItemText}>{HomeBottomBar.social.defaultMessage}</CustomText>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-    );
-  };
-
   const ItemSeparator = () => <View style={styles.separator} />;
 
   return (
@@ -801,57 +671,15 @@ function Home({
           )}
         </View>
 
-        {/* Expanded Menus Overlay */}
-        {(isSocialExpanded || isMenuExpanded) && (
-          <TouchableOpacity
-            style={styles.fullScreenOverlay}
-            activeOpacity={1}
-            onPress={() => {
-              setIsSocialExpanded(false);
-              setIsMenuExpanded(false);
-            }}
-          />
-        )}
-        {renderSocialMenu()}
-        {renderGridMenu()}
-
-        {/* Bottom Bar */}
-        <View style={[styles.bottomBarContainer, { bottom: hp(20) + insets.bottom }]}>
-          <TouchableOpacity
-            style={styles.bottomBarIconContainer}
-            onPress={() =>
-              openLink(
-                Platform.OS === 'android'
-                  ? 'https://play.google.com/store/apps/details?id=com.saralgita'
-                  : 'https://apps.apple.com/kz/app/saral-gita/id6754391932'
-              )
-            }
-          >
-            <IMAGES.StarOutline width={26} height={26} />
-          </TouchableOpacity>
-          <View style={styles.bottomBarDivider} />
-          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={() => navigation.navigate(Navigation.ContactUs, { fromHome: true })}>
-            <IMAGES.ContactPhone width={26} height={26} />
-          </TouchableOpacity>
-          <View style={styles.bottomBarDivider} />
-          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={() => navigation.navigate(Navigation.FAQ, { fromHome: true })}>
-            <IMAGES.FaqNew width={26} height={26} />
-          </TouchableOpacity>
-          <View style={styles.bottomBarDivider} />
-          <TouchableOpacity style={styles.bottomBarIconContainer} onPress={toggleSocialMenu}>
-            <IMAGES.SocialBubbles width={26} height={26} />
-          </TouchableOpacity>
-          <View style={styles.bottomBarDivider} />
-          <CopilotStep
-            text={strings.Copilot.homeBottomBar.defaultMessage}
-            order={4}
-            name="bottomBar"
-          >
-            <CopilotTouchableOpacity style={styles.bottomBarIconContainer} onPress={toggleAppMenu}>
-              <IMAGES.AppsGrid width={26} height={26} />
-            </CopilotTouchableOpacity>
-          </CopilotStep>
-        </View>
+        <HomeBottomBar
+          bottomInset={insets.bottom}
+          onNavigateToDrawerScreen={(screen) =>
+            navigation.getParent()?.getParent()?.navigate('Drawer', {
+              screen,
+              params: { fromHome: true },
+            })
+          }
+        />
 
       </SafeAreaView>
     </ImageBackground>
@@ -883,14 +711,13 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const MemoizedHome = React.memo(Home);
 
 function HomeWrapper(props) {
-  const currentLanguage = props.language?.currentLanguage;
   const labels = {
     previous: strings.Copilot.previous.defaultMessage,
     next: strings.Copilot.next.defaultMessage,
     skip: strings.Copilot.skip.defaultMessage,
     finish: strings.Copilot.finish.defaultMessage,
   };
-  global.copilotSupportedOrientations = ['portrait'];
+  globalThis.copilotSupportedOrientations = ['portrait'];
   return (
     <CopilotProvider
       verticalOffset={0}
