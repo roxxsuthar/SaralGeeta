@@ -934,6 +934,18 @@
       "id": "app.container.bhagwanQuestions.mockQuestion3",
       "defaultMessage": "अपने मन को शांत करने और आंतरिक शांति पाने के लिए आप क्या कदम उठा रहे हैं?"
     },
+    "chapterLabel": {
+      "id": "app.container.bhagwanQuestions.chapterLabel",
+      "defaultMessage": "अध्याय"
+    },
+    "selectChapter": {
+      "id": "app.container.bhagwanQuestions.selectChapter",
+      "defaultMessage": "अध्याय चुनें"
+    },
+    "chapterInstruction": {
+      "id": "app.container.bhagwanQuestions.chapterInstruction",
+      "defaultMessage": "जारी रखने के लिए अध्याय चुनें।"
+    },
     "errorMinAnswer": {
       "id": "app.container.bhagwanQuestions.errorMinAnswer",
       "defaultMessage": "कृपया कम से कम एक प्रश्न का उत्तर दें।"

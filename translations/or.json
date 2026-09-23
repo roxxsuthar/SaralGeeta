@@ -936,6 +936,18 @@
       "id": "app.container.bhagwanQuestions.mockQuestion3",
       "defaultMessage": "ତୁମର ମନକୁ ଶାନ୍ତ କରିବା ଏବଂ ଭିତରର ଶାନ୍ତି ପାଇବା ପାଇଁ ଆପଣ କେଉଁ ପଦକ୍ଷେପ ନେଉଛନ୍ତି?"
     },
+    "chapterLabel": {
+      "id": "app.container.bhagwanQuestions.chapterLabel",
+      "defaultMessage": "ଅଧ୍ୟାୟ"
+    },
+    "selectChapter": {
+      "id": "app.container.bhagwanQuestions.selectChapter",
+      "defaultMessage": "ଅଧ୍ୟାୟ ଚୟନ କରନ୍ତୁ"
+    },
+    "chapterInstruction": {
+      "id": "app.container.bhagwanQuestions.chapterInstruction",
+      "defaultMessage": "ଜାରି ରଖିବାକୁ ଏକ ଅଧ୍ୟାୟ ଚୟନ କରନ୍ତୁ |"
+    },
     "errorMinAnswer": {
       "id": "app.container.bhagwanQuestions.errorMinAnswer",
       "defaultMessage": "ଦୟାକରି ଅତିକମରେ ଗୋଟିଏ ପ୍ରଶ୍ନର ଉତ୍ତର ଦିଅ |"

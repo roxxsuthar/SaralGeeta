@@ -936,6 +936,18 @@
       "id": "app.container.bhagwanQuestions.mockQuestion3",
       "defaultMessage": "ನಿಮ್ಮ ಮನಸ್ಸನ್ನು ಶಾಂತಗೊಳಿಸಲು ಮತ್ತು ಆಂತರಿಕ ಶಾಂತಿಯನ್ನು ಕಂಡುಕೊಳ್ಳಲು ನೀವು ಯಾವ ಕ್ರಮಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತಿರುವಿರಿ?"
     },
+    "chapterLabel": {
+      "id": "app.container.bhagwanQuestions.chapterLabel",
+      "defaultMessage": "ಅಧ್ಯಾಯ"
+    },
+    "selectChapter": {
+      "id": "app.container.bhagwanQuestions.selectChapter",
+      "defaultMessage": "ಅಧ್ಯಾಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    },
+    "chapterInstruction": {
+      "id": "app.container.bhagwanQuestions.chapterInstruction",
+      "defaultMessage": "ಮುಂದುವರಿಯಲು ಅಧ್ಯಾಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
+    },
     "errorMinAnswer": {
       "id": "app.container.bhagwanQuestions.errorMinAnswer",
       "defaultMessage": "ದಯವಿಟ್ಟು ಕನಿಷ್ಠ ಒಂದು ಪ್ರಶ್ನೆಗೆ ಉತ್ತರಿಸಿ."

@@ -24,7 +24,6 @@ import PropTypes from 'prop-types';
 
 import makeSelectShloks from './selectors';
 import strings from '../../../i18n';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CopilotProvider, CopilotStep, walkthroughable, useCopilot } from 'react-native-copilot';
 
 const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
@@ -50,43 +49,22 @@ function Shloks({
 }) {
   const { currentLanguage } = language;
 
-  const { start, copilotEvents } = useCopilot();
-  const hasStartedGuide = useRef(false);
+  const { start } = useCopilot();
   const startRef = useRef(start);
-  const copilotEventsRef = useRef(copilotEvents);
 
   startRef.current = start;
-  copilotEventsRef.current = copilotEvents;
 
-  useEffect(() => {
-    const checkTutorial = async () => {
-      if (hasStartedGuide.current) return;
-      if (shloksData?.data && shloksData.data.length > 0) {
-        try {
+  useFocusEffect(
+    useCallback(() => {
+      if (!shloksData?.data?.length) return undefined;
 
-        const hasSeen = await AsyncStorage.getItem('HAS_SEEN_SHLOKS_TUTORIAL');
-          if (!hasSeen) {
-            hasStartedGuide.current = true;
-            AsyncStorage.setItem('HAS_SEEN_SHLOKS_TUTORIAL', 'true').catch(() => {});
-            setTimeout(() => {
-              startRef.current();
-            }, 1500);
-          }
-        } catch (e) {}
-      }
-    };
-    checkTutorial();
-  }, [shloksData]);
+      const guideTimer = setTimeout(() => {
+        startRef.current();
+      }, 1500);
 
-  useEffect(() => {
-    const handleStop = () => {
-      AsyncStorage.setItem('HAS_SEEN_SHLOKS_TUTORIAL', 'true').catch(() => {});
-    };
-    copilotEventsRef.current.on('stop', handleStop);
-    return () => {
-      copilotEventsRef.current.off('stop', handleStop);
-    };
-  }, []);
+      return () => clearTimeout(guideTimer);
+    }, [shloksData]),
+  );
 
   useFocusEffect(
     useCallback(() => {

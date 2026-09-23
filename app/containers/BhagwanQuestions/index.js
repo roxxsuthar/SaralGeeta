@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { CopilotProvider, CopilotStep, walkthroughable, useCopilot } from 'react-native-copilot';
 
 import {
@@ -14,12 +13,13 @@ import {
 } from 'react-native';
 
 const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
+const CopilotView = walkthroughable(View);
 import LinearGradient from 'react-native-linear-gradient';
 import { connect, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import PropTypes from 'prop-types';
 
 import { IMAGES } from '../../constants';
@@ -43,49 +43,26 @@ function BhagwanQuestions({
   const { data, loading, error } = bhagwanQuestions;
   const accessToken = useSelector((state) => state.app?.accessToken);
   const chapterOptions = (home?.data || []).map((chapter) => ({
-    label: `${chapter.name} (Chapter ${chapter.serial})`,
+    label: `${chapter.name} (${strings.bhagwanQuestions.chapterLabel.defaultMessage} ${chapter.serial})`,
     value: chapter.id,
   }));
 
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
-  const { start, copilotEvents } = useCopilot();
-  const hasStartedGuide = useRef(false);
+  const { start } = useCopilot();
   const startRef = useRef(start);
-  const copilotEventsRef = useRef(copilotEvents);
 
   startRef.current = start;
-  copilotEventsRef.current = copilotEvents;
 
-  useEffect(() => {
-    const checkTutorial = async () => {
-      if (hasStartedGuide.current) return;
-      try {
-        const hasSeen = await AsyncStorage.getItem('HAS_SEEN_BHAGWAN_TUTORIAL');
-        if (!hasSeen) {
-          hasStartedGuide.current = true;
-          // Set it immediately so it never triggers again, even if they exit the screen early
-          AsyncStorage.setItem('HAS_SEEN_BHAGWAN_TUTORIAL', 'true').catch(() => {});
-          setTimeout(() => {
-            startRef.current();
-          }, 1500);
-        }
-      } catch (e) {
-        return;
-      }
-    };
-    checkTutorial();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      const guideTimer = setTimeout(() => {
+        startRef.current();
+      }, 1500);
 
-  useEffect(() => {
-    const handleStop = () => {
-      AsyncStorage.setItem('HAS_SEEN_BHAGWAN_TUTORIAL', 'true').catch(() => { });
-    };
-    copilotEventsRef.current.on('stop', handleStop);
-    return () => {
-      copilotEventsRef.current.off('stop', handleStop);
-    };
-  }, []);
+      return () => clearTimeout(guideTimer);
+    }, []),
+  );
 
   useEffect(() => {
     if (appLanguage) {
@@ -216,19 +193,27 @@ function BhagwanQuestions({
         {/* ── Dark bottom panel ── */}
         <View style={[styles.bottomPanel, { paddingBottom: insets.bottom + 20 }]}>
 
-          <View style={styles.chapterSelector}>
-            <CustomText style={styles.chapterSelectorLabel}>Chapter</CustomText>
-            <SelectInput
-              label="Select Chapter"
-              options={chapterOptions}
-              value={selectedProjectId}
-              onSelect={handleChapterSelect}
-            />
-          </View>
+          <CopilotStep
+            text={strings.bhagwanQuestions.chapterInstruction.defaultMessage}
+            order={1}
+            name="chapterSelector"
+          >
+            <CopilotView style={styles.chapterSelector}>
+              <CustomText style={styles.chapterSelectorLabel}>
+                {strings.bhagwanQuestions.chapterLabel.defaultMessage}
+              </CustomText>
+              <SelectInput
+                label={strings.bhagwanQuestions.selectChapter.defaultMessage}
+                options={chapterOptions}
+                value={selectedProjectId}
+                onSelect={handleChapterSelect}
+              />
+            </CopilotView>
+          </CopilotStep>
 
           {!selectedProjectId && (
             <CustomText style={styles.chapterInstruction}>
-              Please select a chapter to continue.
+              {strings.bhagwanQuestions.chapterInstruction.defaultMessage}
             </CustomText>
           )}
 

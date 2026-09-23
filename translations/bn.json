@@ -936,6 +936,18 @@
       "id": "app.container.bhagwanQuestions.mockQuestion3",
       "defaultMessage": "আপনার মনকে শান্ত করতে এবং অভ্যন্তরীণ শান্তি পেতে আপনি কী পদক্ষেপ নিচ্ছেন?"
     },
+    "chapterLabel": {
+      "id": "app.container.bhagwanQuestions.chapterLabel",
+      "defaultMessage": "অধ্যায়"
+    },
+    "selectChapter": {
+      "id": "app.container.bhagwanQuestions.selectChapter",
+      "defaultMessage": "অধ্যায় নির্বাচন করুন"
+    },
+    "chapterInstruction": {
+      "id": "app.container.bhagwanQuestions.chapterInstruction",
+      "defaultMessage": "চালিয়ে যেতে একটি অধ্যায় নির্বাচন করুন।"
+    },
     "errorMinAnswer": {
       "id": "app.container.bhagwanQuestions.errorMinAnswer",
       "defaultMessage": "অন্তত একটি প্রশ্নের উত্তর দয়া করে."

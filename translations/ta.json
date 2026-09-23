@@ -936,6 +936,18 @@
       "id": "app.container.bhagwanQuestions.mockQuestion3",
       "defaultMessage": "உங்கள் மனதை அமைதிப்படுத்தவும், உள் அமைதியைக் காணவும் நீங்கள் என்ன நடவடிக்கைகளை எடுக்கிறீர்கள்?"
     },
+    "chapterLabel": {
+      "id": "app.container.bhagwanQuestions.chapterLabel",
+      "defaultMessage": "அத்தியாயம்"
+    },
+    "selectChapter": {
+      "id": "app.container.bhagwanQuestions.selectChapter",
+      "defaultMessage": "அத்தியாயத்தைத் தேர்ந்தெடுக்கவும்"
+    },
+    "chapterInstruction": {
+      "id": "app.container.bhagwanQuestions.chapterInstruction",
+      "defaultMessage": "தொடர ஒரு அத்தியாயத்தைத் தேர்ந்தெடுக்கவும்."
+    },
     "errorMinAnswer": {
       "id": "app.container.bhagwanQuestions.errorMinAnswer",
       "defaultMessage": "குறைந்தது ஒரு கேள்விக்கு பதிலளிக்கவும்."

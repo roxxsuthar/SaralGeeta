@@ -47,7 +47,6 @@ import LoadingScreen from '../../components/LoadingScreen';
 import { setFontFamily } from '../../utils/device';
 import { FONTS, IMAGES, COLORS } from '../../constants';
 import strings from '../../../i18n';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CopilotProvider, CopilotStep, walkthroughable, useCopilot } from 'react-native-copilot';
 
 const CopilotTouchableOpacity = walkthroughable(TouchableOpacity);
@@ -73,43 +72,22 @@ function Home({
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   
 
-  const { start, copilotEvents } = useCopilot();
-  const hasStartedGuide = useRef(false);
+  const { start } = useCopilot();
   const startRef = useRef(start);
-  const copilotEventsRef = useRef(copilotEvents);
 
   startRef.current = start;
-  copilotEventsRef.current = copilotEvents;
 
-  useEffect(() => {
-    const checkTutorial = async () => {
-      if (hasStartedGuide.current) return;
-      if (filteredChapters && filteredChapters.length > 0) {
-        try {
+  useFocusEffect(
+    useCallback(() => {
+      if (!filteredChapters?.length) return undefined;
 
-        const hasSeen = await AsyncStorage.getItem('HAS_SEEN_HOME_TUTORIAL');
-          if (!hasSeen) {
-            hasStartedGuide.current = true;
-            AsyncStorage.setItem('HAS_SEEN_HOME_TUTORIAL', 'true').catch(() => {});
-            setTimeout(() => {
-              startRef.current();
-            }, 1500);
-          }
-        } catch (e) {}
-      }
-    };
-    checkTutorial();
-  }, [filteredChapters]);
+      const guideTimer = setTimeout(() => {
+        startRef.current();
+      }, 1500);
 
-  useEffect(() => {
-    const handleStop = () => {
-      AsyncStorage.setItem('HAS_SEEN_HOME_TUTORIAL', 'true').catch(() => {});
-    };
-    copilotEventsRef.current.on('stop', handleStop);
-    return () => {
-      copilotEventsRef.current.off('stop', handleStop);
-    };
-  }, []);
+      return () => clearTimeout(guideTimer);
+    }, [filteredChapters]),
+  );
 
   const insets = useSafeAreaInsets();
   const pulseScale = useSharedValue(1);

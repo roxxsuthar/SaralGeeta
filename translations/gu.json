@@ -936,6 +936,18 @@
       "id": "app.container.bhagwanQuestions.mockQuestion3",
       "defaultMessage": "તમારા મનને શાંત કરવા અને આંતરિક શાંતિ મેળવવા માટે તમે કયા પગલાં લઈ રહ્યા છો?"
     },
+    "chapterLabel": {
+      "id": "app.container.bhagwanQuestions.chapterLabel",
+      "defaultMessage": "અધ્યાય"
+    },
+    "selectChapter": {
+      "id": "app.container.bhagwanQuestions.selectChapter",
+      "defaultMessage": "અધ્યાય પસંદ કરો"
+    },
+    "chapterInstruction": {
+      "id": "app.container.bhagwanQuestions.chapterInstruction",
+      "defaultMessage": "આગળ વધવા માટે અધ્યાય પસંદ કરો."
+    },
     "errorMinAnswer": {
       "id": "app.container.bhagwanQuestions.errorMinAnswer",
       "defaultMessage": "કૃપા કરીને ઓછામાં ઓછા એક પ્રશ્નનો જવાબ આપો."

@@ -936,6 +936,18 @@
       "id": "app.container.bhagwanQuestions.mockQuestion3",
       "defaultMessage": "तुमचे मन शांत करण्यासाठी आणि आंतरिक शांती मिळविण्यासाठी तुम्ही कोणती पावले उचलत आहात?"
     },
+    "chapterLabel": {
+      "id": "app.container.bhagwanQuestions.chapterLabel",
+      "defaultMessage": "अध्याय"
+    },
+    "selectChapter": {
+      "id": "app.container.bhagwanQuestions.selectChapter",
+      "defaultMessage": "अध्याय निवडा"
+    },
+    "chapterInstruction": {
+      "id": "app.container.bhagwanQuestions.chapterInstruction",
+      "defaultMessage": "पुढे जाण्यासाठी अध्याय निवडा."
+    },
     "errorMinAnswer": {
       "id": "app.container.bhagwanQuestions.errorMinAnswer",
       "defaultMessage": "कृपया किमान एका प्रश्नाचे उत्तर द्या."

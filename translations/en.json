@@ -944,6 +944,18 @@
       "id": "app.container.bhagwanQuestions.mockQuestion3",
       "defaultMessage": "What steps are you taking to calm your mind and find inner peace?"
     },
+    "chapterLabel": {
+      "id": "app.container.bhagwanQuestions.chapterLabel",
+      "defaultMessage": "Chapter"
+    },
+    "selectChapter": {
+      "id": "app.container.bhagwanQuestions.selectChapter",
+      "defaultMessage": "Select Chapter"
+    },
+    "chapterInstruction": {
+      "id": "app.container.bhagwanQuestions.chapterInstruction",
+      "defaultMessage": "Please select a chapter to continue."
+    },
     "errorMinAnswer": {
       "id": "app.container.bhagwanQuestions.errorMinAnswer",
       "defaultMessage": "Please answer at least one question."
