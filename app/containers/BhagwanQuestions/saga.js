@@ -8,13 +8,14 @@ import {
   getQuestionsFail,
 } from './actions';
 
-export function* getQuestionsHandler({ accessToken }) {
+export function* getQuestionsHandler({ accessToken, project_id }) {
   const url = Helpers.getUrl('/questions/next');
 
   try {
     const response = yield call(request, {
       method: 'GET',
       url,
+      params: { project_id },
       headers: accessToken
         ? { Authorization: `Bearer ${accessToken}` }
         : undefined,

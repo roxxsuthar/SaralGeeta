@@ -24,13 +24,16 @@ import PropTypes from 'prop-types';
 
 import { IMAGES } from '../../constants';
 import CustomText from '../../components/CustomText';
+import SelectInput from '../../components/SelectInput';
 import styles from './styles';
 import makeSelectBhagwanQuestions from './selectors';
+import makeSelectHome from '../Home/selectors';
 import { getQuestions, resetSubmit } from './actions';
 import strings from '../../../i18n';
 
 function BhagwanQuestions({
   bhagwanQuestions,
+  home,
   appLanguage,
   handleGetQuestions,
   handleResetSubmit,
@@ -39,8 +42,13 @@ function BhagwanQuestions({
   const navigation = useNavigation();
   const { data, loading, error } = bhagwanQuestions;
   const accessToken = useSelector((state) => state.app?.accessToken);
+  const chapterOptions = (home?.data || []).map((chapter) => ({
+    label: `${chapter.name} (Chapter ${chapter.serial})`,
+    value: chapter.id,
+  }));
 
   const [showAnswer, setShowAnswer] = useState(false);
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
   const { start, copilotEvents } = useCopilot();
   const hasStartedGuide = useRef(false);
   const startRef = useRef(start);
@@ -86,10 +94,12 @@ function BhagwanQuestions({
   }, [appLanguage]);
 
   useEffect(() => {
+    if (!selectedProjectId) return;
     StatusBar.setHidden(false);
     StatusBar.setBarStyle('light-content');
-    handleGetQuestions(accessToken);
-  }, [handleGetQuestions, accessToken]);
+    handleGetQuestions(accessToken, selectedProjectId);
+    setShowAnswer(false);
+  }, [handleGetQuestions, accessToken, selectedProjectId]);
 
   useEffect(() => {
     if (error) {
@@ -117,8 +127,14 @@ function BhagwanQuestions({
   }, [handleResetSubmit]);
 
   const loadNextQuestion = () => {
+    if (!selectedProjectId) return;
     setShowAnswer(false);
-    handleGetQuestions(accessToken);
+    handleGetQuestions(accessToken, selectedProjectId);
+  };
+
+  const handleChapterSelect = ({ value }) => {
+    setSelectedProjectId(value);
+    setShowAnswer(false);
   };
 
   const handleBack = () => navigation.goBack();
@@ -200,57 +216,78 @@ function BhagwanQuestions({
         {/* ── Dark bottom panel ── */}
         <View style={[styles.bottomPanel, { paddingBottom: insets.bottom + 20 }]}>
 
-          {/* Question text */}
-          <CustomText style={styles.questionTextPanel}>
-            {getQuestionText(currentQuestion)}
-          </CustomText>
-          <View style={styles.questionDivider} />
+          <View style={styles.chapterSelector}>
+            <CustomText style={styles.chapterSelectorLabel}>Chapter</CustomText>
+            <SelectInput
+              label="Select Chapter"
+              options={chapterOptions}
+              value={selectedProjectId}
+              onSelect={handleChapterSelect}
+            />
+          </View>
 
-          {showAnswer && (
-            <View style={styles.validatedAnswerContainer}>
-              <CustomText style={styles.validatedAnswerLabel}>
-                {strings.bhagwanQuestions.expectedAnswer.defaultMessage}
-              </CustomText>
-              <CustomText
-                style={styles.validatedAnswerText}
-                numberOfLines={2}
-                ellipsizeMode="tail"
-              >
-                {answerText || strings.bhagwanQuestions.noExpectedAnswer.defaultMessage}
-              </CustomText>
-            </View>
+          {!selectedProjectId && (
+            <CustomText style={styles.chapterInstruction}>
+              Please select a chapter to continue.
+            </CustomText>
           )}
 
-          <TouchableOpacity
-            style={styles.validateBtn}
-            onPress={handleToggleAnswer}
-            activeOpacity={0.85}
-          >
-            <CustomText style={styles.submitTxt}>
-              {showAnswer
-                ? strings.bhagwanQuestions.hideAnswer.defaultMessage
-                : strings.bhagwanQuestions.validateBtn.defaultMessage}
-            </CustomText>
-          </TouchableOpacity>
-
-          <View style={styles.navRow}>
-            <TouchableOpacity
-              style={styles.navBtn}
-              onPress={handleBack}
-              activeOpacity={0.8}
-            >
-              <IMAGES.WhiteArrowIcon height={18} width={18} />
-              <CustomText style={styles.navBtnTxt}>
-                {strings.bhagwanQuestions.prevBtn.defaultMessage}
+          {selectedProjectId && (
+            <>
+              {/* Question text */}
+              <CustomText style={styles.questionTextPanel}>
+                {getQuestionText(currentQuestion)}
               </CustomText>
-            </TouchableOpacity>
+              <View style={styles.questionDivider} />
 
-            <CopilotStep
-              text={strings.Copilot.bhagwanSubmitBtn.defaultMessage}
-              order={3}
-              name="submitBtn"
-            >
-              <CopilotTouchableOpacity
+              {showAnswer && (
+                <View style={styles.validatedAnswerContainer}>
+                  <CustomText style={styles.validatedAnswerLabel}>
+                    {strings.bhagwanQuestions.expectedAnswer.defaultMessage}
+                  </CustomText>
+                  <CustomText
+                    style={styles.validatedAnswerText}
+                    numberOfLines={2}
+                    ellipsizeMode="tail"
+                  >
+                    {answerText || strings.bhagwanQuestions.noExpectedAnswer.defaultMessage}
+                  </CustomText>
+                </View>
+              )}
+
+              <TouchableOpacity
+                style={styles.validateBtn}
+                onPress={handleToggleAnswer}
+                activeOpacity={0.85}
+              >
+                <CustomText style={styles.submitTxt}>
+                  {showAnswer
+                    ? strings.bhagwanQuestions.hideAnswer.defaultMessage
+                    : strings.bhagwanQuestions.validateBtn.defaultMessage}
+                </CustomText>
+              </TouchableOpacity>
+            </>
+          )}
+
+          {selectedProjectId && (
+            <View style={styles.navRow}>
+              <TouchableOpacity
+                style={styles.navBtn}
+                onPress={handleBack}
+                activeOpacity={0.8}
+              >
+                <IMAGES.WhiteArrowIcon height={18} width={18} />
+                <CustomText style={styles.navBtnTxt}>
+                  {strings.bhagwanQuestions.prevBtn.defaultMessage}
+                </CustomText>
+              </TouchableOpacity>
+
+              <CopilotStep
+                text={strings.Copilot.bhagwanSubmitBtn.defaultMessage}
+                order={3}
+                name="submitBtn"
+              >
+                <CopilotTouchableOpacity
                 style={styles.submitBtn}
                 onPress={loadNextQuestion}
                 activeOpacity={0.85}
@@ -263,9 +300,10 @@ function BhagwanQuestions({
                   width={18}
                   style={{ transform: [{ rotate: '180deg' }] }}
                 />
-              </CopilotTouchableOpacity>
-            </CopilotStep>
-          </View>
+                </CopilotTouchableOpacity>
+              </CopilotStep>
+            </View>
+          )}
         </View>
       </KeyboardAvoidingView>
     </View>
@@ -274,6 +312,15 @@ function BhagwanQuestions({
 
 BhagwanQuestions.propTypes = {
   bhagwanQuestions: PropTypes.object.isRequired,
+  home: PropTypes.shape({
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+        name: PropTypes.string,
+        serial: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+      }),
+    ),
+  }),
   appLanguage: PropTypes.string,
   handleGetQuestions: PropTypes.func.isRequired,
   handleSubmitAnswers: PropTypes.func.isRequired,
@@ -282,12 +329,13 @@ BhagwanQuestions.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   bhagwanQuestions: makeSelectBhagwanQuestions(),
+  home: makeSelectHome(),
   appLanguage: (state) => state.app?.language?.currentLanguage,
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleGetQuestions: (accessToken) => dispatch(getQuestions(accessToken)),
+    handleGetQuestions: (accessToken, projectId) => dispatch(getQuestions(accessToken, projectId)),
     handleResetSubmit: () => dispatch(resetSubmit()),
   };
 }

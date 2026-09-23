@@ -12,15 +12,18 @@ import {
   TouchableOpacity,
   FlatList,
   TextInput,
+  Dimensions,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { IMAGES } from '../../constants';
 import { COLORS } from '../../constants';
 import defaultStyles from './styles'; // You’ll create styles separately like LoadingScreen
 
+const DROPDOWN_MAX_HEIGHT = 300;
+
 function SelectInput({ label, options, onSelect, loading, value }) {
   const inputRef = useRef(null);
-  const [inputLayout, setInputLayout] = useState({ x: 0, y: 0, width: 0 });
+  const [inputLayout, setInputLayout] = useState({ x: 0, y: 0, width: 0, height: 0 });
   const [visible, setVisible] = useState(false);
 
   const handleSelect = (option) => {
@@ -38,7 +41,7 @@ function SelectInput({ label, options, onSelect, loading, value }) {
       <TouchableOpacity
         onPress={() => {
           inputRef?.current?.measureInWindow((x, y, width, height) => {
-            setInputLayout({ x, y: y + height - 1, width });
+            setInputLayout({ x, y, width, height });
             setVisible(true);
           });
         }}
@@ -76,7 +79,10 @@ function SelectInput({ label, options, onSelect, loading, value }) {
               defaultStyles.modalContent,
               {
                 position: 'absolute',
-                top: inputLayout.y,
+                top:
+                  inputLayout.y + inputLayout.height + DROPDOWN_MAX_HEIGHT > Dimensions.get('window').height
+                    ? inputLayout.y - DROPDOWN_MAX_HEIGHT - 5
+                    : inputLayout.y + inputLayout.height + 5,
                 left: inputLayout.x,
                 width: inputLayout.width,
               },

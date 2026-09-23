@@ -50,6 +50,25 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
 
+  chapterSelector: {
+    width: '100%',
+    marginBottom: hp(16),
+  },
+  chapterSelectorLabel: {
+    color: '#c9a84c',
+    fontSize: hp(13),
+    fontFamily: FONTS.SEMIBOLD,
+    marginBottom: hp(6),
+  },
+  chapterInstruction: {
+    width: '100%',
+    color: 'rgba(255,255,255,0.75)',
+    fontSize: hp(14),
+    fontFamily: FONTS.REGULAR,
+    textAlign: 'center',
+    marginBottom: hp(8),
+  },
+
   /* ─── Question text inside bottom panel ─────────────── */
   questionTextPanel: {
     width: '100%',

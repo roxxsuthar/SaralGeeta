@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { COLORS } from '../../constants';
-import { hp, wp } from '../../utils/responsive';
+import { hp } from '../../utils/responsive';
 
 export default StyleSheet.create({
   inputContainer: {
@@ -42,6 +42,7 @@ export default StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.1,
     shadowRadius: 15,
+    maxHeight: 300,
   },
   option: {
     paddingVertical: 15,

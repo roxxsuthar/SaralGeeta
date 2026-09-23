@@ -8,10 +8,11 @@ import {
   RESET_SUBMIT,
 } from './constants';
 
-export function getQuestions(accessToken) {
+export function getQuestions(accessToken, projectId) {
   return {
     type: GET_QUESTIONS,
     accessToken,
+    project_id: projectId,
   };
 }
 
