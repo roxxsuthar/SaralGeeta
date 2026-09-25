@@ -11,3 +11,4 @@
 - Prefers standalone downloads or independently installable tooling when available, rather than only using capabilities bundled inside a host application. Confidence: 0.88
 - Prefers navigation-stack issues to be verified against the actual navigator hierarchy and registered routes before changing navigation logic, rather than relying on assumptions about the active stack. Confidence: 0.86
 - Expects sequential content navigation to preserve browsing history: Previous should restore the immediately prior item, while Next should continue the normal forward-fetch flow. Confidence: 0.93
+- Expects pagination’s Next control to be disabled when the current page equals the total page count, preventing navigation beyond the final page. Confidence: 0.98

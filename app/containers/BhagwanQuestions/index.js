@@ -40,7 +40,8 @@ function BhagwanQuestions({
 }) {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
-  const { data, loading, error } = bhagwanQuestions;
+  const { data
+    , loading, error } = bhagwanQuestions;
   const accessToken = useSelector((state) => state.app?.accessToken);
   const chapterOptions = (home?.data || []).map((chapter) => ({
     label: `${chapter.name} (${strings.bhagwanQuestions.chapterLabel.defaultMessage} ${chapter.serial})`,
@@ -166,13 +167,14 @@ function BhagwanQuestions({
   }
 
   const currentQuestion = displayedQuestion;
+  const isLastPage = data?.progress?.current === data?.progress?.total;
   const answerText = Array.isArray(currentQuestion?.answer)
     ? [
-        currentQuestion.answer.slice(0, Math.ceil(currentQuestion.answer.length / 2)).join(' '),
-        currentQuestion.answer.slice(Math.ceil(currentQuestion.answer.length / 2)).join(' '),
-      ]
-        .filter(Boolean)
-        .join('\n')
+      currentQuestion.answer.slice(0, Math.ceil(currentQuestion.answer.length / 2)).join(' '),
+      currentQuestion.answer.slice(Math.ceil(currentQuestion.answer.length / 2)).join(' '),
+    ]
+      .filter(Boolean)
+      .join('\n')
     : currentQuestion?.answer || '';
 
   return (
@@ -295,18 +297,19 @@ function BhagwanQuestions({
                 name="submitBtn"
               >
                 <CopilotTouchableOpacity
-                style={styles.submitBtn}
-                onPress={loadNextQuestion}
-                activeOpacity={0.85}
-              >
-                <CustomText style={styles.submitTxt}>
-                  {strings.bhagwanQuestions.nextBtn.defaultMessage}
-                </CustomText>
-                <IMAGES.WhiteArrowIcon
-                  height={18}
-                  width={18}
-                  style={{ transform: [{ rotate: '180deg' }] }}
-                />
+                  style={[styles.submitBtn, isLastPage && styles.navBtnDisabled]}
+                  onPress={loadNextQuestion}
+                  disabled={isLastPage}
+                  activeOpacity={0.85}
+                >
+                  <CustomText style={styles.submitTxt}>
+                    {strings.bhagwanQuestions.nextBtn.defaultMessage}
+                  </CustomText>
+                  <IMAGES.WhiteArrowIcon
+                    height={18}
+                    width={18}
+                    style={{ transform: [{ rotate: '180deg' }] }}
+                  />
                 </CopilotTouchableOpacity>
               </CopilotStep>
             </View>
