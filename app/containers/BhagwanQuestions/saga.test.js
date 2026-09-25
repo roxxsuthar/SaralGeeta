@@ -14,7 +14,7 @@ describe('getQuestionsHandler', () => {
   it('requests questions for the selected project', () => {
     const generator = getQuestionsHandler({
       accessToken: 'token',
-      project_id: 7,
+      chapter_serial: 7,
     });
     const url = Helpers.getUrl('/questions/next');
     const response = { data: { question: 'Question', answer: 'Answer' } };
@@ -23,7 +23,7 @@ describe('getQuestionsHandler', () => {
       call(request, {
         method: 'GET',
         url,
-        params: { project_id: 7 },
+        params: { chapter_serial: 7 },
         headers: { Authorization: 'Bearer token' },
       }),
     );
@@ -33,7 +33,7 @@ describe('getQuestionsHandler', () => {
   });
 
   it('marks the project complete when no questions remain', () => {
-    const generator = getQuestionsHandler({ project_id: 7 });
+    const generator = getQuestionsHandler({ chapter_serial: 7 });
     const requestEffect = generator.next().value;
     const error = { response: { status: 404 } };
 
@@ -41,7 +41,7 @@ describe('getQuestionsHandler', () => {
       call(request, {
         method: 'GET',
         url: Helpers.getUrl('/questions/next'),
-        params: { project_id: 7 },
+        params: { chapter_serial: 7 },
         headers: undefined,
       }),
     );

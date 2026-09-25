@@ -6,7 +6,7 @@ describe('BhagwanQuestions actions', () => {
     expect(getQuestions('token', 7)).toEqual({
       type: GET_QUESTIONS,
       accessToken: 'token',
-      project_id: 7,
+      chapter_serial: 7,
     });
   });
 });

@@ -49,6 +49,8 @@ function BhagwanQuestions({
 
   const [showAnswer, setShowAnswer] = useState(false);
   const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const [displayedQuestion, setDisplayedQuestion] = useState(null);
+  const [questionHistory, setQuestionHistory] = useState([]);
   const { start } = useCopilot();
   const startRef = useRef(start);
 
@@ -77,6 +79,16 @@ function BhagwanQuestions({
     handleGetQuestions(accessToken, selectedProjectId);
     setShowAnswer(false);
   }, [handleGetQuestions, accessToken, selectedProjectId]);
+
+  useEffect(() => {
+    if (data?.data) {
+      setQuestionHistory((history) => {
+        if (history[history.length - 1] === data.data) return history;
+        return [...history, data.data];
+      });
+      setDisplayedQuestion(data.data);
+    }
+  }, [data]);
 
   useEffect(() => {
     if (error) {
@@ -111,6 +123,15 @@ function BhagwanQuestions({
 
   const handleChapterSelect = ({ value }) => {
     setSelectedProjectId(value);
+    setDisplayedQuestion(null);
+    setQuestionHistory([]);
+    setShowAnswer(false);
+  };
+
+  const loadPreviousQuestion = () => {
+    if (questionHistory.length < 2) return;
+    setQuestionHistory((history) => history.slice(0, -1));
+    setDisplayedQuestion(questionHistory[questionHistory.length - 2]);
     setShowAnswer(false);
   };
 
@@ -144,7 +165,7 @@ function BhagwanQuestions({
     );
   }
 
-  const currentQuestion = data?.data;
+  const currentQuestion = displayedQuestion;
   const answerText = Array.isArray(currentQuestion?.answer)
     ? [
         currentQuestion.answer.slice(0, Math.ceil(currentQuestion.answer.length / 2)).join(' '),
@@ -257,8 +278,9 @@ function BhagwanQuestions({
           {selectedProjectId && (
             <View style={styles.navRow}>
               <TouchableOpacity
-                style={styles.navBtn}
-                onPress={handleBack}
+                style={[styles.navBtn, questionHistory.length < 2 && styles.navBtnDisabled]}
+                onPress={loadPreviousQuestion}
+                disabled={questionHistory.length < 2}
                 activeOpacity={0.8}
               >
                 <IMAGES.WhiteArrowIcon height={18} width={18} />

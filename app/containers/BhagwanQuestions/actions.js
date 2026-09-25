@@ -12,7 +12,7 @@ export function getQuestions(accessToken, projectId) {
   return {
     type: GET_QUESTIONS,
     accessToken,
-    project_id: projectId,
+    chapter_serial: projectId,
   };
 }
 
