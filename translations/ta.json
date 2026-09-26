@@ -432,9 +432,13 @@
       "id": "app.container.SideBar.faq",
       "defaultMessage": "அடிக்கடி கேட்கப்படும் கேள்விகள்"
     },
+    "networkLogs": {
+      "id": "app.container.SideBar.networkLogs",
+      "defaultMessage": "நெட்வொர்க் பதிவுகள்"
+    },
     "askBhagwan": {
       "id": "app.container.SideBar.askBhagwan",
-      "defaultMessage": "கடவுளிடம் கேளுங்கள்"
+      "defaultMessage": "கீதா பயிற்சி"
     }
   },
   "studentGift": {
@@ -1001,6 +1005,26 @@
     "learnGeetaContinueBtn": {
       "id": "copilot.learnGeetaContinueBtn",
       "defaultMessage": "உங்கள் முடிவுகளைச் சேமித்து அடுத்த ஸ்லோக்கிற்குச் செல்ல இங்கே தட்டவும்."
+    },
+    "bhagwanValidateBtn": {
+      "id": "copilot.bhagwanValidateBtn",
+      "defaultMessage": "பதிலைச் சரிபார்க்க இங்கே தட்டவும்."
+    },
+    "learnGeetaPreviousBtn": {
+      "id": "copilot.learnGeetaPreviousBtn",
+      "defaultMessage": "முந்தைய ஸ்லோகத்திற்குத் திரும்ப இங்கே தட்டவும்."
+    },
+    "learnGeetaNextBtn": {
+      "id": "copilot.learnGeetaNextBtn",
+      "defaultMessage": "அடுத்த ஸ்லோகத்திற்குச் செல்ல இங்கே தட்டவும்."
+    },
+    "learnGeetaReplayBtn": {
+      "id": "copilot.learnGeetaReplayBtn",
+      "defaultMessage": "ஸ்லோகத்தை மீண்டும் இயக்க இங்கே தட்டவும்."
+    },
+    "learnGeetaMicBtn": {
+      "id": "copilot.learnGeetaMicBtn",
+      "defaultMessage": "பதிவைத் தொடங்க அல்லது நிறுத்த இங்கே தட்டவும்."
     },
     "bhagwanAnswerInput": {
       "id": "copilot.bhagwanAnswerInput",

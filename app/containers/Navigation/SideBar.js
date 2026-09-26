@@ -284,6 +284,23 @@ const SideBar = (props) => {
                 </>
               )}
             </View>
+            {__DEV__ && (
+              <View style={styles.draweritems}>
+                <DrawerItem
+                  label={({ color }) => (
+                    <CustomText style={[styles.label, { color }]}>
+                      {sideBarMessage.networkLogs.defaultMessage}
+                    </CustomText>
+                  )}
+                  icon={() => (
+                    <View style={styles.icon}>
+                      <IMAGES.Contact height="100%" width="100%" />
+                    </View>
+                  )}
+                  onPress={() => props.navigation.navigate(Navigation.NetworkLogs)}
+                />
+              </View>
+            )}
           </DrawerContentScrollView>
         </View>
       </ImageBackground>

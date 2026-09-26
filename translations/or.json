@@ -432,9 +432,13 @@
       "id": "app.container.SideBar.faq",
       "defaultMessage": "FAQ"
     },
+    "networkLogs": {
+      "id": "app.container.SideBar.networkLogs",
+      "defaultMessage": "ନେଟୱର୍କ ଲଗ୍"
+    },
     "askBhagwan": {
       "id": "app.container.SideBar.askBhagwan",
-      "defaultMessage": "ଭଗବାନଙ୍କୁ ପଚାର |"
+      "defaultMessage": "ଗୀତା ଅଭ୍ୟାସ"
     }
   },
   "studentGift": {
@@ -1001,6 +1005,26 @@
     "learnGeetaContinueBtn": {
       "id": "copilot.learnGeetaContinueBtn",
       "defaultMessage": "ଆପଣଙ୍କର ଫଳାଫଳ ସଞ୍ଚୟ କରିବାକୁ ଏବଂ ପରବର୍ତ୍ତୀ ଶ୍ଲୋକକୁ ଜାରି ରଖିବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "bhagwanValidateBtn": {
+      "id": "copilot.bhagwanValidateBtn",
+      "defaultMessage": "ଉତ୍ତର ଯାଞ୍ଚ କରିବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "learnGeetaPreviousBtn": {
+      "id": "copilot.learnGeetaPreviousBtn",
+      "defaultMessage": "ପୂର୍ବ ଶ୍ଳୋକକୁ ଫେରିବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "learnGeetaNextBtn": {
+      "id": "copilot.learnGeetaNextBtn",
+      "defaultMessage": "ପରବର୍ତ୍ତୀ ଶ୍ଳୋକକୁ ଯିବା ପାଇଁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "learnGeetaReplayBtn": {
+      "id": "copilot.learnGeetaReplayBtn",
+      "defaultMessage": "ଶ୍ଳୋକକୁ ପୁନର୍ବାର ଚଲାଇବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
+    },
+    "learnGeetaMicBtn": {
+      "id": "copilot.learnGeetaMicBtn",
+      "defaultMessage": "ରେକର୍ଡିଂ ଆରମ୍ଭ କିମ୍ବା ବନ୍ଦ କରିବାକୁ ଏଠାରେ ଟ୍ୟାପ୍ କରନ୍ତୁ |"
     },
     "bhagwanAnswerInput": {
       "id": "copilot.bhagwanAnswerInput",

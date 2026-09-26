@@ -5,10 +5,17 @@
 - Prefers clear, polished instructional empty-state copy that tells users what action is needed before dependent content appears. Confidence: 0.91
 - Prefers dropdown menus to open upward when there is insufficient space below the trigger, avoiding off-screen or obstructed options. Confidence: 0.94
 - Prefers API debugging support that first verifies the current implementation, then provides an equivalent cURL command with the exact method, URL, query parameters, and headers, while avoiding authorization-token logging in production. Confidence: 0.9
-- Prefers interactive button guides/tutorials to appear every time the app or relevant screen is opened, rather than being shown only once or persisted as already seen. Confidence: 0.96
+- Prefers network debugging to be accessible through an in-app button that opens a network-log viewer, rather than requiring external tooling or developer-console access. Confidence: 0.9
+- Requires network debugging controls, routes, and logging surfaces to be excluded from release builds and available only in debug mode. Confidence: 0.98
+- Prefers interactive button guides/tutorials to appear only once per app session/open, not replaying on page or state changes and not automatically showing again on reload. Confidence: 0.98
+- Prefers button guides to be readiness- and interaction-aware: start as soon as the first actionable control is available rather than waiting for all targets, restart or continue when later controls appear, and resume at the next usable control after an interaction such as opening and closing a drawer. Confidence: 0.97
+- Expects every tutorial step to have deterministic, non-conflicting ordering so the guide’s Next action remains usable and advances to the intended subsequent step. Confidence: 0.96
+- Expects feature changes such as button guides to be applied comprehensively across all remaining relevant screens, not limited to the initially identified screens. Confidence: 0.96
 - Requires all user-visible screen copy to respect the selected app language, including dynamic labels, placeholders, empty-state instructions, dropdown option text, and tutorial guidance; avoid hardcoded English. Confidence: 0.98
+- Prefers copy changes to be propagated across every supported translation locale with localized wording, rather than updating only the currently active language. Confidence: 0.9
 - Prefers the app’s primary bottom navigation/action bar to remain consistently available on related screens, including the Ideal screen, rather than being limited to Home. Confidence: 0.9
 - Prefers standalone downloads or independently installable tooling when available, rather than only using capabilities bundled inside a host application. Confidence: 0.88
 - Prefers navigation-stack issues to be verified against the actual navigator hierarchy and registered routes before changing navigation logic, rather than relying on assumptions about the active stack. Confidence: 0.86
 - Expects sequential content navigation to preserve browsing history: Previous should restore the immediately prior item, while Next should continue the normal forward-fetch flow. Confidence: 0.93
 - Expects pagination’s Next control to be disabled when the current page equals the total page count, preventing navigation beyond the final page. Confidence: 0.98
+- Expects UI fixes to be traced through the actual rendered surface, screen/route, and all relevant display paths when an initial change does not appear; changes should be scoped to the requested screen and must not modify a similarly named but different feature. Confidence: 0.96

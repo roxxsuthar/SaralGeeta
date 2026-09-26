@@ -157,6 +157,7 @@ const TranslationDrawer = ({
                   {idx < 3 && (idx === 1 ? '\n' : ' ')}
                 </React.Fragment>
               ))}
+              {' ॥'}
             </CustomText>
             <CustomText style={styles.text}>
               {currentLanguage === 'en' ? 'Translation' : 'अनुवाद'}

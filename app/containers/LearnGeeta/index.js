@@ -83,22 +83,14 @@ function LearnGeeta({
 
   const { currentLanguage } = language;
 
-  const { start } = useCopilot();
+  const { start, stop, visible } = useCopilot();
   const startRef = useRef(start);
+  const stopRef = useRef(stop);
+  const visibleRef = useRef(visible);
 
   startRef.current = start;
-
-  useFocusEffect(
-    useCallback(() => {
-      if (!isIntroVideoPlayed) return undefined;
-
-      const guideTimer = setTimeout(() => {
-        startRef.current();
-      }, 1500);
-
-      return () => clearTimeout(guideTimer);
-    }, [isIntroVideoPlayed]),
-  );
+  stopRef.current = stop;
+  visibleRef.current = visible;
 
   // ─── Local state ──────────────────────────────────────────────────────────
   const [isButton, setIsButton] = useState(false);
@@ -220,7 +212,9 @@ function LearnGeeta({
   // URL but don't start it yet — wait for the video to be ready (isVideoReady).
   useEffect(() => {
     setShlokIndex(
-      shloks?.data?.findIndex((item) => item.id === learnGeeta?.data?.id)
+      shloks?.data?.findIndex(
+        (item) => String(item.id) === String(learnGeeta?.data?.id),
+      ),
     );
 
     const shlokId = get(learnGeeta, 'data.id');
@@ -381,8 +375,96 @@ function LearnGeeta({
     });
   }, [navigation, route, setVideoPlayingState]);
 
-  // ─── Render loading state ──────────────────────────────────────────────────
-  if (get(learnGeeta, 'loading')) {
+  const poster = get(learnGeeta, 'data.image') || get(learnGeeta, 'data.cover_image');
+  const hasVideoUrl = isIntroVideoPlayed
+    ? get(learnGeeta, 'data.media.hls_male_path')
+    : selectedIdeal?.hls_male_path;
+
+  const shouldShowIntroLoading = !isIntroVideoPlayed && (isLoading || !isVideoReady);
+  const shouldShowLoading = isIntroVideoPlayed && (isLoading || !hasVideoUrl);
+  const showLoadingScreen = get(learnGeeta, 'loading');
+  const guideStepRef = useRef(null);
+  const guideShownRef = useRef(new Set());
+
+  useEffect(() => {
+    if (!isFocused || showLoadingScreen) return undefined;
+
+    const hasNextButton = isButton
+      && !waitingForTranslation
+      && Number.isInteger(shlokIndex)
+      && shlokIndex + 1 < (shloks?.data?.length || 0);
+    const hasPreviousButton = isButton
+      && !waitingForTranslation
+      && shlokIndex > 0;
+    const stepName = !isIntroVideoPlayed || shouldShowLoading
+      ? 'backBtn'
+      : !isButton
+        ? 'showBtn'
+        : hasPreviousButton
+          ? 'previousBtn'
+          : hasNextButton
+            ? 'nextBtn'
+            : 'replayBtn';
+
+    if (stepName === guideStepRef.current || guideShownRef.current.has(stepName)) {
+      return undefined;
+    }
+    guideStepRef.current = stepName;
+    guideShownRef.current.add(stepName);
+
+    let cancelled = false;
+    const guideTimer = setTimeout(async () => {
+      if (visibleRef.current) {
+        await stopRef.current();
+        await new Promise((resolve) => setTimeout(resolve, 0));
+      }
+      if (!cancelled) {
+        await startRef.current(stepName);
+      }
+    }, 100);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(guideTimer);
+    };
+  }, [
+    isFocused,
+    showLoadingScreen,
+    isIntroVideoPlayed,
+    shouldShowLoading,
+    isButton,
+    waitingForTranslation,
+    shlokIndex,
+    shloks?.data?.length,
+  ]);
+  const translationContent = learnGeeta?.data?.translation?.translation || '';
+
+  const handleOpenDrawer = useCallback(async () => {
+    if (visibleRef.current) {
+      await stopRef.current();
+    }
+
+    if (Platform.OS === 'ios') {
+      OrientationModule.lockToLandscape();
+    } else {
+      Orientation.lockToLandscape();
+    }
+    setTimeout(() => setIsDrawerVisible(true), 100);
+  }, []);
+
+  const handleCloseDrawer = useCallback(() => {
+    setIsDrawerVisible(false);
+    setTimeout(() => {
+      if (isFocused && !guideShownRef.current.has('continueBtn')) {
+        guideShownRef.current.add('continueBtn');
+        startRef.current('continueBtn');
+      }
+    }, 100);
+  }, [isFocused]);
+
+  const commentaryAudioUrl = get(learnGeeta, 'data.commentary.audio');
+
+  if (showLoadingScreen) {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
@@ -396,27 +478,6 @@ function LearnGeeta({
       </View>
     );
   }
-
-  const poster = get(learnGeeta, 'data.image') || get(learnGeeta, 'data.cover_image');
-  const hasVideoUrl = isIntroVideoPlayed
-    ? get(learnGeeta, 'data.media.hls_male_path')
-    : selectedIdeal?.hls_male_path;
-
-  const shouldShowIntroLoading = !isIntroVideoPlayed && (isLoading || !isVideoReady);
-  const shouldShowLoading = isIntroVideoPlayed && (isLoading || !hasVideoUrl);
-
-  const translationContent = learnGeeta?.data?.translation?.translation || '';
-
-  const handleOpenDrawer = () => {
-    if (Platform.OS === 'ios') {
-      OrientationModule.lockToLandscape();
-    } else {
-      Orientation.lockToLandscape();
-    }
-    setTimeout(() => setIsDrawerVisible(true), 100);
-  };
-
-  const commentaryAudioUrl = get(learnGeeta, 'data.commentary.audio');
 
   return (
     <View style={styles.container}>
@@ -528,7 +589,7 @@ function LearnGeeta({
             {/* Translation Drawer */}
             <TranslationDrawer
               visible={isDrawerVisible}
-              onClose={() => setIsDrawerVisible(false)}
+              onClose={handleCloseDrawer}
               translationContent={translationContent}
               currentLanguage={currentLanguage}
               commentary={learnGeeta?.data?.commentary}

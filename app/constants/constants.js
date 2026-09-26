@@ -37,6 +37,7 @@ export const Navigation = {
   Splash: 'Splash',
   FullChapterLearn: 'FullChapterLearn',
   BhagwanQuestions: 'BhagwanQuestions',
+  NetworkLogs: 'NetworkLogs',
 };
 // API Configuration
 export const GLADIA_API_KEY = '3e79dde7-f64b-466e-ba9a-d8cf7dd1c89c';

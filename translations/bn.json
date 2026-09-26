@@ -432,9 +432,13 @@
       "id": "app.container.SideBar.faq",
       "defaultMessage": "FAQ"
     },
+    "networkLogs": {
+      "id": "app.container.SideBar.networkLogs",
+      "defaultMessage": "নেটওয়ার্ক লগ"
+    },
     "askBhagwan": {
       "id": "app.container.SideBar.askBhagwan",
-      "defaultMessage": "ঈশ্বরকে জিজ্ঞাসা করুন"
+      "defaultMessage": "গীতা অনুশীলন"
     }
   },
   "studentGift": {
@@ -1001,6 +1005,26 @@
     "learnGeetaContinueBtn": {
       "id": "copilot.learnGeetaContinueBtn",
       "defaultMessage": "আপনার ফলাফল সংরক্ষণ করতে এখানে আলতো চাপুন এবং পরবর্তী শ্লোকে চালিয়ে যান।"
+    },
+    "bhagwanValidateBtn": {
+      "id": "copilot.bhagwanValidateBtn",
+      "defaultMessage": "উত্তর যাচাই করতে এখানে ট্যাপ করুন।"
+    },
+    "learnGeetaPreviousBtn": {
+      "id": "copilot.learnGeetaPreviousBtn",
+      "defaultMessage": "আগের শ্লোকে ফিরে যেতে এখানে ট্যাপ করুন।"
+    },
+    "learnGeetaNextBtn": {
+      "id": "copilot.learnGeetaNextBtn",
+      "defaultMessage": "পরের শ্লোকে যেতে এখানে ট্যাপ করুন।"
+    },
+    "learnGeetaReplayBtn": {
+      "id": "copilot.learnGeetaReplayBtn",
+      "defaultMessage": "শ্লোকটি আবার চালাতে এখানে ট্যাপ করুন।"
+    },
+    "learnGeetaMicBtn": {
+      "id": "copilot.learnGeetaMicBtn",
+      "defaultMessage": "রেকর্ডিং শুরু বা বন্ধ করতে এখানে ট্যাপ করুন।"
     },
     "bhagwanAnswerInput": {
       "id": "copilot.bhagwanAnswerInput",

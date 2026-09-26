@@ -432,9 +432,13 @@
       "id": "app.container.SideBar.faq",
       "defaultMessage": "वारंवार विचारले जाणारे प्रश्न"
     },
+    "networkLogs": {
+      "id": "app.container.SideBar.networkLogs",
+      "defaultMessage": "नेटवर्क लॉग"
+    },
     "askBhagwan": {
       "id": "app.container.SideBar.askBhagwan",
-      "defaultMessage": "देवाला विचारा"
+      "defaultMessage": "गीता अभ्यास"
     }
   },
   "studentGift": {
@@ -1001,6 +1005,26 @@
     "learnGeetaContinueBtn": {
       "id": "copilot.learnGeetaContinueBtn",
       "defaultMessage": "तुमचे निकाल सेव्ह करण्यासाठी येथे टॅप करा आणि पुढील श्लोक सुरू ठेवा."
+    },
+    "bhagwanValidateBtn": {
+      "id": "copilot.bhagwanValidateBtn",
+      "defaultMessage": "उत्तर तपासण्यासाठी येथे टॅप करा."
+    },
+    "learnGeetaPreviousBtn": {
+      "id": "copilot.learnGeetaPreviousBtn",
+      "defaultMessage": "मागील श्लोकावर जाण्यासाठी येथे टॅप करा."
+    },
+    "learnGeetaNextBtn": {
+      "id": "copilot.learnGeetaNextBtn",
+      "defaultMessage": "पुढील श्लोकावर जाण्यासाठी येथे टॅप करा."
+    },
+    "learnGeetaReplayBtn": {
+      "id": "copilot.learnGeetaReplayBtn",
+      "defaultMessage": "श्लोक पुन्हा ऐकण्यासाठी येथे टॅप करा."
+    },
+    "learnGeetaMicBtn": {
+      "id": "copilot.learnGeetaMicBtn",
+      "defaultMessage": "रेकॉर्डिंग सुरू किंवा थांबवण्यासाठी येथे टॅप करा."
     },
     "bhagwanAnswerInput": {
       "id": "copilot.bhagwanAnswerInput",

@@ -66,20 +66,36 @@ function Home({
   const [filteredChapters, setFilteredChapters] = useState([]);
   const [isListening, setIsListening] = useState(false);
 
-  const { start } = useCopilot();
+  const { start, stop, visible } = useCopilot();
   const startRef = useRef(start);
+  const stopRef = useRef(stop);
+  const visibleRef = useRef(visible);
+  const guideStartedRef = useRef(false);
 
   startRef.current = start;
+  stopRef.current = stop;
+  visibleRef.current = visible;
 
   useFocusEffect(
     useCallback(() => {
-      if (!filteredChapters?.length) return undefined;
+      if (!filteredChapters?.length || guideStartedRef.current) return undefined;
+      guideStartedRef.current = true;
 
-      const guideTimer = setTimeout(() => {
-        startRef.current();
-      }, 1500);
+      let cancelled = false;
+      const guideTimer = setTimeout(async () => {
+        if (visibleRef.current) {
+          await stopRef.current();
+          await new Promise((resolve) => setTimeout(resolve, 0));
+        }
+        if (!cancelled) {
+          await startRef.current();
+        }
+      }, 100);
 
-      return () => clearTimeout(guideTimer);
+      return () => {
+        cancelled = true;
+        clearTimeout(guideTimer);
+      };
     }, [filteredChapters]),
   );
 

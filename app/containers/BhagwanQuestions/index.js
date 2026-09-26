@@ -52,19 +52,37 @@ function BhagwanQuestions({
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [displayedQuestion, setDisplayedQuestion] = useState(null);
   const [questionHistory, setQuestionHistory] = useState([]);
-  const { start } = useCopilot();
+  const { start, stop, visible } = useCopilot();
   const startRef = useRef(start);
+  const stopRef = useRef(stop);
+  const visibleRef = useRef(visible);
+  const guideStartedRef = useRef(false);
 
   startRef.current = start;
+  stopRef.current = stop;
+  visibleRef.current = visible;
 
   useFocusEffect(
     useCallback(() => {
-      const guideTimer = setTimeout(() => {
-        startRef.current();
-      }, 1500);
+      if (!selectedProjectId || !data?.data || guideStartedRef.current) return undefined;
+      guideStartedRef.current = true;
 
-      return () => clearTimeout(guideTimer);
-    }, []),
+      let cancelled = false;
+      const guideTimer = setTimeout(async () => {
+        if (visibleRef.current) {
+          await stopRef.current();
+          await new Promise((resolve) => setTimeout(resolve, 0));
+        }
+        if (!cancelled) {
+          await startRef.current();
+        }
+      }, 100);
+
+      return () => {
+        cancelled = true;
+        clearTimeout(guideTimer);
+      };
+    }, [selectedProjectId, data]),
   );
 
   useEffect(() => {
@@ -258,50 +276,61 @@ function BhagwanQuestions({
                     numberOfLines={2}
                     ellipsizeMode="tail"
                   >
-                    {answerText || strings.bhagwanQuestions.noExpectedAnswer.defaultMessage}
+                    {answerText || strings.bhagwanQuestions.noExpectedAnswer.defaultMessage} ||
                   </CustomText>
                 </View>
               )}
 
-              <TouchableOpacity
-                style={styles.validateBtn}
-                onPress={handleToggleAnswer}
-                activeOpacity={0.85}
+              <CopilotStep
+                text={strings.Copilot.bhagwanValidateBtn.defaultMessage}
+                order={2}
+                name="validateBtn"
               >
-                <CustomText style={styles.submitTxt}>
-                  {showAnswer
-                    ? strings.bhagwanQuestions.hideAnswer.defaultMessage
-                    : strings.bhagwanQuestions.validateBtn.defaultMessage}
-                </CustomText>
-              </TouchableOpacity>
+                <CopilotTouchableOpacity
+                  style={styles.validateBtn}
+                  onPress={handleToggleAnswer}
+                  activeOpacity={0.85}
+                >
+                  <CustomText style={styles.submitTxt}>
+                    {showAnswer
+                      ? strings.bhagwanQuestions.hideAnswer.defaultMessage
+                      : strings.bhagwanQuestions.validateBtn.defaultMessage}
+                  </CustomText>
+                </CopilotTouchableOpacity>
+              </CopilotStep>
             </>
           )}
 
           {selectedProjectId && (
             <View style={styles.navRow}>
-              <TouchableOpacity
-                style={[styles.navBtn, questionHistory.length < 2 && styles.navBtnDisabled]}
-                onPress={loadPreviousQuestion}
-                disabled={questionHistory.length < 2}
-                activeOpacity={0.8}
-              >
-                <IMAGES.WhiteArrowIcon height={18} width={18} />
-                <CustomText style={styles.navBtnTxt}>
-                  {strings.bhagwanQuestions.prevBtn.defaultMessage}
-                </CustomText>
-              </TouchableOpacity>
-
-              <CopilotStep
-                text={strings.Copilot.bhagwanSubmitBtn.defaultMessage}
-                order={3}
-                name="submitBtn"
-              >
-                <CopilotTouchableOpacity
-                  style={[styles.submitBtn, isLastPage && styles.navBtnDisabled]}
-                  onPress={loadNextQuestion}
-                  disabled={isLastPage}
-                  activeOpacity={0.85}
+              {questionHistory.length >= 2 ? (
+                <CopilotStep
+                  text={strings.Copilot.bhagwanPrevBtn.defaultMessage}
+                  order={4}
+                  name="prevBtn"
                 >
+                  <CopilotTouchableOpacity
+                    style={styles.navBtn}
+                    onPress={loadPreviousQuestion}
+                    activeOpacity={0.8}
+                  >
+                    <IMAGES.WhiteArrowIcon height={18} width={18} />
+                    <CustomText style={styles.navBtnTxt}>
+                      {strings.bhagwanQuestions.prevBtn.defaultMessage}
+                    </CustomText>
+                  </CopilotTouchableOpacity>
+                </CopilotStep>
+              ) : (
+                <View style={[styles.navBtn, styles.navBtnDisabled]}>
+                  <IMAGES.WhiteArrowIcon height={18} width={18} />
+                  <CustomText style={styles.navBtnTxt}>
+                    {strings.bhagwanQuestions.prevBtn.defaultMessage}
+                  </CustomText>
+                </View>
+              )}
+
+              {isLastPage ? (
+                <View style={[styles.submitBtn, styles.navBtnDisabled]}>
                   <CustomText style={styles.submitTxt}>
                     {strings.bhagwanQuestions.nextBtn.defaultMessage}
                   </CustomText>
@@ -310,8 +339,29 @@ function BhagwanQuestions({
                     width={18}
                     style={{ transform: [{ rotate: '180deg' }] }}
                   />
-                </CopilotTouchableOpacity>
-              </CopilotStep>
+                </View>
+              ) : (
+                <CopilotStep
+                  text={strings.Copilot.bhagwanSubmitBtn.defaultMessage}
+                  order={3}
+                  name="submitBtn"
+                >
+                  <CopilotTouchableOpacity
+                    style={styles.submitBtn}
+                    onPress={loadNextQuestion}
+                    activeOpacity={0.85}
+                  >
+                    <CustomText style={styles.submitTxt}>
+                      {strings.bhagwanQuestions.nextBtn.defaultMessage}
+                    </CustomText>
+                    <IMAGES.WhiteArrowIcon
+                      height={18}
+                      width={18}
+                      style={{ transform: [{ rotate: '180deg' }] }}
+                    />
+                  </CopilotTouchableOpacity>
+                </CopilotStep>
+              )}
             </View>
           )}
         </View>

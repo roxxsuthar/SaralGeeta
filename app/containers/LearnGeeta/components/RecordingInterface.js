@@ -68,7 +68,7 @@ const RecordingInterface = ({
   const renderShlokLines = () => {
     const parts = learnGeeta?.data?.shloke_parts;
     if (!parts?.length) return null;
-    const chapterNum = `${learnGeeta?.data?.chapter?.serial || ''}.${learnGeeta?.data?.name || ''} ॥`;
+    const chapterNum = `${learnGeeta?.data?.chapter?.serial || ''}.${learnGeeta?.data?.name || ''}`;
     return (
       <>
         {parts.length > 0 && (
@@ -79,7 +79,7 @@ const RecordingInterface = ({
                   const isLast = idx === parts.length - 1;
                   return (
                     <CustomText key={idx} style={{ color: COLOR_ARRAY[idx] || '#000' }}>
-                      {item}{idx === 0 ? ' ' : (isLast ? ' ॥' : ' ।')}
+                      {item}{idx === 0 ? ' ' : (isLast ? ' ' : ' ।')}
                     </CustomText>
                   );
                 }
@@ -87,7 +87,7 @@ const RecordingInterface = ({
               })}
               {parts.length <= 2 && (
                 <CustomText style={{ color: '#F06225', fontSize: hp(16), fontFamily: FONTS.HINDI, fontWeight: '700' }}>
-                  {' '}{chapterNum}
+                  {' '}{chapterNum} ॥
                 </CustomText>
               )}
             </CustomText>
@@ -101,14 +101,14 @@ const RecordingInterface = ({
                   const isLast = idx === parts.length - 1;
                   return (
                     <CustomText key={idx} style={{ color: COLOR_ARRAY[idx] || '#000' }}>
-                      {item}{idx === 2 ? ' ' : (isLast ? ' ॥' : ' ।')}
+                      {item}{idx === 2 ? ' ' : (isLast ? ' ' : ' ।')}
                     </CustomText>
                   );
                 }
                 return null;
               })}
               <CustomText style={{ color: '#F06225', fontSize: hp(16), fontFamily: FONTS.HINDI, fontWeight: '700' }}>
-                {' '}{chapterNum}
+                {' '}{chapterNum} ॥
               </CustomText>
             </CustomText>
           </View>
@@ -125,21 +125,33 @@ const RecordingInterface = ({
       {isButton && !waitingForTranslation && (
         <View style={[styles.topNav, { paddingTop: hp(15), paddingRight: insets.right > 0 ? insets.right + wp(10) : wp(25) }]}>
           {shlokIndex > 0 ? (
-            <TouchableOpacity style={styles.navBtnWrap} onPress={getPreviousShlok} activeOpacity={0.8}>
-              <View style={styles.navBtn}>
-                <IMAGES.WhiteLeftArrowIcon height={hp(22)} width={wp(22)} fill="#333" />
-              </View>
-              <CustomText style={styles.navLabel}>Previous</CustomText>
-            </TouchableOpacity>
+            <CopilotStep
+              text={strings.Copilot.learnGeetaPreviousBtn.defaultMessage}
+              order={2}
+              name="previousBtn"
+            >
+              <CopilotTouchableOpacity style={styles.navBtnWrap} onPress={getPreviousShlok} activeOpacity={0.8}>
+                <View style={styles.navBtn}>
+                  <IMAGES.WhiteLeftArrowIcon height={hp(22)} width={wp(22)} fill="#333" />
+                </View>
+                <CustomText style={styles.navLabel}>Previous</CustomText>
+              </CopilotTouchableOpacity>
+            </CopilotStep>
           ) : <View style={{ width: wp(55) }} />}
 
           {shlokIndex + 1 < (shloks?.data?.length || 0) ? (
-            <TouchableOpacity style={styles.navBtnWrap} onPress={getNextShlok} activeOpacity={0.8}>
-              <View style={styles.navBtn}>
-                <IMAGES.WhiteRightArrowIcon height={hp(22)} width={wp(22)} fill="#333" />
-              </View>
-              <CustomText style={styles.navLabel}>Next</CustomText>
-            </TouchableOpacity>
+            <CopilotStep
+              text={strings.Copilot.learnGeetaNextBtn.defaultMessage}
+              order={3}
+              name="nextBtn"
+            >
+              <CopilotTouchableOpacity style={styles.navBtnWrap} onPress={getNextShlok} activeOpacity={0.8}>
+                <View style={styles.navBtn}>
+                  <IMAGES.WhiteRightArrowIcon height={hp(22)} width={wp(22)} fill="#333" />
+                </View>
+                <CustomText style={styles.navLabel}>Next</CustomText>
+              </CopilotTouchableOpacity>
+            </CopilotStep>
           ) : <View style={{ width: wp(55) }} />}
         </View>
       )}
@@ -167,19 +179,25 @@ const RecordingInterface = ({
         {isButton && !waitingForTranslation ? (
           <View style={styles.bottomLeft}>
             <View style={{ alignItems: 'center' }}>
-              <TouchableOpacity
-                style={styles.micOuter}
-                onPress={isRecordingButton ? handleStopRecording : handleStartRecording}
-                activeOpacity={0.8}
+              <CopilotStep
+                text={strings.Copilot.learnGeetaMicBtn.defaultMessage}
+                order={5}
+                name="micBtn"
               >
-                <View style={styles.micInner}>
+                <CopilotTouchableOpacity
+                  style={styles.micOuter}
+                  onPress={isRecordingButton ? handleStopRecording : handleStartRecording}
+                  activeOpacity={0.8}
+                >
+                  <View style={styles.micInner}>
                   {isRecordingButton ? (
                     <IMAGES.PauseIcon height={hp(22)} width={wp(22)} />
                   ) : (
                     <IMAGES.MicIcon height={hp(24)} width={wp(24)} />
                   )}
-                </View>
-              </TouchableOpacity>
+                  </View>
+                </CopilotTouchableOpacity>
+              </CopilotStep>
               {!isRecordingButton && (
                 <CustomText style={[styles.tapText, { marginLeft: 0, marginTop: hp(4) }]}>Tap to start</CustomText>
               )}
@@ -207,19 +225,25 @@ const RecordingInterface = ({
           <View style={styles.actionColumn}>
             {/* Replay */}
             {isButton && !waitingForTranslation && (
-              <TouchableOpacity style={[styles.replayWrap, { marginRight: 0, marginBottom: hp(6) }]} onPress={playAgain} activeOpacity={0.8}>
-                <View style={styles.replayCircle}>
-                  <IMAGES.ReplayButton height={hp(18)} width={wp(18)} fill="black" />
-                </View>
-                <CustomText style={styles.replayLabel}>Replay</CustomText>
-              </TouchableOpacity>
+              <CopilotStep
+                text={strings.Copilot.learnGeetaReplayBtn.defaultMessage}
+                order={4}
+                name="replayBtn"
+              >
+                <CopilotTouchableOpacity style={[styles.replayWrap, { marginRight: 0, marginBottom: hp(6) }]} onPress={playAgain} activeOpacity={0.8}>
+                  <View style={styles.replayCircle}>
+                    <IMAGES.ReplayButton height={hp(18)} width={wp(18)} fill="black" />
+                  </View>
+                  <CustomText style={styles.replayLabel}>Replay</CustomText>
+                </CopilotTouchableOpacity>
+              </CopilotStep>
             )}
 
             {/* Show */}
             {onShowPress && (
               <CopilotStep
                 text={strings.Copilot.learnGeetaShowBtn.defaultMessage}
-                order={2}
+                order={6}
                 name="showBtn"
               >
                 <CopilotTouchableOpacity style={styles.actionPill} onPress={onShowPress} activeOpacity={0.8}>
@@ -232,7 +256,7 @@ const RecordingInterface = ({
             {onContinuePress && (
               <CopilotStep
                 text={strings.Copilot.learnGeetaContinueBtn.defaultMessage}
-                order={3}
+                order={7}
                 name="continueBtn"
               >
                 <CopilotTouchableOpacity style={[styles.actionPill, { marginTop: hp(6) }]} onPress={onContinuePress} activeOpacity={0.8}>

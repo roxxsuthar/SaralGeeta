@@ -432,9 +432,13 @@
       "id": "app.container.SideBar.faq",
       "defaultMessage": "FAQ"
     },
+    "networkLogs": {
+      "id": "app.container.SideBar.networkLogs",
+      "defaultMessage": "ನೆಟ್‌ವರ್ಕ್ ಲಾಗ್‌ಗಳು"
+    },
     "askBhagwan": {
       "id": "app.container.SideBar.askBhagwan",
-      "defaultMessage": "ದೇವರನ್ನು ಕೇಳು"
+      "defaultMessage": "ಗೀತಾ ಅಭ್ಯಾಸ"
     }
   },
   "studentGift": {
@@ -1001,6 +1005,26 @@
     "learnGeetaContinueBtn": {
       "id": "copilot.learnGeetaContinueBtn",
       "defaultMessage": "ನಿಮ್ಮ ಫಲಿತಾಂಶಗಳನ್ನು ಉಳಿಸಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ ಮತ್ತು ಮುಂದಿನ ಶ್ಲೋಕಕ್ಕೆ ಮುಂದುವರಿಯಿರಿ."
+    },
+    "bhagwanValidateBtn": {
+      "id": "copilot.bhagwanValidateBtn",
+      "defaultMessage": "ಉತ್ತರವನ್ನು ಪರಿಶೀಲಿಸಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "learnGeetaPreviousBtn": {
+      "id": "copilot.learnGeetaPreviousBtn",
+      "defaultMessage": "ಹಿಂದಿನ ಶ್ಲೋಕಕ್ಕೆ ಹಿಂತಿರುಗಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "learnGeetaNextBtn": {
+      "id": "copilot.learnGeetaNextBtn",
+      "defaultMessage": "ಮುಂದಿನ ಶ್ಲೋಕಕ್ಕೆ ಮುಂದುವರಿಯಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "learnGeetaReplayBtn": {
+      "id": "copilot.learnGeetaReplayBtn",
+      "defaultMessage": "ಶ್ಲೋಕವನ್ನು ಮತ್ತೆ ಪ್ಲೇ ಮಾಡಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
+    },
+    "learnGeetaMicBtn": {
+      "id": "copilot.learnGeetaMicBtn",
+      "defaultMessage": "ರೆಕಾರ್ಡಿಂಗ್ ಪ್ರಾರಂಭಿಸಲು ಅಥವಾ ನಿಲ್ಲಿಸಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ."
     },
     "bhagwanAnswerInput": {
       "id": "copilot.bhagwanAnswerInput",
